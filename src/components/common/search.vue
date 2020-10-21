@@ -2,18 +2,21 @@
    elementb搜索表单封装组件
   -->
 <template>
-  <el-form :inline="true" :model="searchData" ref="searchData" size="mini" label-width="150px">
+  <el-form :inline="true" label-position="left" :model="searchData" ref="searchData" size="mini" label-width="130px">
     
     <template v-for="(item, index) in searchItem" >
-      <el-col span="10" :key='index'>
+      <el-col span="8
+      " :key='index' >
         <el-form-item
           v-if="item.type === 'input' || ''"
           :label="item.label"
           :key="item.prop"
           :prop="item.prop"
+          
         >
           <el-input
             v-model="searchData[item.prop]"
+            style="width:250px"
             :placeholder="item.placeholder"
           ></el-input>
         </el-form-item>
@@ -22,10 +25,10 @@
           :label="item.label"
           :key="item.prop"
           :prop="item.prop"
-          filterable 
         >
           <el-select
             v-model="searchData[item.prop]"
+            style="width:250px"
             @click.native="handleChange"
             :placeholder="item.placeholder"
             clearable

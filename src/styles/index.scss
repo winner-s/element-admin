@@ -5,6 +5,11 @@
 @import './sidebar.scss';
 @import './btn.scss';
 
+.pageMain {
+  padding: 50px 24px;
+  background-color: #F3F4F8;
+  height: 100%;;
+}
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -14,7 +19,7 @@ body {
 }
 
 label {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 html {

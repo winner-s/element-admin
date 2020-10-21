@@ -69,17 +69,38 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/accountManager',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/accountManager/openManager',
+    name: '账号管理',
+    meta: { title: '账号管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'openManager',
+        name: '开户管理',
+        component: () => import('@/views/accountManager/openManager/accountOpen/index'),
+        meta: { title: '开户管理', icon: 'table' },
+        children: [
+          {
+            path: '开户申请',
+            component: () => import('@/views/accountManager/openManager/accountOpen/index'),
+            name: 'Menu1-1',
+            meta: { title: '开户申请' }
+          },
+          {
+            path: '开户补录',
+            component: () => import('@/views/accountManager/openManager/accountOpenSupplement/index'),
+            name: 'Menu1-2',
+            meta: { title: '开户补录' },
+            
+          },
+          {
+            path: '开户复核',
+            component: () => import('@/views/accountManager/openManager/accountOpenReview/index'),
+            name: 'Menu1-3',
+            meta: { title: '开户复核' }
+          }
+        ]
       },
       {
         path: 'tree',

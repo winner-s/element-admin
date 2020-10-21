@@ -11,6 +11,7 @@
       style="width: 100%"
       size="mini"
       class="tableClass"
+      @selection-change="handleSelectionChange"
     >
       <template v-for="(item, index) in tableListData">
         
@@ -233,6 +234,9 @@ export default {
   },
   mounted() {},
   methods: {
+    handleSelectionChange(res){
+      console.log(res)
+    },
     // 索引事件
     indexMethod(val) {
       return (
