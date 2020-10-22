@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>交易认领系统维护</span>
       </div>
       <div>
         <Search
@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -458,12 +458,7 @@ export default {
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
+        label: '手工归类',
       },
       {
         prop: 'reset',
@@ -474,100 +469,162 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
-        label: '单位编号:',
-        prop: 'unitNo',
-        placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        type: 'input',
+        label: '本方账号:',
+        prop: 'documentNumber',
+        placeholder: '请填写本方账号',
       },
       {
         type: 'input',
-        label: '单位名称:',
-        prop: 'unitName',
-        placeholder: '请填写单位名称',
-      },
-      {
-        type: 'select',
-        label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
+        label: '本方户名:',
+        prop: 'openApplicant',
+        placeholder: '请填写本方户名',
+      }
+      ,
       {
         type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
+        label: '对方户名:',
+        prop: 'openApplicant',
+        placeholder: '请填写对方户名',
+      }
+      ,
+      {
+        type: 'input',
+        label: '交易金额 从:',
+        prop: 'openApplicant',
+        placeholder: '请填写交易金额',
+      }
+      ,
+      {
+        type: 'input',
+        label: '至:',
+        prop: 'openApplicant',
+        placeholder: '请填写交易金额',
+      }
+      ,
+      {
+        type: 'time',
+        label: '起止时间:',
+        prop: 'openApplicant',
+        placeholder: '请选择起止时间',
+      }
+      ,
+      {
+        type: 'time',
+        label: '截止时间:',
+        prop: 'openApplicant',
+        placeholder: '请选择截止时间',
+      }
+      ,
+      {
+        type: 'input',
+        label: '摘要:',
+        prop: 'openApplicant',
+        placeholder: '请填写摘要',
+      }
+      ,
       {
         type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
+        label: '贷款方向:',
+        prop: 'openApplicant',
+        placeholder: '请选择贷款方向',
+      }
+      ,
       {
         type: 'select',
         label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
+        prop: 'openApplicant',
+        placeholder: '请选择币种',
+      }
+      ,
       {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+        type: 'select',
+        label: '认领系统:',
+        prop: 'openApplicant',
+        placeholder: '请选择认领系统',
+      }
+      ,
+      {
+        type: 'select',
+        label: '认领状态:',
+        prop: 'openApplicant',
+        placeholder: '请选择认领状态',
+      }
+      ,
+      {
+        type: 'select',
+        label: '是否关联:',
+        prop: 'openApplicant',
+        placeholder: '请选择是否关联',
+      }
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      { width: '50', label: '', type: 'selection', fixed: 'left' },
+      
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号',
+        label: '本方账户号码',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '本方账户名称',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '开户行',
       },
       {
-        prop: 'bankName',
+        prop: 'accountName',
         width: '',
-        label: '银行名称',
-      },
+        label: '对方账户号码',
+      }
+      ,
       {
-        prop: 'bankOpenName',
+        prop: 'accountName',
         width: '',
-        label: '开户行名称',
-      },
+        label: '对方账户名称',
+      }
+      ,
       {
-        prop: 'status',
+        prop: 'accountName',
         width: '',
-        label: '单据状态',
-      },
+        label: '对方账户开户行',
+      }
+      ,
       {
-        prop: 'connection',
+        prop: 'accountName',
         width: '',
-        label: '是否直联',
-      },
+        label: '交易日期',
+      }
+      ,
       {
-        prop: 'currency',
+        prop: 'accountName',
+        width: '',
+        label: '金额',
+      }
+      ,
+      {
+        prop: 'accountName',
         width: '',
         label: '币种',
-      },
+      }
+      ,
       {
-        prop: 'unitName',
+        prop: 'accountName',
         width: '',
-        label: '单位名称',
-      },
+        label: '是否直联',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '借贷方向',
+      }
     ]
     // 按钮
     this.tableBtn = []

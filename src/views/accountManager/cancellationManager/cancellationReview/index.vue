@@ -494,16 +494,9 @@ export default {
       },
       {
         type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
+        label: '账户号码:',
+        prop: 'accountPhone',
         placeholder: '请填写银行账号',
-      },
-      {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
       },
       {
         type: 'select',
@@ -520,18 +513,20 @@ export default {
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      
+      { label: '操作', type: 'btn', width: '', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
+        fixed: 'left',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '账户号码',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
@@ -567,6 +562,26 @@ export default {
         prop: 'unitName',
         width: '',
         label: '单位名称',
+      },
+      {
+        prop: 'connection',
+        width: '',
+        label: '账户用途',
+      },
+      {
+        prop: 'connection',
+        width: '',
+        label: '开户申请日期',
+      },
+      {
+        prop: 'connection',
+        width: '',
+        label: '开户日期',
+      },
+      {
+        prop: 'connection',
+        width: '',
+        label: '申请人',
       },
     ]
     // 按钮

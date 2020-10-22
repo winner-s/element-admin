@@ -122,10 +122,351 @@ export const constantRoutes = [
             meta: { title: '变更复核' }
           }
         ]
+      },
+      {
+        path: 'cancellationManager',
+        name: '销户管理',
+        component: () => import('@/views/accountManager/cancellationManager/index'),
+        meta: { title: '销户管理', icon: 'tree' },
+        children: [
+          {
+            path: '销户申请',
+            component: () => import('@/views/accountManager/cancellationManager/cancellationOpen/index'),
+            name: '销户申请',
+            meta: { title: '销户申请' }
+          },
+         
+          {
+            path: '销户复核',
+            component: () => import('@/views/accountManager/cancellationManager/cancellationReview/index'),
+            name: '销户复核',
+            meta: { title: '销户复核' }
+          }
+        ]
+      },
+      {
+        path: 'inquiryManager',
+        name: '账户查询',
+        component: () => import('@/views/accountManager/inquiryManager/index'),
+        meta: { title: '账户查询', icon: 'tree' },
+        children: [
+          {
+            path: '账户信息查询',
+            component: () => import('@/views/accountManager/inquiryManager/inquirySelect/index'),
+            name: '账户信息查询',
+            meta: { title: '账户信息查询' }
+          },
+         
+          {
+            path: '当日余额查询',
+            component: () => import('@/views/accountManager/inquiryManager/balanceSelect/index'),
+            name: '当日余额查询',
+            meta: { title: '当日余额查询' }
+          }
+          ,
+         
+          {
+            path: '当日交易查询',
+            component: () => import('@/views/accountManager/inquiryManager/transactionSelect/index'),
+            name: '当日交易查询',
+            meta: { title: '当日交易查询' }
+          }
+          ,
+         
+          {
+            path: '历史余额查询',
+            component: () => import('@/views/accountManager/inquiryManager/historyBalanceSelect/index'),
+            name: '历史余额查询',
+            meta: { title: '历史余额查询' }
+          },
+         
+          {
+            path: '历史交易查询',
+            component: () => import('@/views/accountManager/inquiryManager/historyTransactionSelect/index'),
+            name: '历史交易查询',
+            meta: { title: '历史交易查询' }
+          }
+        ]
+      },
+      {
+        path: 'BankInterface',
+        name: '银企接口',
+        component: () => import('@/views/accountManager/BankInterface/index'),
+        meta: { title: '银企接口', icon: 'tree' },
+        children: [
+          {
+            path: '直联账户历史交易导入',
+            component: () => import('@/views/accountManager/BankInterface/directAccountHistorical/index'),
+            name: '直联账户历史交易导入',
+            meta: { title: '直联账户历史交易导入' }
+          },
+         
+          {
+            path: '直联账户即时余额查询',
+            component: () => import('@/views/accountManager/BankInterface/directAcountBalance/index'),
+            name: '直联账户即时余额查询',
+            meta: { title: '直联账户即时余额查询' }
+          }
+          ,
+         
+          {
+            path: '直联账户即时交易查询',
+            component: () => import('@/views/accountManager/BankInterface/directAccountTransaction/index'),
+            name: '直联账户即时余额查询',
+            meta: { title: '直联账户即时余额查询' }
+          }
+          ,
+         
+          {
+            path: '非直联账户历史数据导入',
+            component: () => import('@/views/accountManager/BankInterface/noDirectAccountHistorical/index'),
+            name: '非直联账户历史数据导入',
+            meta: { title: '非直联账户历史数据导入' }
+          }
+         
+          
+        ]
       }
     ]
   },
-
+  {
+    path: '/settlementManager',
+    component: Layout,
+    redirect: '/settlementManager/privatePayment',
+    name: '结算管理',
+    meta: { title: '结算管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'privatePayment',
+        name: '对私付款',
+        component: () => import('@/views/settlementManager/privatePayment/index'),
+        meta: { title: '对私付款', icon: 'table' },
+        children: [
+          {
+            path: 'paymentApplication',
+            component: () => import('@/views/settlementManager/privatePayment/paymentApplication/index'),
+            name: '对私付款申请',
+            meta: { title: '对私付款申请' }
+          },
+          {
+            path: 'paymentReview',
+            component: () => import('@/views/settlementManager/privatePayment/paymentReview/index'),
+            name: '对私付款复核',
+            meta: { title: '对私付款复核' },
+            
+          },
+          {
+            path: 'paymentInstruction',
+            component: () => import('@/views/settlementManager/privatePayment/paymentInstruction/index'),
+            name: '对私付款指令发送',
+            meta: { title: '对私付款指令发送' }
+          }
+          ,
+          {
+            path: 'paymentConfim',
+            component: () => import('@/views/settlementManager/privatePayment/paymentConfim/index'),
+            name: '对私非直联支付确认',
+            meta: { title: '对私非直联支付确认' }
+          }
+        ]
+      },
+      {
+        path: 'corporatePayment',
+        name: '对公付款',
+        component: () => import('@/views/settlementManager/corporatePayment/index'),
+        meta: { title: '对私付款', icon: 'table' },
+        children: [
+          {
+            path: 'paymentApplication',
+            component: () => import('@/views/settlementManager/corporatePayment/paymentApplication/index'),
+            name: '对公付款申请',
+            meta: { title: '对公付款申请' }
+          },
+          {
+            path: 'paymentReview',
+            component: () => import('@/views/settlementManager/corporatePayment/paymentReview/index'),
+            name: '对公付款复核',
+            meta: { title: '对公付款复核' },
+            
+          },
+          {
+            path: 'paymentInstruction',
+            component: () => import('@/views/settlementManager/corporatePayment/paymentInstruction/index'),
+            name: '对公付款指令发送',
+            meta: { title: '对公付款指令发送' }
+          }
+          ,
+          {
+            path: 'paymentConfim',
+            component: () => import('@/views/settlementManager/corporatePayment/paymentConfim/index'),
+            name: '对公非直联支付确认',
+            meta: { title: '对公非直联支付确认' }
+          }
+        ]
+      },
+      {
+        path: 'transferSameName',
+        name: '同名划转',
+        component: () => import('@/views/settlementManager/transferSameName/index'),
+        meta: { title: '同名划转', icon: 'table' },
+        children: [
+          {
+            path: 'transferApplication',
+            component: () => import('@/views/settlementManager/transferSameName/transferApplication/index'),
+            name: '同名划转申请',
+            meta: { title: '同名划转申请' }
+          },
+          {
+            path: 'transferReview',
+            component: () => import('@/views/settlementManager/transferSameName/transferReview/index'),
+            name: '同名划转复核',
+            meta: { title: '同名划转复核' },
+            
+          },
+          {
+            path: 'transferInstruction',
+            component: () => import('@/views/settlementManager/transferSameName/transferInstruction/index'),
+            name: '同名划转指令发送',
+            meta: { title: '同名划转指令发送' }
+          }
+          ,
+          {
+            path: 'transferConfim',
+            component: () => import('@/views/settlementManager/transferSameName/transferConfim/index'),
+            name: '同名划转非直联支付确认',
+            meta: { title: '同名划转非直联支付确认' }
+          }
+        ]
+      },
+      {
+        path: 'salaryPayment',
+        name: '薪资代发',
+        component: () => import('@/views/settlementManager/salaryPayment/index'),
+        meta: { title: '薪资代发', icon: 'table' },
+        children: [
+          {
+            path: 'transferApplication',
+            component: () => import('@/views/settlementManager/salaryPayment/salaryPaymentImport/index'),
+            name: '薪资代发导入',
+            meta: { title: '薪资代发导入' }
+          },
+          {
+            path: 'transferReview',
+            component: () => import('@/views/settlementManager/salaryPayment/salaryPaymentAppliction/index'),
+            name: '薪资代发申请',
+            meta: { title: '薪资代发申请' },
+            
+          },
+          {
+            path: 'transferInstruction',
+            component: () => import('@/views/settlementManager/salaryPayment/salaryPaymentReview/index'),
+            name: '薪资代发复核',
+            meta: { title: '薪资代发复核' }
+          }
+          ,
+          {
+            path: 'transferConfim',
+            component: () => import('@/views/settlementManager/salaryPayment/salaryPaymentInstruction/index'),
+            name: '薪资代发指令发送',
+            meta: { title: '薪资代发指令发送' }
+          }
+        ]
+      },
+      {
+        path: 'instructionManager',
+        name: '指令管理',
+        component: () => import('@/views/settlementManager/instructionManager/index'),
+        meta: { title: '指令管理', icon: 'table' },
+        children: [
+          {
+            path: 'transferApplication',
+            component: () => import('@/views/settlementManager/instructionManager/instructionSync/index'),
+            name: '指令同步',
+            meta: { title: '指令同步' }
+          },
+          {
+            path: 'transferReview',
+            component: () => import('@/views/settlementManager/instructionManager/instructionUpdate/index'),
+            name: '指令修改',
+            meta: { title: '指令修改' },
+            
+          },
+          {
+            path: 'transferInstruction',
+            component: () => import('@/views/settlementManager/instructionManager/instructionReview/index'),
+            name: '指令复核',
+            meta: { title: '指令复核' }
+          }
+         
+        ]
+      },
+      {
+        path: 'settlementInquiry',
+        name: '结算查询',
+        component: () => import('@/views/settlementManager/settlementInquiry/index'),
+        meta: { title: '结算查询', icon: 'table' },
+        children: [
+          {
+            path: 'paymentInquiry',
+            component: () => import('@/views/settlementManager/settlementInquiry/paymentInquiry/index'),
+            name: '付款申请查询',
+            meta: { title: '付款申请查询' }
+          },
+          {
+            path: 'instructionInquiry',
+            component: () => import('@/views/settlementManager/settlementInquiry/instructionInquiry/index'),
+            name: '付款指令查询',
+            meta: { title: '付款指令查询' },
+            
+          }
+         
+        ]
+      },
+      {
+        path: 'payeeMaintain',
+        name: '收款人信息维护',
+        component: () => import('@/views/settlementManager/payeeMaintain/index'),
+        meta: { title: '收款人信息维护', icon: 'table' },
+        
+      },
+      {
+        path: 'tradeClaim',
+        name: '交易认领',
+        component: () => import('@/views/settlementManager/tradeClaim/index'),
+        meta: { title: '交易认领', icon: 'table' },
+        children: [
+          {
+            path: 'paymentInquiry',
+            component: () => import('@/views/settlementManager/tradeClaim/systemMaintenance/index'),
+            name: '交易认领系统维护',
+            meta: { title: '交易认领系统维护' }
+          },
+          {
+            path: 'ruleMaintenance',
+            component: () => import('@/views/settlementManager/tradeClaim/ruleMaintenance/index'),
+            name: '交易认领规则维护',
+            meta: { title: '交易认领规则维护' },
+            
+          },
+          {
+            path: 'pushQuery',
+            component: () => import('@/views/settlementManager/tradeClaim/pushQuery/index'),
+            name: '推送查询',
+            meta: { title: '推送查询' },
+            
+          },
+          {
+            path: 'entryConfirm',
+            component: () => import('@/views/settlementManager/tradeClaim/entryConfirm/index'),
+            name: '线下入账确认',
+            meta: { title: '线下入账确认' },
+            
+          }
+         
+        ]
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,

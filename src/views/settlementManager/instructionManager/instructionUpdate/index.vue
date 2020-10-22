@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>指令同步</span>
       </div>
       <div>
         <Search
@@ -455,15 +455,11 @@ export default {
         type: 'primary',
         label: '查询',
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
+      
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '同步',
       },
       {
         prop: 'reset',
@@ -474,100 +470,103 @@ export default {
     // 搜索
     this.searchItem = [
       {
+        type: 'input',
+        label: '单据编号:',
+        prop: 'documentNumber',
+        placeholder: '请填写单据编号',
+      },
+      {
         type: 'select',
-        label: '单位编号:',
+        label: '指令接受银行:',
+        prop: 'openApplicant',
+        placeholder: '请选择指令接受银行',
+      },
+      {
+        type: 'time',
+        label: '指令发送时间 从:',
         prop: 'unitNo',
-        placeholder: '请填写单位编号',
+        placeholder: '请选择指令发送时间',
         selectList: this.unitNoList,
       },
       {
-        type: 'input',
-        label: '单位名称:',
-        prop: 'unitName',
-        placeholder: '请填写单位名称',
+        type: 'time',
+        label: '到:',
+        prop: 'unitNo',
+        placeholder: '请选择指令发送时间',
+        selectList: this.unitNoList,
       },
       {
         type: 'select',
-        label: '银行名称:',
+        label: '业务单位:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
+        placeholder: '请选择业务单位',
+        show: this.showAll,
       },
       {
-        type: 'input',
-        label: '银行账号:',
+        type: 'select',
+        label: '指令状态:',
         prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
-      {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
+        placeholder: '请选择指令状态',
         show: this.showAll,
       },
       {
         type: 'select',
-        label: '币种:',
-        prop: 'currency',
+        label: '业务类型:',
+        prop: 'accountOpenTimeStart',
+        placeholder: '请选择业务类型',
         show: this.showAll,
-      },
-      {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+      }
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
+        fixed: 'left',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '单据日期',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '指令状态',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '付方账号',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '付方户名',
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '付款方银行',
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
+        label: '金额(元)',
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种',
+        label: '收方账号',
       },
       {
         prop: 'unitName',
         width: '',
-        label: '单位名称',
-      },
+        label: '收方户名',
+      }
     ]
     // 按钮
     this.tableBtn = []

@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>付款指令查询</span>
       </div>
       <div>
         <Search
@@ -455,16 +455,7 @@ export default {
         type: 'primary',
         label: '查询',
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
+      
       {
         prop: 'reset',
         type: '',
@@ -474,41 +465,91 @@ export default {
     // 搜索
     this.searchItem = [
       {
+        type: 'input',
+        label: '单据编号:',
+        prop: 'documentNumber',
+        placeholder: '请填写单据编号',
+      },
+      {
         type: 'select',
-        label: '单位编号:',
+        label: '业务类型:',
+        prop: 'openApplicant',
+        placeholder: '请选择业务类型',
+      },
+      
+      {
+        type: 'input',
+        label: '单据日期 从:',
         prop: 'unitNo',
-        placeholder: '请填写单位编号',
+        placeholder: '请填写单据日期',
         selectList: this.unitNoList,
       },
       {
         type: 'input',
-        label: '单位名称:',
+        label: '到:',
         prop: 'unitName',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单据日期',
       },
       {
         type: 'select',
-        label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
-      {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
+        label: '指令状态:',
+        prop: 'openApplicant',
         placeholder: '请选择单据状态',
         show: this.showAll,
       },
       {
         type: 'select',
-        label: '币种:',
-        prop: 'currency',
+        label: '业务单位:',
+        prop: 'bankName',
+        placeholder: '请选择业务单位',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '收方账号:',
+        prop: 'bankOpenName',
+        placeholder: '请填写收方账号',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '收方户名:',
+        prop: 'bankOpenName',
+        placeholder: '请填写收方户名',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '付方账号:',
+        prop: 'bankOpenName',
+        placeholder: '请填写付方账号',
+        show: this.showAll,
+      },
+
+      {
+        type: 'input',
+        label: '金额(元) 从:',
+        prop: 'accountOpenTimeEnd',
+        placeholder: '请填写金额(元)',
+        show: this.showAll,
+      },
+      {
+        type: 'select',
+        label: '到:',
+        prop: 'start',
+        placeholder: '请填写金额(元)',
+        show: this.showAll,
+      },
+      {
+        type: 'select',
+        label: '数据来源:',
+        prop: 'contain',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '外部单号:',
+        prop: 'contain',
         show: this.showAll,
       },
       {
@@ -520,54 +561,69 @@ export default {
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
+        fixed: 'left',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '单据日期',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '指令状态',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '付方账号',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '付方户名',
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '付款方银行',
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
+        label: '金额(元)',
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种',
+        label: '收方账号',
       },
       {
-        prop: 'unitName',
+        prop: 'currency',
         width: '',
-        label: '单位名称',
+        label: '收方户名',
       },
+      {
+        prop: 'currency',
+        width: '',
+        label: '录入人',
+      },
+      {
+        prop: 'currency',
+        width: '',
+        label: '数据来源',
+      },
+      {
+        prop: 'currency',
+        width: '',
+        label: '外部单号',
+      }
     ]
     // 按钮
     this.tableBtn = []

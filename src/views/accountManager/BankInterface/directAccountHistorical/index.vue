@@ -17,7 +17,7 @@
           @dropUp="dropUp"
         ></Search>
 
-        <Table
+        <!-- <Table
           :tableData="tableData"
           :tableListData="tableListData"
           :tableBtn="tableBtn"
@@ -28,7 +28,7 @@
           @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
-        ></Table>
+        ></Table> -->
       </div>
     </el-card>
   </div>
@@ -46,7 +46,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      
+      showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -456,16 +457,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -488,87 +479,97 @@ export default {
       },
       {
         type: 'select',
-        label: '银行名称:',
+        label: '账户号码:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
+        placeholder: '请填写账户号码',
       },
       {
         type: 'input',
-        label: '银行账号:',
+        label: '查询日期范围从:',
         prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
+        placeholder: '请填写日期范围',
       },
       {
-        type: 'select',
-        label: '单据状态:',
+        type: 'input',
+        label: '到:',
         prop: 'documentStatus',
-        placeholder: '请选择单据状态',
+        placeholder: '请填写范围日期',
         show: this.showAll,
-      },
-      {
-        type: 'select',
-        label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
-      {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+      }
     ]
-    //  table表格
-    this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
-      {
-        prop: 'documentNumber',
-        width: '150',
-        label: '单据编号',
-      },
-      {
-        prop: 'bankPhone',
-        width: '150',
-        label: '银行号码',
-      },
-      {
-        prop: 'accountName',
-        width: '',
-        label: '账户名称',
-      },
-      {
-        prop: 'bankName',
-        width: '',
-        label: '银行名称',
-      },
-      {
-        prop: 'bankOpenName',
-        width: '',
-        label: '开户行名称',
-      },
-      {
-        prop: 'status',
-        width: '',
-        label: '单据状态',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '是否直联',
-      },
-      {
-        prop: 'currency',
-        width: '',
-        label: '币种',
-      },
-      {
-        prop: 'unitName',
-        width: '',
-        label: '单位名称',
-      },
-    ]
+    // //  table表格
+    // this.tableListData = [
+    //   { width: '50', label: '', type: 'index', fixed: 'left' },
+    //   { width: '50', label: '', type: 'selection', fixed: 'left' },
+    //   { label: '操作', type: 'btn', width: '', fixed: 'left' },
+    //   {
+    //     prop: 'documentNumber',
+    //     width: '150',
+    //     label: '单据编号',
+    //     fixed: 'left',
+    //   },
+    //   {
+    //     prop: 'accountPhone',
+    //     width: '150',
+    //     label: '账户号码',
+    //     fixed: 'left',
+    //   },
+    //   {
+    //     prop: 'accountName',
+    //     width: '',
+    //     label: '账户名称',
+    //   },
+    //   {
+    //     prop: 'bankName',
+    //     width: '',
+    //     label: '银行名称',
+    //   },
+    //   {
+    //     prop: 'bankOpenName',
+    //     width: '',
+    //     label: '开户行名称',
+    //   },
+    //   {
+    //     prop: 'status',
+    //     width: '',
+    //     label: '单据状态',
+    //   },
+    //   {
+    //     prop: 'connection',
+    //     width: '',
+    //     label: '是否直联',
+    //   },
+    //   {
+    //     prop: 'currency',
+    //     width: '',
+    //     label: '币种',
+    //   },
+    //   {
+    //     prop: 'unitName',
+    //     width: '',
+    //     label: '单位名称',
+    //   },
+    //   {
+    //     prop: 'connection',
+    //     width: '',
+    //     label: '账户用途',
+    //   },
+    //   {
+    //     prop: 'connection',
+    //     width: '',
+    //     label: '开户申请日期',
+    //   },
+    //   {
+    //     prop: 'connection',
+    //     width: '',
+    //     label: '开户日期',
+    //   },
+    //   {
+    //     prop: 'connection',
+    //     width: '',
+    //     label: '申请人',
+    //   },
+    // ]
     // 按钮
     this.tableBtn = []
   },
