@@ -91,8 +91,8 @@ export const constantRoutes = [
             path: '开户补录',
             component: () => import('@/views/accountManager/openManager/accountOpenSupplement/index'),
             name: 'Menu1-2',
-            meta: { title: '开户补录' }
-
+            meta: { title: '开户补录' },
+            
           },
           {
             path: '开户复核',
@@ -114,54 +114,12 @@ export const constantRoutes = [
   {
     path: '/form',
     component: Layout,
-    redirect: '/form/select',
-    name: '报表中心',
-    meta: { title: '报表中心', icon: 'form' },
     children: [
       {
-        path: 'select',
-        name: '报表查询',
-        redirect: '/form/select/companyInfo',
-        component: () => import('@/views/form/select/index'),
-        meta: { title: '报表查询' },
-        children: [
-          {
-            path: 'companyInfo',
-            meta: { title: '单位基本信息表' },
-            name: 'CompanyInfo',
-            component: () => import('@/views/form/select/companyInfo/index')
-          },
-          {
-            path: 'companyBalance',
-            meta: { title: '单位账户余额统计表' },
-            name: 'CompanyBalance',
-            component: () => import('@/views/form/select/companyBalance/index')
-          },
-          {
-            path: 'role',
-            meta: { title: '用户角色' },
-            name: 'Role',
-            component: () => import('@/views/form/select/role/index')
-          },
-          {
-            path: 'summary',
-            meta: { title: '账户交易明细汇总表' },
-            name: 'Summary',
-            component: () => import('@/views/form/select/summary/index')
-          },
-          {
-            path: 'flow',
-            meta: { title: '银行账户余额流量表' },
-            name: 'Flow',
-            component: () => import('@/views/form/select/flow/index')
-          },
-          {
-            path: 'analyse',
-            meta: { title: '各行账户数量分析' },
-            name: 'Analyse',
-            component: () => import('@/views/form/select/analyse/index')
-          }
-        ]
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
