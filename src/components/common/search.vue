@@ -10,7 +10,7 @@
 
           
           <el-form-item
-            v-if="(item.type === 'input' || '' ) && (item.show || item.show==undefinde)"
+            v-if="(item.type === 'input' || '' ) && (item.show || item.show===undefined)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -24,7 +24,7 @@
           </el-form-item>
 
           <el-form-item
-            v-if="(item.type === 'checkbox' || '') && (item.show || item.show==undefinde)"
+            v-if="(item.type === 'checkbox' || '') && (item.show || item.show===undefined)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -34,7 +34,7 @@
             <el-checkbox v-model="searchData[item.prop]"></el-checkbox>
           </el-form-item>
           <el-form-item
-            v-if="item.type === 'select' && (item.show || item.show==undefinde)"
+            v-if="item.type === 'select' && (item.show || item.show===undefined)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -58,7 +58,7 @@
             </el-select>
           </el-form-item>
           <el-form-item
-            v-if="item.type === 'time' && (item.show || item.show==undefinde)"
+            v-if="item.type === 'time' && (item.show || item.show===undefined)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -74,7 +74,7 @@
             ></el-date-picker>
           </el-form-item>
           <el-form-item
-            v-if="item.type === 'daterange' && (item.show || item.show==undefinde)"
+            v-if="item.type === 'daterange' && (item.show || item.show===undefined)"
             :label="item.label"
             :key="index"
           >

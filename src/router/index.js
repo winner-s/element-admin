@@ -78,35 +78,50 @@ export const constantRoutes = [
       {
         path: 'openManager',
         name: '开户管理',
-        component: () => import('@/views/accountManager/openManager/accountOpen/index'),
+        component: () => import('@/views/accountManager/openManager/index'),
         meta: { title: '开户管理', icon: 'table' },
         children: [
           {
             path: '开户申请',
             component: () => import('@/views/accountManager/openManager/accountOpen/index'),
-            name: 'Menu1-1',
+            name: '开户申请',
             meta: { title: '开户申请' }
           },
           {
             path: '开户补录',
             component: () => import('@/views/accountManager/openManager/accountOpenSupplement/index'),
-            name: 'Menu1-2',
+            name: '开户补录',
             meta: { title: '开户补录' },
             
           },
           {
             path: '开户复核',
             component: () => import('@/views/accountManager/openManager/accountOpenReview/index'),
-            name: 'Menu1-3',
+            name: '开户复核',
             meta: { title: '开户复核' }
           }
         ]
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'changeManager',
+        name: '变更管理',
+        component: () => import('@/views/accountManager/changeManager/index'),
+        meta: { title: '变更管理', icon: 'tree' },
+        children: [
+          {
+            path: '变更申请',
+            component: () => import('@/views/accountManager/changeManager/changeOpen/index'),
+            name: '变更申请',
+            meta: { title: '变更申请' }
+          },
+         
+          {
+            path: '变更复核',
+            component: () => import('@/views/accountManager/changeManager/changeReview/index'),
+            name: '变更复核',
+            meta: { title: '变更复核' }
+          }
+        ]
       }
     ]
   },

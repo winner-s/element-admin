@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>开户申请</span>
+        <span>用户管理</span>
       </div>
       <div>
         <Search
@@ -456,16 +456,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -473,18 +463,6 @@ export default {
     ]
     // 搜索
     this.searchItem = [
-      {
-        type: 'input',
-        label: '单据编号:',
-        prop: 'documentNumber',
-        placeholder: '请填写单据编号',
-      },
-      {
-        type: 'input',
-        label: '开户申请人:',
-        prop: 'openApplicant',
-        placeholder: '请填写开户申请人',
-      },
       {
         type: 'select',
         label: '单位编号:',
@@ -503,15 +481,29 @@ export default {
         label: '银行名称:',
         prop: 'bankName',
         placeholder: '请填写银行名称',
-        show: this.showAll,
       },
       {
         type: 'input',
         label: '开户行名称:',
         prop: 'bankOpenName',
         placeholder: '请填写开户行名称',
+      },
+      {
+        type: 'input',
+        label: '开户申请人:',
+        prop: 'openApplicant',
+        placeholder: '请填写开户申请人',
         show: this.showAll,
       },
+
+      {
+        type: 'input',
+        label: '单据编号:',
+        prop: 'documentNumber',
+        placeholder: '请填写单据编号',
+        show: this.showAll,
+      },
+
       {
         type: 'input',
         label: '开户申请日期 从:',
@@ -528,9 +520,8 @@ export default {
       },
       {
         type: 'select',
-        label: '单据状态:',
-        prop: 'start',
-        placeholder: '请填写银行名称',
+        label: '币种:',
+        prop: 'currency',
         show: this.showAll,
       },
       {
@@ -543,7 +534,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { width: '50', label: '', type: 'selection', fixed: 'left' },
+
       { label: '操作', type: 'btn', width: '', fixed: 'left' },
       {
         prop: 'documentNumber',
