@@ -13,6 +13,8 @@
           :showAll="showAll"
           @getDataList="getDataList"
           @handleInsert="handleInsert"
+          @dropDown="dropDown"
+          @dropUp="dropUp"
         ></Search>
         
         <Table
@@ -286,6 +288,26 @@ export default {
   watch: {},
   // 方法集合
   methods: {
+    //收起
+    dropUp(){
+      this.showAll=false
+      this.searchItem.forEach((item,index)=>{
+        if(item.show !==undefined){
+          item.show  = false
+        }
+        
+      })
+    },
+    //展开
+    dropDown(){
+      this.showAll=true
+      this.searchItem.forEach((item,index)=>{
+        if(item.show !== undefined){
+          item.show  = true
+        }
+        
+      })
+    },
     //单击新增按钮
     handleInsert(){
 
@@ -486,6 +508,52 @@ export default {
         label: '单位名称:',
         prop: 'unitName',
         placeholder: '请填写单位名称'
+      },
+      {
+        type: 'select',
+        label: '银行名称:',
+        prop: 'bankName',
+        placeholder: '请填写银行名称',
+        show:this.showAll
+      }
+      ,
+      {
+        type: 'input',
+        label: '开户行名称:',
+        prop: 'bankOpenName',
+        placeholder: '请填写开户行名称',
+        show:this.showAll
+      }
+      ,
+      {
+        type: 'input',
+        label: '开户申请日期 从:',
+        prop: 'accountOpenTimeStart',
+        placeholder: '请填写开户申请日期',
+        show:this.showAll
+      }
+      ,
+      {
+        type: 'input',
+        label: '开户申请日期 到:',
+        prop: 'accountOpenTimeEnd',
+        placeholder: '请填写开户申请日期',
+        show:this.showAll
+      }
+      ,
+      {
+        type: 'select',
+        label: '单据状态:',
+        prop: 'start',
+        placeholder: '请填写银行名称',
+        show:this.showAll
+      }
+      ,
+      {
+        type: 'checkbox',
+        label: '包含下级业务单位:',
+        prop: 'contain',
+        show:this.showAll
       }
       
     ];
@@ -514,7 +582,7 @@ export default {
         label: '银行名称'
       },
       {
-        prop: 'openBankName',
+        prop: 'bankOpenName',
         width: '',
         label: '开户行名称'
       },

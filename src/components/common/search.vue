@@ -7,8 +7,10 @@
       <template v-for="(item, index) in searchItem" >
         <el-col :span="8
         " :key='index' >
+
+          
           <el-form-item
-            v-if="item.type === 'input' || ''"
+            v-if="(item.type === 'input' || '' ) && (item.show || item.show==undefinde)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -20,8 +22,19 @@
               :placeholder="item.placeholder"
             ></el-input>
           </el-form-item>
+
           <el-form-item
-            v-if="item.type === 'select'"
+            v-if="(item.type === 'checkbox' || '') && (item.show || item.show==undefinde)"
+            :label="item.label"
+            :key="item.prop"
+            :prop="item.prop"
+            
+          >
+            
+            <el-checkbox v-model="searchData[item.prop]"></el-checkbox>
+          </el-form-item>
+          <el-form-item
+            v-if="item.type === 'select' && (item.show || item.show==undefinde)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -45,7 +58,7 @@
             </el-select>
           </el-form-item>
           <el-form-item
-            v-if="item.type === 'time'"
+            v-if="item.type === 'time' && (item.show || item.show==undefinde)"
             :label="item.label"
             :key="item.prop"
             :prop="item.prop"
@@ -61,7 +74,7 @@
             ></el-date-picker>
           </el-form-item>
           <el-form-item
-            v-if="item.type === 'daterange'"
+            v-if="item.type === 'daterange' && (item.show || item.show==undefinde)"
             :label="item.label"
             :key="index"
           >
@@ -116,21 +129,21 @@
         </template>
         
         <el-form-item class="searchFloat"  v-if="!showAll">
-          <el-dropdown trigger="click" >
-            <span class="el-dropdown-link">
+          
+            <span class="el-dropdown-link" @click="dropDown">
               展开<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
         
-          </el-dropdown>
+          
         </el-form-item>
 
         <el-form-item class="searchFloat"  v-else>
-          <el-dropdown trigger="click" >
-            <span class="el-dropdown-link">
-              收起<i class="el-icon-arrow-down el-icon--right"></i>
+          
+            <span class="el-dropdown-link" @click="dropUp">
+              收起<i class="el-icon-arrow-up el-icon--right"></i>
             </span>
         
-          </el-dropdown>
+         
         </el-form-item>
       </el-col>
       
@@ -155,7 +168,7 @@ export default {
       required: true
     },
     showAll:{
-      type: Object,
+      type: Boolean,
       required: true
     }
   },
@@ -194,6 +207,15 @@ export default {
   },
   mounted() {},
   methods: {
+    //收起
+    dropUp(){
+      this.$emit("dropUp");
+    },
+    //展开
+    dropDown(){
+      console.log("点击了展开")
+       this.$emit("dropDown");
+    },
     //新增事件
     handInsert(){
       this.$emit("handleInsert");
