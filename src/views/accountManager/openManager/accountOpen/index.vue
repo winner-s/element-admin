@@ -9,7 +9,10 @@
           <Search
           :searchData="searchData"
           :searchItem="searchItem"
+          :searchBto="searchBto"
+          :showAll="showAll"
           @getDataList="getDataList"
+          @handleInsert="handleInsert"
         ></Search>
         
         <Table
@@ -31,7 +34,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { SEX } from "@u/wordbook";
+import { UNITNOLIST } from "@u/wordbook";
 import Search from "@c/common/search";
 import Table from "@c/common/table";
 
@@ -43,12 +46,16 @@ export default {
   data() {
     // 这里存放数据
     return {
+      showAll:false,
+      unitNoList:UNITNOLIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
+        total: 10
       },
+      //顶部按钮
+      searchBto:[],
       // 弹出框
       dialogObj: {
         id: '',
@@ -58,8 +65,202 @@ export default {
         form: {}
       },
       // 表格
+      tableDataTwo: [
+        {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'999888000',
+            accountName:'阿里巴巴88',
+            bankName:'中国人民银行营业处',
+            openBankName:'',
+            status:'通过',
+            connection:'直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20071016590269',
+            accountPhone:'20111006',
+            accountName:'测试非直连支付确认',
+            bankName:'中国工商银行',
+            openBankName:'北京分行',
+            status:'已确认',
+            connection:'非直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20081316150311',
+            accountPhone:'12311',
+            accountName:'123131',
+            bankName:'中国人民银行营业处',
+            openBankName:'1231',
+            status:'复核拒绝',
+            connection:'直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        }
+      ],
+      
+      // 表格
       tableData: [
         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'999888000',
+            accountName:'阿里巴巴88',
+            bankName:'中国人民银行营业处',
+            openBankName:'',
+            status:'通过',
+            connection:'直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20071016590269',
+            accountPhone:'20111006',
+            accountName:'测试非直连支付确认',
+            bankName:'中国工商银行',
+            openBankName:'北京分行',
+            status:'已确认',
+            connection:'非直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20081316150311',
+            accountPhone:'12311',
+            accountName:'123131',
+            bankName:'中国人民银行营业处',
+            openBankName:'1231',
+            status:'复核拒绝',
+            connection:'直联'
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
+            bto:false,
+            documentNumber:'KH20082615093831',
+            accountPhone:'',
+            accountName:'',
+            bankName:'',
+            openBankName:'',
+            status:'',
+            connection:''
+        },
+         {
             bto:false,
             documentNumber:'KH20082615093831',
             accountPhone:'',
@@ -74,7 +275,8 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: ''
+        nickname: '',
+        documentNumber:''
       }
     };
   },
@@ -84,9 +286,9 @@ export default {
   watch: {},
   // 方法集合
   methods: {
-    // 过滤
-    sex(val) {
-      return SEX[val];
+    //单击新增按钮
+    handleInsert(){
+
     },
     add() {
       this.dialogObj.id = '';
@@ -177,14 +379,87 @@ export default {
     },
 
     getList() {
-      
+      console.log(this.searchData)
+      let list =[]
+      let this_ =this
+      this.tableDataTwo.forEach((item,index)=>{
+          let bool = true
+          for(var i  in  this.searchData){
+              
+              if( this.searchData[i] !=""  && this.searchData[i]!=undefined){
+                  if(i=='documentNumber'){
+                      if(item.documentNumber.includes(this.searchData[i])){
+                          bool = true
+                      }else{
+                          bool = false
+                      }
+                  }
+
+                  if(i=='openApplicant'){
+                      if(item.openApplicant.includes(this.searchData[i])){
+                          bool = true
+                      }else{
+                          bool = false
+                      }
+                  }
+
+                  if(i=='unitNo'){
+                      if(item.unitNo.includes(this.searchData[i])){
+                          bool = true
+                      }else{
+                          bool = false
+                      }
+                  }
+
+                  if(i=='unitName'){
+                      if(item.unitName.includes(this.searchData[i])){
+                          bool = true
+                      }else{
+                          bool = false
+                      }
+                  }
+
+              }else{
+                  continue;
+              }
+          }
+          if(bool == true){
+              list.push(item)
+          }
+        
+      })
+    console.log(list)
+      this_.tableData = list
     }
   },
   
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
     
-    
+    //顶部按钮
+    this.searchBto = [
+        {
+            prop:'select',
+            type:'primary',
+            label:'查询'
+        },
+        {
+            prop:'insert',
+            type:'primary',
+            label:'新增'
+        },
+        {
+            prop:'commit',
+            type:'primary',
+            label:'提交'
+        }
+        ,
+        {
+            prop:'reset',
+            type:'',
+            label:'重置'
+        }
+    ]
     // 搜索
     this.searchItem = [
       {
@@ -203,7 +478,8 @@ export default {
         type: 'select',
         label: '单位编号:',
         prop: 'unitNo',
-        placeholder: '请填写单位编号'
+        placeholder: '请填写单位编号',
+        selectList: this.unitNoList
       },
       {
         type: 'input',
@@ -260,7 +536,7 @@ export default {
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    this.getList();
+    // this.getList();
   }
 };
 </script>
