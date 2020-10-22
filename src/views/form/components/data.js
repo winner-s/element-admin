@@ -1293,246 +1293,387 @@ const flow = {
   tableData: [
     {
       id: 1,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 2,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 3,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 4,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 5,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 6,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 7,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 8,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 9,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 10,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     },
     {
       id: 11,
-      superiorCompany: '上级单位',
-      organizationName: '组织名称',
-      accountNum: '20111006',
-      reciprocalCompany: 'xxx公司',
-      reciprocalAccount: '20121006',
-      coinType: '人民币',
-      receiptCoin: '1200',
-      paymentCoin: '0',
-      coinDifference: '1200',
-      dis: 'gggg',
-      receiptOrPayment: '借',
-      money: '1200',
-      bankName: '建行'
+      superiorCompany: '顶级单位',
+      companyName: '二级单位1',
+      bankName: '中国农业银行',
+      accountNum: '20121006',
+      useType: '基本存款户-收支户',
+      startBalance: 0,
+      receipt: 0,
+      payment: 0,
+      endBalance: 0,
+      difference: 0
     }
   ],
   tableListData: [
     {
       prop: 'superiorCompany',
       width: '',
-      label: '上级单位'
+      label: '上级单位名称'
     },
     {
-      prop: 'organizationName',
+      prop: 'companyName',
       width: '',
-      label: '组织名称'
-    },
-    {
-      prop: 'accountNum',
-      width: '',
-      label: '银行帐号'
-    },
-    {
-      prop: 'reciprocalCompany',
-      width: '',
-      label: '对方单位'
-    },
-    {
-      prop: 'reciprocalAccount',
-      width: '',
-      label: '对方帐号'
-    },
-    {
-      prop: 'coinType',
-      width: '',
-      label: '币种'
-    },
-    {
-      prop: 'receiptCoin',
-      width: '',
-      label: '收入原币'
-    },
-    {
-      prop: 'paymentCoin',
-      width: '',
-      label: '支出原币'
-    },
-    {
-      prop: 'coinDifference',
-      width: '',
-      label: '原币差额'
-    },
-    {
-      prop: 'dis',
-      width: '',
-      label: '摘要'
-    },
-    {
-      prop: 'receiptOrPayment',
-      width: '',
-      label: '收付方向'
-    },
-    {
-      prop: 'money',
-      width: '',
-      label: '交易金额'
+      label: '项目公司名称'
     },
     {
       prop: 'bankName',
       width: '',
+      label: '开户行名称'
+    },
+    {
+      prop: 'accountNum',
+      width: '',
+      label: '帐户号码'
+    },
+    {
+      prop: 'useType',
+      width: '',
+      label: '账户用途'
+    },
+    {
+      prop: 'startBalance',
+      width: '',
+      label: '初期余额（元）'
+    },
+    {
+      prop: 'receipt',
+      width: '',
+      label: '流入（元）'
+    },
+    {
+      prop: 'payment',
+      width: '',
+      label: '流出（元）'
+    },
+    {
+      prop: 'endBalance',
+      width: '',
+      label: '期末余额（元）'
+    },
+    {
+      prop: 'difference',
+      width: '',
+      label: '差额（元）'
+    }
+  ]
+}
+
+const analyse = {
+  searchFrom: [
+    {
+      type: 'select',
+      label: '银行名称:',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '中国人民银行营业处',
+          id: 1
+        },
+        {
+          value: '中国人民银行国库处',
+          id: 2
+        },
+        {
+          value: '中国工商银行',
+          id: 3
+        },
+        {
+          value: '中国农业银行',
+          id: 4
+        },
+        {
+          value: '中国银行',
+          id: 5
+        },
+        {
+          value: '中国建设银行',
+          id: 6
+        },
+        {
+          value: '国家开发银行',
+          id: 7
+        }
+      ],
+      prop: 'bankName',
+      placeholder: '请选择银行名称'
+    },
+    {
+      type: 'select',
+      label: '币种:',
+      prop: 'coinType',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '人民币',
+          id: 1
+        },
+        {
+          value: '美元',
+          id: 2
+        },
+        {
+          value: '越南盾',
+          id: 3
+        },
+        {
+          value: '欧元',
+          id: 4
+        },
+        {
+          value: '泰国铢',
+          id: 5
+        },
+        {
+          value: '加元',
+          id: 6
+        }
+      ],
+      placeholder: '请选择币种'
+    }
+  ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
+    }
+  ],
+  tableData: [
+    {
+      id: 1,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 2,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 3,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 4,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 5,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 6,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 7,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 8,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 19,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 10,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    },
+    {
+      id: 11,
+      bankName: '建行',
+      accountNum: '1',
+      balance: 0,
+      percentage: '0'
+    }
+  ],
+  tableListData: [
+    {
+      prop: 'bankName',
+      width: '',
       label: '银行名称'
+    },
+    {
+      prop: 'accountNum',
+      width: '',
+      label: '账户数量'
+    },
+    {
+      prop: 'balance',
+      width: '',
+      label: '当前余额'
+    },
+    {
+      prop: 'percentage',
+      width: '',
+      label: '时点余额占比'
     }
   ]
 }
@@ -1542,5 +1683,6 @@ export default {
   companyBalance,
   role,
   summary,
-  flow
+  flow,
+  analyse
 }

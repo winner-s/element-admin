@@ -1,4 +1,4 @@
-<!-- 
+<!--
    element表格分页组合封装组件
   -->
 <template>
@@ -11,56 +11,54 @@
       style="width: 100%"
       size="mini"
       class="tableClass"
+      :show-summary="showSummary"
       @selection-change="handleSelectionChange"
     >
       <template v-for="(item, index) in tableListData">
-        
+
         <el-table-column
           v-if="item.type === 'selection'"
+          :key="index"
           align="center"
           type="selection"
           :width="item.width"
-          :key="index"
           :index="indexMethod"
-          :fixed='item.fixed'
-        >
-        </el-table-column>
+          :fixed="item.fixed"
+        />
         <el-table-column
           v-if="item.type === 'index'"
+          :key="index"
           align="center"
           type="index"
           :width="item.width"
-          :key="index"
           :index="indexMethod"
-          :fixed='item.fixed'
-        >
-        </el-table-column>
+          :fixed="item.fixed"
+        />
         <el-table-column
           v-if="item.type === undefined"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
           :show-overflow-tooltip="'' || item.tooltiop"
-          :fixed='item.fixed'
-        >
-        </el-table-column>
+          :fixed="item.fixed"
+        />
         <el-table-column
           v-if="item.type === 'a'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
               <span
                 class="color-blue"
-                @click="handleClickViewOther(scope.row)"
                 title="查看详情"
+                @click="handleClickViewOther(scope.row)"
               >
                 {{ scope.row[item.prop] }}
               </span>
@@ -69,19 +67,19 @@
         </el-table-column>
         <el-table-column
           v-if="item.type === '_bank'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
               <span
                 class="color-blue"
-                @click="handleClickViewBank(scope.row)"
                 title="查看详情"
+                @click="handleClickViewBank(scope.row)"
               >
                 {{ scope.row[item.prop] ? item.text : "" }}
               </span>
@@ -90,12 +88,12 @@
         </el-table-column>
         <el-table-column
           v-if="item.type === '_rangeTime'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
@@ -109,12 +107,12 @@
         </el-table-column>
         <el-table-column
           v-if="item.type === 'wordbook'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
@@ -124,12 +122,12 @@
         </el-table-column>
         <el-table-column
           v-if="item.type === 'img'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
@@ -138,19 +136,19 @@
                 class="img-size"
                 alt=""
                 title="查看详情"
-              />
+              >
             </div>
           </template>
         </el-table-column>
 
         <el-table-column
           v-if="item.type === 'userImg'"
+          :key="index"
           :prop="item.prop"
           align="center"
           :label="item.label"
           :width="item.width"
-          :key="index"
-          :fixed='item.fixed'
+          :fixed="item.fixed"
         >
           <template slot-scope="scope">
             <div>
@@ -159,7 +157,7 @@
                 class="img-size"
                 alt=""
                 title="查看详情"
-              />
+              >
             </div>
           </template>
         </el-table-column>
@@ -167,19 +165,18 @@
         <template>
           <el-table-column
             v-if="item.type === 'btn'"
+            :key="index"
             :prop="item.prop"
             :label="item.label"
             :fixed="'' || item.fixed"
             :width="item.width"
             align="center"
-            :key="index"
-            
           >
             <template slot-scope="scope">
               <span
-                class="span-btn-ml"
                 v-for="(item, index) in tableBtn"
                 :key="index"
+                class="span-btn-ml"
               >
                 <el-button
                   v-if="item.type === undefined"
@@ -188,8 +185,7 @@
                   size="mini"
                   plain
                   @click="handleClick(scope.row, item.handleFn)"
-                  >{{ item.name }}</el-button
-                >
+                >{{ item.name }}</el-button>
                 <el-button
                   v-if="
                     item.type == 'isShow' &&
@@ -200,21 +196,19 @@
                   size="mini"
                   plain
                   @click="handleClick(scope.row, item.handleFn)"
-                  >{{ item.name }}</el-button
-                >
+                >{{ item.name }}</el-button>
                 <el-button
-                  v-has="item.has"
                   v-if="
                     item.type == 'isNoShow' &&
                       item.isShowValue.indexOf(scope.row[item.isShowStatus]) ==
-                        -1
+                      -1
                   "
+                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
                   @click="handleClick(scope.row, item.handleFn)"
-                  >{{ item.name }}</el-button
-                >
+                >{{ item.name }}</el-button>
               </span>
             </template>
           </el-table-column>
@@ -224,57 +218,20 @@
     <template>
       <div class="page-div">
         <el-pagination
-          @current-change="handleCurrentChange"
-          @size-change="handleSizeChange"
           :current-page="currentData.currentPage || 1"
           :page-sizes="[5, 10, 20, 50, 100]"
           :page-size="currentData.size || 10"
           layout="total, sizes, prev, pager, next, jumper"
           :total="currentData.total || 0"
-        >
-        </el-pagination>
+          @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
+        />
       </div>
     </template>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {
-    handleSelectionChange(res){
-      console.log(res)
-    },
-    // 索引事件
-    indexMethod(val) {
-      return (
-        (this.currentData.currentPage - 1) * this.currentData.size + val + 1
-      );
-    },
-    // 按钮事件
-    handleClick(row, fn) {
-      // return this.$parent[fn](row);
-      this.$emit(fn, row);
-    },
-    handleClickViewBank(val) {
-      this.$emit("handleClickViewBank", val);
-    },
-    handleClickViewOther(val) {
-      this.$emit("handleViewOther", val);
-    },
-    // 改变页码
-    handleCurrentChange(val) {
-      // this.$parent.onPageChange(val);
-      this.$emit("onPageChange", val);
-    },
-    // 改变每页数量
-    handleSizeChange(val) {
-      // this.$parent.onSizeChange(val);
-      this.$emit("onSizeChange", val);
-    }
-  },
   props: {
     objectSpanMethod: {
       type: Function
@@ -292,13 +249,53 @@ export default {
     tableBtn: {
       type: Array
     },
+    showSummary: {
+      type: Boolean,
+      default: false
+    },
     currentData: {
       type: Object,
       required: true
     }
   },
-  created() {}
-};
+  data() {
+    return {}
+  },
+  mounted() {},
+  created() {},
+  methods: {
+    handleSelectionChange(res) {
+      console.log(res)
+    },
+    // 索引事件
+    indexMethod(val) {
+      return (
+        (this.currentData.currentPage - 1) * this.currentData.size + val + 1
+      )
+    },
+    // 按钮事件
+    handleClick(row, fn) {
+      // return this.$parent[fn](row);
+      this.$emit(fn, row)
+    },
+    handleClickViewBank(val) {
+      this.$emit('handleClickViewBank', val)
+    },
+    handleClickViewOther(val) {
+      this.$emit('handleViewOther', val)
+    },
+    // 改变页码
+    handleCurrentChange(val) {
+      // this.$parent.onPageChange(val);
+      this.$emit('onPageChange', val)
+    },
+    // 改变每页数量
+    handleSizeChange(val) {
+      // this.$parent.onSizeChange(val);
+      this.$emit('onSizeChange', val)
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .page-div {

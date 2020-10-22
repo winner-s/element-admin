@@ -5,7 +5,15 @@
         <span>单位基本信息表</span>
       </div>
       <div>
-        <Search :search-data="searchData" :search-item="searchItem" @getDataList="getDataList" />
+        <Search
+          :search-data="searchData"
+          :search-item="searchItem"
+          :search-bto="searchBto"
+          :show-all="showAll"
+          @getDataList="getDataList"
+          @dropDown="dropDown"
+          @dropUp="dropUp"
+        />
         <Table
           :table-data="tableData"
           :table-list-data="tableListData"
@@ -35,6 +43,7 @@ export default {
       },
       tableData: [],
       searchBto: data.role.searchBto,
+      showAll: false,
       tableListData: data.companyInfo.tableListData,
       list: data.companyInfo.tableData,
       tableBtn: [],
@@ -49,6 +58,24 @@ export default {
     this.getList()
   },
   methods: {
+    // 收起
+    dropUp() {
+      this.showAll = false
+      this.searchItem.forEach((item, index) => {
+        if (item.show !== undefined) {
+          item.show = false
+        }
+      })
+    },
+    // 展开
+    dropDown() {
+      this.showAll = true
+      this.searchItem.forEach((item, index) => {
+        if (item.show !== undefined) {
+          item.show = true
+        }
+      })
+    },
     getDataList(val) {
       console.log(val)
       this.searchData = val
