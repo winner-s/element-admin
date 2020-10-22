@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>开户申请</span>
+        <span>用户管理</span>
       </div>
       <div>
         <Search
@@ -474,18 +474,6 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'input',
-        label: '单据编号:',
-        prop: 'documentNumber',
-        placeholder: '请填写单据编号',
-      },
-      {
-        type: 'input',
-        label: '开户申请人:',
-        prop: 'openApplicant',
-        placeholder: '请填写开户申请人',
-      },
-      {
         type: 'select',
         label: '单位编号:',
         prop: 'unitNo',
@@ -503,34 +491,24 @@ export default {
         label: '银行名称:',
         prop: 'bankName',
         placeholder: '请填写银行名称',
-        show: this.showAll,
       },
       {
         type: 'input',
-        label: '开户行名称:',
+        label: '银行账号:',
         prop: 'bankOpenName',
-        placeholder: '请填写开户行名称',
-        show: this.showAll,
-      },
-      {
-        type: 'input',
-        label: '开户申请日期 从:',
-        prop: 'accountOpenTimeStart',
-        placeholder: '请填写开户申请日期',
-        show: this.showAll,
-      },
-      {
-        type: 'input',
-        label: '开户申请日期 到:',
-        prop: 'accountOpenTimeEnd',
-        placeholder: '请填写开户申请日期',
-        show: this.showAll,
+        placeholder: '请填写银行账号',
       },
       {
         type: 'select',
         label: '单据状态:',
-        prop: 'start',
-        placeholder: '请填写银行名称',
+        prop: 'documentStatus',
+        placeholder: '请选择单据状态',
+        show: this.showAll,
+      },
+      {
+        type: 'select',
+        label: '币种:',
+        prop: 'currency',
         show: this.showAll,
       },
       {
@@ -542,20 +520,18 @@ export default {
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index', fixed: 'left' },
-      { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { width: '50', label: '', type: 'index' },
+      { width: '50', label: '', type: 'selection' },
+      { label: '操作', type: 'btn', width: '' },
       {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
-        fixed: 'left',
       },
       {
-        prop: 'accountPhone',
+        prop: 'bankPhone',
         width: '150',
-        label: '账户号码',
-        fixed: 'left',
+        label: '银行号码',
       },
       {
         prop: 'accountName',
@@ -591,26 +567,6 @@ export default {
         prop: 'unitName',
         width: '',
         label: '单位名称',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '账户用途',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '开户申请日期',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '开户日期',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '申请人',
       },
     ]
     // 按钮

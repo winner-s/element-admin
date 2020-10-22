@@ -34,6 +34,7 @@ export default {
         nickname: ''
       },
       tableData: [],
+      searchBto: data.role.searchBto,
       tableListData: data.companyInfo.tableListData,
       list: data.companyInfo.tableData,
       tableBtn: [],

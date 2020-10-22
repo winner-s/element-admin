@@ -22,6 +22,7 @@
           :width="item.width"
           :key="index"
           :index="indexMethod"
+          :fixed='item.fixed'
         >
         </el-table-column>
         <el-table-column
@@ -31,6 +32,7 @@
           :width="item.width"
           :key="index"
           :index="indexMethod"
+          :fixed='item.fixed'
         >
         </el-table-column>
         <el-table-column
@@ -41,6 +43,7 @@
           :width="item.width"
           :key="index"
           :show-overflow-tooltip="'' || item.tooltiop"
+          :fixed='item.fixed'
         >
         </el-table-column>
         <el-table-column
@@ -50,6 +53,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -70,6 +74,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -90,6 +95,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -108,6 +114,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -122,6 +129,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -142,6 +150,7 @@
           :label="item.label"
           :width="item.width"
           :key="index"
+          :fixed='item.fixed'
         >
           <template slot-scope="scope">
             <div>
@@ -164,6 +173,7 @@
             :width="item.width"
             align="center"
             :key="index"
+            
           >
             <template slot-scope="scope">
               <span

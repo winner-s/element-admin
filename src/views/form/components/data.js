@@ -43,10 +43,47 @@ const companyInfo = {
       placeholder: '请填写单位名称'
     },
     {
-      type: 'input',
+      type: 'select',
       label: '单位类型:',
       prop: 'companyTyle',
-      placeholder: '请填写单位类型'
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '国有企业',
+          id: 1
+        },
+        {
+          value: '私营企业',
+          id: 2
+        },
+        {
+          value: '中外合营企业',
+          id: 3
+        },
+        {
+          value: '外商投资企业',
+          id: 4
+        },
+        {
+          value: '单位类别',
+          id: 5
+        },
+        {
+          value: '0806',
+          id: 6
+        }
+      ],
+      placeholder: '请选择单位类型'
+    }
+  ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
     }
   ],
   tableData: [
@@ -154,9 +191,19 @@ const companyInfo = {
 const companyBalance = {
   searchFrom: [
     {
-      type: 'input',
+      type: 'select',
       label: '单位名称:',
       prop: 'company',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '二级单位1',
+          id: 1
+        }
+      ],
       placeholder: '请填写单位名称'
     },
     {
@@ -176,20 +223,56 @@ const companyBalance = {
       placeholder: '请选择'
     },
     {
-      type: 'input',
+      type: 'select',
       label: '账户号码:',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '20111006',
+          id: 1
+        },
+        {
+          value: '20111007',
+          id: 2
+        },
+        {
+          value: '20111008',
+          id: 3
+        },
+        {
+          value: '20111009',
+          id: 4
+        },
+        {
+          value: '20111010',
+          id: 5
+        },
+        {
+          value: '20111011',
+          id: 6
+        },
+        {
+          value: '20111012',
+          id: 7
+        }
+      ],
       prop: 'accountNum',
       placeholder: '请填写账户号码'
     },
     {
       type: 'input',
       label: '账户名称:',
+      show: false,
       prop: 'accountName',
       placeholder: '请填写账户名称'
     },
     {
       type: 'daterange',
       label: '查询日期:',
+      show: false,
       timeList: ['', ''],
       timeFormat: 'yyyy-MM-dd',
       prop: 'selectDate',
@@ -198,6 +281,7 @@ const companyBalance = {
     {
       type: 'select',
       label: '币种:',
+      show: false,
       prop: 'coinType',
       selectList: [
         {
@@ -232,6 +316,13 @@ const companyBalance = {
       placeholder: '请选择币种'
     }
   ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
+    }
+  ],
   tableData: [
     {
       id: 1,
@@ -239,7 +330,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111006',
       balance: 12
     },
     {
@@ -248,7 +339,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111007',
       balance: 12
     },
     {
@@ -257,7 +348,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111008',
       balance: 12
     },
     {
@@ -266,7 +357,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111009',
       balance: 12
     },
     {
@@ -275,7 +366,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111010',
       balance: 12
     },
     {
@@ -284,7 +375,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111011',
       balance: 12
     },
     {
@@ -293,7 +384,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111011',
       balance: 12
     },
     {
@@ -302,7 +393,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111012',
       balance: 12
     },
     {
@@ -311,7 +402,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111011',
       balance: 12
     },
     {
@@ -320,7 +411,7 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111015',
       balance: 12
     },
     {
@@ -329,13 +420,1127 @@ const companyBalance = {
       accountCompany: '二级单位1',
       accountName: '二级单位1CNY直连账户',
       roadName: '北京分行',
-      accountNum: '北京分行',
+      accountNum: '20111016',
       balance: 12
+    }
+  ]
+}
+
+const role = {
+  searchFrom: [
+    {
+      type: 'select',
+      label: '单位编号:',
+      prop: 'companyNum',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '0813',
+          id: 1
+        },
+        {
+          value: '1213',
+          id: 2
+        },
+        {
+          value: '002',
+          id: 3
+        }
+      ],
+      placeholder: '请选择单位编号'
+    },
+    {
+      type: 'input',
+      label: '单位名称:',
+      prop: 'company',
+      placeholder: '请填写单位名称'
+    },
+    {
+      type: 'input',
+      label: '真实姓名:',
+      prop: 'userName',
+      placeholder: '请填写真实姓名'
+    },
+    {
+      type: 'input',
+      label: '登录用户名:',
+      show: false,
+      prop: 'accountName',
+      placeholder: '请填写用户名'
+    },
+    {
+      type: 'select',
+      label: '用户状态:',
+      show: false,
+      prop: 'userSatus',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '未复核',
+          id: 1
+        },
+        {
+          value: '已复核',
+          id: 2
+        }
+      ],
+      placeholder: '请选择用户状态'
+    },
+    {
+      type: 'select',
+      label: '角色:',
+      show: false,
+      prop: 'role',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '测试1',
+          id: 1
+        },
+        {
+          value: '测试2',
+          id: 2
+        },
+        {
+          value: '测试3',
+          id: 3
+        },
+        {
+          value: '测试4',
+          id: 4
+        },
+        {
+          value: '测试5',
+          id: 5
+        }
+      ],
+      placeholder: '请选择用户状态'
+    }
+  ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
+    }
+  ],
+  tableData: [
+    {
+      id: 1,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 2,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 3,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 4,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 5,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 6,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 7,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 8,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 9,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 10,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    },
+    {
+      id: 11,
+      accountName: 'lizhihua',
+      userName: '李志华',
+      role: '测试1',
+      company: '二级单位1',
+      userSatus: '已复核'
+    }
+  ],
+  tableListData: [
+    {
+      prop: 'accountName',
+      width: '',
+      label: '登陆用户名'
+    },
+    {
+      prop: 'userName',
+      width: '',
+      label: '真实姓名'
+    },
+    {
+      prop: 'role',
+      width: '',
+      label: '角色'
+    },
+    {
+      prop: 'company',
+      width: '',
+      label: '单位名称'
+    },
+    {
+      prop: 'userSatus',
+      width: '',
+      label: '用户状态'
+    }
+  ]
+}
+
+const summary = {
+  searchFrom: [
+    {
+      type: 'select',
+      label: '单位编号:',
+      prop: 'companyNum',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '002',
+          id: 1
+        }
+      ],
+      placeholder: '请选择单位编号'
+    },
+    {
+      type: 'input',
+      label: '单位名称:',
+      prop: 'company',
+      placeholder: '请填写单位名称'
+    },
+    {
+      type: 'select',
+      label: '银行编号:',
+      prop: 'bankNum',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: 'hhhh',
+          id: 1
+        },
+        {
+          value: '011',
+          id: 3
+        },
+        {
+          value: '102',
+          id: 4
+        },
+        {
+          value: '103',
+          id: 5
+        },
+        {
+          value: '104',
+          id: 6
+        },
+        {
+          value: '105',
+          id: 7
+        }
+      ],
+      placeholder: '请选择'
+    },
+    {
+      type: 'input',
+      label: '银行名称:',
+      show: false,
+      prop: 'bankName',
+      placeholder: '请填写银行名称'
+    },
+    {
+      type: 'select',
+      label: '账户号码:',
+      show: false,
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '20111006',
+          id: 1
+        },
+        {
+          value: '20111007',
+          id: 2
+        },
+        {
+          value: '20111008',
+          id: 3
+        },
+        {
+          value: '20111009',
+          id: 4
+        },
+        {
+          value: '20111010',
+          id: 5
+        },
+        {
+          value: '20111011',
+          id: 6
+        },
+        {
+          value: '20111012',
+          id: 7
+        }
+      ],
+      prop: 'accountNum',
+      placeholder: '请填写账户号码'
+    },
+    {
+      type: 'input',
+      label: '账户名称:',
+      show: false,
+      prop: 'accountName',
+      placeholder: '请填写账户名称'
+    },
+    {
+      type: 'daterange',
+      label: '查询日期:',
+      show: false,
+      timeList: ['', ''],
+      timeFormat: 'yyyy-MM-dd',
+      prop: 'selectDate',
+      placeholder: '请选择日期'
+    },
+    {
+      type: 'input',
+      label: '金额开始:',
+      show: false,
+      prop: 'startMoney',
+      placeholder: '请填写金额'
+    },
+    {
+      type: 'input',
+      label: '金额结束:',
+      show: false,
+      prop: 'endMoney',
+      placeholder: '请填写金额'
+    },
+    {
+      type: 'select',
+      label: '币种:',
+      prop: 'coinType',
+      show: false,
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '人民币',
+          id: 1
+        },
+        {
+          value: '美元',
+          id: 2
+        },
+        {
+          value: '越南盾',
+          id: 3
+        },
+        {
+          value: '欧元',
+          id: 4
+        },
+        {
+          value: '泰国铢',
+          id: 5
+        },
+        {
+          value: '加元',
+          id: 6
+        }
+      ],
+      placeholder: '请选择币种'
+    },
+    {
+      type: 'select',
+      label: '收付方向:',
+      show: false,
+      prop: 'receiptOrPayment',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '借',
+          id: 1
+        },
+        {
+          value: '贷',
+          id: 2
+        }
+      ],
+      placeholder: '请选择收付方向'
+    },
+    {
+      type: 'select',
+      label: '是否包含下级:',
+      show: false,
+      prop: 'hasChildren',
+      selectList: [
+        {
+          value: '是',
+          id: 1
+        },
+        {
+          value: '否',
+          id: 0
+        }
+      ],
+      placeholder: '请选择'
+    }
+  ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
+    }
+  ],
+  tableData: [
+    {
+      id: 1,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 2,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 3,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 4,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 5,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 6,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 7,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 8,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 9,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 10,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 11,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    }
+  ],
+  tableListData: [
+    {
+      prop: 'superiorCompany',
+      width: '',
+      label: '上级单位'
+    },
+    {
+      prop: 'organizationName',
+      width: '',
+      label: '组织名称'
+    },
+    {
+      prop: 'accountNum',
+      width: '',
+      label: '银行帐号'
+    },
+    {
+      prop: 'reciprocalCompany',
+      width: '',
+      label: '对方单位'
+    },
+    {
+      prop: 'reciprocalAccount',
+      width: '',
+      label: '对方帐号'
+    },
+    {
+      prop: 'coinType',
+      width: '',
+      label: '币种'
+    },
+    {
+      prop: 'receiptCoin',
+      width: '',
+      label: '收入原币'
+    },
+    {
+      prop: 'paymentCoin',
+      width: '',
+      label: '支出原币'
+    },
+    {
+      prop: 'coinDifference',
+      width: '',
+      label: '原币差额'
+    },
+    {
+      prop: 'dis',
+      width: '',
+      label: '摘要'
+    },
+    {
+      prop: 'receiptOrPayment',
+      width: '',
+      label: '收付方向'
+    },
+    {
+      prop: 'money',
+      width: '',
+      label: '交易金额'
+    },
+    {
+      prop: 'bankName',
+      width: '',
+      label: '银行名称'
+    }
+  ]
+}
+
+const flow = {
+  searchFrom: [
+    {
+      type: 'input',
+      label: '单位名称:',
+      prop: 'company',
+      placeholder: '请填写单位名称'
+    },
+    {
+      type: 'select',
+      label: '是否包含下级:',
+      prop: 'hasChildren',
+      selectList: [
+        {
+          value: '是',
+          id: 1
+        },
+        {
+          value: '否',
+          id: 0
+        }
+      ],
+      placeholder: '请选择'
+    },
+    {
+      type: 'select',
+      label: '账户号码:',
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '20111006',
+          id: 1
+        },
+        {
+          value: '20111007',
+          id: 2
+        },
+        {
+          value: '20111008',
+          id: 3
+        },
+        {
+          value: '20111009',
+          id: 4
+        },
+        {
+          value: '20111010',
+          id: 5
+        },
+        {
+          value: '20111011',
+          id: 6
+        },
+        {
+          value: '20111012',
+          id: 7
+        }
+      ],
+      prop: 'accountNum',
+      placeholder: '请填写账户号码'
+    },
+    {
+      type: 'input',
+      label: '账户名称:',
+      show: false,
+      prop: 'accountName',
+      placeholder: '请填写账户名称'
+    },
+    {
+      type: 'daterange',
+      label: '查询日期:',
+      show: false,
+      timeList: ['', ''],
+      timeFormat: 'yyyy-MM-dd',
+      prop: 'selectDate',
+      placeholder: '请选择日期'
+    },
+    {
+      type: 'select',
+      label: '币种:',
+      prop: 'coinType',
+      show: false,
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '人民币',
+          id: 1
+        },
+        {
+          value: '美元',
+          id: 2
+        },
+        {
+          value: '越南盾',
+          id: 3
+        },
+        {
+          value: '欧元',
+          id: 4
+        },
+        {
+          value: '泰国铢',
+          id: 5
+        },
+        {
+          value: '加元',
+          id: 6
+        }
+      ],
+      placeholder: '请选择币种'
+    },
+    {
+      type: 'select',
+      label: '账户用途名称:',
+      prop: 'useType',
+      show: false,
+      selectList: [
+        {
+          value: '全部',
+          id: 0
+        },
+        {
+          value: '基本存款户-收支户',
+          id: 1
+        },
+        {
+          value: '一般存款户-收支户',
+          id: 2
+        },
+        {
+          value: '临时存款户-收支户',
+          id: 3
+        },
+        {
+          value: '专业存款户-收支户',
+          id: 4
+        }
+      ],
+      placeholder: '请选择账户用途名称'
+    },
+    {
+      type: 'num',
+      label: '期初余额:',
+      prop: 'startBalance',
+      show: false,
+      numList: ['', ''],
+      placeholder: '请输入金额'
+    },
+    {
+      type: 'num',
+      label: '期末余额:',
+      prop: 'endBalance',
+      show: false,
+      numList: ['', ''],
+      placeholder: '请输入金额'
+    }
+  ],
+  searchBto: [
+    {
+      prop: 'select',
+      type: 'primary',
+      label: '查询'
+    }
+  ],
+  tableData: [
+    {
+      id: 1,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 2,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 3,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 4,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 5,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 6,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 7,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 8,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 9,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 10,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    },
+    {
+      id: 11,
+      superiorCompany: '上级单位',
+      organizationName: '组织名称',
+      accountNum: '20111006',
+      reciprocalCompany: 'xxx公司',
+      reciprocalAccount: '20121006',
+      coinType: '人民币',
+      receiptCoin: '1200',
+      paymentCoin: '0',
+      coinDifference: '1200',
+      dis: 'gggg',
+      receiptOrPayment: '借',
+      money: '1200',
+      bankName: '建行'
+    }
+  ],
+  tableListData: [
+    {
+      prop: 'superiorCompany',
+      width: '',
+      label: '上级单位'
+    },
+    {
+      prop: 'organizationName',
+      width: '',
+      label: '组织名称'
+    },
+    {
+      prop: 'accountNum',
+      width: '',
+      label: '银行帐号'
+    },
+    {
+      prop: 'reciprocalCompany',
+      width: '',
+      label: '对方单位'
+    },
+    {
+      prop: 'reciprocalAccount',
+      width: '',
+      label: '对方帐号'
+    },
+    {
+      prop: 'coinType',
+      width: '',
+      label: '币种'
+    },
+    {
+      prop: 'receiptCoin',
+      width: '',
+      label: '收入原币'
+    },
+    {
+      prop: 'paymentCoin',
+      width: '',
+      label: '支出原币'
+    },
+    {
+      prop: 'coinDifference',
+      width: '',
+      label: '原币差额'
+    },
+    {
+      prop: 'dis',
+      width: '',
+      label: '摘要'
+    },
+    {
+      prop: 'receiptOrPayment',
+      width: '',
+      label: '收付方向'
+    },
+    {
+      prop: 'money',
+      width: '',
+      label: '交易金额'
+    },
+    {
+      prop: 'bankName',
+      width: '',
+      label: '银行名称'
     }
   ]
 }
 
 export default {
   companyInfo,
-  companyBalance
+  companyBalance,
+  role,
+  summary,
+  flow
 }

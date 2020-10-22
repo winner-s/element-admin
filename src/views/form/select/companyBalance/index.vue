@@ -5,7 +5,15 @@
         <span>单位账户余额统计表</span>
       </div>
       <div>
-        <Search :search-data="searchData" :search-item="searchItem" @getDataList="getDataList" />
+        <Search
+          :search-data="searchData"
+          :search-item="searchItem"
+          :search-bto="searchBto"
+          :show-all="showAll"
+          @getDataList="getDataList"
+          @dropDown="dropDown"
+          @dropUp="dropUp"
+        />
         <el-table :data="tableData" border align="center" style="width: 100%" size="mini" class="tableClass" @selection-change="handleSelectionChange">
           <el-table-column prop="superiorCompany" label="上级单位" width="120" />
           <el-table-column prop="accountCompany" />
@@ -43,8 +51,10 @@ export default {
       searchData: {
         nickname: ''
       },
+      searchBto: data.role.searchBto,
       tableData: [],
       list: data.companyBalance.tableData,
+      showAll: false,
       currentData: {
         currentPage: 1,
         size: 10,
@@ -57,6 +67,24 @@ export default {
     this.getList()
   },
   methods: {
+    // 收起
+    dropUp() {
+      this.showAll = false
+      this.searchItem.forEach((item, index) => {
+        if (item.show !== undefined) {
+          item.show = false
+        }
+      })
+    },
+    // 展开
+    dropDown() {
+      this.showAll = true
+      this.searchItem.forEach((item, index) => {
+        if (item.show !== undefined) {
+          item.show = true
+        }
+      })
+    },
     getDataList(val) {
       console.log(val)
       this.searchData = val
