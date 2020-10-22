@@ -1,4 +1,4 @@
-<!-- 
+<!--
    elementb搜索表单封装组件
   -->
 <template>
@@ -26,7 +26,25 @@
               v-model="searchData[item.prop]"
               style="width: 250px"
               :placeholder="item.placeholder"
-            ></el-input>
+            />
+          </el-form-item>
+          <el-form-item
+            v-if="(item.type === 'num' ) && (item.show || item.show===undefined)"
+            :key="item.prop"
+            :label="item.label"
+            :prop="item.prop"
+          >
+            <el-input
+              v-model="searchData[item.numList[0]]"
+              style="width:120px"
+              :placeholder="item.placeholder"
+            />
+            <span class="ml-5"> -</span>
+            <el-input
+              v-model="searchData[item.numList[1]]"
+              style="width:120px"
+              :placeholder="item.placeholder"
+            />
           </el-form-item>
           <el-form-item
             v-if="item.type === 'num' && (item.show || item.show === undefined)"
@@ -74,13 +92,14 @@
               :placeholder="item.placeholder"
               clearable
               filterable
+              
             >
               <el-option
                 v-for="i in item.selectList"
+                :key="i.value"
                 :label="i.value"
                 :value="i.id"
-                :key="i.value"
-              ></el-option>
+              />
             </el-select>
           </el-form-item>
           <el-form-item
@@ -92,12 +111,13 @@
             :prop="item.prop"
           >
             <el-date-picker
+              v-model="searchData[item.prop]"
               type="date"
               :picker-options="pickerOptions"
               :format="item.timeFormat"
               :value-format="item.timeFormat"
               placeholder="选择日期"
-              v-model="searchData[item.prop]"
+             
               style="width: 140px"
             ></el-date-picker>
           </el-form-item>
@@ -111,25 +131,27 @@
           >
             <el-form-item :prop="item.timeList[0]">
               <el-date-picker
+                v-model="searchData[item.timeList[0]]"
                 type="date"
                 :picker-options="pickerOptions0"
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="开始日期"
-                v-model="searchData[item.timeList[0]]"
+               
                 style="width: 130px"
                 @change="changeValue(searchData[item.timeList[0]], 1)"
-              ></el-date-picker>
+              />
             </el-form-item>
             <span class="ml-5">-</span>
             <el-form-item :prop="item.timeList[1]">
               <el-date-picker
+                v-model="searchData[item.timeList[1]]"
                 type="date"
                 :picker-options="pickerOptions1"
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="结束日期"
-                v-model="searchData[item.timeList[1]]"
+                
                 @change="changeValue(searchData[item.timeList[1]], 2)"
                 style="width: 130px"
               ></el-date-picker>
