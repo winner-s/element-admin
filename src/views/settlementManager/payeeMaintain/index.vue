@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>收款人信息维护</span>
       </div>
       <div>
         <Search
@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -455,15 +455,11 @@ export default {
         type: 'primary',
         label: '查询',
       },
+
       {
         prop: 'insert',
         type: 'primary',
         label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
       },
       {
         prop: 'reset',
@@ -474,100 +470,69 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
-        label: '单位编号:',
-        prop: 'unitNo',
-        placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        type: 'input',
+        label: '收款方名称:',
+        prop: 'documentNumber',
+        placeholder: '请填写收款方名称',
       },
       {
         type: 'input',
-        label: '单位名称:',
-        prop: 'unitName',
-        placeholder: '请填写单位名称',
+        label: '收款方银行账号:',
+        prop: 'openApplicant',
+        placeholder: '请填写收款方银行账号',
       },
       {
         type: 'select',
         label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
+        prop: 'unitNo',
+        placeholder: '请选择银行名称'
       },
       {
         type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
-      {
-        type: 'select',
-        label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
-      {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+        label: '账号类型:',
+        prop: 'unitNo',
+        placeholder: '请选择账号类型',
+      }
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       { label: '操作', type: 'btn', width: '' },
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号',
+        label: '编号',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '收款方名称',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '收款方银行账号',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '收款方账户名称',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '银行名称',
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '账户类型',
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
-      },
-      {
-        prop: 'currency',
-        width: '',
-        label: '币种',
-      },
-      {
-        prop: 'unitName',
-        width: '',
-        label: '单位名称',
-      },
+        label: '备注',
+      }
     ]
     // 按钮
     this.tableBtn = []

@@ -1,8 +1,8 @@
 <template>
-  <div class="condition">
+  <div class="foundsCollsection">
     <el-card>
       <div slot="header">
-        <span>自动归集条件设置</span>
+        <span>账户归集关系设置</span>
       </div>
       <div>
         <Search
@@ -30,22 +30,22 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 export default {
-  name: 'Condition',
+  name: 'FoundsCollsection',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.condition.searchFrom,
+      searchItem: data.foundsCollsection.searchFrom,
       searchData: {
         nickname: ''
       },
-      searchBto: data.condition.searchBto,
+      searchBto: data.foundsCollsection.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.condition.tableListData,
-      list: data.condition.tableData,
+      tableListData: data.foundsCollsection.tableListData,
+      list: data.foundsCollsection.tableData,
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -109,7 +109,7 @@ export default {
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.condition.tableData.length
+      this.currentData.total = data.foundsCollsection.tableData.length
     }
   }
 }

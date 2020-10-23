@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -456,16 +456,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -488,85 +478,55 @@ export default {
       },
       {
         type: 'select',
-        label: '银行名称:',
+        label: '账户号码:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
-      {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
-      {
-        type: 'select',
-        label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
-      {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+        placeholder: '请填写账户号码',
+      }
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号',
+        label: '交易时间',
       },
-      {
-        prop: 'bankPhone',
-        width: '150',
-        label: '银行号码',
-      },
+     
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '交易方向',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '交易金额(元)',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '对方银行账号',
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '对方账户名称',
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
+        label: '备注',
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种',
+        label: '银行交易标识',
       },
       {
         prop: 'unitName',
         width: '',
-        label: '单位名称',
+        label: '币种',
       },
     ]
     // 按钮

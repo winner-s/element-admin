@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>对私付款审核</span>
       </div>
       <div>
         <Search
@@ -458,12 +458,12 @@ export default {
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '复核',
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '拒绝',
       },
       {
         prop: 'reset',
@@ -474,100 +474,126 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
-        label: '单位编号:',
-        prop: 'unitNo',
-        placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
-      },
-      {
         type: 'input',
-        label: '单位名称:',
-        prop: 'unitName',
-        placeholder: '请填写单位名称',
-      },
-      {
-        type: 'select',
-        label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
+        label: '单据编号:',
+        prop: 'documentNumber',
+        placeholder: '请填写单据编号',
       },
       {
         type: 'select',
         label: '单据状态:',
-        prop: 'documentStatus',
+        prop: 'openApplicant',
         placeholder: '请选择单据状态',
+      },
+      {
+        type: 'input',
+        label: '单据日期 从:',
+        prop: 'unitNo',
+        placeholder: '请填写单据日期',
+        selectList: this.unitNoList,
+      },
+      {
+        type: 'input',
+        label: '到:',
+        prop: 'unitName',
+        placeholder: '请填写单据日期',
+      },
+      {
+        type: 'select',
+        label: '业务单位:',
+        prop: 'bankName',
+        placeholder: '请选择业务单位',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '付方账号:',
+        prop: 'bankOpenName',
+        placeholder: '请填写付方账号',
+        show: this.showAll,
+      },
+     
+     
+      {
+        type: 'input',
+        label: '金额(元) 从:',
+        prop: 'accountOpenTimeEnd',
+        placeholder: '请填写金额(元)',
         show: this.showAll,
       },
       {
         type: 'select',
-        label: '币种:',
-        prop: 'currency',
+        label: '到:',
+        prop: 'start',
+        placeholder: '请填写金额(元)',
         show: this.showAll,
       },
       {
+        type: 'select',
+        label: '数据来源:',
+        prop: 'contain',
+        show: this.showAll,
+      },{
+        type: 'input',
+        label: '外部单号:',
+        prop: 'contain',
+        show: this.showAll,
+      },{
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
         show: this.showAll,
-      },
+      }
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      { width: '50', label: '', type: 'selection', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
+        fixed: 'left',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '单据日期',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '单据状态',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '付方账号',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '付方户名',
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '付款方银行',
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
+        label: '金额(元)',
       },
-      {
-        prop: 'currency',
-        width: '',
-        label: '币种',
-      },
+     
       {
         prop: 'unitName',
         width: '',
-        label: '单位名称',
-      },
+        label: '录入人',
+      }
+      
     ]
     // 按钮
     this.tableBtn = []

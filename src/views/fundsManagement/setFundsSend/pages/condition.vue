@@ -1,5 +1,5 @@
 <template>
-  <div class="condition">
+  <div class="setSendCondition">
     <el-card>
       <div slot="header">
         <span>自动归集条件设置</span>
@@ -30,22 +30,22 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 export default {
-  name: 'Condition',
+  name: 'SetSendCondition',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.condition.searchFrom,
+      searchItem: data.setSendCondition.searchFrom,
       searchData: {
         nickname: ''
       },
-      searchBto: data.condition.searchBto,
+      searchBto: data.setSendCondition.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.condition.tableListData,
-      list: data.condition.tableData,
+      tableListData: data.setSendCondition.tableListData,
+      list: data.setSendCondition.tableData,
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -109,7 +109,7 @@ export default {
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.condition.tableData.length
+      this.currentData.total = data.setSendCondition.tableData.length
     }
   }
 }

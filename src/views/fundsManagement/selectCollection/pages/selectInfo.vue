@@ -1,8 +1,8 @@
 <template>
-  <div class="condition">
+  <div class="selectCollsectionInfo">
     <el-card>
       <div slot="header">
-        <span>自动归集条件设置</span>
+        <span>策略信息查询</span>
       </div>
       <div>
         <Search
@@ -30,22 +30,22 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 export default {
-  name: 'Condition',
+  name: 'SelectCollsectionInfo',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.condition.searchFrom,
+      searchItem: data.selectCollsectionInfo.searchFrom,
       searchData: {
         nickname: ''
       },
-      searchBto: data.condition.searchBto,
+      searchBto: data.selectCollsectionInfo.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.condition.tableListData,
-      list: data.condition.tableData,
+      tableListData: data.selectCollsectionInfo.tableListData,
+      list: data.selectCollsectionInfo.tableData,
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -109,7 +109,7 @@ export default {
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.condition.tableData.length
+      this.currentData.total = data.selectCollsectionInfo.tableData.length
     }
   }
 }

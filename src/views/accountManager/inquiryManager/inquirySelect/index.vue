@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>账户信息查询</span>
       </div>
       <div>
         <Search
@@ -456,16 +456,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -473,7 +463,7 @@ export default {
     ]
     // 搜索
     this.searchItem = [
-      {
+        {
         type: 'select',
         label: '单位编号:',
         prop: 'unitNo',
@@ -490,27 +480,55 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
+        placeholder: '请填写银行名称'
       },
       {
         type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
+        label: '是否直联:',
+        prop: 'connection',
+        placeholder: '请选择是否直联'
+      },
+      {
+        type: 'select',
+        label: '账户号码:',
+        prop: 'accountPhone',
+        placeholder: '请填写账户号码',
+        show: this.showAll,
+      },
+      {
+        type: 'input',
+        label: '账户名称:',
+        prop: 'accountName',
+        placeholder: '请填写账户名称',
+        show: this.showAll,
+        
+        
+      },
+      
+      
+      
+      {
+        type: 'select',
+        label: '账户用途:',
+        prop: 'connection',
+        placeholder: '请填写账户用途',
         show: this.showAll,
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
+        placeholder: '请选择币种',
         show: this.showAll,
       },
+      {
+        type: 'select',
+        label: '账户状态:',
+        prop: 'accountStatus',
+        placeholder: '请选择账户状态',
+        show: this.showAll,
+      },
+      
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
@@ -520,23 +538,28 @@ export default {
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
-      {
-        prop: 'documentNumber',
-        width: '150',
-        label: '单据编号',
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      
+     {
+        prop: 'unitName',
+        width: '',
+        label: '单位名称',
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '账户号码',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
         width: '',
         label: '账户名称',
+      },
+       {
+        prop: 'currency',
+        width: '',
+        label: '币种',
       },
       {
         prop: 'bankName',
@@ -549,25 +572,27 @@ export default {
         label: '开户行名称',
       },
       {
-        prop: 'status',
+        prop: ' bankNumber',
         width: '',
-        label: '单据状态',
+        label: '联行号',
+      },
+      {
+        prop: 'accountStatus',
+        width: '',
+        label: '账户状态',
       },
       {
         prop: 'connection',
         width: '',
         label: '是否直联',
       },
+     
+      
       {
-        prop: 'currency',
+        prop: 'connection',
         width: '',
-        label: '币种',
-      },
-      {
-        prop: 'unitName',
-        width: '',
-        label: '单位名称',
-      },
+        label: '账户用途',
+      }
     ]
     // 按钮
     this.tableBtn = []
