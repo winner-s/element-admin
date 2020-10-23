@@ -1,8 +1,8 @@
 <template>
-  <div class="role-info">
+  <div class="company-balance">
     <el-card>
       <div slot="header">
-        <span>用户角色表</span>
+        <span>单位账户余额统计表</span>
       </div>
       <div>
         <Search
@@ -14,39 +14,47 @@
           @dropDown="dropDown"
           @dropUp="dropUp"
         />
-        <Table
-          :table-data="tableData"
-          :table-list-data="tableListData"
-          :current-data="currentData"
-          @onPageChange="onPageChange"
-          @onSizeChange="onSizeChange"
-        />
+        <el-table :data="tableData" border align="center" style="width: 100%" size="mini" class="tableClass" @selection-change="handleSelectionChange">
+          <el-table-column prop="superiorCompany" label="上级单位" width="120" />
+          <el-table-column prop="accountCompany" />
+          <el-table-column prop="accountName" label="账户名称" width="150" />
+          <el-table-column prop="roadName" label="开户行" />
+          <el-table-column prop="accountNum" label="银行帐号" />
+          <el-table-column prop="balance" label="2020-10-31" width="180" />
+        </el-table>
+        <div class="page-div">
+          <el-pagination
+            :current-page="currentData.currentPage || 1"
+            :page-sizes="[5, 10, 20, 50, 100]"
+            :page-size="currentData.size || 10"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="currentData.total || 0"
+            @current-change="handleCurrentChange"
+            @size-change="handleSizeChange"
+          />
+        </div>
       </div>
     </el-card>
   </div>
 </template>
 <script>
 import Search from '@c/common/search'
-import Table from '@c/common/table'
-import data from '../../components/data'
+import data from '../components/data'
 export default {
-  name: 'Role',
+  name: 'CompanyBalance',
   components: {
-    Search,
-    Table
+    Search
   },
   data() {
     return {
-      searchItem: data.role.searchFrom,
+      searchItem: data.companyBalance.searchFrom,
       searchData: {
         nickname: ''
       },
       searchBto: data.role.searchBto,
-      showAll: false,
       tableData: [],
-      tableListData: data.role.tableListData,
-      list: data.role.tableData,
-      tableBtn: [],
+      list: data.companyBalance.tableData,
+      showAll: false,
       currentData: {
         currentPage: 1,
         size: 10,
@@ -55,6 +63,7 @@ export default {
     }
   },
   created() {
+    // console.log(data)
     this.getList()
   },
   methods: {
@@ -80,37 +89,30 @@ export default {
       console.log(val)
       this.searchData = val
     },
-    onPageChange(val) {
+    handleCurrentChange(val) {
       var end = val * this.currentData.size
       var start = (val - 1) * this.currentData.size
       this.tableData = this.list.slice(start, end)
       this.currentData.currentPage = val
     },
-    onSizeChange(val) {
+    handleSizeChange(val) {
       this.currentData.size = val
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
-    },
-    handleViewOther(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = true
-      this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
-    },
+    handleEdit(row) {},
+    handleViewOther(row) {},
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.role.tableData.length
+      this.currentData.total = data.companyBalance.tableData.length
     }
   }
 }
 </script>
+<style>
+.page-div{
+  text-align: right;
+}
+</style>

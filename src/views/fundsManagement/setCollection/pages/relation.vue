@@ -1,8 +1,8 @@
 <template>
-  <div class="company-info">
+  <div class="relation">
     <el-card>
       <div slot="header">
-        <span>单位基本信息表</span>
+        <span>账户归集关系设置</span>
       </div>
       <div>
         <Search
@@ -30,22 +30,22 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 export default {
-  name: 'CompanyInfo',
+  name: 'Relation',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.companyInfo.searchFrom,
+      searchItem: data.relation.searchFrom,
       searchData: {
         nickname: ''
       },
-      tableData: [],
-      searchBto: data.role.searchBto,
+      searchBto: data.relation.searchBto,
       showAll: false,
-      tableListData: data.companyInfo.tableListData,
-      list: data.companyInfo.tableData,
+      tableData: [],
+      tableListData: data.relation.tableListData,
+      list: data.relation.tableData,
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -109,7 +109,7 @@ export default {
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.companyInfo.tableData.length
+      this.currentData.total = data.relation.tableData.length
     }
   }
 }

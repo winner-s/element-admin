@@ -129,56 +129,188 @@ export const constantRoutes = [
   {
     path: '/form',
     component: Layout,
-    redirect: '/form/select',
+    redirect: '/form/companyInfo',
     name: '报表中心',
     meta: { title: '报表中心', icon: 'form' },
     children: [
       {
-        path: 'select',
-        name: '报表查询',
-        redirect: '/form/select/companyInfo',
-        component: () => import('@/views/form/select/index'),
-        meta: { title: '报表查询' },
+        path: 'companyInfo',
+        meta: { title: '单位基本信息表' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/form/companyInfo/index')
+      },
+      {
+        path: 'companyBalance',
+        meta: { title: '单位账户余额统计表' },
+        name: 'CompanyBalance',
+        component: () => import('@/views/form/companyBalance/index')
+      },
+      {
+        path: 'role',
+        meta: { title: '用户角色' },
+        name: 'Role',
+        component: () => import('@/views/form/role/index')
+      },
+      {
+        path: 'summary',
+        meta: { title: '账户交易明细汇总表' },
+        name: 'Summary',
+        component: () => import('@/views/form/summary/index')
+      },
+      {
+        path: 'flow',
+        meta: { title: '银行账户余额流量表' },
+        name: 'Flow',
+        component: () => import('@/views/form/flow/index')
+      },
+      {
+        path: 'analyse',
+        meta: { title: '各行账户数量分析' },
+        name: 'Analyse',
+        component: () => import('@/views/form/analyse/index')
+      }
+    ]
+  },
+  {
+    path: '/fundsManagement',
+    component: Layout,
+    redirect: '/fundsManagement/setCollection',
+    name: '资金池管理',
+    meta: { title: '资金池管理', icon: 'form' },
+    children: [
+      {
+        path: 'setCollection',
+        name: '资金归集设置',
+        // component: Layout,
+        component: () => import('@/views/fundsManagement/setCollection/pages/relation'),
+        meta: { title: '资金归集设置' },
         children: [
           {
-            path: 'companyInfo',
-            meta: { title: '单位基本信息表' },
-            name: 'CompanyInfo',
-            component: () => import('@/views/form/select/companyInfo/index')
+            path: 'relation',
+            meta: { title: '账户归集关系设置' },
+            name: 'relation',
+            component: () => import('@/views/fundsManagement/setCollection/pages/relation')
           },
           {
-            path: 'companyBalance',
-            meta: { title: '单位账户余额统计表' },
-            name: 'CompanyBalance',
-            component: () => import('@/views/form/select/companyBalance/index')
+            path: 'condition',
+            meta: { title: '自动归集条件设置' },
+            name: 'condition',
+            component: () => import('@/views/fundsManagement/setCollection/pages/condition')
+          }
+        ]
+      },
+      {
+        path: 'selfCollsection',
+        name: '自动归集管理',
+        alwaysShow: true,
+        redirect: '/fundsManagement/selfCollsection/task',
+        meta: { title: '自动归集管理' },
+        children: [
+          {
+            path: 'task',
+            meta: { title: '自动归集任务管理' },
+            name: 'task',
+            component: () => import('@/views/fundsManagement/selfCollsection/task')
+          }
+        ]
+      },
+      {
+        path: 'manualCollsection',
+        name: '手动归集管理',
+        alwaysShow: true,
+        redirect: '/fundsManagement/manualCollsection/fundsCollsection',
+        meta: { title: '手动归集管理' },
+        children: [
+          {
+            path: 'fundsCollsection',
+            meta: { title: '手动资金归集' },
+            name: 'fundsCollsection',
+            component: () => import('@/views/fundsManagement/manualCollsection/fundsCollsection')
+          }
+        ]
+      },
+      {
+        path: 'selectCollection',
+        name: '资金归集查询',
+        alwaysShow: true,
+        redirect: '/fundsManagement/selectCollection/selectInfo',
+        meta: { title: '资金归集查询' },
+        children: [
+          {
+            path: 'selectInfo',
+            meta: { title: '归集信息查询' },
+            name: 'selectInfo',
+            component: () => import('@/views/fundsManagement/selectCollection/selectInfo')
+          }
+        ]
+      },
+      {
+        path: 'setFundsSend',
+        name: '资金下拨设置',
+        redirect: '/fundsManagement/setFundsSend/accountRelation',
+        meta: { title: '资金下拨设置' },
+        children: [
+          {
+            path: 'accountRelation',
+            meta: { title: '账户下拨关系设置' },
+            name: 'accountRelation',
+            component: () => import('@/views/fundsManagement/setFundsSend/accountRelation')
           },
           {
-            path: 'role',
-            meta: { title: '用户角色' },
-            name: 'Role',
-            component: () => import('@/views/form/select/role/index')
-          },
+            path: 'condition',
+            meta: { title: '自动下拨条件设置' },
+            name: 'condition',
+            component: () => import('@/views/fundsManagement/setFundsSend/condition')
+          }
+        ]
+      },
+      {
+        path: 'selfSend',
+        name: '自动下拨管理',
+        alwaysShow: true,
+        redirect: '/fundsManagement/selfSend/task',
+        meta: { title: '自动下拨管理' },
+        children: [
           {
-            path: 'summary',
-            meta: { title: '账户交易明细汇总表' },
-            name: 'Summary',
-            component: () => import('@/views/form/select/summary/index')
-          },
+            path: 'task',
+            meta: { title: '自动下拨任务管理' },
+            name: 'task',
+            component: () => import('@/views/fundsManagement/selfSend/task')
+          }
+        ]
+      },
+      {
+        path: 'manualSend',
+        name: '手动下拨管理',
+        alwaysShow: true,
+        redirect: '/fundsManagement/manualSend/fundsSend',
+        meta: { title: '手动下拨管理' },
+        children: [
           {
-            path: 'flow',
-            meta: { title: '银行账户余额流量表' },
-            name: 'Flow',
-            component: () => import('@/views/form/select/flow/index')
-          },
+            path: 'fundsSend',
+            meta: { title: '手动资金下拨' },
+            name: 'fundsSend',
+            component: () => import('@/views/fundsManagement/manualSend/fundsSend')
+          }
+        ]
+      },
+      {
+        path: 'selectSend',
+        name: '资金下拨查询',
+        alwaysShow: true,
+        redirect: '/fundsManagement/selectSend/selectInfo',
+        meta: { title: '资金下拨查询' },
+        children: [
           {
-            path: 'analyse',
-            meta: { title: '各行账户数量分析' },
-            name: 'Analyse',
-            component: () => import('@/views/form/select/analyse/index')
+            path: 'selectInfo',
+            meta: { title: '下拨信息查询' },
+            name: 'selectInfo',
+            component: () => import('@/views/fundsManagement/selectSend/selectInfo')
           }
         ]
       }
     ]
+
   },
 
   {

@@ -1,8 +1,8 @@
 <template>
-  <div class="summary">
+  <div class="company-info">
     <el-card>
       <div slot="header">
-        <span> 银行账户交易报表	</span>
+        <span>单位基本信息表</span>
       </div>
       <div>
         <Search
@@ -27,25 +27,26 @@
 </template>
 <script>
 import Search from '@c/common/search'
-import data from '../../components/data'
 import Table from '@c/common/table'
+import data from '../components/data'
 export default {
-  name: 'Summary',
+  name: 'CompanyInfo',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.summary.searchFrom,
+      searchItem: data.companyInfo.searchFrom,
       searchData: {
         nickname: ''
       },
-      searchBto: data.summary.searchBto,
       tableData: [],
-      tableListData: data.summary.tableListData,
-      list: data.summary.tableData,
+      searchBto: data.role.searchBto,
       showAll: false,
+      tableListData: data.companyInfo.tableListData,
+      list: data.companyInfo.tableData,
+      tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
@@ -54,7 +55,6 @@ export default {
     }
   },
   created() {
-    // console.log(data)
     this.getList()
   },
   methods: {
@@ -91,19 +91,26 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {},
-    handleViewOther(row) {},
+    handleEdit(row) {
+      this.dialogObj.id = row.id
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '编辑账号'
+      this.dialogObj.form = row
+    },
+    handleViewOther(row) {
+      this.dialogObj.id = row.id
+      this.dialogObj.read = true
+      this.dialogObj.show = true
+      this.dialogObj.title = '查看账号'
+      this.dialogObj.form = row
+    },
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.summary.tableData.length
+      this.currentData.total = data.companyInfo.tableData.length
     }
   }
 }
 </script>
-<style>
-.page-div{
-  text-align: right;
-}
-</style>

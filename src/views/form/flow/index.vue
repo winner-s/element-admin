@@ -1,8 +1,8 @@
 <template>
-  <div class="analyse">
+  <div class="Flow">
     <el-card>
       <div slot="header">
-        <span>各行账户数量分析报表</span>
+        <span>银行账户余额流量表</span>
       </div>
       <div>
         <Search
@@ -16,7 +16,6 @@
         />
         <Table
           :table-data="tableData"
-          :show-summary="true"
           :table-list-data="tableListData"
           :current-data="currentData"
           @onPageChange="onPageChange"
@@ -28,26 +27,25 @@
 </template>
 <script>
 import Search from '@c/common/search'
+import data from '../components/data'
 import Table from '@c/common/table'
-import data from '../../components/data'
 export default {
-  name: 'Analyse',
+  name: 'Flow',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.analyse.searchFrom,
+      searchItem: data.flow.searchFrom,
       searchData: {
         nickname: ''
       },
+      searchBto: data.flow.searchBto,
       tableData: [],
-      searchBto: data.analyse.searchBto,
+      tableListData: data.flow.tableListData,
+      list: data.flow.tableData,
       showAll: false,
-      tableListData: data.analyse.tableListData,
-      list: data.analyse.tableData,
-      tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
@@ -56,6 +54,7 @@ export default {
     }
   },
   created() {
+    // console.log(data)
     this.getList()
   },
   methods: {
@@ -92,26 +91,19 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
-    },
-    handleViewOther(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = true
-      this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
-    },
+    handleEdit(row) {},
+    handleViewOther(row) {},
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.analyse.tableData.length
+      this.currentData.total = data.flow.tableData.length
     }
   }
 }
 </script>
+<style>
+.page-div{
+  text-align: right;
+}
+</style>

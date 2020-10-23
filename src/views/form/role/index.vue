@@ -1,8 +1,8 @@
 <template>
-  <div class="Flow">
+  <div class="role-info">
     <el-card>
       <div slot="header">
-        <span>银行账户余额流量表</span>
+        <span>用户角色表</span>
       </div>
       <div>
         <Search
@@ -27,25 +27,26 @@
 </template>
 <script>
 import Search from '@c/common/search'
-import data from '../../components/data'
 import Table from '@c/common/table'
+import data from '../components/data'
 export default {
-  name: 'Flow',
+  name: 'Role',
   components: {
     Search,
     Table
   },
   data() {
     return {
-      searchItem: data.flow.searchFrom,
+      searchItem: data.role.searchFrom,
       searchData: {
         nickname: ''
       },
-      searchBto: data.flow.searchBto,
-      tableData: [],
-      tableListData: data.flow.tableListData,
-      list: data.flow.tableData,
+      searchBto: data.role.searchBto,
       showAll: false,
+      tableData: [],
+      tableListData: data.role.tableListData,
+      list: data.role.tableData,
+      tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
@@ -54,7 +55,6 @@ export default {
     }
   },
   created() {
-    // console.log(data)
     this.getList()
   },
   methods: {
@@ -91,19 +91,26 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {},
-    handleViewOther(row) {},
+    handleEdit(row) {
+      this.dialogObj.id = row.id
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '编辑账号'
+      this.dialogObj.form = row
+    },
+    handleViewOther(row) {
+      this.dialogObj.id = row.id
+      this.dialogObj.read = true
+      this.dialogObj.show = true
+      this.dialogObj.title = '查看账号'
+      this.dialogObj.form = row
+    },
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.flow.tableData.length
+      this.currentData.total = data.role.tableData.length
     }
   }
 }
 </script>
-<style>
-.page-div{
-  text-align: right;
-}
-</style>
