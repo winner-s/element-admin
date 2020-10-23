@@ -467,6 +467,266 @@ export const constantRoutes = [
       }
     ]
   },
+  
+  {
+    path: '/budgetManager',
+    component: Layout,
+    redirect: '/budgetManager/basicSettings',
+    name: '预算管理',
+    meta: { title: '预算管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'basicSettings',
+        name: '基础设置',
+        component: () => import('@/views/budgetManager/basicSettings/index'),
+        meta: { title: '基础设置', icon: 'table' },
+        children: [
+          {
+            path: 'budgetSystemSetup',
+            component: () => import('@/views/budgetManager/basicSettings/budgetSystemSetup/index'),
+            name: '预算体系设置',
+            meta: { title: '预算体系设置' },
+            
+          },
+          {
+            path: 'budgetCycleManager',
+            component: () => import('@/views/budgetManager/basicSettings/budgetCycleManager/index'),
+            name: '预算周期管理',
+            meta: { title: '预算周期管理' },
+            
+          },
+          {
+            path: 'projectPermissSetting',
+            component: () => import('@/views/budgetManager/basicSettings/projectPermissSetting/index'),
+            name: '项目权限设置',
+            meta: { title: '项目权限设置' },
+            
+          },
+          {
+            path: 'projectDetails',
+            component: () => import('@/views/budgetManager/basicSettings/projectDetails/index'),
+            name: '项目明细模板设置',
+            meta: { title: '项目明细模板设置' },
+            
+          },
+          {
+            path: 'projectControl',
+            component: () => import('@/views/budgetManager/basicSettings/projectControl/index'),
+            name: '项目控制关系配置',
+            meta: { title: '项目控制关系配置' },
+            
+          },
+          {
+            path: 'adjustmentItems',
+            component: () => import('@/views/budgetManager/basicSettings/adjustmentItems/index'),
+            name: '调剂项目配置',
+            meta: { title: '调剂项目配置' },
+            
+          }
+        ]
+      },
+      {
+        path: 'budgetManager',
+        name: '预算管理',
+        component: () => import('@/views/budgetManager/budgetManager/index'),
+        meta: { title: '预算管理', icon: 'table' },
+        children: [
+          {
+            path: 'budgeting',
+            component: () => import('@/views/budgetManager/budgetManager/budgeting/index'),
+            name: '预算编制',
+            meta: { title: '预算编制' },
+            
+          },
+          {
+            path: 'budgetAdjustment',
+            component: () => import('@/views/budgetManager/budgetManager/budgetAdjustment/index'),
+            name: '预算调整',
+            meta: { title: '预算调整' },
+            
+          },
+          {
+            path: 'budgetTiaoJi',
+            component: () => import('@/views/budgetManager/budgetManager/budgetTiaoJi/index'),
+            name: '预算调剂',
+            meta: { title: '预算调剂' },
+            
+          },
+          {
+            path: 'budgetSum',
+            component: () => import('@/views/budgetManager/budgetManager/budgetSum/index'),
+            name: '预算汇总',
+            meta: { title: '预算汇总' },
+            
+          }
+        ]
+      },
+      {
+        path: 'budgetSelect',
+        name: '预算查询',
+        component: () => import('@/views/budgetManager/budgetSelect/index'),
+        meta: { title: '预算查询', icon: 'table' },
+        children: [
+          {
+            path: 'budgetingSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetingSelect/index'),
+            name: '预算编制查询',
+            meta: { title: '预算编制查询' },
+            
+          },
+          {
+            path: 'budgetAdjustmentSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetAdjustmentSelect/index'),
+            name: '预算调整制查询',
+            meta: { title: '预算调整制查询' },
+            
+          },
+          {
+            path: 'budgetTiaoJiSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetTiaoJiSelect/index'),
+            name: '预算调剂查询',
+            meta: { title: '预算调剂查询' },
+            
+          },
+          {
+            path: 'budgetSumSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetSumSelect/index'),
+            name: '预算汇总查询',
+            meta: { title: '预算汇总查询' },
+            
+          },
+          
+          {
+            path: 'budgetImplementSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetImplementSelect/index'),
+            name: '预算填报查询',
+            meta: { title: '预算填报查询' },
+            
+          },
+          {
+            path: 'budgetFillSelect',
+            component: () => import('@/views/budgetManager/budgetSelect/budgetFillSelect/index'),
+            name: '预算执行查询',
+            meta: { title: '预算执行查询' },
+            
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: '/internalFinance',
+    component: Layout,
+    redirect: '/internalFinance/basicSettings',
+    name: '内部金融',
+    meta: { title: '内部金融', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'basicSetting',
+        name: '基础设置',
+        component: () => import('@/views/internalFinance/basicSetting/index'),
+        meta: { title: '基础设置', icon: 'table' },
+        children: [
+          {
+            path: 'interestRateSet',
+            component: () => import('@/views/internalFinance/basicSetting/interestRateSet/index'),
+            name: '利率设置',
+            meta: { title: '利率设置' },
+            
+          },
+          {
+            path: 'interestRatePlan',
+            component: () => import('@/views/internalFinance/basicSetting/interestRatePlan/index'),
+            name: '利率计划',
+            meta: { title: '利率计划' },
+            
+          }
+        ]
+      },
+      {
+        path: 'internalAccountManager',
+        name: '内部账户管理',
+        component: () => import('@/views/internalFinance/internalAccountManager/index'),
+        meta: { title: '内部账户管理', icon: 'table' },
+        children: [
+          {
+            path: 'openManager',
+            component: () => import('@/views/internalFinance/internalAccountManager/openManager/index'),
+            name: '开户管理',
+            meta: { title: '开户管理' },
+          },
+          {
+            path: 'updateManager',
+            component: () => import('@/views/internalFinance/internalAccountManager/updateManager/index'),
+            name: '变更管理',
+            meta: { title: '变更管理' },
+          }, {
+            path: 'accountCancellation',
+            component: () => import('@/views/internalFinance/internalAccountManager/accountCancellation/index'),
+            name: '销户管理',
+            meta: { title: '销户管理' },
+          }, {
+            path: 'internalCurrentInterest',
+            component: () => import('@/views/internalFinance/internalAccountManager/internalCurrentInterest/index'),
+            name: '内部活期计息',
+            meta: { title: '内部活期计息' },
+          }
+        ]
+      },
+      {
+        path: 'internalFixedDeposit',
+        name: '内部定期存款',
+        component: () => import('@/views/internalFinance/internalFixedDeposit/index'),
+        meta: { title: '内部定期存款', icon: 'table' },
+        children: [
+          {
+            path: 'internalDepositOpening',
+            component: () => import('@/views/internalFinance/internalFixedDeposit/internalDepositOpening/index'),
+            name: '内部存款开立',
+            meta: { title: '内部存款开立' },
+          },
+          {
+            path: 'internalOpeningConfirm',
+            component: () => import('@/views/internalFinance/internalFixedDeposit/internalOpeningConfirm/index'),
+            name: '内部开立确认',
+            meta: { title: '内部开立确认' },
+          },
+          {
+            path: 'internalDepositWithdrawal',
+            component: () => import('@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawal/index'),
+            name: '内部存款支取',
+            meta: { title: '内部存款开立' },
+          },
+          {
+            path: 'internalDepositWithdrawalConfirm',
+            component: () => import('@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawalConfirm/index'),
+            name: '内部支取确认',
+            meta: { title: '内部支取确认' },
+          },
+          {
+            path: 'internalFixedCalculation',
+            component: () => import('@/views/internalFinance/internalFixedDeposit/internalFixedCalculation/index'),
+            name: '内部定期利息匡算',
+            meta: { title: '内部定期利息匡算' },
+          }
+        ]
+      },
+      {
+        path: 'internalLoan',
+        name: '内部贷款',
+        component: () => import('@/views/internalFinance/internalLoan/index'),
+        meta: { title: '内部贷款', icon: 'table' },
+        children: []
+      },
+      {
+        path: 'statisticalQuery',
+        name: '统计查询',
+        component: () => import('@/views/internalFinance/statisticalQuery/index'),
+        meta: { title: '统计查询', icon: 'table' },
+        children: []
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
