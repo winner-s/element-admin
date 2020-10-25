@@ -55,10 +55,9 @@
           <div class="common">
             <div v-for="(item, index) in confirmList" :key="index">
               <router-link :to="item.router">
-                <img src="../../assets/img/first.png" alt="" />
+                <img :src="item.img" alt="" />
+                <p>{{ item.name }}</p>
               </router-link>
-
-              <p>{{ item.name }}</p>
             </div>
           </div>
         </el-card>
@@ -211,7 +210,7 @@
                 class="dialog_div"
               >
                 <a class="close" @click="close(item, index)"></a>
-                <img src="../../assets/img/first.png" alt="" />
+                <img :src="item.img" alt="" />
                 <p>{{ item.name }}</p>
               </div>
             </vuedraggable>
@@ -226,7 +225,7 @@
               class="dialog_div"
             >
               <a class="push" @click="push(item, index)"></a>
-              <img src="../../assets/img/first.png" alt="" />
+              <img :src="item.img" alt="" />
               <p>{{ item.name }}</p>
             </div>
           </div>
@@ -261,106 +260,106 @@ export default {
       activeName: 'first',
       confirmList:[
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '资金监控',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '资金池管理',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '报表中心',
           router: '/form'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '内部金融',
           router: '/internalFinance'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '融资管理',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '企业对账',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '内部结算',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '投资管理',
           router: ''
         }
       ],
       list: [
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '资金监控',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '资金池管理',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '报表中心',
           router: '/form'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '内部金融',
           router: '/internalFinance'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '融资管理',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '企业对账',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '内部结算',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '投资管理',
           router: ''
         }
       ],
       deleteList: [
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '审批任务',
           router: ''
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '账号管理',
           router: '/accountManager'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '结算管理',
           router: '/settlementManager'
         },
         {
-          img: '../../assets/img/first.png',
+          img: require('@/assets/img/1.png'),
           name: '预算管理',
           router: '/budgetManager'
         }
