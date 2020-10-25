@@ -20,7 +20,7 @@ export default {
     },
     height: {
       type: String,
-      default: "350px"
+      default: "250px"
     },
     lineChartData: {
       type: Object,
@@ -71,7 +71,8 @@ export default {
           }
         },
         legend: {
-          data: ["收入", "支出"]
+          data: ['直接访问', '邮件营销', '联盟广告'],
+           right:"10",
         },
         grid: {
           left: "20",
@@ -81,9 +82,8 @@ export default {
         },
         xAxis: [
           {
-            type: "category",
-            boundaryGap: false,
-            data: ["1月", "2月", "3月", "4月", "5月", "6月"]
+             type: 'category',
+            data: ['欧莱股份有限公司', '立讯精密有限公司', '美的集团']
           }
         ],
         yAxis: [
@@ -93,40 +93,21 @@ export default {
         ],
         series: [
           {
-            name: "收入",
-            type: "line",
-            // areaStyle: {
-            //   color: '#f4516c',
-            //   opacity: 0.3
-            // },
-            itemStyle: {
-              color: "#f4516c"
-            },
-            lineStyle: {
-              color: "#f4516c"
-            },
-            smooth: true,
-            data: inprice,
-            animationDuration: 2800,
-            animationEasing: "quadraticOut"
+              name: '直接访问',
+              type: 'bar',
+              data: [2000, 3000, 4000]
           },
           {
-            name: "支出",
-            type: "line",
-            // areaStyle: {
-            //   color: '#55a8fd',
-            //   opacity: 0.3
-            // },
-            itemStyle: {
-              color: "#55a8fd"
-            },
-            lineStyle: {
-              color: "#55a8fd"
-            },
-            smooth: true,
-            data: outprice,
-            animationDuration: 2800,
-            animationEasing: "quadraticOut"
+              name: '邮件营销',
+              type: 'bar',
+             
+              data: [2000, 3000, 4000]
+          },
+          {
+              name: '联盟广告',
+              type: 'bar',
+             
+              data: [2000, 3000, 4000]
           }
         ]
       });

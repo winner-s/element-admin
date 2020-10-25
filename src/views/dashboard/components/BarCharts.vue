@@ -1,16 +1,27 @@
 <template>
-  <div ref="myCharts" style="width:100%;height:300px"></div>
+  <div ref="myCharts" :style="{ width: width, height: height }"></div>
 </template>
 
 <script>
 import echarts from "echarts";
 import resize from "@/mixins/resize";
-
+import { List } from 'echarts/lib/export';
 require("echarts/theme/macarons"); // echarts theme
 export default {
   mixins: [resize],
-  props: ["tableData"],
-
+  props: {
+    width: {
+      type: String,
+      default: "100%"
+    },
+    height: {
+      type: String,
+      default: "300px"
+    },
+    tableData:{
+      type:List
+    }
+  },
   data() {
     return {
       mycharts: null
@@ -21,53 +32,28 @@ export default {
       this.initEcharts();
     });
   },
-  watch: {
-    tableData: function(newVal, OldVal) {
-      console.log(newVal, OldVal);
-      this._setOtion();
-    }
-  },
   methods: {
     initEcharts() {
       this.mycharts = echarts.init(this.$refs.myCharts, "macarons");
       this._setOtion();
     },
     _setOtion() {
-      let list = [];
-      this.tableData.forEach((res, index) => {
-        list[index] = {
-          value: res.value,
-          name: res.name
-        };
-      });
       this.mycharts.setOption({
-        type: 'scroll',
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-        legend: {
-          orient: 'vertical',
-          right:"10",
-          top:"20",
-          data: list
-        },
+       
         series: [
           {
-            name: "银行",
+            name: "余额占比",
             type: "pie",
-            radius: ['50%', '70%'],
-            center: ["50%", "42%"],
-            data: list,
-            animationDuration: 2600,
-            avoidLabelOverlap: false,
-            label: {
-                show: false,
-                position: 'center'
-            },
-            labelLine: {
-                show: false
-            }
+            
+            radius: '70%',
+            center: ["50%", "50%"],
+            data: this.tableData,
+            
+            animationDuration: 2600
           }
         ]
       });

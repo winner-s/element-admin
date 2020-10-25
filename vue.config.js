@@ -46,10 +46,10 @@ module.exports = {
     resolve: {
       alias: {
         '@': resolve('src'),
-        '@u':resolve('src/utils'),
+        '@u': resolve('src/utils'),
         '@v': resolve('src/views'),
         '@c': resolve('src/components'),
-        '@s': resolve('src/service'),
+        '@s': resolve('src/service')
 
       }
     }
