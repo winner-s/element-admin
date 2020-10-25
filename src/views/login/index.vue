@@ -1,115 +1,143 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
-
-      <div class="title-container">
-        <h3 class="title">Login Form</h3>
+    <header>
+      <div>
+        <div class="left" />
+        <div class="right">脱机版用户注册</div>
       </div>
+    </header>
+    <div class="content">
+      <div class="left-box" />
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
+        <div class="title-container">
+          <h3 class="title">用户登录</h3>
+        </div>
 
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
-          autocomplete="on"
-        />
-      </el-form-item>
-
-      <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
-        <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password" />
-          </span>
+        <el-form-item prop="username">
+          <span class="svg-container user" />
           <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            placeholder="Password"
-            name="password"
-            tabindex="2"
-            autocomplete="on"
-            @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
+            ref="username"
+            v-model="loginForm.username"
+            placeholder="用户名"
+            name="username"
+            type="text"
+            tabindex="1"
           />
-          <span class="show-pwd" @click="showPwd">
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-          </span>
         </el-form-item>
-      </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
-
-      <div style="position:relative">
-        <div class="tips">
-          <span>Username : admin</span>
-          <span>Password : any</span>
+        <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+          <el-form-item prop="password">
+            <span class="svg-container pws" />
+            <el-input
+              :key="passwordType"
+              ref="password"
+              v-model="loginForm.password"
+              :type="passwordType"
+              placeholder="密码"
+              name="password"
+              tabindex="2"
+              autocomplete="on"
+              @keyup.native="checkCapslock"
+              @blur="capsTooltip = false"
+              @keyup.enter.native="handleLogin"
+            />
+            <!-- <span class="show-pwd" @click="showPwd">
+              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            </span> -->
+          </el-form-item>
+        </el-tooltip>
+        <el-form-item prop="code">
+          <span class="svg-container code" />
+          <el-input
+            ref="code"
+            v-model="loginForm.code"
+            placeholder="验证码"
+            name="username"
+            type="text"
+            tabindex="1"
+          />
+          <div class="ValidCode disabled-select" @click="refreshCode">
+            <span v-for="(item, index) in codeList" :key="index" :style="getStyle(item)">{{ item.code }}</span>
+          </div>
+        </el-form-item>
+        <el-button :loading="loading" type="primary" @click.native.prevent="handleLogin">登录</el-button>
+      </el-form>
+    </div>
+    <footer>
+      <div>
+        <div class="logo" />
+        <div class="text">
+          <p><span>c</span>版权所有中国建设银行京ICP备13030780号</p>
+          <p>总行地址: 中国北京西城区金融大街25号</p>
         </div>
-        <div class="tips">
-          <span style="margin-right:18px;">Username : editor</span>
-          <span>Password : any</span>
+        <div class="text">
+          <p>京公网安备: 110102000450</p>
+          <p>邮编：100033</p>
         </div>
-
-        <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          Or connect with
-        </el-button>
+        <div class="text">
+          <p>服务热线: 0731-96511</p>
+          <p>客服与投诉热线：95533</p>
+        </div>
       </div>
-    </el-form>
-
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
-      Can not be simulated on local, so please combine you own business simulation! ! !
-      <br>
-      <br>
-      <br>
-      <social-sign />
-    </el-dialog>
+    </footer>
   </div>
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
-import SocialSign from './components/SocialSignin'
+// import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
-  components: { SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
+      // if (!validUsername(value)) {
+      if (!value) {
+        callback(new Error('请输入用户名'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+        callback(new Error('密码不能少于6位'))
+      } else {
+        callback()
+      }
+    }
+    const validateCode = (rule, value, callback) => {
+      console.log(this.codeList)
+      var str = []
+      this.codeList.map(item => {
+        str.push(item.code)
+      })
+      str = str.join('')
+      if (!value) {
+        callback(new Error('请输入验证码'))
+      } else if (value.toLowerCase() !== str.toLowerCase()) {
+        callback(new Error('验证码错误'))
       } else {
         callback()
       }
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: '',
+        password: '',
+        code: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        code: [{ required: true, trigger: 'blur', validator: validateCode }]
       },
       passwordType: 'password',
       capsTooltip: false,
       loading: false,
       showDialog: false,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+      codeList: [],
+      length: 4
     }
   },
   watch: {
@@ -133,11 +161,39 @@ export default {
     } else if (this.loginForm.password === '') {
       this.$refs.password.focus()
     }
+    this.createdCode()
   },
   destroyed() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
+    refreshCode() {
+      this.createdCode()
+    },
+    createdCode() {
+      const len = this.length
+      const codeList = []
+      const chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz0123456789'
+      const charsLen = chars.length
+      // 生成
+      for (let i = 0; i < len; i++) {
+        const rgb = [Math.round(Math.random() * 220), Math.round(Math.random() * 240), Math.round(Math.random() * 200)]
+        codeList.push({
+          code: chars.charAt(Math.floor(Math.random() * charsLen)),
+          color: `rgb(${rgb})`,
+          fontSize: `1${[Math.floor(Math.random() * 10)]}px`,
+          padding: `${[Math.floor(Math.random() * 10)]}px`,
+          transform: `rotate(${Math.floor(Math.random() * 90) - Math.floor(Math.random() * 90)}deg)`
+        })
+      }
+      // 指向
+      this.codeList = codeList
+      // 将当前数据派发出去
+      this.$emit('update:value', codeList.map(item => item.code).join(''))
+    },
+    getStyle(data) {
+      return `color: ${data.color}; font-size: ${data.fontSize}; padding: ${data.padding}; transform: ${data.transform}`
+    },
     checkCapslock(e) {
       const { key } = e
       this.capsTooltip = key && key.length === 1 && (key >= 'A' && key <= 'Z')
@@ -153,6 +209,7 @@ export default {
       })
     },
     handleLogin() {
+      console.log(this.codeList)
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
@@ -216,33 +273,51 @@ $cursor: #fff;
 
 /* reset element-ui css */
 .login-container {
+  background: url('../../assets/images/bg.png') no-repeat center center;
+  background-size: cover;
+  // width: 1920px;
+  // height: 1080px;
+  button{
+    width: 384px;
+    margin-top: 4px;
+  }
   .el-input {
     display: inline-block;
-    height: 47px;
-    width: 85%;
-
+    background: #FFFFFF;
+    width: 64%;
     input {
       background: transparent;
       border: 0px;
       -webkit-appearance: none;
       border-radius: 0px;
-      padding: 12px 5px 12px 15px;
-      color: $light_gray;
-      height: 47px;
-      caret-color: $cursor;
-
-      &:-webkit-autofill {
-        box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: $cursor !important;
-      }
+      padding: 0 15px;
+      color: #333;
+      height: 40px;
+      line-height: 40px;
+      // &:-webkit-autofill {
+      //   box-shadow: 0 0 0px 1000px $bg inset !important;
+      //   -webkit-text-fill-color: $cursor !important;
+      // }
     }
   }
-
+  .el-form{
+    text-align: center;
+  }
+  .el-form-item__content{
+    width: 384px;
+    height: 48px;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    margin: auto;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    background: #fff;
     border-radius: 5px;
-    color: #454545;
   }
 }
 </style>
@@ -251,22 +326,112 @@ $cursor: #fff;
 $bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
-
+.ValidCode{
+  background: #d9ccb1;
+  width: 105px;
+  height: 46px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     span{
+       display: inline-block;
+     }
+   }
 .login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
-
+   >header{
+    background: #fff;
+    >div{
+      height: 72px;
+      line-height: 72px;
+      width: 1323px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: auto;
+    }
+    .left{
+      width: 484px;
+      height: 35px;
+      background: url('../../assets/images/LOGO.png') no-repeat center center;
+      background-size: cover;
+    }
+    .right{
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #666666;
+      line-height: 20px;
+    }
+  }
+  >footer{
+    background: rgba(0, 102, 178, 1);
+    >div{
+      height: 120px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p{
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 17px;
+        margin: 0;
+        &:first-child{
+          margin-bottom: 20px;
+        }
+        span{
+          transform: scale(.7);
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          text-align: center;
+          line-height: 12px;
+          border-radius: 50%;
+          margin-right: 4px;
+          border: 1px solid #fff;
+        }
+      }
+      .text{
+        margin-left: 110px;
+      }
+      .logo{
+        width: 275px;
+        height: 51px;
+        background: url('../../assets/images/bottom_logo.png') no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+  >.content{
+    height: calc(100vh - 72px - 120px);
+    display: flex;
+    justify-content: center;
+    .left-box{
+       width: 614px;
+      height: 216px;
+      background: url('../../assets/images/right_text.png') no-repeat center center;
+      background-size: cover;
+      margin-right: 179px;
+      margin-top: 214px;
+    }
+  }
   .login-form {
     position: relative;
-    width: 520px;
-    max-width: 100%;
-    padding: 160px 35px 0;
-    margin: 0 auto;
+    width: 484px;
+    height: 480px;
+    margin-top: 120px;
+    // margin: 0 auto;
     overflow: hidden;
+    background: #FFFFFF;
+    border-radius: 10px;
   }
-
   .tips {
     font-size: 14px;
     color: #fff;
@@ -280,22 +445,36 @@ $light_gray:#eee;
   }
 
   .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    // padding: 6px 5px 6px 15px;
+    margin-left: 14px;
+    color: #999;
     vertical-align: middle;
-    width: 30px;
+    width: 22px;
+    height: 22px;
     display: inline-block;
+    &.user{
+      background: url('../../assets/images/Username.png') no-repeat center center;
+      background-size: cover;
+    }
+    &.pws{
+      background: url('../../assets/images/pws.png') no-repeat center center;
+      background-size: cover;
+    }
+    &.code{
+      background: url('../../assets/images/code.png') no-repeat center center;
+      background-size: cover;
+    }
   }
 
   .title-container {
     position: relative;
-
     .title {
-      font-size: 26px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
       text-align: center;
-      font-weight: bold;
+      font-size: 22px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #333333;
+      margin: 50px 0 42px 0;
     }
   }
 

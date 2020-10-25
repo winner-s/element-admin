@@ -66,6 +66,21 @@
           </template>
         </el-table-column>
         <el-table-column
+          v-if="item.type === 'input'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <el-input v-model="scope.row[item.prop] " size="mini" />
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
           v-if="item.type === '_bank'"
           :key="index"
           :prop="item.prop"

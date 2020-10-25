@@ -447,6 +447,78 @@ const foundsCollsection = {
       width: '',
       label: '策略名称'
     }
+  ],
+  tableDetailData: [
+    {
+      id: 1,
+      company: 'XXXXX公司',
+      accountNum: '413344555532',
+      accountName: '二级单位',
+      bank: '中国银行',
+      balance: 0,
+      money: ''
+    },
+    {
+      id: 2,
+      company: 'XXXXX公司',
+      accountNum: '413344555532',
+      accountName: '二级单位',
+      bank: '中国银行',
+      balance: 0,
+      money: ''
+    },
+    {
+      id: 3,
+      company: 'XXXXX公司',
+      accountNum: '413344555532',
+      accountName: '二级单位',
+      bank: '中国银行',
+      balance: 0,
+      money: ''
+    },
+    {
+      id: 4,
+      company: 'XXXXX公司',
+      accountNum: '413344555532',
+      accountName: '二级单位',
+      bank: '中国银行',
+      balance: 0,
+      money: ''
+    }
+  ],
+  tableListDetailData: [
+    { width: '50', label: '', type: 'index' },
+    {
+      prop: 'company',
+      width: '120px',
+      label: '单位名称'
+    },
+    {
+      prop: 'accountNum',
+      width: '120px',
+      label: '银行帐号'
+    },
+    {
+      prop: 'accountName',
+      width: '',
+      label: '账户名称'
+    },
+    {
+      prop: 'bank',
+      width: '',
+      label: '银行类型'
+    },
+    {
+      prop: 'balance',
+      width: '',
+      label: '账户余额'
+    },
+    {
+      type: 'input',
+      prop: 'money',
+      width: '',
+      label: '归集金额'
+    }
   ]
 }
 
