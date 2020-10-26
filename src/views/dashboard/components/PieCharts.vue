@@ -1,79 +1,139 @@
 <template>
-  <div ref="myCharts" style="width:100%;height:300px"></div>
+  <div ref="myCharts" style="width: 100%; height: 300px"></div>
 </template>
 
 <script>
-import echarts from "echarts";
-import resize from "@/mixins/resize";
+import echarts from 'echarts'
+import resize from '@/mixins/resize'
 
-require("echarts/theme/macarons"); // echarts theme
+require('echarts/theme/macarons') // echarts theme
 export default {
   mixins: [resize],
-  props: ["tableData"],
+  props: ['tableData'],
 
   data() {
     return {
-      mycharts: null
-    };
+      mycharts: null,
+    }
   },
   mounted() {
     this.$nextTick().then(() => {
-      this.initEcharts();
-    });
+      this.initEcharts()
+    })
   },
   watch: {
-    tableData: function(newVal, OldVal) {
-      console.log(newVal, OldVal);
-      this._setOtion();
-    }
+    tableData: function (newVal, OldVal) {
+      console.log(newVal, OldVal)
+      this._setOtion()
+    },
   },
   methods: {
     initEcharts() {
-      this.mycharts = echarts.init(this.$refs.myCharts, "macarons");
-      this._setOtion();
+      this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
+      this._setOtion()
     },
     _setOtion() {
-      let list = [];
+      let list = []
       this.tableData.forEach((res, index) => {
         list[index] = {
           value: res.value,
-          name: res.name
-        };
-      });
+          name: res.name,
+        }
+      })
+
+      var total = function () {
+        var count = 0
+        list.map((item) => {
+          count += item.value
+        })
+        return count
+      }
       this.mycharts.setOption({
+        title: {
+          text: total(),
+          x: 160,
+          y: 110,
+          textStyle:{
+            color:"#000000",
+            fontWeight:'bold',
+            fontSize:"25"
+          }
+        },
         type: 'scroll',
         tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
           orient: 'vertical',
-          right:"10",
-          top:"20",
-          data: list
+          right: '50',
+          top: '60',
+          data: list,
+          formatter: function (name) {
+            for (var i = 0; i < list.length; i++) {
+              if (name === list[i].name) {
+                var per = list[i].value / total()
+                per = (per * 100).toFixed(2)
+                var arr = [
+                  '{a|' + name + '}',
+                  '{b|| ' + per + '%}',
+                  '{c|￥' + list[i].value + '}',
+                ]
+                return arr.join(' ')
+              }
+            }
+          },
+          textStyle: {
+            rich: {
+              a: {
+                width: 60,
+                fontSize: 12,
+                padding: [0, 10, 0, 0],
+                lineHeight: 12,
+                color: '#666666',
+              },
+              b: {
+                width: 50,
+                fontSize: 12,
+                padding: [0, 10, 0, 0],
+                lineHeight: 12,
+                color: '#999999',
+              },
+              c: {
+                fontSize: 12,
+                padding: [0, 10, 0, 0],
+                lineHeight: 12,
+                color: '#666666',
+              },
+            },
+          },
         },
-        color:['#FBD337','#975FE4','#1890FF','#F04864',"#13C2C2"],
+        color: ['#FBD337', '#975FE4', '#1890FF', '#F04864', '#13C2C2'],
         series: [
           {
-            name: "银行",
-            type: "pie",
+            name: '银行',
+            type: 'pie',
             radius: ['50%', '70%'],
-            center: ["50%", "42%"],
+            center: ['30%', '42%'],
             data: list,
             animationDuration: 2600,
             avoidLabelOverlap: false,
             label: {
+              show: false,
+            },
+            emphasis: {
+              label: {
                 show: false,
-                position: 'center'
+              },
             },
             labelLine: {
-                show: false
-            }
-          }
-        ]
-      });
-    }
-  }
-};
+              show: false,
+            },
+          },
+        ],
+      })
+    },
+  },
+}
 </script>
 <style></style>

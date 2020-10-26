@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>展期复核</span>
       </div>
       <div>
         <Search
@@ -31,7 +31,6 @@
         ></Table>
       </div>
     </el-card>
-    <dialog-com :dialogObj="dialogObj" ></dialog-com>
   </div>
 </template>
 
@@ -40,21 +39,13 @@
 import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import dialogCom from "./dialogCom";
+
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table ,dialogCom},
+  components: { Search, Table },
   data() {
     // 这里存放数据
     return {
-      //弹出框
-      dialogObj: {
-        id: "",
-        title: "aaa",
-        read: false,
-        show: false,
-        form: {}
-      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -314,12 +305,7 @@ export default {
       })
     },
     //单击新增按钮
-    handleInsert() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '新增'
-    },
+    handleInsert() {},
     add() {
       this.dialogObj.id = ''
       this.dialogObj.read = false
@@ -470,16 +456,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -488,100 +464,156 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
-        label: '单位编号:',
-        prop: 'unitNo',
-        placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        type: 'input',
+        label: '申请单号:',
+        prop: 'openApplicant',
+        placeholder: '请填写申请单号',
       },
+      {
+        type: 'select',
+        label: '合同状态:',
+        prop: 'documentNumber',
+        placeholder: '请选择合同状态',
+      },
+      
+      {
+        type: 'select',
+        label: '债权人:',
+        prop: 'openApplicant',
+        placeholder: '请选择债权人',
+      },
+      {
+        type: 'select',
+        label: '债务人:',
+        prop: 'openApplicant',
+        placeholder: '请选择债务人',
+      }
+      ,
       {
         type: 'input',
-        label: '单位名称:',
-        prop: 'unitName',
-        placeholder: '请填写单位名称',
-      },
-      {
-        type: 'select',
-        label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
-      },
+        label: '贷款金额 由:',
+        prop: 'openApplicant',
+        placeholder: '请输入贷款金额',
+        show:this.show
+      }
+      ,
       {
         type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
+        label: '到:',
+        prop: 'openApplicant',
+        show:this.show
+      }
+      ,
       {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
+        type: 'time',
+        label: '合同开始日期 从:',
+        prop: 'openApplicant',
+        placeholder: '请选择合同开始日期',
+        show:this.show
+      }
+      ,
+      {
+        type: 'time',
+        label: '合同开始日期 到:',
+        prop: 'openApplicant',
+        placeholder: '请选择合同开始日期',
+        show:this.show
+      }
+      ,
+      {
+        type: 'time',
+        label: '合同结束日期从:',
+        prop: 'openApplicant',
+        placeholder: '请选择合同结束日期',
+        show:this.show
+      }
+      ,
+      {
+        type: 'time',
+        label: '债务人:',
+        prop: '合同结束日期 到',
+        placeholder: '请选择合同结束日期',
+        show:this.show
+      }
+      ,
       {
         type: 'select',
         label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
-      {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+        prop: 'openApplicant',
+        placeholder: '请选择币种人',
+      }
+      
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号',
+        label: '申请单号',
       },
       {
-        prop: 'bankPhone',
+        prop: 'documentNumber',
         width: '150',
-        label: '银行号码',
+        label: '债权人',
+      },
+      
+      {
+        prop: 'accountName',
+        width: '',
+        label: '债务人 ',
+      },
+      
+      {
+        prop: 'accountName',
+        width: '',
+        label: '金额',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
-      },
-      {
-        prop: 'bankName',
-        width: '',
-        label: '银行名称',
-      },
-      {
-        prop: 'bankOpenName',
-        width: '',
-        label: '开户行名称',
-      },
-      {
-        prop: 'status',
-        width: '',
-        label: '单据状态',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '是否直联',
-      },
-      {
-        prop: 'currency',
-        width: '',
         label: '币种',
       },
       {
-        prop: 'unitName',
+        prop: 'accountName',
         width: '',
-        label: '单位名称',
+        label: '合同签订利率% ',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '已放款金额',
       },
+      {
+        prop: 'accountName',
+        width: '',
+        label: '已还本金',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '已还利息',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '开始日期',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '结束日期',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '合同状态',
+      }
     ]
     // 按钮
     this.tableBtn = []

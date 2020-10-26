@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: 1,
+      showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -467,6 +467,11 @@ export default {
         label: '提交',
       },
       {
+        prop: 'insert',
+        type: 'primary',
+        label: '删除',
+      },
+      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -475,83 +480,114 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
-        label: '单位编号:',
+        type: 'input',
+        label: '存款开立流水号:',
         prop: 'documentNumber',
-        placeholder: '请选择单位编号',
+        placeholder: '请填写存款开立流水号',
       },
       {
         type: 'input',
-        label: '单位名称:',
+        label: '存款期限:',
         prop: 'openApplicant',
-        placeholder: '请填写单位名称',
+        placeholder: '请选择存款期限',
       },
       {
         type: 'select',
-        label: '申请单状态:',
+        label: '存款单位编号:',
         prop: 'openApplicant',
-        placeholder: '请选择申请单状态',
+        placeholder: '请选择存款单位编号',
+      },
+      {
+        type: 'input',
+        label: '存款单位名称:',
+        prop: 'openApplicant',
+        placeholder: '请填写存款单位名称',
+      },
+      {
+        type: 'time',
+        label: '存款开立日期 从:',
+        prop: 'openApplicant',
+        placeholder: '请选择存款开立日期',
+        show:this.showAll
+      },
+      {
+        type: 'time',
+        label: '到:',
+        prop: 'openApplicant',
+        placeholder: '请选择存款开立日期',
+        show:this.showAll
       },
       {
         type: 'select',
-        label: '币种:',
+        label: '存款利率转换天数:',
         prop: 'openApplicant',
-        placeholder: '请选择币种',
+        placeholder: '请选择存款利率转换天数',
+        show:this.showAll
       },
       {
-        type: 'checkbox',
-        label: '包含下级业务单位:',
+        type: 'select',
+        label: '到期续存方式:',
         prop: 'openApplicant',
+        placeholder: '请填写到期续存方式',
+        show:this.showAll
       }
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
+      { width: '50', label: '', type: 'selection', fixed: 'left' },
       { label: '操作', type: 'btn', width: '' },
       {
         prop: 'documentNumber',
         width: '150',
-        label: '内部账号',
+        label: '存款开立流水号',
       },
       {
         prop: 'accountPhone',
         width: '150',
-        label: '账户所属单位',
+        label: '存款状态',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '存款单位名称',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '开户日期',
+        label: '存款金额',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户类型',
+        label: '存款开立日期',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '币种',
+        label: '内部账号 ',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '计息开始日',
+        label: '状态',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '申请单状态',
-      },
+        label: '存款期限',
+      }
+      ,
       {
         prop: 'accountName',
         width: '',
-        label: '备注',
+        label: '利率转换天数',
+      }
+      ,
+      {
+        prop: 'accountName',
+        width: '',
+        label: '到期续存方式',
       }
     ]
     // 按钮

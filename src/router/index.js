@@ -73,8 +73,8 @@ export const constantRoutes = [
     path: '/accountManager',
     component: Layout,
     redirect: '/accountManager/openManager',
-    name: '账号管理',
-    meta: { title: '账号管理', icon: 'el-icon-user-solid' },
+    name: '账户管理',
+    meta: { title: '账户管理', icon: 'el-icon-user-solid' },
     children: [
       {
         path: 'openManager',
@@ -741,201 +741,9 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/internalFinance',
-    component: Layout,
-    redirect: '/internalFinance/basicSettings',
-    name: '内部金融',
-    meta: { title: '内部金融', icon: 'el-icon-coin' },
-    children: [
-      {
-        path: 'basicSetting',
-        name: '基础设置',
-        component: () => import('@/views/internalFinance/basicSetting/index'),
-        redirect: '/internalFinance/basicSettings/interestRateSet',
-        meta: { title: '基础设置' },
-        children: [
-          {
-            path: 'interestRateSet',
-            component: () =>
-              import(
-                '@/views/internalFinance/basicSetting/interestRateSet/index'
-              ),
-            name: '利率设置',
-            meta: { title: '利率设置' }
-          },
-          {
-            path: 'interestRatePlan',
-            component: () =>
-              import(
-                '@/views/internalFinance/basicSetting/interestRatePlan/index'
-              ),
-            name: '利率计划',
-            meta: { title: '利率计划' }
-          }
-        ]
-      },
-      {
-        path: 'internalAccountManager',
-        name: '内部账户管理',
-        component: () =>
-          import('@/views/internalFinance/internalAccountManager/index'),
-        meta: { title: '内部账户管理' },
-        children: [
-          {
-            path: 'openManager',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalAccountManager/openManager/index'
-              ),
-            name: '开户管理',
-            meta: { title: '开户管理' }
-          },
-          {
-            path: 'updateManager',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalAccountManager/updateManager/index'
-              ),
-            name: '变更管理',
-            meta: { title: '变更管理' }
-          },
-          {
-            path: 'accountCancellation',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalAccountManager/accountCancellation/index'
-              ),
-            name: '销户管理',
-            meta: { title: '销户管理' }
-          },
-          {
-            path: 'internalCurrentInterest',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalAccountManager/internalCurrentInterest/index'
-              ),
-            name: '内部活期计息',
-            meta: { title: '内部活期计息' }
-          }
-        ]
-      },
-      {
-        path: 'internalFixedDeposit',
-        name: '内部定期存款',
-        component: () =>
-          import('@/views/internalFinance/internalFixedDeposit/index'),
-        meta: { title: '内部定期存款'},
-        children: [
-          {
-            path: 'internalDepositOpening',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalFixedDeposit/internalDepositOpening/index'
-              ),
-            name: '内部存款开立',
-            meta: { title: '内部存款开立' }
-          },
-          {
-            path: 'internalOpeningConfirm',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalFixedDeposit/internalOpeningConfirm/index'
-              ),
-            name: '内部开立确认',
-            meta: { title: '内部开立确认' }
-          },
-          {
-            path: 'internalDepositWithdrawal',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawal/index'
-              ),
-            name: '内部存款支取',
-            meta: { title: '内部存款开立' }
-          },
-          {
-            path: 'internalDepositWithdrawalConfirm',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawalConfirm/index'
-              ),
-            name: '内部支取确认',
-            meta: { title: '内部支取确认' }
-          },
-          {
-            path: 'internalFixedCalculation',
-            component: () =>
-              import(
-                '@/views/internalFinance/internalFixedDeposit/internalFixedCalculation/index'
-              ),
-            name: '内部定期利息匡算',
-            meta: { title: '内部定期利息匡算' }
-          }
-        ]
-      },
-      {
-        path: 'internalLoan',
-        name: '内部贷款',
-        component: () => import('@/views/internalFinance/internalLoan/index'),
-        meta: { title: '内部贷款' },
-        children: []
-      },
-      {
-        path: 'statisticalQuery',
-        name: '统计查询',
-        component: () =>
-          import('@/views/internalFinance/statisticalQuery/index'),
-        meta: { title: '统计查询' },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/form',
-    component: Layout,
-    redirect: '/form/companyInfo',
-    name: '报表中心',
-    meta: { title: '报表中心', icon: 'form' },
-    children: [
-      {
-        path: 'companyInfo',
-        meta: { title: '单位基本信息表' },
-        name: 'CompanyInfo',
-        component: () => import('@/views/form/companyInfo/index')
-      },
-      {
-        path: 'companyBalance',
-        meta: { title: '单位账户余额统计表' },
-        name: 'CompanyBalance',
-        component: () => import('@/views/form/companyBalance/index')
-      },
-      {
-        path: 'role',
-        meta: { title: '用户角色' },
-        name: 'Role',
-        component: () => import('@/views/form/role/index')
-      },
-      {
-        path: 'summary',
-        meta: { title: '账户交易明细汇总表' },
-        name: 'Summary',
-        component: () => import('@/views/form/summary/index')
-      },
-      {
-        path: 'flow',
-        meta: { title: '银行账户余额流量表' },
-        name: 'Flow',
-        component: () => import('@/views/form/flow/index')
-      },
-      {
-        path: 'analyse',
-        meta: { title: '各行账户数量分析' },
-        name: 'Analyse',
-        component: () => import('@/views/form/analyse/index')
-      }
-    ]
-  },
+  
+  
+  //资金池管理
   {
     path: '/fundsManagement',
     component: Layout,
@@ -1084,6 +892,363 @@ export const constantRoutes = [
     ]
 
   },
+  //内部金融
+  {
+    path: '/internalFinance',
+    component: Layout,
+    redirect: '/internalFinance/basicSettings',
+    name: '内部金融',
+    meta: { title: '内部金融', icon: 'el-icon-coin' },
+    children: [
+      {
+        path: 'basicSetting',
+        name: '基础设置',
+        component: () => import('@/views/internalFinance/basicSetting/index'),
+        redirect: '/internalFinance/basicSettings/interestRateSet',
+        meta: { title: '基础设置' },
+        children: [
+          {
+            path: 'interestRateSet',
+            component: () =>
+              import(
+                '@/views/internalFinance/basicSetting/interestRateSet/index'
+              ),
+            name: '利率设置',
+            meta: { title: '利率设置' }
+          },
+          {
+            path: 'interestRatePlan',
+            component: () =>
+              import(
+                '@/views/internalFinance/basicSetting/interestRatePlan/index'
+              ),
+            name: '利率计划',
+            meta: { title: '利率计划' }
+          }
+        ]
+      },
+      {
+        path: 'internalAccountManager',
+        name: '内部账户管理',
+        component: () =>
+          import('@/views/internalFinance/internalAccountManager/index'),
+        meta: { title: '内部账户管理' },
+        children: [
+          {
+            path: 'openManager',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalAccountManager/openManager/index'
+              ),
+            name: '开户管理',
+            meta: { title: '开户管理' }
+          },
+          {
+            path: 'updateManager',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalAccountManager/updateManager/index'
+              ),
+            name: '变更管理',
+            meta: { title: '变更管理' }
+          },
+          {
+            path: 'accountCancellation',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalAccountManager/accountCancellation/index'
+              ),
+            name: '销户管理',
+            meta: { title: '销户管理' }
+          },
+          {
+            path: 'internalCurrentInterest',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalAccountManager/internalCurrentInterest/index'
+              ),
+            name: '内部活期计息',
+            meta: { title: '内部活期计息' }
+          }
+        ]
+      },
+      {
+        path: 'internalFixedDeposit',
+        name: '内部定期存款',
+        component: () =>
+          import('@/views/internalFinance/internalFixedDeposit/index'),
+        meta: { title: '内部定期存款'},
+        children: [
+          {
+            path: 'internalDepositOpening',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalFixedDeposit/internalDepositOpening/index'
+              ),
+            name: '内部存款开立',
+            meta: { title: '内部存款开立' }
+          },
+          {
+            path: 'internalOpeningConfirm',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalFixedDeposit/internalOpeningConfirm/index'
+              ),
+            name: '内部开立确认',
+            meta: { title: '内部开立确认' }
+          },
+          {
+            path: 'internalDepositWithdrawal',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawal/index'
+              ),
+            name: '内部存款支取',
+            meta: { title: '内部存款支取' }
+          },
+          {
+            path: 'internalDepositWithdrawalConfirm',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalFixedDeposit/internalDepositWithdrawalConfirm/index'
+              ),
+            name: '内部支取确认',
+            meta: { title: '内部支取确认' }
+          },
+          {
+            path: 'internalFixedCalculation',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalFixedDeposit/internalFixedCalculation/index'
+              ),
+            name: '内部定期利息匡算',
+            meta: { title: '内部定期利息匡算' }
+          }
+        ]
+      },
+      {
+        path: 'statisticalQuery',
+        name: '统计查询',
+        component: () =>
+          import('@/views/internalFinance/statisticalQuery/index'),
+        meta: { title: '统计查询' },
+        children: [
+          {
+            path: 'accountQuery',
+            component: () =>
+              import(
+                '@/views/internalFinance/statisticalQuery/accountQuery/index'
+              ),
+            name: '账户信息查询',
+            meta: { title: '账户信息查询' }
+          },
+          {
+            path: 'insideQuery',
+            component: () =>
+              import(
+                '@/views/internalFinance/statisticalQuery/insideQuery/index'
+              ),
+            name: '内部贷款查询',
+            meta: { title: '内部贷款查询' }
+          },
+          {
+            path: 'transactionQuery',
+            component: () =>
+              import(
+                '@/views/internalFinance/statisticalQuery/transactionQuery/index'
+              ),
+            name: '交易信息查询',
+            meta: { title: '交易信息查询' }
+          }
+        ]
+      },
+      {
+        path: 'internalLoan',
+        name: '内部贷款',
+        component: () => import('@/views/internalFinance/internalLoan/index'),
+        redirect: '/internalFinance/internalLoan/jkhtlr',
+        meta: { title: '内部贷款' },
+        children: [
+          {
+            path: 'jkhtlr',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkhtlr/index'
+              ),
+            name: '借款合同录入',
+            meta: { title: '借款合同录入' }
+          },
+          {
+            path: 'jkhtfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkhtfh/index'
+              ),
+            name: '借款合同复核',
+            meta: { title: '借款合同复核' }
+          },{
+            path: 'jkfklr',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkfklr/index'
+              ),
+            name: '借款放款录入',
+            meta: { title: '借款放款录入' }
+          },{
+            path: 'jkfkfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkfkfh/index'
+              ),
+            name: '借款放款复核',
+            meta: { title: '借款放款复核' }
+          },{
+            path: 'jkhkjh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkhtlr/index'
+              ),
+            name: '借款还款计划',
+            meta: { title: '借款还款计划' }
+          },{
+            path: 'jkhkfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkhkfh/index'
+              ),
+            name: '借款还款复核',
+            meta: { title: '借款还款复核' }
+          },{
+            path: 'lltz',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/lltz/index'
+              ),
+            name: '利率调整',
+            meta: { title: '利率调整' }
+          }
+          ,{
+            path: 'lltzfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/lltzfh/index'
+              ),
+            name: '利率调整复核',
+            meta: { title: '利率调整复核' }
+          }
+          ,{
+            path: 'yqlr',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/yqlr/index'
+              ),
+            name: '逾期录入',
+            meta: { title: '逾期录入' }
+          }
+          ,{
+            path: 'yqfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/yqfh/index'
+              ),
+            name: '逾期复核',
+            meta: { title: '逾期复核' }
+          },
+          {
+            path: 'zqlr',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/zqlr/index'
+              ),
+            name: '展期录入',
+            meta: { title: '展期录入' }
+          },
+          {
+            path: 'zqfh',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/zqfh/index'
+              ),
+            name: '展期复核',
+            meta: { title: '展期复核' }
+          },
+          {
+            path: 'nbjkks',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/nbjkks/index'
+              ),
+            name: '内部借款匡算',
+            meta: { title: '内部借款匡算' }
+          }
+
+        ]
+      },
+    ]
+  },
+  //对账管理
+  {
+    path: '/fundsManagem',
+    component: Layout,
+    redirect: '/fundsManagem/setCollection',
+    name: '对账管理',
+    meta: { title: '对账管理', icon: 'el-icon-reading' }
+  },
+  //报表中心
+  {
+    path: '/form',
+    component: Layout,
+    redirect: '/form/companyInfo',
+    name: '报表中心',
+    meta: { title: '报表中心', icon: 'form' },
+    children: [
+      {
+        path: 'companyInfo',
+        meta: { title: '单位基本信息表' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/form/companyInfo/index')
+      },
+      {
+        path: 'companyBalance',
+        meta: { title: '单位账户余额统计表' },
+        name: 'CompanyBalance',
+        component: () => import('@/views/form/companyBalance/index')
+      },
+      {
+        path: 'role',
+        meta: { title: '用户角色' },
+        name: 'Role',
+        component: () => import('@/views/form/role/index')
+      },
+      {
+        path: 'summary',
+        meta: { title: '账户交易明细汇总表' },
+        name: 'Summary',
+        component: () => import('@/views/form/summary/index')
+      },
+      {
+        path: 'flow',
+        meta: { title: '银行账户余额流量表' },
+        name: 'Flow',
+        component: () => import('@/views/form/flow/index')
+      },
+      {
+        path: 'analyse',
+        meta: { title: '各行账户数量分析' },
+        name: 'Analyse',
+        component: () => import('@/views/form/analyse/index')
+      }
+    ]
+  },
+  //操作帮助
+  {
+    path: '/fundsManagemena',
+    component: Layout,
+    redirect: '/fundsManagemen/setCollection',
+    name: '操作帮助',
+    meta: { title: '操作帮助', icon: 'el-icon-data-line' }
+  },
+  //资金监控
   {
     path: '/fundsManagemen',
     component: Layout,
@@ -1091,6 +1256,7 @@ export const constantRoutes = [
     name: '资金监控',
     meta: { title: '资金监控', icon: 'el-icon-data-line' }
   },
+  //融资管理
   {
     path: '/fundsManageme',
     component: Layout,
@@ -1098,20 +1264,7 @@ export const constantRoutes = [
     name: '融资管理',
     meta: { title: '融资管理', icon: 'el-icon-notebook-2' }
   },
-  {
-    path: '/fundsManagem',
-    component: Layout,
-    redirect: '/fundsManagem/setCollection',
-    name: '企业对账',
-    meta: { title: '企业对账', icon: 'el-icon-reading' }
-  },
-  {
-    path: '/fundsManage',
-    component: Layout,
-    redirect: '/fundsManage/setCollection',
-    name: '内部结算',
-    meta: { title: '内部结算', icon: 'el-icon-pie-chart' }
-  },
+  //投资管理
   {
     path: '/fundsManag',
     component: Layout,
@@ -1119,12 +1272,21 @@ export const constantRoutes = [
     name: '投资管理',
     meta: { title: '投资管理', icon: 'el-icon-takeaway-box' }
   },
+  //票据管理
+  {
+    path: '/fundsManage',
+    component: Layout,
+    redirect: '/fundsManage/setCollection',
+    name: '票据管理',
+    meta: { title: '票据管理', icon: 'el-icon-pie-chart' }
+  },
+  //银企平台
   {
     path: '/fundsMana',
     component: Layout,
     redirect: '/fundsMana/setCollection',
-    name: '审批任务',
-    meta: { title: '审批任务', icon: 'el-icon-folder-opened' }
+    name: '银企平台',
+    meta: { title: '银企平台', icon: 'el-icon-folder-opened' }
   },
 
   

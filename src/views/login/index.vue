@@ -348,7 +348,7 @@ $light_gray:#eee;
     >div{
       height: 72px;
       line-height: 72px;
-      width: 1323px;
+      width: 1200px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -413,24 +413,25 @@ $light_gray:#eee;
     height: calc(100vh - 72px - 120px);
     display: flex;
     justify-content: center;
+    align-items: center;
     .left-box{
-       width: 614px;
+      width: 614px;
       height: 216px;
       background: url('../../assets/images/right_text.png') no-repeat center center;
-      background-size: cover;
+      background-size: 100%;
       margin-right: 179px;
-      margin-top: 214px;
     }
   }
   .login-form {
     position: relative;
     width: 484px;
     height: 480px;
-    margin-top: 120px;
     // margin: 0 auto;
     overflow: hidden;
     background: #FFFFFF;
     border-radius: 10px;
+    flex-shrink: 0;
+    
   }
   .tips {
     font-size: 14px;

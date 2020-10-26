@@ -44,6 +44,7 @@ export default {
           formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         color:['#FBD337','#975FE4','#1890FF','#2FC25B'],
+        
         series: [
           {
             name: "余额占比",
@@ -52,8 +53,10 @@ export default {
             radius: '70%',
             center: ["50%", "50%"],
             data: this.tableData,
-            
-            animationDuration: 2600
+            animationDuration: 2600,
+            formatter:function(name){
+              return `${name} ￥${list[i].value}`
+            }
           }
         ]
       });

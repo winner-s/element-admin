@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>收款人信息维护</span>
       </div>
       <div>
         <Search
@@ -31,7 +31,6 @@
         ></Table>
       </div>
     </el-card>
-    <dialog-com :dialogObj="dialogObj" ></dialog-com>
   </div>
 </template>
 
@@ -40,22 +39,14 @@
 import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import dialogCom from "./dialogCom";
+
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table ,dialogCom},
+  components: { Search, Table },
   data() {
     // 这里存放数据
     return {
-      //弹出框
-      dialogObj: {
-        id: "",
-        title: "aaa",
-        read: false,
-        show: false,
-        form: {}
-      },
-      showAll: false,
+      showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
@@ -314,12 +305,7 @@ export default {
       })
     },
     //单击新增按钮
-    handleInsert() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '新增'
-    },
+    handleInsert() {},
     add() {
       this.dialogObj.id = ''
       this.dialogObj.read = false
@@ -470,16 +456,6 @@ export default {
         label: '查询',
       },
       {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交',
-      },
-      {
         prop: 'reset',
         type: '',
         label: '重置',
@@ -490,98 +466,70 @@ export default {
       {
         type: 'select',
         label: '单位编号:',
-        prop: 'unitNo',
+        prop: 'openApplicant',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
       },
       {
         type: 'input',
         label: '单位名称:',
-        prop: 'unitName',
+        prop: 'documentNumber',
         placeholder: '请填写单位名称',
       },
+      
       {
-        type: 'select',
-        label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称',
+        type: 'time',
+        label: '余额日期 从:',
+        prop: 'openApplicant',
+        placeholder: '请选择余额日期',
       },
       {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
-      },
-      {
-        type: 'select',
-        label: '单据状态:',
-        prop: 'documentStatus',
-        placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
-      {
-        type: 'select',
-        label: '币种:',
-        prop: 'currency',
-        show: this.showAll,
-      },
-      {
-        type: 'checkbox',
+        type: 'checkout',
         label: '包含下级业务单位:',
-        prop: 'contain',
-        show: this.showAll,
-      },
+        prop: 'openApplicant'
+      }
+      
     ]
     //  table表格
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号',
+        label: '账户编号',
       },
       {
-        prop: 'bankPhone',
+        prop: 'documentNumber',
         width: '150',
-        label: '银行号码',
+        label: '账户名称',
+      },
+      
+      {
+        prop: 'accountName',
+        width: '',
+        label: '单位名称 ',
+      },
+      
+      {
+        prop: 'accountName',
+        width: '',
+        label: '账户类型',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '账户状态',
       },
       {
-        prop: 'bankName',
+        prop: 'accountName',
         width: '',
-        label: '银行名称',
-      },
+        label: '余额日期 ',
+      }
+      ,
       {
-        prop: 'bankOpenName',
+        prop: 'accountName',
         width: '',
-        label: '开户行名称',
-      },
-      {
-        prop: 'status',
-        width: '',
-        label: '单据状态',
-      },
-      {
-        prop: 'connection',
-        width: '',
-        label: '是否直联',
-      },
-      {
-        prop: 'currency',
-        width: '',
-        label: '币种',
-      },
-      {
-        prop: 'unitName',
-        width: '',
-        label: '单位名称',
-      },
+        label: '账户金额',
+      }
     ]
     // 按钮
     this.tableBtn = []

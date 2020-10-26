@@ -41,11 +41,11 @@
     </el-row>
     <el-row :gutter="20" style="margin-top:23px">
       <el-col :span="12">
-        <el-card class="left" style="height:361px">
+        <el-card class="" style="height:361px">
           <div slot="header" class="clearfix">
             <span>常用功能</span>
             <el-button
-              style="float: right; padding: 3px 0;width:20px;height:20px"
+              style="float: right; padding: 3px 0;margin-top:5px; width:20px;height:20px"
               type="text"
               class="sz"
               @click="dialogVisible = true"
@@ -63,24 +63,54 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card class="right" style="height:361px">
+        <el-card class="db" style="height:361px" :body-style="{ padding: '0px' }">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">
+            <el-tab-pane  label="用户管理" name="first" >
+              
+              <div class="content">
+                <div v-for="item in 7" :key="item" class="right_div">
+                  <div class="right_left">
+                    【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
+                  </div>
+                  <div>
+                    2020-11-20
+                  </div>
+                </div>
+              </div> 
+            </el-tab-pane>
+            <el-tab-pane label="配置管理" name="second">
               <div v-for="item in 7" :key="item" class="right_div">
-                <div>
-                  【账户开户申请】KH20072414393322
+                <div class="right_left"> 
+                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
                 </div>
                 <div>
                   2020-11-20
                 </div>
               </div>
             </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second"></el-tab-pane>
-            <el-tab-pane label="角色管理" name="third"></el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth"></el-tab-pane>
+            <el-tab-pane label="角色管理" name="third">
+              <div v-for="item in 7" :key="item" class="right_div">
+                <div class="right_left">
+                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
+                </div>
+                <div>
+                  2020-11-20
+                </div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="定时任务补偿" name="fourth">
+              <div v-for="item in 7" :key="item" class="right_div">
+                <div class="right_left">
+                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
+                </div>
+                <div>
+                  2020-11-20
+                </div>
+              </div>
+            </el-tab-pane>
           </el-tabs>
-          <p style="margin-bottom:22px">
-            <span style="float: right; padding: 3px 0">查看更多></span>
+          <p class="more">
+            <span style="color:#1890FF;">查看更多></span>
           </p>
         </el-card>
       </el-col>
@@ -89,7 +119,7 @@
     <el-row :gutter="20" style="margin-top:23px">
       <el-col :span="12">
         <el-card
-          class="left"
+          class=""
           style="height:361px"
           :body-style="{ padding: '0px' }"
         >
@@ -117,7 +147,7 @@
       </el-col>
       <el-col :span="12">
         <el-card
-          class="right"
+          
           style="height:361px;"
           :body-style="{ padding: '0px' }"
         >
@@ -148,26 +178,13 @@
     <el-row :gutter="20" style="margin-top:23px">
       <el-col :span="12">
         <el-card
-          class="left"
+          class=""
           style="height:361px"
           :body-style="{ padding: '0px' }"
         >
           <div slot="header" class="clearfix">
-            <span>负载统计表</span>
-            <!-- <el-select
-              v-model="value"
-              placeholder="请选择"
-              style="float: right; "
-              size="mini"
-            >
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select> -->
+            <span>负债统计表</span>
+            
           </div>
           <div>
             <Line-charts
@@ -179,11 +196,11 @@
       </el-col>
       <el-col :span="12">
         <el-card
-          class="right"
+          
           style="height:361px;"
           :body-style="{ padding: '0px' }"
         >
-          <div slot="header" class="clearfix">
+          <div slot="header" class="clearfix" >
             <span>前置机状态</span>
           </div>
           <div>
@@ -367,23 +384,15 @@ export default {
       options: [
         {
           value: '选项1',
-          label: '黄金糕'
+          label: '欧莱股份公司'
         },
         {
           value: '选项2',
-          label: '双皮奶'
+          label: '立讯精密有限公司'
         },
         {
           value: '选项3',
-          label: '蚵仔煎'
-        },
-        {
-          value: '选项4',
-          label: '龙须面'
-        },
-        {
-          value: '选项5',
-          label: '北京烤鸭'
+          label: '美的集团'
         }
       ],
       value: '',
@@ -470,23 +479,61 @@ export default {
   mounted() {}
 }
 </script>
+
+<style >
+.el-tabs__item{
+  height: 65px;
+  line-height: 65px;
+  
+}
+.el-tabs__nav-scroll{
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+</style>
 <style scoped lang="scss">
+
+
+.more{
+  position: absolute;
+  right:40px;
+  bottom: 20px;
+}
+
+.clearfix{
+  line-height: 28px;
+}
 .sz{
   background: url('../../assets/img/set.png') no-repeat;
   background-size: 100% 100%;
 }
 p {
   margin: 0;
+  
 }
 .right_div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-  & :nth-child(1) {
+ 
+  margin: 0px 30px 20px 30px;
+  position: relative;
+  
+  .right_left ::after{
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #CCCCCC;
+    left: 0;
+    top: 5px;
+  }
+  & >:nth-child(1) {
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #333333;
+    padding-left: 10px;
   }
   & :nth-child(2) {
     font-size: 14px;
@@ -549,14 +596,16 @@ p {
     display: inline-block;
     width: 70px;
     margin-right: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     text-align: center;
     img {
       width: 38px;
       height: 38px;
     }
     p {
-      margin: 0 !important;
+
+      margin: 0 ;
+      margin-top: 5px !important;
       text-align: center;
       font-size: 14px;
       font-family: PingFangSC-Regular, PingFang SC;
@@ -600,11 +649,21 @@ p {
       font-size: 14px;
       font-family: HelveticaNeue;
       color: #52c41a;
+      padding-right: 14px;
+      background: url('../../assets/img/up.png') no-repeat;
+      background-size:  9px 6px;
+      background-position-x: 100%;
+      background-position-y: 50%;
     }
     .red {
       font-size: 14px;
       font-family: HelveticaNeue;
       color: #f5222d;
+      padding-right: 14px;
+      background: url('../../assets/img/down.png') no-repeat;
+      background-size:  9px 6px;
+      background-position-x: 100%;
+      background-position-y: 50%;
     }
   }
   p {

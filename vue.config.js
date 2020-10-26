@@ -24,7 +24,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '././' : '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -52,6 +52,12 @@ module.exports = {
         '@s': resolve('src/service')
 
       }
+    },
+    externals:{
+      'vue':'Vue',
+      'element-ui':'ELEMENT'
+      
+
     }
   },
   chainWebpack(config) {

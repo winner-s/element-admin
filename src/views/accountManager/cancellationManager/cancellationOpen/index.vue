@@ -31,6 +31,7 @@
         ></Table>
       </div>
     </el-card>
+    <dialog-com :dialogObj="dialogObj" ></dialog-com>
   </div>
 </template>
 
@@ -39,13 +40,21 @@
 import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import dialogCom from "./dialogCom";
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table,dialogCom },
   data() {
     // 这里存放数据
     return {
+      //弹出框
+      dialogObj: {
+        id: "",
+        title: "aaa",
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -305,7 +314,12 @@ export default {
       })
     },
     //单击新增按钮
-    handleInsert() {},
+    handleInsert() {
+      this.dialogObj.id = ''
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '新增'
+    },
     add() {
       this.dialogObj.id = ''
       this.dialogObj.read = false

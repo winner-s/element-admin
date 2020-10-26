@@ -48,7 +48,7 @@ export default {
         },
         legend: {
           orient: 'vertical',
-          right:"10",
+          right:"80",
           top:"90",
           data: list
         },
