@@ -52,6 +52,7 @@ export default {
           top:"20",
           data: list
         },
+        color:['#FBD337','#975FE4','#1890FF','#F04864',"#13C2C2"],
         series: [
           {
             name: "银行",

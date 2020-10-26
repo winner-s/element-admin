@@ -43,7 +43,7 @@ export default {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-       
+        color:['#FBD337','#975FE4','#1890FF','#2FC25B'],
         series: [
           {
             name: "余额占比",

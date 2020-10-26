@@ -91,6 +91,7 @@ export default {
             type: "value"
           }
         ],
+        color:['#FBD337','#37CBCB','#1890FF'],
         series: [
           {
               name: '直接访问',

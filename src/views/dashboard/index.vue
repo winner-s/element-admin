@@ -41,7 +41,7 @@
     </el-row>
     <el-row :gutter="20" style="margin-top:23px">
       <el-col :span="12">
-        <el-card class="left">
+        <el-card class="left" style="height:361px">
           <div slot="header" class="clearfix">
             <span>常用功能</span>
             <el-button
@@ -63,7 +63,7 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card class="right">
+        <el-card class="right" style="height:361px">
           <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="用户管理" name="first">
               <div v-for="item in 7" :key="item" class="right_div">
@@ -154,7 +154,7 @@
         >
           <div slot="header" class="clearfix">
             <span>负载统计表</span>
-            <el-select
+            <!-- <el-select
               v-model="value"
               placeholder="请选择"
               style="float: right; "
@@ -167,7 +167,7 @@
                 :value="item.value"
               >
               </el-option>
-            </el-select>
+            </el-select> -->
           </div>
           <div>
             <Line-charts
@@ -187,7 +187,7 @@
             <span>前置机状态</span>
           </div>
           <div>
-            <pia-charts class="pieCharts" :tableData="tableData"></pia-charts>
+            <pia-charts class="pieCharts" :tableData="status"></pia-charts>
           </div>
         </el-card>
       </el-col>
@@ -267,7 +267,7 @@ export default {
         {
           img: require('@/assets/img/2.png'),
           name: '资金池管理',
-          router: ''
+          router: '/fundsManagement'
         },
         {
           img: require('@/assets/img/3.png'),
@@ -309,7 +309,7 @@ export default {
         {
           img: require('@/assets/img/2.png'),
           name: '资金池管理',
-          router: ''
+          router: '/fundsManagement'
         },
         {
           img: require('@/assets/img/3.png'),
@@ -404,6 +404,44 @@ export default {
           value: 40,
           name: '工商银行'
         }
+      ],
+      //前置机状态图表  值
+      status:[               
+        {
+          value: 10,
+          name: '闲置'
+        },
+        {
+          value: 20,
+          name: '故障'
+        },
+        {
+          value: 30,
+          name: '繁忙'
+        }
+      ],
+      //资产统计表 图标  值
+      zcList:[
+        {
+          value: 10,
+          name: '银行理财'
+        },
+        {
+          value: 20,
+          name: '定期存款'
+        },
+        {
+          value: 30,
+          name: '通知存款'
+        },
+        {
+          value: 20,
+          name: '国债逆回购'
+        },
+        {
+          value: 30,
+          name: '内部存款'
+        }
       ]
     }
   },
@@ -415,7 +453,7 @@ export default {
   methods: {
     confirm(){
         this.dialogVisible = false;
-        this.confirmList = this.list
+        this.confirmList =  JSON.parse(JSON.stringify(this.list))     
     },
     close(item, index) {
       this.list.splice(index, 1)

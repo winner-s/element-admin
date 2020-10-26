@@ -52,9 +52,10 @@ export default {
           top:"90",
           data: list
         },
+        color:['#F2637B','#3AA0FF','#4ECB73'], 
         series: [
           {
-            name: "银行",
+            name: "前置机状态",
             type: "pie",
             radius: ['30%', '80%'],
             center: ["50%", "50%"],

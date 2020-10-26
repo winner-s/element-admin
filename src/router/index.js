@@ -62,9 +62,9 @@ export const constantRoutes = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
+        name: '首页',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: 'Dashboard', icon: 'dashboard' }
+        meta: { title: '首页', icon: 'dashboard' }
       }
     ]
   },
@@ -74,14 +74,14 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/accountManager/openManager',
     name: '账号管理',
-    meta: { title: '账号管理', icon: 'el-icon-s-help' },
+    meta: { title: '账号管理', icon: 'el-icon-user-solid' },
     children: [
       {
         path: 'openManager',
         name: '开户管理',
         component: () => import('@/views/accountManager/openManager/index'),
         redirect: '/accountManager/openManager/accountOpen',
-        meta: { title: '开户管理', icon: 'table' },
+        meta: { title: '开户管理' },
         children: [
           {
             path: 'accountOpen',
@@ -114,7 +114,7 @@ export const constantRoutes = [
         path: 'changeManager',
         name: '变更管理',
         component: () => import('@/views/accountManager/changeManager/index'),
-        meta: { title: '变更管理', icon: 'tree' },
+        meta: { title: '变更管理' },
         children: [
           {
             path: 'changeOpen',
@@ -138,7 +138,7 @@ export const constantRoutes = [
         name: '销户管理',
         component: () =>
           import('@/views/accountManager/cancellationManager/index'),
-        meta: { title: '销户管理', icon: 'tree' },
+        meta: { title: '销户管理' },
         children: [
           {
             path: 'cancellationOpen',
@@ -165,7 +165,7 @@ export const constantRoutes = [
         path: 'inquiryManager',
         name: '账户查询',
         component: () => import('@/views/accountManager/inquiryManager/index'),
-        meta: { title: '账户查询', icon: 'tree' },
+        meta: { title: '账户查询' },
         children: [
           {
             path: 'inquirySelect',
@@ -220,7 +220,7 @@ export const constantRoutes = [
         path: 'BankInterface',
         name: '银企接口',
         component: () => import('@/views/accountManager/BankInterface/index'),
-        meta: { title: '银企接口', icon: 'tree' },
+        meta: { title: '银企接口'},
         children: [
           {
             path: 'directAccountHistorical',
@@ -275,7 +275,7 @@ export const constantRoutes = [
         name: '对私付款',
         component: () =>
           import('@/views/settlementManager/privatePayment/index'),
-        meta: { title: '对私付款', icon: 'table' },
+        meta: { title: '对私付款' },
         redirect: '/settlementManager/privatePayment/paymentApplication',
         children: [
           {
@@ -321,7 +321,7 @@ export const constantRoutes = [
         name: '对公付款',
         component: () =>
           import('@/views/settlementManager/corporatePayment/index'),
-        meta: { title: '对私付款', icon: 'table' },
+        meta: { title: '对私付款' },
         children: [
           {
             path: 'paymentApplication',
@@ -366,7 +366,7 @@ export const constantRoutes = [
         name: '同名划转',
         component: () =>
           import('@/views/settlementManager/transferSameName/index'),
-        meta: { title: '同名划转', icon: 'table' },
+        meta: { title: '同名划转' },
         children: [
           {
             path: 'transferApplication',
@@ -411,7 +411,7 @@ export const constantRoutes = [
         name: '薪资代发',
         component: () =>
           import('@/views/settlementManager/salaryPayment/index'),
-        meta: { title: '薪资代发', icon: 'table' },
+        meta: { title: '薪资代发'},
         children: [
           {
             path: 'transferApplication',
@@ -456,7 +456,7 @@ export const constantRoutes = [
         name: '指令管理',
         component: () =>
           import('@/views/settlementManager/instructionManager/index'),
-        meta: { title: '指令管理', icon: 'table' },
+        meta: { title: '指令管理' },
         children: [
           {
             path: 'transferApplication',
@@ -492,7 +492,7 @@ export const constantRoutes = [
         name: '结算查询',
         component: () =>
           import('@/views/settlementManager/settlementInquiry/index'),
-        meta: { title: '结算查询', icon: 'table' },
+        meta: { title: '结算查询' },
         children: [
           {
             path: 'paymentInquiry',
@@ -520,7 +520,7 @@ export const constantRoutes = [
         path: 'payeeMaintain',
         name: '收款人信息维护',
         component: () => import('@/views/settlementManager/payeeMaintain/index'),
-        meta: { title: '收款人信息维护', icon: 'table' }
+        meta: { title: '收款人信息维护' }
 
       },
       {
@@ -573,14 +573,14 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/budgetManager/basicSettings',
     name: '预算管理',
-    meta: { title: '预算管理', icon: 'el-icon-s-help' },
+    meta: { title: '预算管理', icon: 'el-icon-money' },
     children: [
       {
         path: 'basicSettings',
         name: '基础设置',
         component: () => import('@/views/budgetManager/basicSettings/index'),
         redirect: '/budgetManager/basicSettings/budgetSystemSetup',
-        meta: { title: '基础设置', icon: 'table' },
+        meta: { title: '基础设置' },
         children: [
           {
             path: 'budgetSystemSetup',
@@ -642,7 +642,7 @@ export const constantRoutes = [
         path: 'budgetManager',
         name: '预算管理',
         component: () => import('@/views/budgetManager/budgetManager/index'),
-        meta: { title: '预算管理', icon: 'table' },
+        meta: { title: '预算管理' },
         children: [
           {
             path: 'budgeting',
@@ -680,7 +680,7 @@ export const constantRoutes = [
         path: 'budgetSelect',
         name: '预算查询',
         component: () => import('@/views/budgetManager/budgetSelect/index'),
-        meta: { title: '预算查询', icon: 'table' },
+        meta: { title: '预算查询' },
         children: [
           {
             path: 'budgetingSelect',
@@ -746,14 +746,14 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/internalFinance/basicSettings',
     name: '内部金融',
-    meta: { title: '内部金融', icon: 'el-icon-s-help' },
+    meta: { title: '内部金融', icon: 'el-icon-coin' },
     children: [
       {
         path: 'basicSetting',
         name: '基础设置',
         component: () => import('@/views/internalFinance/basicSetting/index'),
         redirect: '/internalFinance/basicSettings/interestRateSet',
-        meta: { title: '基础设置', icon: 'table' },
+        meta: { title: '基础设置' },
         children: [
           {
             path: 'interestRateSet',
@@ -780,7 +780,7 @@ export const constantRoutes = [
         name: '内部账户管理',
         component: () =>
           import('@/views/internalFinance/internalAccountManager/index'),
-        meta: { title: '内部账户管理', icon: 'table' },
+        meta: { title: '内部账户管理' },
         children: [
           {
             path: 'openManager',
@@ -825,7 +825,7 @@ export const constantRoutes = [
         name: '内部定期存款',
         component: () =>
           import('@/views/internalFinance/internalFixedDeposit/index'),
-        meta: { title: '内部定期存款', icon: 'table' },
+        meta: { title: '内部定期存款'},
         children: [
           {
             path: 'internalDepositOpening',
@@ -878,7 +878,7 @@ export const constantRoutes = [
         path: 'internalLoan',
         name: '内部贷款',
         component: () => import('@/views/internalFinance/internalLoan/index'),
-        meta: { title: '内部贷款', icon: 'table' },
+        meta: { title: '内部贷款' },
         children: []
       },
       {
@@ -886,7 +886,7 @@ export const constantRoutes = [
         name: '统计查询',
         component: () =>
           import('@/views/internalFinance/statisticalQuery/index'),
-        meta: { title: '统计查询', icon: 'table' },
+        meta: { title: '统计查询' },
         children: []
       }
     ]
@@ -941,7 +941,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fundsManagement/setCollection',
     name: '资金池管理',
-    meta: { title: '资金池管理', icon: 'form' },
+    meta: { title: '资金池管理', icon: 'el-icon-suitcase' },
     children: [
       {
         path: 'setCollection',
@@ -1084,96 +1084,56 @@ export const constantRoutes = [
     ]
 
   },
-
   {
-    path: '/nested',
+    path: '/fundsManagemen',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested',
-      roles: ['admin']
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
+    redirect: '/fundsManagemen/setCollection',
+    name: '资金监控',
+    meta: { title: '资金监控', icon: 'el-icon-data-line' }
+  },
+  {
+    path: '/fundsManageme',
+    component: Layout,
+    redirect: '/fundsManageme/setCollection',
+    name: '融资管理',
+    meta: { title: '融资管理', icon: 'el-icon-notebook-2' }
+  },
+  {
+    path: '/fundsManagem',
+    component: Layout,
+    redirect: '/fundsManagem/setCollection',
+    name: '企业对账',
+    meta: { title: '企业对账', icon: 'el-icon-reading' }
+  },
+  {
+    path: '/fundsManage',
+    component: Layout,
+    redirect: '/fundsManage/setCollection',
+    name: '内部结算',
+    meta: { title: '内部结算', icon: 'el-icon-pie-chart' }
+  },
+  {
+    path: '/fundsManag',
+    component: Layout,
+    redirect: '/fundsManag/setCollection',
+    name: '投资管理',
+    meta: { title: '投资管理', icon: 'el-icon-takeaway-box' }
+  },
+  {
+    path: '/fundsMana',
+    component: Layout,
+    redirect: '/fundsMana/setCollection',
+    name: '审批任务',
+    meta: { title: '审批任务', icon: 'el-icon-folder-opened' }
   },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
+  
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 export const asyncRoutes = [
-  {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/icons/index'),
-        name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true, roles: ['admin'] }
-      }
-    ]
-  }
+  
 ]
 
 const createRouter = () =>
