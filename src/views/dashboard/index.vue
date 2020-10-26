@@ -265,37 +265,37 @@ export default {
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/2.png'),
           name: '资金池管理',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/3.png'),
           name: '报表中心',
           router: '/form'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/4.png'),
           name: '内部金融',
           router: '/internalFinance'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/5.png'),
           name: '融资管理',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/6.png'),
           name: '企业对账',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/7.png'),
           name: '内部结算',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/8.png'),
           name: '投资管理',
           router: ''
         }
@@ -307,59 +307,59 @@ export default {
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/2.png'),
           name: '资金池管理',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/3.png'),
           name: '报表中心',
           router: '/form'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/4.png'),
           name: '内部金融',
           router: '/internalFinance'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/5.png'),
           name: '融资管理',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/6.png'),
           name: '企业对账',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/7.png'),
           name: '内部结算',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/8.png'),
           name: '投资管理',
           router: ''
         }
       ],
       deleteList: [
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/9.png'),
           name: '审批任务',
           router: ''
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/10.png'),
           name: '账号管理',
           router: '/accountManager'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/11.png'),
           name: '结算管理',
           router: '/settlementManager'
         },
         {
-          img: require('@/assets/img/1.png'),
+          img: require('@/assets/img/12.png'),
           name: '预算管理',
           router: '/budgetManager'
         }
