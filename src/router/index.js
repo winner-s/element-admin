@@ -511,15 +511,17 @@ export const constantRoutes = [
               ),
             name: '付款指令查询',
             meta: { title: '付款指令查询' }
+
           }
+
         ]
       },
       {
         path: 'payeeMaintain',
         name: '收款人信息维护',
-        component: () =>
-          import('@/views/settlementManager/payeeMaintain/index'),
+        component: () => import('@/views/settlementManager/payeeMaintain/index'),
         meta: { title: '收款人信息维护', icon: 'table' }
+
       },
       {
         path: 'tradeClaim',
@@ -558,7 +560,9 @@ export const constantRoutes = [
               import('@/views/settlementManager/tradeClaim/entryConfirm/index'),
             name: '线下入账确认',
             meta: { title: '线下入账确认' }
+
           }
+
         ]
       }
     ]
