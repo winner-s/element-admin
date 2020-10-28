@@ -203,8 +203,8 @@
                 >{{ item.name }}</el-button>
                 <el-button
                   v-if="
-                    item.type == 'isShow' &&
-                      scope.row[item.isShowStatus] == item.isShowValue
+                    item.type === 'isShow' &&
+                      scope.row[item.isShowStatus] === item.isShowValue
                   "
                   v-has="item.has"
                   :type="item.btnType"
@@ -214,8 +214,8 @@
                 >{{ item.name }}</el-button>
                 <el-button
                   v-if="
-                    item.type == 'isNoShow' &&
-                      item.isShowValue.indexOf(scope.row[item.isShowStatus]) ==
+                    item.type === 'isNoShow' &&
+                      item.isShowValue.indexOf(scope.row[item.isShowStatus]) ===
                       -1
                   "
                   v-has="item.has"

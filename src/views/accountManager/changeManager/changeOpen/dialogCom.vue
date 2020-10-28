@@ -9,18 +9,18 @@
     class="abow_dialog"
   >
     <el-form
+      v-if="dialogObj.show"
       ref="form"
       :model="form"
       label-width="140px"
       label-position="left"
       :rules="rules"
       :disabled="dialogObj.read"
-      v-if="dialogObj.show"
       status-icon
       class="form"
     >
-      <div class="title"><i class="el-icon-user"></i>变更前账户信息</div>
-      <div class="mb-10"></div>
+      <div class="title"><i class="el-icon-user" />变更前账户信息</div>
+      <div class="mb-10" />
       <el-row>
         <el-col :span="12">
           <el-form-item
@@ -34,7 +34,7 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -49,7 +49,7 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -63,7 +63,7 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -74,7 +74,7 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -88,7 +88,7 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -99,12 +99,12 @@
               size="mini"
               :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
 
-      <div class="title"><i class="el-icon-user"></i> 变更后账户信息</div>
+      <div class="title"><i class="el-icon-user" /> 变更后账户信息</div>
 
       <el-row>
         <el-col :span="12">
@@ -114,7 +114,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -124,7 +124,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -137,7 +137,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -147,7 +147,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -160,7 +160,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -170,7 +170,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -183,7 +183,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -193,7 +193,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -206,7 +206,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -216,7 +216,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -229,7 +229,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -239,7 +239,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -251,12 +251,12 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
-      <div class="title"><i class="el-icon-user"></i> 附加信息</div>
+      <div class="title"><i class="el-icon-user" /> 附加信息</div>
 
       <el-row>
         <el-col :span="12">
@@ -266,7 +266,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -276,7 +276,7 @@
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -292,7 +292,7 @@
               maxlength="50"
               show-word-limit
               :placeholder="placeholderTips.content"
-            ></el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -319,38 +319,39 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="dialogObj.show = false"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="dialogObj.show = false"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
+// 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+// 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
 export default {
-  //import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
   components: {},
+  // import引入的组件需要注入到对象中才能使用
+  props: ['dialogObj'],
   data() {
-    //这里存放数据
+    // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      form: {},
+      form: {}
     }
   },
-  //监听属性 类似于data概念
+  // 监听属性 类似于data概念
   computed: {},
-  //监控data中的数据变化
+  // 监控data中的数据变化
   watch: {},
-  //方法集合
-  methods: {},
-  //生命周期 - 创建完成（可以访问当前this实例）
+  // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
-  //生命周期 - 挂载完成（可以访问DOM元素）
+  // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
+  // 方法集合
+  methods: {}
 }
 </script>
 <style scoped lang="scss">

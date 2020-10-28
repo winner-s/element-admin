@@ -220,7 +220,7 @@ export const constantRoutes = [
         path: 'BankInterface',
         name: '银企接口',
         component: () => import('@/views/accountManager/BankInterface/index'),
-        meta: { title: '银企接口'},
+        meta: { title: '银企接口' },
         children: [
           {
             path: 'directAccountHistorical',
@@ -321,7 +321,7 @@ export const constantRoutes = [
         name: '对公付款',
         component: () =>
           import('@/views/settlementManager/corporatePayment/index'),
-        meta: { title: '对私付款' },
+        meta: { title: '对公付款' },
         children: [
           {
             path: 'paymentApplication',
@@ -411,10 +411,10 @@ export const constantRoutes = [
         name: '薪资代发',
         component: () =>
           import('@/views/settlementManager/salaryPayment/index'),
-        meta: { title: '薪资代发'},
+        meta: { title: '薪资代发' },
         children: [
           {
-            path: 'transferApplication',
+            path: 'salaryPaymentImport',
             component: () =>
               import(
                 '@/views/settlementManager/salaryPayment/salaryPaymentImport/index'
@@ -530,7 +530,7 @@ export const constantRoutes = [
         meta: { title: '交易认领', icon: 'table' },
         children: [
           {
-            path: 'paymentInquiry',
+            path: 'systemMaintenance',
             component: () =>
               import(
                 '@/views/settlementManager/tradeClaim/systemMaintenance/index'
@@ -741,9 +741,8 @@ export const constantRoutes = [
       }
     ]
   },
-  
-  
-  //资金池管理
+
+  // 资金池管理
   {
     path: '/fundsManagement',
     component: Layout,
@@ -892,7 +891,7 @@ export const constantRoutes = [
     ]
 
   },
-  //内部金融
+  // 内部金融
   {
     path: '/internalFinance',
     component: Layout,
@@ -977,7 +976,7 @@ export const constantRoutes = [
         name: '内部定期存款',
         component: () =>
           import('@/views/internalFinance/internalFixedDeposit/index'),
-        meta: { title: '内部定期存款'},
+        meta: { title: '内部定期存款' },
         children: [
           {
             path: 'internalDepositOpening',
@@ -1086,7 +1085,7 @@ export const constantRoutes = [
               ),
             name: '借款合同复核',
             meta: { title: '借款合同复核' }
-          },{
+          }, {
             path: 'jkfklr',
             component: () =>
               import(
@@ -1094,7 +1093,7 @@ export const constantRoutes = [
               ),
             name: '借款放款录入',
             meta: { title: '借款放款录入' }
-          },{
+          }, {
             path: 'jkfkfh',
             component: () =>
               import(
@@ -1102,15 +1101,24 @@ export const constantRoutes = [
               ),
             name: '借款放款复核',
             meta: { title: '借款放款复核' }
-          },{
+          }, {
             path: 'jkhkjh',
             component: () =>
               import(
-                '@/views/internalFinance/internalLoan/jkhtlr/index'
+                '@/views/internalFinance/internalLoan/jkhkjh/index'
               ),
             name: '借款还款计划',
             meta: { title: '借款还款计划' }
-          },{
+          },
+          {
+            path: 'jkhkcl',
+            component: () =>
+              import(
+                '@/views/internalFinance/internalLoan/jkhkcl/index'
+              ),
+            name: '借款还款处理',
+            meta: { title: '借款还款处理' }
+          }, {
             path: 'jkhkfh',
             component: () =>
               import(
@@ -1118,7 +1126,7 @@ export const constantRoutes = [
               ),
             name: '借款还款复核',
             meta: { title: '借款还款复核' }
-          },{
+          }, {
             path: 'lltz',
             component: () =>
               import(
@@ -1126,8 +1134,8 @@ export const constantRoutes = [
               ),
             name: '利率调整',
             meta: { title: '利率调整' }
-          }
-          ,{
+          },
+          {
             path: 'lltzfh',
             component: () =>
               import(
@@ -1135,8 +1143,8 @@ export const constantRoutes = [
               ),
             name: '利率调整复核',
             meta: { title: '利率调整复核' }
-          }
-          ,{
+          },
+          {
             path: 'yqlr',
             component: () =>
               import(
@@ -1144,8 +1152,8 @@ export const constantRoutes = [
               ),
             name: '逾期录入',
             meta: { title: '逾期录入' }
-          }
-          ,{
+          },
+          {
             path: 'yqfh',
             component: () =>
               import(
@@ -1183,10 +1191,10 @@ export const constantRoutes = [
           }
 
         ]
-      },
+      }
     ]
   },
-  //对账管理
+  // 对账管理
   {
     path: '/fundsManagem',
     component: Layout,
@@ -1194,7 +1202,7 @@ export const constantRoutes = [
     name: '对账管理',
     meta: { title: '对账管理', icon: 'el-icon-reading' }
   },
-  //报表中心
+  // 报表中心
   {
     path: '/form',
     component: Layout,
@@ -1240,7 +1248,7 @@ export const constantRoutes = [
       }
     ]
   },
-  //操作帮助
+  // 操作帮助
   {
     path: '/fundsManagemena',
     component: Layout,
@@ -1248,7 +1256,7 @@ export const constantRoutes = [
     name: '操作帮助',
     meta: { title: '操作帮助', icon: 'el-icon-data-line' }
   },
-  //资金监控
+  // 资金监控
   {
     path: '/fundsManagemen',
     component: Layout,
@@ -1256,7 +1264,7 @@ export const constantRoutes = [
     name: '资金监控',
     meta: { title: '资金监控', icon: 'el-icon-data-line' }
   },
-  //融资管理
+  // 融资管理
   {
     path: '/fundsManageme',
     component: Layout,
@@ -1264,7 +1272,7 @@ export const constantRoutes = [
     name: '融资管理',
     meta: { title: '融资管理', icon: 'el-icon-notebook-2' }
   },
-  //投资管理
+  // 投资管理
   {
     path: '/fundsManag',
     component: Layout,
@@ -1272,7 +1280,7 @@ export const constantRoutes = [
     name: '投资管理',
     meta: { title: '投资管理', icon: 'el-icon-takeaway-box' }
   },
-  //票据管理
+  // 票据管理
   {
     path: '/fundsManage',
     component: Layout,
@@ -1280,7 +1288,7 @@ export const constantRoutes = [
     name: '票据管理',
     meta: { title: '票据管理', icon: 'el-icon-pie-chart' }
   },
-  //银企平台
+  // 银企平台
   {
     path: '/fundsMana',
     component: Layout,
@@ -1289,13 +1297,11 @@ export const constantRoutes = [
     meta: { title: '银企平台', icon: 'el-icon-folder-opened' }
   },
 
-  
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 export const asyncRoutes = [
-  
+
 ]
 
 const createRouter = () =>

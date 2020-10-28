@@ -19,7 +19,7 @@ export default {
   methods: {
     guide() {
       this.driver.defineSteps(steps)
-      document.getElementsByClassName('header')[0].style.position = 'absolute' //解决fixed显示空白bug
+      document.getElementsByClassName('header')[0].style.position = 'absolute' // 解决fixed显示空白bug
       this.driver.start()
     }
   }

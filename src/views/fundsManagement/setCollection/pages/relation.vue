@@ -11,6 +11,7 @@
           :search-bto="searchBto"
           :show-all="showAll"
           @getDataList="getDataList"
+          @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
         />
@@ -23,20 +24,30 @@
         />
       </div>
     </el-card>
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 <script>
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
+import dialogCom from './dialogCom'
 export default {
   name: 'Relation',
   components: {
     Search,
-    Table
+    Table, dialogCom
   },
   data() {
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: 'aaa',
+        read: false,
+        show: false,
+        form: {}
+      },
       searchItem: data.relation.searchFrom,
       searchData: {
         nickname: ''
@@ -58,6 +69,12 @@ export default {
     this.getList()
   },
   methods: {
+    handleInsert() {
+      this.dialogObj.id = ''
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '新增'
+    },
     // 收起
     dropUp() {
       this.showAll = false

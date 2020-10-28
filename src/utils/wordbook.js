@@ -4,12 +4,12 @@
  * 对象 用于 表格内容过滤
  */
 
-//产品方法学
+// 产品方法学
 export const UNITNO = {
   '1': '0813',
   '2': '1213',
   '3': '002'
-};
+}
 
 export const UNITNOLIST = [
   {
@@ -24,4 +24,4 @@ export const UNITNOLIST = [
     id: 3,
     value: '002'
   }
-];
+]

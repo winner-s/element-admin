@@ -1,4 +1,4 @@
-<!-- 
+<!--
    element图片上传封装组件
   -->
 <template>
@@ -13,8 +13,8 @@
       accept="image/jpeg,image/jpg,image/png"
       :disabled="disabled"
     >
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      <img v-if="imageUrl" :src="imageUrl" class="avatar">
+      <i v-else class="el-icon-plus avatar-uploader-icon" />
       <div slot="tip" class="upload__tip">
         提示：只能上传jpeg/jpg/png格式，且不超过5Mb
       </div>
@@ -22,68 +22,68 @@
   </div>
 </template>
 <script>
-import { uploadProductImgurl } from "@s/api";
+import { uploadProductImgurl } from '@s/api'
 export default {
-  name: "uploadPicture",
+  name: 'UploadPicture',
+  props: ['imageValue', 'address', 'disabled'],
   data() {
     return {
-      imageUrl: ""
-    };
+      imageUrl: ''
+    }
   },
-  props: ["imageValue", "address", "disabled"],
   watch: {
     imageValue(val) {
-      this.imageUrl = val;
+      this.imageUrl = val
     }
   },
   mounted() {
-    if (this.imageValue == "https://jy.shcenz.net") {
-      this.imageUrl = "";
+    if (this.imageValue == 'https://jy.shcenz.net') {
+      this.imageUrl = ''
     } else {
-      this.imageUrl = this.imageValue;
+      this.imageUrl = this.imageValue
     }
   },
   methods: {
     submitUploadImgUrl(uploader) {
       //  图片不做处理的方式
 
-      let json = {
+      const json = {
         file: uploader.file
-      };
+      }
       if (this.address == 1) {
         uploadProductImgurl(json).then(res => {
-          this.imageUrl = res.productImgurl;
-          this.$emit("handleSuccess", this.imageUrl);
-          //上传成功
-          //处理自己的逻辑
+          this.imageUrl = res.productImgurl
+          this.$emit('handleSuccess', this.imageUrl)
+          // 上传成功
+          // 处理自己的逻辑
           this.$message({
-            type: "success",
-            message: "上传成功！"
-          });
-        });
+            type: 'success',
+            message: '上传成功！'
+          })
+        })
       }
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpg";
-      const isJPEG = file.type === "image/jpeg";
-      const isPNG = file.type === "image/png";
-      const isLt5M = file.size / 1024 / 1024 < 5;
+      const isJPG = file.type === 'image/jpg'
+      const isJPEG = file.type === 'image/jpeg'
+      const isPNG = file.type === 'image/png'
+      const isLt5M = file.size / 1024 / 1024 < 5
       if (!isJPG && !isJPEG && !isPNG) {
-        this.$message.error("上传头像图片只能是 JPG、JPEG、PNG 格式!");
+        this.$message.error('上传头像图片只能是 JPG、JPEG、PNG 格式!')
       }
       if (!isLt5M) {
-        this.$message.error("上传头像图片大小不能超过 5MB!");
+        this.$message.error('上传头像图片大小不能超过 5MB!')
       }
-      return (isJPG || isJPEG || isPNG) && isLt5M;
+      return (isJPG || isJPEG || isPNG) && isLt5M
     },
     handleAvatarError() {
       this.$message({
-        type: "error",
-        message: "上传错误！"
-      });
+        type: 'error',
+        message: '上传错误！'
+      })
     }
   }
-};
+}
 </script>
 <style>
 .avatar-uploader .el-upload {

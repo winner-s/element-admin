@@ -3,23 +3,23 @@
   -->
 <template>
   <el-form
+    ref="searchData"
     :inline="true"
     label-position="left"
     :model="searchData"
-    ref="searchData"
     size="mini"
     label-width="130px"
   >
     <el-row>
       <template v-for="(item, index) in searchItem">
-        <el-col :span="8" :key="index">
+        <el-col :key="index" :span="8">
           <el-form-item
             v-if="
               (item.type === 'input' || '') &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
-            :label="item.label"
             :key="item.prop"
+            :label="item.label"
             :prop="item.prop"
           >
             <el-input
@@ -68,31 +68,30 @@
           <el-form-item
             v-if="
               (item.type === 'checkbox' || '') &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
-            :label="item.label"
             :key="item.prop"
+            :label="item.label"
             :prop="item.prop"
           >
-            <el-checkbox v-model="searchData[item.prop]"></el-checkbox>
+            <el-checkbox v-model="searchData[item.prop]" />
           </el-form-item>
           <el-form-item
             v-if="
               item.type === 'select' && (item.show || item.show === undefined)
             "
-            :label="item.label"
             :key="item.prop"
+            :label="item.label"
             :prop="item.prop"
             filterable
           >
             <el-select
               v-model="searchData[item.prop]"
               style="width: 250px"
-              @click.native="handleChange"
               :placeholder="item.placeholder"
               clearable
               filterable
-              
+              @click.native="handleChange"
             >
               <el-option
                 v-for="i in item.selectList"
@@ -106,8 +105,8 @@
             v-if="
               item.type === 'time' && (item.show || item.show === undefined)
             "
-            :label="item.label"
             :key="item.prop"
+            :label="item.label"
             :prop="item.prop"
           >
             <el-date-picker
@@ -117,17 +116,17 @@
               :format="item.timeFormat"
               :value-format="item.timeFormat"
               placeholder="选择日期"
-             
-              style="width: 140px"
-            ></el-date-picker>
+
+              style="width: 250px"
+            />
           </el-form-item>
           <el-form-item
             v-if="
               item.type === 'daterange' &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
-            :label="item.label"
             :key="index"
+            :label="item.label"
           >
             <el-form-item :prop="item.timeList[0]">
               <el-date-picker
@@ -137,7 +136,7 @@
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="开始日期"
-               
+
                 style="width: 130px"
                 @change="changeValue(searchData[item.timeList[0]], 1)"
               />
@@ -151,10 +150,10 @@
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="结束日期"
-                
-                @change="changeValue(searchData[item.timeList[1]], 2)"
+
                 style="width: 130px"
-              ></el-date-picker>
+                @change="changeValue(searchData[item.timeList[1]], 2)"
+              />
             </el-form-item>
           </el-form-item>
         </el-col>
@@ -164,34 +163,34 @@
       <el-col :span="20">
         <template v-for="(item, index) in searchBto">
           <el-form-item
-            class="searchFloat"
-            :key="index"
             v-if="item.prop == 'select'"
+            :key="index"
+            class="searchFloat"
           >
             <el-button type="primary" @click="handleSearch()">{{
               item.label
             }}</el-button>
           </el-form-item>
           <el-form-item
-            class="searchFloat"
-            :key="index"
             v-if="item.prop == 'reset'"
+            :key="index"
+            class="searchFloat"
           >
             <el-button @click="handleReset('searchData')">重 置</el-button>
           </el-form-item>
           <el-form-item
-            class="searchFloat"
-            :key="index"
             v-if="item.prop == 'commit'"
+            :key="index"
+            class="searchFloat"
           >
             <el-button type="primary" @click="handleSearch()">{{
               item.label
             }}</el-button>
           </el-form-item>
           <el-form-item
-            class="searchFloat"
-            :key="index"
             v-if="item.prop == 'insert'"
+            :key="index"
+            class="searchFloat"
           >
             <el-button type="primary" @click="handInsert()">{{
               item.label
@@ -199,18 +198,18 @@
           </el-form-item>
         </template>
 
-        <el-form-item class="searchFloat" v-if="!showAll">
+        <el-form-item v-if="!showAll" class="searchFloat">
           <span class="el-dropdown-link" @click="dropDown">
-            展开<i class="el-icon-arrow-down el-icon--right"></i>
+            展开<i class="el-icon-arrow-down el-icon--right" />
           </span>
         </el-form-item>
 
         <el-form-item
-          class="searchFloat"
           v-if="showAll === true || (showAll === true && showAll !== 1)"
+          class="searchFloat"
         >
           <span class="el-dropdown-link" @click="dropUp">
-            收起<i class="el-icon-arrow-up el-icon--right"></i>
+            收起<i class="el-icon-arrow-up el-icon--right" />
           </span>
         </el-form-item>
       </el-col>
@@ -222,20 +221,20 @@ export default {
   props: {
     searchData: {
       type: Object,
-      required: true,
+      required: true
     },
     searchItem: {
       type: Array,
-      required: true,
+      required: true
     },
     searchBto: {
       type: Array,
-      required: true,
+      required: true
     },
     showAll: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
@@ -245,7 +244,7 @@ export default {
       pickerOptions: {
         disabledDate: (time) => {
           return time.getTime() > Date.now()
-        },
+        }
       },
       // 第一个日期限制第二个日期
       pickerOptions0: {
@@ -258,7 +257,7 @@ export default {
           } else {
             return time.getTime() > Date.now()
           }
-        },
+        }
       },
       pickerOptions1: {
         disabledDate: (time) => {
@@ -266,22 +265,22 @@ export default {
             time.getTime() < new Date(this.value1) - 24 * 60 * 60 * 1000 || // 减去一天 可前后时间相等
             time.getTime() > Date.now()
           )
-        },
-      },
+        }
+      }
     }
   },
   mounted() {},
   methods: {
-    //收起
+    // 收起
     dropUp() {
       this.$emit('dropUp')
     },
-    //展开
+    // 展开
     dropDown() {
       console.log('点击了展开')
       this.$emit('dropDown')
     },
-    //新增事件
+    // 新增事件
     handInsert() {
       this.$emit('handleInsert')
     },
@@ -305,8 +304,8 @@ export default {
       } else if (i == 2) {
         this.value2 = val
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped>

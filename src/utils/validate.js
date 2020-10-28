@@ -2,12 +2,12 @@
  * Created by PanJiaChen on 16/11/18.
  */
 
- // placeholder提示
+// placeholder提示
 export const placeholderTips = {
-  
-  content: "请输入内容",
-  number: "请输入数值"
-};
+
+  content: '请输入内容',
+  number: '请输入数值'
+}
 
 /**
  * @param {string} path

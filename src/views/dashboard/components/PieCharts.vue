@@ -1,5 +1,5 @@
 <template>
-  <div ref="myCharts" style="width: 100%; height: 300px"></div>
+  <div ref="myCharts" style="width: 100%; height: 300px" />
 </template>
 
 <script>
@@ -13,7 +13,13 @@ export default {
 
   data() {
     return {
-      mycharts: null,
+      mycharts: null
+    }
+  },
+  watch: {
+    tableData: function(newVal, OldVal) {
+      console.log(newVal, OldVal)
+      this._setOtion()
     }
   },
   mounted() {
@@ -21,27 +27,21 @@ export default {
       this.initEcharts()
     })
   },
-  watch: {
-    tableData: function (newVal, OldVal) {
-      console.log(newVal, OldVal)
-      this._setOtion()
-    },
-  },
   methods: {
     initEcharts() {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       this._setOtion()
     },
     _setOtion() {
-      let list = []
+      const list = []
       this.tableData.forEach((res, index) => {
         list[index] = {
           value: res.value,
-          name: res.name,
+          name: res.name
         }
       })
 
-      var total = function () {
+      var total = function() {
         var count = 0
         list.map((item) => {
           count += item.value
@@ -53,23 +53,23 @@ export default {
           text: total(),
           x: 160,
           y: 110,
-          textStyle:{
-            color:"#000000",
-            fontWeight:'bold',
-            fontSize:"25"
+          textStyle: {
+            color: '#000000',
+            fontWeight: 'bold',
+            fontSize: '25'
           }
         },
         type: 'scroll',
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         legend: {
           orient: 'vertical',
           right: '50',
           top: '60',
           data: list,
-          formatter: function (name) {
+          formatter: function(name) {
             for (var i = 0; i < list.length; i++) {
               if (name === list[i].name) {
                 var per = list[i].value / total()
@@ -77,7 +77,7 @@ export default {
                 var arr = [
                   '{a|' + name + '}',
                   '{b|| ' + per + '%}',
-                  '{c|￥' + list[i].value + '}',
+                  '{c|￥' + list[i].value + '}'
                 ]
                 return arr.join(' ')
               }
@@ -90,23 +90,23 @@ export default {
                 fontSize: 12,
                 padding: [0, 10, 0, 0],
                 lineHeight: 12,
-                color: '#666666',
+                color: '#666666'
               },
               b: {
                 width: 50,
                 fontSize: 12,
                 padding: [0, 10, 0, 0],
                 lineHeight: 12,
-                color: '#999999',
+                color: '#999999'
               },
               c: {
                 fontSize: 12,
                 padding: [0, 10, 0, 0],
                 lineHeight: 12,
-                color: '#666666',
-              },
-            },
-          },
+                color: '#666666'
+              }
+            }
+          }
         },
         color: ['#FBD337', '#975FE4', '#1890FF', '#F04864', '#13C2C2'],
         series: [
@@ -119,21 +119,21 @@ export default {
             animationDuration: 2600,
             avoidLabelOverlap: false,
             label: {
-              show: false,
+              show: false
             },
             emphasis: {
               label: {
-                show: false,
-              },
+                show: false
+              }
             },
             labelLine: {
-              show: false,
-            },
-          },
-        ],
+              show: false
+            }
+          }
+        ]
       })
-    },
-  },
+    }
+  }
 }
 </script>
 <style></style>

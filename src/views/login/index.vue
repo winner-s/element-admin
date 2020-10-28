@@ -431,7 +431,7 @@ $light_gray:#eee;
     background: #FFFFFF;
     border-radius: 10px;
     flex-shrink: 0;
-    
+
   }
   .tips {
     font-size: 14px;

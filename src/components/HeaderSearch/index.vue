@@ -56,6 +56,7 @@ export default {
   },
   mounted() {
     this.searchPool = this.generateRoutes(this.routes)
+    console.log(this.searchPool)
   },
   methods: {
     click() {
@@ -78,6 +79,7 @@ export default {
       })
     },
     initFuse(list) {
+      console.log(list)
       this.fuse = new Fuse(list, {
         shouldSort: true,
         threshold: 0.4,

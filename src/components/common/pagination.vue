@@ -1,17 +1,16 @@
-<!-- 
+<!--
    element分页器封装组件
   -->
 <template>
   <el-pagination
-    @current-change="handleCurrentChange"
     background
     :current-page="currentPage || 1"
     :page-sizes="[10, 20, 50, 100]"
     :page-size="10"
     layout="total, sizes, prev, pager, next, jumper"
     :total="total || 0"
-  >
-  </el-pagination>
+    @current-change="handleCurrentChange"
+  />
 </template>
 <script>
 export default {
@@ -26,13 +25,13 @@ export default {
     }
   },
   mounted() {},
+  created() {},
   methods: {
     handleCurrentChange() {
-      this.$parent.getDataList(this.searchData, this.currentPage);
+      this.$parent.getDataList(this.searchData, this.currentPage)
     }
-  },
-  created() {}
-};
+  }
+}
 </script>
 <style lang="scss">
 .el-pagination {

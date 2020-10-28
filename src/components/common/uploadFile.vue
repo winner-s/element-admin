@@ -1,4 +1,4 @@
-<!-- 
+<!--
    element文件上传封装组件
   -->
 <template>
@@ -20,59 +20,59 @@
   </div>
 </template>
 <script>
-import { uploadPictureApi } from "@s/api";
+import { uploadPictureApi } from '@s/api'
 export default {
-  name: "uploadFile",
+  name: 'UploadFile',
+  props: ['fileValue'],
   data() {
     return {
       fileList: [],
-      fileUrl: ""
-    };
+      fileUrl: ''
+    }
   },
-  props: ["fileValue"],
   mounted() {
-    this.fileUrl = this.flieValue;
+    this.fileUrl = this.flieValue
   },
   methods: {
     submitUploadImgUrl(uploader) {
       //  不做处理的方式
-      let form = new FormData();
-      form.append("file", uploader.file);
+      const form = new FormData()
+      form.append('file', uploader.file)
       uploadPictureApi(form).then(res => {
-        this.fileUrl = res;
-        this.$emit("handleSuccess", this.fileUrl);
-        //上传成功
-        //处理自己的逻辑
+        this.fileUrl = res
+        this.$emit('handleSuccess', this.fileUrl)
+        // 上传成功
+        // 处理自己的逻辑
         this.$message({
-          type: "success",
-          message: "上传成功！"
-        });
-      });
+          type: 'success',
+          message: '上传成功！'
+        })
+      })
     },
     beforeAvatarUpload(file) {
-      window.console.log(file.type);
-      const isPDF = file.type === "application/pdf";
-      const isLt5M = file.size / 1024 / 1024 < 5;
+      window.console.log(file.type)
+      const isPDF = file.type === 'application/pdf'
+      const isLt5M = file.size / 1024 / 1024 < 5
       if (!isPDF) {
-        this.$message.error("上传文件格式只能是PDF格式!");
+        this.$message.error('上传文件格式只能是PDF格式!')
       }
       if (!isLt5M) {
-        this.$message.error("上传文件大小不能超过 5MB!");
+        this.$message.error('上传文件大小不能超过 5MB!')
       }
-      return isPDF && isLt5M;
+      return isPDF && isLt5M
     },
     handleExceed() {
       this.$message({
-        type: "warning",
-        message: "只能上传一个文件！"
-      });
+        type: 'warning',
+        message: '只能上传一个文件！'
+      })
     },
     handleAvatarError() {
       this.$message({
-        type: "error",
-        message: "上传错误！"
-      });
+        type: 'error',
+        message: '上传错误！'
+      })
     }
   }
-};
+}
 </script>

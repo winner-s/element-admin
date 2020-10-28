@@ -2,6 +2,7 @@
   <div>
     <!-- 图片上传组件辅助-->
     <el-upload
+      id="quill-upload"
       class="avatar-uploader"
       :action="serverUrl"
       name="file"
@@ -10,48 +11,45 @@
       :on-success="uploadSuccess"
       :on-error="uploadError"
       :before-upload="beforeUpload"
-      id="quill-upload"
-    >
-    </el-upload>
+    />
     <!--富文本编辑器组件-->
     <el-row>
       <quill-editor
-        v-model="detailContent"
         ref="myQuillEditor"
+        v-model="detailContent"
         :options="editorOption"
         @change="onEditorChange($event)"
         @ready="onEditorReady($event)"
-      >
-      </quill-editor>
+      />
     </el-row>
   </div>
 </template>
 <script>
-import { quillEditor } from "vue-quill-editor";
+import { quillEditor } from 'vue-quill-editor'
 const toolbarOptions = [
-  ["bold", "italic", "underline", "strike"], // toggled buttons
-  ["blockquote", "code-block"],
+  ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+  ['blockquote', 'code-block'],
 
   [{ header: 1 }, { header: 2 }], // custom button values
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ script: "sub" }, { script: "super" }], // superscript/subscript
-  [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-  [{ direction: "rtl" }], // text direction
+  [{ list: 'ordered' }, { list: 'bullet' }],
+  [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+  [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
+  [{ direction: 'rtl' }], // text direction
 
   [
     {
       size: [
-        "10px",
-        "12px",
-        "14px",
-        "16px",
-        "18px",
-        "20px",
-        "22px",
-        "24px",
-        "26px",
-        "32px",
-        "48px"
+        '10px',
+        '12px',
+        '14px',
+        '16px',
+        '18px',
+        '20px',
+        '22px',
+        '24px',
+        '26px',
+        '32px',
+        '48px'
       ]
     }
   ], // custom dropdown
@@ -60,10 +58,13 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }], // dropdown with defaults from theme
   [{ font: [] }],
   [{ align: [] }],
-  ["link", "image"],
-  ["clean"] // remove formatting button
-];
+  ['link', 'image'],
+  ['clean'] // remove formatting button
+]
 export default {
+  components: {
+    quillEditor
+  },
   props: {
     serverUrl: String,
     msg: String,
@@ -76,77 +77,74 @@ export default {
       // header: {token: sessionStorage.token}, // 有的图片服务器要求请求头需要有token之类的参数，写在这里
       detailContent: this.msg, // 富文本内容
       editorOption: {
-        placeholder: "",
-        theme: "snow", // or 'bubble'
+        placeholder: '',
+        theme: 'snow', // or 'bubble'
         modules: {
           toolbar: {
             container: toolbarOptions, // 工具栏
             handlers: {
               image: function(value) {
                 if (value) {
-                  document.querySelector("#quill-upload input").click();
+                  document.querySelector('#quill-upload input').click()
                 } else {
-                  this.quill.format("image", false);
+                  this.quill.format('image', false)
                 }
               }
             }
           }
         }
       } // 富文本编辑器配置
-    };
+    }
+  },
+  watch: {
+    detailContent(newVal, oldVal) {
+      console.log(newVal, oldVal)
+      this.$emit('changeContent', newVal)
+    }
   },
   methods: {
     // 上传图片前
     beforeUpload(res, file) {
-      console.log(res, file);
-      this.quillUpdateImg = true;
+      console.log(res, file)
+      this.quillUpdateImg = true
     },
     // 上传图片成功
     uploadSuccess(res, file) {
-      console.log(res, file);
+      console.log(res, file)
       // res为图片服务器返回的数据
       // 获取富文本组件实例
-      let quill = this.$refs.myQuillEditor.quill;
+      const quill = this.$refs.myQuillEditor.quill
       // 如果上传成功
-      console.log(res);
-      if (res.status == true) {
+      console.log(res)
+      if (res.status === true) {
         // 获取光标所在位置
-        let length = quill.getSelection().index;
+        const length = quill.getSelection().index
         // 插入图片 res.info为服务器返回的图片地址
         quill.insertEmbed(
           length,
-          "image",
-          "https://jy.shcenz.net" + res.data.productContentFileUrl
-        );
+          'image',
+          'https://jy.shcenz.net' + res.data.productContentFileUrl
+        )
         // 调整光标到最后
-        quill.setSelection(length + 1);
+        quill.setSelection(length + 1)
       } else {
-        this.$message.error("图片插入失败");
+        this.$message.error('图片插入失败')
       }
       // loading动画消失
-      this.quillUpdateImg = false;
+      this.quillUpdateImg = false
     },
     // 上传图片失败
     uploadError(res, file) {
-      console.log(res, file);
+      console.log(res, file)
       // loading动画消失
-      this.quillUpdateImg = false;
-      this.$message.error("图片插入失败");
+      this.quillUpdateImg = false
+      this.$message.error('图片插入失败')
     },
     onEditorChange() {},
     onEditorReady() {},
     getContent(value) {
-      this.detailContent = value;
-    }
-  },
-  components: {
-    quillEditor
-  },
-  watch: {
-    detailContent(newVal, oldVal) {
-      console.log(newVal, oldVal);
-      this.$emit("changeContent", newVal);
+      this.detailContent = value
     }
   }
-};
+}
 </script>

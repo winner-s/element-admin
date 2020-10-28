@@ -49,13 +49,12 @@
               type="text"
               class="sz"
               @click="dialogVisible = true"
-              ></el-button
-            >
+            />
           </div>
           <div class="common">
             <div v-for="(item, index) in confirmList" :key="index">
               <router-link :to="item.router">
-                <img :src="item.img" alt="" />
+                <img :src="item.img" alt="">
                 <p>{{ item.name }}</p>
               </router-link>
             </div>
@@ -65,8 +64,8 @@
       <el-col :span="12">
         <el-card class="db" style="height:361px" :body-style="{ padding: '0px' }">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane  label="用户管理" name="first" >
-              
+            <el-tab-pane label="用户管理" name="first">
+
               <div class="content">
                 <div v-for="item in 7" :key="item" class="right_div">
                   <div class="right_left">
@@ -76,11 +75,11 @@
                     2020-11-20
                   </div>
                 </div>
-              </div> 
+              </div>
             </el-tab-pane>
             <el-tab-pane label="配置管理" name="second">
               <div v-for="item in 7" :key="item" class="right_div">
-                <div class="right_left"> 
+                <div class="right_left">
                   【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
                 </div>
                 <div>
@@ -136,18 +135,17 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-              >
-              </el-option>
+              />
             </el-select>
           </div>
           <div>
-            <bar-charts class="pieCharts" :tableData="tableData"></bar-charts>
+            <bar-charts class="pieCharts" :table-data="tableData" />
           </div>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card
-          
+
           style="height:361px;"
           :body-style="{ padding: '0px' }"
         >
@@ -164,12 +162,11 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-              >
-              </el-option>
+              />
             </el-select>
           </div>
           <div>
-            <pie-charts class="pieCharts" :tableData="tableData"></pie-charts>
+            <pie-charts class="pieCharts" :table-data="tableData" />
           </div>
         </el-card>
       </el-col>
@@ -184,27 +181,27 @@
         >
           <div slot="header" class="clearfix">
             <span>负债统计表</span>
-            
+
           </div>
           <div>
             <Line-charts
               class="pieCharts"
-              :lineChartData="tableData"
-            ></Line-charts>
+              :line-chart-data="tableData"
+            />
           </div>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card
-          
+
           style="height:361px;"
           :body-style="{ padding: '0px' }"
         >
-          <div slot="header" class="clearfix" >
+          <div slot="header" class="clearfix">
             <span>前置机状态</span>
           </div>
           <div>
-            <pia-charts class="pieCharts" :tableData="status"></pia-charts>
+            <pia-charts class="pieCharts" :table-data="status" />
           </div>
         </el-card>
       </el-col>
@@ -220,29 +217,29 @@
         <p>已选功能（点击拖动调整顺序)</p>
         <div>
           <div class="dialog_top">
-            <vuedraggable class="wrapper" v-model="list">
+            <vuedraggable v-model="list" class="wrapper">
               <div
                 v-for="(item, index) in list"
                 :key="index"
                 class="dialog_div"
               >
-                <a class="close" @click="close(item, index)"></a>
-                <img :src="item.img" alt="" />
+                <a class="close" @click="close(item, index)" />
+                <img :src="item.img" alt="">
                 <p>{{ item.name }}</p>
               </div>
             </vuedraggable>
           </div>
-          <el-divider style="width:auto"></el-divider>
+          <el-divider style="width:auto" />
           <p>可添加功能</p>
           <div class="dialog_top">
-            
+
             <div
               v-for="(item, index) in deleteList"
               :key="index"
               class="dialog_div"
             >
-              <a class="push" @click="push(item, index)"></a>
-              <img :src="item.img" alt="" />
+              <a class="push" @click="push(item, index)" />
+              <img :src="item.img" alt="">
               <p>{{ item.name }}</p>
             </div>
           </div>
@@ -251,31 +248,32 @@
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="confirm"
-          >确 定</el-button
-        >
+        <el-button
+          type="primary"
+          @click="confirm"
+        >确 定</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
+// 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+// 例如：import 《组件名称》 from '《组件路径》';
 import PieCharts from './components/PieCharts'
 import BarCharts from './components/BarCharts'
 import LineCharts from './components/LineCharts'
 import piaCharts from './components/piaCharts'
 import vuedraggable from 'vuedraggable'
 export default {
-  //import引入的组件需要注入到对象中才能使用
+  // import引入的组件需要注入到对象中才能使用
   components: { PieCharts, BarCharts, LineCharts, piaCharts, vuedraggable },
   data() {
-    //这里存放数据
+    // 这里存放数据
     return {
       dialogVisible: false,
       activeName: 'first',
-      confirmList:[
+      confirmList: [
         {
           img: require('@/assets/img/1.png'),
           name: '资金监控',
@@ -414,8 +412,8 @@ export default {
           name: '工商银行'
         }
       ],
-      //前置机状态图表  值
-      status:[               
+      // 前置机状态图表  值
+      status: [
         {
           value: 10,
           name: '闲置'
@@ -429,8 +427,8 @@ export default {
           name: '繁忙'
         }
       ],
-      //资产统计表 图标  值
-      zcList:[
+      // 资产统计表 图标  值
+      zcList: [
         {
           value: 10,
           name: '银行理财'
@@ -454,15 +452,19 @@ export default {
       ]
     }
   },
-  //监听属性 类似于data概念
+  // 监听属性 类似于data概念
   computed: {},
-  //监控data中的数据变化
+  // 监控data中的数据变化
   watch: {},
-  //方法集合
+  // 生命周期 - 创建完成（可以访问当前this实例）
+  created() {},
+  // 生命周期 - 挂载完成（可以访问DOM元素）
+  mounted() {},
+  // 方法集合
   methods: {
-    confirm(){
-        this.dialogVisible = false;
-        this.confirmList =  JSON.parse(JSON.stringify(this.list))     
+    confirm() {
+      this.dialogVisible = false
+      this.confirmList = JSON.parse(JSON.stringify(this.list))
     },
     close(item, index) {
       this.list.splice(index, 1)
@@ -472,11 +474,7 @@ export default {
       this.deleteList.splice(index, 1)
       this.list.push(item)
     }
-  },
-  //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
-  //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {}
+  }
 }
 </script>
 
@@ -484,7 +482,7 @@ export default {
 .el-tabs__item{
   height: 65px;
   line-height: 65px;
-  
+
 }
 .el-tabs__nav-scroll{
   box-sizing: border-box;
@@ -492,7 +490,6 @@ export default {
 }
 </style>
 <style scoped lang="scss">
-
 
 .more{
   position: absolute;
@@ -509,15 +506,15 @@ export default {
 }
 p {
   margin: 0;
-  
+
 }
 .right_div {
   display: flex;
   justify-content: space-between;
- 
+
   margin: 0px 30px 20px 30px;
   position: relative;
-  
+
   .right_left ::after{
     content: '';
     position: absolute;
