@@ -3,136 +3,83 @@
     <el-card>
       <div slot="header">
         <span>账户归集关系设置</span>
+      </div>  
+      <div>
+        
       </div>
-      <div class="table-box">
-        <div>
-          <!-- <Search
-            :search-data="searchData"
-            :search-item="searchItem"
-            :search-bto="searchBto"
-            :show-all="showAll"
-            @getDataList="getDataList"
-            @dropDown="dropDown"
-            @dropUp="dropUp"
-          /> -->
-          <Table
+      <Table
             :table-data="tableData"
             :table-list-data="tableListData"
             :current-data="currentData"
             @onPageChange="onPageChange"
             @onSizeChange="onSizeChange"
+            @tableClick="tableClick"
           />
-        </div>
-        <div class="detail">
-          <div class="top-con">
-            <div class="con">
-              <div>
-                <span>策略编号</span>
-                <el-input v-model="detailInfo.number" type="text" />
-              </div>
-              <div>
-                <span>策略名称</span>
-                <el-input v-model="detailInfo.name" type="text" />
-              </div>
-              <div>
-                <span>策略模式</span>
-                <el-input v-model="detailInfo.pattern" type="text" />
-              </div>
-              <div>
-                <span>上级单位编号</span>
-                <el-input v-model="detailInfo.superiorCompanyNum" type="text" />
-              </div>
-              <div>
-                <span>上级单位名称</span>
-                <el-input v-model="detailInfo.superiorCompanyName" type="text" />
-              </div>
-              <div>
-                <span>上级银行帐号</span>
-                <el-input v-model="detailInfo.superiorAccountNum" type="text" />
-              </div>
-              <div>
-                <span>上级银行名称</span>
-                <el-input v-model="detailInfo.superiorAccountName" type="text" />
-              </div>
-            </div>
-            <el-button type="primary">指令发送</el-button>
-          </div>
-          <div class="bottom-con">
-            <div class="title">下级账户列表</div>
-            <Table
-              :table-data="tableDetailData"
-              :table-list-data="tableListDetailData"
-              :current-data="currentData"
-              @onPageChange="onPageChange"
-              @onSizeChange="onSizeChange"
-            />
-          </div>
-        </div>
-      </div>
     </el-card>
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 <script>
-// import Search from '@c/common/search'
+import dialogCom from './dialogCom'
 import Table from '@c/common/table'
 import data from '../../components/data'
 export default {
   name: 'FoundsCollsection',
   components: {
-    // Search,
+    dialogCom,
     Table
   },
   data() {
     return {
-      searchItem: data.foundsCollsection.searchFrom,
-      searchData: {
-        nickname: ''
+      
+       
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '详情',
+        read: false,
+        show: false,
+        form: {}
       },
-      searchBto: data.foundsCollsection.searchBto,
-      showAll: false,
       tableData: [],
-      tableListData: data.foundsCollsection.tableListData,
-      tableDetailData: data.foundsCollsection.tableDetailData,
-      tableListDetailData: data.foundsCollsection.tableListDetailData,
+      tableListData: [],
       list: data.foundsCollsection.tableData,
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      },
-      detailInfo: {
-        number: '',
-        name: '',
-        pattern: '',
-        superiorCompanyNum: '',
-        superiorCompanyName: '',
-        superiorAccountNum: '',
-        superiorAccountName: ''
+        total: 0,
       }
+      
     }
   },
   created() {
     this.getList()
+     //  table表格
+    this.tableListData = [
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      
+      {
+        prop: 'number',
+       
+        label: '策略编号',
+        fixed: 'left'
+      },{
+        prop: 'name',
+        label: '策略名称',
+        fixed: 'left'
+      }
+    ]
+    
   },
   methods: {
-    // 收起
-    dropUp() {
-      this.showAll = false
-      this.searchItem.forEach((item, index) => {
-        if (item.show !== undefined) {
-          item.show = false
-        }
-      })
-    },
-    // 展开
-    dropDown() {
-      this.showAll = true
-      this.searchItem.forEach((item, index) => {
-        if (item.show !== undefined) {
-          item.show = true
-        }
-      })
+    tableClick(res){
+      console.log(res)
+      this.dialogObj.id = res.id
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '详情'
+      this.dialogObj.form = res
     },
     getDataList(val) {
       console.log(val)
@@ -149,27 +96,20 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
-    },
-    handleViewOther(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = true
-      this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
-    },
-    handleStatus(val) {},
-    handleDelete(val) {},
+    
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = data.foundsCollsection.tableData.length
-    }
-  }
+    },
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.title {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
 

@@ -24,7 +24,7 @@
           >
             <el-input
               v-model="searchData[item.prop]"
-              style="width: 250px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
             />
           </el-form-item>
@@ -36,13 +36,13 @@
           >
             <el-input
               v-model="searchData[item.numList[0]]"
-              style="width:120px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
             />
             <span class="ml-5"> -</span>
             <el-input
               v-model="searchData[item.numList[1]]"
-              style="width:120px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
             />
           </el-form-item>
@@ -54,13 +54,13 @@
           >
             <el-input
               v-model="searchData[item.numList[0]]"
-              style="width: 120px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
             />
             <span class="ml-5"> -</span>
             <el-input
               v-model="searchData[item.numList[1]]"
-              style="width: 120px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
             />
           </el-form-item>
@@ -87,7 +87,7 @@
           >
             <el-select
               v-model="searchData[item.prop]"
-              style="width: 250px"
+              :style="{width: width}"
               :placeholder="item.placeholder"
               clearable
               filterable
@@ -159,7 +159,7 @@
         </el-col>
       </template>
     </el-row>
-    <el-row :gutter="20">
+    <el-row >
       <el-col :span="20">
         <template v-for="(item, index) in searchBto">
           <el-form-item
@@ -217,6 +217,7 @@
   </el-form>
 </template>
 <script>
+import { number } from 'echarts/lib/export'
 export default {
   props: {
     searchData: {
@@ -233,6 +234,11 @@ export default {
     },
     showAll: {
       type: Boolean,
+      required: true
+    },
+    width:{
+      type: String,
+      default:'250px',
       required: true
     }
   },

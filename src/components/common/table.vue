@@ -13,6 +13,7 @@
       class="tableClass"
       :show-summary="showSummary"
       @selection-change="handleSelectionChange"
+      @row-click="tableClick"
     >
       <template v-for="(item, index) in tableListData">
 
@@ -241,6 +242,7 @@
           @current-change="handleCurrentChange"
           @size-change="handleSizeChange"
         />
+        <el-button type="primary" size="mini">导出Excel</el-button>
       </div>
     </template>
   </div>
@@ -279,6 +281,10 @@ export default {
   mounted() {},
   created() {},
   methods: {
+    //当某一行被点击时
+    tableClick(res){
+        this.$emit('tableClick',res)
+    },
     handleSelectionChange(res) {
       console.log(res)
     },
@@ -315,8 +321,15 @@ export default {
 <style lang="scss" scoped>
 .page-div {
   margin-top: 5px;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   text-align: right;
+  & >:nth-child(1){
+    flex:1;
+  }
+  & >:nth-child(2){
+    flex: 0.05;
+  }
 }
 .img-size {
   width: 100px;

@@ -64,8 +64,7 @@ export default {
         size: 10,
         total: 10
       },
-      // 顶部按钮
-      searchBto: [],
+     
       // 弹出框
       dialogObj: {
         id: '',
@@ -83,7 +82,7 @@ export default {
           accountPhone: '999888000',
           accountName: '阿里巴巴88',
           bankName: '中国人民银行营业处',
-          openBankName: '',
+          bankOpenName: '',
           status: '通过',
           connection: '直联'
         },
@@ -93,7 +92,7 @@ export default {
           accountPhone: '20111006',
           accountName: '测试非直连支付确认',
           bankName: '中国工商银行',
-          openBankName: '北京分行',
+          bankOpenName: '北京分行',
           status: '已确认',
           connection: '非直联'
         },
@@ -103,7 +102,7 @@ export default {
           accountPhone: '12311',
           accountName: '123131',
           bankName: '中国人民银行营业处',
-          openBankName: '1231',
+          bankOpenName: '1231',
           status: '复核拒绝',
           connection: '直联'
         },
@@ -113,7 +112,7 @@ export default {
           accountPhone: '',
           accountName: '',
           bankName: '',
-          openBankName: '',
+          bankOpenName: '',
           status: '',
           connection: ''
         },
@@ -123,7 +122,7 @@ export default {
           accountPhone: '',
           accountName: '',
           bankName: '',
-          openBankName: '',
+          bankOpenName: '',
           status: '',
           connection: ''
         },
@@ -179,11 +178,12 @@ export default {
         }
       ],
       tableBtn: [],
+       // 顶部按钮
+      searchBto: [],
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
+       
       }
     }
   },
@@ -290,7 +290,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      
       {
         prop: 'documentNumber',
         width: '150',
@@ -357,10 +357,22 @@ export default {
         prop: 'connection',
         width: '',
         label: '申请人'
-      }
+      },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      {
+        name: "编 辑",
+        btnType: "primary",
+        handleFn: "handleEdit"
+      },
+      {
+        name: "删 除",
+        btnType: "danger",
+        handleFn: "handleDelete"
+      }
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {

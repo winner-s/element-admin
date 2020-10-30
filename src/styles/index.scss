@@ -4,8 +4,12 @@
 @import './element-ui.scss';
 @import './sidebar.scss';
 @import './btn.scss';
-@import './tableCommon.scss';
 
+
+.dialog-footer {
+  text-align: center!important;
+  margin-top: 20px;
+}
 .pageMain {
   padding: 50px 24px;
   background-color: #F3F4F8;
