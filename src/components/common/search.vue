@@ -330,9 +330,7 @@ export default {
   cursor: pointer;
   color: #409eff;
 }
-.el-input--mini .el-input__inner {
-  // width: 180px;
-}
+
 .timeWidth {
   width: 120px;
 }

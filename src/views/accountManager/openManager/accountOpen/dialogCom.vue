@@ -18,6 +18,7 @@
       :disabled="dialogObj.read"
       status-icon
       class="form"
+      :inline-message="true"
     >
       <div class="title"><i class="el-icon-user" /> 基本信息</div>
       <div class="mb-10" />
@@ -44,7 +45,7 @@
               v-model="form.openTime"
               type="date"
               placeholder="请选择开户日期"
-              size='mini'
+              size="mini"
             >
             </el-date-picker>
           </el-form-item>
@@ -142,9 +143,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="开户行所在省：" prop="khhszs">
+          <el-form-item label="开户行省市：" prop="khhss">
             <el-input
-              v-model="form.khhszs"
+              v-model="form.khhss"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -153,14 +154,21 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户行所在市：" prop="khhszshi">
-            <el-input
-              v-model="form.khhszshi"
-              style="width: 200px"
+          <el-form-item label="账户用途：" prop="zhyt">
+            <el-select
+              v-model="form.zhyt"
+              placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in accountUsageList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -199,13 +207,20 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="是否直联：" prop="sfzl">
-            <el-input
+            <el-select
               v-model="form.sfzl"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in directList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -220,21 +235,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="12">
-          <el-form-item label="账户用途：" prop="zhyt">
-            <el-input
-              v-model="form.zhyt"
-              style="width: 200px"
-              size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="12" />
-      </el-row>
-
+      
       <div class="title"><i class="el-icon-user" /> 附加信息</div>
 
       <el-row>
@@ -282,26 +283,25 @@
             <el-upload
               class="upload-demo"
               action="https://jsonplaceholder.typicode.com/posts/"
-              :on-preview="handlePreview"
               :on-remove="handleRemove"
               :before-remove="beforeRemove"
-              multiple
-              :limit="3"
               :on-exceed="handleExceed"
+              :file-list="fileList"
+              :on-success="handleSuccess"
             >
-              <el-button size="small" type="primary">上传附件(0)条</el-button>
+              <el-button size="small" type="primary"
+                >上传附件({{ fileList.length }})条</el-button
+              >
             </el-upload>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
 
-    <span slot="footer" class="dialog-footer">
+    <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="dialogObj.show = false"
-        >确 定</el-button
-      >
-    </span>
+      <el-button type="primary" @click="sub">保存</el-button>
+    </div>
   </el-dialog>
 </template>
 
@@ -309,7 +309,13 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import { UNITNOLIST,BACKLIST, CURRENCYLIST ,ACCOUNTUSAGE,DIRECT} from '@u/wordbook'
+import {
+  UNITNOLIST,
+  BACKLIST,
+  CURRENCYLIST,
+  ACCOUNTUSAGELIST,
+  DIRECTLIST,
+} from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -317,18 +323,63 @@ export default {
   data() {
     // 这里存放数据
     return {
+      rules: {
+        documentNumber: [
+          { required: true, message: '请填写单据编号', trigger: 'blur' },
+        ],
+        openTime: [
+          { required: true, message: '请选择开户申请日期', trigger: 'blur' },
+        ],
+        unitName: [
+          { required: true, message: '请选择单位名称', trigger: 'blur' },
+        ],
+         openApplicant: [
+          { required: true, message: '请填写开户申请人', trigger: 'blur' },
+        ],
+         backName: [
+          { required: true, message: '请选择银行名称', trigger: 'blur' },
+        ],
+         khhss: [
+          { required: true, message: '请选择开户行省市', trigger: 'blur' },
+        ],
+         currency: [
+          { required: true, message: '请选择币种', trigger: 'blur' },
+        ],
+        sfzl: [
+          { required: true, message: '请选择是否直联', trigger: 'blur' },
+        ],
+        zhyt: [
+          { required: true, message: '请选择账户用途', trigger: 'blur' },
+        ]
+      },
+      fileList: [
+        {
+          name: 'food.jpeg',
+          url:
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+        },
+        {
+          name: 'food2.jpeg',
+          url:
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+        },
+      ],
       placeholderTips: placeholderTips,
       form: {
         documentNumber: 'KH20102917085862',
         openTime: new Date(),
-        openApplicant:'admin',
-        unitName:1324,
-        backName:1,
-        currency:1
+        openApplicant: 'admin',
+        unitName: 1324,
+        backName: 1,
+        currency: 1,
+        zhyt: 1,
+        sfzl: 1,
       },
       unitNoList: UNITNOLIST,
-      backList:BACKLIST,
-      currencyList:CURRENCYLIST
+      backList: BACKLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
     }
   },
   // 监听属性 类似于data概念
@@ -340,14 +391,49 @@ export default {
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {},
+  methods: {
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.addSub()
+          }
+        }
+      })
+    },
+    addSub() {
+      this.$emit('addSub',this.form)
+      this.dialogObj.show=false
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList)
+      this.fileList = fileList
+    },
+    handleSuccess(res, file) {
+      console.log(file)
+      this.fileList.push(file)
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(
+        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
+          files.length + fileList.length
+        } 个文件`
+      )
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`)
+    },
+  },
 }
 </script>
 <style scoped lang="scss">
 .form {
   .el-form-item {
-    margin: 0px !important;
+    margin-bottom: 0px !important;
   }
+  
 }
 
 .title {
