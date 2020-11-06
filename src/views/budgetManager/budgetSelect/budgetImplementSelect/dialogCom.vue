@@ -150,6 +150,62 @@
         </el-col>
       </el-row>
 
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="状态：" prop="bbzt">
+            <el-input
+              v-model="form.bbzt"
+              style="width: 200px"
+              size="mini"
+              :disabled="dialogObj.id != ''"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="金额单位：" prop="jedw">
+            <el-input
+              v-model="form.jedw"
+              style="width: 200px"
+              size="mini"
+              :disabled="dialogObj.id != ''"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <div class="title"><i class="el-icon-user" /> 预算项目</div>
+      <el-table
+    :data="tableData"
+    style="width: 100%;margin-bottom: 20px;"
+    row-key="id"
+    border
+    default-expand-all
+    :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+    <el-table-column
+      
+      prop="xm"
+      label="项目"
+      sortable
+      width="250">
+    </el-table-column>
+    <el-table-column
+      prop="ysje"
+      label="预算金额"
+      sortable
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="ysyje"
+      label="已使用金额">
+    </el-table-column>
+    <el-table-column
+      prop="syje"
+      label="剩余金额">
+    </el-table-column>
+  </el-table>
+
     </el-form>
 
     <span slot="footer" class="dialog-footer">
@@ -174,6 +230,109 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
+      tableData: [{
+          id: 1,
+          xm: '期初金额',
+          ysje: '0.00',
+          ysyje: '0.00',
+          syje:'0.00'
+        }, {
+          id: 2,
+          xm: '现金收入',
+          ysje: '11.00',
+          ysyje: '0.00',
+          syje:'11.00',
+          children: [{
+              id: 31,
+              xm: '销售商品、提供劳务收到的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00'
+            }, {
+              id: 32,
+              xm: '收回前期款项',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00'
+            },
+            {
+              id: 33,
+              xm: '收到的税费返还',
+              ysje: '11.00',
+              ysyje: '0.00',
+              syje:'11.00'
+          }
+            ]
+        }, {
+          id: 3,
+          xm: '现金支出',
+          ysje: '11.00',
+          ysyje: '0.00',
+          syje:'11.00',
+          children: [{
+              id: 31,
+              xm: '购买材料、商品及接受劳务支付的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '发放职工薪酬及缴纳保险支付现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '支付的相关税费',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '六项费用日常支出所需现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '拨付所属资金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '购置固定资产支付的现金',
+              ysje: '11.00',
+              ysyje: '0.00',
+              syje:'11.00',
+            }, {
+              id: 32,
+              xm: '购置无形资产及其他资产支付的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '对外投资支付的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }, {
+              id: 32,
+              xm: '偿还已有借款支付的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }
+            , {
+              id: 32,
+              xm: '偿还已有借款利息支付的现金',
+              ysje: '0.00',
+              ysyje: '0.00',
+              syje:'0.00',
+            }
+            ]
+        }],
       yszqList:[
         {
           zqbh:'2020027',

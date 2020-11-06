@@ -447,13 +447,66 @@
 
     </el-form>
 
-    <span slot="footer" class="dialog-footer" v-if="!dialogObj.read">
-      <el-button @click="dialogObj.show = false">取 消</el-button>
+    <span slot="footer" class="dialog-footer" >
+     
       <el-button
         type="primary"
         @click="sub"
-      >确 定</el-button>
+       v-if="form.zfyy===''"
+      >确认成功</el-button>
+      <el-button
+        type="primary"
+        @click="zf"
+         v-if="form.zfyy===''"
+      >确认作废</el-button>
+      <el-button @click="dialogObj.show = false">取 消</el-button>
     </span>
+
+      <el-dialog
+        width="30%"
+        title="作废原因"
+        :visible.sync="showZF"
+        append-to-body
+      >
+        <el-form
+          
+          ref="formTwo"
+          :model="form"
+          label-width="140px"
+          label-position="left"
+          :rules="rulesZF"
+          :inline-message="true"
+         
+          status-icon
+          class="form"
+        >
+            <el-row>
+            <el-col :span="12">
+              <el-form-item
+                label="作废原因："
+                prop="zfyy"
+                class="formItem"
+              >
+                <el-input
+                  v-model="form.zfyy"
+                  style="width: 200px"
+                  size="mini"
+                  
+                  :placeholder="placeholderTips.content"
+                />
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              
+            </el-col>
+          </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer" >
+     
+      
+      <el-button @click="baocun" type="primary">保存</el-button>
+    </span>
+    </el-dialog>
   </el-dialog>
 </template>
 
@@ -506,6 +559,11 @@ export default {
           fkfkhhmc:'北京分行'
         }
       ],
+      rulesZF:{
+        zfyy:[
+           {required: true, message: '请填写作废原因', trigger: 'blur' }
+        ]
+      },
       rules:{
         fkyt:[
           {required: true, message: '请选择付款用途', trigger: 'blur' }
@@ -545,6 +603,7 @@ export default {
         ]
       },
       form: {
+        zfyy:'',
         djbh:'8545942579878',
         djrq:new Date().toLocaleDateString(),
         ywdw:'业务单位',
@@ -572,6 +631,7 @@ export default {
         zy:'',
         bz:''
       },
+      showZF:false
     }
   },
   // 监听属性 类似于data概念
@@ -592,6 +652,10 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
+    //作废
+    zf(){
+      this.showZF=true
+    },
     initDialog(){
       let djbh = ''
       for(let i=0;i<16;i++){
@@ -602,6 +666,7 @@ export default {
         Object.keys(this.form).forEach(item => {
           this.form[item] = this.dialogObj.form[item];
         });
+        this.form.zfyy=''
         // this.form = this.dialogObj.form
       } else{
         Object.keys(this.form).forEach(key => (this.form[key] = ""));
@@ -632,6 +697,14 @@ export default {
           Object.keys(item).forEach(val => {
             this.form[val] = zhi[val];
           });
+        }
+      })
+    },
+    baocun(){
+      this.$refs['formTwo'].validate((valid) => {
+        
+        if (valid) {
+          this.showZF = false
         }
       })
     },

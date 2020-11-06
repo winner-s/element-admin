@@ -64,212 +64,34 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
+      list:[
         {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
+          jylsh:'216755346547476',
+          bfyhzh:'32323232323',
+          bfzhmc:'aaa',
+          bfdwmc:'bbbb',
+          bfyhmc:1,
+          bfkhh:'株洲分行',
+          dfyhzh:'34343434343',
+          dfzhmc:'cccc',
+          dfkhh:'北京分行',
+          jdfx:1,
+          jyrq:'2020-09-01',
+          jyje:'1000',
+          ye:'1000',
+          bz:1,
+          zhyt:1,
+          sfzl:1,
+          zy:'',
+          beizhu:''
+
         }
       ],
+      
 
       // 表格
       tableData: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+        
       ],
       tableBtn: [],
       // 顶部搜索
@@ -287,6 +109,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -406,46 +230,98 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
-        prop: 'unitName',
+        prop: 'jylsh',
         width: '',
-        label: '银行标识'
+        label: '交易流水号',
+        fixed: 'left'
       },
 
       {
-        prop: 'accountPhone',
+        prop: 'bfyhzh',
         width: '150',
-        label: '本方账户号码',
+        label: '本方银行账号',
         fixed: 'left'
       },
       {
-        prop: 'accountName',
+        prop: 'bfzhmc',
         width: '',
         label: '本方账户名称'
       },
       {
-        prop: 'accountName',
+        prop: 'bfdwmc',
         width: '',
         label: '本方单位名称'
       },
 
       {
-        prop: 'bankName',
+        prop: 'bfyhmc',
         width: '',
         label: '本方银行名称'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'bfkhh',
         width: '',
-        label: '本方开户行名称'
+        label: '本方开户行'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'dfyhzh',
         width: '',
-        label: '对方账户号码'
-      }, {
-        prop: 'bankOpenName',
+        label: '对方银行账号'
+      },
+      {
+        prop: 'dfzhmc',
         width: '',
         label: '对方账号名称'
+      },
+      {
+        prop: 'dfkhh',
+        width: '',
+        label: '对方开户行'
+      },
+      {
+        prop: 'jdfx',
+        width: '',
+        label: '借贷方向'
+      },
+      {
+        prop: 'jyrq',
+        width: '',
+        label: '交易日期'
+      },
+      {
+        prop: 'jyje',
+        width: '',
+        label: '交易金额'
+      },
+      {
+        prop: 'ye',
+        width: '',
+        label: '余额'
+      },
+      {
+        prop: 'bz',
+        width: '',
+        label: '币种'
+      },
+      {
+        prop: 'zhyt',
+        width: '',
+        label: '账户用途'
+      },
+      {
+        prop: 'sfzl',
+        width: '',
+        label: '是否直联'
+      },
+      {
+        prop: 'zy',
+        width: '',
+        label: '摘要'
+      },
+      {
+        prop: 'beizhu',
+        width: '',
+        label: '备注'
       }
     ]
     // 按钮
@@ -492,8 +368,12 @@ export default {
     },
     // 分页
     onPageChange(val) {
+      var end = val * this.currentData.size
+      var start = (val - 1) * this.currentData.size
+
+      this.tableData = this.list.slice(start, end)
+
       this.currentData.currentPage = val
-      this.getList()
     },
     onSizeChange(val) {
       this.currentData.size = val
@@ -569,7 +449,8 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      this.tableDataTwo.forEach((item, index) => {
+      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {

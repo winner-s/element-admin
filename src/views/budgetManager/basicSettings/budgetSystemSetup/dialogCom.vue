@@ -24,14 +24,14 @@
         <el-col :span="12">
           <el-form-item
             label="体系编号："
-            prop="sysStudentNumber"
+            prop="txbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.txbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -39,14 +39,14 @@
         <el-col :span="12">
           <el-form-item
             label="体系名称："
-            prop="sysStudentName"
+            prop="txmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.txmc"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -59,7 +59,7 @@
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
-        @click="dialogObj.show = false"
+        @click="sub"
       >确 定</el-button>
     </span>
   </el-dialog>
@@ -77,19 +77,72 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      form: {}
+      form: {
+        txbh:'',
+        txmc:'',
+        txzt:'启用'
+      },
+      rules:{
+        txmc:[
+           { required: true, message: '请填写单据编号', trigger: 'blur' },
+        ]
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {}
+  methods: {
+
+    initDialog(){
+      let djbh = ''
+      for(let i=0;i<16;i++){
+          djbh+= Math.round(Math.random() * 10)
+      }
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        // this.form = this.dialogObj.form
+      }else{
+        Object.keys(this.form).forEach(key => (this.form[key] = ""));
+        this.form.txbh = djbh;
+        this.form.txzt= '启用'
+      }
+    },
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',this.form)
+      this.dialogObj.show=false
+    },
+    addSub() {
+      this.$emit('addSub',this.form)
+      this.dialogObj.show=false
+    },
+  }
 }
 </script>
 <style scoped lang="scss">

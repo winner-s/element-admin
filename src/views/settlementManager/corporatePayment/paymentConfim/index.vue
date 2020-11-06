@@ -31,6 +31,7 @@
         />
       </div>
     </el-card>
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 
@@ -39,10 +40,10 @@
 import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table,dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -64,107 +65,33 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
+      list:[
         {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
+          bz: "",
+          djbh: "57110317798255631",
+          djrq: "2020/11/4",
+          dscs: "",
+          dxje: "1000",
+          fkdw: "二级单位1",
+          fkfkhhmc: "北京分行",
+          fkfyhmc: "中国工商银行",
+          fkfyhs: "北京",
+          fkfyhshi: "北京市",
+          fkfyhzh: "20111006",
+          fkfzhmc: "测试非直联支付确认",
+          fkyt: 1,
+          je: "1000",
+          lhh: "548982894",
+          qwzfrq: "2020-11-04T16:00:00.000Z",
+          skfkhhmc: "株洲分行",
+          skfyhmc: 1,
+          skfyhss: "不知道",
+          skfyhzh: "4654654",
+          skfzhmc: "小三",
+          wbdh: "",
+          ywdw: "业务单位",
+          zffs: 1,
+          zy: "000",
         }
       ],
 
@@ -179,96 +106,6 @@ export default {
           openBankName: '',
           status: '通过',
           connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
         }
       ],
       tableBtn: [],
@@ -287,6 +124,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -364,50 +203,56 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { label: '操作', type: 'btn', width: '', fixed: 'left' },
       {
-        prop: 'documentNumber',
+        prop: 'djbh',
         width: '150',
         label: '单据编号',
         fixed: 'left'
       },
       {
-        prop: 'accountPhone',
+        prop: 'djrq',
         width: '150',
         label: '单据日期',
         fixed: 'left'
       },
       {
-        prop: 'accountName',
+        prop: 'djzt',
         width: '',
         label: '单据状态'
       },
       {
-        prop: 'bankName',
+        prop: 'fkfyhzh',
         width: '',
         label: '付款方账号'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'fkfzhmc',
         width: '',
         label: '付款方账户名称'
       },
       {
-        prop: 'status',
+        prop: 'fkfdw',
         width: '',
         label: '付款单位'
       },
       {
-        prop: 'connection',
+        prop: 'je',
         width: '',
         label: '金额(元)'
       },
       {
-        prop: 'currency',
+        prop: 'skfyhzh',
         width: '',
         label: '收方账号'
       }
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      {
+        name: '确认',
+        btnType: 'primary',
+        handleFn: 'handleEdit',
+      }
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -450,8 +295,12 @@ export default {
     },
     // 分页
     onPageChange(val) {
+      var end = val * this.currentData.size
+      var start = (val - 1) * this.currentData.size
+
+      this.tableData = this.list.slice(start, end)
+
       this.currentData.currentPage = val
-      this.getList()
     },
     onSizeChange(val) {
       this.currentData.size = val
@@ -509,11 +358,11 @@ export default {
       }
     },
     handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
+      this.dialogObj.id = row.djbh
+      this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
+      this.dialogObj.title = '操作'
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
@@ -527,7 +376,8 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      this.tableDataTwo.forEach((item, index) => {
+      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {

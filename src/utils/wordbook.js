@@ -116,3 +116,168 @@ export const ACCOUNTUSAGELIST = [
     value: '专业存款户-收支户'
   }
 ]
+
+
+// 账户状态
+export const ACCOUNTSTATUS  = {
+  '1': '正常',
+  '2': '销户',
+  
+}
+
+export const ACCOUNTSTATUSLIST = [
+  {
+    id: 1,
+    value: '正常'
+  },
+  {
+    id: 2,
+    value: '销户'
+  }
+]
+
+// 借贷方向
+export const LENDING  = {
+  '1': '借',
+  '2': '贷',
+  
+}
+
+export const LENDINGLIST = [
+  {
+    id: 1,
+    value: '借'
+  },
+  {
+    id: 2,
+    value: '贷'
+  }
+]
+
+
+// 付款用途
+export const PURPOSE   = {
+  '1': '员工借款',
+  '2': '差旅报销',
+  '3':'差旅补助'
+  
+}
+
+export const PURPOSELIST = [
+  {
+    id: 1,
+    value: '员工借款'
+  },
+  {
+    id: 2,
+    value: '差旅报销'
+  },
+  {
+    id: 3,
+    value: '差旅补助'
+  }
+]
+ 
+
+// 支付方式
+export const  PAYMENT   = {
+  '1': '非直联支付'
+  
+}
+
+export const PAYMENTLIST = [
+  {
+    id: 1,
+    value: '非直联支付'
+  }
+]
+
+
+// 是否滚动
+export const  SCORLL   = {
+  '1': '是',
+  '2': '否'
+  
+}
+
+export const SCORLLLIST = [
+  {
+    id: 1,
+    value: '是'
+  },
+  {
+    id:2,
+    value:'否'
+  }
+]
+
+
+// 周期类型  Cycle type
+export const  CYCLETYPE   = {
+  '1': '年',
+  '2': '季',
+  '2': '月',
+  '2': '周',
+  '2': '日'
+  
+}
+
+export const CYCLETYPELIIST = [
+  {
+    id: 1,
+    value: '年'
+  },
+  {
+    id:2,
+    value:'季'
+  },
+  {
+    id:3,
+    value:'月'
+  },
+  {
+    id:4,
+    value:'周'
+  },
+  {
+    id:5,
+    value:'日'
+  }
+]
+
+// 归集方式  Cycle type
+export const   COLLECTION   = {
+  '1': '比例归集',
+  '2': '取整归集',
+  '3': '限额归集',
+  '4': '全额归集',
+  '5': '超限额全额归集',
+  '6': '自定义归集'
+}
+
+export const COLLECTIONLIST = [
+  {
+    id: 1,
+    value: '比例归集'
+  },
+  {
+    id:2,
+    value:'取整归集'
+  },
+  {
+    id:3,
+    value:'限额归集'
+  },
+  {
+    id:4,
+    value:'全额归集'
+  },
+  {
+    id:5,
+    value:'超限额全额归集'
+  },
+  {
+    id:6,
+    value:'自定义归集'
+  }
+]

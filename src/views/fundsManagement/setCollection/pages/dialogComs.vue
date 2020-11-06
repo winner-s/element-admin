@@ -23,14 +23,14 @@
         <el-col :span="12">
           <el-form-item
             label="策略编号："
-            prop="sysStudentNumber"
+            prop="clbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -38,11 +38,35 @@
         <el-col :span="12">
           <el-form-item
             label="策略名称："
-            prop="sysStudentName"
+            prop="clmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.clmc"
+              style="width: 200px"
+              size="mini"
+              :disabled="true"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="归集方式：" prop="gjfs">
+            <el-input
+              v-model="form.gjfs"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="归集比例(%)：" prop="gjbl">
+            <el-input
+              v-model="form.gjbl"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -54,43 +78,20 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="归集方式：" prop="sysStudentNumber">
+          <el-form-item label="执行状态：" prop="zxzt">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.zxzt"
               style="width: 200px"
               size="mini"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="归集比例(%)：" prop="sysStudentNumber">
+          <el-form-item label="加急发送指令：" prop="jjfszl">
             <el-input
-              v-model="form.sysStudentNumber"
-              style="width: 200px"
-              size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <el-row>
-        <el-col :span="12">
-          <el-form-item label="执行状态：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
-              style="width: 200px"
-              size="mini"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="加急发送指令：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.jjfszl"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -101,8 +102,8 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="周期设置：" prop="sysStudentNumber">
-            <el-select v-model="value" placeholder="请选择" size="mini">
+          <el-form-item label="周期设置：" prop="zqsz">
+            <el-select v-model="form.zqsz" placeholder="请选择" size="mini">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -114,9 +115,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="执行时间：" prop="sysStudentName">
+          <el-form-item label="执行时间：" prop="zxsj">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.zxsj"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -125,7 +126,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 1">
+      <el-row v-if="form.zqsz == 1">
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
@@ -142,7 +143,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 2">
+      <el-row v-if="form.zqsz == 2">
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
@@ -164,7 +165,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 3">
+      <el-row v-if="form.zqsz == 3">
         <el-col>
           <el-form-item label="选择时间段">
             <el-checkbox
@@ -188,9 +189,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="节假日是否下拨：" prop="sysStudentNumber">
+          <el-form-item label="节假日是否归集：" prop="sfgj">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.sfgj"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -199,33 +200,7 @@
         </el-col>
         <el-col :span="12"> </el-col>
       </el-row>
-       <el-row>
-        <el-col >
-          <el-form-item label="调拨额度设置：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
-              type="textarea"
-              size="mini"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-        
-      </el-row>
-
-      <el-row>
-        <el-col >
-          <el-form-item label="调拨启动条件：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
-              type="textarea"
-              size="mini"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-        
-      </el-row>
+       
       
 
       <el-row style="background-color:#CCCCCC">
@@ -314,7 +289,18 @@ export default {
       checkedCities: [],
       value: '',
       placeholderTips: placeholderTips,
-      form: {},
+      form: {
+        clbh:'',
+        clmc:'',
+        gjfs:'',
+        gjbl:'',
+        zxzt:'',
+        jjfszl:'',
+        zqsz:'',
+        zxsj:'',
+        sfgj:''
+
+      },
       options: [
         {
           label: '日',
@@ -329,18 +315,56 @@ export default {
           value: 3,
         },
       ],
+      rules:{
+        gjfs:[
+          { required: true, message: '请选择归集方式', trigger: 'blur' },
+        ],
+        gjbl:[
+          { required: true, message: '请填写归集比例', trigger: 'blur' },
+        ],
+        zqsz:[
+          { required: true, message: '请选择周期设置', trigger: 'blur' },
+        ],
+        zxsj:[
+          { required: true, message: '请填写周期设置', trigger: 'blur' },
+        ],
+        sfgj:[
+          { required: true, message: '请选择节假日是否归集', trigger: 'blur' },
+        ],
+        
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {},
+  methods: {
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+       
+      } else {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = ''
+        });
+      }
+    },
+  },
 }
 </script>
 <style scoped lang="scss">

@@ -25,14 +25,14 @@
         <el-col :span="12">
           <el-form-item
             label="调剂类型编号："
-            prop="sysStudentNumber"
+            prop="tjlxbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.tjlxbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -40,11 +40,11 @@
         <el-col :span="12">
           <el-form-item
             label="调剂类型名称："
-            prop="sysStudentName"
+            prop="tjlxmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.tjlxmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -56,25 +56,39 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="体系名称：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
-              style="width: 200px"
+          <el-form-item label="体系名称：" prop="txmc">
+            <el-select
+              v-model="form.txmc"
+              placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in txmcList"
+                :key="item.txmc"
+                :label="item.txmc"
+                :value="item.txmc"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="周期 名称：" prop="sysStudentName">
-            <el-input
-              v-model="form.sysStudentName"
-              style="width: 200px"
+          <el-form-item label="周期名称：" prop="zqmc">
+            <el-select
+              v-model="form.zqmc"
+              placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in zqmcList"
+                :key="item.zqmc"
+                :label="item.zqmc"
+                :value="item.zqmc"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -85,7 +99,7 @@
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
-        @click="dialogObj.show = false"
+        @click="sub"
       >确 定</el-button>
     </span>
   </el-dialog>
@@ -103,19 +117,104 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      form: {}
+      form: {
+        tjlxbh:'',
+        tjlxmc:'',
+        txmc:'',
+        zqmc:''
+      },
+      zqmcList:[
+        {
+          zqbh:'2020027',
+          zqmc:'名称1',
+          zqlx:'月',
+        },
+        {
+          zqbh:'2020063',
+          zqmc:'名称2',
+          zqlx:'月',
+        }
+      ],
+      txmcList:[
+        {
+          txbh:'2020098',
+          txmc:'20201体系'
+        },
+        {
+          txbh:'2020001',
+          txmc:'20202体系'
+        }
+      ],
+      rules:{
+        tjlxbh:[
+           { required: true, message: '请输入调剂类型编号', trigger: 'blur' },
+        ],
+        tjlxmc:[
+           { required: true, message: '请输入调剂类型名称', trigger: 'blur' },
+        ],
+        txmc:[
+           { required: true, message: '请选择体系名称', trigger: 'blur' },
+        ],
+        zqmc:[
+           { required: true, message: '请选择周期名称', trigger: 'blur' },
+        ],
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {}
+  methods: {
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+      } else{
+        let tjlxbh = ''
+        for(let i=0;i<16;i++){
+          tjlxbh+= Math.round(Math.random() * 10)
+        }
+        Object.keys(this.form).forEach(item => {this.form[item] = ''});
+        this.form.tjlxbh= tjlxbh
+      }
+    },
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+    addSub() {
+      console.log(this.form)
+     
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+  }
 }
 </script>
 <style scoped lang="scss">

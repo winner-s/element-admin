@@ -423,7 +423,7 @@ export const constantRoutes = [
             meta: { title: '薪资代发导入' }
           },
           {
-            path: 'transferReview',
+            path: 'salaryPaymentAppliction',
             component: () =>
               import(
                 '@/views/settlementManager/salaryPayment/salaryPaymentAppliction/index'
@@ -432,7 +432,7 @@ export const constantRoutes = [
             meta: { title: '薪资代发申请' }
           },
           {
-            path: 'transferInstruction',
+            path: 'salaryPaymentReview',
             component: () =>
               import(
                 '@/views/settlementManager/salaryPayment/salaryPaymentReview/index'
@@ -441,7 +441,7 @@ export const constantRoutes = [
             meta: { title: '薪资代发复核' }
           },
           {
-            path: 'transferConfim',
+            path: 'salaryPaymentInstruction',
             component: () =>
               import(
                 '@/views/settlementManager/salaryPayment/salaryPaymentInstruction/index'

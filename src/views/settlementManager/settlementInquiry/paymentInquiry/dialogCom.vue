@@ -447,12 +447,12 @@
 
     </el-form>
 
-    <span slot="footer" class="dialog-footer" v-if="!dialogObj.read">
+    <span slot="footer" class="dialog-footer" >
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
         @click="sub"
-      >确 定</el-button>
+      >历史意见</el-button>
     </span>
   </el-dialog>
 </template>

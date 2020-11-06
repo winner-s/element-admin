@@ -14,7 +14,6 @@
       :model="form"
       label-width="140px"
       label-position="left"
-      :rules="rules"
       :disabled="dialogObj.read"
       status-icon
       class="form"
@@ -25,12 +24,12 @@
       <el-row>
         <el-col :span="12">
           <el-form-item
-            label="单据编号："
-            prop="documentNumber"
+            label="单据名称："
+            prop="unitName"
             class="formItem"
           >
             <el-input
-              v-model="form.documentNumber"
+              v-model="form.unitName"
               style="width: 200px"
               size="mini"
               :disabled="true"
@@ -39,10 +38,16 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户申请日期：" prop="openTime" class="formItem">
+          
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="开户日期：" prop="khrq" class="formItem">
             <el-date-picker
               style="width: 200px"
-              v-model="form.openTime"
+              v-model="form.khrq"
               type="date"
               placeholder="请选择开户日期"
               size="mini"
@@ -51,36 +56,22 @@
             </el-date-picker>
           </el-form-item>
         </el-col>
-      </el-row>
-
-      <el-row>
         <el-col :span="12">
-          <el-form-item label="单位名称：" prop="unitName">
-            <el-select
-              v-model="form.unitName"
+          <el-form-item label="币种：" prop="currency">
+             <el-select
+              v-model="form.currency"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
             >
               <el-option
-                v-for="item in unitNoList"
+                v-for="item in currencyList"
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
               >
               </el-option>
             </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="开户申请人：" prop="openApplicant">
-            <el-input
-              v-model="form.openApplicant"
-              style="width: 200px"
-              size="mini"
-              :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -130,9 +121,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户行名称：" prop="bankOpenName">
+          <el-form-item label="科目号：" prop="kmh">
             <el-input
-              v-model="form.bankOpenName"
+              v-model="form.kmh"
               style="width: 200px"
               size="mini"
               
@@ -144,9 +135,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="开户行省市：" prop="khhss">
+          <el-form-item label="开户行所在省：" prop="khhszs">
             <el-input
-              v-model="form.khhss"
+              v-model="form.khhszs"
               style="width: 200px"
               size="mini"
              
@@ -154,6 +145,44 @@
             />
           </el-form-item>
         </el-col>
+        <el-col :span="12">
+          <el-form-item label="开户行所在市：" prop="khhszshi">
+             <el-input
+              v-model="form.khhszshi"
+              style="width: 200px"
+              size="mini"
+             
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="开户行名称：" prop="bankOpenName">
+            <el-input
+              v-model="form.bankOpenName"
+              style="width: 200px"
+              size="mini"
+             
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="联行号：" prop="lhh">
+            <el-input
+              v-model="form.lhh"
+              style="width: 200px"
+              size="mini"
+             
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
         <el-col :span="12">
           <el-form-item label="账户用途：" prop="zhyt">
             <el-select
@@ -172,44 +201,10 @@
             </el-select>
           </el-form-item>
         </el-col>
-      </el-row>
-
-      <el-row>
         <el-col :span="12">
-          <el-form-item label="联行号：" prop="lhh">
-            <el-input
-              v-model="form.lhh"
-              style="width: 200px"
-              size="mini"
-             
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="币种：" prop="currency">
+          <el-form-item label="是否直联：" prop="connection">
             <el-select
-              v-model="form.currency"
-              placeholder="请选择"
-              size="mini"
-              style="width: 200px"
-            >
-              <el-option
-                v-for="item in currencyList"
-                :key="item.id"
-                :label="item.value"
-                :value="item.id"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="12">
-          <el-form-item label="是否直联：" prop="sfzl">
-            <el-select
-              v-model="form.sfzl"
+              v-model="form.wordbook"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -222,17 +217,6 @@
               >
               </el-option>
             </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="科目号：" prop="kmh">
-            <el-input
-              v-model="form.kmh"
-              style="width: 200px"
-              size="mini"
-              
-              :placeholder="placeholderTips.content"
-            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -278,25 +262,7 @@
         </el-col>
       </el-row>
 
-      <el-row>
-        <el-col>
-          <el-form-item label="附件：" prop="fj">
-            <el-upload
-              class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
-              :on-exceed="handleExceed"
-              :file-list="fileList"
-              :on-success="handleSuccess"
-            >
-              <el-button size="small" type="primary"
-                >上传附件({{ fileList.length }})条</el-button
-              >
-            </el-upload>
-          </el-form-item>
-        </el-col>
-      </el-row>
+     
     </el-form>
 
     <div class="dialog-footer">
@@ -324,35 +290,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rules: {
-        documentNumber: [
-          { required: true, message: '请填写单据编号', trigger: 'blur' },
-        ],
-        openTime: [
-          { required: true, message: '请选择开户申请日期', trigger: 'blur' },
-        ],
-        unitName: [
-          { required: true, message: '请选择单位名称', trigger: 'blur' },
-        ],
-         openApplicant: [
-          { required: true, message: '请填写开户申请人', trigger: 'blur' },
-        ],
-         backName: [
-          { required: true, message: '请选择银行名称', trigger: 'blur' },
-        ],
-         khhss: [
-          { required: true, message: '请选择开户行省市', trigger: 'blur' },
-        ],
-         currency: [
-          { required: true, message: '请选择币种', trigger: 'blur' },
-        ],
-        sfzl: [
-          { required: true, message: '请选择是否直联', trigger: 'blur' },
-        ],
-        zhyt: [
-          { required: true, message: '请选择账户用途', trigger: 'blur' },
-        ]
-      },
+      
       fileList: [
         {
           name: 'food.jpeg',
@@ -367,18 +305,21 @@ export default {
       ],
       placeholderTips: placeholderTips,
       form: {
-        documentNumber: 'KH20102917085862',
-        openTime: new Date(),
-        openApplicant: 'admin',
-        accountPhone:'',
-        accountName:'',
-        bankOpenName:'',
-        unitName: 1324,
-        backName: 1,
-        currency: 1,
-        zhyt: 1,
-        sfzl: 1,
-        khhss:''
+          unitName:'',
+          khrq:'',
+          accountPhone:'',
+          accountName:'',
+          currency:1,
+          bankName:1,
+          bankOpenName:'',
+          lhh:'',
+          accountStatus:1,
+          connection:1,
+          zhyt:1,
+          kmh:'',
+          kmh:'',
+          khhszs:"",
+          khhszshi:""
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,

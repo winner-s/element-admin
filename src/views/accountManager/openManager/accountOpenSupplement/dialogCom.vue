@@ -61,6 +61,7 @@
               placeholder="请选择"
               size="mini"
               style="width: 200px"
+              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in unitNoList"
@@ -118,6 +119,7 @@
               placeholder="请选择"
               size="mini"
               style="width: 200px"
+              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in backList"
@@ -149,7 +151,7 @@
               v-model="form.khhss"
               style="width: 200px"
               size="mini"
-             
+              :disabled="dialogObj.id!=''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -161,6 +163,7 @@
               placeholder="请选择"
               size="mini"
               style="width: 200px"
+              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in accountUsageList"
@@ -193,6 +196,7 @@
               placeholder="请选择"
               size="mini"
               style="width: 200px"
+              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in currencyList"
@@ -246,6 +250,7 @@
               v-model="form.khjl"
               style="width: 200px"
               size="mini"
+              :disabled="dialogObj.id!=''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -256,6 +261,7 @@
               v-model="form.khjlPhone"
               style="width: 200px"
               size="mini"
+              :disabled="dialogObj.id!=''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -272,6 +278,7 @@
               size="mini"
               maxlength="50"
               show-word-limit
+              :disabled="dialogObj.id!=''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -370,15 +377,11 @@ export default {
         documentNumber: 'KH20102917085862',
         openTime: new Date(),
         openApplicant: 'admin',
-        accountPhone:'',
-        accountName:'',
-        bankOpenName:'',
         unitName: 1324,
         backName: 1,
         currency: 1,
         zhyt: 1,
         sfzl: 1,
-        khhss:''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
@@ -408,15 +411,14 @@ export default {
     initDialog(){
       
       if (this.dialogObj.id) {
-        Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        // this.form = this.dialogObj.form
+        // Object.keys(this.form).forEach(item => {
+        //   this.form[item] = this.dialogObj.form[item];
+        // });
+        this.form = this.dialogObj.form
       } 
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
