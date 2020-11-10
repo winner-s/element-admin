@@ -55,12 +55,15 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="归集方式：" prop="gjfs">
-            <el-input
-              v-model="form.gjfs"
-              style="width: 200px"
-              size="mini"
-              :placeholder="placeholderTips.content"
-            />
+            <el-select v-model="form.zqsz" placeholder="请选择" size="mini">
+              <el-option
+                v-for="item in collectionList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -78,9 +81,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="执行状态：" prop="zxzt">
+          <el-form-item label="执行状态：" prop="clzt">
             <el-input
-              v-model="form.zxzt"
+              v-model="form.clzt"
               style="width: 200px"
               size="mini"
               :disabled="true"
@@ -90,12 +93,15 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="加急发送指令：" prop="jjfszl">
-            <el-input
-              v-model="form.jjfszl"
-              style="width: 200px"
-              size="mini"
-              :placeholder="placeholderTips.content"
-            />
+            <el-select v-model="form.jjfszl" placeholder="请选择" size="mini">
+              <el-option
+                v-for="item in scorllList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -104,11 +110,12 @@
         <el-col :span="12">
           <el-form-item label="周期设置：" prop="zqsz">
             <el-select v-model="form.zqsz" placeholder="请选择" size="mini">
+              
               <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in scorllList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
               >
               </el-option>
             </el-select>
@@ -203,7 +210,7 @@
        
       
 
-      <el-row style="background-color:#CCCCCC">
+      <el-row style="background-color:#CCCCCC" >
         <el-col >
           <el-form-item label="帮助信息：" prop="sysStudentNumber">
             <ul>
@@ -235,7 +242,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-
+import {COLLECTIONLIST ,SCORLLLIST} from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -243,6 +250,8 @@ export default {
   data() {
     // 这里存放数据
     return {
+      scorllList:SCORLLLIST,
+      collectionList:COLLECTIONLIST,
       checkAll: false,
       cities: [
         '星期天',
@@ -294,7 +303,7 @@ export default {
         clmc:'',
         gjfs:'',
         gjbl:'',
-        zxzt:'',
+        clzt:'激活',
         jjfszl:'',
         zqsz:'',
         zxsj:'',
@@ -361,6 +370,7 @@ export default {
       } else {
         Object.keys(this.form).forEach(item => {
           this.form[item] = ''
+          this.form.clzy='激活'
         });
       }
     },

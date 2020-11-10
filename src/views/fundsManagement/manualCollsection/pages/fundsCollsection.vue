@@ -43,7 +43,14 @@ export default {
       },
       tableData: [],
       tableListData: [],
-      list: data.foundsCollsection.tableData,
+      list: [
+        {
+          clbh:'ZJGJ20072011081832',
+          clmc:'11',
+          clms:'资金上划',
+          
+        }
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -60,12 +67,12 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       
       {
-        prop: 'number',
+        prop: 'clbh',
        
         label: '策略编号',
         fixed: 'left'
       },{
-        prop: 'name',
+        prop: 'clmc',
         label: '策略名称',
         fixed: 'left'
       }

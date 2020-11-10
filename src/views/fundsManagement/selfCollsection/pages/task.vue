@@ -17,9 +17,11 @@
         <Table
           :table-data="tableData"
           :table-list-data="tableListData"
+          :table-btn="tableBtn"
           :current-data="currentData"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
+          @handleStatus="handleStatus"
         />
       </div>
     </el-card>
@@ -44,8 +46,63 @@ export default {
       searchBto: data.collsectionTask.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.collsectionTask.tableListData,
-      list: data.collsectionTask.tableData,
+      tableListData:[],
+      list: [
+        {
+          id: 1,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '激活',
+          status: '未运行'
+        },
+        {
+          id: 2,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '激活',
+          status: '未运行'
+        },
+        {
+          id: 3,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '激活',
+          status: '未运行'
+        },
+        {
+          id: 4,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '停止',
+          status: '未运行'
+        },
+        {
+          id: 5,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '激活',
+          status: '未运行'
+        },
+        {
+          id: 6,
+          number: 'ZJGJ20072011081832',
+          name: '412',
+          pattern: '0 00 00 ** ?',
+          time: '2020-09-28 14:10:27',
+          taskStatus: '停止',
+          status: '未运行'
+        }
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -55,9 +112,84 @@ export default {
     }
   },
   created() {
-    this.getList()
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
+    this.tableListData=[
+      { width: '50', label: '', type: 'index' },
+      
+      {
+        prop: 'number',
+        width: '',
+        label: '策略编号'
+      },
+      {
+        prop: 'name',
+        width: '',
+        label: '策略名称'
+      },
+      {
+        prop: 'pattern',
+        width: '',
+        label: '执行模式'
+      },
+      {
+        prop: 'time',
+        width: '',
+        label: '激活/停止策略时间'
+      },
+      {
+        prop: 'taskStatus',
+        width: '',
+        label: '任务状态'
+      },
+      {
+        prop: 'status',
+        width: '',
+        label: '运行状态'
+      },
+      { label: '操作', type: 'btn', width: '' ,fixed:"right"},
+    ]
+    // 按钮
+    this.tableBtn = [
+      {
+        name: '激 活',
+        btnType: 'primary',
+        type:'isShow',
+        isShowStatus:'taskStatus',
+        isShowValue:'停止',
+        handleFn: 'handleStatus',
+      },
+      {
+        name: '停 止',
+        btnType: 'danger',
+        type:'isShow',
+        isShowStatus:'taskStatus',
+        isShowValue:'激活',
+        handleFn: 'handleStatus',
+      },
+    ]
   },
   methods: {
+    handleStatus(v){
+      
+      if(v.taskStatus=="停止"){
+        this.$confirm('确定停止?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          v.taskStatus ="激活"
+        })  
+      }else if(v.taskStatus =='激活'){
+           this.$confirm('确定停止激活', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          v.taskStatus ="停止"
+        })  
+      }
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -105,11 +237,10 @@ export default {
       this.dialogObj.title = '查看账号'
       this.dialogObj.form = row
     },
-    handleStatus(val) {},
-    handleDelete(val) {},
+    
+   
     getList() {
-      this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.collsectionTask.tableData.length
+      
     }
   }
 }
