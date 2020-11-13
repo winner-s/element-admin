@@ -18,9 +18,12 @@
         <Table
           :table-data="tableData"
           :table-list-data="tableListData"
+          :tableBtn="tableBtn"
           :current-data="currentData"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
+          @handleEdit="handleEdit"
+          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
@@ -37,7 +40,7 @@ export default {
   components: {
     Search,
     Table,
-    dialogCom
+    dialogCom,
   },
   data() {
     return {
@@ -47,27 +50,65 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
       searchItem: data.accountRelation.searchFrom,
       searchData: {
-        nickname: ''
+        nickname: '',
       },
       searchBto: data.accountRelation.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.accountRelation.tableListData,
-      list: data.accountRelation.tableData,
+      tableListData: [],
+      list: [
+        {
+          clbh:'ZJXB20111315565225',
+          clmc:'2222222222',
+          clms:'资金下拨'
+        }
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      }
+        total: 0,
+      },
     }
   },
   created() {
     this.getList()
+    this.tableListData = [
+      { width: '50', label: '', type: 'index' },
+      
+      {
+        prop: 'clbh',
+        width: '',
+        label: '策略编号',
+      },
+      {
+        prop: 'clmc',
+        width: '',
+        label: '策略名称',
+      },
+      {
+        prop: 'clms',
+        width: '',
+        label: '策略模式',
+      },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+    ]
+    this.tableBtn = [
+      {
+        name: '修 改',
+        btnType: 'primary',
+        handleFn: 'handleEdit',
+      },
+      {
+        name: '删 除',
+        btnType: 'danger',
+        handleFn: 'handleDelete',
+      },
+    ]
   },
   methods: {
     handleInsert() {
@@ -128,7 +169,7 @@ export default {
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = data.accountRelation.tableData.length
-    }
-  }
+    },
+  },
 }
 </script>

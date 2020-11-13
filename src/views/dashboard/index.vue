@@ -2,6 +2,87 @@
 <template>
   <div class="">
     <el-row :gutter="20">
+      <el-col :span="12">
+        <el-card class="" style="height: 361px">
+          <div slot="header" class="clearfix">
+            <span>常用功能</span>
+            <el-button
+              style="
+                float: right;
+                padding: 3px 0;
+                margin-top: 5px;
+                width: 20px;
+                height: 20px;
+              "
+              type="text"
+              class="sz"
+              @click="dialogVisible = true"
+            />
+          </div>
+          <div class="common">
+            <div v-for="(item, index) in confirmList" :key="index">
+              <router-link :to="item.router">
+                <img :src="item.img" alt="" />
+                <p>{{ item.name }}</p>
+              </router-link>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card
+          class="db"
+          style="height: 361px"
+          :body-style="{ padding: '0px' }"
+        >
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="用户管理" name="first">
+              <div class="content">
+                <div v-for="item in 7" :key="item" class="right_div">
+                  <div class="right_left">
+                    【<span style="color: #1890ff">账户开户申请</span
+                    >】KH20072414393322
+                  </div>
+                  <div>2020-11-20</div>
+                </div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="配置管理" name="second">
+              <div v-for="item in 7" :key="item" class="right_div">
+                <div class="right_left">
+                  【<span style="color: #1890ff">账户开户申请</span
+                  >】KH20072414393322
+                </div>
+                <div>2020-11-20</div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="角色管理" name="third">
+              <div v-for="item in 7" :key="item" class="right_div">
+                <div class="right_left">
+                  【<span style="color: #1890ff">账户开户申请</span
+                  >】KH20072414393322
+                </div>
+                <div>2020-11-20</div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="定时任务补偿" name="fourth">
+              <div v-for="item in 7" :key="item" class="right_div">
+                <div class="right_left">
+                  【<span style="color: #1890ff">账户开户申请</span
+                  >】KH20072414393322
+                </div>
+                <div>2020-11-20</div>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+          <p class="more">
+            <span style="color: #1890ff">查看更多></span>
+          </p>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20" style="margin-top: 24px">
       <el-col :span="6">
         <el-card class="box-card">
           <div class="top_div">
@@ -39,87 +120,12 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-row :gutter="20" style="margin-top:23px">
-      <el-col :span="12">
-        <el-card class="" style="height:361px">
-          <div slot="header" class="clearfix">
-            <span>常用功能</span>
-            <el-button
-              style="float: right; padding: 3px 0;margin-top:5px; width:20px;height:20px"
-              type="text"
-              class="sz"
-              @click="dialogVisible = true"
-            />
-          </div>
-          <div class="common">
-            <div v-for="(item, index) in confirmList" :key="index">
-              <router-link :to="item.router">
-                <img :src="item.img" alt="">
-                <p>{{ item.name }}</p>
-              </router-link>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card class="db" style="height:361px" :body-style="{ padding: '0px' }">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">
 
-              <div class="content">
-                <div v-for="item in 7" :key="item" class="right_div">
-                  <div class="right_left">
-                    【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
-                  </div>
-                  <div>
-                    2020-11-20
-                  </div>
-                </div>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">
-              <div v-for="item in 7" :key="item" class="right_div">
-                <div class="right_left">
-                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
-                </div>
-                <div>
-                  2020-11-20
-                </div>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="角色管理" name="third">
-              <div v-for="item in 7" :key="item" class="right_div">
-                <div class="right_left">
-                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
-                </div>
-                <div>
-                  2020-11-20
-                </div>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth">
-              <div v-for="item in 7" :key="item" class="right_div">
-                <div class="right_left">
-                  【<span style="color:#1890FF">账户开户申请</span>】KH20072414393322
-                </div>
-                <div>
-                  2020-11-20
-                </div>
-              </div>
-            </el-tab-pane>
-          </el-tabs>
-          <p class="more">
-            <span style="color:#1890FF;">查看更多></span>
-          </p>
-        </el-card>
-      </el-col>
-    </el-row>
-
-    <el-row :gutter="20" style="margin-top:23px">
+    <el-row :gutter="20" style="margin-top: 23px">
       <el-col :span="12">
         <el-card
           class=""
-          style="height:361px"
+          style="height: 361px"
           :body-style="{ padding: '0px' }"
         >
           <div slot="header" class="clearfix">
@@ -127,7 +133,7 @@
             <el-select
               v-model="value"
               placeholder="请选择"
-              style="float: right; "
+              style="float: right"
               size="mini"
             >
               <el-option
@@ -144,17 +150,13 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card
-
-          style="height:361px;"
-          :body-style="{ padding: '0px' }"
-        >
+        <el-card style="height: 361px" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
             <span>资产统计表</span>
             <el-select
               v-model="value"
               placeholder="请选择"
-              style="float: right; "
+              style="float: right"
               size="mini"
             >
               <el-option
@@ -172,49 +174,41 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" style="margin-top:23px">
+    <el-row :gutter="20" style="margin-top: 23px">
       <el-col :span="12">
         <el-card
           class=""
-          style="height:361px"
+          style="height: 361px"
           :body-style="{ padding: '0px' }"
         >
           <div slot="header" class="clearfix">
             <span>负债统计表</span>
-
           </div>
           <div>
-            <Line-charts
-              class="pieCharts"
-              :line-chart-data="tableData"
-            />
+            <Line-charts class="pieCharts" :line-chart-data="tableData" />
           </div>
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card
-
-          style="height:361px;"
-          :body-style="{ padding: '0px' }"
-        >
+        <el-card style="height: 361px" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
-            <span>前置机状态</span>
+            <span>各行账户数量表</span>
           </div>
           <div>
-            <pia-charts class="pieCharts" :table-data="status" />
+            <pia-charts class="pieCharts" :line-chart-data="status" />
           </div>
         </el-card>
       </el-col>
     </el-row>
 
     <el-dialog
-      title="自定义快捷入口"
+      title="自定义功能入口"
       :visible.sync="dialogVisible"
       width="45%"
       :before-close="handleClose"
     >
       <div>
-        <p>已选功能（点击拖动调整顺序)</p>
+        <p>已添加在首页（点击拖动调整顺序,最多15个)</p>
         <div>
           <div class="dialog_top">
             <vuedraggable v-model="list" class="wrapper">
@@ -224,34 +218,44 @@
                 class="dialog_div"
               >
                 <a class="close" @click="close(item, index)" />
-                <img :src="item.img" alt="">
+                <img :src="item.img" alt="" />
                 <p>{{ item.name }}</p>
               </div>
             </vuedraggable>
           </div>
-          <el-divider style="width:auto" />
-          <p>可添加功能</p>
+          <el-divider style="width: auto" />
+          <p>全部收藏</p>
           <div class="dialog_top">
 
-            <div
-              v-for="(item, index) in deleteList"
-              :key="index"
-              class="dialog_div"
-            >
-              <a class="push" @click="push(item, index)" />
-              <img :src="item.img" alt="">
-              <p>{{ item.name }}</p>
+
+
+            <div class="qbsc" v-for="(item,index) in qbscList" :key="index">
+              <div class="top">
+                <div class="top_name">{{item.name}}</div>
+                <div v-show="item.show==true" @click="item.show =false">收起<i class="el-icon-arrow-up el-icon--right" /></div>
+                <div v-show="item.show==false" @click="item.show =true">展开<i class="el-icon-arrow-down el-icon--right" /></div>
+              </div>
+              <div
+                v-for="(ele, index) in item.childerList"
+                :key="index"
+                class="dialog_div"
+                v-show="item.show==true"
+              >
+                <a class="push" @click="push(ele, index)" />
+                <img :src="ele.img" alt="" />
+                <p>{{ ele.name }}</p>
+              </div>
             </div>
+
+
+
           </div>
         </div>
       </div>
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button
-          type="primary"
-          @click="confirm"
-        >确 定</el-button>
+        <el-button type="primary" @click="confirm">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -271,185 +275,207 @@ export default {
   data() {
     // 这里存放数据
     return {
+      qbscList: [
+        {
+          name: '账户管理',
+          show: false,
+          childerList: [
+            {
+              parentName:'账户管理',
+              img: require('@/assets/img/1.png'),
+              name: '资金监控',
+              router: '',
+            },
+          ],
+        },
+      ],
       dialogVisible: false,
       activeName: 'first',
       confirmList: [
         {
           img: require('@/assets/img/1.png'),
           name: '资金监控',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/2.png'),
           name: '资金池管理',
-          router: '/fundsManagement'
+          router: '/fundsManagement',
         },
         {
           img: require('@/assets/img/3.png'),
           name: '报表中心',
-          router: '/form'
+          router: '/form',
         },
         {
           img: require('@/assets/img/4.png'),
           name: '内部金融',
-          router: '/internalFinance'
+          router: '/internalFinance',
         },
         {
           img: require('@/assets/img/5.png'),
           name: '融资管理',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/6.png'),
           name: '企业对账',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/7.png'),
           name: '内部结算',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/8.png'),
           name: '投资管理',
-          router: ''
-        }
+          router: '',
+        },
       ],
       list: [
         {
           img: require('@/assets/img/1.png'),
           name: '资金监控',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/2.png'),
           name: '资金池管理',
-          router: '/fundsManagement'
+          router: '/fundsManagement',
         },
         {
           img: require('@/assets/img/3.png'),
           name: '报表中心',
-          router: '/form'
+          router: '/form',
         },
         {
           img: require('@/assets/img/4.png'),
           name: '内部金融',
-          router: '/internalFinance'
+          router: '/internalFinance',
         },
         {
           img: require('@/assets/img/5.png'),
           name: '融资管理',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/6.png'),
           name: '企业对账',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/7.png'),
           name: '内部结算',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/8.png'),
           name: '投资管理',
-          router: ''
-        }
+          router: '',
+        },
       ],
       deleteList: [
         {
           img: require('@/assets/img/9.png'),
           name: '审批任务',
-          router: ''
+          router: '',
         },
         {
           img: require('@/assets/img/10.png'),
           name: '账号管理',
-          router: '/accountManager'
+          router: '/accountManager',
         },
         {
           img: require('@/assets/img/11.png'),
           name: '结算管理',
-          router: '/settlementManager'
+          router: '/settlementManager',
         },
         {
           img: require('@/assets/img/12.png'),
           name: '预算管理',
-          router: '/budgetManager'
-        }
+          router: '/budgetManager',
+        },
       ],
       options: [
         {
           value: '选项1',
-          label: '欧莱股份公司'
+          label: '欧莱股份公司',
         },
         {
           value: '选项2',
-          label: '立讯精密有限公司'
+          label: '立讯精密有限公司',
         },
         {
           value: '选项3',
-          label: '美的集团'
-        }
+          label: '美的集团',
+        },
       ],
       value: '',
       tableData: [
         {
           value: 10,
-          name: '北京银行'
+          name: '北京银行',
         },
         {
           value: 20,
-          name: '中国银行'
+          name: '中国银行',
         },
         {
           value: 30,
-          name: '建设银行'
+          name: '建设银行',
         },
         {
           value: 40,
-          name: '工商银行'
-        }
+          name: '工商银行',
+        },
       ],
       // 前置机状态图表  值
       status: [
         {
-          value: 10,
-          name: '闲置'
+          value: 34,
+          name: '中国银行',
+        },
+        {
+          value: 23,
+          name: '建设银行',
         },
         {
           value: 20,
-          name: '故障'
+          name: '交通银行',
         },
         {
-          value: 30,
-          name: '繁忙'
-        }
+          value: 16,
+          name: '招商银行',
+        },
+        {
+          value: 10,
+          name: '工商银行',
+        },
       ],
       // 资产统计表 图标  值
       zcList: [
         {
           value: 10,
-          name: '银行理财'
+          name: '银行理财',
         },
         {
           value: 20,
-          name: '定期存款'
+          name: '定期存款',
         },
         {
           value: 30,
-          name: '通知存款'
+          name: '通知存款',
         },
         {
           value: 20,
-          name: '国债逆回购'
+          name: '国债逆回购',
         },
         {
           value: 30,
-          name: '内部存款'
-        }
-      ]
+          name: '内部存款',
+        },
+      ],
     }
   },
   // 监听属性 类似于data概念
@@ -466,47 +492,91 @@ export default {
       this.dialogVisible = false
       this.confirmList = JSON.parse(JSON.stringify(this.list))
     },
-    close(item, index) {
+    close(res, index) {
       this.list.splice(index, 1)
-      this.deleteList.push(item)
+      this.qbscList.forEach((item,index)=>{
+        
+        if(item.name==res.parentName){
+          console.log('删除相同')
+          item.childerList.push(res)
+          
+        }
+      })
+      
     },
-    push(item, index) {
-      this.deleteList.splice(index, 1)
-      this.list.push(item)
-    }
-  }
+    push(res, index) {
+       let bool = false
+      this.qbscList.forEach((item,index)=>{
+        
+        item.childerList.forEach((ele,index)=>{
+          if(res===ele){
+            console.log("相同")
+            bool=true
+            return
+          }
+        })
+        if(bool==true){
+            item.childerList.splice(index,1)
+            return 
+        }
+      })
+      this.list.push(res)
+    },
+  },
 }
 </script>
 
 <style >
-.el-tabs__item{
+.el-tabs__item {
   height: 65px;
   line-height: 65px;
-
 }
-.el-tabs__nav-scroll{
+.el-tabs__nav-scroll {
   box-sizing: border-box;
   padding: 0 20px;
 }
 </style>
 <style scoped lang="scss">
-
-.more{
+.qbsc{
+  .top{
+    padding-left: 12px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #1890FF;
+    .top_name{
+      position: relative;
+            
+      
+    }
+    .top_name::before{
+      content: '';
+      width: 3px;
+      height: 14px;
+      background-color: #1890FF;
+      position: absolute;
+      left: -12px;
+    }
+  }
+}
+.more {
   position: absolute;
-  right:40px;
+  right: 40px;
   bottom: 20px;
 }
 
-.clearfix{
+.clearfix {
   line-height: 28px;
 }
-.sz{
+.sz {
   background: url('../../assets/img/set.png') no-repeat;
   background-size: 100% 100%;
 }
 p {
   margin: 0;
-
 }
 .right_div {
   display: flex;
@@ -515,17 +585,17 @@ p {
   margin: 0px 30px 20px 30px;
   position: relative;
 
-  .right_left ::after{
+  .right_left ::after {
     content: '';
     position: absolute;
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #CCCCCC;
+    background-color: #cccccc;
     left: 0;
     top: 5px;
   }
-  & >:nth-child(1) {
+  & > :nth-child(1) {
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
@@ -600,8 +670,7 @@ p {
       height: 38px;
     }
     p {
-
-      margin: 0 ;
+      margin: 0;
       margin-top: 5px !important;
       text-align: center;
       font-size: 14px;
@@ -648,7 +717,7 @@ p {
       color: #52c41a;
       padding-right: 14px;
       background: url('../../assets/img/up.png') no-repeat;
-      background-size:  9px 6px;
+      background-size: 9px 6px;
       background-position-x: 100%;
       background-position-y: 50%;
     }
@@ -658,7 +727,7 @@ p {
       color: #f5222d;
       padding-right: 14px;
       background: url('../../assets/img/down.png') no-repeat;
-      background-size:  9px 6px;
+      background-size: 9px 6px;
       background-position-x: 100%;
       background-position-y: 50%;
     }

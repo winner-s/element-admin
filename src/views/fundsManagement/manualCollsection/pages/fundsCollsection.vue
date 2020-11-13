@@ -48,7 +48,20 @@ export default {
           clbh:'ZJGJ20072011081832',
           clmc:'11',
           clms:'资金上划',
-          
+          sjdwbh:'002',
+          sjdwmc:'二级单位1',
+          sjyhzh:'2222334455667700',
+          sjzhmc:'二级单位1CNY直联账户1',
+          childerList:[
+            {
+              dwmc:'二级单位1',
+              yhzh:'11111111111111111111',
+              zhmc:'二级单位1CNY直联账户1',
+              yhlx:'中国银行',
+              zhye:'0.00',
+              gjje:'0.00'
+            }
+          ]
         }
       ],
       tableBtn: [],
@@ -82,11 +95,11 @@ export default {
   methods: {
     tableClick(res){
       console.log(res)
-      this.dialogObj.id = res.id
+      this.dialogObj.id = res.clbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '详情'
-      this.dialogObj.form = res
+      this.dialogObj.form = JSON.parse(JSON.stringify(res))
     },
     getDataList(val) {
       console.log(val)

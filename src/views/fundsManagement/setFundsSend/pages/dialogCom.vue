@@ -25,11 +25,11 @@
         <el-col :span="12">
           <el-form-item
             label="策略编号："
-            prop="sysStudentNumber"
+            prop="clbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -40,11 +40,11 @@
         <el-col :span="12">
           <el-form-item
             label="策略名称："
-            prop="sysStudentName"
+            prop="clmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.clmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -56,9 +56,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="策略模式：" prop="sysStudentNumber">
+          <el-form-item label="策略模式：" prop="clms">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clms"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -73,9 +73,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="上级单位编号：" prop="sysStudentNumber">
+          <el-form-item label="上级单位编号：" prop="sjdwbh">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.sjdwbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -84,9 +84,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="上级单位名称：" prop="sysStudentName">
+          <el-form-item label="上级单位名称：" prop="sjdwmc">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.sjdwmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -98,9 +98,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="上级银行账号：" prop="sysStudentNumber">
+          <el-form-item label="上级银行账号：" prop="sjyhzh">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.sjyhzh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -109,7 +109,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="上级账号名称：" prop="sysStudentName">
+          <el-form-item label="上级账号名称：" prop="sjyhmc">
             <el-input
               v-model="form.sysStudentName"
               style="width: 200px"
@@ -122,6 +122,7 @@
       </el-row>
 
     </el-form>
+    
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>

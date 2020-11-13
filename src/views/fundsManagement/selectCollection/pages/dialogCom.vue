@@ -14,23 +14,23 @@
       :model="form"
       label-width="140px"
       label-position="left"
-      :rules="rules"
+      
       :disabled="dialogObj.read"
       status-icon
       class="form"
       :inline-message="true"
     >
-      <div class="title"><i class="el-icon-user" /> 基本信息</div>
+      <div class="title"><i class="el-icon-user" /> 付款主单</div>
       <div class="mb-10" />
       <el-row>
         <el-col :span="12">
           <el-form-item
             label="单据编号："
-            prop="documentNumber"
+            prop="djbh"
             class="formItem"
           >
             <el-input
-              v-model="form.documentNumber"
+              v-model="form.djbh"
               style="width: 200px"
               size="mini"
               :disabled="true"
@@ -39,12 +39,12 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户申请日期：" prop="openTime" class="formItem">
+          <el-form-item label="单据日期：" prop="djrq" class="formItem">
             <el-date-picker
               style="width: 200px"
-              v-model="form.openTime"
+              v-model="form.djrq"
               type="date"
-              placeholder="请选择开户日期"
+              placeholder="请选择单据日期"
               size="mini"
               :disabled="true"
             >
@@ -55,9 +55,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="单位名称：" prop="unitName">
+          <el-form-item label="付款公司编号：" prop="fkgsbh">
             <el-select
-              v-model="form.unitName"
+              v-model="form.fkgsbh"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -73,9 +73,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户申请人：" prop="openApplicant">
+          <el-form-item label="付款公司名称：" prop="fkgsmc">
             <el-input
-              v-model="form.openApplicant"
+              v-model="form.fkgsmc"
               style="width: 200px"
               size="mini"
               :disabled="true"
@@ -87,9 +87,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="账户号码：" prop="accountPhone">
+          <el-form-item label="业务类型：" prop="ywlx">
             <el-input
-              v-model="form.accountPhone"
+              v-model="form.ywlx"
               style="width: 200px"
               size="mini"
               
@@ -98,9 +98,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="账户名称：" prop="accountName">
+          <el-form-item label="汇总金额(元)：" prop="hzje">
             <el-input
-              v-model="form.accountName"
+              v-model="form.hzje"
               style="width: 200px"
               size="mini"
               
@@ -110,11 +110,12 @@
         </el-col>
       </el-row>
 
+      <div class="title"><i class="el-icon-user" /> 收款方信息</div>
       <el-row>
         <el-col :span="12">
-          <el-form-item label="银行名称：" prop="backName">
+          <el-form-item label="公司编号：" prop="gsbh">
             <el-select
-              v-model="form.backName"
+              v-model="form.gsbh"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -130,9 +131,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="开户行名称：" prop="bankOpenName">
+          <el-form-item label="公司名称：" prop="gsmc">
             <el-input
-              v-model="form.bankOpenName"
+              v-model="form.gsmc"
               style="width: 200px"
               size="mini"
               
@@ -144,9 +145,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="开户行省市：" prop="khhss">
+          <el-form-item label="银行编号：" prop="yhbh">
             <el-input
-              v-model="form.khhss"
+              v-model="form.yhbh"
               style="width: 200px"
               size="mini"
              
@@ -155,9 +156,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="账户用途：" prop="zhyt">
+          <el-form-item label="银行名称：" prop="yhmc">
             <el-select
-              v-model="form.zhyt"
+              v-model="form.yhmc"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -176,9 +177,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="联行号：" prop="lhh">
+          <el-form-item label="账户编号：" prop="zhbh">
             <el-input
-              v-model="form.lhh"
+              v-model="form.zhbh"
               style="width: 200px"
               size="mini"
              
@@ -187,9 +188,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="币种：" prop="currency">
+          <el-form-item label="账户名称：" prop="zhmc">
             <el-select
-              v-model="form.currency"
+              v-model="form.zhmc"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -207,9 +208,9 @@
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item label="是否直联：" prop="sfzl">
+          <el-form-item label="支付类型：" prop="zflx">
             <el-select
-              v-model="form.sfzl"
+              v-model="form.zflx"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -225,9 +226,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="科目号：" prop="kmh">
+          <el-form-item label="期望日期：" prop="qwrq">
             <el-input
-              v-model="form.kmh"
+              v-model="form.qwrq"
               style="width: 200px"
               size="mini"
               
@@ -237,13 +238,13 @@
         </el-col>
       </el-row>
       
-      <div class="title"><i class="el-icon-user" /> 附加信息</div>
+      <div class="title"><i class="el-icon-user" /> 收款方信息</div>
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="客户经理：" prop="khjl">
+          <el-form-item label="公司编号：" prop="skgsbh">
             <el-input
-              v-model="form.khjl"
+              v-model="form.skgsbh"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -251,9 +252,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="客户经理电话：" prop="khjlPhone">
+          <el-form-item label="公司名称：" prop="skgsmc">
             <el-input
-              v-model="form.khjlPhone"
+              v-model="form.skgsmc"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -261,17 +262,24 @@
           </el-form-item>
         </el-col>
       </el-row>
+
       <el-row>
-        <el-col>
-          <el-form-item label="备注：" prop="bz">
+        <el-col :span="12">
+          <el-form-item label="银行编号：" prop="skyhbh">
             <el-input
-              v-model="form.bz"
-              style="width: 83%"
-              type="textarea"
-              :rows="3"
+              v-model="form.skyhbh"
+              style="width: 200px"
               size="mini"
-              maxlength="50"
-              show-word-limit
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="银行名称：" prop="skyhmc">
+            <el-input
+              v-model="form.skyhmc"
+              style="width: 200px"
+              size="mini"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -279,29 +287,137 @@
       </el-row>
 
       <el-row>
-        <el-col>
-          <el-form-item label="附件：" prop="fj">
-            <el-upload
-              class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
-              :on-exceed="handleExceed"
-              :file-list="fileList"
-              :on-success="handleSuccess"
-            >
-              <el-button size="small" type="primary"
-                >上传附件({{ fileList.length }})条</el-button
-              >
-            </el-upload>
+        <el-col :span="12">
+          <el-form-item label="账户编号：" prop="skzhbh">
+            <el-input
+              v-model="form.skzhbh"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="账户名称：" prop="skzhmc">
+            <el-input
+              v-model="form.skzhmc"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
           </el-form-item>
         </el-col>
       </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="金额(元)：" prop="je">
+            <el-input
+              v-model="form.je"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="摘要：" prop="zy">
+            <el-input
+              v-model="form.zy"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <div class="title"><i class="el-icon-user" />指令详情</div>
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="策略编号：" prop="clbh">
+            <el-input
+              v-model="form.clbh"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="策略名称：" prop="clmc">
+            <el-input
+              v-model="form.clmc"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="指令状态：" prop="zlzt">
+            <el-input
+              v-model="form.zlzt"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="指令发送时间：" prop="zlfssj">
+            <el-input
+              v-model="form.zlfssj"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="指令撤销时间：" prop="zlcxsj">
+            <el-input
+              v-model="form.zlcxsj"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="银行返回信息：" prop="yhfhxx">
+            <el-input
+              v-model="form.yhfhxx"
+              style="width: 200px"
+              size="mini"
+              :placeholder="placeholderTips.content"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          
+        </el-col>
+      </el-row>
+     
+
+      
     </el-form>
 
     <div class="dialog-footer">
-      <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub">保存</el-button>
+      <el-button @click="dialogObj.show = false">返 回</el-button>
+     
     </div>
   </el-dialog>
 </template>
@@ -324,61 +440,39 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rules: {
-        documentNumber: [
-          { required: true, message: '请填写单据编号', trigger: 'blur' },
-        ],
-        openTime: [
-          { required: true, message: '请选择开户申请日期', trigger: 'blur' },
-        ],
-        unitName: [
-          { required: true, message: '请选择单位名称', trigger: 'blur' },
-        ],
-         openApplicant: [
-          { required: true, message: '请填写开户申请人', trigger: 'blur' },
-        ],
-         backName: [
-          { required: true, message: '请选择银行名称', trigger: 'blur' },
-        ],
-         khhss: [
-          { required: true, message: '请选择开户行省市', trigger: 'blur' },
-        ],
-         currency: [
-          { required: true, message: '请选择币种', trigger: 'blur' },
-        ],
-        sfzl: [
-          { required: true, message: '请选择是否直联', trigger: 'blur' },
-        ],
-        zhyt: [
-          { required: true, message: '请选择账户用途', trigger: 'blur' },
-        ]
-      },
-      fileList: [
-        {
-          name: 'food.jpeg',
-          url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
-        {
-          name: 'food2.jpeg',
-          url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
-      ],
+      
+      
+      
       placeholderTips: placeholderTips,
       form: {
-        documentNumber: 'KH20102917085862',
-        openTime: new Date(),
-        openApplicant: 'admin',
-        accountPhone:'',
-        accountName:'',
-        bankOpenName:'',
-        unitName: 1324,
-        backName: 1,
-        currency: 1,
-        zhyt: 1,
-        sfzl: 1,
-        khhss:''
+        djbh:'',
+        djrq:'',
+        fkgsbh:'',
+        fkgsmc:'',
+        ywlx:'',
+        hzje:'',
+        gsbh:'',
+        gsmc:'',
+        yhzh:'',
+        yhmc:'',
+        zhbh:'',
+        zhmc:'',
+        zflx:'',
+        qwrq:'',
+        skgsbh:'',
+        skgsmc:'',
+        skyhbh:'',
+        skyhmc:'',
+        skzhbh:'',
+        skzhmc:'',
+        je:'',
+        zy:'',
+        clbh:'',
+        clmc:'',
+        zlzt:'',
+        zlfssj:'',
+        zlcxsj:'',
+        yhfhxx:''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
@@ -418,45 +512,10 @@ export default {
         });
       }
     },
-    sub() {
-      this.$refs['form'].validate((valid) => {
-        
-        if (valid) {
-          if (this.dialogObj.id) {
-            this.updateSub()
-          } else {
-            this.addSub()
-          }
-        }
-      })
-    },
-    updateSub(){
-      this.$emit('updateSub',this.form)
-      this.dialogObj.show=false
-    },
-    addSub() {
-      this.$emit('addSub',this.form)
-      this.dialogObj.show=false
-    },
+    
 
-    handleRemove(file, fileList) {
-      console.log(file, fileList)
-      this.fileList = fileList
-    },
-    handleSuccess(res, file) {
-      console.log(file)
-      this.fileList.push(file)
-    },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
-          files.length + fileList.length
-        } 个文件`
-      )
-    },
-    beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`)
-    },
+   
+   
   },
 }
 </script>

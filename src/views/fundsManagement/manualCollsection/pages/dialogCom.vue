@@ -24,11 +24,11 @@
         <el-col :span="12">
           <el-form-item
             label="策略编号："
-            prop="sysStudentNumber"
+            prop="clbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -39,11 +39,11 @@
         <el-col :span="12">
           <el-form-item
             label="策略名称："
-            prop="sysStudentName"
+            prop="clmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.clmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -55,9 +55,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="策略模式：" prop="sysStudentNumber">
+          <el-form-item label="策略模式：" prop="clms">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clms"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -72,9 +72,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="上级单位编号：" prop="sysStudentNumber">
+          <el-form-item label="上级单位编号：" prop="sjdwbh">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.sjdwbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -83,9 +83,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="上级单位名称：" prop="sysStudentName">
+          <el-form-item label="上级单位名称：" prop="sjdwmc">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.sjdwmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -97,9 +97,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="上级银行账号：" prop="sysStudentNumber">
+          <el-form-item label="上级银行账号：" prop="sjyhzh">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.sjyhzh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -108,9 +108,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="上级账号名称：" prop="sysStudentName">
+          <el-form-item label="上级账号名称：" prop="sjzhmc">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.sjzhmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -123,7 +123,7 @@
      
 
       <Table
-            :table-data="tableDetailData"
+            :table-data="form.childerList"
             :table-list-data="tableListData"
             :current-data="currentData"
             @onPageChange="onPageChange"
@@ -155,7 +155,16 @@ export default {
     return {
       tableListData:[],
       placeholderTips: placeholderTips,
-      form: {},
+      form: {
+        clmh:'',
+        clmc:'',
+        clms:'',
+        sjdwbh:'',
+        sjdwmc:'',
+        sjyhzh:'',
+        sjzhmc:'',
+        childerList:[]
+      },
       currentData: {
         currentPage: 1,
         size: 10,
@@ -166,7 +175,13 @@ export default {
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
     //  table表格
@@ -174,35 +189,35 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       
       {
-        prop: 'documentNumber',
+        prop: 'dwmc',
         width: '150',
         label: '单位名称',
         fixed: 'left'
       },
       {
-        prop: 'accountPhone',
+        prop: 'yhzh',
         width: '150',
         label: '银行账号',
         fixed: 'left'
       },
       {
-        prop: 'accountName',
+        prop: 'zhmc',
         width: '',
         label: '账户名称'
       },
       {
-        prop: 'bankName',
+        prop: 'yhlx',
         width: '',
         label: '银行类型'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'zhye',
         width: '',
         label: '账户余额(元)'
       },
       {
          type: 'input',
-        prop: 'status',
+        prop: 'gjje',
         width: '',
         label: '归集金额(元)'
       }
@@ -211,7 +226,21 @@ export default {
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {}
+  methods: {
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+      }
+    },
+  }
 }
 </script>
 <style scoped lang="scss">

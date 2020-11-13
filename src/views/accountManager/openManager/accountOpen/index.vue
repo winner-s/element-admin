@@ -399,7 +399,7 @@ export default {
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
