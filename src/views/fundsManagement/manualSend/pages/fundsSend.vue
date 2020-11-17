@@ -43,7 +43,27 @@ export default {
       },
       tableData: [],
       tableListData: [],
-      list: data.foundsCollsection.tableData,
+      list: [
+        {
+          clbh:'ZJXB19122017521195',
+          clmc:'002',
+          clms:'资金下拨',
+          sjdwbh:'0001',
+          sjdwmc:'顶级单位',
+          sjyhzh:'33',
+          sjzhmc:'332',
+          childerList:[
+            {
+              dwmc:'顶级单位',
+              yhzh:'1122334455667700',
+              zhmc:'一级中心CNY直联账户',
+              yhlx:'中国银行',
+              zhye:'0.00',
+              xbje:'0.00'
+            }
+          ]
+        }
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -60,12 +80,12 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       
       {
-        prop: 'number',
+        prop: 'clbh',
        
         label: '策略编号',
         fixed: 'left'
       },{
-        prop: 'name',
+        prop: 'clmc',
         label: '策略名称',
         fixed: 'left'
       }
@@ -75,11 +95,11 @@ export default {
   methods: {
     tableClick(res){
       console.log(res)
-      this.dialogObj.id = res.id
+      this.dialogObj.id = res.clbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '详情'
-      this.dialogObj.form = res
+      this.dialogObj.form = JSON.parse(JSON.stringify(res))
     },
     getDataList(val) {
       console.log(val)
@@ -99,7 +119,7 @@ export default {
     
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.foundsCollsection.tableData.length
+      this.currentData.total = this.list.length
     },
   },
 }

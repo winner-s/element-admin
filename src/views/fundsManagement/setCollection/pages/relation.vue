@@ -19,8 +19,11 @@
           :table-data="tableData"
           :table-list-data="tableListData"
           :current-data="currentData"
+          :tableBtn="tableBtn"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
+          @handleEdit="handleEdit"
+          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
@@ -32,11 +35,13 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 import dialogCom from './dialogCom'
+import { STRATEGYMODEL,STRATEGYMODELLIST } from '@u/wordbook'
 export default {
   name: 'Relation',
   components: {
     Search,
-    Table, dialogCom
+    Table,
+    dialogCom,
   },
   data() {
     return {
@@ -46,29 +51,125 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
-      searchItem: data.relation.searchFrom,
+      searchItem: [],
       searchData: {
-        nickname: ''
+        nickname: '',
       },
-      searchBto: data.relation.searchBto,
-      showAll: false,
+      searchBto: [],
+      showAll: 1,
       tableData: [],
-      tableListData: data.relation.tableListData,
-      list: data.relation.tableData,
+      tableListData: [],
+      list: [
+        {
+          clbh: 'ZJGJ20072011081832',
+          clmc: '052',
+          clms: 1,
+        },
+        {
+          clbh: 'ZJGJ20072011081832',
+          clmc: '052',
+          clms: 1,
+        },
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      }
+        total: 0,
+      },
     }
   },
   created() {
-    this.getList()
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
+    this.searchItem = [
+      {
+        type: 'input',
+        label: '策略编号:',
+        prop: 'clbh',
+        placeholder: '请填写策略编号',
+      },
+      {
+        type: 'input',
+        label: '策略名称:',
+        prop: 'clmc',
+        placeholder: '请填写策略名称',
+      },
+    ]
+    this.searchBto = [
+      {
+        prop: 'select',
+        type: 'primary',
+        label: '查询',
+      },
+      {
+        prop: 'insert',
+        type: 'primary',
+        label: '新增',
+      },
+    ]
+    this.tableListData = [
+      { width: '50', label: '', type: 'index' },
+
+      {
+        prop: 'clbh',
+        width: '',
+        label: '策略编号',
+      },
+      {
+        prop: 'clmc',
+        width: '',
+        label: '策略名称',
+      },
+      {
+        prop: 'clms',
+        width: '',
+        label: '策略模式',
+        type:'wordbook',
+        wordbookList:this.strategyModel
+
+      },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+    ]
+    this.tableBtn = [
+      {
+        name: '修 改',
+        btnType: 'primary',
+        handleFn: 'handleEdit',
+      },
+      {
+        name: '删 除',
+        btnType: 'danger',
+        handleFn: 'handleDelete',
+      },
+    ]
   },
   methods: {
+    //过滤
+    strategyModel(val){
+      return STRATEGYMODEL[val]
+    },
+    handleDelete(v){
+      this.$confirm('确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        console.log()
+        this.list.splice(this.list.indexOf(v), 1)
+        this.tableData = this.list
+        this.currentData.total = this.list.length
+      })
+    },
+    handleEdit(row){
+      this.dialogObj.id = row.clbh
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '修改'
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
+    },
     handleInsert() {
       this.dialogObj.id = ''
       this.dialogObj.read = false
@@ -94,8 +195,10 @@ export default {
       })
     },
     getDataList(val) {
-      console.log(val)
+      this.currentData.size = 10
+      this.currentData.currentPage = 1
       this.searchData = val
+      this.getList()
     },
     onPageChange(val) {
       var end = val * this.currentData.size
@@ -108,26 +211,52 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
-    },
+   
     handleViewOther(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.clbh
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看账号'
       this.dialogObj.form = row
     },
-    handleStatus(val) {},
-    handleDelete(val) {},
+    
     getList() {
-      this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.relation.tableData.length
-    }
-  }
+      console.log(this.searchData)
+      const list = []
+      const this_ = this
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
+        let bool = true
+        for (var i in this.searchData) {
+          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
+            if (i == 'clbh') {
+              if (item.clbh.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i == 'clmc') {
+              if (item.clmc.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+          } else {
+            continue
+          }
+        }
+        if (bool == true) {
+          list.push(item)
+        }
+      })
+      console.log(list)
+      this_.tableData = list
+    },
+  },
 }
 </script>

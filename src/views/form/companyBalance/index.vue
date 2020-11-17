@@ -14,25 +14,13 @@
           @dropDown="dropDown"
           @dropUp="dropUp"
         />
-        <el-table :data="tableData" border align="center" style="width: 100%" size="mini" class="tableClass" @selection-change="handleSelectionChange">
-          <el-table-column prop="superiorCompany" label="上级单位" width="120" />
-          <el-table-column prop="accountCompany" />
-          <el-table-column prop="accountName" label="账户名称" width="150" />
-          <el-table-column prop="roadName" label="开户行" />
-          <el-table-column prop="accountNum" label="银行帐号" />
-          <el-table-column prop="balance" label="2020-10-31" width="180" />
-        </el-table>
-        <div class="page-div">
-          <el-pagination
-            :current-page="currentData.currentPage || 1"
-            :page-sizes="[5, 10, 20, 50, 100]"
-            :page-size="currentData.size || 10"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="currentData.total || 0"
-            @current-change="handleCurrentChange"
-            @size-change="handleSizeChange"
-          />
-        </div>
+        <Table
+          :table-data="tableData"
+          :table-list-data="tableListData"
+          :current-data="currentData"
+          @onPageChange="onPageChange"
+          @onSizeChange="onSizeChange"
+        />
       </div>
     </el-card>
   </div>
@@ -40,33 +28,196 @@
 <script>
 import Search from '@c/common/search'
 import data from '../components/data'
+import Table from '@c/common/table'
 export default {
   name: 'CompanyBalance',
   components: {
-    Search
+    Search,
+    Table,
   },
   data() {
     return {
-      searchItem: data.companyBalance.searchFrom,
-      searchData: {
-        nickname: ''
+      //单位名称 用于table
+      DWMCLIST: {
+        '1': '一级单位1',
       },
-      searchBto: data.role.searchBto,
+      ZHHMLIST:{
+        '1': '2011106',
+      },
+      searchItem: [
+        {
+          type: 'select',
+          label: '单位名称:',
+          prop: 'dwmc',
+          selectList: [
+            {
+              value: '二级单位1',
+              id: 1,
+            },
+          ],
+          placeholder: '请填写单位名称',
+        },
+        {
+          type: 'select',
+          label: '是否包含下级:',
+          prop: 'bhxj',
+          selectList: [
+            {
+              value: '是',
+              id: 1,
+            },
+            {
+              value: '否',
+              id: 0,
+            },
+          ],
+          placeholder: '请选择',
+        },
+        {
+          type: 'select',
+          label: '账户号码:',
+          selectList: [
+            
+            {
+              value: '20111006',
+              id: 1,
+            }
+          ],
+          prop: 'zhhm',
+          placeholder: '请填写账户号码',
+        },
+       
+        {
+          type: 'daterange',
+          label: '查询日期:',
+          disabled:true,
+          timeList: ['ksrq', 'jsrq'],
+          timeFormat: 'yyyy-MM-dd',
+          prop: 'cxrq',
+          placeholder: '请选择日期',
+        },
+        {
+          type: 'select',
+          label: '币种:',
+          prop: 'bz',
+          selectList: [
+           
+            {
+              value: '人民币',
+              id: 1,
+            },
+            {
+              value: '美元',
+              id: 2,
+            },
+            {
+              value: '越南盾',
+              id: 3,
+            },
+            {
+              value: '欧元',
+              id: 4,
+            },
+            {
+              value: '泰国铢',
+              id: 5,
+            },
+            {
+              value: '加元',
+              id: 6,
+            },
+          ],
+          placeholder: '请选择币种',
+        },
+      ],
+      searchData: {
+        ksrq:'2020-11-01',
+        jsrq:'2020-11-15'
+      },
+      searchBto: [
+        {
+          prop: 'select',
+          type: 'primary',
+          label: '查询',
+        },
+      ],
       tableData: [],
-      list: data.companyBalance.tableData,
-      showAll: false,
+      tableListData: [],
+      list: [
+        {
+          id: 1,
+          sjdw: '单位',
+          zhssdw: '二级单位1',
+          zhmc: '二级单位1CNY直连账户',
+          khh: '北京分行',
+          yhzh: '20111006',
+          je: 12,
+          bz:1
+        },
+      ],
+      showAll: 1,
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      }
+        total: 0,
+      },
     }
   },
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // console.log(data)
     this.getList()
+
+    this.tableListData = [
+      {
+        prop: 'sjdw',
+        width: '',
+        label: '上级单位',
+      },
+      {
+        prop: 'zhssdw',
+        width: '',
+        label: '账户所属单位',
+      },
+      {
+        prop: 'zhmc',
+        width: '',
+        label: '账户名称',
+      },
+      {
+        prop: 'khh',
+        width: '',
+        label: '开户行',
+      },
+      {
+        prop: 'yhzh',
+        width: '',
+        label: '银行账号',
+      },
+      {
+        prop: 'je',
+        width: '',
+        label: '金额',
+      },
+    ]
   },
   methods: {
+    //过滤
+    dwmcList(val){
+      return this.DWMCLIST[val]
+    },
+    onPageChange(val) {
+      var end = val * this.currentData.size
+      var start = (val - 1) * this.currentData.size
+      this.tableData = this.list.slice(start, end)
+      this.currentData.currentPage = val
+    },
+    onSizeChange(val) {
+      this.currentData.size = val
+      this.currentData.currentPage = 1
+      this.getList()
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -86,8 +237,10 @@ export default {
       })
     },
     getDataList(val) {
-      console.log(val)
+      this.currentData.size = 10
+      this.currentData.currentPage = 1
       this.searchData = val
+      this.getList()
     },
     handleCurrentChange(val) {
       var end = val * this.currentData.size
@@ -105,14 +258,53 @@ export default {
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
-      this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.companyBalance.tableData.length
-    }
-  }
+      console.log(this.searchData)
+      const list = []
+      const this_ = this
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
+        let bool = true
+        for (var i in this.searchData) {
+          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
+            if (i == 'dwmc') {
+              if (item.zhssdw.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'zhhm') {
+              if (item.yhzh.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'bz') {
+              if (item.bz.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+          } else {
+            continue
+          }
+        }
+        if (bool == true) {
+          list.push(item)
+        }
+      })
+      console.log(list)
+      this_.tableData = list
+    },
+  },
 }
 </script>
 <style>
-.page-div{
+.page-div {
   text-align: right;
 }
 </style>

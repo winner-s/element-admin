@@ -34,31 +34,143 @@ export default {
   name: 'Analyse',
   components: {
     Search,
-    Table
+    Table,
   },
   data() {
     return {
-      searchItem: data.analyse.searchFrom,
+      BANKNAME: {
+        '1': '中国建设银行',
+        '2': '中国工商银行',
+        '3': '中国银行',
+      },
+      searchItem: [],
       searchData: {
-        nickname: ''
       },
       tableData: [],
-      searchBto: data.analyse.searchBto,
+      searchBto: [],
       showAll: false,
-      tableListData: data.analyse.tableListData,
-      list: data.analyse.tableData,
+      tableListData: [],
+      list: [
+        {
+          id: 1,
+          bankName: 1,
+          accountNum: '1',
+          balance: 0,
+          percentage: '0',
+          coinType: 1,
+        },
+        {
+          id: 1,
+          bankName: 2,
+          accountNum: '1',
+          balance: 0,
+          percentage: '0',
+          coinType: 2,
+        },
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      }
+        total: 0,
+      },
     }
   },
   created() {
-    this.getList()
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
+    this.searchBto = [
+      {
+        prop: 'select',
+        type: 'primary',
+        label: '查询',
+      },
+    ]
+    this.searchItem = [
+      {
+        type: 'select',
+        label: '银行名称:',
+        selectList: [
+          {
+            value: '中国建设银行',
+            id: 1,
+          },
+          {
+            value: '中国工商银行',
+            id: 2,
+          },
+          {
+            value: '中国银行',
+            id: 3,
+          }
+        ],
+        prop: 'bankName',
+        placeholder: '请选择银行名称',
+      },
+      {
+        type: 'select',
+        label: '币种:',
+        prop: 'coinType',
+        selectList: [
+          {
+            value: '人民币',
+            id: 1,
+          },
+          {
+            value: '美元',
+            id: 2,
+          },
+          {
+            value: '越南盾',
+            id: 3,
+          },
+          {
+            value: '欧元',
+            id: 4,
+          },
+          {
+            value: '泰国铢',
+            id: 5,
+          },
+          {
+            value: '加元',
+            id: 6,
+          },
+        ],
+        placeholder: '请选择币种',
+      },
+    ]
+
+    this.tableListData = [
+      {
+        prop: 'bankName',
+        width: '',
+        label: '银行名称',
+        type:"wordbook",
+        wordbookList: this.bankName
+      },
+      {
+        prop: 'accountNum',
+        width: '',
+        label: '账户数量',
+      },
+      {
+        prop: 'balance',
+        width: '',
+        label: '当前余额',
+      },
+      {
+        prop: 'percentage',
+        width: '',
+        label: '时点余额占比',
+      },
+    ]
   },
   methods: {
+    //过滤
+    bankName(val){
+      return this.BANKNAME[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -78,8 +190,10 @@ export default {
       })
     },
     getDataList(val) {
-      console.log(val)
+      this.currentData.size = 10
+      this.currentData.currentPage = 1
       this.searchData = val
+      this.getList()
     },
     onPageChange(val) {
       var end = val * this.currentData.size
@@ -109,9 +223,44 @@ export default {
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
-      this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.analyse.tableData.length
-    }
-  }
+      console.log(this.searchData)
+      const list = []
+      const this_ = this
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
+        let bool = true
+        for (var i in this.searchData) {
+          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
+            if (i == 'bankName') {
+              if (item.bankName.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i == 'coinType') {
+              
+              console.log(this.searchData[i])
+              if (item.coinType.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+          } else {
+            continue
+          }
+        }
+        if (bool == true) {
+          list.push(item)
+        }
+      })
+      console.log(list)
+      this_.tableData = list
+    },
+  },
 }
 </script>

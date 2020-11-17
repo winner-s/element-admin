@@ -115,7 +115,7 @@ export default {
     
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.foundsCollsection.tableData.length
+      this.currentData.total = this.list.length
     },
   },
 }

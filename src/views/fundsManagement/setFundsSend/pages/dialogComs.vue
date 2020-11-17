@@ -21,13 +21,9 @@
     >
       <el-row>
         <el-col :span="12">
-          <el-form-item
-            label="策略编号："
-            prop="sysStudentNumber"
-            class="formItem"
-          >
+          <el-form-item label="策略编号：" prop="clbh" class="formItem">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -36,13 +32,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item
-            label="策略名称："
-            prop="sysStudentName"
-            class="formItem"
-          >
+          <el-form-item label="策略名称：" prop="clmc" class="formItem">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.clmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -54,9 +46,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="留底余额(元)：" prop="sysStudentNumber">
+          <el-form-item label="留底余额(元)：" prop="ldye">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.ldye"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -64,9 +56,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="执行状态：" prop="sysStudentNumber">
+          <el-form-item label="执行状态：" prop="clzt">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.clzt"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -78,9 +70,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="加急发送指令：" prop="sysStudentNumber">
+          <el-form-item label="加急发送指令：" prop="jjfszl">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.jjfszl"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -92,8 +84,8 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="周期设置：" prop="sysStudentNumber">
-            <el-select v-model="value" placeholder="请选择" size="mini">
+          <el-form-item label="周期设置：" prop="zqsz">
+            <el-select v-model="form.zqsz" placeholder="请选择" size="mini">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -105,9 +97,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="执行时间：" prop="sysStudentName">
+          <el-form-item label="执行时间：" prop="zxsj">
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.zxsj"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -116,7 +108,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 1">
+      <el-row v-if="form.zqsz == 1">
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
@@ -133,7 +125,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 2">
+      <el-row v-if="form.zqsz == 2">
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
@@ -155,10 +147,10 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="value == 3">
-        <el-col >
+      <el-row v-if="form.zqsz == 3">
+        <el-col>
           <el-form-item label="选择时间段">
-           <el-checkbox
+            <el-checkbox
               :indeterminate="isIndeterminate"
               v-model="checkAll"
               @change="handleCheckAllChange"
@@ -179,9 +171,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="节假日是否下拨：" prop="sysStudentNumber">
+          <el-form-item label="节假日是否下拨：" prop="jjrsfxb">
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.jjrsfxb"
               style="width: 200px"
               size="mini"
               :placeholder="placeholderTips.content"
@@ -193,11 +185,11 @@
     </el-form>
 
     <div class="dialog-footer">
-      <el-button type="primary" @click="dialogObj.show = false">保存</el-button>
-      <el-button type="primary" @click="dialogObj.show = false">校验</el-button>
-      <el-button type="primary" @click="dialogObj.show = false">删除</el-button>
-      <el-button type="primary" @click="dialogObj.show = false">激活</el-button>
-      <el-button type="primary" @click="dialogObj.show = false">停止</el-button>
+      <el-button type="primary" @click="handleInsert">保存</el-button>
+      
+      <el-button type="primary" @click="handleDelete">删除</el-button>
+      <el-button type="primary" @click="handleStatus" v-if="form.clzt=='停止'">激活</el-button>
+      <el-button type="primary" @click="handleStatus" v-else>停止</el-button>
       <el-button @click="dialogObj.show = false">取 消</el-button>
     </div>
   </el-dialog>
@@ -216,13 +208,61 @@ export default {
     // 这里存放数据
     return {
       checkAll: false,
-      cities: ['星期天', '星期一', '星期二','星期三','星期四','星期五','星期六',],
-      citiess: ['01', '02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24',
-      '25','26','27','28','29','30','31'],
-      checkedCities:[],
-      value: '',
+      cities: [
+        '星期天',
+        '星期一',
+        '星期二',
+        '星期三',
+        '星期四',
+        '星期五',
+        '星期六',
+      ],
+      citiess: [
+        '01',
+        '02',
+        '03',
+        '04',
+        '05',
+        '06',
+        '07',
+        '08',
+        '09',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '16',
+        '17',
+        '18',
+        '19',
+        '20',
+        '21',
+        '22',
+        '23',
+        '24',
+        '25',
+        '26',
+        '27',
+        '28',
+        '29',
+        '30',
+        '31',
+      ],
+      checkedCities: [],
+
       placeholderTips: placeholderTips,
-      form: {},
+      form: {
+        clbh: '',
+        clmc: '',
+        ldye: '',
+        clzt: '',
+        jjfszl: '',
+        zqsz: '',
+        zxsj: '',
+        jjrsfxb: '',
+      },
       options: [
         {
           label: '日',
@@ -242,13 +282,63 @@ export default {
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    'dialogObj.show'(val) {
+      if (val) {
+        this.initDialog()
+      }
+    },
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {},
+  methods: {
+    handleInsert(){
+        this.$emit("handleDelete",this.form)
+    },
+    handleDelete(){
+      this.$confirm('确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+       this.$emit("handleDelete",this.form)
+      })
+      
+    },
+    handleStatus() {
+      if (this.form.clzt == '激活') {
+        this.$confirm('确定停止?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          this.form.clzt = '停止'
+          this.$emit("handleStatus",this.form)
+        })
+      } else {
+         this.$confirm('确定激活?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          this.form.clzt = '激活'
+           this.$emit("handleStatus",this.form)
+        })
+      }
+    },
+    initDialog() {
+      if (this.dialogObj.id) {
+       this.form = this.dialogObj.form
+      } else {
+        Object.keys(this.form).forEach((item) => {
+          this.form[item] = ''
+        })
+      }
+    },
+  },
 }
 </script>
 <style scoped lang="scss">

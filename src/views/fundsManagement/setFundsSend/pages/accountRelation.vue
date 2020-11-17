@@ -64,7 +64,21 @@ export default {
         {
           clbh:'ZJXB20111315565225',
           clmc:'2222222222',
-          clms:'资金下拨'
+          clms:'资金下拨',
+          sjdwbh:'001',
+          sjdwmc:'顶级单位',
+          sjyhzh:'202010101148',
+          sjzhmc:'ZJ测试单位001',
+          childerList:[
+            {
+              dwmc:'顶级单位',
+              yhzh:'8141297854641',
+              zhmc:'ABCD',
+              khhmc:'中国银行兴国支行',
+              zhzt:'正常',
+              zhyt:'基本存款户-收支户'
+            }
+          ]
         }
       ],
       tableBtn: [],
@@ -151,11 +165,11 @@ export default {
       this.getList()
     },
     handleEdit(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.clbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
@@ -164,11 +178,22 @@ export default {
       this.dialogObj.title = '查看账号'
       this.dialogObj.form = row
     },
-    handleStatus(val) {},
-    handleDelete(val) {},
+    
+    handleDelete(v) {
+      this.$confirm('确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        console.log()
+        this.list.splice(this.list.indexOf(v), 1)
+        this.tableData = this.list
+        this.currentData.total = this.list.length
+      })
+    },
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.accountRelation.tableData.length
+      this.currentData.total = this.list.length
     },
   },
 }

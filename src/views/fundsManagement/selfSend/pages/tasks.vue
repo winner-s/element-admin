@@ -18,8 +18,10 @@
           :table-data="tableData"
           :table-list-data="tableListData"
           :current-data="currentData"
+          :tableBtn="tableBtn"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
+          @handleStatus="handleStatus"
         />
       </div>
     </el-card>
@@ -33,29 +35,90 @@ export default {
   name: 'SelfSendTask',
   components: {
     Search,
-    Table
+    Table,
   },
   data() {
     return {
       searchItem: data.selfSendTask.searchFrom,
       searchData: {
-        nickname: ''
+        nickname: '',
       },
       searchBto: data.selfSendTask.searchBto,
       showAll: false,
       tableData: [],
-      tableListData: data.selfSendTask.tableListData,
-      list: data.selfSendTask.tableData,
+      tableListData: [],
+      list: [
+        {
+          clbh: 'ZJXB20111610353876',
+          clmc: '002',
+          zxms: '0 40 10 * * ?',
+          rwzt: '停止',
+          yxzt: '未运行',
+        },
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0
-      }
+        total: 0,
+      },
     }
   },
   created() {
     this.getList()
+    //  table表格
+    this.tableListData = [
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+
+      {
+        prop: 'clbh',
+        width: '150',
+        type: 'a',
+        label: '策略编号',
+        fixed: 'left',
+      },
+      {
+        prop: 'clmc',
+        width: '150',
+        label: '策略名称',
+        fixed: 'left',
+      },
+      {
+        prop: 'zxms',
+        width: '',
+        label: '执行模式',
+      },
+      {
+        prop: 'rwzt',
+        width: '',
+        label: '任务状态',
+      },
+      {
+        prop: 'yxzt',
+        width: '',
+        label: '运行状态',
+      },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+    ]
+    // 按钮
+    this.tableBtn = [
+      {
+        name: '激 活',
+        btnType: 'primary',
+        type: 'isShow',
+        isShowStatus: 'rwzt',
+        isShowValue: '停止',
+        handleFn: 'handleStatus',
+      },
+      {
+        name: '停 止',
+        btnType: 'danger',
+        type: 'isShow',
+        isShowStatus: 'rwzt',
+        isShowValue: '激活',
+        handleFn: 'handleStatus',
+      },
+    ]
   },
   methods: {
     // 收起
@@ -91,26 +154,31 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
+
+    handleStatus(val) {
+      if (val.rwzt == '停止') {
+        this.$confirm('确定激活?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          val.rwzt = '激活'
+        })
+      } else {
+        this.$confirm('确定停止?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          val.rwzt = '停止'
+        })
+      }
     },
-    handleViewOther(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = true
-      this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
-    },
-    handleStatus(val) {},
-    handleDelete(val) {},
+
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.selfSendTask.tableData.length
-    }
-  }
+      this.currentData.total = this.list.length
+    },
+  },
 }
 </script>

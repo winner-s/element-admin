@@ -281,3 +281,88 @@ export const COLLECTIONLIST = [
     value:'自定义归集'
   }
 ]
+
+
+
+// 单位层级 
+export const   UNITLEVEL    = {
+  '1': '一级',
+  '2': '二级',
+  '3': '三级',
+  '4': '四级',
+  '5': '五级',
+  '6': '六级'
+}
+
+export const UNITLEVELLIST = [
+  {
+    id: 1,
+    value: '一级'
+  },
+  {
+    id:2,
+    value:'二级'
+  },
+  {
+    id:3,
+    value:'三级'
+  },
+  {
+    id:4,
+    value:'四级'
+  },
+  {
+    id:5,
+    value:'五级'
+  },
+  {
+    id:6,
+    value:'六级'
+  }
+]
+
+
+// 单位类型
+export const   UNITTYPE   = {
+  '1': '国有企业',
+  '2': '私营企业',
+  '3': '中外合营企业',
+  '4': '外商投资企业',
+  '5': '单位类别'
+}
+
+export const UNITTYPELIST = [
+  {
+    id: 1,
+    value: '国有企业'
+  },
+  {
+    id:2,
+    value:'私营企业'
+  },
+  {
+    id:3,
+    value:'中外合营企业'
+  },
+  {
+    id:4,
+    value:'外商投资企业'
+  },
+  {
+    id:5,
+    value:'单位类别'
+  }
+]
+
+
+// 策略模式
+export const   STRATEGYMODEL  = {
+  '1': '资金上划'
+}
+
+export const STRATEGYMODELLIST = [
+  {
+    id: 1,
+    value: '资金上划'
+  }
+]

@@ -13,7 +13,7 @@
             @tableClick="tableClick"
           />
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" />
+    <dialog-com :dialog-obj="dialogObj" @handleStatus="handleStatus"  @handleDelete="handleDelete" />
   </div>
 </template>
 <script>
@@ -40,7 +40,19 @@ export default {
       tableData: [],
       tableListData: [],
       
-      list: data.foundsCollsection.tableData,
+      list: [
+        {
+          clbh:'ZJXB20072011405091',
+          clmc:'111',
+          clzt:'激活',
+          clsj:'2020-11-13 16：27：44',
+          ldye:'3434',
+          jjfszl:'是',
+          zqsz:1,
+          zxsj:'00:00',
+          jjrsfxb:'是'
+        }
+      ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
@@ -55,20 +67,20 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       
       {
-        prop: 'number',
+        prop: 'clbh',
        
         label: '策略编号',
         fixed: 'left'
       },{
-        prop: 'name',
+        prop: 'clmc',
         label: '策略名称',
         fixed: 'left'
       },{
-        prop: 'name',
+        prop: 'clzt',
         label: '策略状态',
         fixed: 'left'
       },{
-        prop: 'name',
+        prop: 'clsj',
         label: '激活/停止策略时间',
         fixed: 'left'
       }
@@ -76,13 +88,40 @@ export default {
     ]
   },
   methods: {
+    handleStatus(res){
+      let ind = 0;
+      this.tableData.forEach((item,index)=>{
+        if(item.documentNumber == res.documentNumber){
+          ind = index
+        }
+      })
+      console.log(ind)
+      
+      let fore = this.tableData[ind]
+       Object.keys(fore).forEach(item => {
+         if(res[item]){
+           fore[item] = res[item];
+         }
+          
+        });
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    handleDelete(row){
+        this.dialogObj.show= false
+         this.list.splice(this.list.indexOf(row), 1)
+        this.tableData = this.list
+        this.currentData.total = this.list.length
+
+    },
     tableClick(res){
       console.log(res)
-      this.dialogObj.id = res.id
+      this.dialogObj.id = res.clbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '详情'
-      this.dialogObj.form = res
+      this.dialogObj.form = JSON.parse(JSON.stringify(res))
     },
     
     getDataList(val) {
@@ -103,7 +142,7 @@ export default {
     
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
-      this.currentData.total = data.foundsCollsection.tableData.length
+      this.currentData.total = this.list.length
     },
   },
 }

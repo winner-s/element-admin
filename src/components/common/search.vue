@@ -16,7 +16,7 @@
           <el-form-item
             v-if="
               (item.type === 'input' || '') &&
-                (item.show || item.show === undefined)
+              (item.show || item.show === undefined)
             "
             :key="item.prop"
             :label="item.label"
@@ -24,51 +24,37 @@
           >
             <el-input
               v-model="searchData[item.prop]"
-              :style="{width: width}"
-              :placeholder="item.placeholder"
-            />
-          </el-form-item>
-          <el-form-item
-            v-if="(item.type === 'num' ) && (item.show || item.show===undefined)"
-            :key="item.prop"
-            :label="item.label"
-            :prop="item.prop"
-          >
-            <el-input
-              v-model="searchData[item.numList[0]]"
-              :style="{width: width}"
-              :placeholder="item.placeholder"
-            />
-            <span class="ml-5"> -</span>
-            <el-input
-              v-model="searchData[item.numList[1]]"
-              :style="{width: width}"
-              :placeholder="item.placeholder"
-            />
-          </el-form-item>
-          <el-form-item
-            v-if="item.type === 'num' && (item.show || item.show === undefined)"
-            :key="item.prop"
-            :label="item.label"
-            :prop="item.prop"
-          >
-            <el-input
-              v-model="searchData[item.numList[0]]"
-              :style="{width: width}"
-              :placeholder="item.placeholder"
-            />
-            <span class="ml-5"> -</span>
-            <el-input
-              v-model="searchData[item.numList[1]]"
-              :style="{width: width}"
+              :style="{ width: width }"
               :placeholder="item.placeholder"
             />
           </el-form-item>
 
           <el-form-item
+            v-if="item.type === 'num' && (item.show || item.show === undefined)"
+            :key="index"
+            :label="item.label"
+          >
+            
+              <el-input
+                v-model="searchData[item.numList[0]]"
+                style="width: 120px"
+                :placeholder="item.placeholder"
+              />
+            
+            <span class="ml-5">-</span>
+            
+              <el-input
+                v-model="searchData[item.numList[1]]"
+                style="width: 120px"
+                :placeholder="item.placeholder"
+              />
+            
+          </el-form-item>
+
+          <el-form-item
             v-if="
               (item.type === 'checkbox' || '') &&
-                (item.show || item.show === undefined)
+              (item.show || item.show === undefined)
             "
             :key="item.prop"
             :label="item.label"
@@ -87,7 +73,7 @@
           >
             <el-select
               v-model="searchData[item.prop]"
-              :style="{width: width}"
+              :style="{ width: width }"
               :placeholder="item.placeholder"
               clearable
               filterable
@@ -116,14 +102,13 @@
               :format="item.timeFormat"
               :value-format="item.timeFormat"
               placeholder="选择日期"
-
               style="width: 250px"
             />
           </el-form-item>
           <el-form-item
             v-if="
               item.type === 'daterange' &&
-                (item.show || item.show === undefined)
+              (item.show || item.show === undefined)
             "
             :key="index"
             :label="item.label"
@@ -136,8 +121,8 @@
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="开始日期"
-
-                style="width: 130px"
+                :disabled="item.disabled"
+                style="width: 120px"
                 @change="changeValue(searchData[item.timeList[0]], 1)"
               />
             </el-form-item>
@@ -150,8 +135,8 @@
                 :format="item.timeFormat"
                 :value-format="item.timeFormat"
                 placeholder="结束日期"
-
-                style="width: 130px"
+                :disabled="item.disabled"
+                style="width: 120px"
                 @change="changeValue(searchData[item.timeList[1]], 2)"
               />
             </el-form-item>
@@ -159,7 +144,7 @@
         </el-col>
       </template>
     </el-row>
-    <el-row >
+    <el-row>
       <el-col :span="20">
         <template v-for="(item, index) in searchBto">
           <el-form-item
@@ -222,25 +207,25 @@ export default {
   props: {
     searchData: {
       type: Object,
-      required: true
+      required: true,
     },
     searchItem: {
       type: Array,
-      required: true
+      required: true,
     },
     searchBto: {
       type: Array,
-      required: true
+      required: true,
     },
     showAll: {
       type: Boolean,
-      required: true
+      required: true,
     },
-    width:{
+    width: {
       type: String,
-      default:'250px',
-      required: true
-    }
+      default: '250px',
+      required: true,
+    },
   },
   data() {
     return {
@@ -250,7 +235,7 @@ export default {
       pickerOptions: {
         disabledDate: (time) => {
           return time.getTime() > Date.now()
-        }
+        },
       },
       // 第一个日期限制第二个日期
       pickerOptions0: {
@@ -263,7 +248,7 @@ export default {
           } else {
             return time.getTime() > Date.now()
           }
-        }
+        },
       },
       pickerOptions1: {
         disabledDate: (time) => {
@@ -271,8 +256,8 @@ export default {
             time.getTime() < new Date(this.value1) - 24 * 60 * 60 * 1000 || // 减去一天 可前后时间相等
             time.getTime() > Date.now()
           )
-        }
-      }
+        },
+      },
     }
   },
   mounted() {},
@@ -310,8 +295,8 @@ export default {
       } else if (i == 2) {
         this.value2 = val
       }
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

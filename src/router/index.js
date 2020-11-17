@@ -746,7 +746,6 @@ export const constantRoutes = [
   {
     path: '/fundsManagement',
     component: Layout,
-    redirect: '/fundsManagement/setCollection',
     name: '资金池管理',
     meta: { title: '资金池管理', icon: 'el-icon-suitcase' },
     children: [
@@ -754,7 +753,7 @@ export const constantRoutes = [
         path: 'setCollection',
         name: '资金归集设置',
         component: () => import('@/views/fundsManagement/setCollection/index'),
-        redirect: '/fundsManagement/setCollection/relation',
+       
         meta: { title: '资金归集设置' },
         children: [
           {
@@ -776,7 +775,7 @@ export const constantRoutes = [
         name: '自动归集管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selfCollsection/index'),
-        redirect: '/fundsManagement/selfCollsection/task',
+        
         meta: { title: '自动归集管理' },
         children: [
           {
@@ -792,7 +791,7 @@ export const constantRoutes = [
         name: '手动归集管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/manualCollsection/index'),
-        redirect: '/fundsManagement/manualCollsection/fundsCollsection',
+       
         meta: { title: '手动归集管理' },
         children: [
           {
@@ -808,7 +807,7 @@ export const constantRoutes = [
         name: '资金归集查询',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selectCollection/index'),
-        redirect: '/fundsManagement/selectCollection/selectInfo',
+       
         meta: { title: '资金归集查询' },
         children: [
           {
@@ -823,7 +822,7 @@ export const constantRoutes = [
         path: 'setFundsSend',
         name: '资金下拨设置',
         component: () => import('@/views/fundsManagement/setFundsSend/index'),
-        redirect: '/fundsManagement/setFundsSend/accountRelation',
+        
         meta: { title: '资金下拨设置' },
         children: [
           {
@@ -845,14 +844,14 @@ export const constantRoutes = [
         name: '自动下拨管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selfSend/index'),
-        redirect: '/fundsManagement/selfSend/task',
+       
         meta: { title: '自动下拨管理' },
         children: [
           {
-            path: 'task',
+            path: 'tasks',
             meta: { title: '自动下拨任务管理' },
-            name: 'task',
-            component: () => import('@/views/fundsManagement/selfSend/pages/task')
+            name: 'tasks',
+            component: () => import('@/views/fundsManagement/selfSend/pages/tasks')
           }
         ]
       },
@@ -861,7 +860,7 @@ export const constantRoutes = [
         name: '手动下拨管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/manualSend/index'),
-        redirect: '/fundsManagement/manualSend/fundsSend',
+       
         meta: { title: '手动下拨管理' },
         children: [
           {
@@ -877,7 +876,7 @@ export const constantRoutes = [
         name: '资金下拨查询',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selectSend/index'),
-        redirect: '/fundsManagement/selectSend/selectInfo',
+       
         meta: { title: '资金下拨查询' },
         children: [
           {
