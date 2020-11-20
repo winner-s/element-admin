@@ -27,7 +27,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" />
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 <script>
@@ -35,7 +35,7 @@ import Search from '@c/common/search'
 import Table from '@c/common/table'
 import data from '../../components/data'
 import dialogCom from './dialogCom'
-import { STRATEGYMODEL,STRATEGYMODELLIST } from '@u/wordbook'
+import { STRATEGYMODEL, STRATEGYMODELLIST } from '@u/wordbook'
 export default {
   name: 'Relation',
   components: {
@@ -63,14 +63,36 @@ export default {
       tableListData: [],
       list: [
         {
-          clbh: 'ZJGJ20072011081832',
+          clbh: 'ZJGJ20072011081830',
           clmc: '052',
           clms: 1,
+          sjyhzh: '202010101148',
+          sjzhmc: '测试单位',
+          childerList: [
+            {
+              dwmc: '二级单位',
+              yhzh: '111111111111',
+              zhmc: '测试1',
+              khhmc: '中国农业银行汉中分行',
+              zhzt: '正常',
+              zhyt: 1,
+            },
+            {
+              dwmc: '二级单位',
+              yhzh: '22222222222',
+              zhmc: '测试1',
+              khhmc: '中国农业银行汉中分行',
+              zhzt: '正常',
+              zhyt: 2,
+            },
+          ],
         },
         {
           clbh: 'ZJGJ20072011081832',
-          clmc: '052',
+          clmc: '051',
           clms: 1,
+          sjyhzh: '202010101148',
+          sjzhmc: '测试单位',
         },
       ],
       tableBtn: [],
@@ -127,9 +149,8 @@ export default {
         prop: 'clms',
         width: '',
         label: '策略模式',
-        type:'wordbook',
-        wordbookList:this.strategyModel
-
+        type: 'wordbook',
+        wordbookList: this.strategyModel,
       },
       { label: '操作', type: 'btn', width: '', fixed: 'right' },
     ]
@@ -147,11 +168,37 @@ export default {
     ]
   },
   methods: {
+    updateSub(res){
+      let ind = 0;
+      this.tableData.forEach((item,index)=>{
+        if(item.clbh == res.clbh){
+          ind = index
+        }
+      })
+      console.log(ind)
+      
+      let fore = this.tableData[ind]
+       Object.keys(fore).forEach(item => {
+         if(res[item]){
+           fore[item] = res[item];
+         }
+          
+        });
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    addSub(res) {
+      this.list.push(res)
+
+      this.tableData = this.list.slice(0, this.currentData.size)
+      this.currentData.total = this.list.length
+    },
     //过滤
-    strategyModel(val){
+    strategyModel(val) {
       return STRATEGYMODEL[val]
     },
-    handleDelete(v){
+    handleDelete(v) {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -163,7 +210,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    handleEdit(row){
+    handleEdit(row) {
       this.dialogObj.id = row.clbh
       this.dialogObj.read = false
       this.dialogObj.show = true
@@ -211,7 +258,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-   
+
     handleViewOther(row) {
       this.dialogObj.id = row.clbh
       this.dialogObj.read = true
@@ -219,7 +266,7 @@ export default {
       this.dialogObj.title = '查看账号'
       this.dialogObj.form = row
     },
-    
+
     getList() {
       console.log(this.searchData)
       const list = []

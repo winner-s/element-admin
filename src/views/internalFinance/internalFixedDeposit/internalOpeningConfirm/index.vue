@@ -64,212 +64,15 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+      list:[
+        
       ],
+      
 
       // 表格
       tableData: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+        
+        
       ],
       tableBtn: [],
       // 顶部搜索
@@ -287,6 +90,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -321,52 +126,52 @@ export default {
       {
         type: 'input',
         label: '存款开立流水号:',
-        prop: 'documentNumber',
+        prop: 'ckkllsh',
         placeholder: '请填写存款开立流水号'
       },
       {
         type: 'input',
         label: '存款期限:',
-        prop: 'openApplicant',
+        prop: 'ckqx',
         placeholder: '请选择存款期限'
       },
       {
         type: 'select',
         label: '存款单位编号:',
-        prop: 'openApplicant',
+        prop: 'ckdwbh',
         placeholder: '请选择存款单位编号'
       },
       {
         type: 'input',
         label: '存款单位名称:',
-        prop: 'openApplicant',
+        prop: 'ckdwmc',
         placeholder: '请填写存款单位名称'
       },
       {
         type: 'time',
         label: '存款开立日期 从:',
-        prop: 'openApplicant',
+        prop: 'ckklrqks',
         placeholder: '请选择存款开立日期',
         show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
-        prop: 'openApplicant',
+        prop: 'ckklrqjs',
         placeholder: '请选择存款开立日期',
         show: this.showAll
       },
       {
         type: 'select',
         label: '存款利率转换天数:',
-        prop: 'openApplicant',
+        prop: 'ckllzhts',
         placeholder: '请选择存款利率转换天数',
         show: this.showAll
       },
       {
         type: 'select',
         label: '到期续存方式:',
-        prop: 'openApplicant',
+        prop: 'dqxcfs',
         placeholder: '请填写到期续存方式',
         show: this.showAll
       }
@@ -375,57 +180,58 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '' },
+      
       {
-        prop: 'documentNumber',
+        prop: 'ckkllsh',
         width: '150',
         label: '存款开立流水号'
       },
       {
-        prop: 'accountPhone',
+        prop: 'ckzt',
         width: '150',
         label: '存款状态'
       },
       {
-        prop: 'accountName',
+        prop: 'ckdwmc',
         width: '',
         label: '存款单位名称'
       },
       {
-        prop: 'accountName',
+        prop: 'ckje',
         width: '',
         label: '存款金额'
       },
       {
-        prop: 'accountName',
+        prop: 'ckklrq',
         width: '',
         label: '存款开立日期'
       },
       {
-        prop: 'accountName',
+        prop: 'nbzh',
         width: '',
         label: '内部账号 '
       },
       {
-        prop: 'accountName',
+        prop: 'zt',
         width: '',
         label: '状态'
       },
       {
-        prop: 'accountName',
+        prop: 'ckqx',
         width: '',
         label: '存款期限'
       },
       {
-        prop: 'accountName',
+        prop: 'llzhts',
         width: '',
         label: '利率转换天数'
       },
       {
-        prop: 'accountName',
+        prop: 'dqxcfs',
         width: '',
         label: '到期续存方式'
-      }
+      },
+      { label: '操作', type: 'btn', width: '',fixed:'right' },
     ]
     // 按钮
     this.tableBtn = []

@@ -78,7 +78,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'openManager',
-        name: '开户管理',
+        name: '开户管理1',
         component: () => import('@/views/accountManager/openManager/index'),
         redirect: '/accountManager/openManager/accountOpen',
         meta: { title: '开户管理' },
@@ -112,7 +112,7 @@ export const constantRoutes = [
       },
       {
         path: 'changeManager',
-        name: '变更管理',
+        name: '变更管理s',
         component: () => import('@/views/accountManager/changeManager/index'),
         meta: { title: '变更管理' },
         children: [
@@ -135,7 +135,7 @@ export const constantRoutes = [
       },
       {
         path: 'cancellationManager',
-        name: '销户管理',
+        name: '销户管理s',
         component: () =>
           import('@/views/accountManager/cancellationManager/index'),
         meta: { title: '销户管理' },

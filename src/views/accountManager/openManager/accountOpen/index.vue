@@ -47,14 +47,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {},
-      },
+      
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -63,7 +56,7 @@ export default {
         size: 10,
         total: 10,
       },
-
+      tableListData:[],
       // 弹出框
       dialogObj: {
         id: '',

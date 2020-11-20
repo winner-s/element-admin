@@ -29,21 +29,14 @@
             prop="dwbh"
             class="formItem"
           >
-            <el-select
+            <el-input
               v-model="form.dwbh"
-              placeholder="请选择"
-              size="mini"
               style="width: 200px"
-              @change="dwbhChange"
-            >
-              <el-option
-                v-for="item in dwbhList"
-                :key="item.id"
-                :label="item.dwbh"
-                :value="item.dwbh"
-              >
-              </el-option>
-            </el-select>
+              size="mini"
+              :disabled="true"
+              :placeholder="placeholderTips.content"
+            />
+            
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -66,13 +59,21 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="账户编号：" prop="zhbh">
-            <el-input
+            <el-select
               v-model="form.zhbh"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
-              :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+              @change="zhbhChange"
+            >
+              <el-option
+                v-for="item in zhbhList"
+                :key="item.id"
+                :label="item.zhbh"
+                :value="item.zhbh"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -152,22 +153,27 @@
         </el-col>
       </el-row>
 
+      
+
+      <div class="title"><i class="el-icon-user" /> 附加信息</div>
+
       <el-row>
-        <el-col :span="12">
-          <el-form-item label="初始金额：" prop="csje">
+        <el-col>
+          <el-form-item label="变更说明：" prop="bgsm">
             <el-input
-              v-model="form.csje"
-              style="width: 200px"
+              v-model="form.bgsm"
+              style="width: 83%"
+              type="textarea"
+              :rows="3"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              maxlength="50"
+              show-word-limit
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12" />
-      </el-row>
 
-      <div class="title"><i class="el-icon-user" /> 附加信息</div>
+      </el-row>
 
       <el-row>
         <el-col>
@@ -214,19 +220,29 @@ export default {
       placeholderTips: placeholderTips,
       currencyList:CURRENCYLIST,
       scorllList:SCORLLLIST,
-      dwbhList:[
+      zhbhList:[
         {
           dwbh:'0813',
           dwmc:'0813001',
-          zhbh:'08131003'
+          zhbh:'08131003',
+          zhmc:'123',
+          zhlx:1,
+          khrq:'2020-10-10',
+
         },
         {
           dwbh:"123",
           dwmc:'123',
-          zhbh:'123'
+          zhbh:'123',
+          zhmc:'123',
+          zhlx:1,
+          khrq:'2020-10-10',
         }
       ],
       rules:{
+        bgsm:[
+          { required: true, message: '请填写单据编号', trigger: 'blur' },
+        ],
         dwbh:[
           { required: true, message: '请填写单据编号', trigger: 'blur' },
         ],
@@ -266,7 +282,8 @@ export default {
         jx:'',
         csye:'',
         bzhu:'',
-        sqdzt:''
+        sqdzt:'',
+        bgsm:''
       }
     }
   },
@@ -286,11 +303,15 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    dwbhChange(res){
-      this.dwbhList.forEach((item,index)=>{
-        if(item.dwbh==res){
+    zhbhChange(res){
+      this.zhbhList.forEach((item,index)=>{
+        if(item.zhbh==res){
           this.form.dwmc = item.dwmc
           this.form.zhbh = item.zhbh
+          this.form.dwbh =item.dwbh
+          this.form.zhmc = item.zhmc
+          this.form.zhlx = item.zhlx
+          this.form.khrq = item.khrq
         }
       })
     },
@@ -305,7 +326,7 @@ export default {
         Object.keys(this.form).forEach(item => {
           this.form[item] =''
         });
-        this.form.sqdzt = 1
+        
       }
     },
     sub() {
@@ -315,6 +336,7 @@ export default {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
+            this.form.sqdzt = 1
             this.addSub()
           }
         }

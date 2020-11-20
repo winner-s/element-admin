@@ -168,7 +168,7 @@
             :key="index"
             class="searchFloat"
           >
-            <el-button type="primary" @click="handleSearch()">{{
+            <el-button type="primary" @click="handleCommit()">{{
               item.label
             }}</el-button>
           </el-form-item>
@@ -278,6 +278,9 @@ export default {
     // 按钮事件
     handleClick(row, fn) {
       return this.$parent[fn](row)
+    },
+    handleCommit(){
+      this.$emit('handleCommit')
     },
     handleSearch() {
       this.$emit('getDataList', this.searchData)

@@ -366,3 +366,133 @@ export const STRATEGYMODELLIST = [
     value: '资金上划'
   }
 ]
+
+
+// 利率类型
+export const   RATETYPE  = {
+  '1': '存款',
+  '2':'贷款',
+  '3':'活期'
+}
+
+export const RATETYPELIST = [
+  {
+    id: 1,
+    value: '存款'
+  },
+  {
+    id: 2,
+    value: '贷款'
+  },
+  {
+    id: 3,
+    value: '活期'
+  }
+]
+
+// 申请单状态
+export const   FORMSTATUS  = {
+  '1': '保存',
+  '2':'审批中',
+  '3':'审批拒绝',
+  '4':'审批通过',
+  '5':'退回'
+}
+
+export const FORMSTATUSLIST = [
+  {
+    id: 1,
+    value: '保存'
+  },
+  {
+    id: 2,
+    value: '审批中'
+  },
+  {
+    id: 3,
+    value: '审批拒绝'
+  },
+  {
+    id: 4,
+    value: '审批通过'
+  },
+  {
+    id: 5,
+    value: '退回'
+  }
+]
+
+
+// 存款期限
+export const    DEPOSITTERM  = {
+  '1': '3个月定期',
+  '2':'6个月定期',
+  '3':'1年定期',
+  '4':'2年定期',
+  '5':'3年定期',
+  '6':'5年定期'
+}
+
+export const DEPOSITTERMLIST = [
+  {
+    id: 1,
+    value: '3个月定期'
+  },
+  {
+    id: 2,
+    value: '6个月定期'
+  },
+  {
+    id: 3,
+    value: '1年定期'
+  },
+  {
+    id: 4,
+    value: '2年定期'
+  },
+  {
+    id: 5,
+    value: '3年定期'
+  },
+  {
+    id: 6,
+    value: '5年定期'
+  }
+]
+
+
+
+// 利率转换天数
+export const    LLZHTS  = {
+  '1': '360天',
+  '2':'365天'
+}
+
+export const LLZHTSLIST = [
+  {
+    id: 1,
+    value: '360天'
+  },
+  {
+    id: 2,
+    value: '365天'
+  }
+]
+
+
+// 利率转换天数
+export const    DQXCFS  = {
+  '1': '到期本息转活期',
+  '2':'到期本息续存'
+}
+
+export const DQXCFSLIST = [
+  {
+    id: 1,
+    value: '到期本息转活期'
+  },
+  {
+    id: 2,
+    value: '到期本息续存'
+  }
+]

@@ -39,7 +39,7 @@
               v-model="form.clmc"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -77,7 +77,7 @@
               v-model="form.sjdwbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+             
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -130,18 +130,20 @@
     </el-form>
 
     <div class="dialog-footer">
-      <el-button @click="dialogObj.show = false">返回</el-button>
+      
       <el-button type="primary" @click="xybClick" v-if="xyb == false"
         >下一步</el-button
       >
       <el-button type="primary" v-if="xyb == true" @click="insert"
         >新增账户</el-button
       >
+      <el-button type="primary" @click="sub">保存</el-button>
+      <el-button @click="dialogObj.show = false">取消</el-button>
     </div>
 
     <Table
       v-show="xyb"
-      :table-data="tableData"
+      :table-data="form.childerList"
       :table-list-data="tableListData"
       :table-btn="tableBtn"
       :current-data="currentData"
@@ -150,7 +152,7 @@
       @handleDelete="handleDelete"
     />
 
-    <dialog-com :dialog-obj-nei="dialogObjNei" />
+    <dialog-com :dialog-obj-nei="dialogObjNei" @handleCommit="handleCommit" />
   </el-dialog>
 </template>
 
@@ -191,6 +193,7 @@ export default {
         sjdwmc: '',
         sjyhzh: '',
         sjzhmc: '',
+        childerList:[]
       },
       rules: {
         clbh: [{ required: true, message: '请填写单据编号', trigger: 'blur' }],
@@ -215,7 +218,13 @@ export default {
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+     "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
     this.tableListData = [
@@ -267,6 +276,44 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',this.form)
+      this.dialogObj.show=false
+    },
+    addSub() {
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+        this.xyb = false
+        this.form.clbh ="ZJGJ20111715482531"
+      }
+    },
+    handleCommit(res){
+        this.form.childerList = res
+    },
     insert() {
       console.log('----------------------')
       this.dialogObjNei.id = ''

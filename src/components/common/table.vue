@@ -287,6 +287,7 @@ export default {
     },
     handleSelectionChange(res) {
       console.log(res)
+      this.$emit("handleSelectionChange",res)
     },
     // 索引事件
     indexMethod(val) {

@@ -431,11 +431,11 @@ export default {
       })
     },
     updateSub(){
-      this.$emit('updateSub',this.form)
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
     addSub() {
-      this.$emit('addSub',this.form)
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
 
