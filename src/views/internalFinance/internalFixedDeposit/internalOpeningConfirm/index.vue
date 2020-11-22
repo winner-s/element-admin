@@ -106,15 +106,11 @@ export default {
         label: '新增'
       },
       {
-        prop: 'insert',
+        prop: 'commit',
         type: 'primary',
         label: '提交'
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '删除'
-      },
+      
       {
         prop: 'reset',
         type: '',
@@ -234,7 +230,18 @@ export default {
       { label: '操作', type: 'btn', width: '',fixed:'right' },
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      {
+        name: '编 辑',
+        btnType: 'primary',
+        handleFn: 'handleEdit',
+      },
+      {
+        name: '删 除',
+        btnType: 'danger',
+        handleFn: 'handleDelete',
+      },
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -287,54 +294,18 @@ export default {
     },
     // 删除产品
     handleDelete(v) {
-      this.$confirm('此操作将删除该账号?', '提示', {
+      this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'warning',
       }).then(() => {
-        // // eslint-disable-next-line no-unused-vars
-        // let json = {
-        //   id: v.id
-        // };
-        // deleteAdmin(json).then(res => {
-        //   console.log(res);
-        //   this.getList();
-        // });
+        console.log()
+        this.list.splice(this.list.indexOf(v), 1)
+        this.tableData = this.list
+        this.currentData.total = this.list.length
       })
     },
-    handleStatus(v) {
-      if (v.status == 0) {
-        this.$confirm('此操作将停用该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //   // eslint-disable-next-line no-unused-vars
-          //   let json = {
-          //     id: v.id
-          //   };
-          //   updateAdminStatus(json).then(res => {
-          //     console.log(res);
-          //     this.getList();
-          //   });
-        })
-      } else {
-        this.$confirm('此操作将恢复该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          // eslint-disable-next-line no-unused-vars
-          const json = {
-            id: v.id
-          }
-          updateAdminStatus(json).then((res) => {
-            console.log(res)
-            this.getList()
-          })
-        })
-      }
-    },
+    
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false

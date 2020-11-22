@@ -31,7 +31,11 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub"  @updateSub="updateSub"   />
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @addSub="addSub"
+      @updateSub="updateSub"
+    />
   </div>
 </template>
 
@@ -73,24 +77,31 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          
-          ckzqlsh: 'KH20082615093831',
-          ckkllsh: '999888000',
-          ckdwmc: '阿里巴巴88',
-          nbzh: '123',
+          ckkllsh: '132',
+          ckll: '4.00',
           ckqx: 1,
-          ckje: '10000',
-          zqje: '100'
-        },
+          klrq: '2020-10-10',
+          ckje: '200',
+          ckye: '200',
+          ckdwbh: '123',
+          ckdwmc: '单位名称',
+          nbzh: '123',
+          nbzhye: '200',
+          nbzhmc: '不知道',
+          dqxcfs: 1,
+          llzhts: 1,
+          bz: '',
+          ckzqlsh: '99988877',
+          zqje: '',
+          zqrq: '',
+          bzer: ''
+        }
       ],
-      
 
       // 表格
-      tableData: [
-       
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
@@ -127,11 +138,7 @@ export default {
         type: 'primary',
         label: '提交'
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '删除'
-      },
+     
       {
         prop: 'reset',
         type: '',
@@ -159,38 +166,32 @@ export default {
         prop: 'ckdwbh',
         placeholder: '请选择存款单位编号'
       },
-      {
-        type: 'input',
-        label: '存款单位名称:',
-        prop: 'ckdwmc',
-        placeholder: '请填写存款单位名称'
-      },
+      
 
       {
         type: 'time',
-        label: '存款开立日期 从:',
-        prop: 'ckklrqks',
-        placeholder: '请选择存款开立日期',
+        label: '存款支取日期 从:',
+        prop: 'ckzqrqks',
+        placeholder: '请选择存款支取日期',
         show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
-        prop: 'ckklrqjs',
+        prop: 'ckzqrqjs',
         placeholder: '请选择存款开立日期',
         show: this.showAll
       }
-
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      
+
       {
         prop: 'ckzqlsh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '存款支取流水号'
       },
       {
@@ -225,20 +226,20 @@ export default {
         width: '',
         label: '支取金额'
       },
-      { label: '操作', type: 'btn', width: '' },
+      { label: '操作', type: 'btn', width: '' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -247,22 +248,21 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
+
       let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -298,7 +298,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -321,7 +321,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -329,7 +329,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.ckzqlsh
       this.dialogObj.read = false
@@ -349,36 +349,45 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      this.tableDataTwo.forEach((item, index) => {
+      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i == 'ckzqlsh') {
+              if (item.ckzqlsh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i == 'ckkllsh') {
+              if (item.ckkllsh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i == 'ckdwbh') {
+              if (item.ckdwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i == 'ckzqrqks') {
+              if (Date.parse(item.ckzqrq)>=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'ckzqrqjs') {
+              if (Date.parse(item.ckzqrq)<=Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

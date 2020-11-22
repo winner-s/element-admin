@@ -18,6 +18,7 @@
       :disabled="dialogObj.read"
       status-icon
       class="form"
+      :inline-message="true"
     >
       <el-row>
         <el-col :span="12">

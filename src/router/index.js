@@ -511,17 +511,15 @@ export const constantRoutes = [
               ),
             name: '付款指令查询',
             meta: { title: '付款指令查询' }
-
           }
-
         ]
       },
       {
         path: 'payeeMaintain',
         name: '收款人信息维护',
-        component: () => import('@/views/settlementManager/payeeMaintain/index'),
+        component: () =>
+          import('@/views/settlementManager/payeeMaintain/index'),
         meta: { title: '收款人信息维护' }
-
       },
       {
         path: 'tradeClaim',
@@ -560,9 +558,7 @@ export const constantRoutes = [
               import('@/views/settlementManager/tradeClaim/entryConfirm/index'),
             name: '线下入账确认',
             meta: { title: '线下入账确认' }
-
           }
-
         ]
       }
     ]
@@ -753,20 +749,22 @@ export const constantRoutes = [
         path: 'setCollection',
         name: '资金归集设置',
         component: () => import('@/views/fundsManagement/setCollection/index'),
-       
+
         meta: { title: '资金归集设置' },
         children: [
           {
             path: 'relation',
             meta: { title: '账户归集关系设置' },
             name: 'relation',
-            component: () => import('@/views/fundsManagement/setCollection/pages/relation')
+            component: () =>
+              import('@/views/fundsManagement/setCollection/pages/relation')
           },
           {
             path: 'condition',
             meta: { title: '自动归集条件设置' },
             name: 'condition',
-            component: () => import('@/views/fundsManagement/setCollection/pages/condition')
+            component: () =>
+              import('@/views/fundsManagement/setCollection/pages/condition')
           }
         ]
       },
@@ -774,15 +772,17 @@ export const constantRoutes = [
         path: 'selfCollsection',
         name: '自动归集管理',
         alwaysShow: true,
-        component: () => import('@/views/fundsManagement/selfCollsection/index'),
-        
+        component: () =>
+          import('@/views/fundsManagement/selfCollsection/index'),
+
         meta: { title: '自动归集管理' },
         children: [
           {
             path: 'task',
             meta: { title: '自动归集任务管理' },
             name: 'task',
-            component: () => import('@/views/fundsManagement/selfCollsection/pages/task')
+            component: () =>
+              import('@/views/fundsManagement/selfCollsection/pages/task')
           }
         ]
       },
@@ -790,15 +790,19 @@ export const constantRoutes = [
         path: 'manualCollsection',
         name: '手动归集管理',
         alwaysShow: true,
-        component: () => import('@/views/fundsManagement/manualCollsection/index'),
-       
+        component: () =>
+          import('@/views/fundsManagement/manualCollsection/index'),
+
         meta: { title: '手动归集管理' },
         children: [
           {
             path: 'fundsCollsection',
             meta: { title: '手动资金归集' },
             name: 'fundsCollsection',
-            component: () => import('@/views/fundsManagement/manualCollsection/pages/fundsCollsection')
+            component: () =>
+              import(
+                '@/views/fundsManagement/manualCollsection/pages/fundsCollsection'
+              )
           }
         ]
       },
@@ -806,15 +810,19 @@ export const constantRoutes = [
         path: 'selectCollection',
         name: '资金归集查询',
         alwaysShow: true,
-        component: () => import('@/views/fundsManagement/selectCollection/index'),
-       
+        component: () =>
+          import('@/views/fundsManagement/selectCollection/index'),
+
         meta: { title: '资金归集查询' },
         children: [
           {
             path: 'selectInfo',
             meta: { title: '归集信息查询' },
             name: 'selectInfo',
-            component: () => import('@/views/fundsManagement/selectCollection/pages/selectInfo')
+            component: () =>
+              import(
+                '@/views/fundsManagement/selectCollection/pages/selectInfo'
+              )
           }
         ]
       },
@@ -822,20 +830,24 @@ export const constantRoutes = [
         path: 'setFundsSend',
         name: '资金下拨设置',
         component: () => import('@/views/fundsManagement/setFundsSend/index'),
-        
+
         meta: { title: '资金下拨设置' },
         children: [
           {
             path: 'accountRelation',
             meta: { title: '账户下拨关系设置' },
             name: 'accountRelation',
-            component: () => import('@/views/fundsManagement/setFundsSend/pages/accountRelation')
+            component: () =>
+              import(
+                '@/views/fundsManagement/setFundsSend/pages/accountRelation'
+              )
           },
           {
             path: 'condition',
             meta: { title: '自动下拨条件设置' },
             name: 'condition',
-            component: () => import('@/views/fundsManagement/setFundsSend/pages/condition')
+            component: () =>
+              import('@/views/fundsManagement/setFundsSend/pages/condition')
           }
         ]
       },
@@ -844,14 +856,15 @@ export const constantRoutes = [
         name: '自动下拨管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selfSend/index'),
-       
+
         meta: { title: '自动下拨管理' },
         children: [
           {
             path: 'tasks',
             meta: { title: '自动下拨任务管理' },
             name: 'tasks',
-            component: () => import('@/views/fundsManagement/selfSend/pages/tasks')
+            component: () =>
+              import('@/views/fundsManagement/selfSend/pages/tasks')
           }
         ]
       },
@@ -860,14 +873,15 @@ export const constantRoutes = [
         name: '手动下拨管理',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/manualSend/index'),
-       
+
         meta: { title: '手动下拨管理' },
         children: [
           {
             path: 'fundsSend',
             meta: { title: '手动资金下拨' },
             name: 'fundsSend',
-            component: () => import('@/views/fundsManagement/manualSend/pages/fundsSend')
+            component: () =>
+              import('@/views/fundsManagement/manualSend/pages/fundsSend')
           }
         ]
       },
@@ -876,19 +890,19 @@ export const constantRoutes = [
         name: '资金下拨查询',
         alwaysShow: true,
         component: () => import('@/views/fundsManagement/selectSend/index'),
-       
+
         meta: { title: '资金下拨查询' },
         children: [
           {
             path: 'selectInfo',
             meta: { title: '下拨信息查询' },
             name: 'selectInfo',
-            component: () => import('@/views/fundsManagement/selectSend/pages/selectInfo')
+            component: () =>
+              import('@/views/fundsManagement/selectSend/pages/selectInfo')
           }
         ]
       }
     ]
-
   },
   // 内部金融
   {
@@ -1037,7 +1051,7 @@ export const constantRoutes = [
               import(
                 '@/views/internalFinance/statisticalQuery/accountQuery/index'
               ),
-            name: '账户信息查询',
+            name: '账户信息查询s',
             meta: { title: '账户信息查询' }
           },
           {
@@ -1070,125 +1084,101 @@ export const constantRoutes = [
           {
             path: 'jkhtlr',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkhtlr/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkhtlr/index'),
             name: '借款合同录入',
             meta: { title: '借款合同录入' }
           },
           {
             path: 'jkhtfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkhtfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkhtfh/index'),
             name: '借款合同复核',
             meta: { title: '借款合同复核' }
-          }, {
+          },
+          {
             path: 'jkfklr',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkfklr/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkfklr/index'),
             name: '借款放款录入',
             meta: { title: '借款放款录入' }
-          }, {
+          },
+          {
             path: 'jkfkfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkfkfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkfkfh/index'),
             name: '借款放款复核',
             meta: { title: '借款放款复核' }
-          }, {
+          },
+          {
             path: 'jkhkjh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkhkjh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkhkjh/index'),
             name: '借款还款计划',
             meta: { title: '借款还款计划' }
           },
           {
             path: 'jkhkcl',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkhkcl/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkhkcl/index'),
             name: '借款还款处理',
             meta: { title: '借款还款处理' }
-          }, {
+          },
+          {
             path: 'jkhkfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/jkhkfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/jkhkfh/index'),
             name: '借款还款复核',
             meta: { title: '借款还款复核' }
-          }, {
+          },
+          {
             path: 'lltz',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/lltz/index'
-              ),
+              import('@/views/internalFinance/internalLoan/lltz/index'),
             name: '利率调整',
             meta: { title: '利率调整' }
           },
           {
             path: 'lltzfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/lltzfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/lltzfh/index'),
             name: '利率调整复核',
             meta: { title: '利率调整复核' }
           },
           {
             path: 'yqlr',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/yqlr/index'
-              ),
+              import('@/views/internalFinance/internalLoan/yqlr/index'),
             name: '逾期录入',
             meta: { title: '逾期录入' }
           },
           {
             path: 'yqfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/yqfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/yqfh/index'),
             name: '逾期复核',
             meta: { title: '逾期复核' }
           },
           {
             path: 'zqlr',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/zqlr/index'
-              ),
+              import('@/views/internalFinance/internalLoan/zqlr/index'),
             name: '展期录入',
             meta: { title: '展期录入' }
           },
           {
             path: 'zqfh',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/zqfh/index'
-              ),
+              import('@/views/internalFinance/internalLoan/zqfh/index'),
             name: '展期复核',
             meta: { title: '展期复核' }
           },
           {
             path: 'nbjkks',
             component: () =>
-              import(
-                '@/views/internalFinance/internalLoan/nbjkks/index'
-              ),
+              import('@/views/internalFinance/internalLoan/nbjkks/index'),
             name: '内部借款匡算',
             meta: { title: '内部借款匡算' }
           }
-
         ]
       }
     ]
@@ -1299,9 +1289,7 @@ export const constantRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
-export const asyncRoutes = [
-
-]
+export const asyncRoutes = []
 
 const createRouter = () =>
   new Router({

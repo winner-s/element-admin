@@ -26,7 +26,6 @@ export const UNITNOLIST = [
   }
 ]
 
-
 // 银行名称
 export const BACK = {
   '1': '北京银行',
@@ -48,7 +47,6 @@ export const BACKLIST = [
     value: '中国银行'
   }
 ]
-
 
 // 币种
 export const CURRENCY = {
@@ -72,7 +70,6 @@ export const CURRENCYLIST = [
   }
 ]
 
-
 // 是否直联
 export const DIRECT = {
   '1': '直联',
@@ -91,7 +88,7 @@ export const DIRECTLIST = [
 ]
 
 // 账户用途
-export const ACCOUNTUSAGE  = {
+export const ACCOUNTUSAGE = {
   '1': '基本存款户-收支户',
   '2': '一般存款户-收支户',
   '3': '临时存款户-收支户',
@@ -117,12 +114,10 @@ export const ACCOUNTUSAGELIST = [
   }
 ]
 
-
 // 账户状态
-export const ACCOUNTSTATUS  = {
+export const ACCOUNTSTATUS = {
   '1': '正常',
-  '2': '销户',
-  
+  '2': '销户'
 }
 
 export const ACCOUNTSTATUSLIST = [
@@ -137,10 +132,9 @@ export const ACCOUNTSTATUSLIST = [
 ]
 
 // 借贷方向
-export const LENDING  = {
+export const LENDING = {
   '1': '借',
-  '2': '贷',
-  
+  '2': '贷'
 }
 
 export const LENDINGLIST = [
@@ -154,13 +148,11 @@ export const LENDINGLIST = [
   }
 ]
 
-
 // 付款用途
-export const PURPOSE   = {
+export const PURPOSE = {
   '1': '员工借款',
   '2': '差旅报销',
-  '3':'差旅补助'
-  
+  '3': '差旅补助'
 }
 
 export const PURPOSELIST = [
@@ -177,12 +169,10 @@ export const PURPOSELIST = [
     value: '差旅补助'
   }
 ]
- 
 
 // 支付方式
-export const  PAYMENT   = {
+export const PAYMENT = {
   '1': '非直联支付'
-  
 }
 
 export const PAYMENTLIST = [
@@ -192,12 +182,10 @@ export const PAYMENTLIST = [
   }
 ]
 
-
 // 是否滚动
-export const  SCORLL   = {
+export const SCORLL = {
   '1': '是',
   '2': '否'
-  
 }
 
 export const SCORLLLIST = [
@@ -206,20 +194,18 @@ export const SCORLLLIST = [
     value: '是'
   },
   {
-    id:2,
-    value:'否'
+    id: 2,
+    value: '否'
   }
 ]
 
-
 // 周期类型  Cycle type
-export const  CYCLETYPE   = {
+export const CYCLETYPE = {
   '1': '年',
   '2': '季',
   '2': '月',
   '2': '周',
   '2': '日'
-  
 }
 
 export const CYCLETYPELIIST = [
@@ -228,25 +214,25 @@ export const CYCLETYPELIIST = [
     value: '年'
   },
   {
-    id:2,
-    value:'季'
+    id: 2,
+    value: '季'
   },
   {
-    id:3,
-    value:'月'
+    id: 3,
+    value: '月'
   },
   {
-    id:4,
-    value:'周'
+    id: 4,
+    value: '周'
   },
   {
-    id:5,
-    value:'日'
+    id: 5,
+    value: '日'
   }
 ]
 
 // 归集方式  Cycle type
-export const   COLLECTION   = {
+export const COLLECTION = {
   '1': '比例归集',
   '2': '取整归集',
   '3': '限额归集',
@@ -261,31 +247,29 @@ export const COLLECTIONLIST = [
     value: '比例归集'
   },
   {
-    id:2,
-    value:'取整归集'
+    id: 2,
+    value: '取整归集'
   },
   {
-    id:3,
-    value:'限额归集'
+    id: 3,
+    value: '限额归集'
   },
   {
-    id:4,
-    value:'全额归集'
+    id: 4,
+    value: '全额归集'
   },
   {
-    id:5,
-    value:'超限额全额归集'
+    id: 5,
+    value: '超限额全额归集'
   },
   {
-    id:6,
-    value:'自定义归集'
+    id: 6,
+    value: '自定义归集'
   }
 ]
 
-
-
-// 单位层级 
-export const   UNITLEVEL    = {
+// 单位层级
+export const UNITLEVEL = {
   '1': '一级',
   '2': '二级',
   '3': '三级',
@@ -300,30 +284,29 @@ export const UNITLEVELLIST = [
     value: '一级'
   },
   {
-    id:2,
-    value:'二级'
+    id: 2,
+    value: '二级'
   },
   {
-    id:3,
-    value:'三级'
+    id: 3,
+    value: '三级'
   },
   {
-    id:4,
-    value:'四级'
+    id: 4,
+    value: '四级'
   },
   {
-    id:5,
-    value:'五级'
+    id: 5,
+    value: '五级'
   },
   {
-    id:6,
-    value:'六级'
+    id: 6,
+    value: '六级'
   }
 ]
 
-
 // 单位类型
-export const   UNITTYPE   = {
+export const UNITTYPE = {
   '1': '国有企业',
   '2': '私营企业',
   '3': '中外合营企业',
@@ -337,26 +320,25 @@ export const UNITTYPELIST = [
     value: '国有企业'
   },
   {
-    id:2,
-    value:'私营企业'
+    id: 2,
+    value: '私营企业'
   },
   {
-    id:3,
-    value:'中外合营企业'
+    id: 3,
+    value: '中外合营企业'
   },
   {
-    id:4,
-    value:'外商投资企业'
+    id: 4,
+    value: '外商投资企业'
   },
   {
-    id:5,
-    value:'单位类别'
+    id: 5,
+    value: '单位类别'
   }
 ]
 
-
 // 策略模式
-export const   STRATEGYMODEL  = {
+export const STRATEGYMODEL = {
   '1': '资金上划'
 }
 
@@ -367,12 +349,11 @@ export const STRATEGYMODELLIST = [
   }
 ]
 
-
 // 利率类型
-export const   RATETYPE  = {
+export const RATETYPE = {
   '1': '存款',
-  '2':'贷款',
-  '3':'活期'
+  '2': '贷款',
+  '3': '活期'
 }
 
 export const RATETYPELIST = [
@@ -391,12 +372,12 @@ export const RATETYPELIST = [
 ]
 
 // 申请单状态
-export const   FORMSTATUS  = {
+export const FORMSTATUS = {
   '1': '保存',
-  '2':'审批中',
-  '3':'审批拒绝',
-  '4':'审批通过',
-  '5':'退回'
+  '2': '审批中',
+  '3': '审批拒绝',
+  '4': '审批通过',
+  '5': '退回'
 }
 
 export const FORMSTATUSLIST = [
@@ -422,15 +403,14 @@ export const FORMSTATUSLIST = [
   }
 ]
 
-
 // 存款期限
-export const    DEPOSITTERM  = {
+export const DEPOSITTERM = {
   '1': '3个月定期',
-  '2':'6个月定期',
-  '3':'1年定期',
-  '4':'2年定期',
-  '5':'3年定期',
-  '6':'5年定期'
+  '2': '6个月定期',
+  '3': '1年定期',
+  '4': '2年定期',
+  '5': '3年定期',
+  '6': '5年定期'
 }
 
 export const DEPOSITTERMLIST = [
@@ -460,12 +440,10 @@ export const DEPOSITTERMLIST = [
   }
 ]
 
-
-
 // 利率转换天数
-export const    LLZHTS  = {
+export const LLZHTS = {
   '1': '360天',
-  '2':'365天'
+  '2': '365天'
 }
 
 export const LLZHTSLIST = [
@@ -479,11 +457,10 @@ export const LLZHTSLIST = [
   }
 ]
 
-
 // 利率转换天数
-export const    DQXCFS  = {
+export const DQXCFS = {
   '1': '到期本息转活期',
-  '2':'到期本息续存'
+  '2': '到期本息续存'
 }
 
 export const DQXCFSLIST = [
@@ -494,5 +471,99 @@ export const DQXCFSLIST = [
   {
     id: 2,
     value: '到期本息续存'
+  }
+]
+
+// 合同状态
+export const HTZT = {
+  '1': '未执行',
+  '2': '执行中',
+  '3': '已结束'
+}
+
+export const HTZTLIST = [
+  {
+    id: 1,
+    value: '未执行'
+  },
+  {
+    id: 2,
+    value: '执行中'
+  },
+  {
+    id: 3,
+    value: '已结束'
+  }
+]
+
+// 付款类型
+export const FKLX = {
+  '1': '内部交易冲销',
+  '2': '归集收款',
+  '3': '下拨付款',
+  '4': '联动支付',
+  '5': '余额调整',
+  '6': '内部活期结息',
+  '7': '内部借款放贷',
+  '8': '内部借款还本',
+  '9': '内部借款还息',
+  '10': '内部定期存款开立',
+  '11': '内部定期存款支取',
+  '12': '内部存款结息',
+  '13': '请款申请'
+}
+
+export const FKLXLIST = [
+  {
+    id: 1,
+    value: '内部交易冲销'
+  },
+  {
+    id: 2,
+    value: '归集收款'
+  },
+  {
+    id: 3,
+    value: '下拨付款'
+  },
+  {
+    id: 4,
+    value: '联动支付'
+  },
+  {
+    id: 5,
+    value: '余额调整'
+  },
+  {
+    id: 6,
+    value: '内部活期结息'
+  },
+  {
+    id: 7,
+    value: '内部借款放贷'
+  },
+  {
+    id: 8,
+    value: '内部借款还本'
+  },
+  {
+    id: 9,
+    value: '内部借款还息'
+  },
+  {
+    id: 10,
+    value: '内部定期存款开立'
+  },
+  {
+    id: 11,
+    value: '内部定期存款支取'
+  },
+  {
+    id: 12,
+    value: '内部存款结息'
+  },
+  {
+    id: 13,
+    value: '请款申请'
   }
 ]
