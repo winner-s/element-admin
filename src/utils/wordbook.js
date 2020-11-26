@@ -496,6 +496,135 @@ export const HTZTLIST = [
   }
 ]
 
+
+
+
+
+
+
+
+
+// 单据状态
+export const DJZT = {
+  '1': '已保存',
+  '2': '已提交',
+  '3': '已复核',
+  '4': '已退回'
+}
+
+export const DJZTLIST = [
+  {
+    id: 1,
+    value: '已保存'
+  },
+  {
+    id: 2,
+    value: '已提交'
+  },
+  {
+    id: 3,
+    value: '已复核'
+  },
+  {
+    id: 4,
+    value: '已退回'
+  }
+]
+
+
+
+// 付息方式
+export const FXFS = {
+  '1': '按季付息',
+  '2': '按年付息',
+  '3': '按月付息',
+  '4': '按计划还',
+  '5': '到期还'
+}
+
+export const FXFSLIST = [
+  {
+    id: 1,
+    value: '按季付息'
+  },
+  {
+    id: 2,
+    value: '按年付息'
+  },
+  {
+    id: 3,
+    value: '按月付息'
+  },
+  {
+    id: 4,
+    value: '按计划还'
+  },
+  {
+    id: 5,
+    value: '到期还'
+  }
+]
+
+// 还本方式
+export const HBFS = {
+  '1': '按计划还',
+  '2': '到期还',
+  '3': '年度'
+}
+
+export const HBFSLIST = [
+  {
+    id: 1,
+    value: '按计划还'
+  },
+  {
+    id: 2,
+    value: '到期还'
+  },
+  {
+    id: 3,
+    value: '年度'
+  }
+]
+
+
+// 还款类型
+export const HKLX = {
+  '1': '还息',
+  '2': '还本'
+}
+
+export const HKLXLIST = [
+  {
+    id: 1,
+    value: '还息'
+  },
+  {
+    id: 2,
+    value: '还本'
+  }
+]
+
+
+// 计息方式
+export const JXFS = {
+  '1': '固定利率',
+  '2': '浮动利率'
+}
+
+export const JXFSLIST = [
+  {
+    id: 1,
+    value: '固定利率'
+  },
+  {
+    id: 2,
+    value: '固定利率'
+  }
+]
+
+
+
 // 付款类型
 export const FKLX = {
   '1': '内部交易冲销',
@@ -567,3 +696,80 @@ export const FKLXLIST = [
     value: '请款申请'
   }
 ]
+
+
+
+
+
+
+
+
+
+
+// 贷款期限
+export const DKQX = {
+  '1': '一年',
+  '2': '两年',
+  '3': '三年',
+  '4': '四年',
+  '5': '五年',
+  '6': '六年',
+  '7': '七年',
+  '8': '八年',
+  '9': '九年',
+  '10': '十年',
+  '11': '十一年',
+  '12': '十二年'
+}
+
+export const DKQXLIST = [
+  {
+    id: 1,
+    value: '一年'
+  },
+  {
+    id: 2,
+    value: '两年'
+  },
+  {
+    id: 3,
+    value: '三年'
+  },
+  {
+    id: 4,
+    value: '四年'
+  },
+  {
+    id: 5,
+    value: '五年'
+  },
+  {
+    id: 6,
+    value: '六年'
+  },
+  {
+    id: 7,
+    value: '七年'
+  },
+  {
+    id: 8,
+    value: '八年'
+  },
+  {
+    id: 9,
+    value: '九年'
+  },
+  {
+    id: 10,
+    value: '十年'
+  },
+  {
+    id: 11,
+    value: '十一年'
+  },
+  {
+    id: 12,
+    value: '十二年'
+  }
+]
+

@@ -256,7 +256,6 @@
               style="width: 200px"
               v-model="form.zqjsrq"
               type="date"
-              value-format="yyyy-MM-dd"
               placeholder="请选择开户日期"
               size="mini"
             >

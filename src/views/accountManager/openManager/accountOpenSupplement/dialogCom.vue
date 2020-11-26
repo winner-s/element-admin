@@ -60,8 +60,8 @@
               v-model="form.unitName"
               placeholder="请选择"
               size="mini"
+              :disabled="true"
               style="width: 200px"
-              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in unitNoList"
@@ -113,13 +113,13 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="银行名称：" prop="backName">
+          <el-form-item label="银行名称：" prop="bankName">
             <el-select
-              v-model="form.backName"
+              v-model="form.bankName"
               placeholder="请选择"
               size="mini"
+              :disabled="true"
               style="width: 200px"
-              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in backList"
@@ -151,7 +151,7 @@
               v-model="form.khhss"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id!=''"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -162,8 +162,8 @@
               v-model="form.zhyt"
               placeholder="请选择"
               size="mini"
+              :disabled="true"
               style="width: 200px"
-              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in accountUsageList"
@@ -184,7 +184,7 @@
               v-model="form.lhh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -195,8 +195,8 @@
               v-model="form.currency"
               placeholder="请选择"
               size="mini"
+              :disabled="true"
               style="width: 200px"
-              :disabled="dialogObj.id!=''"
             >
               <el-option
                 v-for="item in currencyList"
@@ -240,6 +240,25 @@
           </el-form-item>
         </el-col>
       </el-row>
+
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="开户日期：" prop="khrq">
+            <el-date-picker
+              style="width: 200px"
+              v-model="form.khrq"
+              type="date"
+              placeholder="请选择开户日期"
+              size="mini"
+              :disabled="true"
+            >
+            </el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          
+        </el-col>
+      </el-row>
       
       <div class="title"><i class="el-icon-user" /> 附加信息</div>
 
@@ -250,7 +269,7 @@
               v-model="form.khjl"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id!=''"
+              :disabled='true'
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -261,7 +280,7 @@
               v-model="form.khjlPhone"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id!=''"
+              :disabled='true'
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -276,9 +295,9 @@
               type="textarea"
               :rows="3"
               size="mini"
+              :disabled='true'
               maxlength="50"
               show-word-limit
-              :disabled="dialogObj.id!=''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -344,7 +363,7 @@ export default {
          openApplicant: [
           { required: true, message: '请填写开户申请人', trigger: 'blur' },
         ],
-         backName: [
+         bankName: [
           { required: true, message: '请选择银行名称', trigger: 'blur' },
         ],
          khhss: [
@@ -374,14 +393,18 @@ export default {
       ],
       placeholderTips: placeholderTips,
       form: {
-        documentNumber: 'KH20102917085862',
-        openTime: new Date(),
-        openApplicant: 'admin',
-        unitName: 1324,
-        backName: 1,
-        currency: 1,
-        zhyt: 1,
-        sfzl: 1,
+        documentNumber: '',
+        openTime: '',
+        openApplicant: '',
+        accountPhone:'',
+        accountName:'',
+        
+        unitName: '',
+        bankName: '',
+        currency: '',
+        zhyt: '',
+        sfzl: '',
+        khhss:''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
@@ -411,29 +434,39 @@ export default {
     initDialog(){
       
       if (this.dialogObj.id) {
-        // Object.keys(this.form).forEach(item => {
-        //   this.form[item] = this.dialogObj.form[item];
-        // });
-        this.form = this.dialogObj.form
-      } 
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+        this.form.khrq = '2020-10-10'
+        this.form.documentNumber = 'KH20091410151601'
+        this.form.openTime = new Date()
+        this.form.sqr = 'admin'
+      }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
+        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
+            this.form.status=1
             this.addSub()
           }
         }
       })
     },
     updateSub(){
-      this.$emit('updateSub',this.form)
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
     addSub() {
-      this.$emit('addSub',this.form)
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
 

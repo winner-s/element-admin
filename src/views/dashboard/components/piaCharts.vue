@@ -16,20 +16,20 @@ export default {
   props: {
     width: {
       type: String,
-      default: '100%'
+      default: '100%',
     },
     height: {
       type: String,
-      default: '280px'
+      default: '280px',
     },
     lineChartData: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      mycharts: null
+      mycharts: null,
     }
   },
   watch: {
@@ -37,8 +37,8 @@ export default {
       deep: true,
       handler(val) {
         this._setOption(val.inPrice, val.outPrice)
-      }
-    }
+      },
+    },
   },
   mounted() {
     this.$nextTick().then(() => {
@@ -54,38 +54,33 @@ export default {
     },
     _setOption(inprice = [], outprice = []) {
       this.mycharts.setOption({
-        title: {
-          text: 'Statistics',
-          left: '16'
-        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
             type: 'cross',
             label: {
-              background: '#6a7985'
-            }
-          }
+              background: '#6a7985',
+            },
+          },
         },
-        
         grid: {
           left: '20',
-          top: '60',
+          top: '10',
           right: '20',
           bottom: '0',
-          containLabel: true
+          containLabel: true,
         },
         xAxis: [
           {
             type: 'value',
-            boundaryGap: [0, 0.01]
-          }
+            boundaryGap: [0, 0.01],
+          },
         ],
         yAxis: [
           {
             type: 'category',
-            data:['中国银行','建设银行','交通银行','招商银行','工商银行']
-          }
+            data: ['中国银行', '建设银行', '交通银行', '招商银行', '工商银行'],
+          },
         ],
         color: ['#3AA0FF'],
         series: [
@@ -93,12 +88,12 @@ export default {
             name: '账户数量',
             type: 'bar',
             barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220]
-        }
-        ]
+            data: [10, 52, 200, 334, 390, 330, 220],
+          },
+        ],
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style></style>

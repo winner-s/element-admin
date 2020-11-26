@@ -54,10 +54,7 @@ export default {
     },
     _setOption(inprice = [], outprice = []) {
       this.mycharts.setOption({
-        title: {
-          text: 'Statistics',
-          left: '16'
-        },
+        
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -68,13 +65,13 @@ export default {
           }
         },
         legend: {
-          data: ['直接访问', '邮件营销', '联盟广告'],
+          data: ['项目借款', '流动资金借款', '负债合计'],
           top: '20',
           right: '10'
         },
         grid: {
           left: '20',
-          top: '60',
+          top: '50',
           right: '20',
           bottom: '0',
           containLabel: true
@@ -82,7 +79,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['欧莱股份有限公司', '立讯精密有限公司', '美的集团']
+            data: ['禹道斯北京分公司', '禹道斯上海分公司', '禹道斯深圳分公司'],
           }
         ],
         yAxis: [
@@ -93,19 +90,19 @@ export default {
         color: ['#FBD337', '#37CBCB', '#1890FF'],
         series: [
           {
-            name: '直接访问',
+            name: '',
             type: 'bar',
             data: [2500, 1000, 5000],
-            barWidth: 30
+            barWidth: 30,
           },
           {
-            name: '邮件营销',
+            name: '',
             type: 'bar',
             data: [2000, 4000, 4000],
             barWidth: 30
           },
           {
-            name: '联盟广告',
+            name: '',
             type: 'bar',
             data: [1800, 3200, 3000],
             barWidth: 30

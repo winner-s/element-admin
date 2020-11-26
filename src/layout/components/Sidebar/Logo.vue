@@ -3,17 +3,20 @@
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }} </h1>
+        <img v-if="logo" :src="title" class="sidebar-logoText">
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }} </h1>
+        <img v-if="logo" :src="title" class="sidebar-logoText">
       </router-link>
     </transition>
   </div>
 </template>
 
 <script>
+import logo from '@a/img/logo.png'
+import logoText from '@a/img/logoText.png'
+
 export default {
   name: 'SidebarLogo',
   props: {
@@ -24,8 +27,8 @@ export default {
   },
   data() {
     return {
-      title: '企业财资管理系统',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: logoText,
+      logo: logo
     }
   }
 }
@@ -53,7 +56,12 @@ export default {
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
-
+    & .sidebar-logoText{
+       width: 148px;
+       height: 15px;
+       vertical-align: middle;
+       margin: 0;
+    }
     & .sidebar-logo {
       width: 32px;
       height: 32px;

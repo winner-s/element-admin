@@ -239,6 +239,7 @@ export default {
         schbrq: '',
         jxfs: '',
         htksr: '',
+        jknbzh:'',
         htdqr: '',
         cxdjfs: '',
         lltzzq: '',

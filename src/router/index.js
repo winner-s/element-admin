@@ -1185,11 +1185,19 @@ export const constantRoutes = [
   },
   // 对账管理
   {
-    path: '/fundsManagem',
+    path: '/f',
     component: Layout,
-    redirect: '/fundsManagem/setCollection',
+    redirect: '/fundsManagem/sea',
     name: '对账管理',
-    meta: { title: '对账管理', icon: 'el-icon-reading' }
+    meta: {  icon: 'el-icon-reading' },
+    children:[
+      {
+        path: 'sea',
+        meta: { title: '对账管理' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 报表中心
   {
@@ -1239,51 +1247,99 @@ export const constantRoutes = [
   },
   // 操作帮助
   {
-    path: '/fundsManagemena',
+    path: '/fa',
     component: Layout,
-    redirect: '/fundsManagemen/setCollection',
+    redirect: '/fa/s',
     name: '操作帮助',
-    meta: { title: '操作帮助', icon: 'el-icon-data-line' }
+    meta: {  icon: 'el-icon-data-line' },
+    children:[
+      {
+        path: 's',
+        meta: { title: '操作帮助' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 资金监控
   {
-    path: '/fundsManagemen',
+    path: '/fae',
     component: Layout,
-    redirect: '/fundsManagemen/setCollection',
+    redirect: '/fae/s',
     name: '资金监控',
-    meta: { title: '资金监控', icon: 'el-icon-data-line' }
+    meta: {  icon: 'el-icon-data-line' },
+    children:[
+      {
+        path: 's',
+        meta: { title: '资金监控' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 融资管理
   {
-    path: '/fundsManageme',
+    path: '/fun',
     component: Layout,
-    redirect: '/fundsManageme/setCollection',
+    redirect: '/fun/set',
     name: '融资管理',
-    meta: { title: '融资管理', icon: 'el-icon-notebook-2' }
+    meta: {  icon: 'el-icon-notebook-2' },
+    children:[
+      {
+        path: 'set',
+        meta: { title: '融资管理' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 投资管理
   {
-    path: '/fundsManag',
+    path: '/fund',
     component: Layout,
-    redirect: '/fundsManag/setCollection',
+    redirect: '/fund/colle',
     name: '投资管理',
-    meta: { title: '投资管理', icon: 'el-icon-takeaway-box' }
+    meta: {  icon: 'el-icon-takeaway-box' },
+    children:[
+      {
+        path: 'colle',
+        meta: { title: '投资管理' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 票据管理
   {
-    path: '/fundsManage',
+    path: '/ma',
     component: Layout,
-    redirect: '/fundsManage/setCollection',
+    redirect: '/ma/tion',
     name: '票据管理',
-    meta: { title: '票据管理', icon: 'el-icon-pie-chart' }
+    meta: {  icon: 'el-icon-pie-chart' },
+    children:[
+      {
+        path: 'tion',
+        meta: { title: '票据管理' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
   // 银企平台
   {
-    path: '/fundsMana',
+    path: '/manafe',
     component: Layout,
-    redirect: '/fundsMana/setCollection',
+    redirect: '/manafe/sstads',
     name: '银企平台',
-    meta: { title: '银企平台', icon: 'el-icon-folder-opened' }
+    meta: {  icon: 'el-icon-folder-opened' },
+    children:[
+      {
+        path: 'sstads',
+        meta: { title: '银企平台' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
   },
 
   // 404 page must be placed at the end !!!

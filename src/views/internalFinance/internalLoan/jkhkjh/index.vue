@@ -31,7 +31,6 @@
         />
       </div>
     </el-card>
-
   </div>
 </template>
 
@@ -53,7 +52,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
       showAll: false,
       unitNoList: UNITNOLIST,
@@ -61,7 +60,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10
+        total: 10,
       },
       // 顶部按钮
       searchBto: [],
@@ -71,119 +70,32 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
-
-      // 表格
-      tableData: [
+      list: [
         {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
+          
+          fkdbh: 'FH20082615093831',
+          htbh: 'DK84602971829345',
+          dkdw: '二级单位1',
+          fkje: '100.00',
+          fkr: '2020-06-07',
+          dqr: '2020-06-10',
+          jhhbe: '0.00',
+          jhhxje:'0.00',
+          sjhbje:'0.00',
+          sjhxje:'0.00'
         },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
       ],
+      // 表格
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: ''
-      }
+        documentNumber: '',
+      },
     }
   },
   // 监听属性 类似于data概念
@@ -193,114 +105,115 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
         prop: 'select',
         type: 'primary',
-        label: '查询'
+        label: '查询',
       },
 
       {
         prop: 'reset',
         type: '',
-        label: '重置'
-      }
+        label: '重置',
+      },
     ]
     // 搜索
     this.searchItem = [
       {
         type: 'input',
         label: '合同编号:',
-        prop: 'openApplicant',
-        placeholder: '请填写合同编号'
+        prop: 'htbh',
+        placeholder: '请填写合同编号',
       },
       {
         type: 'select',
         label: '金额(元) 从:',
-        prop: 'documentNumber',
-        placeholder: '请选择金额状态'
+        prop: 'jec',
+        placeholder: '请选择金额状态',
       },
 
       {
         type: 'select',
         label: '到:',
-        prop: 'openApplicant',
-        placeholder: '请选择金额'
+        prop: 'jed',
+        placeholder: '请选择金额',
       },
       {
         type: 'time',
         label: '放款日期从:',
-        prop: 'documentNumber',
+        prop: 'fkrqc',
         placeholder: '请选择还款日期',
-        show: this.showAll
+        show: this.showAll,
       },
       {
         type: 'input',
         label: '到:',
-        prop: 'documentNumber',
+        prop: 'fkrqd',
         placeholder: '请填写放款日期',
-        show: this.showAll
-      }
-
+        show: this.showAll,
+      },
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
 
       {
-        prop: 'documentNumber',
+        prop: 'fkdbh',
         width: '150',
-        label: '放款单编号'
+        type:'a',
+        label: '放款单编号',
       },
       {
-        prop: 'documentNumber',
+        prop: 'htbh',
         width: '150',
-        label: '合同编号'
+        label: '合同编号',
       },
 
       {
-        prop: 'accountName',
+        prop: 'dkdw',
         width: '',
-        label: '贷款单位 '
+        label: '贷款单位 ',
       },
 
       {
-        prop: 'accountName',
+        prop: 'fkje',
         width: '',
-        label: '放款金额'
+        label: '放款金额',
       },
       {
-        prop: 'accountName',
+        prop: 'fkr',
         width: '',
-        label: '放款日'
+        label: '放款日',
       },
       {
-        prop: '首次付息日',
+        prop: 'dqr',
         width: '',
-        label: '到期日 '
+        label: '到期日 ',
       },
       {
-        prop: 'accountName',
+        prop: 'jhhbje',
         width: '',
-        label: '计划还本金额'
+        label: '计划还本金额',
       },
       {
-        prop: 'accountName',
+        prop: 'jhhxje',
         width: '',
-        label: '计划还息金额'
+        label: '计划还息金额',
       },
       {
-        prop: 'accountName',
+        prop: 'sjhbje',
         width: '',
-        label: '实际还本金额'
+        label: '实际还本金额',
       },
       {
-        prop: 'accountName',
+        prop: 'sjhxje',
         width: '',
-        label: '实际还息金额'
-      }
-
+        label: '实际还息金额',
+      },
     ]
     // 按钮
     this.tableBtn = []
@@ -355,24 +268,16 @@ export default {
       this.getList()
     },
     // 删除产品
-    handleDelete(v) {
-
-    },
-    handleStatus(v) {
-
-    },
-    handleEdit(row) {
-
-    },
-    handleViewOther(row) {
-
-    },
+    handleDelete(v) {},
+    handleStatus(v) {},
+    handleEdit(row) {},
+    handleViewOther(row) {},
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringifythis.tableData)
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -418,8 +323,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped></style>

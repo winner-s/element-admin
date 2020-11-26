@@ -27,6 +27,12 @@ export default {
       mycharts: null
     }
   },
+  watch: {
+    tableData: function (newVal, OldVal) {
+      console.log(newVal, OldVal)
+      this._setOtion()
+    },
+  },
   mounted() {
     this.$nextTick().then(() => {
       this.initEcharts()

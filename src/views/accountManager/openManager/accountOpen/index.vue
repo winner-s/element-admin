@@ -15,6 +15,7 @@
           @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
+          @handleCommit='handleCommit'
         />
 
         <Table
@@ -27,6 +28,7 @@
           @handleEdit="handleEdit"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
+          @handleSelectionChange="handleSelectionChange"
         />
       </div>
     </el-card>
@@ -36,7 +38,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { DJZT,DJZTLIST, CURRENCY,CURRENCYLIST,  UNITNO, UNITNOLIST,BACK,BACKLIST, DIRECT,DIRECTLIST,ACCOUNTUSAGE,ACCOUNTUSAGELIST} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -47,7 +49,11 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+      djztList:DJZTLIST,
+      currencyList:CURRENCYLIST,
+      accountUsageList:ACCOUNTUSAGELIST,
+      directList:DIRECTLIST,
+      backList:BACKLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -68,18 +74,74 @@ export default {
       list: [
         {
          
-          documentNumber: 'KH20082615093830',
+          documentNumber: 'KH201124150454455',
           openTime:'2020-11-02',
+          khrq:'2020-11-01',
+          sqr:'admin',
           accountPhone: '999888000',
           accountName:"aaa",
           unitName: 1324,
           openApplicant:'admin',
-          backName: 1,
+          bankName: 1,
           bankOpenName: '11111',
           zhyt:2,
           sfzl:1,
           currency:1,
-          status: '通过',
+          status: 1,
+          khhss:"1111"
+        },
+        {
+         
+          documentNumber: 'KH20112315560278',
+          openTime:'2020-11-02',
+          khrq:'2020-11-01',
+          sqr:'admin',
+          accountPhone: '999888000',
+          accountName:"aaa",
+          unitName: 1324,
+          openApplicant:'admin',
+          bankName: 1,
+          bankOpenName: '11111',
+          zhyt:2,
+          sfzl:1,
+          currency:1,
+          status: 1,
+          khhss:"1111"
+        },
+        {
+         
+          documentNumber: 'KH20112309552410',
+          openTime:'2020-11-02',
+          khrq:'2020-11-01',
+          sqr:'admin',
+          accountPhone: '999888000',
+          accountName:"aaa",
+          unitName: 1324,
+          openApplicant:'admin',
+          bankName: 1,
+          bankOpenName: '11111',
+          zhyt:2,
+          sfzl:1,
+          currency:1,
+          status: 1,
+          khhss:"1111"
+        },
+        {
+         
+          documentNumber: 'KH20112415042159',
+          openTime:'2020-11-02',
+          khrq:'2020-11-01',
+          sqr:'admin',
+          accountPhone: '999888000',
+          accountName:"aaa",
+          unitName: 1324,
+          openApplicant:'admin',
+          bankName: 1,
+          bankOpenName: '11111',
+          zhyt:2,
+          sfzl:1,
+          currency:1,
+          status: 1,
           khhss:"1111"
         }
       ],
@@ -92,6 +154,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {},
+      selectChange:[]
     }
   },
   // 监听属性 类似于data概念
@@ -157,6 +220,7 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
+        selectList:this.backList,
         placeholder: '请填写银行名称',
         show: this.showAll,
       },
@@ -185,7 +249,8 @@ export default {
         type: 'select',
         label: '单据状态:',
         prop: 'start',
-        placeholder: '请填写银行名称',
+        placeholder: '请填写单据状态',
+        selectList:this.djztList,
         show: this.showAll,
       },
       {
@@ -222,6 +287,8 @@ export default {
         prop: 'bankName',
         width: '',
         label: '银行名称',
+        type:'wordbook',
+        wordbookList:this.back
       },
       {
         prop: 'bankOpenName',
@@ -232,39 +299,49 @@ export default {
         prop: 'status',
         width: '',
         label: '单据状态',
+        type:'wordbook',
+        wordbookList:this.djzt
       },
       {
-        prop: 'connection',
+        prop: 'sfzl',
         width: '',
         label: '是否直联',
+        type:'wordbook',
+        wordbookList:this.direct
       },
       {
         prop: 'currency',
         width: '',
         label: '币种',
+        type:'wordbook',
+        wordbookList:this.currency
       },
       {
         prop: 'unitName',
         width: '',
         label: '单位名称',
+        type:'wordbook',
+        wordbookList:this.unitno
       },
       {
-        prop: 'connection',
+        prop: 'zhyt',
         width: '',
         label: '账户用途',
+        type:'wordbook',
+        wordbookList:this.accountUsage
       },
       {
-        prop: 'connection',
+        prop: 'openTime',
         width: '',
         label: '开户申请日期',
       },
       {
-        prop: 'connection',
+        prop: 'khrq',
         width: '',
         label: '开户日期',
       },
       {
-        prop: 'connection',
+        prop: 'sqr',
         width: '',
         label: '申请人',
       },
@@ -290,6 +367,45 @@ export default {
   },
   // 方法集合
   methods: {
+    handleCommit(){
+      if(this.selectChange.length != 0){
+        this.selectChange.forEach((item,index)=>{
+          this.list.forEach((res,index)=>{
+            if(res.documentNumber==item.documentNumber){
+              res.status =2
+            }
+          })
+          
+        })
+      }else{
+        this.$message({
+          message: '请选择数据再进行提交操作！',
+          type: 'warning'
+        });
+      }
+    },
+    handleSelectionChange(res){
+      this.selectChange = res
+    },
+    //过滤
+    djzt(val){
+      return DJZT[val]
+    },
+    unitno(val){
+      return UNITNO[val]
+    },
+    currency(val){
+      return CURRENCY[val]
+    },
+    accountUsage(val){
+      return ACCOUNTUSAGE[val]
+    },
+    direct(val){
+      return DIRECT[val]
+    },
+    back(val){
+      return BACK[val]
+    },
     updateSub(res){
       let ind = 0;
       this.tableData.forEach((item,index)=>{
@@ -399,7 +515,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -421,15 +537,47 @@ export default {
             }
 
             if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+              if (item.unitName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i == 'bankName') {
+              if (item.bankName.toString().includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'bankOpenName') {
+              if (item.bankOpenName.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'accountOpenTimeStart') {
+              if (Date.parse(item.openTime)>=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'accountOpenTimeEnd') {
+              if (Date.parse(item.openTime)<=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'start') {
+              if (item.start.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

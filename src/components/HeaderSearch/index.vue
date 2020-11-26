@@ -1,19 +1,41 @@
 <template>
-  <div :class="{'show':show}" class="header-search">
-    <svg-icon class-name="search-icon" icon-class="search" @click.stop="click" />
-    <el-select
-      ref="headerSearchSelect"
-      v-model="search"
-      :remote-method="querySearch"
-      filterable
-      default-first-option
-      remote
-      placeholder="Search"
-      class="header-search-select"
-      @change="change"
-    >
-      <el-option v-for="item in options" :key="item.path" :value="item" :label="item.title.join(' > ')" />
-    </el-select>
+  <div :class="{ show: show }" class="header-search">
+    <el-popover placement="bottom-end" width="268" trigger="click">
+      <el-card class="box-card" v-show="showRmss">
+        <div slot="header" class="clearfix" >
+          <span>热门搜索</span>
+        </div>
+
+        <div v-for="(item, index) in rmssList" :key="index" class="rmss" >
+          <router-link :to="item.path">{{ item.name }}</router-link>
+        </div>
+      </el-card>
+      <template slot="reference">
+        <svg-icon
+          class-name="search-icon"
+          icon-class="search"
+          @click.stop="click"
+        />
+        <el-select
+          ref="headerSearchSelect"
+          v-model="search"
+          :remote-method="querySearch"
+          filterable
+          default-first-option
+          remote
+          placeholder="Search"
+          class="header-search-select"
+          @change="change"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.item.path"
+            :value="item.item"
+            :label="item.item.title.join(' > ')"
+          />
+        </el-select>
+      </template>
+    </el-popover>
   </div>
 </template>
 
@@ -27,17 +49,40 @@ export default {
   name: 'HeaderSearch',
   data() {
     return {
+      showRmss:false,
       search: '',
       options: [],
       searchPool: [],
       show: false,
-      fuse: undefined
+      fuse: undefined,
+      rmssList: [
+        {
+          name: '营收管理年度报告',
+          path: '/accountManager',
+        },
+        {
+          name: '对账管理使用帮助',
+          path: '/accountManager',
+        },
+        {
+          name: '营收管理',
+          path: '/accountManager',
+        },
+        {
+          name: '薪资代发复核流程',
+          path: '/accountManager',
+        },
+        {
+          name: '预算管理模块的功能范围',
+          path: '/accountManager',
+        },
+      ],
     }
   },
   computed: {
     routes() {
       return this.$store.getters.permission_routes
-    }
+    },
   },
   watch: {
     routes() {
@@ -52,13 +97,14 @@ export default {
       } else {
         document.body.removeEventListener('click', this.close)
       }
-    }
+    },
   },
   mounted() {
     this.searchPool = this.generateRoutes(this.routes)
   },
   methods: {
     click() {
+      this.showRmss = !this.showRmss
       this.show = !this.show
       if (this.show) {
         this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.focus()
@@ -85,13 +131,16 @@ export default {
         distance: 100,
         maxPatternLength: 32,
         minMatchCharLength: 1,
-        keys: [{
-          name: 'title',
-          weight: 0.7
-        }, {
-          name: 'path',
-          weight: 0.3
-        }]
+        keys: [
+          {
+            name: 'title',
+            weight: 0.7,
+          },
+          {
+            name: 'path',
+            weight: 0.3,
+          },
+        ],
       })
     },
     // Filter out the routes that can be displayed in the sidebar
@@ -101,11 +150,13 @@ export default {
 
       for (const router of routes) {
         // skip hidden router
-        if (router.hidden) { continue }
+        if (router.hidden) {
+          continue
+        }
 
         const data = {
           path: path.resolve(basePath, router.path),
-          title: [...prefixTitle]
+          title: [...prefixTitle],
         }
 
         if (router.meta && router.meta.title) {
@@ -120,7 +171,11 @@ export default {
 
         // recursive child routes
         if (router.children) {
-          const tempRoutes = this.generateRoutes(router.children, data.path, data.title)
+          const tempRoutes = this.generateRoutes(
+            router.children,
+            data.path,
+            data.title
+          )
           if (tempRoutes.length >= 1) {
             res = [...res, ...tempRoutes]
           }
@@ -129,17 +184,29 @@ export default {
       return res
     },
     querySearch(query) {
+      this.showRmss = false
       if (query !== '') {
         this.options = this.fuse.search(query)
+        console.log(this.options)
       } else {
         this.options = []
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
+.rmss {
+  font-size: 12px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 24px;
+}
+.rmss:hover{
+  color: #1890FF;
+}
 .header-search {
   font-size: 0 !important;
 

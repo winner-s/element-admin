@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>借款放款复核</span>
+        <span>借款放款录入</span>
       </div>
       <div>
         <Search
@@ -25,28 +25,30 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
+          
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-
+    <dialog-com :dialog-obj="dialogObj" @addSub='addSub' @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { DJZTLIST,DJZT,JXFS,JXFSLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
+      jxfsList:JXFSLIST,
+      fkdztList:DJZTLIST,
       // 弹出框
       dialogObj: {
         id: '',
@@ -56,7 +58,7 @@ export default {
         form: {}
       },
       showAll: false,
-      unitNoList: UNITNOLIST,
+      
       // 分页
       currentData: {
         currentPage: 1,
@@ -73,109 +75,26 @@ export default {
         show: false,
         form: {}
       },
-
+      list:[
+        {
+          fkdbh:'FK20201112354414',
+          jkht:'123',
+          fkje:'1',
+          dxje:'1',
+          fkr:'2020-11-11',
+          dqr:'2020-11-11',
+          scfxr:'2020-11-11',
+          schbrq:'2020-11-11',
+          jxfs:1,
+          jknbzh:'123',
+          htksr:'2020-11-11',
+          htdqr:'2020-11-11',
+          fkdzt:1
+        }
+      ],
       // 表格
       tableData: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+        
       ],
       tableBtn: [],
       // 顶部搜索
@@ -193,6 +112,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -200,7 +121,11 @@ export default {
         type: 'primary',
         label: '查询'
       },
-
+      {
+        prop: 'insert',
+        type: 'primary',
+        label: '新增'
+      },
       {
         prop: 'reset',
         type: '',
@@ -212,126 +137,134 @@ export default {
       {
         type: 'input',
         label: '合同编号:',
-        prop: 'openApplicant',
+        prop: 'htbh',
         placeholder: '请填写合同编号'
       },
       {
         type: 'select',
         label: '金额(元) 从:',
-        prop: 'documentNumber',
+        prop: 'jec',
         placeholder: '请选择金额状态'
       },
 
       {
         type: 'select',
         label: '到:',
-        prop: 'openApplicant',
+        prop: 'jed',
         placeholder: '请选择金额'
       },
       {
         type: 'time',
         label: '放款日期从:',
-        prop: 'documentNumber',
+        prop: 'fkrqc',
         placeholder: '请选择放款日期',
         show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
-        prop: 'documentNumber',
+        prop: 'fkrqd',
         placeholder: '请填写还款日期',
         show: this.showAll
       },
       {
         type: 'time',
         label: '首次付息日 从:',
-        prop: 'documentNumber',
+        prop: 'scfxrc',
         placeholder: '请选择首次付息',
         show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
-        prop: 'documentNumber',
+        prop: 'scfxrd',
         placeholder: '请选择首次付息',
         show: this.showAll
       },
       {
         type: 'select',
         label: '计息方式:',
-        prop: 'documentNumber',
+        prop: 'jxfs',
+        selectList:this.jxfsList,
         placeholder: '请选择计息方式',
         show: this.showAll
       },
       {
         type: 'select',
         label: '放款单状态:',
-        prop: 'documentNumber',
+        prop: 'fkdzt',
         placeholder: '请选择首次付息',
+        selectList:this.fkdztList,
         show: this.showAll
       }
-
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      
       {
-        prop: 'documentNumber',
-        width: '150',
+        prop: 'fkdbh',
+        width: '',
+        type:'a',
         label: '放款单编号'
       },
       {
-        prop: 'documentNumber',
-        width: '150',
+        prop: 'htbh',
+        width: '',
         label: '合同编号'
       },
 
       {
-        prop: 'accountName',
+        prop: 'fkje',
         width: '',
         label: '放款金额 '
       },
 
       {
-        prop: 'accountName',
+        prop: 'fkr',
         width: '',
         label: '放款日'
       },
       {
-        prop: 'accountName',
+        prop: 'dqr',
         width: '',
         label: '到期日'
       },
       {
-        prop: '首次付息日',
+        prop: 'scfxr',
         width: '',
-        label: '合同签订利率% '
+        label: '首次付息日 '
       },
       {
-        prop: 'accountName',
+        prop: 'jxfs',
         width: '',
-        label: '计息方式'
+        label: '计息方式',
+        type:'wordbook',
+        wordbookList:this.jxfs
       },
       {
-        prop: 'accountName',
+        prop: 'cxdjfs',
         width: '',
         label: '重新定价方式'
       },
       {
-        prop: 'accountName',
+        prop: 'schbrq',
         width: '',
         label: '首次还本日'
       },
       {
-        prop: 'accountName',
+        prop: 'fkdzt',
         width: '',
-        label: '放款单状态'
+        label: '放款单状态',
+        type:'wordbook',
+        wordbookList:this.fkdzt
       }
 
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -339,6 +272,39 @@ export default {
   },
   // 方法集合
   methods: {
+    //过滤
+    jxfs(val){
+      return JXFS[val]
+    },
+    fkdzt(val){
+      return DJZT[val]
+    },
+    updateSub(res){
+      let ind = 0;
+      this.tableData.forEach((item,index)=>{
+        if(item.documentNumber == res.documentNumber){
+          ind = index
+        }
+      })
+      console.log(ind)
+      
+      let fore = this.tableData[ind]
+       Object.keys(fore).forEach(item => {
+         if(res[item]){
+           fore[item] = res[item];
+         }
+          
+        });
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    addSub(res) {
+      this.list.push(res)
+
+      this.tableData = this.list.slice(0, this.currentData.size)
+      this.currentData.total = this.list.length
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -384,58 +350,115 @@ export default {
     },
     // 删除产品
     handleDelete(v) {
-
+      this.$confirm('确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        console.log()
+        this.list.splice(this.list.indexOf(v), 1)
+        this.tableData = this.list
+        this.currentData.total = this.list.length
+      })
     },
-    handleStatus(v) {
-
-    },
+    
     handleEdit(row) {
-
+      this.dialogObj.id = row.fkdbh
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '修改'
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
-
+      this.dialogObj.id = row.fkdbh
+      this.dialogObj.read = true
+      this.dialogObj.show = true
+      this.dialogObj.title = '查看'
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringifythis.tableData)
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i == 'htbh') {
+              if (item.htbh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i == 'jxfs') {
+              if (item.jxfs==this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i == 'fkdzt') {
+              if (item.fkdzt==this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i == 'jec') {
+              if (item.fkje>=this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
+
+            if (i == 'jed') {
+              if (item.fkje<=this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'fkrqc') {
+              if (Date.parse(item.fkr) >=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'fkrqd') {
+              if (Date.parse(item.fkr) <=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'scfxrc') {
+              if (Date.parse(item.scfxr) >=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'scfxrd') {
+              if (Date.parse(item.scfxr) >=Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+
           } else {
             continue
           }

@@ -49,7 +49,8 @@ module.exports = {
         '@u': resolve('src/utils'),
         '@v': resolve('src/views'),
         '@c': resolve('src/components'),
-        '@s': resolve('src/service')
+        '@s': resolve('src/service'),
+        '@a': resolve('src/assets'),
 
       }
     },

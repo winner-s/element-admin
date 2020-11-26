@@ -57,13 +57,21 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="借款币种：" prop="jkbz" class="formItem">
-            <el-input
+            <el-select
               v-model="form.jkbz"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in currencyList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12" />
@@ -97,24 +105,30 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="开始日期：" prop="ksrq" class="formItem">
-            <el-input
+            <el-date-picker
               v-model="form.ksrq"
+              type="date"
               style="width: 200px"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              placeholder="选择日期"
+              value-format="yyyy-MM-dd"
+            >
+            </el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="结束日期：" prop="jsrq" class="formItem">
-            <el-input
+            <el-date-picker
               v-model="form.jsrq"
+              type="date"
               style="width: 200px"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              placeholder="选择日期"
+              value-format="yyyy-MM-dd"
+            >
+            </el-date-picker>
           </el-form-item>
         </el-col>
       </el-row>
@@ -157,13 +171,21 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="利率转换天数：" prop="llzhts" class="formItem">
-            <el-input
+            <el-select
               v-model="form.llzhts"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in llzhtsList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -171,13 +193,21 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="计息方式：" prop="jxfs" class="formItem">
-            <el-input
+            <el-select
               v-model="form.jxfs"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in jxfsList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -200,24 +230,40 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="付息方式：" prop="fxfs" class="formItem">
-            <el-input
+            <el-select
               v-model="form.fxfs"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in fxfsList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="还本方式：" prop="hbfs" class="formItem">
-            <el-input
+            <el-select
               v-model="form.hbfs"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
               :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in hbfsList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -227,8 +273,12 @@
           <el-form-item label="备注：" prop="bz" class="formItem">
             <el-input
               v-model="form.bz"
-              style="width: 200px"
+              style="width: 83%"
+              type="textarea"
+              :rows="3"
               size="mini"
+              maxlength="50"
+              show-word-limit
               :disabled="true"
               :placeholder="placeholderTips.content"
             />
@@ -236,29 +286,33 @@
         </el-col>
       </el-row>
 
-      <div class="title"><i class="el-icon-user" />展期信息</div>
+      <div class="title"><i class="el-icon-user" />调整信息</div>
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="展期单据编号：" prop="zqdjbh" class="formItem">
+          <el-form-item label="合同签订利率：" prop="htqdlltz" class="formItem">
             <el-input
-              v-model="form.zqdjbh"
+              v-model="form.htqdlltz"
               style="width: 200px"
               size="mini"
-              :disabled="true"
+              :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="展期结束日期：" prop="zqjsrq" class="formItem">
+          <el-form-item
+            label="利率调整生效日："
+            prop="lltzsxr"
+            class="formItem"
+          >
             <el-date-picker
-              style="width: 200px"
-              v-model="form.zqjsrq"
+              v-model="form.lltzsxr"
               type="date"
-              value-format="yyyy-MM-dd"
-              placeholder="请选择开户日期"
+              placeholder="选择日期"
+              style="width: 200px"
               size="mini"
+              value-format="yyyy-MM-dd"
             >
             </el-date-picker>
           </el-form-item>
@@ -267,9 +321,9 @@
 
       <el-row>
         <el-col>
-          <el-form-item label="展期说明：" prop="zqsm" class="formItem">
+          <el-form-item label="调整说明：" prop="tzsm" class="formItem">
             <el-input
-              v-model="form.zqsm"
+              v-model="form.tzsm"
               style="width: 83%"
               type="textarea"
               :rows="3"
@@ -305,9 +359,7 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button type="primary" @click="sub">确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -316,7 +368,13 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-
+import {
+  LLZHTSLIST,
+  JXFSLIST,
+  FXFSLIST,
+  HBFSLIST,
+  CURRENCYLIST,
+} from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -324,26 +382,11 @@ export default {
   data() {
     // 这里存放数据
     return {
-      htlshList: [
-        {
-          htlsh: 'DK2000046448',
-          htmc: '抵押担保',
-          jkbz:'人民币',
-          zqr:'顶级单位',
-          zwr:'二级单位1',
-          ksrq:'2020-06-01',
-          jsrq:'2020-06-27',
-          jkje:'1000',
-          jedx:'1000',
-          jkqx:'一年',
-          llzhts:'360天',
-          jxfs:'固定利率',
-          htqdll:'5.0',
-          fxfs:'按季付息',
-          hbfs:'按计划还',
-          bz:''
-        },
-      ],
+      llzhtsList: LLZHTSLIST,
+      jxfsList: JXFSLIST,
+      fxfsList: FXFSLIST,
+      hbfsList: HBFSLIST,
+      currencyList: CURRENCYLIST,
       placeholderTips: placeholderTips,
       form: {
         htlsh: '',
@@ -360,34 +403,68 @@ export default {
         jxfs: '',
         htqdll: '',
         fxfs: '',
+        hbfs: '',
         bz: '',
-        zqdjbh: '',
-        zqjsrq: '',
-        zqsm: '',
+        htqdlltz: '',
+        lltzsxr: '',
+        tzsm: '',
       },
       rules: {
         htlsh: [
           { required: true, message: '请填写合同流水号', trigger: 'blur' },
         ],
-        zqdjbh: [
-          { required: true, message: '请填写展期单据编号', trigger: 'blur' },
+        htmc: [{ required: true, message: '请填写合同名称', trigger: 'blur' }],
+        jkbz: [{ required: true, message: '请填写借款币种', trigger: 'blur' }],
+        zqr: [{ required: true, message: '请填写债权人', trigger: 'blur' }],
+        zwr: [{ required: true, message: '请填写债务人', trigger: 'blur' }],
+        ksrq: [{ required: true, message: '请填写开始日期', trigger: 'blur' }],
+        jsrq: [{ required: true, message: '请填写结束日期', trigger: 'blur' }],
+        jkje: [{ required: true, message: '请填写借款金额', trigger: 'blur' }],
+        jkqx: [{ required: true, message: '请填写借款期限', trigger: 'blur' }],
+        llzhts: [
+          { required: true, message: '请填写利率转换天数', trigger: 'blur' },
         ],
-        zqjsrq: [
-          { required: true, message: '请填写展期结束日期', trigger: 'blur' },
+        jxfs: [{ required: true, message: '请填写计息方式', trigger: 'blur' }],
+        fxfs: [{ required: true, message: '请填写付息方式', trigger: 'blur' }],
+        hbfs: [{ required: true, message: '请填写还本方式', trigger: 'blur' }],
+        htqdlltz: [
+          { required: true, message: '请填写合同签订利率', trigger: 'blur' },
+        ],
+        lltzsxr: [
+          { required: true, message: '请填写利率调整生效日', trigger: 'blur' },
         ],
       },
-      
+      htlshList: [
+        {
+          htlsh: 'DK202006281705404',
+          htmc: '抵押担保',
+          jkbz: 1,
+          zqr: '顶级单位',
+          zwr: '二级单位1',
+          ksrq: '2020-06-01',
+          jsrq: '2020-06-27',
+          jkje: '5000000',
+          jedx: '5000000',
+          jkqx: '一年',
+          llzhts: 1,
+          jxfs: 1,
+          htqdll: '5.0',
+          fxfs: 1,
+          hbfs: 1,
+          bz: '',
+        },
+      ],
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
-    }
+    },
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -395,50 +472,45 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    htlshChange(res){
-      this.htlshList.forEach((item,index)=>{
-        if(item.htlsh == res){
-          Object.keys(item).forEach(val => {
-          this.form[val] = item[val];
-        });
+    htlshChange(val) {
+      this.htlshList.forEach((item, index) => {
+        if (item.htlsh == val) {
+          Object.keys(item).forEach((res) => {
+            this.form[res] = item[res]
+          })
         }
       })
     },
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
-        Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
-        Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-
-        this.form.zqdjbh="DK2020112414285910"
+        Object.keys(this.form).forEach((item) => {
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
+        Object.keys(this.form).forEach((item) => {
+          this.form[item] = ''
+        })
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.djzt =1
+            this.form.djzt = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
   },
 }

@@ -300,8 +300,9 @@
     </el-form>
 
     <div class="dialog-footer">
-      <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub">保存</el-button>
+      <el-button @click="dialogObj.show = false">返 回</el-button>
+      <el-button type="primary" @click="sub" v-if='dialogObj.fh'>通 过</el-button>
+      <el-button type="primary" @click="stop" v-if='dialogObj.fh'>拒 绝</el-button>
     </div>
   </el-dialog>
 </template>
@@ -422,27 +423,27 @@ export default {
         this.form.sqr = 'admin'
       }
     },
-    sub() {
-      this.$refs['form'].validate((valid) => {
-        
-        if (valid) {
-          if (this.dialogObj.id) {
-            this.updateSub()
-          } else {
-            this.form.status=1
-            this.addSub()
-          }
-        }
+    stop(){
+      this.$confirm('确定拒绝?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        this.dialogObj.show = false
+        this.$emit('stop',this.form)
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    sub() {
+      this.$confirm('确定通过复核?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        this.dialogObj.show = false
+        this.$emit('sub',this.form)
+      })
     },
-    addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+    
 
     handleRemove(file, fileList) {
       console.log(file, fileList)

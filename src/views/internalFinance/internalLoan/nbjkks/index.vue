@@ -64,212 +64,12 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
-      ],
+      list:[],
+      
 
       // 表格
       tableData: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+        
       ],
       tableBtn: [],
       // 顶部搜索
@@ -287,6 +87,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -305,39 +107,39 @@ export default {
       {
         type: 'input',
         label: '借款合同编号:',
-        prop: 'openApplicant',
+        prop: 'jkhtbh',
         placeholder: '请填写借款合同编号'
       },
       {
         type: 'input',
         label: '放款单编号:',
-        prop: 'documentNumber',
+        prop: 'fkdbh',
         placeholder: '请填写放款单编号'
       },
 
       {
         type: 'select',
         label: '是否包含下级单位:',
-        prop: 'openApplicant',
+        prop: 'xjdw',
         placeholder: '请选择是否包含下级单位'
       },
       {
         type: 'select',
         label: '贷款币种:',
-        prop: 'openApplicant',
+        prop: 'dkbz',
         placeholder: '请选择贷款币种'
       },
       {
         type: 'time',
         label: '匡算开始日:',
-        prop: 'openApplicant',
+        prop: 'ksksr',
         placeholder: '请选择匡算开始日',
         show: this.show
       },
       {
         type: 'time',
         label: '匡算结束日:',
-        prop: 'openApplicant',
+        prop: 'ksjsr',
         placeholder: '请选择匡算结束日',
         show: this.show
       }
@@ -347,59 +149,59 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
-        prop: 'documentNumber',
+        prop: 'htbh',
         width: '150',
         label: '合同编号'
       },
       {
-        prop: 'documentNumber',
+        prop: 'fkdbh',
         width: '150',
         label: '放款单编号'
       },
 
       {
-        prop: 'accountName',
+        prop: 'kslx',
         width: '',
         label: '匡算利息 '
       },
 
       {
-        prop: 'accountName',
+        prop: 'zwr',
         width: '',
         label: '债务人'
       },
       {
-        prop: 'accountName',
+        prop: 'htmc',
         width: '',
         label: '合同名称'
       },
       {
-        prop: 'accountName',
+        prop: 'dkbz',
         width: '',
         label: '贷款币种'
       },
       {
-        prop: 'accountName',
+        prop: 'fkje',
         width: '',
         label: '放款金额'
       },
       {
-        prop: 'accountName',
+        prop: 'fkwhje',
         width: '',
         label: '放款未还金额'
       },
       {
-        prop: 'accountName',
+        prop: 'jxts',
         width: '',
         label: '计息天数'
       },
       {
-        prop: 'accountName',
+        prop: 'ksksr',
         width: '',
         label: '匡算开始日'
       },
       {
-        prop: 'accountName',
+        prop: 'ksjsr',
         width: '',
         label: '匡算结束日'
       }
