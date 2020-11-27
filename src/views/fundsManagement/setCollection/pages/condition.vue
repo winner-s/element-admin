@@ -2,7 +2,7 @@
   <div class="foundsCollsection">
     <el-card>
       <div slot="header">
-        <span>账户归集关系设置</span>
+        <span>自动归集条件设置</span>
       </div>
       <Table
             :table-data="tableData"

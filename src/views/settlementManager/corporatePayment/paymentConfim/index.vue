@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私非之前支付确认查询列表</span>
+        <span>对公非直联支付确认</span>
       </div>
       <div>
         <Search

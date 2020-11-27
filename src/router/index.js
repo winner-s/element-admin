@@ -525,7 +525,7 @@ export const constantRoutes = [
         path: 'tradeClaim',
         name: '交易认领',
         component: () => import('@/views/settlementManager/tradeClaim/index'),
-        meta: { title: '交易认领', icon: 'table' },
+        meta: { title: '交易认领' },
         children: [
           {
             path: 'systemMaintenance',
@@ -1183,22 +1183,6 @@ export const constantRoutes = [
       }
     ]
   },
-  // 对账管理
-  {
-    path: '/f',
-    component: Layout,
-    redirect: '/fundsManagem/sea',
-    name: '对账管理',
-    meta: {  icon: 'el-icon-reading' },
-    children:[
-      {
-        path: 'sea',
-        meta: { title: '对账管理' },
-        name: 'CompanyInfo',
-        component: () => import('@/views/f/index')
-      }
-    ]
-  },
   // 报表中心
   {
     path: '/form',
@@ -1245,6 +1229,23 @@ export const constantRoutes = [
       }
     ]
   },
+  // 对账管理
+  {
+    path: '/f',
+    component: Layout,
+    redirect: '/fundsManagem/sea',
+    name: '对账管理',
+    meta: {  icon: 'el-icon-reading' },
+    children:[
+      {
+        path: 'sea',
+        meta: { title: '对账管理' },
+        name: 'CompanyInfo',
+        component: () => import('@/views/f/index')
+      }
+    ]
+  },
+  
   // 操作帮助
   {
     path: '/fa',

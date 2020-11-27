@@ -2,7 +2,7 @@
   <div class="selfSendTask">
     <el-card>
       <div slot="header">
-        <span>账户归集关系设置</span>
+        <span>自动下拨任务管理</span>
       </div>
       <div>
         <Search

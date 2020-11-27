@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>利率调整</span>
+        <span>利率调整复核</span>
       </div>
       <div>
         <Search
@@ -372,7 +372,7 @@ export default {
       this.dialogObj.id = row.htlsh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 

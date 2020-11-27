@@ -2,7 +2,7 @@
   <div class="selectCollsectionInfo">
     <el-card>
       <div slot="header">
-        <span>策略信息查询</span>
+        <span>归集信息查询</span>
       </div>
       <div>
         <Search

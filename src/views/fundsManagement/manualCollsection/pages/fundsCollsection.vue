@@ -2,7 +2,7 @@
   <div class="foundsCollsection">
     <el-card>
       <div slot="header">
-        <span>账户归集关系设置</span>
+        <span>手动资金归集</span>
       </div>  
       <div>
         

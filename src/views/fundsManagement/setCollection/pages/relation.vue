@@ -263,7 +263,7 @@ export default {
       this.dialogObj.id = row.clbh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
 

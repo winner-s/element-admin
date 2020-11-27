@@ -2,7 +2,7 @@
   <div class="summary">
     <el-card>
       <div slot="header">
-        <span> 银行账户交易报表 </span>
+        <span> 账户交易明细汇总表 </span>
       </div>
       <div>
         <Search

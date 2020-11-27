@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>销户复核</span>
       </div>
       <div>
         <Search

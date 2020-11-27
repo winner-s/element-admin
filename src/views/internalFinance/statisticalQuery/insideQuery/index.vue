@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>收款人信息维护</span>
+        <span>内部贷款查询</span>
       </div>
       <div>
         <Search
@@ -308,12 +308,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    add() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '添加账号'
-    },
+    
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -336,7 +331,7 @@ export default {
       this.dialogObj.id = row.sqdh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
 

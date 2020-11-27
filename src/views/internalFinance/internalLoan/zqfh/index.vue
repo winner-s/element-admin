@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>展期录入</span>
+        <span>展期复核</span>
       </div>
       <div>
         <Search
@@ -320,12 +320,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    add() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '添加账号'
-    },
+    
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10

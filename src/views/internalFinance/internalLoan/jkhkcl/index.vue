@@ -309,12 +309,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    add() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '添加账号'
-    },
+    
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -350,14 +345,14 @@ export default {
       this.dialogObj.id = row.hkdbh
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
       this.dialogObj.id = row.hkdbh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 

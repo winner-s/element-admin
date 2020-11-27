@@ -119,8 +119,12 @@
                     green: item.tqdb == 'green',
                     red: item.tqdb == 'red',
                   }"
-                  >{{ item.tqdbNum }}</span
+                  style='vertical-align: middle;'
                 >
+                  {{ item.tqdbNum }}
+                  <img src="../../assets/img/down.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;" v-if="item.tqdb == 'red'">
+                  <img src="../../assets/img/up.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;" v-if="item.tqdb == 'green'">
+                </span>
               </p>
               <div>
                 <el-popover placement="bottom-end" width="180" trigger="click">
@@ -533,15 +537,15 @@ export default {
       options: [
         {
           value: 1,
-          label: '禹道斯北京分公司',
+          label: '禹道北京分公司',
         },
         {
           value: 2,
-          label: '禹道斯上海分公司',
+          label: '禹道上海分公司',
         },
         {
           value: 3,
-          label: '禹道斯深圳分公司',
+          label: '禹道深圳分公司',
         },
       ],
       value: 1,
@@ -615,7 +619,7 @@ export default {
   // 监听属性 类似于data概念
   computed: {
     ...mapState({
-      tips: state => state.settings.tips
+      tips: (state) => state.settings.tips,
     }),
   },
   // 监控data中的数据变化
@@ -685,13 +689,12 @@ export default {
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
     console.log(this.tips)
-    if(this.tips==true){
+    if (this.tips == true) {
       let _scrollTop
-    _scrollTop = document.scrollingElement.scrollTop
-    document.body.style.position = 'fixed'
-    document.body.style.top = -_scrollTop + 'px'
+      _scrollTop = document.scrollingElement.scrollTop
+      document.body.style.position = 'fixed'
+      document.body.style.top = -_scrollTop + 'px'
     }
-    
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -699,14 +702,13 @@ export default {
   methods: {
     tip4Click() {
       this.$store.dispatch('settings/changeSetting', {
-          key: 'tips',
-          value: false
+        key: 'tips',
+        value: false,
       })
       document.body.style.position = ''
       document.body.style.top = ''
       window.scrollTo(0, 0)
       this.tip = 1
-
     },
     tip3Click() {
       document.body.style.position = ''
@@ -1157,20 +1159,14 @@ p {
       font-family: HelveticaNeue;
       color: #52c41a;
       padding-right: 14px;
-      background: url('../../assets/img/up.png') no-repeat;
-      background-size: 9px 6px;
-      background-position-x: 100%;
-      background-position-y: 50%;
+      
     }
     .red {
       font-size: 14px;
       font-family: HelveticaNeue;
       color: #f5222d;
       padding-right: 14px;
-      background: url('../../assets/img/down.png') no-repeat;
-      background-size: 9px 6px;
-      background-position-x: 100%;
-      background-position-y: 50%;
+      
     }
   }
   p {

@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>借款放款录入</span>
+        <span>借款放款复核</span>
       </div>
       <div>
         <Search

@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>预算体系设置</span>
+        <span>预算周期管理</span>
       </div>
       <div>
         <Search
@@ -325,14 +325,14 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
 

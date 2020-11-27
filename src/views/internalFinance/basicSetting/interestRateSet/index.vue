@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>收款人信息维护</span>
+        <span>利率设置</span>
       </div>
       <div>
         <Search
@@ -284,7 +284,7 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handlePlan(row){

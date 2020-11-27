@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>收款人信息维护</span>
+        <span>销户管理</span>
       </div>
       <div>
         <Search
@@ -372,14 +372,14 @@ export default {
       this.dialogObj.id = row.zhbh
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handleViewOther(row) {
       this.dialogObj.id = row.zhbh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
 

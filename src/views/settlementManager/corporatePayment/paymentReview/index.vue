@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私付款审核</span>
+        <span>对私付款复核</span>
       </div>
       <div>
         <Search
@@ -352,14 +352,14 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handleViewOther(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 

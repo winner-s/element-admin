@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>收款人信息维护</span>
+        <span>内部存款开立</span>
       </div>
       <div>
         <Search

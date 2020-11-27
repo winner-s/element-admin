@@ -2,7 +2,7 @@
   <div class="role-info">
     <el-card>
       <div slot="header">
-        <span>用户角色表</span>
+        <span>用户角色</span>
       </div>
       <div>
         <Search
@@ -248,14 +248,14 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
     handleStatus(val) {},

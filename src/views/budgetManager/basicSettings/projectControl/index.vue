@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>预算体系设置</span>
+        <span>项目控制关系配置</span>
       </div>
       <div>
         <Search

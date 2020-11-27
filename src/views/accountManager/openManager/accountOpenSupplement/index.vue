@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>开户申请</span>
+        <span>开户补录</span>
       </div>
       <div>
         <Search

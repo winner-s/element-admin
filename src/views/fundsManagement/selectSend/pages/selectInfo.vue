@@ -2,7 +2,7 @@
   <div class="selectSendInfo">
     <el-card>
       <div slot="header">
-        <span>策略信息查询</span>
+        <span>下拨信息查询</span>
       </div>
       <div>
         <Search

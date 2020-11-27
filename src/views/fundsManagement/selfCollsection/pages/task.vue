@@ -2,7 +2,7 @@
   <div class="collsectionTask">
     <el-card>
       <div slot="header">
-        <span>账户归集关系设置</span>
+        <span>自动归集任务管理</span>
       </div>
       <div>
         <Search
@@ -227,14 +227,14 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
+      this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
     

@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私付款审核</span>
+        <span>薪资代发指令发送</span>
       </div>
       <div>
         <Search
@@ -444,12 +444,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    add() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '添加账号'
-    },
+   
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10

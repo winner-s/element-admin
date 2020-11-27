@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对公申请列表查询</span>
+        <span>薪资代发复核</span>
       </div>
       <div>
         <Search
@@ -304,12 +304,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    add() {
-      this.dialogObj.id = ''
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '添加账号'
-    },
+    
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -345,39 +340,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    handleStatus(v) {
-      if (v.status == 0) {
-        this.$confirm('此操作将停用该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //   // eslint-disable-next-line no-unused-vars
-          //   let json = {
-          //     id: v.id
-          //   };
-          //   updateAdminStatus(json).then(res => {
-          //     console.log(res);
-          //     this.getList();
-          //   });
-        })
-      } else {
-        this.$confirm('此操作将恢复该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          // eslint-disable-next-line no-unused-vars
-          const json = {
-            id: v.id
-          }
-          updateAdminStatus(json).then((res) => {
-            console.log(res)
-            this.getList()
-          })
-        })
-      }
-    },
+    
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = true
@@ -389,7 +352,7 @@ export default {
       this.dialogObj.id = row.id
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
+      this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
 
