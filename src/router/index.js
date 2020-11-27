@@ -1188,13 +1188,13 @@ export const constantRoutes = [
     path: '/form',
     component: Layout,
     redirect: '/form/companyInfo',
-    name: '报表中心',
+    name: '报表中心s',
     meta: { title: '报表中心', icon: 'form' },
     children: [
       {
         path: 'companyInfo',
         meta: { title: '单位基本信息表' },
-        name: 'CompanyInfo',
+        name: 'CompanyInfos',
         component: () => import('@/views/form/companyInfo/index')
       },
       {
@@ -1240,7 +1240,7 @@ export const constantRoutes = [
       {
         path: 'sea',
         meta: { title: '对账管理' },
-        name: 'CompanyInfo',
+        name: 'c',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1257,7 +1257,7 @@ export const constantRoutes = [
       {
         path: 's',
         meta: { title: '操作帮助' },
-        name: 'CompanyInfo',
+        name: 'co',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1273,7 +1273,7 @@ export const constantRoutes = [
       {
         path: 's',
         meta: { title: '资金监控' },
-        name: 'CompanyInfo',
+        name: 'com',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1289,7 +1289,7 @@ export const constantRoutes = [
       {
         path: 'set',
         meta: { title: '融资管理' },
-        name: 'CompanyInfo',
+        name: 'comp',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1305,7 +1305,7 @@ export const constantRoutes = [
       {
         path: 'colle',
         meta: { title: '投资管理' },
-        name: 'CompanyInfo',
+        name: 'compa',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1321,7 +1321,7 @@ export const constantRoutes = [
       {
         path: 'tion',
         meta: { title: '票据管理' },
-        name: 'CompanyInfo',
+        name: 'compay',
         component: () => import('@/views/f/index')
       }
     ]
@@ -1337,7 +1337,7 @@ export const constantRoutes = [
       {
         path: 'sstads',
         meta: { title: '银企平台' },
-        name: 'CompanyInfo',
+        name: 'i',
         component: () => import('@/views/f/index')
       }
     ]

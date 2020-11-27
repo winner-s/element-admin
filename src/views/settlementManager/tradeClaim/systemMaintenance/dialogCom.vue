@@ -23,14 +23,14 @@
         <el-col :span="12">
           <el-form-item
             label="认领系统编号："
-            prop="sysStudentNumber"
+            prop="jyrlxtbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.jyrlxtbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+             
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -38,14 +38,14 @@
         <el-col :span="12">
           <el-form-item
             label="认领系统名称："
-            prop="sysStudentName"
+            prop="jyrlxtmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.jyrlxtmc"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -55,11 +55,11 @@
         <el-col>
           <el-form-item
             label="备注："
-            prop="sysStudentNumber"
+            prop="bz"
             class="formItem"
           >
             <el-input
-              v-model="form.sysFamilyAddress"
+              v-model="form.bz"
               style="width: 83%"
               type="textarea"
               :rows="3"
@@ -79,7 +79,7 @@
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
-        @click="dialogObj.show = false"
+        @click="sub"
       >确 定</el-button>
     </span>
   </el-dialog>
@@ -97,19 +97,76 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      form: {}
+      form: {
+        jyrlxtbh:'',
+        jyrlxtmc:'',
+        bz:''
+      },
+      rules:{
+        jyrlxtbh: [
+          { required: true, message: '请填写交易认领系统编号', trigger: 'blur' },
+        ],
+        jyrlxtmc: [
+          { required: true, message: '请填写交易认领系统名称', trigger: 'blur' },
+        ],
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {}
+  methods: {
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+        this.form.khrq = '2020-10-10'
+        this.form.documentNumber = 'KH20091410151601'
+        this.form.openTime = new Date()
+        this.form.sqr = 'admin'
+      }
+    },
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.form.status=1
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+    addSub() {
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+  }
 }
 </script>
 <style scoped lang="scss">

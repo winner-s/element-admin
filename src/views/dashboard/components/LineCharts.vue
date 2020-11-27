@@ -79,7 +79,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['禹道斯北京分公司', '禹道斯上海分公司', '禹道斯深圳分公司'],
+            data: ['禹道北京分公司', '禹道上海分公司', '禹道深圳分公司'],
           }
         ],
         yAxis: [

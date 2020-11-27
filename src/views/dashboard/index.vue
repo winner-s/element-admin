@@ -122,8 +122,8 @@
                   style='vertical-align: middle;'
                 >
                   {{ item.tqdbNum }}
-                  <img src="../../assets/img/down.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;" v-if="item.tqdb == 'red'">
-                  <img src="../../assets/img/up.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;" v-if="item.tqdb == 'green'">
+                  <img src="../../assets/img/down.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;margin-bottom:5px" v-if="item.tqdb == 'red'">
+                  <img src="../../assets/img/up.png" alt="" style="width:9px;height:6px;transform:rotate(180deg);vertical-align: middle;margin-bottom:5px" v-if="item.tqdb == 'green'">
                 </span>
               </p>
               <div>

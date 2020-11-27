@@ -87,6 +87,23 @@ export const DIRECTLIST = [
   }
 ]
 
+// 账户类型
+export const ZHLX = {
+  '1': '对公账户',
+  '2': '对私账户'
+}
+
+export const ZHLXLIST = [
+  {
+    id: 1,
+    value: '对公账户'
+  },
+  {
+    id: 2,
+    value: '对私账户'
+  }
+]
+
 // 账户用途
 export const ACCOUNTUSAGE = {
   '1': '基本存款户-收支户',
