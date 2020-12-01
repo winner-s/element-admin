@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>预算调整</span>
+        <span>预算汇总</span>
       </div>
       <div>
         <Search

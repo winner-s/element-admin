@@ -316,6 +316,7 @@ export default {
     // 这里存放数据
     return {
       tip: 1,
+      tips:true,
       checkList: ['结算笔数', '结算金额', '资金流入', '资金流出'],
       //指标墙
       zbqList: [
@@ -618,9 +619,7 @@ export default {
   },
   // 监听属性 类似于data概念
   computed: {
-    ...mapState({
-      tips: (state) => state.settings.tips,
-    }),
+    
   },
   // 监控data中的数据变化
   watch: {
@@ -688,27 +687,24 @@ export default {
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    console.log(this.tips)
-    if (this.tips == true) {
+    
       let _scrollTop
       _scrollTop = document.scrollingElement.scrollTop
       document.body.style.position = 'fixed'
       document.body.style.top = -_scrollTop + 'px'
-    }
+    
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
     tip4Click() {
-      this.$store.dispatch('settings/changeSetting', {
-        key: 'tips',
-        value: false,
-      })
+      
       document.body.style.position = ''
       document.body.style.top = ''
       window.scrollTo(0, 0)
-      this.tip = 1
+      this.tip = 0
+      this.tips=false
     },
     tip3Click() {
       document.body.style.position = ''
