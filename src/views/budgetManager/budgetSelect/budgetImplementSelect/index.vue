@@ -117,61 +117,61 @@ export default {
       {
         type: 'input',
         label: '体系名称:',
-        prop: 'unitNo',
+        prop: 'txmc',
         placeholder: '请填写体系名称',
         selectList: this.unitNoList
       },
       {
-        type: 'select',
+        type: 'input',
         label: '周期名称:',
-        prop: 'unitName',
+        prop: 'zqmc',
         placeholder: '请选择周期名称'
       },
       {
-        type: 'select',
+        type: 'input',
         label: '预算年度:',
-        prop: 'unitName',
+        prop: 'ysnd',
         placeholder: '请选择预算年度'
       },
       {
-        type: 'select',
+        type: 'input',
         label: '状态:',
-        prop: 'unitName',
+        prop: 'zt',
         placeholder: '请选择状态'
       },
       {
         type: 'time',
         label: '预算开始日期:',
-        prop: 'unitName',
+        prop: 'ysksrq',
         placeholder: '请选择预算开始日期',
-        show: this.show
+        show: this.showAll
       },
       {
         type: 'time',
         label: '预算结束日期:',
-        prop: 'unitName',
+        prop: 'ysjsrq',
         placeholder: '请选择预算结束日期',
-        show: this.show
+        show: this.showAll
       },
       {
-        type: 'select',
+        type: 'input',
         label: '预算单位编号:',
-        prop: 'unitName',
+        prop: 'ysdwbh',
         placeholder: '请选择预算单位编号',
-        show: this.show
+        show: this.showAll
       },
       {
         type: 'input',
         label: '预算单位名称:',
-        prop: 'unitName',
+        prop: 'ysdwmc',
         placeholder: '请填写预算单位名称',
-        show: this.show
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
-        prop: 'unitName',
-        show: this.show
+        prop: 'ywdw',
+        show: this.showAll
       }
     ]
     //  table表格
@@ -297,32 +297,63 @@ export default {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i == 'txmc') {
+              if (item.ystx.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i == 'zqmc') {
+              if (item.zqmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i == 'ysnd') {
+              if (item.ysnd.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i == 'zt') {
+              if (item.bbzt.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i == 'ysdwbh') {
+              if (item.ysdwbh.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i == 'ysdwmc') {
+              if (item.dwmc.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+
+            if (i == 'ysksrq') {
+              if (Date.parse( item.ysksrq)>=Date.parse( this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i == 'ysjsrq') {
+              if (Date.parse( item.ysjsrq)<=Date.parse( this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

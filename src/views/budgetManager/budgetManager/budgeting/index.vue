@@ -46,14 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+      
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页

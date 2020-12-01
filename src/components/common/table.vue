@@ -14,6 +14,7 @@
       :show-summary="showSummary"
       @selection-change="handleSelectionChange"
       @row-click="tableClick"
+      v-if="tree==false"
     >
       <template v-for="(item, index) in tableListData">
 
@@ -231,6 +232,240 @@
         </template>
       </template>
     </el-table>
+
+    <el-table
+      :data="tableData"
+      :span-method="objectSpanMethod"
+      border
+      row-key="id"
+      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+      default-expand-all
+
+      align="left"
+      style="width: 100%"
+      size="mini"
+      class="tableClass"
+      :show-summary="showSummary"
+      @selection-change="handleSelectionChange"
+      @row-click="tableClick"
+      v-if="tree==true"
+    >
+      <template v-for="(item, index) in tableListData">
+
+        <el-table-column
+          v-if="item.type === 'selection'"
+          :key="index"
+          align="center"
+          type="selection"
+          :width="item.width"
+          :index="indexMethod"
+          :fixed="item.fixed"
+        />
+        <el-table-column
+          v-if="item.type === 'index'"
+          :key="index"
+          align="center"
+          type="index"
+          :width="item.width"
+          :index="indexMethod"
+          :fixed="item.fixed"
+        />
+        <el-table-column
+          v-if="item.type === undefined"
+          :key="index"
+          :prop="item.prop"
+          align="left"
+          :label="item.label"
+          :width="item.width"
+          :show-overflow-tooltip="'' || item.tooltiop"
+          :fixed="item.fixed"
+        />
+        <el-table-column
+          v-if="item.type === 'a'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span
+                class="color-blue"
+                title="查看详情"
+                @click="handleClickViewOther(scope.row)"
+              >
+                {{ scope.row[item.prop] }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === 'input'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <el-input v-model="scope.row[item.prop] " size="mini" :disabled='item.disabled'  />
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === '_bank'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span
+                class="color-blue"
+                title="查看详情"
+                @click="handleClickViewBank(scope.row)"
+              >
+                {{ scope.row[item.prop] ? item.text : "" }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === '_rangeTime'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span>
+                {{ item.wordbookList(scope.row[item.time[0]]) }}-{{
+                  item.wordbookList(scope.row[item.time[1]])
+                }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === 'wordbook'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              {{ item.wordbookList(scope.row[item.prop], scope.row) }}
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === 'img'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <img
+                :src="$root.prefix + scope.row[item.prop]"
+                class="img-size"
+                alt=""
+                title="查看详情"
+              >
+            </div>
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          v-if="item.type === 'userImg'"
+          :key="index"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :fixed="item.fixed"
+        >
+          <template slot-scope="scope">
+            <div>
+              <img
+                :src="scope.row[item.prop]"
+                class="img-size"
+                alt=""
+                title="查看详情"
+              >
+            </div>
+          </template>
+        </el-table-column>
+        <!-- 按钮 -->
+        <template>
+          <el-table-column
+            v-if="item.type === 'btn'"
+            :key="index"
+            :prop="item.prop"
+            :label="item.label"
+            :fixed="'' || item.fixed"
+            :width="item.width"
+            align="center"
+          >
+            <template slot-scope="scope">
+              <span
+                v-for="(item, index) in tableBtn"
+                :key="index"
+                class="span-btn-ml"
+              >
+                <el-button
+                  v-if="item.type === undefined"
+                  v-has="item.has"
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                >{{ item.name }}</el-button>
+                <el-button
+                  v-if="
+                    item.type === 'isShow' &&
+                      scope.row[item.isShowStatus] === item.isShowValue
+                  "
+                  v-has="item.has"
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                >{{ item.name }}</el-button>
+                <el-button
+                  v-if="
+                    item.type === 'isNoShow' &&
+                      item.isShowValue.indexOf(scope.row[item.isShowStatus]) ===
+                      -1
+                  "
+                  v-has="item.has"
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                >{{ item.name }}</el-button>
+              </span>
+            </template>
+          </el-table-column>
+        </template>
+      </template>
+    </el-table>
     <template>
       <div class="page-div">
         <el-pagination
@@ -250,6 +485,10 @@
 <script>
 export default {
   props: {
+    tree:{
+      type:Boolean,
+      default:false
+    },
     objectSpanMethod: {
       type: Function
     },
@@ -281,6 +520,7 @@ export default {
   mounted() {},
   created() {},
   methods: {
+   
     //当某一行被点击时
     tableClick(res){
         this.$emit('tableClick',res)

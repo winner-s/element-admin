@@ -98,7 +98,7 @@
             <el-date-picker
               v-model="searchData[item.prop]"
               type="date"
-              :picker-options="pickerOptions"
+              
               :format="item.timeFormat"
               :value-format="item.timeFormat"
               placeholder="选择日期"
@@ -162,6 +162,24 @@
             class="searchFloat"
           >
             <el-button @click="handleReset('searchData')">重 置</el-button>
+          </el-form-item>
+          <el-form-item
+            v-if="item.prop == 'start'"
+            :key="index"
+            class="searchFloat"
+          >
+            <el-button type="primary" @click="handleStart()">{{
+              item.label
+            }}</el-button>
+          </el-form-item>
+          <el-form-item
+            v-if="item.prop == 'stop'"
+            :key="index"
+            class="searchFloat"
+          >
+            <el-button type="primary" @click="handleStop()">{{
+              item.label
+            }}</el-button>
           </el-form-item>
           <el-form-item
             v-if="item.prop == 'commit'"
@@ -262,6 +280,12 @@ export default {
   },
   mounted() {},
   methods: {
+    handleStart(){
+      this.$emit('handleStart')
+    },
+    handleStop(){
+      this.$emit('handleStop')
+    },
     // 收起
     dropUp() {
       this.$emit('dropUp')

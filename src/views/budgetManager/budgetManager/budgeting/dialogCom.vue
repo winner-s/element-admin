@@ -19,14 +19,9 @@
       status-icon
       class="form"
     >
-
       <el-row>
         <el-col :span="12">
-          <el-form-item
-            label="版本号："
-            prop="bbh"
-            class="formItem"
-          >
+          <el-form-item label="版本号：" prop="bbh" class="formItem">
             <el-input
               v-model="form.bbh"
               style="width: 200px"
@@ -37,11 +32,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item
-            label="预算年度："
-            prop="ysnd"
-            class="formItem"
-          >
+          <el-form-item label="预算年度：" prop="ysnd" class="formItem">
             <el-select
               v-model="form.ysnd"
               placeholder="请选择"
@@ -108,7 +99,8 @@
               value-format="yyyy-MM-dd"
               style="width: 200px"
               size="mini"
-              placeholder="选择日期">
+              placeholder="选择日期"
+            >
             </el-date-picker>
           </el-form-item>
         </el-col>
@@ -120,7 +112,8 @@
               value-format="yyyy-MM-dd"
               style="width: 200px"
               size="mini"
-              placeholder="选择日期">
+              placeholder="选择日期"
+            >
             </el-date-picker>
           </el-form-item>
         </el-col>
@@ -149,15 +142,21 @@
           </el-form-item>
         </el-col>
       </el-row>
-
     </el-form>
+
+    <Table
+      :table-data="tableData"
+      :table-list-data="tableListData"
+      :table-btn="tableBtn"
+      :tree="true"
+      :current-data="currentData"
+      @onPageChange="onPageChange"
+      @onSizeChange="onSizeChange"
+    />
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button
-        type="primary"
-        @click="sub"
-      >确 定</el-button>
+      <el-button type="primary" @click="sub">确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -166,160 +165,219 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
+import Table from '@c/common/table'
 export default {
-  components: {},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
     // 这里存放数据
     return {
+      // 分页
+      currentData: {
+        currentPage: 1,
+        size: 10,
+        total: 10,
+      },
       placeholderTips: placeholderTips,
-      yszqList:[
+      yszqList: [
         {
-          zqbh:'2020027',
-          zqmc:'test',
-          zqlx:'年',
+          zqbh: '2020027',
+          zqmc: 'test',
+          zqlx: '年',
         },
         {
-          zqbh:'2020029',
-          zqmc:'ABCDEFG',
-          zqlx:'月',
+          zqbh: '2020029',
+          zqmc: 'ABCDEFG',
+          zqlx: '月',
         },
       ],
-      ystsList:[
+      ystsList: [
         {
-          txbh:'2020001',
-          txmc:'2020'
+          txbh: '2020001',
+          txmc: '2020',
         },
         {
-          txbh:'2020006',
-          txmc:'测试1'
+          txbh: '2020006',
+          txmc: '测试1',
         },
         {
-          txbh:'2020008',
-          txmc:'测试2'
+          txbh: '2020008',
+          txmc: '测试2',
         },
         {
-          txbh:'2020014',
-          txmc:'测试3'
+          txbh: '2020014',
+          txmc: '测试3',
         },
-
       ],
-      ysndList:[
+      ysndList: [
         {
-          ysnd:'2017'
+          ysnd: '2017',
         },
         {
-          ysnd:'2018'
+          ysnd: '2018',
         },
         {
-          ysnd:'2019'
+          ysnd: '2019',
         },
         {
-          ysnd:'2020'
+          ysnd: '2020',
         },
         {
-          ysnd:'2021'
+          ysnd: '2021',
         },
         {
-          ysnd:'2022'
+          ysnd: '2022',
         },
         {
-          ysnd:'2023'
+          ysnd: '2023',
         },
         {
-          ysnd:'2024'
-        }
+          ysnd: '2024',
+        },
       ],
-      rules:{
-        bbh:[
-          { required: true, message: '请输入版本号', trigger: 'blur' },
-        ],
-        ysnd:[
-          { required: true, message: '请选择预算年度', trigger: 'blur' },
-        ],
-        ystx:[
-          { required: true, message: '请选择预算体系', trigger: 'blur' },
-        ],
-        yszq:[
-          { required: true, message: '请选择预算周期', trigger: 'blur' },
-        ],
-        ysksrq:[
+      tableData: [
+        {
+          id: 1,
+          ysxm: '期初余额',
+          test: '0.00',
+          hz: '0.00',
+        },
+        {
+          id: 2,
+          ysxm: '现金收入',
+          test: '0.00',
+          hz: '0.00',
+          children: [
+            {
+              id: 21,
+              ysxm: '销售商品、提供劳务收到的现金',
+              test: '0.00',
+              hz: '0.00',
+            },
+          ],
+        },
+      ],
+      rules: {
+        bbh: [{ required: true, message: '请输入版本号', trigger: 'blur' }],
+        ysnd: [{ required: true, message: '请选择预算年度', trigger: 'blur' }],
+        ystx: [{ required: true, message: '请选择预算体系', trigger: 'blur' }],
+        yszq: [{ required: true, message: '请选择预算周期', trigger: 'blur' }],
+        ysksrq: [
           { required: true, message: '请选择预算开始日期', trigger: 'blur' },
         ],
-        ysjsrq:[
+        ysjsrq: [
           { required: true, message: '请选择预算结束日期', trigger: 'blur' },
         ],
       },
       form: {
-        bbh:'',
-        ysnd:'',
-        ystx:'',
-        zqmc:'',
-        ksrq:'',
-        jsrq:'',
-        ysbzdw:'二级单位',
-        ysms:'',
-        bbzt:'保存'
-      }
+        bbh: '',
+        ysnd: '',
+        ystx: '',
+        zqmc: '',
+        ksrq: '',
+        jsrq: '',
+        ysbzdw: '二级单位',
+        ysms: '',
+        bbzt: '保存',
+      },
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
-    }
+    },
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    this.tableListData = [
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      {
+        prop: 'ysxm',
+        width: '',
+        label: '预算项目',
+      },
+      {
+        prop: 'test',
+        width: '',
+        label: 'lzh测试',
+        type: 'input',
+      },
+      {
+        prop: 'hz',
+        width: '',
+        label: '汇总',
+        type: 'input',
+        disabled:true
+      },
+    ]
+  },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    // 分页
+    onPageChange(val) {
+      console.log(val)
+      var end = val * this.currentData.size
+      var start = (val - 1) * this.currentData.size
+
+      this.tableData = this.list.slice(start, end)
+
+      this.currentData.currentPage = val
+    },
+    onSizeChange(val) {
+      this.currentData.size = val
+      this.currentData.currentPage = 1
+      this.getList()
+    },
+    initDialog() {
       if (this.dialogObj.id) {
-        Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-      } else{
+        Object.keys(this.form).forEach((item) => {
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         let bbh = ''
-        for(let i=0;i<16;i++){
-          bbh+= Math.round(Math.random() * 10)
+        for (let i = 0; i < 16; i++) {
+          bbh += Math.round(Math.random() * 10)
         }
-        Object.keys(this.form).forEach(item => {this.form[item] = ''});
-        this.form.bbh= bbh
-        this.form.ysbzdw="二级单位1"
+        Object.keys(this.form).forEach((item) => {
+          this.form[item] = ''
+        })
+        this.form.bbh = bbh
+        this.form.ysbzdw = '二级单位1'
       }
     },
     sub() {
-      this.$refs['form'].validate((valid) => {
-        
-        if (valid) {
-          if (this.dialogObj.id) {
-            this.updateSub()
-          } else {
-            this.addSub()
-          }
-        }
-      })
+      // this.$refs['form'].validate((valid) => {
+      //   if (valid) {
+      //     if (this.dialogObj.id) {
+      //       this.updateSub()
+      //     } else {
+      //       this.addSub()
+      //     }
+      //   }
+      // })
+
+      console.log(this.tableData)
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
       console.log(this.form)
-      this.form.bbzt='保存'
-      this.form.bzr='admin'
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+      this.form.bbzt = '保存'
+      this.form.bzr = 'admin'
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
-  }
+  },
 }
 </script>
 <style scoped lang="scss">

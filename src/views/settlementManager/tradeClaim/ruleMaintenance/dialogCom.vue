@@ -18,6 +18,7 @@
       :disabled="dialogObj.read"
       status-icon
       class="form"
+      :inline-message="true"
     >
       <div class="title"><i class="el-icon-user" />平台信息</div>
       <div class="mb-10" />
@@ -25,11 +26,11 @@
         <el-col :span="12">
           <el-form-item
             label="规则编号："
-            prop="sysStudentNumber"
+            prop="gzbh"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentNumber"
+              v-model="form.gzbh"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -40,11 +41,11 @@
         <el-col :span="12">
           <el-form-item
             label="规则名称："
-            prop="sysStudentName"
+            prop="gzmc"
             class="formItem"
           >
             <el-input
-              v-model="form.sysStudentName"
+              v-model="form.gzmc"
               style="width: 200px"
               size="mini"
               :disabled="dialogObj.id != ''"
@@ -56,14 +57,21 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="认领系统：" prop="sysStudentNumber">
-            <el-input
-              v-model="form.sysStudentNumber"
-              style="width: 200px"
+          <el-form-item label="认领系统：" prop="rlxt">
+            <el-select
+              v-model="form.rlxt"
+              placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in rlxtList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12" />
@@ -73,53 +81,85 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="匹配范围：" prop="sysParentName">
-            <el-input
-              v-model="form.sysParentName"
-              style="width: 200px"
+          <el-form-item label="匹配范围：" prop="ppfw">
+            <el-select
+              v-model="form.ppfw"
+              placeholder="请选择"
               size="mini"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in ppfwList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="匹配条件：" prop="sysParentTelphone">
-            <el-input
-              v-model="form.sysParentTelphone"
-              style="width: 200px"
+          <el-form-item label="匹配条件：" prop="pptj">
+            <el-select
+              v-model="form.pptj"
+              placeholder="请选择"
               size="mini"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in pptjList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item label="匹配方式：" prop="sysFamilyAddress">
-            <el-input
-              v-model="form.sysParentTelphone"
-              style="width: 200px"
+          <el-form-item label="匹配方式：" prop="ppfs">
+            <el-select
+              v-model="form.ppfs"
+              placeholder="请选择"
               size="mini"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in ppfsList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="借贷方向：" prop="sysFamilyAddress">
-            <el-input
-              v-model="form.sysParentTelphone"
-              style="width: 200px"
+          <el-form-item label="借贷方向：" prop="jdfx">
+            <el-select
+              v-model="form.jdfx"
+              placeholder="请选择"
               size="mini"
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in lendingList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col>
-          <el-form-item label="匹配内容：" prop="sysFamilyAddress">
+          <el-form-item label="匹配内容：" prop="ppnr">
             <el-input
-              v-model="form.sysFamilyAddress"
+              v-model="form.ppnr"
               style="width: 83%"
               type="textarea"
               :rows="3"
@@ -132,32 +172,14 @@
         </el-col>
       </el-row>
 
-      <el-row>
-        <el-col>
-          <el-form-item label="附件：" prop="sysFamilyAddress">
-            <el-upload
-              class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
-              multiple
-              :limit="3"
-              :on-exceed="handleExceed"
-            >
-              <el-button size="small" type="primary">上传附件(0)条</el-button>
-
-            </el-upload>
-          </el-form-item>
-        </el-col>
-      </el-row>
+      
     </el-form>
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
-        @click="dialogObj.show = false"
+        @click="sub"
       >确 定</el-button>
     </span>
   </el-dialog>
@@ -167,6 +189,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
+import {PPTJLIST,LENDINGLIST,RLXTLIST} from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -175,19 +198,108 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      form: {}
+      lendingList:LENDINGLIST,
+      pptjList:PPTJLIST,
+      ppfwList:[
+        {
+          id:1,
+          value:'现金'
+        }
+      ],
+      ppfsList:[
+        {
+          id:1,
+          value:'包含'
+        },
+        {
+          id:1,
+          value:'相等'
+        },
+        {
+          id:1,
+          value:'不包含'
+        }
+      ],
+      rlxtList:RLXTLIST,
+      form: {
+        gzbh:'',
+        gzmc:'',
+        rlxt:'',
+        ppfw:'',
+        pptj:'',
+        ppfs:'',
+        jdfx:'',
+        ppnr:''
+      },
+      rules:{
+        gzbh:[
+          { required: true, message: '请填写规则编号', trigger: 'blur' },
+        ],
+        gzmc:[
+          { required: true, message: '请填写规则名称', trigger: 'blur' },
+        ],
+        ppnr:[
+          { required: true, message: '请填写匹配内容', trigger: 'blur' },
+        ],
+
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {},
+  watch: {
+    "dialogObj.show"(val) {
+      if (val) {
+        this.initDialog();
+      }
+    }
+  },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
-  methods: {}
+  methods: {
+    initDialog(){
+      
+      if (this.dialogObj.id) {
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+        this.form.khrq = '2020-10-10'
+        this.form.documentNumber = 'KH20091410151601'
+        this.form.openTime = new Date()
+        this.form.sqr = 'admin'
+      }
+    },
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.form.gzzt=1
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+    addSub() {
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+  }
 }
 </script>
 <style scoped lang="scss">

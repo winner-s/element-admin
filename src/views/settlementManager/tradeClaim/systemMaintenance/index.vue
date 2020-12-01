@@ -111,7 +111,7 @@ export default {
     // 搜索
     this.searchItem = [
       {
-        type: 'select',
+        type: 'input',
         label: '交易认领系统编号:',
         prop: 'jyrlxtbh',
         placeholder: '请选择交易认领系统编号'
@@ -276,37 +276,23 @@ export default {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i == 'jyrlxtbh') {
+              if (item.jyrlxtbh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i == 'jyrlxtmc') {
+              if (item.jyrlxtmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
+            
           } else {
             continue
           }

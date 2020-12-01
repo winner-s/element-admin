@@ -693,8 +693,8 @@ export const constantRoutes = [
               import(
                 '@/views/budgetManager/budgetSelect/budgetAdjustmentSelect/index'
               ),
-            name: '预算调整制查询',
-            meta: { title: '预算调整制查询' }
+            name: '预算调整查询',
+            meta: { title: '预算调整查询' }
           },
           {
             path: 'budgetTiaoJiSelect',
@@ -908,7 +908,7 @@ export const constantRoutes = [
   {
     path: '/internalFinance',
     component: Layout,
-    redirect: '/internalFinance/basicSettings',
+    redirect: '/internalFinance/basicSetting',
     name: '内部金融',
     meta: { title: '内部金融', icon: 'el-icon-coin' },
     children: [
@@ -916,7 +916,7 @@ export const constantRoutes = [
         path: 'basicSetting',
         name: '基础设置',
         component: () => import('@/views/internalFinance/basicSetting/index'),
-        redirect: '/internalFinance/basicSettings/interestRateSet',
+        redirect: '/internalFinance/basicSetting/interestRateSet',
         meta: { title: '基础设置' },
         children: [
           {

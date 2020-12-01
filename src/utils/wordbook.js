@@ -148,6 +148,39 @@ export const ACCOUNTSTATUSLIST = [
   }
 ]
 
+
+// 匹配条件
+export const PPTJ = {
+  '1': '摘要',
+  '2': '本方账号',
+  '3': '本方账户',
+  '4': '对方账号',
+  '5': '对方账户'
+}
+
+export const PPTJLIST = [
+  {
+    id: 1,
+    value: '摘要'
+  },
+  {
+    id: 2,
+    value: '本方账号'
+  },
+  {
+    id: 3,
+    value: '本方账户'
+  },
+  {
+    id: 4,
+    value: '对方账号'
+  },
+  {
+    id: 5,
+    value: '对方账户'
+  }
+]
+
 // 借贷方向
 export const LENDING = {
   '1': '借',
@@ -471,6 +504,62 @@ export const LLZHTSLIST = [
   {
     id: 2,
     value: '365天'
+  }
+]
+
+// 规则状态
+export const GZZT = {
+  '1': '启用',
+  '2': '停用'
+}
+
+export const GZZTLIST = [
+  {
+    id: 1,
+    value: '启用'
+  },
+  {
+    id: 2,
+    value: '停用'
+  }
+]
+
+// 认领状态
+export const RLZT = {
+  '1': '待定',
+  '2': '未认领',
+  '3': '已认领'
+}
+
+export const RLZTLIST = [
+  {
+    id: 1,
+    value: '待定'
+  },
+  {
+    id: 2,
+    value: '未认领'
+  },
+  {
+    id: 3,
+    value: '已认领'
+  }
+]
+
+// 认领系统
+export const RLXT = {
+  '1': '线下入账',
+  '2': '非线下入账'
+}
+
+export const RLXTLIST = [
+  {
+    id: 1,
+    value: '线下入账'
+  },
+  {
+    id: 2,
+    value: '非线下入账'
   }
 ]
 
