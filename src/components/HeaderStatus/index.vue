@@ -60,17 +60,20 @@ export default {
   width: 224px;
   height: 154px;
 }
+
 .text{
+  margin-right: 40px;
   position: relative;
+  
   &::before{
     content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #1FACA2;
     position: absolute;
-    top: 6px;
-    left: -14px;
+    width: 1px;
+    height: 25px;
+    top: -5px;
+    right: -20px;
+   
+    background-color: #E3E3E3;
   }
   font-size: 12px;
   font-family: PingFangSC-Regular, PingFang SC;

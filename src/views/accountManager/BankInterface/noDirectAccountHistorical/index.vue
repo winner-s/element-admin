@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>薪资代发导入</span>
+        <span>非直联账户历史数据导入</span>
       </div>
       <div>
         <div class="text">

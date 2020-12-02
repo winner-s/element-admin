@@ -68,7 +68,7 @@ export default {
         },
         legend: {
           orient: 'vertical',
-          right: '50',
+          right: '20',
           top: '60',
           data: list,
           formatter: function (name) {
@@ -90,20 +90,20 @@ export default {
               a: {
                 width: 60,
                 fontSize: 12,
-                padding: [0, 10, 0, 0],
+                padding: [0, 0, 0, 0],
                 lineHeight: 12,
                 color: '#666666',
               },
               b: {
                 width: 50,
                 fontSize: 12,
-                padding: [0, 10, 0, 0],
+                padding: [0, 0, 0, 0],
                 lineHeight: 12,
                 color: '#999999',
               },
               c: {
                 fontSize: 12,
-                padding: [0, 10, 0, 0],
+                padding: [0, 0, 0, 0],
                 lineHeight: 12,
                 color: '#666666',
               },

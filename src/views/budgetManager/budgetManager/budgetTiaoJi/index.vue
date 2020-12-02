@@ -31,7 +31,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" />
+    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub" @updateSub='updateSub' />
   </div>
 </template>
 
@@ -284,6 +284,32 @@ export default {
   },
   // 方法集合
   methods: {
+    updateSub(res){
+      let ind = 0;
+      this.tableData.forEach((item,index)=>{
+        if(item.bbh == res.bbh){
+          ind = index
+        }
+      })
+      console.log(ind)
+      
+      let fore = this.tableData[ind]
+       Object.keys(fore).forEach(item => {
+         if(res[item]){
+           fore[item] = res[item];
+         }
+          
+        });
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    addSub(res) {
+      this.list.push(res)
+
+      this.tableData = this.list.slice(0, this.currentData.size)
+      this.currentData.total = this.list.length
+    },
     // 收起
     dropUp() {
       this.showAll = false

@@ -374,7 +374,7 @@ export default {
       qbscList: [
         {
           name: '账户管理',
-          show: false,
+          show: true,
           childerList: [
             {
               parentName: '账户管理',
@@ -398,7 +398,7 @@ export default {
         },
         {
           name: '报表中心',
-          show: false,
+          show: true,
           childerList: [
             {
               parentName: '报表中心',
@@ -1091,8 +1091,9 @@ p {
   padding-left: 20px;
   div {
     display: inline-block;
-    width: 70px;
-    margin-right: 40px;
+    width: 75px;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 35px;
     text-align: center;
     img {

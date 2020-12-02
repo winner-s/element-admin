@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>用户管理</span>
+        <span>直联账户即时交易查询</span>
       </div>
       <div>
         <Search
@@ -36,7 +36,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST,ACCOUNTUSAGE ,ACCOUNTUSAGELIST} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -46,6 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      accountUsageList:ACCOUNTUSAGELIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -64,212 +65,55 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
+      list:[
         {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
+          zhhm:'11122233344455',
+          zhmc:'一级中心CNY直联账户1',
+          jsye:'100.00',
+          kyye:'101.00',
+          yhfhxx:'',
+          dwmc:'一级中心',
+          zhyt:1,
+          khyh:'中国银行总行',
+          dwbh:'13265',
         },
         {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
+          zhhm:'18213723593',
+          zhmc:'一级中心CNY直联账户1',
+          jsye:'100.00',
+          kyye:'101.00',
+          yhfhxx:'',
+          dwmc:'一级中心',
+          zhyt:1,
+          khyh:'中国建设银行总行',
+          dwbh:'13265',
+        },{
+          zhhm:'7862346823',
+          zhmc:'一级中心CNY直联账户1',
+          jsye:'100.00',
+          kyye:'101.00',
+          yhfhxx:'',
+          dwmc:'一级中心',
+          zhyt:1,
+          khyh:'中国工商银行总行',
+          dwbh:'546',
+        },{
+          zhhm:'000999888777',
+          zhmc:'一级中心CNY直联账户1',
+          jsye:'100.00',
+          kyye:'101.00',
+          yhfhxx:'',
+          dwmc:'一级中心',
+          zhyt:1,
+          khyh:'中国农业银行总行',
+          dwbh:'1324',
         }
       ],
+      
 
       // 表格
       tableData: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
+        
       ],
       tableBtn: [],
       // 顶部搜索
@@ -287,6 +131,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -305,20 +151,20 @@ export default {
       {
         type: 'select',
         label: '单位编号:',
-        prop: 'unitNo',
+        prop: 'dwbh',
         placeholder: '请填写单位编号',
         selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
-        prop: 'unitName',
+        prop: 'dwmc',
         placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '账户号码:',
-        prop: 'bankName',
+        prop: 'zhhm',
         placeholder: '请填写账户号码'
       }
     ]
@@ -327,45 +173,47 @@ export default {
       { width: '50', label: '', type: 'index' },
 
       {
-        prop: 'documentNumber',
+        prop: 'zhhm',
         width: '150',
-        label: '交易时间'
+        label: '账户号码'
       },
 
       {
-        prop: 'accountName',
+        prop: 'zhmc',
         width: '',
-        label: '交易方向'
+        label: '账户名称'
       },
       {
-        prop: 'bankName',
+        prop: 'jsye',
         width: '',
-        label: '交易金额(元)'
+        label: '即时余额(元)'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'kyye',
         width: '',
-        label: '对方银行账号'
+        label: '可用余额(元)'
       },
       {
-        prop: 'status',
+        prop: 'yhfhxx',
         width: '',
-        label: '对方账户名称'
+        label: '银行返回信息'
       },
       {
-        prop: 'connection',
+        prop: 'dwmc',
         width: '',
-        label: '备注'
+        label: '单位名称'
       },
       {
-        prop: 'currency',
+        prop: 'zhyt',
         width: '',
-        label: '银行交易标识'
+        label: '账户用途',
+        type:'wordbook',
+        wordbookList:this.accountUsage
       },
       {
-        prop: 'unitName',
+        prop: 'khyh',
         width: '',
-        label: '币种'
+        label: '开户银行'
       }
     ]
     // 按钮
@@ -377,6 +225,10 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    accountUsage(val){
+      return ACCOUNTUSAGE[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -420,110 +272,45 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    // 删除产品
-    handleDelete(v) {
-      this.$confirm('此操作将删除该账号?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        // // eslint-disable-next-line no-unused-vars
-        // let json = {
-        //   id: v.id
-        // };
-        // deleteAdmin(json).then(res => {
-        //   console.log(res);
-        //   this.getList();
-        // });
-      })
-    },
-    handleStatus(v) {
-      if (v.status == 0) {
-        this.$confirm('此操作将停用该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //   // eslint-disable-next-line no-unused-vars
-          //   let json = {
-          //     id: v.id
-          //   };
-          //   updateAdminStatus(json).then(res => {
-          //     console.log(res);
-          //     this.getList();
-          //   });
-        })
-      } else {
-        this.$confirm('此操作将恢复该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          // eslint-disable-next-line no-unused-vars
-          const json = {
-            id: v.id
-          }
-          updateAdminStatus(json).then((res) => {
-            console.log(res)
-            this.getList()
-          })
-        })
-      }
-    },
-    handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
-    },
-    handleViewOther(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = true
-      this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
-    },
+    
+    
+    
+   
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      this.tableDataTwo.forEach((item, index) => {
+      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i == 'dwmc') {
+              if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i == 'dwbh') {
+              if (item.dwbh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i == 'zhhm') {
+              if (item.zhhm.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
+            
           } else {
             continue
           }

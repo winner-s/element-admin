@@ -419,7 +419,7 @@ $light_gray:#eee;
       height: 216px;
       background: url('../../assets/images/right_text.png') no-repeat center center;
       background-size: 100%;
-      margin-right: 179px;
+      margin-right: 100px;
     }
   }
   .login-form {

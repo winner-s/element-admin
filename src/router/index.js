@@ -64,7 +64,7 @@ export const constantRoutes = [
         path: 'dashboard',
         name: '首页',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: '首页', icon: 'dashboard' }
+        meta: { title: '首页', icon: '首页' }
       }
     ]
   },
@@ -74,7 +74,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/accountManager/openManager',
     name: '账户管理',
-    meta: { title: '账户管理', icon: 'el-icon-user-solid' },
+    meta: { title: '账户管理', icon: '账户' },
     children: [
       {
         path: 'openManager',
@@ -247,8 +247,8 @@ export const constantRoutes = [
               import(
                 '@/views/accountManager/BankInterface/directAccountTransaction/index'
               ),
-            name: '直联账户即时余额查询',
-            meta: { title: '直联账户即时余额查询' }
+            name: '直联账户即时交易查询',
+            meta: { title: '直联账户即时交易查询' }
           },
           {
             path: 'noDirectAccountHistorical',
@@ -268,7 +268,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/settlementManager/privatePayment',
     name: '结算管理',
-    meta: { title: '结算管理', icon: 'el-icon-s-help' },
+    meta: { title: '结算管理', icon: '结算' },
     children: [
       {
         path: 'privatePayment',
@@ -569,7 +569,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/budgetManager/basicSettings',
     name: '预算管理',
-    meta: { title: '预算管理', icon: 'el-icon-money' },
+    meta: { title: '预算管理', icon: '预算' },
     children: [
       {
         path: 'basicSettings',
@@ -743,7 +743,7 @@ export const constantRoutes = [
     path: '/fundsManagement',
     component: Layout,
     name: '资金池管理',
-    meta: { title: '资金池管理', icon: 'el-icon-suitcase' },
+    meta: { title: '资金池管理', icon: '资金池' },
     children: [
       {
         path: 'setCollection',
@@ -910,7 +910,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/internalFinance/basicSetting',
     name: '内部金融',
-    meta: { title: '内部金融', icon: 'el-icon-coin' },
+    meta: { title: '内部金融', icon: '内部金融' },
     children: [
       {
         path: 'basicSetting',
@@ -1189,7 +1189,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/form/companyInfo',
     name: '报表中心s',
-    meta: { title: '报表中心', icon: 'form' },
+    meta: { title: '报表中心', icon: '报表' },
     children: [
       {
         path: 'companyInfo',
@@ -1235,7 +1235,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fundsManagem/sea',
     name: '对账管理',
-    meta: {  icon: 'el-icon-reading' },
+    meta: {  icon: '对账管理' },
     children:[
       {
         path: 'sea',
@@ -1252,7 +1252,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fa/s',
     name: '操作帮助',
-    meta: {  icon: 'el-icon-data-line' },
+    meta: {  icon: '操作帮助' },
     children:[
       {
         path: 's',
@@ -1268,7 +1268,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fae/s',
     name: '资金监控',
-    meta: {  icon: 'el-icon-data-line' },
+    meta: {  icon: '监控' },
     children:[
       {
         path: 's',
@@ -1284,7 +1284,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fun/set',
     name: '融资管理',
-    meta: {  icon: 'el-icon-notebook-2' },
+    meta: {  icon: '形状结合' },
     children:[
       {
         path: 'set',
@@ -1300,7 +1300,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fund/colle',
     name: '投资管理',
-    meta: {  icon: 'el-icon-takeaway-box' },
+    meta: {  icon: '投资管理' },
     children:[
       {
         path: 'colle',
@@ -1316,7 +1316,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/ma/tion',
     name: '票据管理',
-    meta: {  icon: 'el-icon-pie-chart' },
+    meta: {  icon: '票据' },
     children:[
       {
         path: 'tion',
@@ -1332,7 +1332,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/manafe/sstads',
     name: '银企平台',
-    meta: {  icon: 'el-icon-folder-opened' },
+    meta: {  icon: '平台' },
     children:[
       {
         path: 'sstads',

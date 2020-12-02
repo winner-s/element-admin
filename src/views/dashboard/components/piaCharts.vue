@@ -74,12 +74,25 @@ export default {
           {
             type: 'value',
             boundaryGap: [0, 0.01],
+            show: false,
           },
         ],
         yAxis: [
           {
             type: 'category',
-            data: ['中国银行',  '交通银行', '招商银行', '工商银行','建设银行'],
+            data: ['中国银行', '交通银行', '招商银行', '工商银行', '建设银行'],
+            axisLine: {
+              //y轴
+              show: false,
+            },
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            splitLine: {
+              //网格线
+              show: false,
+            },
           },
         ],
         color: ['#3AA0FF'],

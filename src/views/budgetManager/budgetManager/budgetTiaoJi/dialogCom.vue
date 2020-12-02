@@ -130,7 +130,7 @@
       <el-button @click="tableDataDelete">删除</el-button>
     </div>
     <Table
-      :table-data="tableData"
+      :table-data="form.childerList"
       :table-list-data="tableListData"
       :table-btn="tableBtn"
       :current-data="currentData"
@@ -140,7 +140,7 @@
     />
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="dialogObj.show = false"
+      <el-button type="primary" @click="sub"
         >确 定</el-button
       >
     </div>
@@ -160,10 +160,18 @@ export default {
     // 这里存放数据
     return {
       selectChange: [],
-      rules:{
-        bbh:[
-          { required: true, message: '请填写版本号', trigger: 'blur' },
-        ]
+      rules: {
+        bbh: [{ required: true, message: '请填写版本号', trigger: 'blur' }],
+        ysnd: [{ required: true, message: '请填写预算年度', trigger: 'blur' }],
+        ystx: [{ required: true, message: '请填写预算体系', trigger: 'blur' }],
+        yszq: [{ required: true, message: '请填写预算周期', trigger: 'blur' }],
+        ysksrq: [
+          { required: true, message: '请填写预算开始日期', trigger: 'blur' },
+        ],
+        ysjsrq: [
+          { required: true, message: '请填写预算结束日期', trigger: 'blur' },
+        ],
+        tjsm: [{ required: true, message: '请填写调剂说明', trigger: 'blur' }],
       },
       // 分页
       currentData: {
@@ -172,7 +180,26 @@ export default {
         total: 10,
       },
       placeholderTips: placeholderTips,
-      form: {},
+      form: {
+        bbh: '',
+        ysnd: '',
+        ystx: '',
+        yszq: '',
+        ysksrq: '',
+        ysjsrq: '',
+        ysbzdw: '',
+        tjsm: '',
+        childerList: [
+          {
+            id: 1,
+            yszt: '',
+            ysxm: '',
+            tjlx: '',
+            tjqje: '',
+            tjhje: '',
+          },
+        ],
+      },
       // 表格
       tableData: [
         {
@@ -246,11 +273,32 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
+    sub() {
+      this.$refs['form'].validate((valid) => {
+        
+        if (valid) {
+          if (this.dialogObj.id) {
+            this.updateSub()
+          } else {
+            this.form.status=1
+            this.addSub()
+          }
+        }
+      })
+    },
+    updateSub(){
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
+    addSub() {
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show=false
+    },
     tableDataDelete() {
       this.selectChange.forEach((item, index) => {
         this.tableData.forEach((res, index) => {
           if (res.id == item.id) {
-            this.tableData.splice(index,1)
+            this.form.childerList.splice(index, 1)
           }
         })
       })
@@ -261,7 +309,7 @@ export default {
     tableDataInsert() {
       let id = this.id + 1
       this.id = id
-      this.tableData.push({
+      this.form.childerList.push({
         id: id,
         yszt: id,
         ysxm: '',
