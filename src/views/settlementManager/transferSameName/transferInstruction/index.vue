@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>同名划转申请</span>
+        <span>同名划转指令发送</span>
       </div>
       <div>
         <Search

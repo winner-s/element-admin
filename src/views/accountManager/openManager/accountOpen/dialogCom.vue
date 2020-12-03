@@ -419,7 +419,7 @@ export default {
         this.form.khrq = '2020-10-10'
         this.form.documentNumber = 'KH20091410151601'
         this.form.openTime = new Date()
-        this.form.sqr = 'admin'
+        this.form.openApplicant = 'admin'
       }
     },
     sub() {

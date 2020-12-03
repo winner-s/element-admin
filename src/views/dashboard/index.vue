@@ -290,7 +290,7 @@
     <el-dialog
       title="自定义功能入口"
       :visible.sync="dialogVisible"
-      width="45%"
+      width="60%"
       :before-close="handleClose"
     >
       <div>
