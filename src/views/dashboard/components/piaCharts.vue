@@ -64,7 +64,7 @@ export default {
           },
         },
         grid: {
-          left: '20',
+          left: '50',
           top: '10',
           right: '20',
           bottom: '0',
@@ -80,7 +80,64 @@ export default {
         yAxis: [
           {
             type: 'category',
-            data: ['中国银行', '交通银行', '招商银行', '工商银行', '建设银行'],
+            data: ['zgyh', 'jtyh', 'zsyh', 'gsyh', 'jsyh'],
+            axisLabel: {
+              formatter: function (value) {
+                if(value==='zgyh'){
+                  return '{' + value + '| }\t\t{value|中国银行}'
+                }else if(value ==='jtyh'){
+                  return '{' + value + '| }\t\t{value|交通银行}'
+                }else if(value ==='zsyh'){
+                  return '{' + value + '| }\t\t{value|招商银行}'
+                }else if(value ==='gsyh'){
+                  return '{' + value + '| }\t\t{value|工商银行}'
+                }else if(value ==='jsyh'){
+                  return '{' + value + '| }\t\t{value|建设银行}'
+                }
+                
+              },
+              rich: {
+                value: {
+                  lineHeight: 12,
+                  align: 'right',
+                },
+                zgyh: {
+                  height: 20,
+                  align: 'center',
+                  backgroundColor: {
+                    image: require('@a/img/zgyh.png'),
+                  },
+                },
+                jtyh: {
+                  height: 20,
+                  align: 'center',
+                  backgroundColor: {
+                    image: require('@a/img/jtyh.png'),
+                  },
+                },
+                zsyh: {
+                  height: 20,
+                  align: 'center',
+                  backgroundColor: {
+                    image: require('@a/img/zsyh.png'),
+                  },
+                },
+                gsyh: {
+                  height: 20,
+                  align: 'center',
+                  backgroundColor: {
+                    image: require('@a/img/gsyh.png'),
+                  },
+                },
+                jsyh: {
+                  height: 20,
+                  align: 'center',
+                  backgroundColor: {
+                    image: require('@a/img/jsyh.png'),
+                  },
+                },
+              },
+            },
             axisLine: {
               //y轴
               show: false,
@@ -101,7 +158,7 @@ export default {
             name: '账户数量',
             type: 'bar',
             barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220],
+            data: this.lineChartData,
           },
         ],
       })

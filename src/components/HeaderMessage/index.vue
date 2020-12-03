@@ -4,7 +4,12 @@
     <el-dropdown>
       <div class="message">
         <el-badge is-dot @click.native="toggleMsgShow">
-          <i class="el-icon-message-solid iconFont"></i>
+          <svg-icon
+          class="message"
+          class-name="search-icon"
+          icon-class="message"
+          @click.stop="click"
+        />
         </el-badge>
       </div>
       <el-dropdown-menu slot="dropdown">
@@ -56,6 +61,10 @@ export default {
 }
 </script>
 <style   lang='scss'>
+.message{
+  vertical-align: middle;
+  font-size: 18px;
+}
 .el-dropdown-menu{
     padding: 0 !important;
 }

@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     click() {
-      this.showRmss = !this.showRmss
+      this.showRmss = true
       this.show = !this.show
       if (this.show) {
         this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.focus()
@@ -184,7 +184,7 @@ export default {
       return res
     },
     querySearch(query) {
-      this.showRmss = false
+      this.showRmss = !this.showRmss
       if (query !== '') {
         this.options = this.fuse.search(query)
         console.log(this.options)
@@ -202,7 +202,7 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #333333;
-  line-height: 24px;
+  line-height: 30px;
 }
 .rmss:hover{
   color: #1890FF;

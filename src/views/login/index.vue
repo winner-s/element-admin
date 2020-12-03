@@ -416,9 +416,9 @@ $light_gray:#eee;
     align-items: center;
     .left-box{
       width: 614px;
-      height: 216px;
+      height: 310px;
       background: url('../../assets/images/right_text.png') no-repeat center center;
-      background-size: 100%;
+      background-size: 100% 100%;
       margin-right: 100px;
     }
   }

@@ -62,7 +62,7 @@ export default {
 }
 
 .text{
-  margin-right: 40px;
+  margin-right: 10px;
   position: relative;
   
   &::before{
@@ -71,7 +71,7 @@ export default {
     width: 1px;
     height: 25px;
     top: -5px;
-    right: -20px;
+    right: -15px;
    
     background-color: #E3E3E3;
   }

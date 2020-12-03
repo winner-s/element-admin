@@ -4,6 +4,8 @@
     <el-card>
       <div slot="header">
         <span>开户复核</span>
+        <el-button style="float: right;" icon="el-icon-star-on" size="mini" v-if=" star" @click="qxsc()">已收藏</el-button>
+        <el-button style="float: right;" icon="el-icon-star-off" size="mini" v-else  @click.native="sc()">收藏</el-button>
       </div>
       <div>
         <Search
@@ -60,6 +62,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      star:false,
       djztList: DJZTLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
@@ -349,6 +352,12 @@ export default {
   },
   // 方法集合
   methods: {
+    qxsc(){
+      this.star = false
+    },
+    sc(){
+      this.star=true
+    },
     sub(res) {
       this.list.forEach((item, index) => {
         if (item.documentNumber == res.documentNumber) {

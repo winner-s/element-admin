@@ -16,20 +16,20 @@ export default {
   props: {
     width: {
       type: String,
-      default: '100%'
+      default: '100%',
     },
     height: {
       type: String,
-      default: '280px'
+      default: '280px',
     },
     lineChartData: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      mycharts: null
+      mycharts: null,
     }
   },
   watch: {
@@ -37,8 +37,8 @@ export default {
       deep: true,
       handler(val) {
         this._setOption(val.inPrice, val.outPrice)
-      }
-    }
+      },
+    },
   },
   mounted() {
     this.$nextTick().then(() => {
@@ -54,63 +54,62 @@ export default {
     },
     _setOption(inprice = [], outprice = []) {
       this.mycharts.setOption({
-        
         tooltip: {
           trigger: 'axis',
           axisPointer: {
             type: 'cross',
             label: {
-              background: '#6a7985'
-            }
-          }
+              background: '#6a7985',
+            },
+          },
         },
         legend: {
           data: ['项目借款', '流动资金借款', '负债合计'],
-          top: '20',
-          right: '10'
+          top:20,
+          right:20
         },
         grid: {
           left: '20',
           top: '50',
           right: '20',
           bottom: '0',
-          containLabel: true
+          containLabel: true,
         },
         xAxis: [
           {
             type: 'category',
             data: ['禹道北京分公司', '禹道上海分公司', '禹道深圳分公司'],
-          }
+          },
         ],
         yAxis: [
           {
-            type: 'value'
-          }
+            type: 'value',
+          },
         ],
         color: ['#FBD337', '#37CBCB', '#1890FF'],
         series: [
           {
-            name: '',
+            name: '项目借款',
             type: 'bar',
-            data: [2500, 1000, 5000],
+            data: this.lineChartData.bj,
             barWidth: 30,
           },
           {
-            name: '',
+            name: '流动资金借款',
             type: 'bar',
-            data: [2000, 4000, 4000],
-            barWidth: 30
+            data: this.lineChartData.sh,
+            barWidth: 30,
           },
           {
-            name: '',
+            name: '负债合计',
             type: 'bar',
-            data: [1800, 3200, 3000],
-            barWidth: 30
-          }
-        ]
+            data: this.lineChartData.sz,
+            barWidth: 30,
+          },
+        ],
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style></style>
