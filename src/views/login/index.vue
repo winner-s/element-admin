@@ -7,7 +7,9 @@
       </div>
     </header>
     <div class="content">
-      <div class="left-box" />
+      <div class="left-box">
+        <img src="@/assets/images/right_text.png">
+      </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
         <div class="title-container">
           <h3 class="title">用户登录</h3>
@@ -22,30 +24,28 @@
             name="username"
             type="text"
             tabindex="1"
+            @keyup.enter.native="handleLogin"
           />
         </el-form-item>
 
-        <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
-          <el-form-item prop="password">
-            <span class="svg-container pws" />
-            <el-input
-              :key="passwordType"
-              ref="password"
-              v-model="loginForm.password"
-              :type="passwordType"
-              placeholder="密码"
-              name="password"
-              tabindex="2"
-              autocomplete="on"
-              @keyup.native="checkCapslock"
-              @blur="capsTooltip = false"
-              @keyup.enter.native="handleLogin"
-            />
-            <!-- <span class="show-pwd" @click="showPwd">
+        <!-- <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual> -->
+        <el-form-item prop="password">
+          <span class="svg-container pws" />
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model="loginForm.password"
+            :type="passwordType"
+            placeholder="密码"
+            name="password"
+            tabindex="1"
+            @keyup.enter.native="handleLogin"
+          />
+          <!-- <span class="show-pwd" @click="showPwd">
               <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
             </span> -->
-          </el-form-item>
-        </el-tooltip>
+        </el-form-item>
+        <!-- </el-tooltip> -->
         <el-form-item prop="code">
           <span class="svg-container code" />
           <el-input
@@ -55,6 +55,7 @@
             name="username"
             type="text"
             tabindex="1"
+            @keyup.enter.native="handleLogin"
           />
           <div class="ValidCode disabled-select" @click="refreshCode">
             <span v-for="(item, index) in codeList" :key="index" :style="getStyle(item)">{{ item.code }}</span>
@@ -280,6 +281,7 @@ $cursor: #fff;
   button{
     width: 384px;
     margin-top: 4px;
+    margin-bottom: 30px;
   }
   .el-input {
     display: inline-block;
@@ -305,11 +307,11 @@ $cursor: #fff;
   }
   .el-form-item__content{
     width: 384px;
-    height: 48px;
+    height: 42px;
     border: 1px solid #E3E3E3;
     border-radius: 4px;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -329,7 +331,7 @@ $light_gray:#eee;
 .ValidCode{
   background: #d9ccb1;
   width: 105px;
-  height: 46px;
+  height: 40px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -348,7 +350,7 @@ $light_gray:#eee;
     >div{
       height: 72px;
       line-height: 72px;
-      width: 1200px;
+      max-width: 1200px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -359,6 +361,7 @@ $light_gray:#eee;
       height: 35px;
       background: url('../../assets/images/LOGO.png') no-repeat center center;
       background-size: cover;
+      margin-left: 30px;
     }
     .right{
       font-size: 14px;
@@ -366,6 +369,7 @@ $light_gray:#eee;
       font-weight: 400;
       color: #666666;
       line-height: 20px;
+      margin-right: 30px;
     }
   }
   >footer{
@@ -416,16 +420,19 @@ $light_gray:#eee;
     align-items: center;
     .left-box{
       width: 614px;
-      height: 310px;
-      background: url('../../assets/images/right_text.png') no-repeat center center;
+      // height: 310px;
+      // background: url('../../assets/images/right_text.png') no-repeat center center;
       background-size: 100% 100%;
-      margin-right: 100px;
+      margin-right: 60px;
+      img {
+        width: 100%;
+      }
     }
   }
   .login-form {
     position: relative;
     width: 484px;
-    height: 480px;
+    // height: 480px;
     // margin: 0 auto;
     overflow: hidden;
     background: #FFFFFF;
@@ -475,7 +482,7 @@ $light_gray:#eee;
       font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #333333;
-      margin: 50px 0 42px 0;
+      margin: 30px 0;
     }
   }
 

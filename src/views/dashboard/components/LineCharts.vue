@@ -65,8 +65,8 @@ export default {
         },
         legend: {
           data: ['项目借款', '流动资金借款', '负债合计'],
-          top:20,
-          right:20
+          top: 20,
+          right: 20,
         },
         grid: {
           left: '20',
@@ -92,19 +92,19 @@ export default {
             name: '项目借款',
             type: 'bar',
             data: this.lineChartData.bj,
-            barWidth: 30,
+            barWidth: 20,
           },
           {
             name: '流动资金借款',
             type: 'bar',
             data: this.lineChartData.sh,
-            barWidth: 30,
+            barWidth: 20,
           },
           {
             name: '负债合计',
             type: 'bar',
             data: this.lineChartData.sz,
-            barWidth: 30,
+            barWidth: 20,
           },
         ],
       })

@@ -1,35 +1,55 @@
 <!--  -->
 <template>
   <div class="">
-    <div class="popContainer" v-if="tips">
-      <div class="tip1" v-if="tip === 1">
+    <div v-show="tip >= 2 && tips" ref="border" class="border" />
+    <img
+      v-show="tip >= 2 && tips"
+      ref="shang"
+      class="tip_img"
+      src="../../assets/img/shang.png"
+      alt=""
+    />
+    <img
+      v-show="tip >= 2 && tips"
+      ref="xia"
+      class="tip_img"
+      src="../../assets/img/xia.png"
+      alt=""
+    />
+    <div v-if="tips" class="popContainer">
+      <div v-if="tip === 1" class="tip1">
         <img src="../../assets/img/tip1.png" alt="" @click="tip1Click" />
       </div>
       <div v-if="tip === 2" class="tip2">
-        <img src="../../assets/img/shang.png" alt="" />
-        <img src="../../assets/img/xia.png" alt="" />
+        <!-- <img src="../../assets/img/shang.png" alt="">
+        <img src="../../assets/img/xia.png" alt=""> -->
         <img src="../../assets/img/cygn.png" alt="" @click="tip2Click" />
       </div>
 
       <div v-if="tip === 3" class="tip3">
-        <img src="../../assets/img/shang.png" alt="" />
+        <!-- <img src="../../assets/img/shang.png" alt=""> -->
         <img src="../../assets/img/db.png" alt="" @click="tip3Click" />
       </div>
 
       <div v-if="tip === 4" class="tip4">
-        <img src="../../assets/img/shang.png" alt="" />
+        <!-- <img src="../../assets/img/shang.png" alt=""> -->
 
-        <img src="../../assets/img/tb.png" alt="" @click="tip4Click" />
+        <img
+          src="../../assets/img/tb.png"
+          alt=""
+          @click="tip4Click"
+          ref="tip4"
+        />
       </div>
     </div>
-    <div class="kf" @click="kf = true"></div>
+    <div class="kf" @click="kf = true" />
     <!-- @click="toUser" -->
-    <div class="dh" v-show="kf">
-      <div class="close" @click.stop="kf = false"></div>
+    <div v-show="kf" class="dh">
+      <div class="close" @click.stop="kf = false" />
     </div>
     <el-row :gutter="20">
       <el-col :span="12" :class="{ cygn: tip == 2 }">
-        <el-card :body-style="{ padding: '0px' }">
+        <el-card ref="always" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
             <span>常用功能</span>
             <el-button
@@ -45,7 +65,7 @@
               @click="dialogVisible = true"
             />
           </div>
-          <div class="common" ref="common">
+          <div ref="common" class="common">
             <div v-for="(item, index) in confirmList" :key="index">
               <router-link :to="item.router">
                 <img :src="item.img" alt="" />
@@ -56,8 +76,8 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card class="db" :body-style="{ padding: '0px' }">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-card ref="nav" class="db" :body-style="{ padding: '0px' }">
+          <el-tabs v-model="activeName">
             <el-tab-pane label="待审批(7)" name="first">
               <div class="content" :style="{ height: common }">
                 <div v-for="item in 7" :key="item" class="right_div">
@@ -103,7 +123,7 @@
 
     <el-row :gutter="20">
       <template v-for="(item, index) in zbqList">
-        <el-col :span="6" :key="index" v-if="item.show">
+        <el-col v-if="item.show" :key="index" :span="6">
           <el-card class="box-card">
             <div class="top_div">
               <p>{{ item.top }}</p>
@@ -119,6 +139,7 @@
                 >
                   {{ item.tqdbNum }}
                   <img
+                    v-if="item.tqdb == 'red'"
                     src="../../assets/img/down.png"
                     alt=""
                     style="
@@ -128,9 +149,9 @@
                       vertical-align: middle;
                       margin-bottom: 5px;
                     "
-                    v-if="item.tqdb == 'red'"
                   />
                   <img
+                    v-if="item.tqdb == 'green'"
                     src="../../assets/img/up.png"
                     alt=""
                     style="
@@ -140,7 +161,6 @@
                       vertical-align: middle;
                       margin-bottom: 5px;
                     "
-                    v-if="item.tqdb == 'green'"
                   />
                 </span>
               </p>
@@ -153,8 +173,8 @@
                     <div>
                       <el-checkbox-group
                         v-model="checkList"
-                        @change="checkChange"
                         class="box"
+                        @change="checkChange"
                       >
                         <el-checkbox label="结算笔数">结算笔数</el-checkbox>
                         <el-checkbox label="结算金额">结算金额</el-checkbox>
@@ -169,9 +189,9 @@
                     </div>
                   </el-card>
                   <img
+                    slot="reference"
                     src="../../assets/img/info.png"
                     style="width: 14px; height: 14px"
-                    slot="reference"
                   />
                 </el-popover>
               </div>
@@ -181,7 +201,12 @@
       </template>
     </el-row>
 
-    <el-row :gutter="20" style="margin-top: 23px" :class="{ cygn: tip == 4 }">
+    <el-row
+      ref="chart1"
+      :gutter="20"
+      style="margin-top: 23px"
+      :class="{ cygn: tip == 4 }"
+    >
       <el-col :span="12">
         <el-card
           class=""
@@ -212,9 +237,9 @@
       <el-col :span="12">
         <el-card style="height: 361px" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
-            <span>资产统计表</span>
+            <span>各行账户数量表</span>
             <el-select
-              v-model="zctjb"
+              v-model="slb"
               placeholder="请选择"
               style="float: right"
               size="mini"
@@ -228,13 +253,18 @@
             </el-select>
           </div>
           <div>
-            <pie-charts class="pieCharts" :table-data="zctjbTableData" />
+            <pia-charts class="pieCharts" :line-chart-data="slbTableData" />
           </div>
         </el-card>
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" style="margin-top: 23px" :class="{ cygn: tip == 4 }">
+    <el-row
+      ref="chart2"
+      :gutter="20"
+      style="margin-top: 23px"
+      :class="{ cygn: tip == 4 }"
+    >
       <el-col :span="12">
         <el-card
           class=""
@@ -265,9 +295,9 @@
       <el-col :span="12">
         <el-card style="height: 361px" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
-            <span>各行账户数量表</span>
+            <span>资产统计表</span>
             <el-select
-              v-model="slb"
+              v-model="zctjb"
               placeholder="请选择"
               style="float: right"
               size="mini"
@@ -281,18 +311,13 @@
             </el-select>
           </div>
           <div>
-            <pia-charts class="pieCharts" :line-chart-data="slbTableData" />
+            <pie-charts class="pieCharts" :table-data="zctjbTableData" />
           </div>
         </el-card>
       </el-col>
     </el-row>
 
-    <el-dialog
-      title="自定义功能入口"
-      :visible.sync="dialogVisible"
-      width="60%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="自定义功能入口" :visible.sync="dialogVisible" width="60%">
       <div>
         <p>已添加在首页（点击拖动调整顺序,最多15个)</p>
         <div>
@@ -312,7 +337,7 @@
           <el-divider style="width: auto" />
           <p>全部收藏</p>
           <div class="dialog_top">
-            <div class="qbsc" v-for="(item, index) in qbscList" :key="index">
+            <div v-for="(item, index) in qbscList" :key="index" class="qbsc">
               <div class="top">
                 <div class="top_name">{{ item.name }}</div>
                 <div v-show="item.show == true" @click="item.show = false">
@@ -325,9 +350,9 @@
               <div class="dialog_div_war">
                 <div
                   v-for="(ele, index) in item.childerList"
+                  v-show="item.show == true"
                   :key="index"
                   class="dialog_div"
-                  v-show="item.show == true"
                 >
                   <a class="push" @click="push(ele, index)" />
                   <img :src="ele.img" alt="" />
@@ -355,7 +380,7 @@ import BarCharts from './components/BarCharts'
 import LineCharts from './components/LineCharts'
 import piaCharts from './components/piaCharts'
 import vuedraggable from 'vuedraggable'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: { PieCharts, BarCharts, LineCharts, piaCharts, vuedraggable },
@@ -366,7 +391,7 @@ export default {
       tip: 1,
       tips: true,
       checkList: ['结算笔数', '结算金额', '资金流入', '资金流出'],
-      //指标墙
+      // 指标墙
       zbqList: [
         {
           show: true,
@@ -418,7 +443,7 @@ export default {
           tqdb: 'green',
         },
       ],
-      //全部收藏
+      // 全部收藏
       qbscList: [
         {
           name: '账户管理',
@@ -833,9 +858,72 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
+    tip: {
+      handler(val) {
+        if (val === 2) {
+          const always = this.$refs.always.$el
+          const width = always.offsetWidth
+          const height = always.offsetHeight
+          const left = always.offsetLeft
+          const top = always.offsetTop
+          this.$nextTick(() => {
+            const border = this.$refs.border
+            border.style.width = `${width + 20}px`
+            border.style.height = `${height + 20}px`
+            border.style.left = `${left - 20}px`
+            border.style.top = `${top - 10}px`
+            const shang = this.$refs.shang
+            shang.style.left = `${left - 62}px`
+            shang.style.top = `${top - 42}px`
+            const xia = this.$refs.xia
+            xia.style.left = `${width + left}px`
+            xia.style.top = `${height + top + 6}px`
+          })
+        } else if (val === 3) {
+          const nav = document.getElementsByClassName('el-tabs__nav-scroll')[0]
+          const width = nav.offsetWidth
+          const height = nav.offsetHeight
+          const refNav = this.$refs.nav.$el
+          const left = refNav.offsetLeft
+          const top = refNav.offsetTop
+          // console.log(width, height, left, top)
+          this.$nextTick(() => {
+            const border = this.$refs.border
+            border.style.width = `${width + 20}px`
+            border.style.height = `${height + 20}px`
+            border.style.left = `${left - 20}px`
+            border.style.top = `${top - 10}px`
+            const shang = this.$refs.shang
+            shang.style.left = `${left - 62}px`
+            shang.style.top = `${top - 42}px`
+            const xia = this.$refs.xia
+            xia.style.width = '0px'
+            xia.style.height = '0px'
+          })
+        } else if (val === 4) {
+          const charts1 = this.$refs.chart1.$el
+          const charts2 = this.$refs.chart2.$el
+          const width = charts1.offsetWidth
+          const height = charts1.offsetHeight + charts2.offsetHeight + 25
+          const left = charts1.offsetLeft
+          const top = charts1.offsetTop
+          console.log(left, top)
+          this.$nextTick(() => {
+            const border = this.$refs.border
+            border.style.width = `${width}px`
+            border.style.height = `${height + 20}px`
+            border.style.left = `${left}px`
+            border.style.top = `${top - 10}px`
+            const shang = this.$refs.shang
+            shang.style.left = `${left - 62}px`
+            shang.style.top = `${top - 42}px`
+          })
+        }
+      },
+    },
     yetjb(newVal, oldVal) {
       console.log(newVal, oldVal)
-      if (newVal == 2) {
+      if (newVal === 2) {
         this.yetjbTableData = [
           {
             value: 20000,
@@ -854,7 +942,7 @@ export default {
             name: '工商银行',
           },
         ]
-      } else if (newVal == 3) {
+      } else if (newVal === 3) {
         this.yetjbTableData = [
           {
             value: 50000,
@@ -896,7 +984,7 @@ export default {
     },
     zctjb(newVal, oldVal) {
       console.log(newVal, oldVal)
-      if (newVal == 2) {
+      if (newVal === 2) {
         this.zctjbTableData = [
           {
             value: 20000,
@@ -915,7 +1003,7 @@ export default {
             name: '工商银行',
           },
         ]
-      } else if (newVal == 3) {
+      } else if (newVal === 3) {
         this.zctjbTableData = [
           {
             value: 50000,
@@ -957,13 +1045,13 @@ export default {
     },
     fztjb(newVal, oldVal) {
       console.log(newVal, oldVal)
-      if (newVal == 2) {
+      if (newVal === 2) {
         this.fztjbTableData = {
           bj: [2500, 1000, 5000],
           sh: [2000, 4000, 4000],
           sz: [1800, 3200, 3000],
         }
-      } else if (newVal == 3) {
+      } else if (newVal === 3) {
         this.fztjbTableData = {
           bj: [5000, 1000, 5000],
           sh: [400, 200, 4000],
@@ -979,7 +1067,7 @@ export default {
     },
     slb(newVal, oldVal) {
       console.log(newVal, oldVal)
-      if (newVal == 2) {
+      if (newVal === 2) {
         this.slbTableData = [
           {
             value: 100,
@@ -1002,7 +1090,7 @@ export default {
             name: '工商银行',
           },
         ]
-      } else if (newVal == 3) {
+      } else if (newVal === 3) {
         this.slbTableData = [
           {
             value: 5,
@@ -1053,8 +1141,7 @@ export default {
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    let _scrollTop
-    _scrollTop = document.scrollingElement.scrollTop
+    const _scrollTop = document.scrollingElement.scrollTop
     document.body.style.position = 'fixed'
     document.body.style.top = -_scrollTop + 'px'
   },
@@ -1073,6 +1160,9 @@ export default {
       this.tips = false
     },
     tip3Click() {
+      const charts1 = this.$refs.chart1.$el
+
+      const top = charts1.offsetTop
       document.body.style.position = ''
       document.body.style.top = ''
       document.getElementsByClassName('el-tabs__nav-wrap')[0].style.position =
@@ -1081,12 +1171,11 @@ export default {
       document.getElementsByClassName(
         'el-tabs__nav-wrap'
       )[0].style.backgroundColor = ''
-      window.scrollTo(0, 300)
-      this.tip = 4
-      let _scrollTop
-      _scrollTop = document.scrollingElement.scrollTop
+      window.scrollTo(0, top - 210)
+      const _scrollTop = document.scrollingElement.scrollTop
       document.body.style.position = 'fixed'
       document.body.style.top = -_scrollTop + 'px'
+      this.tip = 4
     },
     tip2Click() {
       document.getElementsByClassName('el-tabs__nav-wrap')[0].style.position =
@@ -1099,8 +1188,7 @@ export default {
       this.tip = 3
     },
     tip1Click() {
-      let _scrollTop
-      _scrollTop = document.scrollingElement.scrollTop
+      const _scrollTop = document.scrollingElement.scrollTop
       document.body.style.position = 'fixed'
       document.body.style.top = -_scrollTop + 'px'
       this.tip = 2
@@ -1113,7 +1201,7 @@ export default {
       this.zbqList.forEach((item, index) => {
         item.show = false
         res.forEach((ele, ind) => {
-          if (ele == item.top) {
+          if (ele === item.top) {
             item.show = true
           }
         })
@@ -1128,7 +1216,7 @@ export default {
     close(res, index) {
       this.list.splice(index, 1)
       this.qbscList.forEach((item, index) => {
-        if (item.name == res.parentName) {
+        if (item.name === res.parentName) {
           console.log('删除相同')
           item.childerList.push(res)
         }
@@ -1183,6 +1271,18 @@ export default {
   position: relative;
   z-index: 20001;
 }
+.border {
+  position: absolute;
+  border: 2px dashed #fff;
+  border-radius: 3px;
+  z-index: 2001;
+}
+.tip_img {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  z-index: 2001;
+}
 .popContainer {
   position: fixed;
   top: 0;
@@ -1192,31 +1292,15 @@ export default {
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   .tip4 {
-    & :nth-child(1) {
-      position: absolute;
-
-      width: 42px;
-      height: 42px;
-      top: 330px;
-      left: 190px;
-    }
     img {
       position: absolute;
       left: 45%;
-      top: 150px;
+      top: 80px;
       width: 505px;
       height: 209px;
     }
   }
   .tip3 {
-    & :nth-child(1) {
-      position: absolute;
-
-      width: 42px;
-      height: 42px;
-      top: 70px;
-    }
-
     img {
       position: absolute;
       left: 55%;
@@ -1226,21 +1310,6 @@ export default {
     }
   }
   .tip2 {
-    & :nth-child(1) {
-      position: absolute;
-      width: 42px;
-      height: 42px;
-      left: 180px;
-      top: 70px;
-    }
-    & :nth-child(2) {
-      position: absolute;
-      width: 42px;
-      height: 42px;
-      top: 450px;
-      left: 56%;
-    }
-
     img {
       position: absolute;
       left: 60%;

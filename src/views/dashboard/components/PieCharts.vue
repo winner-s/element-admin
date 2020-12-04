@@ -50,11 +50,11 @@ export default {
       }
       this.mycharts.setOption({
         title: {
-          text: '￥'+total(),
+          text: '￥' + total(),
           x: '28%',
           y: '38%',
-          textAlign:'center',
-          textVerticalAlign:'middle',
+          textAlign: 'center',
+          textVerticalAlign: 'middle',
           textStyle: {
             color: '#000000',
             fontWeight: 'bold',
@@ -67,9 +67,10 @@ export default {
           formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
-          itemHeight:9,
-          icon:'circle',
+          itemHeight: 9,
+          icon: 'circle',
           orient: 'vertical',
+
           right: '20',
           top: '60',
           data: list,
@@ -90,14 +91,14 @@ export default {
           textStyle: {
             rich: {
               a: {
-                width: 60,
+                width: 45,
                 fontSize: 12,
                 padding: [0, 0, 0, 0],
                 lineHeight: 12,
                 color: '#666666',
               },
               b: {
-                width: 50,
+                width: 45,
                 fontSize: 12,
                 padding: [0, 0, 0, 0],
                 lineHeight: 12,
@@ -115,8 +116,9 @@ export default {
         color: ['#FBD337', '#975FE4', '#1890FF', '#F04864', '#13C2C2'],
         series: [
           {
-            name: '银行',
+            name: '',
             type: 'pie',
+            width: '100%',
             radius: ['50%', '70%'],
             center: ['30%', '42%'],
             data: list,
