@@ -50,15 +50,13 @@ module.exports = {
         '@v': resolve('src/views'),
         '@c': resolve('src/components'),
         '@s': resolve('src/service'),
-        '@a': resolve('src/assets'),
+        '@a': resolve('src/assets')
 
       }
     },
     externals:{
       'vue':'Vue',
       'element-ui':'ELEMENT'
-      
-
     }
   },
   chainWebpack(config) {
