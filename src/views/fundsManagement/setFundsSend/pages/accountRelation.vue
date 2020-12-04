@@ -97,6 +97,7 @@ export default {
       {
         prop: 'clbh',
         width: '',
+        type:'a',
         label: '策略编号',
       },
       {
@@ -172,11 +173,11 @@ export default {
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.clbh
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     
     handleDelete(v) {

@@ -119,7 +119,6 @@
               v-model="form.xsls"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -156,10 +155,14 @@ export default {
       cycletypeList:CYCLETYPELIIST,
       placeholderTips: placeholderTips,
       form: {
+        ystxbh:'',
+
         zqbh:'',
         zqmc:'',
         sstx:'',
         zqlx:"",
+        sfgd:'',
+        xsls:'',
         zqzt:''
 
       },
@@ -225,8 +228,13 @@ export default {
         Object.keys(this.form).forEach(item => {
           this.form[item] = this.dialogObj.form[item];
         });
-        // this.form = this.dialogObj.form
-      } 
+        
+      } else{
+        Object.keys(this.form).forEach(item => {
+          this.form[item] =''
+        });
+        this.form.zqbh = "4587244848498"
+      }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
@@ -235,19 +243,20 @@ export default {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
+            this.form.zqzt="停用"
             this.addSub()
           }
         }
       })
     },
     updateSub(){
-      this.$emit('updateSub',this.form)
+      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
     addSub() {
       console.log(this.form)
       this.form.zqzt='启用'
-      this.$emit('addSub',this.form)
+      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show=false
     },
   }

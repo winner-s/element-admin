@@ -26,12 +26,18 @@
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
           @handleStatus="handleStatus"
+          @handleEditSection="handleEditSection"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub"/>
+    <dialog-com-s :dialog-obj="dialogObjS" @SectionupdateSub="SectionupdateSub" />
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @addSub="addSub"
+      @updateSub="updateSub"
+    />
   </div>
 </template>
 
@@ -41,9 +47,10 @@ import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
+import dialogComS from './dialogComS'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table, dialogCom },
+  components: { Search, Table, dialogCom, dialogComS },
   data() {
     // 这里存放数据
     return {
@@ -53,7 +60,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
       showAll: 1,
       unitNoList: UNITNOLIST,
@@ -61,7 +68,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10
+        total: 10,
       },
       // 顶部按钮
       searchBto: [],
@@ -71,29 +78,66 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
-      list:[
+      // 弹出框
+      dialogObjS: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {},
+      },
+      list: [
         {
-          zqbh:45807196348,
-          zqmc:'汤臣一品十套房',
-          sstx:'体系1',
-          zqlx:'月',
-          zqzt:'停用'
-        }
+          ystxbh:1,
+          sfgd:1,
+          xsls:'1',
+          zqbh: 45807196348,
+          zqmc: '汤臣一品十套房',
+          sstx: '体系1',
+          zqlx: '月',
+          zqzt: '停用',
+          ysnd: 4,
+          childerList: [
+            {
+              qjbh: '1',
+              ksrq: '',
+              jsrq: '',
+              ggdllmmc: '',
+            },
+          ],
+        },
+        {
+          ystxbh:1,
+          sfgd:1,
+          xsls:'1',
+          zqbh: 45807196388,
+          zqmc: '周期测试名称',
+          sstx: '体系1',
+          zqlx: '月',
+          zqzt: '停用',
+          ysnd: 4,
+          childerList: [
+            {
+              qjbh: '1',
+              ksrq: '',
+              jsrq: '',
+              ggdllmmc: '',
+            },
+          ],
+        },
       ],
 
       // 表格
-      tableData: [
-        
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: ''
-      }
+        documentNumber: '',
+      },
     }
   },
   // 监听属性 类似于data概念
@@ -110,18 +154,18 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询'
+        label: '查询',
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增'
+        label: '新增',
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置'
-      }
+        label: '重置',
+      },
     ]
     // 搜索
     this.searchItem = [
@@ -130,44 +174,44 @@ export default {
         label: '体系名称:',
         prop: 'unitNo',
         placeholder: '请填写体系名称',
-        selectList: this.unitNoList
+        selectList: this.unitNoList,
       },
       {
         type: 'select',
         label: '周期类型:',
         prop: 'unitName',
-        placeholder: '请选择周期类型'
-      }
+        placeholder: '请选择周期类型',
+      },
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-     
+
       {
         prop: 'zqbh',
         width: '150',
-        label: '周期编号'
+        label: '周期编号',
       },
 
       {
         prop: 'zqmc',
         width: '',
-        label: '周期名称'
+        label: '周期名称',
       },
       {
         prop: 'sstx',
         width: '',
-        label: '所属体系'
+        label: '所属体系',
       },
       {
         prop: 'zqlx',
         width: '',
-        label: '周期类型'
+        label: '周期类型',
       },
       {
         prop: 'zqzt',
         width: '',
-        label: '周期状态'
+        label: '周期状态',
       },
       { label: '操作', type: 'btn', width: '' },
     ]
@@ -178,37 +222,33 @@ export default {
         btnType: 'primary',
         handleFn: 'handleEdit',
       },
+
+      {
+        name: '启 用',
+        btnType: 'primary',
+        type: 'isShow',
+        isShowStatus: 'zqzt',
+        isShowValue: '停用',
+        handleFn: 'handleStatus',
+      },
+      {
+        name: '编辑周期区间',
+        btnType: 'primary',
+        handleFn: 'handleEditSection',
+      },
       {
         name: '删 除',
         btnType: 'danger',
         handleFn: 'handleDelete',
       },
       {
-        name: '启 用',
+        name: '停 用',
         btnType: 'danger',
-        type:'isShow',
-        isShowStatus:'zqzt',
-        isShowValue:'停用',
+        type: 'isShow',
+        isShowStatus: 'zqzt',
+        isShowValue: '启用',
         handleFn: 'handleStatus',
       },
-      {
-         name: '停 用',
-        btnType: 'danger',
-        type:'isShow',
-        isShowStatus:'zqzt',
-        isShowValue:'启用',
-        handleFn: 'handleStatus',
-      },
-      {
-        name: '复制预算体系',
-        btnType: 'danger',
-        handleFn: 'fzystx',
-      },
-      {
-        name: '编辑预算项目',
-        btnType: 'danger',
-        handleFn: 'handleDelete',
-      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -217,19 +257,46 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
+    SectionupdateSub(res){
       let ind = 0;
       this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+        if(item.zqbh == res.zqbh){
           ind = index
         }
       })
       console.log(ind)
       
       let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
+       Object.keys(res).forEach(item => {
+         if(res[item]){
+           fore[item] = res[item];
+         }
+          
         });
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    handleEditSection(row) {
+      this.dialogObjS.id = row.zqbh
+      this.dialogObjS.read = false
+      this.dialogObjS.show = true
+      this.dialogObjS.title = '编辑'
+      this.dialogObjS.form = JSON.parse(JSON.stringify(row))
+    },
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber === res.documentNumber) {
+          ind = index
+        }
+      })
+      console.log(ind)
+
+      let fore = this.tableData[ind]
+      Object.keys(res).forEach((item) => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -265,7 +332,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -293,7 +360,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'warning',
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -303,30 +370,30 @@ export default {
     },
     handleStatus(v) {
       console.log(v)
-      if (v.txzt == '启用') {
+      if (v.zqzt === '启用') {
         this.$confirm('确定停用?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
         }).then(() => {
-         v.zqzt='停用'
+          v.zqzt = '停用'
         })
       } else {
         this.$confirm('确定启用?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
         }).then(() => {
-          v.zqzt='启用'
+          v.zqzt = '启用'
         })
       }
     },
     handleEdit(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.zqbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '编辑'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
@@ -344,8 +411,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -353,7 +420,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -361,7 +428,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -369,7 +436,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -380,14 +447,14 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
       console.log(list)
       this_.tableData = list
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped></style>

@@ -161,10 +161,7 @@ module.exports = {
       'allowTemplateLiterals': true
     }],
     'semi': [0],
-    'semi-spacing': [2, {
-      'before': false,
-      'after': true
-    }],
+    'semi-spacing': [0],
     'space-before-blocks': [2, 'always'],
     'space-before-function-paren': [2, 'never'],
     'space-in-parens': [2, 'never'],

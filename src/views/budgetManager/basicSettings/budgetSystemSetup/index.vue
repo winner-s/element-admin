@@ -27,10 +27,12 @@
           @handleEdit="handleEdit"
           @handleStatus="handleStatus"
           @fzystx="fzystx"
+          @bjysxm="bjysxm"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
+    <dialog-com-s :dialog-obj="dialogObjS" />
     <dialog-com :dialog-obj="dialogObj" @addSub="addSub"  @updateSub="updateSub"/>
   </div>
 </template>
@@ -41,14 +43,15 @@ import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
+import dialogComS from './dialogComS'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table, dialogCom },
+  components: { Search, Table, dialogCom, dialogComS },
   data() {
     // 这里存放数据
     return {
       // 弹出框
-      dialogObj: {
+      dialogObjS: {
         id: '',
         title: 'aaa',
         read: false,
@@ -172,18 +175,29 @@ export default {
         handleFn: 'handleEdit',
       },
       {
-        name: '删 除',
-        btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
-      {
         name: '启 用',
-        btnType: 'danger',
+        btnType: 'primary',
         type:'isShow',
         isShowStatus:'txzt',
         isShowValue:'停用',
         handleFn: 'handleStatus',
       },
+      {
+        name: '复制预算体系',
+        btnType: 'primary',
+        handleFn: 'fzystx',
+      },
+      {
+        name: '编辑预算项目',
+        btnType: 'primary',
+        handleFn: 'bjysxm',
+      },
+      {
+        name: '删 除',
+        btnType: 'danger',
+        handleFn: 'handleDelete',
+      },
+      
       {
          name: '停 用',
         btnType: 'danger',
@@ -192,16 +206,7 @@ export default {
         isShowValue:'启用',
         handleFn: 'handleStatus',
       },
-      {
-        name: '复制预算体系',
-        btnType: 'danger',
-        handleFn: 'fzystx',
-      },
-      {
-        name: '编辑预算项目',
-        btnType: 'danger',
-        handleFn: 'handleDelete',
-      }
+      
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -210,6 +215,9 @@ export default {
   },
   // 方法集合
   methods: {
+    bjysxm(row){
+
+    },
     fzystx(v){
       let zhi = JSON.parse(JSON.stringify(v))
       zhi.txbh +=1
