@@ -43,8 +43,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -52,9 +51,9 @@
     </el-form>
 
     <div class="dialog-footer">
-       <el-button type="primary"  v-if="dialogObj.plan">新增</el-button>
-      <el-button type="primary" @click="sub" v-else>保存</el-button>
-     
+      <el-button v-if="dialogObj.plan" type="primary">新增</el-button>
+      <el-button v-else type="primary" @click="sub">保存</el-button>
+
       <el-button @click="dialogObj.show = false">取 消</el-button>
     </div>
 
@@ -88,21 +87,21 @@ export default {
     return {
       rateTypeList: RATETYPELIST,
       placeholderTips: placeholderTips,
-       // 分页
+      // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 表格
-      tableListData:[],
-     
+      tableListData: [],
+
       tableBtn: [],
       form: {
         llmc: '',
         lllx: '',
-        childerList:[]
-      },
+        childerList: []
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -113,32 +112,31 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.tableListData =[
+    this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
 
       {
         prop: 'zxsxr',
         width: '',
         label: '最新生效日',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'lv',
         width: '',
         label: '利率(%)',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'bz',
         width: '',
-        label: '备注',
+        label: '备注'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
 
     // 按钮
@@ -146,13 +144,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -164,7 +162,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         // console.log()
         // this.list.splice(this.list.indexOf(v), 1)
@@ -201,8 +199,8 @@ export default {
     addSub() {
       this.$emit('addSub', this.form)
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

@@ -43,7 +43,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -65,33 +65,33 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          bz: "",
-          djbh: "57110317798255631",
-          djrq: "2020/11/4",
-          dscs: "",
-          dxje: "1000",
-          fkdw: "二级单位1",
-          fkfkhhmc: "北京分行",
-          fkfyhmc: "中国工商银行",
-          fkfyhs: "北京",
-          fkfyhshi: "北京市",
-          fkfyhzh: "20111006",
-          fkfzhmc: "测试非直联支付确认",
+          bz: '',
+          djbh: '57110317798255631',
+          djrq: '2020/11/4',
+          dscs: '',
+          dxje: '1000',
+          fkdw: '二级单位1',
+          fkfkhhmc: '北京分行',
+          fkfyhmc: '中国工商银行',
+          fkfyhs: '北京',
+          fkfyhshi: '北京市',
+          fkfyhzh: '20111006',
+          fkfzhmc: '测试非直联支付确认',
           fkyt: 1,
-          je: "1000",
-          lhh: "548982894",
-          qwzfrq: "2020-11-04T16:00:00.000Z",
-          skfkhhmc: "株洲分行",
+          je: '1000',
+          lhh: '548982894',
+          qwzfrq: '2020-11-04T16:00:00.000Z',
+          skfkhhmc: '株洲分行',
           skfyhmc: 1,
-          skfyhss: "不知道",
-          skfyhzh: "4654654",
-          skfzhmc: "小三",
-          wbdh: "",
-          ywdw: "业务单位",
+          skfyhss: '不知道',
+          skfyhzh: '4654654',
+          skfzhmc: '小三',
+          wbdh: '',
+          ywdw: '业务单位',
           zffs: 1,
-          zy: "000",
+          zy: '000'
         }
       ],
 
@@ -250,7 +250,7 @@ export default {
       {
         name: '确认',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       }
     ]
   },
@@ -376,7 +376,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

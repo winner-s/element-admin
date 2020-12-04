@@ -149,9 +149,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -169,26 +170,26 @@ export default {
     return {
       rules: {
         dbhtbh: [
-          { required: true, message: '请填写担保合同编号', trigger: 'blur' },
+          { required: true, message: '请填写担保合同编号', trigger: 'blur' }
         ],
         dbhtmc: [
-          { required: true, message: '请填写担保合同名称', trigger: 'blur' },
+          { required: true, message: '请填写担保合同名称', trigger: 'blur' }
         ],
         dbzt: [
-          { required: true, message: '请填写担保主体', trigger: 'blur' },
+          { required: true, message: '请填写担保主体', trigger: 'blur' }
         ],
         dbfs: [
-          { required: true, message: '请填写担保方式', trigger: 'blur' },
+          { required: true, message: '请填写担保方式', trigger: 'blur' }
         ],
         dblx: [
-          { required: true, message: '请填写担保类型', trigger: 'blur' },
+          { required: true, message: '请填写担保类型', trigger: 'blur' }
         ],
         dyw: [
-          { required: true, message: '请填写抵/质押物', trigger: 'blur' },
+          { required: true, message: '请填写抵/质押物', trigger: 'blur' }
         ],
         dbed: [
-          { required: true, message: '请填写担保额度', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写担保额度', trigger: 'blur' }
+        ]
       },
       placeholderTips: placeholderTips,
       form: {
@@ -201,17 +202,17 @@ export default {
         qt: '',
         dbed: '',
         jedx: '',
-        bz:''
-      },
+        bz: ''
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -221,22 +222,19 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -246,15 +244,15 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
-  },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

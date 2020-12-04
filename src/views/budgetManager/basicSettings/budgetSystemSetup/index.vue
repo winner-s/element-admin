@@ -33,7 +33,7 @@
       </div>
     </el-card>
     <dialog-com-s :dialog-obj="dialogObjS" />
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -76,16 +76,16 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          txbh:20082615093831,
-          txmc:'福布斯排行榜',
-          txzt:"启用"
+          txbh: 20082615093831,
+          txmc: '福布斯排行榜',
+          txzt: '启用'
         }
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -148,7 +148,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'txbh',
         width: '150',
@@ -165,48 +165,48 @@ export default {
         width: '',
         label: '预算体系状态'
       },
-      { label: '操作', type: 'btn', width: '' ,fixed:'right'},
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '启 用',
         btnType: 'primary',
-        type:'isShow',
-        isShowStatus:'txzt',
-        isShowValue:'停用',
-        handleFn: 'handleStatus',
+        type: 'isShow',
+        isShowStatus: 'txzt',
+        isShowValue: '停用',
+        handleFn: 'handleStatus'
       },
       {
         name: '复制预算体系',
         btnType: 'primary',
-        handleFn: 'fzystx',
+        handleFn: 'fzystx'
       },
       {
         name: '编辑预算项目',
         btnType: 'primary',
-        handleFn: 'bjysxm',
+        handleFn: 'bjysxm'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
+        handleFn: 'handleDelete'
       },
-      
+
       {
-         name: '停 用',
+        name: '停 用',
         btnType: 'danger',
-        type:'isShow',
-        isShowStatus:'txzt',
-        isShowValue:'启用',
-        handleFn: 'handleStatus',
-      },
-      
+        type: 'isShow',
+        isShowStatus: 'txzt',
+        isShowValue: '启用',
+        handleFn: 'handleStatus'
+      }
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -215,30 +215,29 @@ export default {
   },
   // 方法集合
   methods: {
-    bjysxm(row){
+    bjysxm(row) {
 
     },
-    fzystx(v){
-      let zhi = JSON.parse(JSON.stringify(v))
-      zhi.txbh +=1
-      zhi.txmc  = "(复制)" + zhi.txmc
+    fzystx(v) {
+      const zhi = JSON.parse(JSON.stringify(v))
+      zhi.txbh += 1
+      zhi.txmc = '(复制)' + zhi.txmc
       this.list.push(zhi)
       this.tableData.push(zhi)
-
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -318,7 +317,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-         v.txzt='停用'
+          v.txzt = '停用'
         })
       } else {
         this.$confirm('确定启用?', '提示', {
@@ -326,7 +325,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          v.txzt='启用'
+          v.txzt = '启用'
         })
       }
     },
@@ -337,13 +336,12 @@ export default {
       this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

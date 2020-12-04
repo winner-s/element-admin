@@ -16,20 +16,20 @@ export default {
   props: {
     width: {
       type: String,
-      default: '100%',
+      default: '100%'
     },
     height: {
       type: String,
-      default: '280px',
+      default: '280px'
     },
     lineChartData: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      mycharts: null,
+      mycharts: null
     }
   },
   watch: {
@@ -37,8 +37,8 @@ export default {
       deep: true,
       handler(val) {
         this._setOption(val.inPrice, val.outPrice)
-      },
-    },
+      }
+    }
   },
   mounted() {
     this.$nextTick().then(() => {
@@ -59,98 +59,97 @@ export default {
           axisPointer: {
             type: 'cross',
             label: {
-              background: '#6a7985',
-            },
-          },
+              background: '#6a7985'
+            }
+          }
         },
         grid: {
           left: '50',
           top: '10',
           right: '20',
           bottom: '0',
-          containLabel: true,
+          containLabel: true
         },
         xAxis: [
           {
             type: 'value',
             boundaryGap: [0, 0.01],
-            show: false,
-          },
+            show: false
+          }
         ],
         yAxis: [
           {
             type: 'category',
             data: ['zgyh', 'jtyh', 'zsyh', 'gsyh', 'jsyh'],
             axisLabel: {
-              formatter: function (value) {
-                if(value==='zgyh'){
+              formatter: function(value) {
+                if (value === 'zgyh') {
                   return '{' + value + '| }\t\t{value|中国银行}'
-                }else if(value ==='jtyh'){
+                } else if (value === 'jtyh') {
                   return '{' + value + '| }\t\t{value|交通银行}'
-                }else if(value ==='zsyh'){
+                } else if (value === 'zsyh') {
                   return '{' + value + '| }\t\t{value|招商银行}'
-                }else if(value ==='gsyh'){
+                } else if (value === 'gsyh') {
                   return '{' + value + '| }\t\t{value|工商银行}'
-                }else if(value ==='jsyh'){
+                } else if (value === 'jsyh') {
                   return '{' + value + '| }\t\t{value|建设银行}'
                 }
-                
               },
               rich: {
                 value: {
                   lineHeight: 12,
-                  align: 'right',
+                  align: 'right'
                 },
                 zgyh: {
                   height: 20,
                   align: 'center',
                   backgroundColor: {
-                    image: require('@a/img/zgyh.png'),
-                  },
+                    image: require('@a/img/zgyh.png')
+                  }
                 },
                 jtyh: {
                   height: 20,
                   align: 'center',
                   backgroundColor: {
-                    image: require('@a/img/jtyh.png'),
-                  },
+                    image: require('@a/img/jtyh.png')
+                  }
                 },
                 zsyh: {
                   height: 20,
                   align: 'center',
                   backgroundColor: {
-                    image: require('@a/img/zsyh.png'),
-                  },
+                    image: require('@a/img/zsyh.png')
+                  }
                 },
                 gsyh: {
                   height: 20,
                   align: 'center',
                   backgroundColor: {
-                    image: require('@a/img/gsyh.png'),
-                  },
+                    image: require('@a/img/gsyh.png')
+                  }
                 },
                 jsyh: {
                   height: 20,
                   align: 'center',
                   backgroundColor: {
-                    image: require('@a/img/jsyh.png'),
-                  },
-                },
-              },
+                    image: require('@a/img/jsyh.png')
+                  }
+                }
+              }
             },
             axisLine: {
-              //y轴
-              show: false,
+              // y轴
+              show: false
             },
             axisTick: {
-              //y轴刻度线
-              show: false,
+              // y轴刻度线
+              show: false
             },
             splitLine: {
-              //网格线
-              show: false,
-            },
-          },
+              // 网格线
+              show: false
+            }
+          }
         ],
         color: ['#3AA0FF'],
         series: [
@@ -158,12 +157,12 @@ export default {
             name: '账户数量',
             type: 'bar',
             barWidth: '60%',
-            data: this.lineChartData,
-          },
-        ],
+            data: this.lineChartData
+          }
+        ]
       })
-    },
-  },
+    }
+  }
 }
 </script>
 <style></style>

@@ -34,14 +34,14 @@ export default {
   name: 'Analyse',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
       BANKNAME: {
         '1': '中国建设银行',
         '2': '中国工商银行',
-        '3': '中国银行',
+        '3': '中国银行'
       },
       searchItem: [],
       searchData: {
@@ -57,7 +57,7 @@ export default {
           accountNum: '1',
           balance: 0,
           percentage: '0',
-          coinType: 1,
+          coinType: 1
         },
         {
           id: 1,
@@ -65,15 +65,15 @@ export default {
           accountNum: '1',
           balance: 0,
           percentage: '0',
-          coinType: 2,
-        },
+          coinType: 2
+        }
       ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -83,8 +83,8 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
-      },
+        label: '查询'
+      }
     ]
     this.searchItem = [
       {
@@ -93,19 +93,19 @@ export default {
         selectList: [
           {
             value: '中国建设银行',
-            id: 1,
+            id: 1
           },
           {
             value: '中国工商银行',
-            id: 2,
+            id: 2
           },
           {
             value: '中国银行',
-            id: 3,
+            id: 3
           }
         ],
         prop: 'bankName',
-        placeholder: '请选择银行名称',
+        placeholder: '请选择银行名称'
       },
       {
         type: 'select',
@@ -114,31 +114,31 @@ export default {
         selectList: [
           {
             value: '人民币',
-            id: 1,
+            id: 1
           },
           {
             value: '美元',
-            id: 2,
+            id: 2
           },
           {
             value: '越南盾',
-            id: 3,
+            id: 3
           },
           {
             value: '欧元',
-            id: 4,
+            id: 4
           },
           {
             value: '泰国铢',
-            id: 5,
+            id: 5
           },
           {
             value: '加元',
-            id: 6,
-          },
+            id: 6
+          }
         ],
-        placeholder: '请选择币种',
-      },
+        placeholder: '请选择币种'
+      }
     ]
 
     this.tableListData = [
@@ -146,29 +146,29 @@ export default {
         prop: 'bankName',
         width: '',
         label: '银行名称',
-        type:"wordbook",
+        type: 'wordbook',
         wordbookList: this.bankName
       },
       {
         prop: 'accountNum',
         width: '',
-        label: '账户数量',
+        label: '账户数量'
       },
       {
         prop: 'balance',
         width: '',
-        label: '当前余额',
+        label: '当前余额'
       },
       {
         prop: 'percentage',
         width: '',
-        label: '时点余额占比',
-      },
+        label: '时点余额占比'
+      }
     ]
   },
   methods: {
-    //过滤
-    bankName(val){
+    // 过滤
+    bankName(val) {
       return this.BANKNAME[val]
     },
     // 收起
@@ -241,7 +241,6 @@ export default {
             }
 
             if (i == 'coinType') {
-              
               console.log(this.searchData[i])
               if (item.coinType.toString().includes(this.searchData[i])) {
                 bool = true
@@ -260,7 +259,7 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>

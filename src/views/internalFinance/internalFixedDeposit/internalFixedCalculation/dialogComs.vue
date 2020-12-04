@@ -23,26 +23,24 @@
         <el-col :span="12">
           <el-form-item label="存款到期日：" prop="ckdqr" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.ckdqr"
+              style="width: 200px"
               type="date"
               placeholder="请选择存款到期日"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="匡算日期：" prop="ksrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.ksrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择匡算日期"
               size="mini"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -79,18 +77,18 @@ export default {
       llzhtsList: LLZHTSLIST,
       dqxcfsList: DQXCFSLIST,
       placeholderTips: placeholderTips,
-      tableListData:[],
+      tableListData: [],
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       form: {
         ckdqr: '',
         ksrq: '',
-        childerList: [],
-      },
+        childerList: []
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -101,7 +99,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -110,18 +108,18 @@ export default {
       {
         prop: 'lxly',
         width: '',
-        label: '利息来源',
+        label: '利息来源'
       },
       {
         prop: 'rq',
         width: '',
-        label: '日期',
+        label: '日期'
       },
       {
         prop: 'lx',
         width: '',
-        label: '利息',
-      },
+        label: '利息'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -153,8 +151,8 @@ export default {
           this.form[item] = ''
         })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

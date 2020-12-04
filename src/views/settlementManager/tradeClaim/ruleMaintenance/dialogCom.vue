@@ -69,8 +69,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -93,8 +92,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -111,8 +109,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -131,8 +128,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -149,8 +145,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -172,7 +167,6 @@
         </el-col>
       </el-row>
 
-      
     </el-form>
 
     <span slot="footer" class="dialog-footer">
@@ -189,7 +183,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import {PPTJLIST,LENDINGLIST,RLXTLIST} from '@u/wordbook'
+import { PPTJLIST, LENDINGLIST, RLXTLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -198,49 +192,49 @@ export default {
     // 这里存放数据
     return {
       placeholderTips: placeholderTips,
-      lendingList:LENDINGLIST,
-      pptjList:PPTJLIST,
-      ppfwList:[
+      lendingList: LENDINGLIST,
+      pptjList: PPTJLIST,
+      ppfwList: [
         {
-          id:1,
-          value:'现金'
+          id: 1,
+          value: '现金'
         }
       ],
-      ppfsList:[
+      ppfsList: [
         {
-          id:1,
-          value:'包含'
+          id: 1,
+          value: '包含'
         },
         {
-          id:1,
-          value:'相等'
+          id: 1,
+          value: '相等'
         },
         {
-          id:1,
-          value:'不包含'
+          id: 1,
+          value: '不包含'
         }
       ],
-      rlxtList:RLXTLIST,
+      rlxtList: RLXTLIST,
       form: {
-        gzbh:'',
-        gzmc:'',
-        rlxt:'',
-        ppfw:'',
-        pptj:'',
-        ppfs:'',
-        jdfx:'',
-        ppnr:''
+        gzbh: '',
+        gzmc: '',
+        rlxt: '',
+        ppfw: '',
+        pptj: '',
+        ppfs: '',
+        jdfx: '',
+        ppnr: ''
       },
-      rules:{
-        gzbh:[
-          { required: true, message: '请填写规则编号', trigger: 'blur' },
+      rules: {
+        gzbh: [
+          { required: true, message: '请填写规则编号', trigger: 'blur' }
         ],
-        gzmc:[
-          { required: true, message: '请填写规则名称', trigger: 'blur' },
+        gzmc: [
+          { required: true, message: '请填写规则名称', trigger: 'blur' }
         ],
-        ppnr:[
-          { required: true, message: '请填写匹配内容', trigger: 'blur' },
-        ],
+        ppnr: [
+          { required: true, message: '请填写匹配内容', trigger: 'blur' }
+        ]
 
       }
     }
@@ -249,9 +243,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -261,17 +255,15 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
         this.form.khrq = '2020-10-10'
         this.form.documentNumber = 'KH20091410151601'
         this.form.openTime = new Date()
@@ -280,25 +272,24 @@ export default {
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.gzzt=1
+            this.form.gzzt = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

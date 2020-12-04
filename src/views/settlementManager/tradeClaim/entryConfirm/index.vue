@@ -40,7 +40,7 @@ import {
   DIRECT,
   DIRECTLIST,
   LENDING,
-  LENDINGLIST,
+  LENDINGLIST
 } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
@@ -59,7 +59,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -69,7 +69,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -84,8 +84,8 @@ export default {
           bz: 1,
           sfzl: 1,
           jdfx: 1,
-          zy: '1A',
-        },
+          zy: '1A'
+        }
       ],
 
       // 表格
@@ -95,9 +95,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: '',
+      selectChange: ''
     }
   },
   // 监听属性 类似于data概念
@@ -114,23 +114,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '认领确认',
+        label: '认领确认'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '认领退回',
+        label: '认领退回'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -138,56 +138,56 @@ export default {
         type: 'input',
         label: '本方账号:',
         prop: 'bfzg',
-        placeholder: '请填写本方账号',
+        placeholder: '请填写本方账号'
       },
       {
         type: 'input',
         label: '本方户名:',
         prop: 'bfhm',
-        placeholder: '请填写本方户名',
+        placeholder: '请填写本方户名'
       },
       {
         type: 'input',
         label: '对方户名:',
         prop: 'dfhm',
-        placeholder: '请填写对方户名',
+        placeholder: '请填写对方户名'
       },
       {
         type: 'input',
         label: '交易金额 从:',
         prop: 'jyjec',
-        placeholder: '请填写交易金额',
+        placeholder: '请填写交易金额'
       },
       {
         type: 'input',
         label: '至:',
         prop: 'jyjed',
-        placeholder: '请填写交易金额',
+        placeholder: '请填写交易金额'
       },
       {
         type: 'time',
         label: '起止时间:',
         prop: 'qzsj',
-        placeholder: '请选择起止时间',
+        placeholder: '请选择起止时间'
       },
       {
         type: 'time',
         label: '截止时间:',
         prop: 'jzsj',
-        placeholder: '请选择截止时间',
+        placeholder: '请选择截止时间'
       },
       {
         type: 'input',
         label: '摘要:',
         prop: 'zy',
-        placeholder: '请填写摘要',
+        placeholder: '请填写摘要'
       },
       {
         type: 'select',
         label: '借贷方向:',
         prop: 'jdfx',
         placeholder: '请选择贷款方向',
-        selectList: this.directList,
+        selectList: this.directList
       },
 
       {
@@ -195,8 +195,8 @@ export default {
         label: '是否直联:',
         prop: 'sfzl',
         placeholder: '请选择是否直联',
-        selectList: this.directList,
-      },
+        selectList: this.directList
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -206,69 +206,69 @@ export default {
       {
         prop: 'bfzh',
         width: '150',
-        label: '本方账户号码',
+        label: '本方账户号码'
       },
       {
         prop: 'bfhm',
         width: '150',
-        label: '本方账户名称',
+        label: '本方账户名称'
       },
       {
         prop: 'khh',
         width: '',
-        label: '开户行',
+        label: '开户行'
       },
       {
         prop: 'dfzhhm',
         width: '',
-        label: '对方账户号码',
+        label: '对方账户号码'
       },
       {
         prop: 'dfzhmc',
         width: '',
-        label: '对方账户名称',
+        label: '对方账户名称'
       },
       {
         prop: 'dfzhkhh',
         width: '',
-        label: '对方账户开户行',
+        label: '对方账户开户行'
       },
       {
         prop: 'jyrq',
         width: '',
-        label: '交易日期',
+        label: '交易日期'
       },
       {
         prop: 'je',
         width: '',
-        label: '金额',
+        label: '金额'
       },
       {
         prop: 'bz',
         width: '',
         label: '币种',
         type: 'wordbook',
-        wordbookList: this.currency,
+        wordbookList: this.currency
       },
       {
         prop: 'sfzl',
         width: '',
         label: '是否直联',
         type: 'wordbook',
-        wordbookList: this.direct,
+        wordbookList: this.direct
       },
       {
         prop: 'jdfx',
         width: '',
         label: '借贷方向',
         type: 'wordbook',
-        wordbookList: this.lending,
+        wordbookList: this.lending
       },
       {
         prop: 'zy',
         width: '',
-        label: '摘要',
-      },
+        label: '摘要'
+      }
     ]
     // 按钮
     this.tableBtn = []
@@ -293,7 +293,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -343,7 +343,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -370,7 +370,7 @@ export default {
       this.$confirm('此操作将删除该账号?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         // // eslint-disable-next-line no-unused-vars
         // let json = {
@@ -387,7 +387,7 @@ export default {
         this.$confirm('此操作将停用该账号?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           //   // eslint-disable-next-line no-unused-vars
           //   let json = {
@@ -402,11 +402,11 @@ export default {
         this.$confirm('此操作将恢复该账号?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           // eslint-disable-next-line no-unused-vars
           const json = {
-            id: v.id,
+            id: v.id
           }
           updateAdminStatus(json).then((res) => {
             console.log(res)
@@ -434,7 +434,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -480,8 +480,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

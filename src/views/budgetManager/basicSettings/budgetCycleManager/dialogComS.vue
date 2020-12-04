@@ -49,8 +49,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -70,12 +69,11 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
     </el-form>
 
@@ -120,39 +118,39 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       scorllList: [
         {
           id: 1,
-          value: '2017',
+          value: '2017'
         },
         {
           id: 2,
-          value: '2018',
+          value: '2018'
         },
         {
           id: 3,
-          value: '2019',
+          value: '2019'
         },
         {
           id: 4,
-          value: '2020',
+          value: '2020'
         },
         {
           id: 5,
-          value: '2021',
+          value: '2021'
         },
         {
           id: 6,
-          value: '2022',
+          value: '2022'
         },
         {
           id: 7,
-          value: '2023',
-        },
+          value: '2023'
+        }
       ],
-      
+
       cycletypeList: CYCLETYPELIIST,
       placeholderTips: placeholderTips,
       form: {
@@ -161,46 +159,46 @@ export default {
             qjbh: '1',
             ksrq: '',
             jsrq: '',
-            ggdllmmc: '',
-          },
+            ggdllmmc: ''
+          }
         ],
-        zqbh:'',
+        zqbh: '',
         zqmc: '',
         zqlx: '',
-        ysnd: 4,
+        ysnd: 4
       },
       ystxbhList: [
         {
           txbh: 'TX2020011',
-          txmc: '测试1',
+          txmc: '测试1'
         },
         {
           txbh: 'TX2019003',
-          txmc: '测试1',
+          txmc: '测试1'
         },
         {
           txbh: 'TX2020006',
-          txmc: '测试1',
+          txmc: '测试1'
         },
         {
           txbh: 'TX2020003',
-          txmc: '测试1',
-        },
+          txmc: '测试1'
+        }
       ],
       rules: {
         ystxbh: [
-          { required: true, message: '请选择预算体系编号', trigger: 'blur' },
+          { required: true, message: '请选择预算体系编号', trigger: 'blur' }
         ],
         yszqbh: [
-          { required: true, message: '请填写预算周期编号', trigger: 'blur' },
+          { required: true, message: '请填写预算周期编号', trigger: 'blur' }
         ],
         yszqmc: [
-          { required: true, message: '请填写预算周期名称', trigger: 'blur' },
+          { required: true, message: '请填写预算周期名称', trigger: 'blur' }
         ],
         zqlx: [{ required: true, message: '请选择周期类型', trigger: 'blur' }],
         sfgd: [{ required: true, message: '请选择是否滚动', trigger: 'blur' }],
-        xsls: [{ required: true, message: '请选择显示列数', trigger: 'blur' }],
-      },
+        xsls: [{ required: true, message: '请选择显示列数', trigger: 'blur' }]
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -211,7 +209,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -221,26 +219,26 @@ export default {
         prop: 'qjbh',
         width: '',
         type: 'input',
-        label: '区间编号',
+        label: '区间编号'
       },
       {
         prop: 'ksrq',
         width: '',
         type: 'input',
-        label: '开始日期',
+        label: '开始日期'
       },
       {
         prop: 'jsrq',
         width: '',
         type: 'input',
-        label: '结束日期',
+        label: '结束日期'
       },
       {
         prop: 'gdllmmc',
         width: '',
         type: 'input',
-        label: '滚动列列名名称',
-      },
+        label: '滚动列列名名称'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -248,12 +246,11 @@ export default {
   // 方法集合
   methods: {
     addSection() {
-      
       this.form.childerList.push({
-        qjbh: this.form.childerList.length+1,
+        qjbh: this.form.childerList.length + 1,
         ksrq: '',
         jsrq: '',
-        ggdllmmc: '',
+        ggdllmmc: ''
       })
     },
     // 分页
@@ -274,15 +271,12 @@ export default {
     initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-        
+          this.form[item] = ''
+        })
       }
     },
     sub() {
@@ -293,9 +287,9 @@ export default {
     updateSub() {
       this.$emit('SectionupdateSub', this.form)
       this.dialogObj.show = false
-    },
-    
-  },
+    }
+
+  }
 }
 </script>
 <style scoped lang="scss">

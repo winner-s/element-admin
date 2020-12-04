@@ -106,7 +106,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -122,11 +122,11 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
     </el-form>
     <div class="dialog-footer">
-      <el-button @click="tableDataInsert" type="primary">新增</el-button>
+      <el-button type="primary" @click="tableDataInsert">新增</el-button>
       <el-button @click="tableDataDelete">删除</el-button>
     </div>
     <Table
@@ -140,9 +140,10 @@
     />
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </div>
   </el-dialog>
 </template>
@@ -166,18 +167,18 @@ export default {
         ystx: [{ required: true, message: '请填写预算体系', trigger: 'blur' }],
         yszq: [{ required: true, message: '请填写预算周期', trigger: 'blur' }],
         ysksrq: [
-          { required: true, message: '请填写预算开始日期', trigger: 'blur' },
+          { required: true, message: '请填写预算开始日期', trigger: 'blur' }
         ],
         ysjsrq: [
-          { required: true, message: '请填写预算结束日期', trigger: 'blur' },
+          { required: true, message: '请填写预算结束日期', trigger: 'blur' }
         ],
-        tjsm: [{ required: true, message: '请填写调剂说明', trigger: 'blur' }],
+        tjsm: [{ required: true, message: '请填写调剂说明', trigger: 'blur' }]
       },
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       placeholderTips: placeholderTips,
       form: {
@@ -196,9 +197,9 @@ export default {
             ysxm: '',
             tjlx: '',
             tjqje: '',
-            tjhje: '',
-          },
-        ],
+            tjhje: ''
+          }
+        ]
       },
       // 表格
       tableData: [
@@ -208,11 +209,11 @@ export default {
           ysxm: '',
           tjlx: '',
           tjqje: '',
-          tjhje: '',
-        },
+          tjhje: ''
+        }
       ],
       tableBtn: [],
-      id: 1,
+      id: 1
     }
   },
   // 监听属性 类似于data概念
@@ -229,14 +230,14 @@ export default {
         prop: 'yszt',
         width: '',
         label: '预算主体',
-        type: 'input',
+        type: 'input'
       },
 
       {
         prop: 'ysxm',
         width: '',
         label: '预算项目',
-        type: 'input',
+        type: 'input'
       },
 
       {
@@ -244,29 +245,29 @@ export default {
         width: '',
         label: '调剂类型',
         type: 'input',
-        disabled: true,
+        disabled: true
       },
       {
         prop: 'tjqje',
         width: '',
         label: '调剂前金额',
         type: 'input',
-        disabled: true,
+        disabled: true
       },
       {
         prop: 'tjhje',
         width: '',
         label: '调剂后金额',
-        type: 'input',
-      },
+        type: 'input'
+      }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '调整',
         btnType: 'primary',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -275,24 +276,23 @@ export default {
   methods: {
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.status=1
+            this.form.status = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     tableDataDelete() {
       this.selectChange.forEach((item, index) => {
@@ -307,7 +307,7 @@ export default {
       this.selectChange = res
     },
     tableDataInsert() {
-      let id = this.id + 1
+      const id = this.id + 1
       this.id = id
       this.form.childerList.push({
         id: id,
@@ -315,10 +315,10 @@ export default {
         ysxm: '',
         tjlx: '',
         tjqje: '',
-        tjhje: '',
+        tjhje: ''
       })
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

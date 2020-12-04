@@ -30,7 +30,11 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @updateSub="updateSub" @addSub="addSub"/>
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @updateSub="updateSub"
+      @addSub="addSub"
+    />
   </div>
 </template>
 
@@ -46,21 +50,13 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {},
-      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -70,29 +66,29 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
-      
+
       list: [
         {
           bto: false,
           documentNumber: 'KH20082615093831',
-          accountPhone:1111111111,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:1111111111,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          lhh:'5200103901',
-          zhyt:1,
-          sfzl:1,
-          bgrq:'2020-11-03',
-          unitName:1324,
-          bghUnitName:1324
+          accountPhone: 1111111111,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 1111111111,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 1,
+          sfzl: 1,
+          bgrq: '2020-11-03',
+          unitName: 1324,
+          bghUnitName: 1324
         }
       ],
       // 表格
@@ -102,8 +98,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -120,23 +116,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -145,45 +141,45 @@ export default {
         label: '单位编号:',
         prop: 'unitNo',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'unitName',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
+        placeholder: '请填写银行名称'
       },
       {
         type: 'input',
         label: '银行账号:',
         prop: 'bankOpenName',
-        placeholder: '请填写银行账号',
+        placeholder: '请填写银行账号'
       },
       {
         type: 'select',
         label: '单据状态:',
         prop: 'documentStatus',
         placeholder: '请选择单据状态',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -194,62 +190,62 @@ export default {
         prop: 'documentNumber',
         width: '150',
         label: '单据编号',
-        type: 'a',
+        type: 'a'
       },
       {
         prop: 'accountPhone',
         width: '150',
-        label: '银行号码',
+        label: '银行号码'
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称',
+        label: '银行名称'
       },
       {
         prop: 'khhmc',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'status',
         width: '',
-        label: '单据状态',
+        label: '单据状态'
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联',
+        label: '是否直联'
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种',
+        label: '币种'
       },
       {
         prop: 'unitName',
         width: '',
-        label: '单位名称',
+        label: '单位名称'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -258,19 +254,19 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res,item){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res, item) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -339,7 +335,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -367,12 +363,12 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -380,7 +376,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -388,7 +384,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -396,7 +392,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -407,14 +403,14 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

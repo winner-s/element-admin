@@ -34,7 +34,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,FKLX ,FKLXLIST} from '@u/wordbook'
+import { UNITNOLIST, FKLX, FKLXLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -45,7 +45,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      fklxList:FKLXLIST,
+      fklxList: FKLXLIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -73,15 +73,15 @@ export default {
           bfdwmc: '二级单位',
           dfdwmc: '',
           bfzh: '000',
-          je:'43333',
-          zc:'',
-          sr:'123',
+          je: '43333',
+          zc: '',
+          sr: '123',
           dx: '43333',
           szfx: '贷',
           qxr: '2020-11-20',
           zy: '没有',
           fklx: 1,
-          dfzh:'13456',
+          dfzh: '13456',
           jyzt: '支付成功'
         }
       ],
@@ -155,7 +155,7 @@ export default {
         type: 'select',
         label: '付款类型:',
         prop: 'fklx',
-        selectList:this.fklxList,
+        selectList: this.fklxList,
         placeholder: '请填写付款类型'
       },
       {
@@ -183,8 +183,8 @@ export default {
         prop: 'fklx',
         width: '',
         label: '付款类型 ',
-        type:'wordbook',
-        wordbookList:this.fklx
+        type: 'wordbook',
+        wordbookList: this.fklx
       },
 
       {
@@ -238,7 +238,7 @@ export default {
   // 方法集合
   methods: {
     // 过滤
-    fklx(val){
+    fklx(val) {
       return FKLX[val]
     },
     // 收起
@@ -261,7 +261,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -279,7 +279,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -299,7 +299,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -337,7 +337,7 @@ export default {
             }
 
             if (i == 'jyrqy') {
-              if (Date.parse(item.jyrq)>= Date.parse(this.searchData[i])) {
+              if (Date.parse(item.jyrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -345,7 +345,7 @@ export default {
             }
 
             if (i == 'jyrqd') {
-              if (Date.parse(item.jyrq)<= Date.parse(this.searchData[i])) {
+              if (Date.parse(item.jyrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

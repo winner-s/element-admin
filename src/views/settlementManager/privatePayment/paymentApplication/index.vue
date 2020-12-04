@@ -25,13 +25,13 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-         
+
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -73,13 +73,13 @@ export default {
         show: false,
         form: {}
       },
-      list:[
-        
+      list: [
+
       ],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -201,11 +201,11 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      
+
       {
         prop: 'djbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '单据编号',
         fixed: 'left'
       },
@@ -257,12 +257,12 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
+        handleFn: 'handleDelete'
       }
     ]
   },
@@ -272,19 +272,19 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.djbh == res.djbh){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.djbh == res.djbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -292,7 +292,7 @@ export default {
     addSub(res) {
       console.log(res)
       this.list.push(res)
-      
+
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
     },
@@ -321,7 +321,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -348,7 +348,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -356,7 +356,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = false
@@ -376,7 +376,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

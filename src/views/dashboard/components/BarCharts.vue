@@ -28,10 +28,10 @@ export default {
     }
   },
   watch: {
-    tableData: function (newVal, OldVal) {
+    tableData: function(newVal, OldVal) {
       console.log(newVal, OldVal)
       this._setOtion()
-    },
+    }
   },
   mounted() {
     this.$nextTick().then(() => {

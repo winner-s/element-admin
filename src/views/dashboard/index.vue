@@ -8,38 +8,38 @@
       class="tip_img"
       src="../../assets/img/shang.png"
       alt=""
-    />
+    >
     <img
       v-show="tip >= 2 && tips"
       ref="xia"
       class="tip_img"
       src="../../assets/img/xia.png"
       alt=""
-    />
+    >
     <div v-if="tips" class="popContainer">
       <div v-if="tip === 1" class="tip1">
-        <img src="../../assets/img/tip1.png" alt="" @click="tip1Click" />
+        <img src="../../assets/img/tip1.png" alt="" @click="tip1Click">
       </div>
       <div v-if="tip === 2" class="tip2">
         <!-- <img src="../../assets/img/shang.png" alt="">
         <img src="../../assets/img/xia.png" alt=""> -->
-        <img src="../../assets/img/cygn.png" alt="" @click="tip2Click" />
+        <img src="../../assets/img/cygn.png" alt="" @click="tip2Click">
       </div>
 
       <div v-if="tip === 3" class="tip3">
         <!-- <img src="../../assets/img/shang.png" alt=""> -->
-        <img src="../../assets/img/db.png" alt="" @click="tip3Click" />
+        <img src="../../assets/img/db.png" alt="" @click="tip3Click">
       </div>
 
       <div v-if="tip === 4" class="tip4">
         <!-- <img src="../../assets/img/shang.png" alt=""> -->
 
         <img
+          ref="tip4"
           src="../../assets/img/tb.png"
           alt=""
           @click="tip4Click"
-          ref="tip4"
-        />
+        >
       </div>
     </div>
     <div class="kf" @click="kf = true" />
@@ -68,7 +68,7 @@
           <div ref="common" class="common">
             <div v-for="(item, index) in confirmList" :key="index">
               <router-link :to="item.router">
-                <img :src="item.img" alt="" />
+                <img :src="item.img" alt="">
                 <p>{{ item.name }}</p>
               </router-link>
             </div>
@@ -82,8 +82,7 @@
               <div class="content" :style="{ height: common }">
                 <div v-for="item in 7" :key="item" class="right_div">
                   <div class="right_left">
-                    【<span style="color: #1890ff">账户开户申请</span
-                    >】KH20072414393322
+                    【<span style="color: #1890ff">账户开户申请</span>】KH20072414393322
                   </div>
                   <div>2020-11-20</div>
                 </div>
@@ -149,7 +148,7 @@
                       vertical-align: middle;
                       margin-bottom: 5px;
                     "
-                  />
+                  >
                   <img
                     v-if="item.tqdb == 'green'"
                     src="../../assets/img/up.png"
@@ -161,7 +160,7 @@
                       vertical-align: middle;
                       margin-bottom: 5px;
                     "
-                  />
+                  >
                 </span>
               </p>
               <div>
@@ -182,9 +181,9 @@
                         <el-checkbox label="资金流出">资金流出</el-checkbox>
                         <el-checkbox label="资金归集">资金归集</el-checkbox>
                         <el-checkbox label="资金下拨">资金下拨</el-checkbox>
-                        <el-checkbox label="预算执行情况"
-                          >预算执行情况</el-checkbox
-                        >
+                        <el-checkbox
+                          label="预算执行情况"
+                        >预算执行情况</el-checkbox>
                       </el-checkbox-group>
                     </div>
                   </el-card>
@@ -192,7 +191,7 @@
                     slot="reference"
                     src="../../assets/img/info.png"
                     style="width: 14px; height: 14px"
-                  />
+                  >
                 </el-popover>
               </div>
             </div>
@@ -329,7 +328,7 @@
                 class="dialog_div"
               >
                 <a class="close" @click="close(item, index)" />
-                <img :src="item.img" alt="" />
+                <img :src="item.img" alt="">
                 <p>{{ item.name }}</p>
               </div>
             </vuedraggable>
@@ -355,7 +354,7 @@
                   class="dialog_div"
                 >
                   <a class="push" @click="push(ele, index)" />
-                  <img :src="ele.img" alt="" />
+                  <img :src="ele.img" alt="">
                   <p>{{ ele.name }}</p>
                 </div>
               </div>
@@ -398,50 +397,50 @@ export default {
           top: '结算笔数',
           num: '8846',
           tqdbNum: '11%',
-          tqdb: 'red',
+          tqdb: 'red'
         },
         {
           show: true,
           top: '结算金额',
           num: '￥126,560',
           tqdbNum: '20%',
-          tqdb: 'red',
+          tqdb: 'red'
         },
         {
           show: true,
           top: '资金流入',
           num: '￥926,560',
           tqdbNum: '12%',
-          tqdb: 'green',
+          tqdb: 'green'
         },
         {
           show: true,
           top: '资金流出',
           num: '￥12,423',
           tqdbNum: '10%',
-          tqdb: 'green',
+          tqdb: 'green'
         },
         {
           show: false,
           top: '资金归集',
           num: '￥988,446',
           tqdbNum: '8%',
-          tqdb: 'red',
+          tqdb: 'red'
         },
         {
           show: false,
           top: '资金下拨',
           num: '￥526,160',
           tqdbNum: '6%',
-          tqdb: 'green',
+          tqdb: 'green'
         },
         {
           show: false,
           top: '预算执行情况',
           num: '78%',
           tqdbNum: '11%',
-          tqdb: 'green',
-        },
+          tqdb: 'green'
+        }
       ],
       // 全部收藏
       qbscList: [
@@ -453,45 +452,45 @@ export default {
               parentName: '账户管理',
               img: require('@/assets/img/khbl.png'),
               name: '开户补录',
-              router: '/accountManager/openManager/accountOpen',
+              router: '/accountManager/openManager/accountOpen'
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/khfh.png'),
               name: '开户复核',
-              router: '',
+              router: ''
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/bgfh.png'),
               name: '变更复核',
-              router: '',
+              router: ''
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/xhfh.png'),
               name: '销户复核',
-              router: '',
+              router: ''
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/zhxxcx.png'),
               name: '账户信息查询',
-              router: '',
+              router: ''
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/dryecx.png'),
               name: '当日余额查询',
-              router: '',
+              router: ''
             },
             {
               parentName: '账户管理',
               img: require('@/assets/img/lsjycx.png'),
               name: '历史交易查询',
-              router: '',
-            },
-          ],
+              router: ''
+            }
+          ]
         },
         {
           name: '结算管理',
@@ -501,27 +500,27 @@ export default {
               parentName: '结算管理',
               img: require('@/assets/img/xzdfdr.png'),
               name: '薪资代发导入',
-              router: '',
+              router: ''
             },
             {
               parentName: '结算管理',
               img: require('@/assets/img/zlxg.png'),
               name: '指令修改',
-              router: '',
+              router: ''
             },
             {
               parentName: '结算管理',
               img: require('@/assets/img/fksq.png'),
               name: '付款申请查询',
-              router: '',
+              router: ''
             },
             {
               parentName: '结算管理',
               img: require('@/assets/img/xxrzqr.png'),
               name: '线下入账确认',
-              router: '',
-            },
-          ],
+              router: ''
+            }
+          ]
         },
         {
           name: '预算管理',
@@ -531,16 +530,16 @@ export default {
               parentName: '预算管理',
               img: require('@/assets/img/3.png'),
               name: '预算体系设置',
-              router: '',
+              router: ''
             },
             {
               parentName: '预算管理',
               img: require('@/assets/img/3.png'),
               name: '预算周期管理',
-              router: '',
-            },
-          ],
-        },
+              router: ''
+            }
+          ]
+        }
       ],
       dialogVisible: false,
       activeName: 'first',
@@ -549,175 +548,175 @@ export default {
           parentName: '账户管理',
           img: require('@/assets/img/khgl.png'),
           name: '开户管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/bggl.png'),
           name: '变更管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/xhgl.png'),
           name: '销户管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/xhsq.png'),
           name: '销户申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/dsfksq.png'),
           name: '对私付款申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/dgfksq.png'),
           name: '对公付款申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/tmhzsq.png'),
           name: '同名划转申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/xzdfsq.png'),
           name: '薪资代发申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/zltb.png'),
           name: '指令同步',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/xmqxsz.png'),
           name: '项目权限设置',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/ystz.png'),
           name: '预算调整',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/ysbz.png'),
           name: '预算编制',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/yshz.png'),
           name: '预算汇总',
-          router: '/accountManager/openManager/accountOpen',
-        },
+          router: '/accountManager/openManager/accountOpen'
+        }
       ],
       list: [
         {
           parentName: '账户管理',
           img: require('@/assets/img/khgl.png'),
           name: '开户管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/bggl.png'),
           name: '变更管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/xhgl.png'),
           name: '销户管理',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '账户管理',
           img: require('@/assets/img/xhsq.png'),
           name: '销户申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/dsfksq.png'),
           name: '对私付款申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/dgfksq.png'),
           name: '对公付款申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/tmhzsq.png'),
           name: '同名划转申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/xzdfsq.png'),
           name: '薪资代发申请',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '结算管理',
           img: require('@/assets/img/zltb.png'),
           name: '指令同步',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/xmqxsz.png'),
           name: '项目权限设置',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/ystz.png'),
           name: '预算调整',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/ysbz.png'),
           name: '预算编制',
-          router: '/accountManager/openManager/accountOpen',
+          router: '/accountManager/openManager/accountOpen'
         },
         {
           parentName: '预算管理',
           img: require('@/assets/img/yshz.png'),
           name: '预算汇总',
-          router: '/accountManager/openManager/accountOpen',
-        },
+          router: '/accountManager/openManager/accountOpen'
+        }
       ],
 
       options: [
         {
           value: 1,
-          label: '禹道北京分公司',
+          label: '禹道北京分公司'
         },
         {
           value: 2,
-          label: '禹道上海分公司',
+          label: '禹道上海分公司'
         },
         {
           value: 3,
-          label: '禹道深圳分公司',
-        },
+          label: '禹道深圳分公司'
+        }
       ],
       yetjb: 1,
       zctjb: 1,
@@ -726,132 +725,132 @@ export default {
       tableData: [
         {
           value: 50000,
-          name: '北京银行',
+          name: '北京银行'
         },
         {
           value: 40000,
-          name: '中国银行',
+          name: '中国银行'
         },
         {
           value: 80000,
-          name: '建设银行',
+          name: '建设银行'
         },
         {
           value: 10000,
-          name: '工商银行',
-        },
+          name: '工商银行'
+        }
       ],
       yetjbTableData: [
         {
           value: 50000,
-          name: '北京银行',
+          name: '北京银行'
         },
         {
           value: 40000,
-          name: '中国银行',
+          name: '中国银行'
         },
         {
           value: 80000,
-          name: '建设银行',
+          name: '建设银行'
         },
         {
           value: 10000,
-          name: '工商银行',
-        },
+          name: '工商银行'
+        }
       ],
       zctjbTableData: [
         {
           value: 50000,
-          name: '北京银行',
+          name: '北京银行'
         },
         {
           value: 40000,
-          name: '中国银行',
+          name: '中国银行'
         },
         {
           value: 80000,
-          name: '建设银行',
+          name: '建设银行'
         },
         {
           value: 10000,
-          name: '工商银行',
-        },
+          name: '工商银行'
+        }
       ],
       fztjbTableData: {
         bj: [2000, 2800, 3500],
         sh: [2500, 2000, 4500],
-        sz: [2900, 1500, 3900],
+        sz: [2900, 1500, 3900]
       },
       slbTableData: [
         {
           value: 10,
-          name: 'zgyh',
+          name: 'zgyh'
         },
         {
           value: 220,
-          name: 'jsyh',
+          name: 'jsyh'
         },
         {
           value: 330,
-          name: 'jtyh',
+          name: 'jtyh'
         },
         {
           value: 334,
-          name: 'zsyh',
+          name: 'zsyh'
         },
         {
           value: 390,
-          name: 'gsyh',
-        },
+          name: 'gsyh'
+        }
       ],
 
       // 前置机状态图表  值
       status: [
         {
           value: 34,
-          name: '中国银行',
+          name: '中国银行'
         },
         {
           value: 23,
-          name: '建设银行',
+          name: '建设银行'
         },
         {
           value: 20,
-          name: '交通银行',
+          name: '交通银行'
         },
         {
           value: 16,
-          name: '招商银行',
+          name: '招商银行'
         },
         {
           value: 10,
-          name: '工商银行',
-        },
+          name: '工商银行'
+        }
       ],
       // 资产统计表 图标  值
       zcList: [
         {
           value: 10,
-          name: '银行理财',
+          name: '银行理财'
         },
         {
           value: 20,
-          name: '定期存款',
+          name: '定期存款'
         },
         {
           value: 30,
-          name: '通知存款',
+          name: '通知存款'
         },
         {
           value: 20,
-          name: '国债逆回购',
+          name: '国债逆回购'
         },
         {
           value: 30,
-          name: '内部存款',
-        },
+          name: '内部存款'
+        }
       ],
-      kf: false,
+      kf: false
     }
   },
   // 监听属性 类似于data概念
@@ -919,7 +918,7 @@ export default {
             shang.style.top = `${top - 42}px`
           })
         }
-      },
+      }
     },
     yetjb(newVal, oldVal) {
       console.log(newVal, oldVal)
@@ -927,58 +926,58 @@ export default {
         this.yetjbTableData = [
           {
             value: 20000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 30000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 40000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 10000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else if (newVal === 3) {
         this.yetjbTableData = [
           {
             value: 50000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 20000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 100000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 60000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else {
         this.yetjbTableData = [
           {
             value: 50000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 40000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 80000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 10000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       }
     },
@@ -988,58 +987,58 @@ export default {
         this.zctjbTableData = [
           {
             value: 20000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 30000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 40000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 10000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else if (newVal === 3) {
         this.zctjbTableData = [
           {
             value: 50000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 20000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 100000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 60000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else {
         this.zctjbTableData = [
           {
             value: 50000,
-            name: '北京银行',
+            name: '北京银行'
           },
           {
             value: 40000,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 80000,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 10000,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       }
     },
@@ -1049,19 +1048,19 @@ export default {
         this.fztjbTableData = {
           bj: [2500, 1000, 5000],
           sh: [2000, 4000, 4000],
-          sz: [1800, 3200, 3000],
+          sz: [1800, 3200, 3000]
         }
       } else if (newVal === 3) {
         this.fztjbTableData = {
           bj: [5000, 1000, 5000],
           sh: [400, 200, 4000],
-          sz: [1800, 3200, 3000],
+          sz: [1800, 3200, 3000]
         }
       } else {
         this.fztjbTableData = {
           bj: [2000, 2800, 3500],
           sh: [2500, 2000, 4500],
-          sz: [2900, 1500, 3900],
+          sz: [2900, 1500, 3900]
         }
       }
     },
@@ -1071,73 +1070,73 @@ export default {
         this.slbTableData = [
           {
             value: 100,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 150,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 200,
-            name: '交通银行',
+            name: '交通银行'
           },
           {
             value: 250,
-            name: '招商银行',
+            name: '招商银行'
           },
           {
             value: 400,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else if (newVal === 3) {
         this.slbTableData = [
           {
             value: 5,
-            name: '中国银行',
+            name: '中国银行'
           },
           {
             value: 50,
-            name: '建设银行',
+            name: '建设银行'
           },
           {
             value: 122,
-            name: '交通银行',
+            name: '交通银行'
           },
           {
             value: 200,
-            name: '招商银行',
+            name: '招商银行'
           },
           {
             value: 500,
-            name: '工商银行',
-          },
+            name: '工商银行'
+          }
         ]
       } else {
         this.slbTableData = [
           {
             value: 10,
-            name: 'zgyh',
+            name: 'zgyh'
           },
           {
             value: 220,
-            name: 'jsyh',
+            name: 'jsyh'
           },
           {
             value: 330,
-            name: 'jtyh',
+            name: 'jtyh'
           },
           {
             value: 334,
-            name: 'zsyh',
+            name: 'zsyh'
           },
           {
             value: 390,
-            name: 'gsyh',
-          },
+            name: 'gsyh'
+          }
         ]
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -1238,11 +1237,11 @@ export default {
         this.$confirm('常用功能最多添加15个！', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {})
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

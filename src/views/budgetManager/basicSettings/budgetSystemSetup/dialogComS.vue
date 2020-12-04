@@ -46,7 +46,7 @@
               v-model="form.txmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -78,13 +78,13 @@ export default {
     return {
       placeholderTips: placeholderTips,
       form: {
-        txbh:'',
-        txmc:'',
-        txzt:'启用'
+        txbh: '',
+        txmc: '',
+        txzt: '启用'
       },
-      rules:{
-        txmc:[
-           { required: true, message: '请填写单据编号', trigger: 'blur' },
+      rules: {
+        txmc: [
+          { required: true, message: '请填写单据编号', trigger: 'blur' }
         ]
       }
     }
@@ -93,9 +93,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -106,25 +106,24 @@ export default {
   // 方法集合
   methods: {
 
-    initDialog(){
+    initDialog() {
       let djbh = ''
-      for(let i=0;i<16;i++){
-          djbh+= Math.round(Math.random() * 10)
+      for (let i = 0; i < 16; i++) {
+        djbh += Math.round(Math.random() * 10)
       }
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
+          this.form[item] = this.dialogObj.form[item]
+        })
         // this.form = this.dialogObj.form
-      }else{
-        Object.keys(this.form).forEach(key => (this.form[key] = ""));
-        this.form.txbh = djbh;
-        this.form.txzt= '启用'
+      } else {
+        Object.keys(this.form).forEach(key => (this.form[key] = ''))
+        this.form.txbh = djbh
+        this.form.txzt = '启用'
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -134,14 +133,14 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',this.form)
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', this.form)
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',this.form)
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', this.form)
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

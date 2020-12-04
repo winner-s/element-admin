@@ -42,7 +42,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { DJZT,DJZTLIST } from '@u/wordbook'
+import { DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -52,7 +52,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      djztList:DJZTLIST,
+      djztList: DJZTLIST,
       // 弹出框
       dialogObj: {
         id: '',
@@ -78,11 +78,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -91,7 +91,7 @@ export default {
         nickname: '',
         documentNumber: ''
       },
-      selectChange:[]
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -158,7 +158,7 @@ export default {
         type: 'select',
         label: '单据状态:',
         prop: 'djzt',
-        selectList:this.djztList,
+        selectList: this.djztList,
         placeholder: '请选择单据状态',
         show: this.showAll
       }
@@ -168,12 +168,11 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      
 
       {
         prop: 'htlsh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '合同编号'
       },
       {
@@ -227,10 +226,10 @@ export default {
         prop: 'djzt',
         width: '',
         label: '单据状态',
-        type:'wordbook',
-        wordbookList:this.djzt
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
 
     ]
     // 按钮
@@ -238,14 +237,14 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
-      
+
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -254,7 +253,7 @@ export default {
   },
   // 方法集合
   methods: {
-    handleCommit(){
+    handleCommit() {
       if (this.selectChange.length != 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
@@ -266,34 +265,32 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
-    
     },
-    handleSelectionChange(val){
+    handleSelectionChange(val) {
       this.selectChange = val
     },
     // 过滤
-    djzt(val){
+    djzt(val) {
       return DJZT[val]
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -330,7 +327,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-   
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -353,7 +350,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -361,7 +358,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.htlsh
       this.dialogObj.read = false
@@ -381,7 +378,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -403,7 +400,7 @@ export default {
             }
 
             if (i == 'jey') {
-              if (item.jkje>=this.searchData[i]) {
+              if (item.jkje >= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -411,7 +408,7 @@ export default {
             }
 
             if (i == 'jed') {
-              if (item.jkje<=this.searchData[i]) {
+              if (item.jkje <= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false

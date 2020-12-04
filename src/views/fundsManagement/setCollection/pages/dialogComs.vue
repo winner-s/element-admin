@@ -61,8 +61,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -99,8 +98,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -110,14 +108,13 @@
         <el-col :span="12">
           <el-form-item label="周期设置：" prop="zqsz">
             <el-select v-model="form.zqsz" placeholder="请选择" size="mini">
-              
+
               <el-option
                 v-for="item in scorllList"
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -137,15 +134,14 @@
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
-              is-range
               v-model="value1"
+              is-range
               range-separator="至"
               start-placeholder="开始时间"
               end-placeholder="结束时间"
               placeholder="选择时间范围"
               size="mini"
-            >
-            </el-time-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -154,17 +150,16 @@
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
-              :indeterminate="isIndeterminate"
               v-model="checkAll"
+              :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
-              >全选</el-checkbox
-            >
-            <div style="margin: 15px 0"></div>
+            >全选</el-checkbox>
+            <div style="margin: 15px 0" />
             <el-checkbox-group
               v-model="checkedCities"
               @change="handleCheckedCitiesChange"
             >
-              <el-checkbox v-for="city in cities" :label="city" :key="city">{{
+              <el-checkbox v-for="city in cities" :key="city" :label="city">{{
                 city
               }}</el-checkbox>
             </el-checkbox-group>
@@ -176,17 +171,16 @@
         <el-col>
           <el-form-item label="选择时间段">
             <el-checkbox
-              :indeterminate="isIndeterminate"
               v-model="checkAll"
+              :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
-              >全选</el-checkbox
-            >
-            <div style="margin: 15px 0"></div>
+            >全选</el-checkbox>
+            <div style="margin: 15px 0" />
             <el-checkbox-group
               v-model="checkedCities"
               @change="handleCheckedCitiesChange"
             >
-              <el-checkbox v-for="city in citiess" :label="city" :key="city">{{
+              <el-checkbox v-for="city in citiess" :key="city" :label="city">{{
                 city
               }}</el-checkbox>
             </el-checkbox-group>
@@ -205,13 +199,11 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
-       
-      
 
-      <el-row style="background-color:#CCCCCC" >
-        <el-col >
+      <el-row style="background-color:#CCCCCC">
+        <el-col>
           <el-form-item label="帮助信息：" prop="sysStudentNumber">
             <ul>
               <li>归集金额单位设置可参考如下公式:归集金额=归集金额+(归集金额%归集金额单位) (注:%为取余) 归集金额与归集单位的余数为零，才能全部归集 </li>
@@ -221,9 +213,8 @@
             </ul>
           </el-form-item>
         </el-col>
-        
+
       </el-row>
-      
 
     </el-form>
 
@@ -242,7 +233,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import {COLLECTIONLIST ,SCORLLLIST} from '@u/wordbook'
+import { COLLECTIONLIST, SCORLLLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -250,8 +241,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      scorllList:SCORLLLIST,
-      collectionList:COLLECTIONLIST,
+      scorllList: SCORLLLIST,
+      collectionList: COLLECTIONLIST,
       checkAll: false,
       cities: [
         '星期天',
@@ -260,7 +251,7 @@ export default {
         '星期三',
         '星期四',
         '星期五',
-        '星期六',
+        '星期六'
       ],
       citiess: [
         '01',
@@ -293,54 +284,54 @@ export default {
         '28',
         '29',
         '30',
-        '31',
+        '31'
       ],
       checkedCities: [],
       value: '',
       placeholderTips: placeholderTips,
       form: {
-        clbh:'',
-        clmc:'',
-        gjfs:'',
-        gjbl:'',
-        clzt:'激活',
-        jjfszl:'',
-        zqsz:'',
-        zxsj:'',
-        sfgj:''
+        clbh: '',
+        clmc: '',
+        gjfs: '',
+        gjbl: '',
+        clzt: '激活',
+        jjfszl: '',
+        zqsz: '',
+        zxsj: '',
+        sfgj: ''
 
       },
       options: [
         {
           label: '日',
-          value: 1,
+          value: 1
         },
         {
           label: '周',
-          value: 2,
+          value: 2
         },
         {
           label: '月',
-          value: 3,
-        },
+          value: 3
+        }
       ],
-      rules:{
-        gjfs:[
-          { required: true, message: '请选择归集方式', trigger: 'blur' },
+      rules: {
+        gjfs: [
+          { required: true, message: '请选择归集方式', trigger: 'blur' }
         ],
-        gjbl:[
-          { required: true, message: '请填写归集比例', trigger: 'blur' },
+        gjbl: [
+          { required: true, message: '请填写归集比例', trigger: 'blur' }
         ],
-        zqsz:[
-          { required: true, message: '请选择周期设置', trigger: 'blur' },
+        zqsz: [
+          { required: true, message: '请选择周期设置', trigger: 'blur' }
         ],
-        zxsj:[
-          { required: true, message: '请填写周期设置', trigger: 'blur' },
+        zxsj: [
+          { required: true, message: '请填写周期设置', trigger: 'blur' }
         ],
-        sfgj:[
-          { required: true, message: '请选择节假日是否归集', trigger: 'blur' },
-        ],
-        
+        sfgj: [
+          { required: true, message: '请选择节假日是否归集', trigger: 'blur' }
+        ]
+
       }
     }
   },
@@ -348,9 +339,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -360,21 +351,19 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-       
+          this.form[item] = this.dialogObj.form[item]
+        })
       } else {
         Object.keys(this.form).forEach(item => {
           this.form[item] = ''
-          this.form.clzy='激活'
-        });
+          this.form.clzy = '激活'
+        })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

@@ -64,12 +64,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[],
-      
+      list: [],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -236,7 +235,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -254,7 +253,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false

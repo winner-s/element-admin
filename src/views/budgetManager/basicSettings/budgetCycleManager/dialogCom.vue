@@ -40,8 +40,7 @@
                 :key="item.txbh"
                 :label="item.txbh"
                 :value="item.txbh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -76,7 +75,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="周期类型：" prop="zqlx">
-           <el-select
+            <el-select
               v-model="form.zqlx"
               placeholder="请选择"
               size="mini"
@@ -87,8 +86,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -108,8 +106,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -142,7 +139,7 @@
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
 import {
- SCORLLLIST,CYCLETYPELIIST
+  SCORLLLIST, CYCLETYPELIIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -151,58 +148,58 @@ export default {
   data() {
     // 这里存放数据
     return {
-      scorllList:SCORLLLIST,
-      cycletypeList:CYCLETYPELIIST,
+      scorllList: SCORLLLIST,
+      cycletypeList: CYCLETYPELIIST,
       placeholderTips: placeholderTips,
       form: {
-        ystxbh:'',
+        ystxbh: '',
 
-        zqbh:'',
-        zqmc:'',
-        sstx:'',
-        zqlx:"",
-        sfgd:'',
-        xsls:'',
-        zqzt:''
+        zqbh: '',
+        zqmc: '',
+        sstx: '',
+        zqlx: '',
+        sfgd: '',
+        xsls: '',
+        zqzt: ''
 
       },
-      ystxbhList:[
+      ystxbhList: [
         {
-          txbh:'TX2020011',
-          txmc:'测试1'
+          txbh: 'TX2020011',
+          txmc: '测试1'
         },
         {
-          txbh:'TX2019003',
-          txmc:'测试1'
+          txbh: 'TX2019003',
+          txmc: '测试1'
         },
         {
-          txbh:'TX2020006',
-          txmc:'测试1'
+          txbh: 'TX2020006',
+          txmc: '测试1'
         },
         {
-          txbh:'TX2020003',
-          txmc:'测试1'
-        },
+          txbh: 'TX2020003',
+          txmc: '测试1'
+        }
       ],
-      rules:{
-        ystxbh:[
-          { required: true, message: '请选择预算体系编号', trigger: 'blur' },
+      rules: {
+        ystxbh: [
+          { required: true, message: '请选择预算体系编号', trigger: 'blur' }
         ],
-        yszqbh:[
-          { required: true, message: '请填写预算周期编号', trigger: 'blur' },
+        yszqbh: [
+          { required: true, message: '请填写预算周期编号', trigger: 'blur' }
         ],
-        yszqmc:[
-          { required: true, message: '请填写预算周期名称', trigger: 'blur' },
+        yszqmc: [
+          { required: true, message: '请填写预算周期名称', trigger: 'blur' }
         ],
-        zqlx:[
-          { required: true, message: '请选择周期类型', trigger: 'blur' },
+        zqlx: [
+          { required: true, message: '请选择周期类型', trigger: 'blur' }
         ],
-        sfgd:[
-          { required: true, message: '请选择是否滚动', trigger: 'blur' },
+        sfgd: [
+          { required: true, message: '请选择是否滚动', trigger: 'blur' }
         ],
-        xsls:[
-          { required: true, message: '请选择显示列数', trigger: 'blur' },
-        ],
+        xsls: [
+          { required: true, message: '请选择显示列数', trigger: 'blur' }
+        ]
       }
     }
   },
@@ -210,9 +207,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -222,43 +219,40 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-        this.form.zqbh = "4587244848498"
+          this.form[item] = ''
+        })
+        this.form.zqbh = '4587244848498'
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.zqzt="停用"
+            this.form.zqzt = '停用'
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
       console.log(this.form)
-      this.form.zqzt='启用'
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.form.zqzt = '启用'
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

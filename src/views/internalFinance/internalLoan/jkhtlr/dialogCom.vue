@@ -61,8 +61,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -83,8 +82,7 @@
                 :key="item.id"
                 :label="item.zqr"
                 :value="item.zqr"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -101,8 +99,7 @@
                 :key="item.id"
                 :label="item.zwr"
                 :value="item.zwr"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -122,8 +119,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -140,8 +136,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -156,8 +151,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -168,8 +162,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -211,8 +204,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -232,8 +224,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -262,8 +253,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -280,8 +270,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -329,29 +318,30 @@
       </el-row>
 
       <div class="title"><i class="el-icon-user" /> 担保合同列表</div>
-      
+
     </el-form>
 
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
       <el-button type="primary" @click="add">新增担保合同</el-button>
     </div>
 
     <Table
-        :table-data="form.childerList"
-        :table-list-data="tableListData"
-        :table-btn="tableBtn"
-        :current-data="currentData"
-        @onPageChange="onPageChange"
-        @onSizeChange="onSizeChange"
-        @handleEdit="handleEdit"
-        @handleStatus="handleStatus"
-        @handleViewOther="handleViewOther"
-        @handleDelete="handleDelete"
-      />
+      :table-data="form.childerList"
+      :table-list-data="tableListData"
+      :table-btn="tableBtn"
+      :current-data="currentData"
+      @onPageChange="onPageChange"
+      @onSizeChange="onSizeChange"
+      @handleEdit="handleEdit"
+      @handleStatus="handleStatus"
+      @handleViewOther="handleViewOther"
+      @handleDelete="handleDelete"
+    />
 
     <dialog-com :dialog-obj="dialogObjN" />
   </el-dialog>
@@ -360,7 +350,7 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
-import {LLZHTSLIST,CURRENCYLIST,HBFSLIST,FXFSLIST,JXFSLIST,DKQXLIST} from '@u/wordbook'
+import { LLZHTSLIST, CURRENCYLIST, HBFSLIST, FXFSLIST, JXFSLIST, DKQXLIST } from '@u/wordbook'
 import { placeholderTips } from '@u/validate'
 import Table from '@c/common/table'
 import dialogCom from './dialogComN'
@@ -371,79 +361,79 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rules:{
-        htmc:[
-          { required: true, message: '请填写合同名称', trigger: 'blur' },
+      rules: {
+        htmc: [
+          { required: true, message: '请填写合同名称', trigger: 'blur' }
         ],
-        dklx:[
-          { required: true, message: '请填写贷款类型', trigger: 'blur' },
+        dklx: [
+          { required: true, message: '请填写贷款类型', trigger: 'blur' }
         ],
-        zqr:[
-          { required: true, message: '请填写债权人', trigger: 'blur' },
+        zqr: [
+          { required: true, message: '请填写债权人', trigger: 'blur' }
         ],
-        zwr:[
-          { required: true, message: '请填写债务人', trigger: 'blur' },
+        zwr: [
+          { required: true, message: '请填写债务人', trigger: 'blur' }
         ],
-        dkbz:[
-          { required: true, message: '请填写贷款币种', trigger: 'blur' },
+        dkbz: [
+          { required: true, message: '请填写贷款币种', trigger: 'blur' }
         ],
-        dkqx:[
-          { required: true, message: '请填写贷款期限', trigger: 'blur' },
+        dkqx: [
+          { required: true, message: '请填写贷款期限', trigger: 'blur' }
         ],
-        ksrq:[
-          { required: true, message: '请填写开始日期', trigger: 'blur' },
+        ksrq: [
+          { required: true, message: '请填写开始日期', trigger: 'blur' }
         ],
-        jsrq:[
-          { required: true, message: '请填写结束日期', trigger: 'blur' },
+        jsrq: [
+          { required: true, message: '请填写结束日期', trigger: 'blur' }
         ],
-        jkje:[
-          { required: true, message: '请填写贷款金额', trigger: 'blur' },
+        jkje: [
+          { required: true, message: '请填写贷款金额', trigger: 'blur' }
         ],
-        llzhts:[
-          { required: true, message: '请填写利率转换天数', trigger: 'blur' },
+        llzhts: [
+          { required: true, message: '请填写利率转换天数', trigger: 'blur' }
         ],
-        jxfs:[
-          { required: true, message: '请填写计息方式', trigger: 'blur' },
+        jxfs: [
+          { required: true, message: '请填写计息方式', trigger: 'blur' }
         ],
-        fxfs:[
-          { required: true, message: '请填写付息方式', trigger: 'blur' },
+        fxfs: [
+          { required: true, message: '请填写付息方式', trigger: 'blur' }
         ],
-        hbfs:[
-          { required: true, message: '请填写还本方式', trigger: 'blur' },
+        hbfs: [
+          { required: true, message: '请填写还本方式', trigger: 'blur' }
         ],
-        htqdll:[
-          { required: true, message: '请填写合同签订利率', trigger: 'blur' },
+        htqdll: [
+          { required: true, message: '请填写合同签订利率', trigger: 'blur' }
         ]
       },
-      dklxList:[
+      dklxList: [
         {
-          id:1,
-          value:'内部借款'
+          id: 1,
+          value: '内部借款'
         }
       ],
-      llzhtsList:LLZHTSLIST,
-      currencyList:CURRENCYLIST,
-      hbfsList:HBFSLIST,
-      fxfsList:FXFSLIST,
-      jxfsList:JXFSLIST,
-      dkqxList:DKQXLIST,
-      zqrList:[
+      llzhtsList: LLZHTSLIST,
+      currencyList: CURRENCYLIST,
+      hbfsList: HBFSLIST,
+      fxfsList: FXFSLIST,
+      jxfsList: JXFSLIST,
+      dkqxList: DKQXLIST,
+      zqrList: [
         {
-          zqr:'顶级单位',
-          dwbh:'001'
+          zqr: '顶级单位',
+          dwbh: '001'
         }
       ],
-      zwrList:[
+      zwrList: [
         {
-          zwr:'顶级单位',
-          dwbh:'002'
+          zwr: '顶级单位',
+          dwbh: '002'
         }
       ],
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       placeholderTips: placeholderTips,
       form: {
@@ -464,15 +454,15 @@ export default {
         fxfs: '',
         htqdll: '',
         hbfs: '',
-        bz: '',
+        bz: ''
       },
       dialogObjN: {
         id: '',
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
-      },
+        form: {}
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -483,7 +473,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -494,35 +484,35 @@ export default {
       {
         prop: 'dbhtbh',
         width: '150',
-        label: '担保合同编号',
+        label: '担保合同编号'
       },
       {
         prop: 'dbhtmc',
         width: '150',
-        label: '担保合同名称',
+        label: '担保合同名称'
       },
 
       {
         prop: 'dbzt',
         width: '',
-        label: '担保主体',
+        label: '担保主体'
       },
 
       {
         prop: 'dbfs',
         width: '',
-        label: '担保方式',
+        label: '担保方式'
       },
       {
         prop: 'je',
         width: '',
-        label: '金额',
+        label: '金额'
       },
       {
         prop: 'bz',
         width: '',
-        label: '备注 ',
-      },
+        label: '备注 '
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -548,7 +538,7 @@ export default {
             this.updateSub()
           } else {
             this.form.htzt = 1
-            this.form.djzt=1
+            this.form.djzt = 1
             this.addSub()
           }
         }
@@ -567,8 +557,8 @@ export default {
       this.dialogObjN.read = false
       this.dialogObjN.show = true
       this.dialogObjN.title = '担保信息'
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

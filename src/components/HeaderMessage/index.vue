@@ -5,32 +5,32 @@
       <div class="message">
         <el-badge is-dot @click.native="toggleMsgShow">
           <svg-icon
-          class="message"
-          class-name="search-icon"
-          icon-class="message"
-          @click.stop="click"
-        />
+            class="message"
+            class-name="search-icon"
+            icon-class="message"
+            @click.stop="click"
+          />
         </el-badge>
       </div>
       <el-dropdown-menu slot="dropdown">
         <div class="dorpdown">
-            <div class="top">
-                <div>通知(4)</div>
-                <div></div>
+          <div class="top">
+            <div>通知(4)</div>
+            <div />
+          </div>
+          <div class="zhon">
+            <div v-for="item in 4" :key="item">
+              <div class="title">
+                <div>账户通知</div>
+                <div>2020-11-10 17:12</div>
+              </div>
+              <div class="content">尊敬的张强账户：23233130001账号的本月合计发生额已触发监控：大额资金监控，请登陆系…</div>
             </div>
-            <div class="zhon">
-                <div v-for="item in 4" :key="item">
-                    <div class="title">
-                        <div>账户通知</div>
-                        <div>2020-11-10 17:12</div>
-                    </div>
-                    <div class="content">尊敬的张强账户：23233130001账号的本月合计发生额已触发监控：大额资金监控，请登陆系…</div>
-                </div>
-            </div>
-            <div class="foot">
-                <div><button class="right_line">清空通知</button></div>
-                <div><button>查看更多</button></div>
-            </div>
+          </div>
+          <div class="foot">
+            <div><button class="right_line">清空通知</button></div>
+            <div><button>查看更多</button></div>
+          </div>
         </div>
       </el-dropdown-menu>
     </el-dropdown>
@@ -38,26 +38,26 @@
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
+// 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+// 例如：import 《组件名称》 from '《组件路径》';
 
 export default {
-  //import引入的组件需要注入到对象中才能使用
+  // import引入的组件需要注入到对象中才能使用
   components: {},
   data() {
-    //这里存放数据
+    // 这里存放数据
     return {}
   },
-  //监听属性 类似于data概念
+  // 监听属性 类似于data概念
   computed: {},
-  //监控data中的数据变化
+  // 监控data中的数据变化
   watch: {},
-  //方法集合
-  methods: {},
-  //生命周期 - 创建完成（可以访问当前this实例）
+  // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
-  //生命周期 - 挂载完成（可以访问DOM元素）
+  // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
+  // 方法集合
+  methods: {}
 }
 </script>
 <style   lang='scss'>
@@ -108,11 +108,11 @@ export default {
                 & :nth-child(1){
                     margin-bottom: 8px;
                 }
-               
+
              }
-             .content{     
+             .content{
                 width: 100%;
-                height: 44px;     
+                height: 44px;
                 font-size: 14px;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: bold;
@@ -132,7 +132,7 @@ export default {
         font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 500;
         color: #333333;
-        
+
     }
 }
 .iconFont {

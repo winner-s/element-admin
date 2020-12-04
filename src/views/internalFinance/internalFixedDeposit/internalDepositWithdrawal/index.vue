@@ -138,7 +138,7 @@ export default {
         type: 'primary',
         label: '提交'
       },
-     
+
       {
         prop: 'reset',
         type: '',
@@ -166,7 +166,6 @@ export default {
         prop: 'ckdwbh',
         placeholder: '请选择存款单位编号'
       },
-      
 
       {
         type: 'time',
@@ -257,7 +256,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach(item => {
         if (res[item]) {
           fore[item] = res[item]
@@ -349,7 +348,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -379,7 +378,7 @@ export default {
             }
 
             if (i == 'ckzqrqks') {
-              if (Date.parse(item.ckzqrq)>=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.ckzqrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -387,7 +386,7 @@ export default {
             }
 
             if (i == 'ckzqrqjs') {
-              if (Date.parse(item.ckzqrq)<=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.ckzqrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

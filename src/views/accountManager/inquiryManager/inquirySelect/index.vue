@@ -25,7 +25,6 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleViewOther="handleViewOther"
-          
         />
       </div>
     </el-card>
@@ -55,7 +54,7 @@ import {
 } from '@u/wordbook'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -64,14 +63,14 @@ export default {
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
-      accountStatusList:ACCOUNTSTATUSLIST,
+      accountStatusList: ACCOUNTSTATUSLIST,
       // 弹出框
       dialogObj: {
         id: '',
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
       // 分页
@@ -90,31 +89,30 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          unitName:'二级单位',
-          khrq:'2020-09-01',
-          accountPhone:'1967301259',
-          accountName:'我最帅',
-          currency:1,
-          bankName:1,
-          bankOpenName:'株洲分行',
-          lhh:'58491308',
-          accountStatus:1,
-          connection:1,
-          zhyt:1,
-          kmh:'23114',
-          kmh:'1235',
-          khhszs:"湖南省",
-          khhszshi:"株洲市"
+          unitName: '二级单位',
+          khrq: '2020-09-01',
+          accountPhone: '1967301259',
+          accountName: '我最帅',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '株洲分行',
+          lhh: '58491308',
+          accountStatus: 1,
+          connection: 1,
+          zhyt: 1,
+          kmh: '23114',
+          kmh: '1235',
+          khhszs: '湖南省',
+          khhszshi: '株洲市'
         }
-          
+
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -236,7 +234,7 @@ export default {
       {
         prop: 'accountPhone',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '账户号码',
         fixed: 'left'
       },
@@ -249,14 +247,14 @@ export default {
         prop: 'currency',
         width: '',
         label: '币种',
-        type: "wordbook",
+        type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'bankName',
         width: '',
         label: '银行名称',
-        type: "wordbook",
+        type: 'wordbook',
         wordbookList: this.back
       },
       {
@@ -273,14 +271,14 @@ export default {
         prop: 'accountStatus',
         width: '',
         label: '账户状态',
-        type: "wordbook",
+        type: 'wordbook',
         wordbookList: this.accountStatus
       },
       {
         prop: 'connection',
         width: '',
         label: '是否直联',
-        type: "wordbook",
+        type: 'wordbook',
         wordbookList: this.direct
       },
 
@@ -288,7 +286,7 @@ export default {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
-        type: "wordbook",
+        type: 'wordbook',
         wordbookList: this.accountUsage
       }
     ]
@@ -301,24 +299,24 @@ export default {
   },
   // 方法集合
   methods: {
-    
-    unitNo(val){
+
+    unitNo(val) {
       return UNITNO[val]
     },
-    back(val){
-      return  BACK[val]
+    back(val) {
+      return BACK[val]
     },
-    currency(val){
-      return  CURRENCY[val]
+    currency(val) {
+      return CURRENCY[val]
     },
-    accountUsage(val){
-      return  ACCOUNTUSAGE[val]
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
     },
-    direct(val){
-      return  DIRECT[val]
+    direct(val) {
+      return DIRECT[val]
     },
-    accountStatus(val){
-      return  ACCOUNTSTATUS[val]
+    accountStatus(val) {
+      return ACCOUNTSTATUS[val]
     },
     // 收起
     dropUp() {
@@ -340,7 +338,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -350,7 +348,6 @@ export default {
     },
     // 分页
     onPageChange(val) {
-      
       var end = val * this.currentData.size
       var start = (val - 1) * this.currentData.size
 
@@ -363,8 +360,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
-   
+
     handleViewOther(row) {
       console.log(row)
       this.dialogObj.id = row.accountPhone
@@ -378,7 +374,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

@@ -20,7 +20,7 @@
       class="form"
       :inline-message="true"
     >
-     
+
       <el-row>
         <el-col :span="12">
           <el-form-item
@@ -39,17 +39,13 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.value"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
 
-      
     </el-form>
 
     <div class="dialog-footer">
@@ -63,7 +59,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import { RLXTLIST} from '@u/wordbook'
+import { RLXTLIST } from '@u/wordbook'
 
 export default {
   components: {},
@@ -72,67 +68,63 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rlxtList:RLXTLIST,
-      
+      rlxtList: RLXTLIST,
+
       placeholderTips: placeholderTips,
       form: {
-        rlxt:''
-      },
-      
+        rlxt: ''
+      }
+
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    
+
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-       
+          this.form[item] = ''
+        })
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.status=1
+            this.form.status = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
 
     handleRemove(file, fileList) {
@@ -152,8 +144,8 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -161,7 +153,7 @@ export default {
   .el-form-item {
     margin-bottom: 0px !important;
   }
-  
+
 }
 
 .title {

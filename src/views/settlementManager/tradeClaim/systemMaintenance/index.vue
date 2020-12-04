@@ -31,7 +31,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -65,12 +65,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[],
-      
+      list: [],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -127,7 +126,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
 
-      { label: '操作', type: 'btn', width: '' ,fixed:'right'},
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'jyrlxtbh',
         width: '',
@@ -149,13 +148,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -164,22 +163,21 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -243,7 +241,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -251,7 +249,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.jyrlxtbh
       this.dialogObj.read = false
@@ -271,7 +269,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -291,8 +289,6 @@ export default {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }

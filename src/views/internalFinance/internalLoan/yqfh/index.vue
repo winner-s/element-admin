@@ -59,14 +59,14 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -76,7 +76,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -108,8 +108,8 @@ export default {
           yqll: '11',
           yqsm: '',
           zqr: '顶级单位',
-          zwr: '二级单位1',
-        },
+          zwr: '二级单位1'
+        }
       ],
 
       // 表格
@@ -119,9 +119,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -138,23 +138,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '退回',
+        label: '退回'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -162,41 +162,41 @@ export default {
         type: 'input',
         label: '合同名称:',
         prop: 'htmc',
-        placeholder: '请填写合同名称',
+        placeholder: '请填写合同名称'
       },
       {
         type: 'select',
         label: '债权人:',
         prop: 'zqr',
-        placeholder: '请选择债权人',
+        placeholder: '请选择债权人'
       },
       {
         type: 'time',
         label: '逾期开始日期从:',
         prop: 'yqksrqc',
         placeholder: '请选择逾期开始日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
         prop: 'yqksrqd',
         placeholder: '请选择逾期开始日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '逾期金额从:',
         prop: 'yqjec',
         placeholder: '请选择逾期金额',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '到:',
         prop: 'yqjed',
         placeholder: '请选择逾期金额',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
@@ -204,8 +204,8 @@ export default {
         prop: 'djzt',
         selectList: this.djztList,
         placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -216,47 +216,47 @@ export default {
         prop: 'htlsh',
         width: '150',
         type: 'a',
-        label: '合同流水号',
+        label: '合同流水号'
       },
       {
         prop: 'htmc',
         width: '150',
-        label: '合同名称',
+        label: '合同名称'
       },
 
       {
         prop: 'fkdbh',
         width: '',
-        label: '还款信息 ',
+        label: '还款信息 '
       },
 
       {
         prop: 'zqr',
         width: '',
-        label: '债权人',
+        label: '债权人'
       },
       {
         prop: 'zwr',
         width: '',
-        label: '债务人',
+        label: '债务人'
       },
       {
         prop: 'fkje',
         width: '',
-        label: '放款金额 ',
+        label: '放款金额 '
       },
       {
         prop: 'yqje',
         width: '',
-        label: '逾期金额',
+        label: '逾期金额'
       },
       {
         prop: 'djzt',
         width: '',
         label: '单据状态',
         type: 'wordbook',
-        wordbookList: this.djzt,
-      },
+        wordbookList: this.djzt
+      }
     ]
     // 按钮
     this.tableBtn = [
@@ -266,8 +266,8 @@ export default {
         type: 'isNoShow',
         isShowValue: '3',
         isShowStatus: 'djzt',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -276,7 +276,7 @@ export default {
   },
   // 方法集合
   methods: {
-     // 单击新增按钮
+    // 单击新增按钮
     handleInsert() {
       if (this.selectChange.length != 0) {
         this.selectChange.forEach((item, index) => {
@@ -289,7 +289,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -305,14 +305,14 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
     handleSelectionChange(val) {
       this.selectChange = val
     },
-    //过滤
+    // 过滤
     djzt(val) {
       return DJZT[val]
     },
@@ -325,7 +325,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach((item) => {
         if (res[item]) {
           fore[item] = res[item]
@@ -360,8 +360,7 @@ export default {
         }
       })
     },
-   
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -384,7 +383,7 @@ export default {
       this.$confirm('确定通过?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         row.djzt = 3
       })
@@ -401,7 +400,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -455,8 +454,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

@@ -4,8 +4,8 @@
     <el-card>
       <div slot="header">
         <span>开户复核</span>
-        <el-button style="float: right;" icon="el-icon-star-on" size="mini" v-if=" star" @click="qxsc()">已收藏</el-button>
-        <el-button style="float: right;" icon="el-icon-star-off" size="mini" v-else  @click.native="sc()">收藏</el-button>
+        <el-button v-if=" star" style="float: right;" icon="el-icon-star-on" size="mini" @click="qxsc()">已收藏</el-button>
+        <el-button v-else style="float: right;" icon="el-icon-star-off" size="mini" @click.native="sc()">收藏</el-button>
       </div>
       <div>
         <Search
@@ -50,7 +50,7 @@ import {
   DIRECT,
   DIRECTLIST,
   ACCOUNTUSAGE,
-  ACCOUNTUSAGELIST,
+  ACCOUNTUSAGELIST
 } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
@@ -62,7 +62,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      star:false,
+      star: false,
       djztList: DJZTLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
@@ -74,7 +74,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       tableListData: [],
       // 弹出框
@@ -83,7 +83,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -101,7 +101,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111',
+          khhss: '1111'
         },
         {
           documentNumber: 'KH20112315560278',
@@ -118,7 +118,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111',
+          khhss: '1111'
         },
         {
           documentNumber: 'KH20112309552410',
@@ -135,7 +135,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111',
+          khhss: '1111'
         },
         {
           documentNumber: 'KH20112415042159',
@@ -152,8 +152,8 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111',
-        },
+          khhss: '1111'
+        }
       ],
 
       // 表格
@@ -164,7 +164,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {},
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -181,14 +181,14 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -197,13 +197,13 @@ export default {
         label: '单位编号:',
         prop: 'unitNo',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'unitName',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
@@ -211,28 +211,28 @@ export default {
         prop: 'bankName',
         selectList: this.backList,
         placeholder: '请填写银行名称',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '开户行名称:',
         prop: 'bankOpenName',
         placeholder: '请填写开户行名称',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '账户号码:',
         prop: 'zhhm',
         placeholder: '请填写账户号码',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '账户名称:',
         prop: 'zhmc',
         placeholder: '请填写账户名称',
-        show: this.showAll,
+        show: this.showAll
       },
 
       {
@@ -241,14 +241,14 @@ export default {
         prop: 'start',
         placeholder: '请填写币种',
         selectList: this.currency,
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -260,90 +260,90 @@ export default {
         width: '150',
         type: 'a',
         label: '单据编号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountPhone',
         width: '150',
         label: '账户号码',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'bankName',
         width: '',
         label: '银行名称',
         type: 'wordbook',
-        wordbookList: this.back,
+        wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'status',
         width: '',
         label: '单据状态',
         type: 'wordbook',
-        wordbookList: this.djzt,
+        wordbookList: this.djzt
       },
       {
         prop: 'sfzl',
         width: '',
         label: '是否直联',
         type: 'wordbook',
-        wordbookList: this.direct,
+        wordbookList: this.direct
       },
       {
         prop: 'currency',
         width: '',
         label: '币种',
         type: 'wordbook',
-        wordbookList: this.currency,
+        wordbookList: this.currency
       },
       {
         prop: 'unitName',
         width: '',
         label: '单位名称',
         type: 'wordbook',
-        wordbookList: this.unitno,
+        wordbookList: this.unitno
       },
       {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
         type: 'wordbook',
-        wordbookList: this.accountUsage,
+        wordbookList: this.accountUsage
       },
       {
         prop: 'openTime',
         width: '',
-        label: '开户申请日期',
+        label: '开户申请日期'
       },
       {
         prop: 'khrq',
         width: '',
-        label: '开户日期',
+        label: '开户日期'
       },
       {
         prop: 'sqr',
         width: '',
-        label: '申请人',
+        label: '申请人'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '复 核',
         btnType: 'primary',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -352,11 +352,11 @@ export default {
   },
   // 方法集合
   methods: {
-    qxsc(){
+    qxsc() {
       this.star = false
     },
-    sc(){
-      this.star=true
+    sc() {
+      this.star = true
     },
     sub(res) {
       this.list.forEach((item, index) => {
@@ -365,9 +365,9 @@ export default {
           this.$confirm('操作成功', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
-            type: 'warning',
+            type: 'warning'
           }).then(() => {
-           
+
           })
         }
       })
@@ -379,14 +379,14 @@ export default {
           this.$confirm('操作成功', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
-            type: 'warning',
+            type: 'warning'
           }).then(() => {
-           
+
           })
         }
       })
     },
-    //过滤
+    // 过滤
     djzt(val) {
       return DJZT[val]
     },
@@ -459,7 +459,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -549,8 +549,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

@@ -41,14 +41,13 @@
         <el-col :span="12">
           <el-form-item label="单据日期" prop="djrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.djrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择单据日期"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -72,36 +71,34 @@
               placeholder="请选择"
               size="mini"
               style="width: 200px"
-              
             >
               <el-option
                 v-for="item in purposeList"
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
-            
+
           </el-form-item>
         </el-col>
       </el-row>
 
-       <div class="title"><i class="el-icon-user" />付款方信息</div>
+      <div class="title"><i class="el-icon-user" />付款方信息</div>
       <el-row>
         <el-col :span="12">
-         
-          <el-form-item label="付款方银行账号：" prop="fkfyhzh" >
-            
+
+          <el-form-item label="付款方银行账号：" prop="fkfyhzh">
+
             <el-input
               v-model="form.fkfyhzh"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
-            /> 
+            />
           </el-form-item>
-          
+
         </el-col>
         <el-col :span="12">
           <el-form-item label="付款方银行省：" prop="fkfyhs">
@@ -131,8 +128,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -156,7 +152,7 @@
               v-model="form.fkfzhmc"
               style="width: 200px"
               size="mini"
-             :disabled="true"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -175,8 +171,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -189,7 +184,7 @@
               v-model="form.fkfyhmc"
               style="width: 200px"
               size="mini"
-             :disabled="true"
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -207,33 +202,32 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
       </el-row>
-      
+
     </el-form>
 
     <div class="dialog-footer">
-      
+
       <el-button type="primary" @click="sub">通过</el-button>
-      <el-button type="primary" >拒绝</el-button>
+      <el-button type="primary">拒绝</el-button>
       <el-button @click="dialogObj.show = false">取 消</el-button>
     </div>
-     <div class="title"><i class="el-icon-user" />薪资代发数据</div>
-        <Table
-          :table-data="tableData"
-          :table-list-data="tableListData"
-          :table-btn="tableBtn"
-          :current-data="currentData"
-          @onPageChange="onPageChange"
-          @onSizeChange="onSizeChange"
-          @handleEdit="handleEdit"
-          @handleViewOther="handleViewOther"
-          @handleDelete="handleDelete"
-        />
+    <div class="title"><i class="el-icon-user" />薪资代发数据</div>
+    <Table
+      :table-data="tableData"
+      :table-list-data="tableListData"
+      :table-btn="tableBtn"
+      :current-data="currentData"
+      @onPageChange="onPageChange"
+      @onSizeChange="onSizeChange"
+      @handleEdit="handleEdit"
+      @handleViewOther="handleViewOther"
+      @handleDelete="handleDelete"
+    />
 
   </el-dialog>
 </template>
@@ -252,74 +246,74 @@ import {
   PURPOSELIST
 } from '@u/wordbook'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
     // 这里存放数据
     return {
-      fkfyhzhList:[
+      fkfyhzhList: [
         {
-          fkfyhzh:'187595045122',
-          fkfyhs:'湖南省',
-          fkdw:'测试单位',
-          fkfyhshi:'株洲市',
-          fkfzhmc:'张三',
-          fkfkhhmc:"株洲分行",
-          fkfyhmc:'工商银行',
-          dscs:'EC'
+          fkfyhzh: '187595045122',
+          fkfyhs: '湖南省',
+          fkdw: '测试单位',
+          fkfyhshi: '株洲市',
+          fkfzhmc: '张三',
+          fkfkhhmc: '株洲分行',
+          fkfyhmc: '工商银行',
+          dscs: 'EC'
         }
       ],
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
-       // 表格
+      // 表格
       tableData: [],
       tableBtn: [],
       rules: {
         fkyt: [
-          { required: true, message: '请选择付款用途', trigger: 'blur' },
+          { required: true, message: '请选择付款用途', trigger: 'blur' }
         ],
         fkfyhzh: [
-          { required: true, message: '请选择付款方银行账号', trigger: 'blur' },
+          { required: true, message: '请选择付款方银行账号', trigger: 'blur' }
         ],
         dscs: [
-          { required: true, message: '请选择对私参数', trigger: 'blur' },
+          { required: true, message: '请选择对私参数', trigger: 'blur' }
         ]
       },
-     
+
       placeholderTips: placeholderTips,
       form: {
-        djbh:'',
-        djrq:'',
-        ywdw:'',
-        fkfyhzh:'',
-        fkfyhs:'',
-        fkfyhshi:'',
-        fkdw:'',
-        fkfzhmc:'',
-        fkfkhhmc:'',
-        fkfyhmc:'',
-        dscs:''
+        djbh: '',
+        djrq: '',
+        ywdw: '',
+        fkfyhzh: '',
+        fkfyhs: '',
+        fkfyhshi: '',
+        fkdw: '',
+        fkfzhmc: '',
+        fkfkhhmc: '',
+        fkfyhmc: '',
+        dscs: ''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
-      purposeList:PURPOSELIST
+      purposeList: PURPOSELIST
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -328,75 +322,74 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-     
 
       {
         prop: 'documentNumber',
         width: '150',
         type: 'a',
         label: '工号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountPhone',
         width: '150',
         label: '收款方账号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountName',
         width: '',
-        label: '收款方账户名称',
+        label: '收款方账户名称'
       },
       {
         prop: 'bankName',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行类型',
+        label: '开户行类型'
       },
       {
         prop: 'status',
         width: '',
-        label: '开户行(省)',
+        label: '开户行(省)'
       },
       {
         prop: 'connection',
         width: '',
-        label: '开户行(市)',
+        label: '开户行(市)'
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种',
+        label: '币种'
       },
       {
         prop: 'unitName',
         width: '',
-        label: '支付类型',
+        label: '支付类型'
       },
       {
         prop: 'connection',
         width: '',
-        label: '金额(元)',
+        label: '金额(元)'
       },
       {
         prop: 'connection',
         width: '',
-        label: '摘要',
+        label: '摘要'
       },
       {
         prop: 'connection',
         width: '',
-        label: '联行号',
+        label: '联行号'
       },
       {
         prop: 'connection',
         width: '',
-        label: '备注',
+        label: '备注'
       }
     ]
     // 按钮
@@ -406,30 +399,29 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    fkfchange(res){
-       console.log(res)
-      this.fkfyhzhList.forEach((item,index)=>{
-        if(item.fkfyhzh==res){
-          let zhi = this.fkfyhzhList[index]
+    fkfchange(res) {
+      console.log(res)
+      this.fkfyhzhList.forEach((item, index) => {
+        if (item.fkfyhzh == res) {
+          const zhi = this.fkfyhzhList[index]
           Object.keys(item).forEach(val => {
-            this.form[val] = zhi[val];
-          });
+            this.form[val] = zhi[val]
+          })
         }
       })
     },
-    initDialog(){
+    initDialog() {
       console.log(this.dialogObj.form)
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
+          this.form[item] = this.dialogObj.form[item]
+        })
+
         // this.form = this.dialogObj.form
-      } 
+      }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -439,13 +431,13 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',this.form)
-      this.dialogObj.show=false
+      this.$emit('addSub', this.form)
+      this.dialogObj.show = false
     },
 
     handleRemove(file, fileList) {
@@ -465,8 +457,8 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -474,7 +466,7 @@ export default {
   .el-form-item {
     margin-bottom: 0px !important;
   }
-  
+
 }
 .dialog-footer{
   margin-bottom: 20px;

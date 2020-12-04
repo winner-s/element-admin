@@ -51,7 +51,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -61,7 +61,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -74,8 +74,8 @@ export default {
           zqje: '1000',
           klrq: '2012-02-05',
           zqrq: '2020-12-04',
-          spzt: '未审批',
-        },
+          spzt: '未审批'
+        }
       ],
 
       // 表格
@@ -85,9 +85,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -104,24 +104,24 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'commit',
         type: 'primary',
-        label: '确认',
+        label: '确认'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '退回',
+        label: '退回'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -129,26 +129,26 @@ export default {
         type: 'input',
         label: '存款支取流水号:',
         prop: 'ckzqlsh',
-        placeholder: '存款支取流水号',
+        placeholder: '存款支取流水号'
       },
       {
         type: 'input',
         label: '存款开立流水号:',
         prop: 'ckkllsh',
-        placeholder: '请填写存款开立流水号',
+        placeholder: '请填写存款开立流水号'
       },
 
       {
         type: 'select',
         label: '存款单位编号:',
         prop: 'ckdwbh',
-        placeholder: '请选择存款单位编号',
+        placeholder: '请选择存款单位编号'
       },
       {
         type: 'input',
         label: '存款单位名称:',
         prop: 'ckdwmc',
-        placeholder: '请填写存款单位名称',
+        placeholder: '请填写存款单位名称'
       },
 
       {
@@ -156,15 +156,15 @@ export default {
         label: '存款开立日期 从:',
         prop: 'ckklrqc',
         placeholder: '请选择存款开立日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
         prop: 'ckklrqd',
         placeholder: '请选择存款开立日期',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -174,55 +174,55 @@ export default {
       {
         prop: 'ckzqlsh',
         width: '150',
-        label: '存款支取流水号',
+        label: '存款支取流水号'
       },
       {
         prop: 'ckkllsh',
         width: '150',
-        label: '存款开立流水号',
+        label: '存款开立流水号'
       },
 
       {
         prop: 'ckdwmc',
         width: '',
-        label: '存款单位名称',
+        label: '存款单位名称'
       },
 
       {
         prop: 'nbzh',
         width: '',
-        label: '内部账号 ',
+        label: '内部账号 '
       },
       {
         prop: 'ckqx',
         width: '',
-        label: '存款期限',
+        label: '存款期限'
       },
       {
         prop: 'ckje',
         width: '',
-        label: '存款金额',
+        label: '存款金额'
       },
       {
         prop: 'zqje',
         width: '',
-        label: '支取金额',
+        label: '支取金额'
       },
       {
         prop: 'klrq',
         width: '',
-        label: '开立日期',
+        label: '开立日期'
       },
       {
         prop: 'zqrq',
         width: '',
-        label: '支取日期',
+        label: '支取日期'
       },
       {
         prop: 'spzt',
         width: '',
-        label: '审批状态',
-      },
+        label: '审批状态'
+      }
     ]
     // 按钮
     this.tableBtn = []
@@ -235,20 +235,19 @@ export default {
   methods: {
     // 单击新增按钮
     handleCommit() {
-      if(this.selectChange.length != 0){
-        this.selectChange.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.ckzqlsh==item.ckzqlsh){
-              res.spzt ="已确认"
+      if (this.selectChange.length != 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.ckzqlsh == item.ckzqlsh) {
+              res.spzt = '已确认'
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
     handleSelectionChange(res) {
@@ -274,20 +273,19 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {
-      if(this.selectChange.length != 0){
-        this.selectChange.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.ckzqlsh==item.ckzqlsh){
-              res.spzt ="已退回"
+      if (this.selectChange.length != 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.ckzqlsh == item.ckzqlsh) {
+              res.spzt = '已退回'
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
 
@@ -328,7 +326,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify)
+      const tableDataTwo = JSON.parse(JSON.stringify)
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -374,8 +372,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

@@ -47,8 +47,8 @@ export default {
           formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         legend: {
-          itemHeight:9,
-          icon:'circle',
+          itemHeight: 9,
+          icon: 'circle',
           orient: 'vertical',
           right: '10',
           top: '30',

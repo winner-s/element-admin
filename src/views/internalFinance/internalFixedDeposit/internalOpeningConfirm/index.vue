@@ -64,15 +64,13 @@ export default {
         show: false,
         form: {}
       },
-      list:[
-        
+      list: [
+
       ],
-      
 
       // 表格
       tableData: [
-        
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -110,7 +108,7 @@ export default {
         type: 'primary',
         label: '提交'
       },
-      
+
       {
         prop: 'reset',
         type: '',
@@ -176,7 +174,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      
+
       {
         prop: 'ckkllsh',
         width: '150',
@@ -227,20 +225,20 @@ export default {
         width: '',
         label: '到期续存方式'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -269,7 +267,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -292,7 +290,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -300,7 +298,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false

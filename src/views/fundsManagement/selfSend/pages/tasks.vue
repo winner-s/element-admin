@@ -18,7 +18,7 @@
           :table-data="tableData"
           :table-list-data="tableListData"
           :current-data="currentData"
-          :tableBtn="tableBtn"
+          :table-btn="tableBtn"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleStatus="handleStatus"
@@ -35,13 +35,13 @@ export default {
   name: 'SelfSendTask',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
       searchItem: data.selfSendTask.searchFrom,
       searchData: {
-        nickname: '',
+        nickname: ''
       },
       searchBto: data.selfSendTask.searchBto,
       showAll: false,
@@ -53,15 +53,15 @@ export default {
           clmc: '002',
           zxms: '0 40 10 * * ?',
           rwzt: '停止',
-          yxzt: '未运行',
-        },
+          yxzt: '未运行'
+        }
       ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -75,30 +75,30 @@ export default {
         width: '150',
         type: 'a',
         label: '策略编号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'clmc',
         width: '150',
         label: '策略名称',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'zxms',
         width: '',
-        label: '执行模式',
+        label: '执行模式'
       },
       {
         prop: 'rwzt',
         width: '',
-        label: '任务状态',
+        label: '任务状态'
       },
       {
         prop: 'yxzt',
         width: '',
-        label: '运行状态',
+        label: '运行状态'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -108,7 +108,7 @@ export default {
         type: 'isShow',
         isShowStatus: 'rwzt',
         isShowValue: '停止',
-        handleFn: 'handleStatus',
+        handleFn: 'handleStatus'
       },
       {
         name: '停 止',
@@ -116,8 +116,8 @@ export default {
         type: 'isShow',
         isShowStatus: 'rwzt',
         isShowValue: '激活',
-        handleFn: 'handleStatus',
-      },
+        handleFn: 'handleStatus'
+      }
     ]
   },
   methods: {
@@ -160,7 +160,7 @@ export default {
         this.$confirm('确定激活?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           val.rwzt = '激活'
         })
@@ -168,7 +168,7 @@ export default {
         this.$confirm('确定停止?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           val.rwzt = '停止'
         })
@@ -178,7 +178,7 @@ export default {
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
-    },
-  },
+    }
+  }
 }
 </script>

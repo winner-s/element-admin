@@ -31,7 +31,7 @@
         />
       </div>
     </el-card>
-    
+
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -66,14 +66,13 @@ export default {
         show: false,
         form: {}
       },
-      list:[
-        
+      list: [
+
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -164,7 +163,7 @@ export default {
       {
         prop: 'bbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '版本号'
       },
 
@@ -204,21 +203,21 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '提 交',
         btnType: 'primary',
-        handleFn: 'handleCommit',
+        handleFn: 'handleCommit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
-      
+        handleFn: 'handleDelete'
+      }
+
     ]
-  },           
+  },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     // this.getList();
@@ -268,14 +267,14 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    //提交
-    handleCommit(v){
+    // 提交
+    handleCommit(v) {
       this.$confirm('确定提交?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
-        v.bbzt='已提交'
+        v.bbzt = '已提交'
       })
     },
     // 删除产品
@@ -283,7 +282,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -291,12 +290,12 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.bbh
       this.dialogObj.read = false
       this.dialogObj.show = true
-      
+
       this.dialogObj.title = '编辑账号'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },

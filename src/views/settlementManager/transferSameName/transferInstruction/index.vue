@@ -15,7 +15,7 @@
           @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
-          @handleCommit='handleCommit'
+          @handleCommit="handleCommit"
         />
 
         <Table
@@ -28,17 +28,17 @@
           @handleEdit="handleEdit"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
-           @handleSelectionChange="handleSelectionChange"
+          @handleSelectionChange="handleSelectionChange"
         />
       </div>
     </el-card>
-    
+
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,DJZTLIST,DJZT } from '@u/wordbook'
+import { UNITNOLIST, DJZTLIST, DJZT } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -48,7 +48,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      djztList:DJZTLIST,
+      djztList: DJZTLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -67,12 +67,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[],
-      
+      list: [],
 
       // 表格
       tableData: [
-       
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -81,7 +80,7 @@ export default {
         nickname: '',
         documentNumber: ''
       },
-      selectChange:''
+      selectChange: ''
     }
   },
   // 监听属性 类似于data概念
@@ -212,7 +211,7 @@ export default {
       {
         prop: 'zlzt',
         width: '',
-        label: '指令状态',
+        label: '指令状态'
       },
       {
         prop: 'fkfyhzh',
@@ -265,13 +264,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -281,45 +280,43 @@ export default {
   // 方法集合
   methods: {
     // 过滤
-    djzt(val){
+    djzt(val) {
       return DJZT[val]
     },
-    handleCommit(){
-      if(this.selectChange.length != 0){
-        this.selectChange.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.djbh===item.djbh){
-              res.djzt =2
+    handleCommit() {
+      if (this.selectChange.length != 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.djbh === item.djbh) {
+              res.djzt = 2
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectChange = res
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber === res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -356,7 +353,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -379,7 +376,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -387,7 +384,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = false
@@ -407,7 +404,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

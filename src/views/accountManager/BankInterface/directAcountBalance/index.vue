@@ -36,7 +36,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,ACCOUNTUSAGE ,ACCOUNTUSAGELIST} from '@u/wordbook'
+import { UNITNOLIST, ACCOUNTUSAGE, ACCOUNTUSAGELIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      accountUsageList:ACCOUNTUSAGELIST,
+      accountUsageList: ACCOUNTUSAGELIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -65,56 +65,55 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          zhhm:'11122233344455',
-          zhmc:'一级中心CNY直联账户1',
-          jsye:'100.00',
-          kyye:'101.00',
-          yhfhxx:'',
-          dwmc:'一级中心',
-          zhyt:1,
-          khyh:'中国银行总行',
-          dwbh:'13265',
+          zhhm: '11122233344455',
+          zhmc: '一级中心CNY直联账户1',
+          jsye: '100.00',
+          kyye: '101.00',
+          yhfhxx: '',
+          dwmc: '一级中心',
+          zhyt: 1,
+          khyh: '中国银行总行',
+          dwbh: '13265'
         },
         {
-          zhhm:'18213723593',
-          zhmc:'一级中心CNY直联账户1',
-          jsye:'100.00',
-          kyye:'101.00',
-          yhfhxx:'',
-          dwmc:'一级中心',
-          zhyt:1,
-          khyh:'中国建设银行总行',
-          dwbh:'13265',
-        },{
-          zhhm:'7862346823',
-          zhmc:'一级中心CNY直联账户1',
-          jsye:'100.00',
-          kyye:'101.00',
-          yhfhxx:'',
-          dwmc:'一级中心',
-          zhyt:1,
-          khyh:'中国工商银行总行',
-          dwbh:'546',
-        },{
-          zhhm:'000999888777',
-          zhmc:'一级中心CNY直联账户1',
-          jsye:'100.00',
-          kyye:'101.00',
-          yhfhxx:'',
-          dwmc:'一级中心',
-          zhyt:1,
-          khyh:'中国农业银行总行',
-          dwbh:'1324',
+          zhhm: '18213723593',
+          zhmc: '一级中心CNY直联账户1',
+          jsye: '100.00',
+          kyye: '101.00',
+          yhfhxx: '',
+          dwmc: '一级中心',
+          zhyt: 1,
+          khyh: '中国建设银行总行',
+          dwbh: '13265'
+        },
+        {
+          zhhm: '7862346823',
+          zhmc: '一级中心CNY直联账户1',
+          jsye: '100.00',
+          kyye: '101.00',
+          yhfhxx: '',
+          dwmc: '一级中心',
+          zhyt: 1,
+          khyh: '中国工商银行总行',
+          dwbh: '546'
+        },
+        {
+          zhhm: '000999888777',
+          zhmc: '一级中心CNY直联账户1',
+          jsye: '100.00',
+          kyye: '101.00',
+          yhfhxx: '',
+          dwmc: '一级中心',
+          zhyt: 1,
+          khyh: '中国农业银行总行',
+          dwbh: '1324'
         }
       ],
-      
 
       // 表格
-      tableData: [
-        
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
@@ -207,8 +206,8 @@ export default {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
-        type:'wordbook',
-        wordbookList:this.accountUsage
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'khyh',
@@ -226,7 +225,7 @@ export default {
   // 方法集合
   methods: {
     // 过滤
-    accountUsage(val){
+    accountUsage(val) {
       return ACCOUNTUSAGE[val]
     },
     // 收起
@@ -272,21 +271,17 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
-    
-    
-   
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwmc') {
               if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -294,7 +289,7 @@ export default {
               }
             }
 
-            if (i == 'dwbh') {
+            if (i === 'dwbh') {
               if (item.dwbh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -302,20 +297,18 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.zhhm.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

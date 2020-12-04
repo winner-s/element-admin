@@ -52,7 +52,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10
+        total: 10,
       },
       // 顶部按钮
       searchBto: [],
@@ -62,38 +62,34 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {}
+        form: {},
       },
-      
-      list:[
-        {
-          unitName:'资金云根节点',
-          accountPhone:'410501608080001061',
-          accountName:'王流程分表',
-          currency:1,
-          bankName:1,
-          bankOpenName:'北京银行',
-          lhh:'324180234869',
-          zhzz:1,
-          sfzl:1,
-          zhyt:1,
-          kmh:'1235',
-          ye:1000
 
-        }
-          
+      list: [
+        {
+          unitName: '资金云根节点',
+          accountPhone: '410501608080001061',
+          accountName: '王流程分表',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000,
+        },
       ],
       // 表格
-      tableData: [
-        
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: ''
-      }
+        documentNumber: '',
+      },
     }
   },
   // 监听属性 类似于data概念
@@ -110,13 +106,13 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询'
+        label: '查询',
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置'
-      }
+        label: '重置',
+      },
     ]
     // 搜索
     this.searchItem = [
@@ -125,25 +121,25 @@ export default {
         label: '单位编号:',
         prop: 'unitNo',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList
+        selectList: this.unitNoList,
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'unitName',
-        placeholder: '请填写单位名称'
+        placeholder: '请填写单位名称',
       },
       {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
-        placeholder: '请选择币种'
+        placeholder: '请选择币种',
       },
 
       {
@@ -151,15 +147,14 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
-        show: this.showAll
+        show: this.showAll,
       },
       {
         type: 'input',
         label: '账户名称:',
         prop: 'accountName',
         placeholder: '请填写账户名称',
-        show: this.showAll
-
+        show: this.showAll,
       },
 
       {
@@ -167,14 +162,14 @@ export default {
         label: '账户用途:',
         prop: 'connection',
         placeholder: '请填写账户用途',
-        show: this.showAll
+        show: this.showAll,
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll
-      }
+        show: this.showAll,
+      },
     ]
     //  table表格
     this.tableListData = [
@@ -184,65 +179,65 @@ export default {
         prop: 'unitName',
         width: '',
         label: '单位名称',
-        fixed: 'left'
+        fixed: 'left',
       },
       {
         prop: 'accountPhone',
         width: '150',
         label: '银行账号',
-        type:'a',
-        fixed: 'left'
+        type: 'a',
+        fixed: 'left',
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称'
+        label: '账户名称',
       },
       {
         prop: 'currency',
         width: '',
-        label: '币种'
+        label: '币种',
       },
       {
         prop: 'bankName',
         width: '',
-        label: '银行名称'
+        label: '银行名称',
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称'
+        label: '开户行名称',
       },
       {
         prop: 'lhh',
         width: '',
-        label: '联行号'
+        label: '联行号',
       },
       {
         prop: 'zhzz',
         width: '',
-        label: '账户状态'
+        label: '账户状态',
       },
       {
         prop: 'sfzl',
         width: '',
-        label: '是否直联'
+        label: '是否直联',
       },
       {
         prop: 'zhyt',
         width: '',
-        label: '账户用途'
+        label: '账户用途',
       },
       {
         prop: 'kmh',
         width: '',
-        label: '科目号'
+        label: '科目号',
       },
       {
         prop: 'ye',
         width: '',
-        label: '余额(元)'
-      }
+        label: '余额(元)',
+      },
     ]
     // 按钮
     this.tableBtn = []
@@ -273,7 +268,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -295,8 +290,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-   
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -316,12 +310,12 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this,tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this, tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -329,7 +323,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -337,7 +331,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -345,7 +339,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -356,14 +350,14 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
       console.log(list)
       this_.tableData = list
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped></style>

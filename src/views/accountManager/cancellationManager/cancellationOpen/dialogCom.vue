@@ -40,7 +40,7 @@
               v-model="form.dwmc"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -58,8 +58,7 @@
               :disabled="true"
               style="width: 200px"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -76,8 +75,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -98,8 +96,7 @@
                 :key="item.id"
                 :label="item.yhzh"
                 :value="item.yhzh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -123,7 +120,7 @@
               v-model="form.yhmc"
               placeholder="请选择"
               size="mini"
-              :disabled='true'
+              :disabled="true"
               style="width: 200px"
             >
               <el-option
@@ -131,8 +128,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -213,8 +209,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -232,8 +227,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -327,7 +321,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import { CURRENCYLIST, ACCOUNTUSAGELIST, DIRECTLIST,BACKLIST } from '@u/wordbook'
+import { CURRENCYLIST, ACCOUNTUSAGELIST, DIRECTLIST, BACKLIST } from '@u/wordbook'
 
 export default {
   components: {},
@@ -336,27 +330,27 @@ export default {
   data() {
     // 这里存放数据
     return {
-      backList:BACKLIST,
+      backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
       placeholderTips: placeholderTips,
-      rules:{
-        djbh:[
-          { required: true, message: '请填写单据编号', trigger: 'blur' },
+      rules: {
+        djbh: [
+          { required: true, message: '请填写单据编号', trigger: 'blur' }
         ],
-        dwmc:[
-          { required: true, message: '请填写单位名称', trigger: 'blur' },
+        dwmc: [
+          { required: true, message: '请填写单位名称', trigger: 'blur' }
         ],
-        xhrq:[
-          { required: true, message: '请填写销户日期', trigger: 'blur' },
+        xhrq: [
+          { required: true, message: '请填写销户日期', trigger: 'blur' }
         ],
-        yhzh:[
-          { required: true, message: '请填写银行账号', trigger: 'blur' },
+        yhzh: [
+          { required: true, message: '请填写银行账号', trigger: 'blur' }
         ],
-        bzhu:[
-          { required: true, message: '请填写备注', trigger: 'blur' },
-        ],
+        bzhu: [
+          { required: true, message: '请填写备注', trigger: 'blur' }
+        ]
       },
       yhzhList: [
         {
@@ -370,8 +364,8 @@ export default {
           khhmc: '北京分行',
           lhh: '1233211234567',
           zhyt: 1,
-          sfzl: 1,
-        },
+          sfzl: 1
+        }
       ],
       form: {
         djbh: '',
@@ -391,8 +385,8 @@ export default {
         xhsqr: '',
         khjl: '',
         khjldh: '',
-        bzhu: '',
-      },
+        bzhu: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -403,7 +397,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -411,12 +405,12 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    yhzhChange(res){
-      this.yhzhList.forEach((item,index)=>{
-        if(item.yhzh==res){
+    yhzhChange(res) {
+      this.yhzhList.forEach((item, index) => {
+        if (item.yhzh == res) {
           Object.keys(item).forEach((val) => {
-          this.form[val] = item[val]
-        })
+            this.form[val] = item[val]
+          })
         }
       })
     },
@@ -442,7 +436,7 @@ export default {
             this.updateSub()
           } else {
             this.form.djzt = 1
-            
+
             this.addSub()
           }
         }
@@ -455,8 +449,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

@@ -30,7 +30,7 @@
               v-model="form.jyrlxtbh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -45,7 +45,7 @@
               v-model="form.jyrlxtmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -98,17 +98,17 @@ export default {
     return {
       placeholderTips: placeholderTips,
       form: {
-        jyrlxtbh:'',
-        jyrlxtmc:'',
-        bz:''
+        jyrlxtbh: '',
+        jyrlxtmc: '',
+        bz: ''
       },
-      rules:{
+      rules: {
         jyrlxtbh: [
-          { required: true, message: '请填写交易认领系统编号', trigger: 'blur' },
+          { required: true, message: '请填写交易认领系统编号', trigger: 'blur' }
         ],
         jyrlxtmc: [
-          { required: true, message: '请填写交易认领系统名称', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写交易认领系统名称', trigger: 'blur' }
+        ]
       }
     }
   },
@@ -116,9 +116,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -128,17 +128,15 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
         this.form.khrq = '2020-10-10'
         this.form.documentNumber = 'KH20091410151601'
         this.form.openTime = new Date()
@@ -147,25 +145,24 @@ export default {
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.status=1
+            this.form.status = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

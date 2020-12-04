@@ -44,8 +44,7 @@
                 :key="item.ysnd"
                 :label="item.ysnd"
                 :value="item.ysnd"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -65,8 +64,7 @@
                 :key="item.txmc"
                 :label="item.txmc"
                 :value="item.txmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -83,8 +81,7 @@
                 :key="item.zqmc"
                 :label="item.zqmc"
                 :value="item.zqmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -100,8 +97,7 @@
               style="width: 200px"
               size="mini"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -113,8 +109,7 @@
               style="width: 200px"
               size="mini"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -176,12 +171,10 @@
         default-expand-all
         :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
       >
-        <el-table-column prop="xm" label="项目" sortable width="250">
-        </el-table-column>
-        <el-table-column prop="ysje" label="预算金额" sortable width="180">
-        </el-table-column>
-        <el-table-column prop="ysyje" label="已使用金额"> </el-table-column>
-        <el-table-column prop="syje" label="剩余金额"> </el-table-column>
+        <el-table-column prop="xm" label="项目" sortable width="250" />
+        <el-table-column prop="ysje" label="预算金额" sortable width="180" />
+        <el-table-column prop="ysyje" label="已使用金额" />
+        <el-table-column prop="syje" label="剩余金额" />
       </el-table>
     </el-form>
 
@@ -210,7 +203,7 @@ export default {
           xm: '期初金额',
           ysje: '0.00',
           ysyje: '0.00',
-          syje: '0.00',
+          syje: '0.00'
         },
         {
           id: 2,
@@ -224,23 +217,23 @@ export default {
               xm: '销售商品、提供劳务收到的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '收回前期款项',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 33,
               xm: '收到的税费返还',
               ysje: '11.00',
               ysyje: '0.00',
-              syje: '11.00',
-            },
-          ],
+              syje: '11.00'
+            }
+          ]
         },
         {
           id: 3,
@@ -254,129 +247,129 @@ export default {
               xm: '购买材料、商品及接受劳务支付的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '发放职工薪酬及缴纳保险支付现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '支付的相关税费',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '六项费用日常支出所需现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '拨付所属资金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '购置固定资产支付的现金',
               ysje: '11.00',
               ysyje: '0.00',
-              syje: '11.00',
+              syje: '11.00'
             },
             {
               id: 32,
               xm: '购置无形资产及其他资产支付的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '对外投资支付的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '偿还已有借款支付的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
+              syje: '0.00'
             },
             {
               id: 32,
               xm: '偿还已有借款利息支付的现金',
               ysje: '0.00',
               ysyje: '0.00',
-              syje: '0.00',
-            },
-          ],
-        },
+              syje: '0.00'
+            }
+          ]
+        }
       ],
       yszqList: [
         {
           zqbh: '2020027',
           zqmc: 'test',
-          zqlx: '年',
+          zqlx: '年'
         },
         {
           zqbh: '2020029',
           zqmc: 'ABCDEFG',
-          zqlx: '月',
-        },
+          zqlx: '月'
+        }
       ],
       ystsList: [
         {
           txbh: '2020001',
-          txmc: '2020',
+          txmc: '2020'
         },
         {
           txbh: '2020006',
-          txmc: '测试1',
+          txmc: '测试1'
         },
         {
           txbh: '2020008',
-          txmc: '测试2',
+          txmc: '测试2'
         },
         {
           txbh: '2020014',
-          txmc: '测试3',
-        },
+          txmc: '测试3'
+        }
       ],
       ysndList: [
         {
-          ysnd: '2017',
+          ysnd: '2017'
         },
         {
-          ysnd: '2018',
+          ysnd: '2018'
         },
         {
-          ysnd: '2019',
+          ysnd: '2019'
         },
         {
-          ysnd: '2020',
+          ysnd: '2020'
         },
         {
-          ysnd: '2021',
+          ysnd: '2021'
         },
         {
-          ysnd: '2022',
+          ysnd: '2022'
         },
         {
-          ysnd: '2023',
+          ysnd: '2023'
         },
         {
-          ysnd: '2024',
-        },
+          ysnd: '2024'
+        }
       ],
       rules: {
         bbh: [{ required: true, message: '请输入版本号', trigger: 'blur' }],
@@ -384,11 +377,11 @@ export default {
         ystx: [{ required: true, message: '请选择预算体系', trigger: 'blur' }],
         yszq: [{ required: true, message: '请选择预算周期', trigger: 'blur' }],
         ysksrq: [
-          { required: true, message: '请选择预算开始日期', trigger: 'blur' },
+          { required: true, message: '请选择预算开始日期', trigger: 'blur' }
         ],
         ysjsrq: [
-          { required: true, message: '请选择预算结束日期', trigger: 'blur' },
-        ],
+          { required: true, message: '请选择预算结束日期', trigger: 'blur' }
+        ]
       },
       form: {
         bbh: '',
@@ -399,8 +392,8 @@ export default {
         jsrq: '',
         ysbzdw: '二级单位',
         ysms: '',
-        bbzt: '保存',
-      },
+        bbzt: '保存'
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -411,7 +404,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -457,8 +450,8 @@ export default {
       this.form.bzr = 'admin'
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

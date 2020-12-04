@@ -36,8 +36,7 @@
                 :key="item.id"
                 :label="item.htlsh"
                 :value="item.htlsh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -69,8 +68,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -113,8 +111,7 @@
               :disabled="true"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -127,8 +124,7 @@
               :disabled="true"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -183,8 +179,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -205,8 +200,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -242,8 +236,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -261,8 +254,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -313,8 +305,7 @@
               style="width: 200px"
               size="mini"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -373,7 +364,7 @@ import {
   JXFSLIST,
   FXFSLIST,
   HBFSLIST,
-  CURRENCYLIST,
+  CURRENCYLIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -407,11 +398,11 @@ export default {
         bz: '',
         htqdlltz: '',
         lltzsxr: '',
-        tzsm: '',
+        tzsm: ''
       },
       rules: {
         htlsh: [
-          { required: true, message: '请填写合同流水号', trigger: 'blur' },
+          { required: true, message: '请填写合同流水号', trigger: 'blur' }
         ],
         htmc: [{ required: true, message: '请填写合同名称', trigger: 'blur' }],
         jkbz: [{ required: true, message: '请填写借款币种', trigger: 'blur' }],
@@ -422,17 +413,17 @@ export default {
         jkje: [{ required: true, message: '请填写借款金额', trigger: 'blur' }],
         jkqx: [{ required: true, message: '请填写借款期限', trigger: 'blur' }],
         llzhts: [
-          { required: true, message: '请填写利率转换天数', trigger: 'blur' },
+          { required: true, message: '请填写利率转换天数', trigger: 'blur' }
         ],
         jxfs: [{ required: true, message: '请填写计息方式', trigger: 'blur' }],
         fxfs: [{ required: true, message: '请填写付息方式', trigger: 'blur' }],
         hbfs: [{ required: true, message: '请填写还本方式', trigger: 'blur' }],
         htqdlltz: [
-          { required: true, message: '请填写合同签订利率', trigger: 'blur' },
+          { required: true, message: '请填写合同签订利率', trigger: 'blur' }
         ],
         lltzsxr: [
-          { required: true, message: '请填写利率调整生效日', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写利率调整生效日', trigger: 'blur' }
+        ]
       },
       htlshList: [
         {
@@ -451,9 +442,9 @@ export default {
           htqdll: '5.0',
           fxfs: 1,
           hbfs: 1,
-          bz: '',
-        },
-      ],
+          bz: ''
+        }
+      ]
     }
   },
   // 监听属性 类似于data概念
@@ -464,7 +455,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -511,8 +502,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

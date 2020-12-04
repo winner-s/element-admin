@@ -47,7 +47,7 @@ import {
   HTZTLIST,
   HTZT,
   CURRENCY,
-  CURRENCYLIST,
+  CURRENCYLIST
 } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
@@ -67,14 +67,14 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -84,12 +84,12 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
           childerList: [
-            
+
           ],
           htbh: 'JK1282358',
           htmc: '123',
@@ -109,8 +109,8 @@ export default {
           hbfs: 1,
           bz: '',
           htzt: 1,
-          djzt: 3,
-        },
+          djzt: 3
+        }
       ],
 
       // 表格
@@ -120,8 +120,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -138,18 +138,18 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -157,41 +157,41 @@ export default {
         type: 'input',
         label: '合同编号:',
         prop: 'htbh',
-        placeholder: '请填写合同编号',
+        placeholder: '请填写合同编号'
       },
       {
         type: 'select',
         label: '单据状态:',
         prop: 'djzt',
         selectList: this.djztList,
-        placeholder: '请选择单据状态',
+        placeholder: '请选择单据状态'
       },
 
       {
         type: 'select',
         label: '债权人:',
         prop: 'zrq',
-        placeholder: '请选择债权人',
+        placeholder: '请选择债权人'
       },
       {
         type: 'select',
         label: '债务人:',
         prop: 'zwr',
-        placeholder: '请选择债务人',
+        placeholder: '请选择债务人'
       },
       {
         type: 'input',
         label: '借款金额 由:',
         prop: 'jkjey',
         placeholder: '请输入贷款金额',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '到:',
         prop: 'jkjed',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -200,72 +200,72 @@ export default {
       {
         prop: 'htbh',
         width: '',
-        type:'a',
-        label: '合同编号',
+        type: 'a',
+        label: '合同编号'
       },
       {
         prop: 'htmc',
         width: '',
-        label: '合同名称',
+        label: '合同名称'
       },
 
       {
         prop: 'zqr',
         width: '',
-        label: '债权人 ',
+        label: '债权人 '
       },
 
       {
         prop: 'zwr',
         width: '',
-        label: '债务人',
+        label: '债务人'
       },
       {
         prop: 'dkbz',
         width: '',
         label: '贷款币种',
         type: 'wordbook',
-        wordbookList: this.currency,
+        wordbookList: this.currency
       },
       {
         prop: 'jkje',
         width: '',
-        label: '借款金额 ',
+        label: '借款金额 '
       },
       {
         prop: 'htqdll',
         width: '',
-        label: '合同签订利率',
+        label: '合同签订利率'
       },
       {
         prop: 'ksrq',
         width: '',
-        label: '开始日期',
+        label: '开始日期'
       },
       {
         prop: 'jsrq',
         width: '',
-        label: '结束日期',
+        label: '结束日期'
       },
       {
         prop: 'htzt',
         width: '',
         label: '合同状态',
         type: 'wordbook',
-        wordbookList: this.htzt,
+        wordbookList: this.htzt
       },
       {
         prop: 'djzt',
         width: '',
         label: '单据状态',
         type: 'wordbook',
-        wordbookList: this.djzt,
-      },
-      
+        wordbookList: this.djzt
+      }
+
     ]
     // 按钮
     this.tableBtn = [
-      
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -283,7 +283,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach((item) => {
         if (res[item]) {
           fore[item] = res[item]
@@ -299,7 +299,7 @@ export default {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
     },
-    //过滤
+    // 过滤
     currency(val) {
       return CURRENCY[val]
     },
@@ -334,7 +334,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -357,7 +357,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -385,7 +385,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -447,8 +447,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

@@ -33,14 +33,14 @@ export default {
   name: 'Summary',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
       searchItem: [],
       searchData: {
-        cxrqks:'2020-11-01',
-        cxrqjs:'2020-11-16'
+        cxrqks: '2020-11-01',
+        cxrqjs: '2020-11-16'
       },
       searchBto: [],
       tableData: [],
@@ -48,7 +48,7 @@ export default {
       list: [
         {
           id: 1,
-          dwbh:123,
+          dwbh: 123,
           sjdw: '上级单位',
           zzmc: '组织名称',
           yhzh: '222',
@@ -61,11 +61,11 @@ export default {
           zy: 'gggg',
           sffx: '贷',
           jyje: '1200',
-          yhmc: '建行',
+          yhmc: '建行'
         },
         {
           id: 2,
-          dwbh:'321',
+          dwbh: '321',
           sjdw: '上级单位',
           zzmc: '组织名称',
           yhzh: '111',
@@ -78,15 +78,15 @@ export default {
           zy: 'gggg',
           sffx: '借',
           jyje: '2400',
-          yhmc: '建行',
-        },
+          yhmc: '建行'
+        }
       ],
       showAll: 1,
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -98,136 +98,136 @@ export default {
         label: '单位编号:',
         prop: 'dwbh',
         selectList: [
-         
+
           {
             value: '123',
-            id: 123,
-          },
+            id: 123
+          }
         ],
-        placeholder: '请选择单位编号',
+        placeholder: '请选择单位编号'
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'dwmc',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行编号:',
         prop: 'yhbh',
         selectList: [
-          
+
           {
             value: '111',
-            id: 111,
+            id: 111
           },
           {
             value: '222',
-            id: 222,
+            id: 222
           },
           {
             value: '333',
-            id: 333,
+            id: 333
           },
           {
             value: '444',
-            id: 444,
+            id: 444
           }
         ],
-        placeholder: '请选择',
+        placeholder: '请选择'
       },
       {
         type: 'input',
         label: '银行名称:',
         prop: 'yhmc',
-        placeholder: '请填写银行名称',
+        placeholder: '请填写银行名称'
       },
       {
         type: 'select',
         label: '账户号码:',
         selectList: [
-         
+
           {
             value: '20111006',
-            id: 20111006,
+            id: 20111006
           },
           {
             value: '20111007',
-            id: 20111007,
+            id: 20111007
           }
         ],
         prop: 'zhhm',
-        placeholder: '请填写账户号码',
+        placeholder: '请填写账户号码'
       },
       {
         type: 'input',
         label: '账户名称:',
         prop: 'zhmc',
-        placeholder: '请填写账户名称',
+        placeholder: '请填写账户名称'
       },
-      
+
       {
         type: 'input',
         label: '金额开始:',
         prop: 'jeks',
-        placeholder: '请填写金额',
+        placeholder: '请填写金额'
       },
       {
         type: 'input',
         label: '金额结束:',
         prop: 'jejs',
-        placeholder: '请填写金额',
+        placeholder: '请填写金额'
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'bz',
         selectList: [
-         
+
           {
             value: '人民币',
-            id: '人民币',
+            id: '人民币'
           },
           {
             value: '美元',
-            id: '美元',
+            id: '美元'
           },
           {
             value: '越南盾',
-            id: '越南盾',
+            id: '越南盾'
           },
           {
             value: '欧元',
-            id: '欧元',
+            id: '欧元'
           },
           {
             value: '泰国铢',
-            id: '泰国铢',
+            id: '泰国铢'
           },
           {
             value: '加元',
-            id:'加元',
-          },
+            id: '加元'
+          }
         ],
-        placeholder: '请选择币种',
+        placeholder: '请选择币种'
       },
       {
         type: 'select',
         label: '收付方向:',
         prop: 'sffx',
         selectList: [
-         
+
           {
             value: '借',
-            id: '借',
+            id: '借'
           },
           {
             value: '贷',
-            id: '贷',
-          },
+            id: '贷'
+          }
         ],
-        placeholder: '请选择收付方向',
+        placeholder: '请选择收付方向'
       },
       {
         type: 'select',
@@ -236,98 +236,98 @@ export default {
         selectList: [
           {
             value: '是',
-            id: 1,
+            id: 1
           },
           {
             value: '否',
-            id: 0,
-          },
+            id: 0
+          }
         ],
-        placeholder: '请选择',
+        placeholder: '请选择'
       },
       {
         type: 'daterange',
         label: '查询日期:',
-        disabled:true,
+        disabled: true,
         timeList: ['cxrqks', 'cxrqjs'],
         timeFormat: 'yyyy-MM-dd',
         prop: 'cxrq',
-        placeholder: '请选择日期',
-      },
+        placeholder: '请选择日期'
+      }
     ]
     this.searchBto = [
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
-      },
+        label: '查询'
+      }
     ]
     this.tableListData = [
       {
         prop: 'sjdw',
         width: '',
-        label: '上级单位',
+        label: '上级单位'
       },
       {
         prop: 'zzmc',
         width: '',
-        label: '组织名称',
+        label: '组织名称'
       },
       {
         prop: 'yhzh',
         width: '',
-        label: '银行帐号',
+        label: '银行帐号'
       },
       {
         prop: 'dfdw',
         width: '',
-        label: '对方单位',
+        label: '对方单位'
       },
       {
         prop: 'dfzh',
         width: '',
-        label: '对方帐号',
+        label: '对方帐号'
       },
       {
         prop: 'bz',
         width: '',
-        label: '币种',
+        label: '币种'
       },
       {
         prop: 'sryb',
         width: '',
-        label: '收入原币',
+        label: '收入原币'
       },
       {
         prop: 'zcyb',
         width: '',
-        label: '支出原币',
+        label: '支出原币'
       },
       {
         prop: 'ybce',
         width: '',
-        label: '原币差额',
+        label: '原币差额'
       },
       {
         prop: 'zy',
         width: '',
-        label: '摘要',
+        label: '摘要'
       },
       {
         prop: 'sffx',
         width: '',
-        label: '收付方向',
+        label: '收付方向'
       },
       {
         prop: 'jyje',
         width: '',
-        label: '交易金额',
+        label: '交易金额'
       },
       {
         prop: 'yhmc',
         width: '',
-        label: '银行名称',
-      },
+        label: '银行名称'
+      }
     ]
   },
   methods: {
@@ -406,7 +406,7 @@ export default {
             }
 
             if (i == 'jeks') {
-              if (item.jyje >=this.searchData[i]) {
+              if (item.jyje >= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -415,7 +415,7 @@ export default {
             }
 
             if (i == 'jejs') {
-              if (item.jyje <=this.searchData[i]) {
+              if (item.jyje <= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -439,10 +439,6 @@ export default {
                 return
               }
             }
-
-
-
-            
           } else {
             continue
           }
@@ -453,8 +449,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style>

@@ -36,8 +36,7 @@
                 :key="item.id"
                 :label="item.fkdbh"
                 :value="item.fkdbh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -119,8 +118,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -152,8 +150,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -171,8 +168,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -229,8 +225,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -238,7 +233,7 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="应还本金：" prop="yhbj" v-show="form.hklx==2">
+          <el-form-item v-show="form.hklx==2" label="应还本金：" prop="yhbj">
             <el-select
               v-model="form.yhbj"
               placeholder="请选择"
@@ -251,11 +246,10 @@
                 :key="item.id"
                 :label="item.yhlx"
                 :value="item.yhlx"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
-          <el-form-item label="应还利息：" prop="yhlx" v-show="form.hklx==1">
+          <el-form-item v-show="form.hklx==1" label="应还利息：" prop="yhlx">
             <el-select
               v-model="form.yhlx"
               placeholder="请选择"
@@ -268,14 +262,13 @@
                 :key="item.id"
                 :label="item.yhlx"
                 :value="item.yhlx"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
 
-          <el-form-item label="还本金额：" prop="hbje"  v-show="form.hklx==2">
+          <el-form-item v-show="form.hklx==2" label="还本金额：" prop="hbje">
             <el-input
               v-model="form.hbje"
               style="width: 200px"
@@ -284,7 +277,7 @@
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
-          <el-form-item label="付息金额：" prop="fxje"  v-show="form.hklx==1">
+          <el-form-item v-show="form.hklx==1" label="付息金额：" prop="fxje">
             <el-input
               v-model="form.fxje"
               style="width: 200px"
@@ -333,7 +326,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import { FXFSLIST,HBFSLIST,RATETYPELIST,HKLXLIST  } from '@u/wordbook'
+import { FXFSLIST, HBFSLIST, RATETYPELIST, HKLXLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -341,22 +334,22 @@ export default {
   data() {
     // 这里存放数据
     return {
-      fxfsList:FXFSLIST,
-      hbfsList:HBFSLIST,
-      ratetypeList:RATETYPELIST,
-      hklxList:HKLXLIST,
-      yhlxList:[
+      fxfsList: FXFSLIST,
+      hbfsList: HBFSLIST,
+      ratetypeList: RATETYPELIST,
+      hklxList: HKLXLIST,
+      yhlxList: [
         {
-          yhlx:'0.31',
-          hkrq:'2020-01-01',
-         
-          fxje:'0.31'
+          yhlx: '0.31',
+          hkrq: '2020-01-01',
+
+          fxje: '0.31'
         },
         {
-          yhlx:'0.29',
-          hkrq:'2020-01-01',
-         
-          fxje:'0.29'
+          yhlx: '0.29',
+          hkrq: '2020-01-01',
+
+          fxje: '0.29'
         }
       ],
       fkdbhList: [
@@ -364,25 +357,24 @@ export default {
           fkdbh: 'FK2000000000',
           jkhtbh: 'DK2000000000',
           zwrmc: '二级单位1',
-          
+
           fkr: '2020-06-01',
           dqr: '2020-06-30',
           lllx: 1,
-          htzxll:'5.000',
+          htzxll: '5.000',
           hbfs: 1,
           fxfs: 1,
           fkdye: '200.00',
           dxje: '200.00',
-          
-          
+
           hknbzh: '0021001',
-          zhmc: '二级单位1内部账号',
-        },
+          zhmc: '二级单位1内部账号'
+        }
       ],
       placeholderTips: placeholderTips,
       form: {
-        hbje:'',
-        yhbj:'',
+        hbje: '',
+        yhbj: '',
         fkdbh: '',
         jkhtbh: '',
         zwrmc: '',
@@ -400,20 +392,20 @@ export default {
         yhlx: '',
         fxje: '',
         hknbzh: '',
-        zhmc: '',
+        zhmc: ''
       },
       rules: {
         fkdbh: [
-          { required: true, message: '请填写放款单编号', trigger: 'blur' },
+          { required: true, message: '请填写放款单编号', trigger: 'blur' }
         ],
         jkhtbh: [
-          { required: true, message: '请填写借款合同编号', trigger: 'blur' },
+          { required: true, message: '请填写借款合同编号', trigger: 'blur' }
         ],
         zwrmc: [
-          { required: true, message: '请填写债务人名称', trigger: 'blur' },
+          { required: true, message: '请填写债务人名称', trigger: 'blur' }
         ],
         hkdbh: [
-          { required: true, message: '请填写还款单编号', trigger: 'blur' },
+          { required: true, message: '请填写还款单编号', trigger: 'blur' }
         ],
         fkr: [{ required: true, message: '请填写放款日', trigger: 'blur' }],
         dqr: [{ required: true, message: '请填写到期日', trigger: 'blur' }],
@@ -421,16 +413,16 @@ export default {
         hbfs: [{ required: true, message: '请填写还本方式', trigger: 'blur' }],
         fxfs: [{ required: true, message: '请填写付息方式', trigger: 'blur' }],
         fkdye: [
-          { required: true, message: '请填写放款单余额', trigger: 'blur' },
+          { required: true, message: '请填写放款单余额', trigger: 'blur' }
         ],
         hkrq: [{ required: true, message: '请填写还款日期', trigger: 'blur' }],
         hklx: [{ required: true, message: '请填写还款类型', trigger: 'blur' }],
         yhlx: [{ required: true, message: '请填写应还利息', trigger: 'blur' }],
         fxje: [{ required: true, message: '请填写付息金额', trigger: 'blur' }],
         hknbzh: [
-          { required: true, message: '请填写还款内部账号', trigger: 'blur' },
-        ],
-      },
+          { required: true, message: '请填写还款内部账号', trigger: 'blur' }
+        ]
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -441,7 +433,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -449,21 +441,21 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    yhlxChange(val){
-      this.yhlxList.forEach((item,index)=>{
-        if(item.yhlx == val){
+    yhlxChange(val) {
+      this.yhlxList.forEach((item, index) => {
+        if (item.yhlx == val) {
           Object.keys(item).forEach((res) => {
-          this.form[res] = item[res]
-        })
+            this.form[res] = item[res]
+          })
         }
       })
     },
-    fkdbhChange(val){
-      this.fkdbhList.forEach((item,index)=>{
-        if(item.fkdbh == val){
+    fkdbhChange(val) {
+      this.fkdbhList.forEach((item, index) => {
+        if (item.fkdbh == val) {
           Object.keys(item).forEach((res) => {
-          this.form[res] = item[res]
-        })
+            this.form[res] = item[res]
+          })
         }
       })
     },
@@ -476,7 +468,7 @@ export default {
         Object.keys(this.form).forEach((item) => {
           this.form[item] = ''
         })
-        this.form.hklx=1
+        this.form.hklx = 1
         this.form.hkdbh = 'HK2020118097777'
       }
     },
@@ -486,7 +478,7 @@ export default {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.clzt=1
+            this.form.clzt = 1
             this.addSub()
           }
         }
@@ -499,8 +491,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

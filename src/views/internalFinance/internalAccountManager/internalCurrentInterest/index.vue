@@ -51,20 +51,20 @@ export default {
       dwbhList: [
         {
           id: '0813',
-          value: '0813',
-        },
+          value: '0813'
+        }
       ],
       zhbhList: [
         {
           value: '0021001',
           id: '0021001',
-          zhmc: '二级单位1内部账户',
+          zhmc: '二级单位1内部账户'
         },
         {
           value: '0021002',
           id: '0021002',
-          zhmc: '二级单位1内部账户',
-        },
+          zhmc: '二级单位1内部账户'
+        }
       ],
       showAll: 1,
       unitNoList: UNITNOLIST,
@@ -72,7 +72,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -82,7 +82,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -103,10 +103,10 @@ export default {
               jxr: '2019-12-24',
               ye: '999,999,428.89',
               ll: '6.00',
-              lx: '166,666.57',
-            },
-          ],
-        },
+              lx: '166,666.57'
+            }
+          ]
+        }
       ],
 
       // 表格
@@ -116,9 +116,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -135,24 +135,24 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '匡算',
+        label: '匡算'
       },
 
       {
         prop: 'commit',
         type: 'primary',
-        label: '结息',
+        label: '结息'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '取消结息',
+        label: '取消结息'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -161,7 +161,7 @@ export default {
         label: '单位编号:',
         prop: 'dwbh',
         placeholder: '请选择单位编号',
-        selectList: this.dwbhList,
+        selectList: this.dwbhList
       },
       // {
       //   type: 'input',
@@ -174,7 +174,7 @@ export default {
         label: '账户编号:',
         prop: 'zhbh',
         placeholder: '请选择账户编号',
-        selectList: this.zhbhList,
+        selectList: this.zhbhList
       },
       // {
       //   type: 'select',
@@ -186,13 +186,13 @@ export default {
         type: 'time',
         label: '匡算结束日期:',
         prop: 'ksjsrq',
-        placeholder: '请选择匡算结束日期',
+        placeholder: '请选择匡算结束日期'
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
-        prop: 'openApplicant',
-      },
+        prop: 'openApplicant'
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -201,59 +201,59 @@ export default {
       {
         prop: 'dwmc',
         width: '',
-        label: '单位名称',
+        label: '单位名称'
       },
       {
         prop: 'zhbh',
         width: '',
-        label: '账户编号',
+        label: '账户编号'
       },
       {
         prop: 'zhmc',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'ksksr',
         width: '',
-        label: '匡算开始日',
+        label: '匡算开始日'
       },
       {
         prop: 'ksjsr',
         width: '',
-        label: '匡算结束日',
+        label: '匡算结束日'
       },
       {
         prop: 'jxts',
         width: '',
-        label: '计息天数',
+        label: '计息天数'
       },
       {
         prop: 'jxye',
         width: '',
-        label: '计息余额(元)',
+        label: '计息余额(元)'
       },
       {
         prop: 'ksrye',
         width: '',
-        label: '开始日余额(元)',
+        label: '开始日余额(元)'
       },
       {
         prop: 'jsrye',
         width: '',
-        label: '结束日余额(元)',
+        label: '结束日余额(元)'
       },
       {
         prop: 'lljhmc',
         width: '',
-        label: '利率计划名称',
+        label: '利率计划名称'
       },
       {
         prop: 'lx',
         width: '',
         type: 'a',
-        label: '利息(元)',
-      },
+        label: '利息(元)'
+      }
     ]
     // 按钮
     this.tableBtn = []
@@ -264,52 +264,50 @@ export default {
   },
   // 方法集合
   methods: {
-    //table 复选框
+    // table 复选框
     handleSelectionChange(res) {
       this.selectChange = res
     },
-    //取消结息
-    handleInsert(){
-        this.selectChange.forEach((item, index) => {
+    // 取消结息
+    handleInsert() {
+      this.selectChange.forEach((item, index) => {
         this.list.forEach((res, index) => {
           if (res.zhbh == item.zhbh) {
             if (res.jx == false) {
-              this.$confirm('编号：'+res.zhbh+'没有结息记录，无法取消结息', '提示', {
+              this.$confirm('编号：' + res.zhbh + '没有结息记录，无法取消结息', '提示', {
                 confirmButtonText: '确定',
-                showCancelButton:false,
-                type: 'warning',
+                showCancelButton: false,
+                type: 'warning'
               })
-                
             } else {
               res.jx = false
-              this.$confirm('编号：'+res.zhbh+'取消结息成功', '提示', {
+              this.$confirm('编号：' + res.zhbh + '取消结息成功', '提示', {
                 confirmButtonText: '确定',
-                showCancelButton:false,
-                type: 'warning',
+                showCancelButton: false,
+                type: 'warning'
               })
             }
           }
         })
       })
     },
-    //点击结息
+    // 点击结息
     handleCommit() {
       this.selectChange.forEach((item, index) => {
         this.list.forEach((res, index) => {
           if (res.zhbh == item.zhbh) {
             if (res.jx == true) {
-              this.$confirm('编号：'+res.zhbh+'在该期限内已结息', '提示', {
+              this.$confirm('编号：' + res.zhbh + '在该期限内已结息', '提示', {
                 confirmButtonText: '确定',
-                showCancelButton:false,
-                type: 'warning',
+                showCancelButton: false,
+                type: 'warning'
               })
-                
             } else {
               res.jx = true
-              this.$confirm('编号：'+res.zhbh+'结息成功', '提示', {
+              this.$confirm('编号：' + res.zhbh + '结息成功', '提示', {
                 confirmButtonText: '确定',
-                showCancelButton:false,
-                type: 'warning',
+                showCancelButton: false,
+                type: 'warning'
               })
             }
           }
@@ -367,7 +365,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -405,8 +403,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

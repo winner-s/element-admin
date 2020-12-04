@@ -64,12 +64,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[],
-     
+      list: [],
 
       // 表格
       tableData: [
-       
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -96,7 +95,7 @@ export default {
         type: 'primary',
         label: '查询'
       },
-      
+
       {
         prop: 'reset',
         type: '',
@@ -319,7 +318,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

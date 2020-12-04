@@ -3,18 +3,16 @@
     <el-card>
       <div slot="header">
         <span>手动资金归集</span>
-      </div>  
-      <div>
-        
       </div>
+      <div />
       <Table
-            :table-data="tableData"
-            :table-list-data="tableListData"
-            :current-data="currentData"
-            @onPageChange="onPageChange"
-            @onSizeChange="onSizeChange"
-            @tableClick="tableClick"
-          />
+        :table-data="tableData"
+        :table-list-data="tableListData"
+        :current-data="currentData"
+        @onPageChange="onPageChange"
+        @onSizeChange="onSizeChange"
+        @tableClick="tableClick"
+      />
     </el-card>
     <dialog-com :dialog-obj="dialogObj" />
   </div>
@@ -31,8 +29,7 @@ export default {
   },
   data() {
     return {
-      
-       
+
       // 弹出框
       dialogObj: {
         id: '',
@@ -45,21 +42,21 @@ export default {
       tableListData: [],
       list: [
         {
-          clbh:'ZJGJ20072011081832',
-          clmc:'11',
-          clms:'资金上划',
-          sjdwbh:'002',
-          sjdwmc:'二级单位1',
-          sjyhzh:'2222334455667700',
-          sjzhmc:'二级单位1CNY直联账户1',
-          childerList:[
+          clbh: 'ZJGJ20072011081832',
+          clmc: '11',
+          clms: '资金上划',
+          sjdwbh: '002',
+          sjdwmc: '二级单位1',
+          sjyhzh: '2222334455667700',
+          sjzhmc: '二级单位1CNY直联账户1',
+          childerList: [
             {
-              dwmc:'二级单位1',
-              yhzh:'11111111111111111111',
-              zhmc:'二级单位1CNY直联账户1',
-              yhlx:'中国银行',
-              zhye:'0.00',
-              gjje:'0.00'
+              dwmc: '二级单位1',
+              yhzh: '11111111111111111111',
+              zhmc: '二级单位1CNY直联账户1',
+              yhlx: '中国银行',
+              zhye: '0.00',
+              gjje: '0.00'
             }
           ]
         }
@@ -68,32 +65,31 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
+        total: 0
       }
-      
+
     }
   },
   created() {
     this.getList()
-     //  table表格
+    //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
+
       {
         prop: 'clbh',
-       
+
         label: '策略编号',
         fixed: 'left'
-      },{
+      }, {
         prop: 'clmc',
         label: '策略名称',
         fixed: 'left'
       }
     ]
-    
   },
   methods: {
-    tableClick(res){
+    tableClick(res) {
       console.log(res)
       this.dialogObj.id = res.clbh
       this.dialogObj.read = false
@@ -116,12 +112,12 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     getList() {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
-    },
-  },
+    }
+  }
 }
 </script>
 

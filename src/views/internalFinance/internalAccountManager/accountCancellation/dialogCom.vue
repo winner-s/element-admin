@@ -61,8 +61,7 @@
                 :key="item.id"
                 :label="item.zhbh"
                 :value="item.zhbh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -119,8 +118,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -138,8 +136,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -180,8 +177,7 @@
               :disabled="true"
               size="mini"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12" />
@@ -245,43 +241,43 @@ export default {
       currencyList: CURRENCYLIST,
       scorllList: SCORLLLIST,
       placeholderTips: placeholderTips,
-      rules:{
-        dwbh:[
-          { required: true, message: '请填写单位编号', trigger: 'blur' },
+      rules: {
+        dwbh: [
+          { required: true, message: '请填写单位编号', trigger: 'blur' }
         ],
-        dwmc:[
-          { required: true, message: '请填写单位名称', trigger: 'blur' },
+        dwmc: [
+          { required: true, message: '请填写单位名称', trigger: 'blur' }
         ],
-        zhbh:[
-          { required: true, message: '请填写账户编号', trigger: 'blur' },
+        zhbh: [
+          { required: true, message: '请填写账户编号', trigger: 'blur' }
         ],
-        zhmc:[
-          { required: true, message: '请填写账户名称', trigger: 'blur' },
+        zhmc: [
+          { required: true, message: '请填写账户名称', trigger: 'blur' }
         ],
-        zhlx:[
-          { required: true, message: '请填写账户类型', trigger: 'blur' },
+        zhlx: [
+          { required: true, message: '请填写账户类型', trigger: 'blur' }
         ],
-        khrq:[
-          { required: true, message: '请填写开户日期', trigger: 'blur' },
+        khrq: [
+          { required: true, message: '请填写开户日期', trigger: 'blur' }
         ],
-        bz:[
-          { required: true, message: '请填写币种', trigger: 'blur' },
+        bz: [
+          { required: true, message: '请填写币种', trigger: 'blur' }
         ],
-        jx:[
-          { required: true, message: '请填写计息', trigger: 'blur' },
+        jx: [
+          { required: true, message: '请填写计息', trigger: 'blur' }
         ],
-        jxksr:[
-          { required: true, message: '请填写计息开始日', trigger: 'blur' },
+        jxksr: [
+          { required: true, message: '请填写计息开始日', trigger: 'blur' }
         ],
-        lljh:[
-          { required: true, message: '请填写利率计划', trigger: 'blur' },
+        lljh: [
+          { required: true, message: '请填写利率计划', trigger: 'blur' }
         ],
-        xhrq:[
-          { required: true, message: '请填写销户日期', trigger: 'blur' },
+        xhrq: [
+          { required: true, message: '请填写销户日期', trigger: 'blur' }
         ],
-        xhsm:[
-          { required: true, message: '请填写销户说明', trigger: 'blur' },
-        ],
+        xhsm: [
+          { required: true, message: '请填写销户说明', trigger: 'blur' }
+        ]
       },
       zhbhList: [
         {
@@ -294,8 +290,8 @@ export default {
           bz: 1,
           jx: 1,
           jxksr: '2019-12-24',
-          lljh: '活期利率计划',
-        },
+          lljh: '活期利率计划'
+        }
       ],
       form: {
         dwbh: '',
@@ -310,8 +306,8 @@ export default {
         lljh: '',
         xhrq: '',
         xhsm: '',
-        bzhu: '',
-      },
+        bzhu: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -322,7 +318,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -379,8 +375,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

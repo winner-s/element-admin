@@ -31,7 +31,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"   @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -66,24 +66,23 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          mbbh:'MB201128140135',
-          mbmc:'2131',
-          mbzt:'停用'
+          mbbh: 'MB201128140135',
+          mbmc: '2131',
+          mbzt: '停用'
         },
         {
-          mbbh:'MB201127111218',
-          mbmc:'2',
-          mbzt:'启用'
+          mbbh: 'MB201127111218',
+          mbmc: '2',
+          mbzt: '启用'
         }
-        
+
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -134,11 +133,11 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'mbbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '模板编号'
       },
 
@@ -155,34 +154,34 @@ export default {
     ]
     // 按钮
     this.tableBtn = [
-       {
+      {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
-      
+
       {
         name: '启 用',
         btnType: 'primary',
-        type:'isShow',
-        isShowValue:'停用',
-        isShowStatus:'mbzt',
-        handleFn: 'handleStatus',
+        type: 'isShow',
+        isShowValue: '停用',
+        isShowStatus: 'mbzt',
+        handleFn: 'handleStatus'
       },
       {
         name: '停用',
         btnType: 'danger',
-        type:'isShow',
-        isShowValue:'启用',
-        isShowStatus:'mbzt',
-        handleFn: 'handleStatus',
+        type: 'isShow',
+        isShowValue: '启用',
+        isShowStatus: 'mbzt',
+        handleFn: 'handleStatus'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
-      
+        handleFn: 'handleDelete'
+      }
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -191,22 +190,21 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.mbbh == res.mbbh){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.mbbh == res.mbbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -242,7 +240,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -265,7 +263,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -280,7 +278,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          v.mbzt ='停用'
+          v.mbzt = '停用'
         })
       } else {
         this.$confirm('此操作将启用该账号?', '提示', {
@@ -288,7 +286,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          v.mbzt='启用'
+          v.mbzt = '启用'
         })
       }
     },
@@ -311,7 +309,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -323,8 +321,6 @@ export default {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }

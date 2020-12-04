@@ -46,7 +46,7 @@ export default {
       searchBto: data.collsectionTask.searchBto,
       showAll: false,
       tableData: [],
-      tableListData:[],
+      tableListData: [],
       list: [
         {
           id: 1,
@@ -114,9 +114,9 @@ export default {
   created() {
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
-    this.tableListData=[
+    this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'number',
         width: '',
@@ -147,47 +147,46 @@ export default {
         width: '',
         label: '运行状态'
       },
-      { label: '操作', type: 'btn', width: '' ,fixed:"right"},
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '激 活',
         btnType: 'primary',
-        type:'isShow',
-        isShowStatus:'taskStatus',
-        isShowValue:'停止',
-        handleFn: 'handleStatus',
+        type: 'isShow',
+        isShowStatus: 'taskStatus',
+        isShowValue: '停止',
+        handleFn: 'handleStatus'
       },
       {
         name: '停 止',
         btnType: 'danger',
-        type:'isShow',
-        isShowStatus:'taskStatus',
-        isShowValue:'激活',
-        handleFn: 'handleStatus',
-      },
+        type: 'isShow',
+        isShowStatus: 'taskStatus',
+        isShowValue: '激活',
+        handleFn: 'handleStatus'
+      }
     ]
   },
   methods: {
-    handleStatus(v){
-      
-      if(v.taskStatus=="停止"){
+    handleStatus(v) {
+      if (v.taskStatus == '停止') {
         this.$confirm('确定停止?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
-          v.taskStatus ="激活"
-        })  
-      }else if(v.taskStatus =='激活'){
-           this.$confirm('确定停止激活', '提示', {
+          v.taskStatus = '激活'
+        })
+      } else if (v.taskStatus == '激活') {
+        this.$confirm('确定停止激活', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
-          v.taskStatus ="停止"
-        })  
+          v.taskStatus = '停止'
+        })
       }
     },
     // 收起
@@ -237,10 +236,9 @@ export default {
       this.dialogObj.title = '查看'
       this.dialogObj.form = row
     },
-    
-   
+
     getList() {
-      
+
     }
   }
 }

@@ -28,7 +28,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"/>
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 
@@ -40,7 +40,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -62,23 +62,23 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          bbh:'BZ0813202010101434564',
-          ystx:'2020',
-          zqmc:'月',
-          ysbzdw:'0813001',
-          ksrq:'2019-01-01',
-          jsrq:'2019-01-31',
-          bzr:'admin',
-          bbzt:'保存',
-          ysnd:'2017',
+          bbh: 'BZ0813202010101434564',
+          ystx: '2020',
+          zqmc: '月',
+          ysbzdw: '0813001',
+          ksrq: '2019-01-01',
+          jsrq: '2019-01-31',
+          bzr: 'admin',
+          bbzt: '保存',
+          ysnd: '2017'
         }
       ],
-      
+
       // 表格
       tableData: [
-       
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -177,7 +177,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'bbh',
         width: '150',
@@ -220,15 +220,15 @@ export default {
         width: '',
         label: '版本状态'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '查 看',
         btnType: 'primary',
-        handleFn: 'handleSelect',
-      },
+        handleFn: 'handleSelect'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -257,7 +257,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -280,7 +280,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleSelect(row) {
       this.dialogObj.id = row.bbh
       this.dialogObj.read = true
@@ -343,9 +343,8 @@ export default {
               }
             }
 
-
             if (i == 'ysksrq') {
-              if (Date.parse( item.ysksrq)>=Date.parse( this.searchData[i])) {
+              if (Date.parse(item.ysksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -353,7 +352,7 @@ export default {
             }
 
             if (i == 'ysjsrq') {
-              if (Date.parse( item.ysjsrq)<=Date.parse( this.searchData[i])) {
+              if (Date.parse(item.ysjsrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

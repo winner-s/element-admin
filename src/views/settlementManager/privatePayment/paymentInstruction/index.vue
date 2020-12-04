@@ -64,23 +64,23 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          djbh:'5840367419082358',
-          zlcjsj:'2020-11-01',
-          zlzt:'已发送',
-          ffzh:'4259315714566',
-          ffhm:'张三',
-          fkfyh:'中国银行',
-          je:'100',
-          sfzh:'94247891275',
-          sfhm:'李四',
-          yhfhxx:'nice'
+          djbh: '5840367419082358',
+          zlcjsj: '2020-11-01',
+          zlzt: '已发送',
+          ffzh: '4259315714566',
+          ffhm: '张三',
+          fkfyh: '中国银行',
+          je: '100',
+          sfzh: '94247891275',
+          sfhm: '李四',
+          yhfhxx: 'nice'
         }
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -279,7 +279,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -301,7 +301,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false

@@ -16,7 +16,7 @@
           <el-form-item
             v-if="
               (item.type === 'input' || '') &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
             :key="item.prop"
             :label="item.label"
@@ -34,27 +34,27 @@
             :key="index"
             :label="item.label"
           >
-            
-              <el-input
-                v-model="searchData[item.numList[0]]"
-                style="width: 120px"
-                :placeholder="item.placeholder"
-              />
-            
+
+            <el-input
+              v-model="searchData[item.numList[0]]"
+              style="width: 120px"
+              :placeholder="item.placeholder"
+            />
+
             <span class="ml-5">-</span>
-            
-              <el-input
-                v-model="searchData[item.numList[1]]"
-                style="width: 120px"
-                :placeholder="item.placeholder"
-              />
-            
+
+            <el-input
+              v-model="searchData[item.numList[1]]"
+              style="width: 120px"
+              :placeholder="item.placeholder"
+            />
+
           </el-form-item>
 
           <el-form-item
             v-if="
               (item.type === 'checkbox' || '') &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
             :key="item.prop"
             :label="item.label"
@@ -98,7 +98,7 @@
             <el-date-picker
               v-model="searchData[item.prop]"
               type="date"
-              
+
               :format="item.timeFormat"
               :value-format="item.timeFormat"
               placeholder="选择日期"
@@ -108,7 +108,7 @@
           <el-form-item
             v-if="
               item.type === 'daterange' &&
-              (item.show || item.show === undefined)
+                (item.show || item.show === undefined)
             "
             :key="index"
             :label="item.label"
@@ -225,25 +225,25 @@ export default {
   props: {
     searchData: {
       type: Object,
-      required: true,
+      required: true
     },
     searchItem: {
       type: Array,
-      required: true,
+      required: true
     },
     searchBto: {
       type: Array,
-      required: true,
+      required: true
     },
     showAll: {
       type: Boolean,
-      required: true,
+      required: true
     },
     width: {
       type: String,
       default: '250px',
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
@@ -253,7 +253,7 @@ export default {
       pickerOptions: {
         disabledDate: (time) => {
           return time.getTime() > Date.now()
-        },
+        }
       },
       // 第一个日期限制第二个日期
       pickerOptions0: {
@@ -266,7 +266,7 @@ export default {
           } else {
             return time.getTime() > Date.now()
           }
-        },
+        }
       },
       pickerOptions1: {
         disabledDate: (time) => {
@@ -274,16 +274,16 @@ export default {
             time.getTime() < new Date(this.value1) - 24 * 60 * 60 * 1000 || // 减去一天 可前后时间相等
             time.getTime() > Date.now()
           )
-        },
-      },
+        }
+      }
     }
   },
   mounted() {},
   methods: {
-    handleStart(){
+    handleStart() {
       this.$emit('handleStart')
     },
-    handleStop(){
+    handleStop() {
       this.$emit('handleStop')
     },
     // 收起
@@ -303,7 +303,7 @@ export default {
     handleClick(row, fn) {
       return this.$parent[fn](row)
     },
-    handleCommit(){
+    handleCommit() {
       this.$emit('handleCommit')
     },
     handleSearch() {
@@ -322,8 +322,8 @@ export default {
       } else if (i == 2) {
         this.value2 = val
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped>

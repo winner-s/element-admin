@@ -20,7 +20,7 @@
       class="form"
     >
 
-    <el-row>
+      <el-row>
         <el-col :span="12">
           <el-form-item
             label="存款到期日："
@@ -28,27 +28,24 @@
             class="formItem"
           >
             <el-date-picker
-              style="width: 200px"
               v-model="form.ckdqr"
+              style="width: 200px"
               type="date"
               placeholder="请选择存款到期日"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="匡算日期：" prop="ksrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.ksrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择匡算日期"
               size="mini"
-             
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -98,8 +95,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -181,14 +177,13 @@
         <el-col :span="12">
           <el-form-item label="确认日期：" prop="qrrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.qrrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择确认日期"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -219,8 +214,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -241,8 +235,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -267,13 +260,12 @@
         </el-col>
       </el-row>
 
-      
     </el-form>
 
-    <div  class="dialog-footer">
+    <div class="dialog-footer">
       <el-button type="primary" @click="sub">匡算</el-button>
       <el-button @click="dialogObj.show = false">取 消</el-button>
-     
+
     </div>
     <dialog-com :dialog-obj="dialogObjs" />
   </el-dialog>
@@ -286,7 +278,7 @@ import { placeholderTips } from '@u/validate'
 import dialogCom from './dialogComs'
 import { DEPOSITTERMLIST, LLZHTSLIST, DQXCFSLIST } from '@u/wordbook'
 export default {
-  components: {dialogCom},
+  components: { dialogCom },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
@@ -298,17 +290,17 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       depositTermList: DEPOSITTERMLIST,
       llzhtsList: LLZHTSLIST,
       dqxcfsList: DQXCFSLIST,
       placeholderTips: placeholderTips,
-      
+
       form: {
-        ckdqr:'',
-        ksrq:'',
-        qrrq:'',
+        ckdqr: '',
+        ksrq: '',
+        qrrq: '',
         ckkllsh: '',
         ckll: '',
         ckqx: '',
@@ -327,7 +319,7 @@ export default {
         zqje: '',
         ckzqrq: '',
         bzer: '',
-        childerList:[]
+        childerList: []
       }
     }
   },
@@ -374,8 +366,8 @@ export default {
       this.dialogObjs.show = true
       this.dialogObjs.title = '匡算'
       this.dialogObjs.form = JSON.parse(JSON.stringify(this.form))
-    },
-    
+    }
+
   }
 }
 </script>

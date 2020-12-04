@@ -14,7 +14,7 @@
       :model="form"
       label-width="140px"
       label-position="left"
-      
+
       :disabled="dialogObj.read"
       status-icon
       class="form"
@@ -41,14 +41,13 @@
         <el-col :span="12">
           <el-form-item label="单据日期：" prop="djrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.djrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择单据日期"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -67,8 +66,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -92,7 +90,7 @@
               v-model="form.ywlx"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -103,7 +101,7 @@
               v-model="form.hzje"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -125,8 +123,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -136,7 +133,7 @@
               v-model="form.gsmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -150,7 +147,7 @@
               v-model="form.yhbh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -168,8 +165,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -182,7 +178,7 @@
               v-model="form.zhbh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -200,8 +196,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -220,8 +215,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -231,13 +225,13 @@
               v-model="form.qwrq"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <div class="title"><i class="el-icon-user" /> 收款方信息</div>
 
       <el-row>
@@ -367,9 +361,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -406,18 +398,14 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
-     
 
-      
     </el-form>
 
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">返 回</el-button>
-     
+
     </div>
   </el-dialog>
 </template>
@@ -431,7 +419,7 @@ import {
   BACKLIST,
   CURRENCYLIST,
   ACCOUNTUSAGELIST,
-  DIRECTLIST,
+  DIRECTLIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -440,83 +428,76 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
-      
-      
+
       placeholderTips: placeholderTips,
       form: {
-        djbh:'',
-        djrq:'',
-        fkgsbh:'',
-        fkgsmc:'',
-        ywlx:'',
-        hzje:'',
-        gsbh:'',
-        gsmc:'',
-        yhzh:'',
-        yhmc:'',
-        zhbh:'',
-        zhmc:'',
-        zflx:'',
-        qwrq:'',
-        skgsbh:'',
-        skgsmc:'',
-        skyhbh:'',
-        skyhmc:'',
-        skzhbh:'',
-        skzhmc:'',
-        je:'',
-        zy:'',
-        clbh:'',
-        clmc:'',
-        zlzt:'',
-        zlfssj:'',
-        zlcxsj:'',
-        yhfhxx:''
+        djbh: '',
+        djrq: '',
+        fkgsbh: '',
+        fkgsmc: '',
+        ywlx: '',
+        hzje: '',
+        gsbh: '',
+        gsmc: '',
+        yhzh: '',
+        yhmc: '',
+        zhbh: '',
+        zhmc: '',
+        zflx: '',
+        qwrq: '',
+        skgsbh: '',
+        skgsmc: '',
+        skyhbh: '',
+        skyhmc: '',
+        skzhbh: '',
+        skzhmc: '',
+        je: '',
+        zy: '',
+        clbh: '',
+        clmc: '',
+        zlzt: '',
+        zlfssj: '',
+        zlcxsj: '',
+        yhfhxx: ''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
-      directList: DIRECTLIST,
+      directList: DIRECTLIST
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    
+
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
       }
-    },
-    
+    }
 
-   
-   
-  },
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -524,7 +505,7 @@ export default {
   .el-form-item {
     margin-bottom: 0px !important;
   }
-  
+
 }
 
 .title {

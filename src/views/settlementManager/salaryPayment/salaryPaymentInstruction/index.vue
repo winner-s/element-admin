@@ -444,7 +444,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-   
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10

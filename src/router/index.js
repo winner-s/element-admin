@@ -1235,8 +1235,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fundsManagem/sea',
     name: '对账管理',
-    meta: {  icon: '对账管理' },
-    children:[
+    meta: { icon: '对账管理' },
+    children: [
       {
         path: 'sea',
         meta: { title: '对账管理' },
@@ -1245,15 +1245,15 @@ export const constantRoutes = [
       }
     ]
   },
-  
+
   // 操作帮助
   {
     path: '/fa',
     component: Layout,
     redirect: '/fa/s',
     name: '操作帮助',
-    meta: {  icon: '操作帮助' },
-    children:[
+    meta: { icon: '操作帮助' },
+    children: [
       {
         path: 's',
         meta: { title: '操作帮助' },
@@ -1268,8 +1268,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fae/s',
     name: '资金监控',
-    meta: {  icon: '监控' },
-    children:[
+    meta: { icon: '监控' },
+    children: [
       {
         path: 's',
         meta: { title: '资金监控' },
@@ -1284,8 +1284,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fun/set',
     name: '融资管理',
-    meta: {  icon: '形状结合' },
-    children:[
+    meta: { icon: '形状结合' },
+    children: [
       {
         path: 'set',
         meta: { title: '融资管理' },
@@ -1300,8 +1300,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/fund/colle',
     name: '投资管理',
-    meta: {  icon: '投资管理' },
-    children:[
+    meta: { icon: '投资管理' },
+    children: [
       {
         path: 'colle',
         meta: { title: '投资管理' },
@@ -1316,8 +1316,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/ma/tion',
     name: '票据管理',
-    meta: {  icon: '票据' },
-    children:[
+    meta: { icon: '票据' },
+    children: [
       {
         path: 'tion',
         meta: { title: '票据管理' },
@@ -1332,8 +1332,8 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/manafe/sstads',
     name: '银企平台',
-    meta: {  icon: '平台' },
-    children:[
+    meta: { icon: '平台' },
+    children: [
       {
         path: 'sstads',
         meta: { title: '银企平台' },

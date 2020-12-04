@@ -18,14 +18,13 @@
         />
 
         <Table
-          :tableData="tableData"
-          :tableListData="tableListData"
-          :tableBtn="tableBtn"
-          :currentData="currentData"
+          :table-data="tableData"
+          :table-list-data="tableListData"
+          :table-btn="tableBtn"
+          :current-data="currentData"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
-         
-        ></Table>
+        />
       </div>
     </el-card>
   </div>
@@ -43,7 +42,6 @@ export default {
   data() {
     // 这里存放数据
     return {
-
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -62,62 +60,59 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          dwbh:'1324',
-          dwmc:'单位1',
-          zhhm:'123456',
-          yhjybs:'T-165489',
-          jysj:'2020-11-11',
-          dfyhzh:'777888',
-          dfzhmc:'张三',
-          jyfx:1,
-          jyje:'100.00',
-          bz:'11'
+          dwbh: '1324',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-165489',
+          jysj: '2020-11-11',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '100.00',
+          bz: '11'
         },
         {
-          dwbh:'546',
-          dwmc:'单位1',
-          zhhm:'123456',
-          yhjybs:'T-165846',
-          jysj:'2020-11-11',
-          dfyhzh:'777888',
-          dfzhmc:'张三',
-          jyfx:1,
-          jyje:'100.00',
-          bz:'11'
+          dwbh: '546',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-165846',
+          jysj: '2020-11-11',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '100.00',
+          bz: '11'
         },
         {
-          dwbh:'13265',
-          dwmc:'单位1',
-          zhhm:'123456',
-          yhjybs:'T-1654',
-          jysj:'2020-11-11',
-          dfyhzh:'777888',
-          dfzhmc:'张三',
-          jyfx:1,
-          jyje:'100.00',
-          bz:'11'
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-1654',
+          jysj: '2020-11-11',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '100.00',
+          bz: '11'
         },
         {
-          dwbh:'13265',
-          dwmc:'单位1',
-          zhhm:'123456',
-          yhjybs:'T-16548',
-          jysj:'2020-11-11',
-          dfyhzh:'777888',
-          dfzhmc:'张三',
-          jyfx:1,
-          jyje:'100.00',
-          bz:'11'
-        },
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-11-11',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '100.00',
+          bz: '11'
+        }
       ],
-      
 
       // 表格
-      tableData: [
-        
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
@@ -187,43 +182,43 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
+
       {
         prop: 'yhjybs',
         width: '150',
         label: '银行交易标识',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'jysj',
         width: '150',
         label: '交易时间',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'dfyhzh',
         width: '',
-        label: '对方银行账号',
+        label: '对方银行账号'
       },
       {
         prop: 'dfzhmc',
         width: '',
-        label: '对方账户名称',
+        label: '对方账户名称'
       },
       {
         prop: 'jyfx',
         width: '',
-        label: '交易方向',
+        label: '交易方向'
       },
       {
         prop: 'jyje',
         width: '',
-        label: '交易金额(元)',
+        label: '交易金额(元)'
       },
       {
         prop: 'bz',
         width: '',
-        label: '备注',
+        label: '备注'
       }
     ]
     // 按钮
@@ -278,18 +273,17 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -297,7 +291,7 @@ export default {
               }
             }
 
-            if (i == 'dwmc') {
+            if (i === 'dwmc') {
               if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -305,7 +299,7 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.zhhm.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -313,15 +307,15 @@ export default {
               }
             }
 
-            if (i == 'rqfwc') {
-              if ( Date.parse(  item.jysj) >=Date.parse(this.searchData[i])) {
+            if (i === 'rqfwc') {
+              if (Date.parse(item.jysj) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'rqfwd') {
-              if ( Date.parse(  item.jysj) <=Date.parse(this.searchData[i])) {
+            if (i === 'rqfwd') {
+              if (Date.parse(item.jysj) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -331,7 +325,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

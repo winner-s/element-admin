@@ -27,20 +27,20 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-         
+
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
-          @handleSelectionChange='handleSelectionChange'
+          @handleSelectionChange="handleSelectionChange"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { GZZT,GZZTLIST,RLXTLIST,RLXT } from '@u/wordbook'
+import { GZZT, GZZTLIST, RLXTLIST, RLXT } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -50,8 +50,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rlxtList:RLXTLIST,
-      gzztList:GZZTLIST,
+      rlxtList: RLXTLIST,
+      gzztList: GZZTLIST,
       showAll: 1,
       // 分页
       currentData: {
@@ -69,11 +69,11 @@ export default {
         show: false,
         form: {}
       },
-      
-      list:[],
+
+      list: [],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -82,7 +82,7 @@ export default {
         nickname: '',
         documentNumber: ''
       },
-      selectChange:''
+      selectChange: ''
     }
   },
   // 监听属性 类似于data概念
@@ -116,8 +116,7 @@ export default {
         type: 'primary',
         label: '停用'
       },
-     
-      
+
       {
         prop: 'reset',
         type: '',
@@ -142,7 +141,7 @@ export default {
         type: 'select',
         label: '规则状态:',
         prop: 'gzzt',
-        selectList:this.gzztList,
+        selectList: this.gzztList,
         placeholder: '请选择规则状态'
       }
     ]
@@ -150,11 +149,11 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'gzbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '规则编号'
       },
       {
@@ -165,16 +164,16 @@ export default {
       {
         prop: 'rlxt',
         width: '',
-        type:'wordbook',
-        wordbookList:this.rlxt,
+        type: 'wordbook',
+        wordbookList: this.rlxt,
         label: '认领系统'
       },
       {
         prop: 'gzzt',
         width: '',
         label: '规则状态',
-        type:'wordbook',
-        wordbookList:this.gzzt
+        type: 'wordbook',
+        wordbookList: this.gzzt
       }
     ]
     // 按钮
@@ -182,13 +181,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -198,61 +197,60 @@ export default {
   // 方法集合
   methods: {
     // 过滤
-    rlxt(val){
+    rlxt(val) {
       return RLXT[val]
     },
-    gzzt(val){
+    gzzt(val) {
       return GZZT[val]
     },
-    handleStart(){
-      this.selectChange.forEach((item,index)=>{
-        if(item.gzzt===2){
-          item.gzzt =1
-        }else{
-          this.$confirm('编号：'+item.gzbh+'已是启用状态', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      }).then(() => {
-       
-      })
+    handleStart() {
+      this.selectChange.forEach((item, index) => {
+        if (item.gzzt === 2) {
+          item.gzzt = 1
+        } else {
+          this.$confirm('编号：' + item.gzbh + '已是启用状态', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+
+          })
         }
       })
     },
-    handleStop(){
-      this.selectChange.forEach((item,index)=>{
-        if(item.gzzt===1){
-          item.gzzt =2
-        }else{
-          this.$confirm('编号：'+item.gzbh+'已是停用状态', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      }).then(() => {
-       
-      })
+    handleStop() {
+      this.selectChange.forEach((item, index) => {
+        if (item.gzzt === 1) {
+          item.gzzt = 2
+        } else {
+          this.$confirm('编号：' + item.gzbh + '已是停用状态', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+
+          })
         }
       })
     },
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectChange = res
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -311,7 +309,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -319,7 +317,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.gzbh
       this.dialogObj.read = false
@@ -339,7 +337,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -367,8 +365,6 @@ export default {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }

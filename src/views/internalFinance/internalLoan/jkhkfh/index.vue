@@ -44,7 +44,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -55,14 +55,14 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -72,7 +72,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -96,8 +96,8 @@ export default {
           yhbj: '',
           yhlx: '0.31',
           zhmc: '二级单位1内部账号',
-          zwrmc: '二级单位1',
-        },
+          zwrmc: '二级单位1'
+        }
       ],
       // 表格
       tableData: [],
@@ -106,9 +106,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -125,19 +125,19 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
-     
+
       {
         prop: 'commit',
         type: 'primary',
-        label: '复核',
+        label: '复核'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -145,27 +145,27 @@ export default {
         type: 'input',
         label: '还款单编号:',
         prop: 'hkdbh',
-        placeholder: '请填写还款单号',
+        placeholder: '请填写还款单号'
       },
       {
         type: 'select',
         label: '债务人名称:',
         prop: 'zwrmc',
-        placeholder: '请选择债务人名称',
+        placeholder: '请选择债务人名称'
       },
       {
         type: 'time',
         label: '还款日期从:',
         prop: 'hkrqc',
         placeholder: '请选择还款日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '到:',
         prop: 'hkrqd',
         placeholder: '请填写还款日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
@@ -173,8 +173,8 @@ export default {
         prop: 'clzt',
         selectList: this.djztList,
         placeholder: '请选择处理状态',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -184,59 +184,59 @@ export default {
       {
         prop: 'hkdbh',
         width: '',
-        type:'a',
-        label: '还款单编号',
+        type: 'a',
+        label: '还款单编号'
       },
       {
         prop: 'zwrmc',
         width: '',
-        label: '债务人名称',
+        label: '债务人名称'
       },
 
       {
         prop: 'fkdbh',
         width: '',
-        label: '放款单编号 ',
+        label: '放款单编号 '
       },
 
       {
         prop: 'jkhtbh',
         width: '',
-        label: '合同号',
+        label: '合同号'
       },
       {
         prop: 'hkrq',
         width: '',
-        label: '还款日期',
+        label: '还款日期'
       },
       {
         prop: 'hbje',
         width: '',
-        label: '还本金额 ',
+        label: '还本金额 '
       },
       {
         prop: 'fxje',
         width: '',
-        label: '付息金额',
+        label: '付息金额'
       },
       {
         prop: 'clzt',
         width: '',
         label: '处理状态',
         type: 'wordbook',
-        wordbookList: this.djzt,
+        wordbookList: this.djzt
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '复 核',
         btnType: 'primary',
-        type:'isNoShow',
-        isShowValue:'3',
-        isShowStatus:'clzt',
-        handleFn: 'handleEdit',
+        type: 'isNoShow',
+        isShowValue: '3',
+        isShowStatus: 'clzt',
+        handleFn: 'handleEdit'
       }
     ]
   },
@@ -258,7 +258,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -294,7 +294,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-   
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -317,7 +317,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -330,9 +330,9 @@ export default {
       this.$confirm('确定通过嘛?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
-       row.clzt=3
+        row.clzt = 3
       })
     },
     handleViewOther(row) {
@@ -347,7 +347,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -401,8 +401,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

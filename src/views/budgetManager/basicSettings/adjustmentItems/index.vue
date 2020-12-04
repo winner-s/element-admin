@@ -25,13 +25,13 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-         
+
           @handleSelect="handleSelect"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -73,18 +73,18 @@ export default {
         show: false,
         form: {}
       },
-      
-      list:[
+
+      list: [
         {
-          tjlxbh:'201105101710',
-          tjlxmc:'text',
-          txmc:'777',
-          zqmc:'年'
+          tjlxbh: '201105101710',
+          tjlxmc: 'text',
+          txmc: '777',
+          zqmc: '年'
         }
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -141,7 +141,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'tjlxbh',
         width: '150',
@@ -163,26 +163,26 @@ export default {
         width: '',
         label: '周期名称'
       },
-      { label: '操作', type: 'btn', width: '' ,fixed:'right'},
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '查 看',
         btnType: 'primary',
-        handleFn: 'handleSelect',
+        handleFn: 'handleSelect'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
-      
+        handleFn: 'handleDelete'
+      }
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -191,19 +191,19 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.tjlxbh == res.tjlxbh){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.tjlxbh == res.tjlxbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -239,7 +239,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -275,7 +275,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    handleSelect(row){
+    handleSelect(row) {
       this.dialogObj.id = row.tjlxbh
       this.dialogObj.read = true
       this.dialogObj.show = true
@@ -289,13 +289,12 @@ export default {
       this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

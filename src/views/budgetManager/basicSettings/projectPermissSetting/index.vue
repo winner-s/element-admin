@@ -64,19 +64,19 @@ export default {
         show: false,
         form: {}
       },
-      
-      list:[
-          {
-            zqbh:"ZQ2020033",
-            zqmc:'name',
-            sstx:'体系1',
-            zqlx:'月',
-            zqzt:'启用'
-          }
+
+      list: [
+        {
+          zqbh: 'ZQ2020033',
+          zqmc: 'name',
+          sstx: '体系1',
+          zqlx: '月',
+          zqzt: '启用'
+        }
       ],
       // 表格
       tableData: [
-       
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -133,7 +133,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-     
+
       {
         prop: 'zqbh',
         width: '150',
@@ -160,19 +160,19 @@ export default {
         width: '',
         label: '周期状态'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '设置项目',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '项目明细设置',
         btnType: 'danger',
-        handleFn: 'handleDelete',
+        handleFn: 'handleDelete'
       }
     ]
   },
@@ -202,7 +202,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -220,7 +220,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false

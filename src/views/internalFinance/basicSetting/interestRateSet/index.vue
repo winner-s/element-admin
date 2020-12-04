@@ -31,13 +31,13 @@
       </div>
     </el-card>
     <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
-    
+
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,RATETYPE,RATETYPELIST } from '@u/wordbook'
+import { UNITNOLIST, RATETYPE, RATETYPELIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -47,14 +47,14 @@ export default {
   data() {
     // 这里存放数据
     return {
-      rateTypeList:RATETYPELIST,
+      rateTypeList: RATETYPELIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -64,21 +64,21 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
-          id:1,
+          id: 1,
           bto: false,
           llmc: 'one',
           lllx: 1,
           zxsxr: '2020-11-20',
           lv: '4.0',
-          childerList:[
+          childerList: [
             {
-              zxsxr:'2020-11-20',
-              lv:'4.0',
-              bz:'测试备注'
+              zxsxr: '2020-11-20',
+              lv: '4.0',
+              bz: '测试备注'
             }
           ]
         }
@@ -90,8 +90,8 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        
-      },
+
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -108,19 +108,19 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -128,62 +128,62 @@ export default {
         type: 'input',
         label: '利率名称:',
         prop: 'llmc',
-        placeholder: '请填写利率名称',
+        placeholder: '请填写利率名称'
       },
       {
         type: 'select',
         label: '利率类型:',
         prop: 'lllx',
         placeholder: '请选择利率类型',
-        selectList:this.rateTypeList
-      },
+        selectList: this.rateTypeList
+      }
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
+
       {
         prop: 'llmc',
         width: '150',
-        label: '利率名称',
+        label: '利率名称'
       },
       {
         prop: 'lllx',
         width: '150',
         label: '利率类型',
-        type:'wordbook',
-        wordbookList:this.rateType
+        type: 'wordbook',
+        wordbookList: this.rateType
       },
       {
         prop: 'zxsxr',
         width: '',
-        label: '最新生效日',
+        label: '最新生效日'
       },
       {
         prop: 'lv',
         width: '',
-        label: '利率(%)',
+        label: '利率(%)'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '明细计划',
         btnType: 'primary',
-        handleFn: 'handlePlan',
+        handleFn: 'handlePlan'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
-      
+        handleFn: 'handleDelete'
+      }
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -192,22 +192,21 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -218,8 +217,8 @@ export default {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
     },
-    //过滤
-    rateType(val){
+    // 过滤
+    rateType(val) {
       return RATETYPE[val]
     },
     // 收起
@@ -240,7 +239,7 @@ export default {
         }
       })
     },
-    
+
     // 单击新增按钮
     handleInsert() {
       this.dialogObj.id = ''
@@ -248,7 +247,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -271,7 +270,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -279,7 +278,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -287,21 +286,20 @@ export default {
       this.dialogObj.title = '编辑'
       this.dialogObj.form = row
     },
-    handlePlan(row){
+    handlePlan(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.plan=true
+      this.dialogObj.plan = true
       this.dialogObj.title = '明细计划'
       this.dialogObj.form = row
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -321,8 +319,6 @@ export default {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }
@@ -333,8 +329,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

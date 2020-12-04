@@ -37,7 +37,7 @@ export default {
   components: {
     Search,
     Table,
-    dialogCom,
+    dialogCom
   },
   data() {
     return {
@@ -47,11 +47,11 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       searchItem: data.selectCollsectionInfo.searchFrom,
       searchData: {
-        nickname: '',
+        nickname: ''
       },
       searchBto: data.selectCollsectionInfo.searchBto,
       showAll: false,
@@ -69,8 +69,8 @@ export default {
           gsmc: '二级单位1',
           yhzh: '104',
           yhmc: '中国银行株洲市分行',
-          zhbh:'2222334455667711',
-          zhmc:'二级单位1CNY直联账户2',
+          zhbh: '2222334455667711',
+          zhmc: '二级单位1CNY直联账户2',
           zflx: '直联支付',
           qwrq: '2020-10-29',
           skgsbh: '002',
@@ -87,15 +87,15 @@ export default {
           zlfssj: '2020-10-29 14:00:36',
           zlcxsj: '',
           yhfhxx: '创建"BOC_2019112101"对应的服务时出错',
-          hksd:'普通'
-        },
+          hksd: '普通'
+        }
       ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -107,68 +107,68 @@ export default {
         type: 'a',
         prop: 'djbh',
         width: '',
-        label: '单据编号',
+        label: '单据编号'
       },
       {
         prop: 'djrq',
         width: '',
-        label: '单据日期',
+        label: '单据日期'
       },
       {
         prop: 'je',
         width: '',
-        label: '金额',
+        label: '金额'
       },
       {
         prop: 'gsmc',
         width: '',
-        label: '付款申请单位',
+        label: '付款申请单位'
       },
       {
         prop: 'zlzt',
         width: '',
-        label: '指令状态',
+        label: '指令状态'
       },
       {
         prop: 'clbh',
         width: '',
-        label: '策略编号',
+        label: '策略编号'
       },
       {
         prop: 'clmc',
         width: '',
-        label: '策略名称',
+        label: '策略名称'
       },
       {
         prop: 'yhzh',
         width: '',
-        label: '付款银行帐号',
+        label: '付款银行帐号'
       },
       {
         prop: 'yhmc',
         width: '',
-        label: '付款账户名称',
+        label: '付款账户名称'
       },
       {
         prop: 'skyhzh',
         width: '',
-        label: '收款银行帐号',
+        label: '收款银行帐号'
       },
       {
         prop: 'skzhmc',
         width: '',
-        label: '收款账户名称',
+        label: '收款账户名称'
       },
       {
         prop: 'skyhmc',
         width: '',
-        label: '指令接受银行',
+        label: '指令接受银行'
       },
       {
         prop: 'hksd',
         width: '',
-        label: '汇款速度',
-      },
+        label: '汇款速度'
+      }
     ]
   },
   methods: {
@@ -213,12 +213,10 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-   
-   
-   
+
     getList() {
-     
-    },
-  },
+
+    }
+  }
 }
 </script>

@@ -164,7 +164,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="账户余额：" prop="zhye" class="formItem">
-             <el-input
+            <el-input
               v-model="form.zhye"
               style="width: 200px"
               size="mini"
@@ -176,7 +176,7 @@
       </el-row>
       <div class="title"><i class="el-icon-user" /> 附加信息</div>
       <el-row>
-        <el-col >
+        <el-col>
           <el-form-item label="备注：" prop="bzhu" class="formItem">
             <el-input
               v-model="form.bzhu"
@@ -191,7 +191,7 @@
             />
           </el-form-item>
         </el-col>
-        
+
       </el-row>
     </el-form>
 
@@ -214,23 +214,23 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+
       placeholderTips: placeholderTips,
-      
+
       form: {
-        dwbh:'',
-        dwmc:'',
-        zhbh:'',
-        zhmc:'',
-        zhlx:'',
-        khrq:'',
-        bz:'',
-        jx:'',
-        jxksr:'',
-        lljh:'',
-        csye:'',
-        zhye:'',
-        bzhu:''
+        dwbh: '',
+        dwmc: '',
+        zhbh: '',
+        zhmc: '',
+        zhlx: '',
+        khrq: '',
+        bz: '',
+        jx: '',
+        jxksr: '',
+        lljh: '',
+        csye: '',
+        zhye: '',
+        bzhu: ''
       }
     }
   },
@@ -250,7 +250,7 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-   
+
     initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
@@ -262,8 +262,8 @@ export default {
         })
         this.form.ckzqlsh = '74564879'
       }
-    },
-    
+    }
+
   }
 }
 </script>

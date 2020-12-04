@@ -14,7 +14,7 @@
       :search-bto="searchBto"
       :show-all="showAll"
       @getDataList="getDataList"
-      
+
       @handleCommit="handleCommit"
       @dropDown="dropDown"
       @dropUp="dropUp"
@@ -36,43 +36,43 @@
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
+// 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+// 例如：import 《组件名称》 from '《组件路径》';
 import { ACCOUNTUSAGE, ACCOUNTUSAGELIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 export default {
-  //import引入的组件需要注入到对象中才能使用
+  // import引入的组件需要注入到对象中才能使用
   components: { Search, Table },
   props: ['dialogObjNei'],
   data() {
-    //这里存放数据
+    // 这里存放数据
     return {
       accountUsageList: ACCOUNTUSAGELIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       showAll: false,
       list: [
-          {
-              dwmc:'二级单位',
-              yhzh:'111111111111',
-              zhmc:'测试1',
-              khhmc:'中国农业银行汉中分行',
-              zhzt:'正常',
-              zhyt:1
-          },
-          {
-              dwmc:'二级单位',
-              yhzh:'22222222222',
-              zhmc:'测试1',
-              khhmc:'中国农业银行汉中分行',
-              zhzt:'正常',
-              zhyt:2
-          }
+        {
+          dwmc: '二级单位',
+          yhzh: '111111111111',
+          zhmc: '测试1',
+          khhmc: '中国农业银行汉中分行',
+          zhzt: '正常',
+          zhyt: 1
+        },
+        {
+          dwmc: '二级单位',
+          yhzh: '22222222222',
+          zhmc: '测试1',
+          khhmc: '中国农业银行汉中分行',
+          zhzt: '正常',
+          zhyt: 2
+        }
       ],
       // 表格
       tableData: [],
@@ -82,21 +82,120 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {},
-      selectionList:[]
+      selectionList: []
     }
   },
-  //监听属性 类似于data概念
+  // 监听属性 类似于data概念
   computed: {},
-  //监控data中的数据变化
+  // 监控data中的数据变化
   watch: {},
-  //方法集合
+  // 生命周期 - 创建完成（可以访问当前this实例）
+  created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
+    // 顶部按钮
+    this.searchBto = [
+      {
+        prop: 'select',
+        type: 'primary',
+        label: '查询'
+      },
+      {
+        prop: 'commit',
+        type: 'primary',
+        label: '确认'
+      }
+    ]
+    // 搜索
+    this.searchItem = [
+      {
+        type: 'input',
+        label: '单位名称:',
+        prop: 'dwmc',
+        placeholder: '请填写单位名称'
+      },
+      {
+        type: 'input',
+        label: '银行账号:',
+        prop: 'yhzh',
+        placeholder: '请填写银行账号'
+      },
+      {
+        type: 'input',
+        label: '账号名称:',
+        prop: 'zhmc',
+        show: this.showAll,
+        placeholder: '请填写账号名称'
+      },
+      {
+        type: 'input',
+        label: '开户行名称:',
+        prop: 'khhmc',
+        show: this.showAll,
+        placeholder: '请填写开户行名称'
+      },
+      {
+        type: 'select',
+        label: '账户用途:',
+        prop: 'yhzh',
+        show: this.showAll,
+        selectList: this.accountUsageList,
+        placeholder: '请选择账户用途'
+      }
+    ]
+
+    //  table表格
+    this.tableListData = [
+      { width: '50', label: '', type: 'index', fixed: 'left' },
+      { width: '50', label: '', type: 'selection', fixed: 'left' },
+
+      {
+        prop: 'dwmc',
+        width: '150',
+        type: 'a',
+        label: '单位名称',
+        fixed: 'left'
+      },
+      {
+        prop: 'yhzh',
+        width: '150',
+        label: '银行账号',
+        fixed: 'left'
+      },
+      {
+        prop: 'zhmc',
+        width: '',
+        label: '账户名称'
+      },
+      {
+        prop: 'khhmc',
+        width: '',
+        label: '开户行名称'
+      },
+      {
+        prop: 'zhzt',
+        width: '',
+        label: '账户状态'
+      },
+      {
+        prop: 'zhyt',
+        width: '',
+        label: '账户用途',
+        type: 'wordbook',
+        wordbookList: this.accountUsage
+      }
+    ]
+  },
+  // 生命周期 - 挂载完成（可以访问DOM元素）
+  mounted() {},
+  // 方法集合
   methods: {
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectionList = res
     },
-    handleCommit(){
-      this.$emit("handleCommit", this.selectionList)
-      this.dialogObjNei.show  = false
+    handleCommit() {
+      this.$emit('handleCommit', this.selectionList)
+      this.dialogObjNei.show = false
     },
     // 收起
     dropUp() {
@@ -116,7 +215,7 @@ export default {
         }
       })
     },
-    
+
     accountUsage(val) {
       return ACCOUNTUSAGE[val]
     },
@@ -193,107 +292,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
-  //生命周期 - 创建完成（可以访问当前this实例）
-  created() {
-    this.tableData = this.list.slice(0, this.currentData.size)
-    this.currentData.total = this.list.length
-    // 顶部按钮
-    this.searchBto = [
-      {
-        prop: 'select',
-        type: 'primary',
-        label: '查询',
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '确认',
-      },
-    ]
-    // 搜索
-    this.searchItem = [
-      {
-        type: 'input',
-        label: '单位名称:',
-        prop: 'dwmc',
-        placeholder: '请填写单位名称',
-      },
-      {
-        type: 'input',
-        label: '银行账号:',
-        prop: 'yhzh',
-        placeholder: '请填写银行账号',
-      },
-      {
-        type: 'input',
-        label: '账号名称:',
-        prop: 'zhmc',
-        show: this.showAll,
-        placeholder: '请填写账号名称',
-      },
-      {
-        type: 'input',
-        label: '开户行名称:',
-        prop: 'khhmc',
-        show: this.showAll,
-        placeholder: '请填写开户行名称',
-      },
-      {
-        type: 'select',
-        label: '账户用途:',
-        prop: 'yhzh',
-        show: this.showAll,
-        selectList: this.accountUsageList,
-        placeholder: '请选择账户用途',
-      },
-    ]
-
-    //  table表格
-    this.tableListData = [
-      { width: '50', label: '', type: 'index', fixed: 'left' },
-      { width: '50', label: '', type: 'selection', fixed: 'left' },
-
-      {
-        prop: 'dwmc',
-        width: '150',
-        type: 'a',
-        label: '单位名称',
-        fixed: 'left',
-      },
-      {
-        prop: 'yhzh',
-        width: '150',
-        label: '银行账号',
-        fixed: 'left',
-      },
-      {
-        prop: 'zhmc',
-        width: '',
-        label: '账户名称',
-      },
-      {
-        prop: 'khhmc',
-        width: '',
-        label: '开户行名称',
-      },
-      {
-        prop: 'zhzt',
-        width: '',
-        label: '账户状态',
-      },
-      {
-        prop: 'zhyt',
-        width: '',
-        label: '账户用途',
-        type:'wordbook',
-        wordbookList:this.accountUsage
-      },
-    ]
-  },
-  //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+    }
+  }
 }
 </script>
 <style  scoped>

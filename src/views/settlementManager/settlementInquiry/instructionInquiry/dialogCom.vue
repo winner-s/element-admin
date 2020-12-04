@@ -20,7 +20,7 @@
       status-icon
       class="form"
     >
-    <div class="title"><i class="el-icon-user" />业务信息</div>
+      <div class="title"><i class="el-icon-user" />业务信息</div>
       <div class="mb-10" />
       <el-row>
         <el-col :span="12">
@@ -38,9 +38,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
       <el-row>
         <el-col :span="12">
@@ -64,7 +62,7 @@
             prop="sjly"
             class="formItem"
           >
-             <el-input
+            <el-input
               v-model="form.sjly"
               style="width: 200px"
               size="mini"
@@ -107,8 +105,6 @@
         </el-col>
       </el-row>
 
-      
-      
       <el-row>
         <el-col :span="12">
           <el-form-item
@@ -205,18 +201,16 @@
           </el-form-item>
         </el-col>
         <el-form-item label="联行号：" prop="lhh">
-            <el-input
-              v-model="form.lhh"
-              style="width: 200px"
-              size="mini"
-              :disabled="true"
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
+          <el-input
+            v-model="form.lhh"
+            style="width: 200px"
+            size="mini"
+            :disabled="true"
+            :placeholder="placeholderTips.content"
+          />
+        </el-form-item>
         <el-col :span="12" />
       </el-row>
-
-     
 
       <el-row>
         <el-col :span="12">
@@ -230,9 +224,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
       <el-row>
         <el-col :span="12">
@@ -246,16 +238,14 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <div class="title"><i class="el-icon-user" /> 支付信息</div>
 
       <el-row>
         <el-col :span="12">
-            <el-form-item label="支付处理状态：" prop="zfclzt">
+          <el-form-item label="支付处理状态：" prop="zfclzt">
             <el-input
               v-model="form.zfclzt"
               style="width: 200px"
@@ -275,9 +265,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-     
 
-     
       <el-row>
         <el-col :span="12">
           <el-form-item label="汇款速度：" prop="hksd">
@@ -360,7 +348,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-            <el-form-item label="撤销原因：" prop="cxyy">
+          <el-form-item label="撤销原因：" prop="cxyy">
             <el-input
               v-model="form.cxyy"
               style="width: 200px"
@@ -376,7 +364,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="银行标识1：" prop="yhbs1">
-           <el-input
+            <el-input
               v-model="form.yhbs1"
               style="width: 200px"
               size="mini"
@@ -433,9 +421,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-         
-        </el-col>
+        <el-col :span="12" />
       </el-row>
       <el-row>
         <el-col :span="12">
@@ -472,19 +458,12 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
-
-
-
-
-
 
     </el-form>
 
-    <span slot="footer" class="dialog-footer" >
+    <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
       <el-button
         type="primary"
@@ -514,175 +493,173 @@ export default {
   data() {
     // 这里存放数据
     return {
-      purposeList:PURPOSELIST,
-      paymentList:PAYMENTLIST,
+      purposeList: PURPOSELIST,
+      paymentList: PAYMENTLIST,
       placeholderTips: placeholderTips,
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
-      skfyhzhList:[
+      skfyhzhList: [
         {
-          skfyhzh:'4654654',
-          skfzhmc:'小三',
-          skfyhmc:1,
-          skfyhss:'不知道',
-          lhh:'548982894',
-          skfkhhmc:'株洲分行'
+          skfyhzh: '4654654',
+          skfzhmc: '小三',
+          skfyhmc: 1,
+          skfyhss: '不知道',
+          lhh: '548982894',
+          skfkhhmc: '株洲分行'
         }
       ],
-      fkfyhzhList:[
+      fkfyhzhList: [
         {
-          fkfyhzh:'20111006',
-          fkdw:'二级单位1',
-          fkfzhmc:'测试非直联支付确认',
-          fkfyhmc:'中国工商银行',
-          fkfyhs:'北京',
-          fkfyhshi:'北京市',
-          fkfkhhmc:'北京分行'
+          fkfyhzh: '20111006',
+          fkdw: '二级单位1',
+          fkfzhmc: '测试非直联支付确认',
+          fkfyhmc: '中国工商银行',
+          fkfyhs: '北京',
+          fkfyhshi: '北京市',
+          fkfkhhmc: '北京分行'
         }
       ],
-      rules:{
-        fkyt:[
-          {required: true, message: '请选择付款用途', trigger: 'blur' }
+      rules: {
+        fkyt: [
+          { required: true, message: '请选择付款用途', trigger: 'blur' }
         ],
-        qwzfrq:[
-          {required: true, message: '请填写期望支付日期', trigger: 'blur' }
+        qwzfrq: [
+          { required: true, message: '请填写期望支付日期', trigger: 'blur' }
         ],
-        fkfyhzh:[
-          {required: true, message: '请选择付款方银行账号', trigger: 'blur' }
+        fkfyhzh: [
+          { required: true, message: '请选择付款方银行账号', trigger: 'blur' }
         ],
-        skfyhzh:[
-          {required: true, message: '请选择收款方银行账号', trigger: 'blur' }
+        skfyhzh: [
+          { required: true, message: '请选择收款方银行账号', trigger: 'blur' }
         ],
-        skfzhmc:[
-          {required: true, message: '请填写收款方账户名称', trigger: 'blur' }
+        skfzhmc: [
+          { required: true, message: '请填写收款方账户名称', trigger: 'blur' }
         ],
-        skfyhmc:[
-          {required: true, message: '请选择收款方银行名称', trigger: 'blur' }
+        skfyhmc: [
+          { required: true, message: '请选择收款方银行名称', trigger: 'blur' }
         ],
-        skfyhss:[
-          {required: true, message: '请选择收款方银行省市', trigger: 'blur' }
+        skfyhss: [
+          { required: true, message: '请选择收款方银行省市', trigger: 'blur' }
         ],
-        lhh:[
-          {required: true, message: '请填写联行号', trigger: 'blur' }
+        lhh: [
+          { required: true, message: '请填写联行号', trigger: 'blur' }
         ],
-        zffs:[
-          {required: true, message: '请选择支付方式', trigger: 'blur' }
+        zffs: [
+          { required: true, message: '请选择支付方式', trigger: 'blur' }
         ],
-        je:[
-          {required: true, message: '请填写金额', trigger: 'blur' }
+        je: [
+          { required: true, message: '请填写金额', trigger: 'blur' }
         ],
-        dscz:[
-          {required: true, message: '请选择对私参照', trigger: 'blur' }
+        dscz: [
+          { required: true, message: '请选择对私参照', trigger: 'blur' }
         ],
-        zy:[
-          {required: true, message: '请填写摘要', trigger: 'blur' }
+        zy: [
+          { required: true, message: '请填写摘要', trigger: 'blur' }
         ]
       },
       form: {
-        djbh: "",
-          djrq: "2020/11/4",
-          ywdw:'',
-          sjly:'',
-          fkfyhzh:'',
-          skfyhzh:'',
-          fkfzhmc:'',
-          skfzhmc:'',
-          fkfkhh:'',
-          skfkhh:'',
-          je:'',
-          skfszs:'',
-          dx:'',
-          lhh:'',
-          ywlx:'',
-          bz:'',
-          zfclzt:'',
-          fkyh:'',
-          hksd:'',
-          sfth:'',
-          cjsj:'',
-          fssj:'',
-          cssj:'',
-          csczyh:'',
-          zy:'',
-          csyy:'',
-          yhbs1:'',
-          yhbs2:'',
-          yhbs3:'',
-          yhbs4:'',
-          jysj:"",
-          ztbs:'',
-          ztms:'',
-          fkxx:''
-      },
+        djbh: '',
+        djrq: '2020/11/4',
+        ywdw: '',
+        sjly: '',
+        fkfyhzh: '',
+        skfyhzh: '',
+        fkfzhmc: '',
+        skfzhmc: '',
+        fkfkhh: '',
+        skfkhh: '',
+        je: '',
+        skfszs: '',
+        dx: '',
+        lhh: '',
+        ywlx: '',
+        bz: '',
+        zfclzt: '',
+        fkyh: '',
+        hksd: '',
+        sfth: '',
+        cjsj: '',
+        fssj: '',
+        cssj: '',
+        csczyh: '',
+        zy: '',
+        csyy: '',
+        yhbs1: '',
+        yhbs2: '',
+        yhbs3: '',
+        yhbs4: '',
+        jysj: '',
+        ztbs: '',
+        ztms: '',
+        fkxx: ''
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    
+
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
+    initDialog() {
       let djbh = ''
-      for(let i=0;i<16;i++){
-          djbh+= Math.round(Math.random() * 10)
+      for (let i = 0; i < 16; i++) {
+        djbh += Math.round(Math.random() * 10)
       }
-      
+
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
+          this.form[item] = this.dialogObj.form[item]
+        })
         // this.form = this.dialogObj.form
-      } else{
-        Object.keys(this.form).forEach(key => (this.form[key] = ""));
-        this.form.djbh = djbh;
-        this.form.djrq = new Date().toLocaleDateString();
-        this.form.ywdw="业务单位"
-        
+      } else {
+        Object.keys(this.form).forEach(key => (this.form[key] = ''))
+        this.form.djbh = djbh
+        this.form.djrq = new Date().toLocaleDateString()
+        this.form.ywdw = '业务单位'
       }
     },
-    //收款方银行账号下拉框改变事件
-    skfChange(res){
-        console.log(res)
-      this.skfyhzhList.forEach((item,index)=>{
-        if(item.skfyhzh==res){
-          let zhi = this.skfyhzhList[index]
+    // 收款方银行账号下拉框改变事件
+    skfChange(res) {
+      console.log(res)
+      this.skfyhzhList.forEach((item, index) => {
+        if (item.skfyhzh == res) {
+          const zhi = this.skfyhzhList[index]
           Object.keys(item).forEach(val => {
-            this.form[val] = zhi[val];
-          });
+            this.form[val] = zhi[val]
+          })
         }
       })
     },
-    //付款方银行账号下拉框改变事件
-    fkfChange(res){
+    // 付款方银行账号下拉框改变事件
+    fkfChange(res) {
       console.log(res)
-      this.fkfyhzhList.forEach((item,index)=>{
-        if(item.fkfyhzh==res){
-          let zhi = this.fkfyhzhList[index]
+      this.fkfyhzhList.forEach((item, index) => {
+        if (item.fkfyhzh == res) {
+          const zhi = this.fkfyhzhList[index]
           Object.keys(item).forEach(val => {
-            this.form[val] = zhi[val];
-          });
+            this.form[val] = zhi[val]
+          })
         }
       })
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -692,14 +669,14 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

@@ -78,9 +78,9 @@ export default {
           csye: '1000',
           zhye: '444646',
           bzhu: '没有',
-          yerq:'2020-11-11',
-          zhzt:'正常',
-          zhje:'4566'
+          yerq: '2020-11-11',
+          zhzt: '正常',
+          zhje: '4566'
         }
       ],
 
@@ -215,7 +215,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -233,7 +233,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -253,7 +253,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

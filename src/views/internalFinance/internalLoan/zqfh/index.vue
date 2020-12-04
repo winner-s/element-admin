@@ -60,7 +60,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
 
@@ -68,7 +68,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -78,7 +78,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
@@ -101,8 +101,8 @@ export default {
           zqjsrq: '2020-11-18',
           zqr: '顶级单位',
           zqsm: '',
-          zwr: '二级单位1',
-        },
+          zwr: '二级单位1'
+        }
       ],
 
       // 表格
@@ -112,9 +112,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -131,23 +131,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -155,27 +155,27 @@ export default {
         type: 'input',
         label: '合同名称:',
         prop: 'htmc',
-        placeholder: '请填写合同名称',
+        placeholder: '请填写合同名称'
       },
       {
         type: 'select',
         label: '债权人:',
         prop: 'zqr',
-        placeholder: '请选择债权人',
+        placeholder: '请选择债权人'
       },
       {
         type: 'time',
         label: '展期结束日期从:',
         prop: 'zqjsrqc',
         placeholder: '请选择展期结束日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
         prop: 'zqjsrqd',
         placeholder: '请选择展期结束日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
@@ -183,8 +183,8 @@ export default {
         prop: 'djzt',
         selectList: this.djztList,
         placeholder: '请选择单据状态',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -195,50 +195,50 @@ export default {
         prop: 'zqdjbh',
         width: '150',
         type: 'a',
-        label: '展期单据编号',
+        label: '展期单据编号'
       },
       {
         prop: 'htlsh',
         width: '150',
-        label: '合同编号',
+        label: '合同编号'
       },
 
       {
         prop: 'htmc',
         width: '',
-        label: '合同名称',
+        label: '合同名称'
       },
 
       {
         prop: 'zqr',
         width: '',
-        label: '债权人',
+        label: '债权人'
       },
       {
         prop: 'zwr',
         width: '',
-        label: '债务人',
+        label: '债务人'
       },
       {
         prop: 'zqjsrq',
         width: '',
-        label: '展期结束日期',
+        label: '展期结束日期'
       },
       {
         prop: 'djzt',
         width: '',
         label: '单据状态',
         type: 'wordbook',
-        wordbookList: this.djzt,
-      },
+        wordbookList: this.djzt
+      }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '复 核',
         btnType: 'primary',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -259,7 +259,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -279,7 +279,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach((item) => {
         if (res[item]) {
           fore[item] = res[item]
@@ -320,7 +320,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -343,7 +343,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -356,9 +356,9 @@ export default {
       this.$confirm('确定通过?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
-        row.djzt=3
+        row.djzt = 3
       })
     },
     handleViewOther(row) {
@@ -373,7 +373,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -427,8 +427,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

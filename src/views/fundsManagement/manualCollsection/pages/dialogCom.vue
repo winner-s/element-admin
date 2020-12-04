@@ -19,7 +19,7 @@
       status-icon
       class="form"
     >
-      
+
       <el-row>
         <el-col :span="12">
           <el-form-item
@@ -65,9 +65,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -120,15 +118,13 @@
         </el-col>
       </el-row>
 
-     
-
       <Table
-            :table-data="form.childerList"
-            :table-list-data="tableListData"
-            :current-data="currentData"
-            @onPageChange="onPageChange"
-            @onSizeChange="onSizeChange"
-        />
+        :table-data="form.childerList"
+        :table-list-data="tableListData"
+        :current-data="currentData"
+        @onPageChange="onPageChange"
+        @onSizeChange="onSizeChange"
+      />
     </el-form>
 
     <div class="dialog-footer">
@@ -147,28 +143,28 @@
 import { placeholderTips } from '@u/validate'
 import Table from '@c/common/table'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
     // 这里存放数据
     return {
-      tableListData:[],
+      tableListData: [],
       placeholderTips: placeholderTips,
       form: {
-        clmh:'',
-        clmc:'',
-        clms:'',
-        sjdwbh:'',
-        sjdwmc:'',
-        sjyhzh:'',
-        sjzhmc:'',
-        childerList:[]
+        clmh: '',
+        clmc: '',
+        clms: '',
+        sjdwbh: '',
+        sjdwmc: '',
+        sjyhzh: '',
+        sjzhmc: '',
+        childerList: []
       },
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
+        total: 0
       }
     }
   },
@@ -176,9 +172,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -187,7 +183,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
+
       {
         prop: 'dwmc',
         width: '150',
@@ -216,7 +212,7 @@ export default {
         label: '账户余额(元)'
       },
       {
-         type: 'input',
+        type: 'input',
         prop: 'gjje',
         width: '',
         label: '归集金额(元)'
@@ -227,19 +223,17 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
       }
-    },
+    }
   }
 }
 </script>
@@ -249,7 +243,6 @@ export default {
     margin: 0px !important;
   }
 }
-
 
 .title {
   background: #f1f1f1;

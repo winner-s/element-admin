@@ -38,7 +38,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,FORMSTATUS,FORMSTATUSLIST,CURRENCY,CURRENCYLIST } from '@u/wordbook'
+import { UNITNOLIST, FORMSTATUS, FORMSTATUSLIST, CURRENCY, CURRENCYLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -48,8 +48,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      formStatusList:FORMSTATUSLIST,
-      currencyList:CURRENCYLIST,
+      formStatusList: FORMSTATUSLIST,
+      currencyList: CURRENCYLIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -68,25 +68,24 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          
+
           zhbh: '0813001',
-          dwmc:'0813001',
+          dwmc: '0813001',
           zhmc: '123',
           khrq: '2020-10-10',
           zhlx: '活期户',
           bz: 1,
           jxksr: '',
           sqdzt: 1,
-          bzhu:'二级单位1内部账户'
+          bzhu: '二级单位1内部账户'
         }
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -95,7 +94,7 @@ export default {
         nickname: '',
         documentNumber: ''
       },
-      selectChangeList:[]
+      selectChangeList: []
     }
   },
   // 监听属性 类似于data概念
@@ -139,20 +138,20 @@ export default {
         prop: 'dwbh',
         placeholder: '请选择单位编号'
       },
-      
+
       {
         type: 'select',
         label: '申请单状态:',
         prop: 'sqdzt',
         placeholder: '请选择申请单状态',
-        selectList:this.formStatusList
+        selectList: this.formStatusList
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'bz',
         placeholder: '请选择币种',
-        selectList:this.currencyList
+        selectList: this.currencyList
       },
       {
         type: 'checkbox',
@@ -168,7 +167,7 @@ export default {
         prop: 'zhbh',
         width: '150',
         label: '账号编号',
-        type:'a'
+        type: 'a'
       },
       {
         prop: 'dwmc',
@@ -194,8 +193,8 @@ export default {
         prop: 'bz',
         width: '',
         label: '币种',
-        type:'wordbook',
-        wordbookList:this.currency
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'jxksr',
@@ -206,34 +205,34 @@ export default {
         prop: 'sqdzt',
         width: '',
         label: '申请单状态',
-        type:'wordbook',
-        wordbookList:this.formStatus
+        type: 'wordbook',
+        wordbookList: this.formStatus
       },
       {
         prop: 'bzhu',
         width: '',
         label: '备注'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        type:'isNoShow',
-        isShowStatus:'sqdzt',
-        isShowValue:'2',
-        handleFn: 'handleEdit',
+        type: 'isNoShow',
+        isShowStatus: 'sqdzt',
+        isShowValue: '2',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        type:'isNoShow',
-        isShowStatus:'sqdzt',
-        isShowValue:'2',
-        handleFn: 'handleDelete',
-      },
+        type: 'isNoShow',
+        isShowStatus: 'sqdzt',
+        isShowValue: '2',
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -242,50 +241,47 @@ export default {
   },
   // 方法集合
   methods: {
-    handleCommit(){
-      
-      if(this.selectChangeList.length != 0){
-        this.selectChangeList.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.zhbh==item.zhbh){
-              res.sqdzt =2
+    handleCommit() {
+      if (this.selectChangeList.length != 0) {
+        this.selectChangeList.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.zhbh == item.zhbh) {
+              res.sqdzt = 2
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectChangeList = res
     },
-    //过滤
-    currency(val){
+    // 过滤
+    currency(val) {
       return CURRENCY[val]
     },
-    formStatus(val){
+    formStatus(val) {
       return FORMSTATUS[val]
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -349,14 +345,14 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         this.list.splice(this.list.indexOf(v), 1)
         this.tableData = this.list
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.zhbh
       this.dialogObj.read = false
@@ -373,10 +369,9 @@ export default {
     },
 
     getList() {
-      
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -404,8 +399,6 @@ export default {
                 bool = false
               }
             }
-
-            
           } else {
             continue
           }

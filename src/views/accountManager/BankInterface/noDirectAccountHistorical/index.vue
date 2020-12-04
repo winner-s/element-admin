@@ -11,20 +11,13 @@
           <p>提示：选择文件前，请先下载模板;点击导入才能导入成功</p>
         </div>
         <div class="bto">
-          <upload-excel
-            import-text="选择文件"
-            :on-success="generateData"
-          />
+          <upload-excel import-text="选择文件" :on-success="generateData" />
 
           <el-button size="mini" type="success" @click="add">导入</el-button>
         </div>
 
         <el-table :data="dataList" border style="width: 100%" size="mini">
-          <el-table-column
-            align="center"
-            width="50"
-            type="index"
-          />
+          <el-table-column align="center" width="50" type="index" />
           <el-table-column
             v-for="item in tabHeader"
             :key="item"
@@ -80,7 +73,7 @@ export default {
       this.dataList = results
     },
     add() {
-      if (this.dataList.length == 0) {
+      if (this.dataList.length === 0) {
         this.$confirm('请选择导入文件', '提示', {
           confirmButtonText: '确定',
           type: 'warning',
@@ -110,7 +103,7 @@ export default {
   }
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .bto {
   padding-bottom: 20px;
 }

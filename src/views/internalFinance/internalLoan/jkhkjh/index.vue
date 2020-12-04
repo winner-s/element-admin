@@ -52,7 +52,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
       unitNoList: UNITNOLIST,
@@ -60,7 +60,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -70,11 +70,11 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
-          
+
           fkdbh: 'FH20082615093831',
           htbh: 'DK84602971829345',
           dkdw: '二级单位1',
@@ -82,10 +82,10 @@ export default {
           fkr: '2020-06-07',
           dqr: '2020-06-10',
           jhhbe: '0.00',
-          jhhxje:'0.00',
-          sjhbje:'0.00',
-          sjhxje:'0.00'
-        },
+          jhhxje: '0.00',
+          sjhbje: '0.00',
+          sjhxje: '0.00'
+        }
       ],
       // 表格
       tableData: [],
@@ -94,8 +94,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -112,14 +112,14 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -127,35 +127,35 @@ export default {
         type: 'input',
         label: '合同编号:',
         prop: 'htbh',
-        placeholder: '请填写合同编号',
+        placeholder: '请填写合同编号'
       },
       {
         type: 'select',
         label: '金额(元) 从:',
         prop: 'jec',
-        placeholder: '请选择金额状态',
+        placeholder: '请选择金额状态'
       },
 
       {
         type: 'select',
         label: '到:',
         prop: 'jed',
-        placeholder: '请选择金额',
+        placeholder: '请选择金额'
       },
       {
         type: 'time',
         label: '放款日期从:',
         prop: 'fkrqc',
         placeholder: '请选择还款日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '到:',
         prop: 'fkrqd',
         placeholder: '请填写放款日期',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -164,56 +164,56 @@ export default {
       {
         prop: 'fkdbh',
         width: '150',
-        type:'a',
-        label: '放款单编号',
+        type: 'a',
+        label: '放款单编号'
       },
       {
         prop: 'htbh',
         width: '150',
-        label: '合同编号',
+        label: '合同编号'
       },
 
       {
         prop: 'dkdw',
         width: '',
-        label: '贷款单位 ',
+        label: '贷款单位 '
       },
 
       {
         prop: 'fkje',
         width: '',
-        label: '放款金额',
+        label: '放款金额'
       },
       {
         prop: 'fkr',
         width: '',
-        label: '放款日',
+        label: '放款日'
       },
       {
         prop: 'dqr',
         width: '',
-        label: '到期日 ',
+        label: '到期日 '
       },
       {
         prop: 'jhhbje',
         width: '',
-        label: '计划还本金额',
+        label: '计划还本金额'
       },
       {
         prop: 'jhhxje',
         width: '',
-        label: '计划还息金额',
+        label: '计划还息金额'
       },
       {
         prop: 'sjhbje',
         width: '',
-        label: '实际还本金额',
+        label: '实际还本金额'
       },
       {
         prop: 'sjhxje',
         width: '',
-        label: '实际还息金额',
-      },
+        label: '实际还息金额'
+      }
     ]
     // 按钮
     this.tableBtn = []
@@ -323,8 +323,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

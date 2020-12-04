@@ -53,8 +53,7 @@
                 :key="item.ysnd"
                 :label="item.ysnd"
                 :value="item.ysnd"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -74,8 +73,7 @@
                 :key="item.txmc"
                 :label="item.txmc"
                 :value="item.txmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -92,8 +90,7 @@
                 :key="item.zqmc"
                 :label="item.zqmc"
                 :value="item.zqmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -108,8 +105,8 @@
               value-format="yyyy-MM-dd"
               style="width: 200px"
               size="mini"
-              placeholder="选择日期">
-            </el-date-picker>
+              placeholder="选择日期"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -120,8 +117,8 @@
               value-format="yyyy-MM-dd"
               style="width: 200px"
               size="mini"
-              placeholder="选择日期">
-            </el-date-picker>
+              placeholder="选择日期"
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -151,14 +148,13 @@
       </el-row>
       <div class="title"><i class="el-icon-user" /> 预算编制明细</div>
       <Table
-          :table-data="tableData"
-          :table-list-data="tableListData"
-          :table-btn="tableBtn"
-          :current-data="currentData"
-          @onPageChange="onPageChange"
-          @onSizeChange="onSizeChange"
-         
-        />
+        :table-data="tableData"
+        :table-list-data="tableListData"
+        :table-btn="tableBtn"
+        :current-data="currentData"
+        @onPageChange="onPageChange"
+        @onSizeChange="onSizeChange"
+      />
     </el-form>
 
     <span slot="footer" class="dialog-footer">
@@ -177,7 +173,7 @@
 import { placeholderTips } from '@u/validate'
 import Table from '@c/common/table'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
@@ -187,99 +183,99 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 表格
       tableData: [],
       tableBtn: [],
       placeholderTips: placeholderTips,
-      yszqList:[
+      yszqList: [
         {
-          zqbh:'2020027',
-          zqmc:'test',
-          zqlx:'年',
+          zqbh: '2020027',
+          zqmc: 'test',
+          zqlx: '年'
         },
         {
-          zqbh:'2020029',
-          zqmc:'ABCDEFG',
-          zqlx:'月',
-        },
-      ],
-      ystsList:[
-        {
-          txbh:'2020001',
-          txmc:'2020'
-        },
-        {
-          txbh:'2020006',
-          txmc:'测试1'
-        },
-        {
-          txbh:'2020008',
-          txmc:'测试2'
-        },
-        {
-          txbh:'2020014',
-          txmc:'测试3'
-        },
-
-      ],
-      ysndList:[
-        {
-          ysnd:'2017'
-        },
-        {
-          ysnd:'2018'
-        },
-        {
-          ysnd:'2019'
-        },
-        {
-          ysnd:'2020'
-        },
-        {
-          ysnd:'2021'
-        },
-        {
-          ysnd:'2022'
-        },
-        {
-          ysnd:'2023'
-        },
-        {
-          ysnd:'2024'
+          zqbh: '2020029',
+          zqmc: 'ABCDEFG',
+          zqlx: '月'
         }
       ],
-      rules:{
-        bbh:[
-          { required: true, message: '请输入版本号', trigger: 'blur' },
+      ystsList: [
+        {
+          txbh: '2020001',
+          txmc: '2020'
+        },
+        {
+          txbh: '2020006',
+          txmc: '测试1'
+        },
+        {
+          txbh: '2020008',
+          txmc: '测试2'
+        },
+        {
+          txbh: '2020014',
+          txmc: '测试3'
+        }
+
+      ],
+      ysndList: [
+        {
+          ysnd: '2017'
+        },
+        {
+          ysnd: '2018'
+        },
+        {
+          ysnd: '2019'
+        },
+        {
+          ysnd: '2020'
+        },
+        {
+          ysnd: '2021'
+        },
+        {
+          ysnd: '2022'
+        },
+        {
+          ysnd: '2023'
+        },
+        {
+          ysnd: '2024'
+        }
+      ],
+      rules: {
+        bbh: [
+          { required: true, message: '请输入版本号', trigger: 'blur' }
         ],
-        ysnd:[
-          { required: true, message: '请选择预算年度', trigger: 'blur' },
+        ysnd: [
+          { required: true, message: '请选择预算年度', trigger: 'blur' }
         ],
-        ystx:[
-          { required: true, message: '请选择预算体系', trigger: 'blur' },
+        ystx: [
+          { required: true, message: '请选择预算体系', trigger: 'blur' }
         ],
-        yszq:[
-          { required: true, message: '请选择预算周期', trigger: 'blur' },
+        yszq: [
+          { required: true, message: '请选择预算周期', trigger: 'blur' }
         ],
-        ysksrq:[
-          { required: true, message: '请选择预算开始日期', trigger: 'blur' },
+        ysksrq: [
+          { required: true, message: '请选择预算开始日期', trigger: 'blur' }
         ],
-        ysjsrq:[
-          { required: true, message: '请选择预算结束日期', trigger: 'blur' },
-        ],
+        ysjsrq: [
+          { required: true, message: '请选择预算结束日期', trigger: 'blur' }
+        ]
       },
       form: {
-        bbh:'',
-        ysnd:'',
-        ystx:'',
-        zqmc:'',
-        ksrq:'',
-        jsrq:'',
-        ysbzdw:'二级单位',
-        ysms:'',
-        bbzt:'保存'
+        bbh: '',
+        ysnd: '',
+        ystx: '',
+        zqmc: '',
+        ksrq: '',
+        jsrq: '',
+        ysbzdw: '二级单位',
+        ysms: '',
+        bbzt: '保存'
       }
     }
   },
@@ -287,9 +283,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -298,52 +294,49 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
 
       {
         prop: 'ysxm',
         width: '',
         label: '预算项目',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: '1',
         width: '',
         label: '1',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'hz',
         width: '',
         label: '汇总',
-        fixed: 'left',
+        fixed: 'left'
       }
-      
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         let bbh = ''
-        for(let i=0;i<16;i++){
-          bbh+= Math.round(Math.random() * 10)
+        for (let i = 0; i < 16; i++) {
+          bbh += Math.round(Math.random() * 10)
         }
-        Object.keys(this.form).forEach(item => {this.form[item] = ''});
-        this.form.bbh= bbh
-        this.form.ysbzdw="二级单位1"
+        Object.keys(this.form).forEach(item => { this.form[item] = '' })
+        this.form.bbh = bbh
+        this.form.ysbzdw = '二级单位1'
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -353,17 +346,17 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
       console.log(this.form)
-      this.form.bbzt='保存'
-      this.form.bzr='admin'
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.form.bbzt = '保存'
+      this.form.bzr = 'admin'
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

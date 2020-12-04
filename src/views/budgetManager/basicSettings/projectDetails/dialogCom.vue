@@ -32,7 +32,7 @@
               v-model="form.mbbh"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -47,7 +47,7 @@
               v-model="form.mbmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -79,15 +79,15 @@ export default {
     return {
       placeholderTips: placeholderTips,
       form: {
-        mbbh:'',
-        mbmc:''
+        mbbh: '',
+        mbmc: ''
       },
-      rules:{
-        mbbh:[
-          { required: true, message: '请填写模板编号', trigger: 'blur' },
+      rules: {
+        mbbh: [
+          { required: true, message: '请填写模板编号', trigger: 'blur' }
         ],
-        mbmc:[
-          { required: true, message: '请填写模板名称', trigger: 'blur' },
+        mbmc: [
+          { required: true, message: '请填写模板名称', trigger: 'blur' }
         ]
       }
     }
@@ -96,9 +96,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -108,41 +108,37 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-        
+          this.form[item] = ''
+        })
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.mbzt='停用'
+            this.form.mbzt = '停用'
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

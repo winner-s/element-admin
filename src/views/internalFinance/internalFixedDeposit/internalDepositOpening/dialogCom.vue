@@ -49,8 +49,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -93,9 +92,8 @@
               size="mini"
               :disabled="true"
               :placeholder="placeholderTips.content"
-            >
-            </el-date-picker>
-            
+            />
+
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -175,8 +173,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -193,8 +190,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -235,9 +231,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -260,31 +257,31 @@ export default {
       placeholderTips: placeholderTips,
       rules: {
         ckkllsh: [
-          { required: true, message: '请填写存款开立流水号', trigger: 'blur' },
+          { required: true, message: '请填写存款开立流水号', trigger: 'blur' }
         ],
         ckqx: [{ required: true, message: '请填写存款期限', trigger: 'blur' }],
         ckll: [{ required: true, message: '请填写存款利率', trigger: 'blur' }],
         ckje: [{ required: true, message: '请填写存款金额', trigger: 'blur' }],
         ckklrq: [{ required: true, message: '请填写开立日期', trigger: 'blur' }],
         ckdwbh: [
-          { required: true, message: '请填写存款单位编号', trigger: 'blur' },
+          { required: true, message: '请填写存款单位编号', trigger: 'blur' }
         ],
         ckdwmc: [
-          { required: true, message: '请填写存款单位名称', trigger: 'blur' },
+          { required: true, message: '请填写存款单位名称', trigger: 'blur' }
         ],
         nbzh: [{ required: true, message: '请填写内部账号', trigger: 'blur' }],
         nbzhye: [
-          { required: true, message: '请填写内部账号余额', trigger: 'blur' },
+          { required: true, message: '请填写内部账号余额', trigger: 'blur' }
         ],
         dqxcfs: [
-          { required: true, message: '请填写到期续存方式', trigger: 'blur' },
+          { required: true, message: '请填写到期续存方式', trigger: 'blur' }
         ],
         llzhts: [
-          { required: true, message: '请填写利率转换天数', trigger: 'blur' },
+          { required: true, message: '请填写利率转换天数', trigger: 'blur' }
         ],
         nbzhmc: [
-          { required: true, message: '请填写内部账号名称', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写内部账号名称', trigger: 'blur' }
+        ]
       },
       form: {
         ckkllsh: '',
@@ -300,8 +297,8 @@ export default {
         dqxcfs: '',
         llzhts: '',
         yjlx: '',
-        bz: '',
-      },
+        bz: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -312,7 +309,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -336,8 +333,8 @@ export default {
         this.form.ckkllsh = 'FO20201120163123375'
         this.form.yjlx = '0.00'
         this.form.ckdwbh = '002'
-        this.form.nbzhye="48,518,175.47"
-        this.form.nbzhmc ='二级单位1内部账户'
+        this.form.nbzhye = '48,518,175.47'
+        this.form.nbzhmc = '二级单位1内部账户'
       }
     },
     sub() {
@@ -346,8 +343,8 @@ export default {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.ckzt='未结清'
-            this.form.zt='保存'
+            this.form.ckzt = '未结清'
+            this.form.zt = '保存'
             this.addSub()
           }
         }
@@ -360,8 +357,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

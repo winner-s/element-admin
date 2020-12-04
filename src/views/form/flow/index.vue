@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import {ACCOUNTUSAGE,ACCOUNTUSAGELIST} from '@u/wordbook'
+import { ACCOUNTUSAGE, ACCOUNTUSAGELIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import data from '../components/data'
 import Table from '@c/common/table'
@@ -34,15 +34,15 @@ export default {
   name: 'Flow',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
-      accountUsageList:ACCOUNTUSAGELIST,
+      accountUsageList: ACCOUNTUSAGELIST,
       searchItem: [],
       searchData: {
         cxksrq: '2020-11-01',
-        cxjsrq: '2020-11-15',
+        cxjsrq: '2020-11-15'
       },
       searchBto: [],
       tableData: [],
@@ -60,7 +60,7 @@ export default {
           lc: 0,
           qmye: 0,
           ce: 0,
-          bz:1
+          bz: 1
         },
         {
           id: 2,
@@ -74,15 +74,15 @@ export default {
           lc: 0,
           qmye: 5000,
           ce: 0,
-          bz:2
-        },
+          bz: 2
+        }
       ],
       showAll: false,
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -93,7 +93,7 @@ export default {
         type: 'input',
         label: '单位名称:',
         prop: 'dwmc',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
@@ -102,14 +102,14 @@ export default {
         selectList: [
           {
             value: '是',
-            id: 1,
+            id: 1
           },
           {
             value: '否',
-            id: 0,
-          },
+            id: 0
+          }
         ],
-        placeholder: '请选择',
+        placeholder: '请选择'
       },
       {
         type: 'select',
@@ -117,35 +117,35 @@ export default {
         selectList: [
           {
             value: '20121006',
-            id: 20121006,
+            id: 20121006
           },
           {
             value: '20121007',
-            id: 20121007,
+            id: 20121007
           },
           {
             value: '20111008',
-            id: 20121008,
+            id: 20121008
           },
           {
             value: '20111009',
-            id: 20111009,
+            id: 20111009
           },
           {
             value: '20111010',
-            id: 20111010,
+            id: 20111010
           },
           {
             value: '20111011',
-            id: 6,
+            id: 6
           },
           {
             value: '20111012',
-            id: 7,
-          },
+            id: 7
+          }
         ],
         prop: 'zhhm',
-        placeholder: '请填写账户号码',
+        placeholder: '请填写账户号码'
       },
       // {
       //   type: 'input',
@@ -163,30 +163,30 @@ export default {
         selectList: [
           {
             value: '人民币',
-            id: 1,
+            id: 1
           },
           {
             value: '美元',
-            id: 2,
+            id: 2
           },
           {
             value: '越南盾',
-            id: 3,
+            id: 3
           },
           {
             value: '欧元',
-            id: 4,
+            id: 4
           },
           {
             value: '泰国铢',
-            id: 5,
+            id: 5
           },
           {
             value: '加元',
-            id: 6,
-          },
+            id: 6
+          }
         ],
-        placeholder: '请选择币种',
+        placeholder: '请选择币种'
       },
       {
         type: 'select',
@@ -194,7 +194,7 @@ export default {
         prop: 'zhyt',
         show: false,
         selectList: this.accountUsageList,
-        placeholder: '请选择账户用途名称',
+        placeholder: '请选择账户用途名称'
       },
       {
         type: 'num',
@@ -202,7 +202,7 @@ export default {
         prop: 'qcye',
         show: false,
         numList: ['qcyeks', 'qcyejs'],
-        placeholder: '请输入金额',
+        placeholder: '请输入金额'
       },
       {
         type: 'num',
@@ -210,7 +210,7 @@ export default {
         prop: 'qmye',
         show: false,
         numList: ['qmyeks', 'qmyejs'],
-        placeholder: '请输入金额',
+        placeholder: '请输入金额'
       },
       {
         type: 'daterange',
@@ -220,74 +220,74 @@ export default {
         disabled: true,
         timeFormat: 'yyyy-MM-dd',
         prop: 'cxrq',
-        placeholder: '请选择日期',
-      },
+        placeholder: '请选择日期'
+      }
     ]
     this.searchBto = [
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
-      },
+        label: '查询'
+      }
     ]
     this.tableListData = [
       {
         prop: 'sjdwmc',
         width: '',
-        label: '上级单位名称',
+        label: '上级单位名称'
       },
       {
         prop: 'xmgsmc',
         width: '',
-        label: '项目公司名称',
+        label: '项目公司名称'
       },
       {
         prop: 'khhmc',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'zhhm',
         width: '',
-        label: '帐户号码',
+        label: '帐户号码'
       },
       {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
-        type:"wordbook",
+        type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'qcye',
         width: '',
-        label: '期初余额（元）',
+        label: '期初余额（元）'
       },
       {
         prop: 'lr',
         width: '',
-        label: '流入（元）',
+        label: '流入（元）'
       },
       {
         prop: 'lc',
         width: '',
-        label: '流出（元）',
+        label: '流出（元）'
       },
       {
         prop: 'qmye',
         width: '',
-        label: '期末余额（元）',
+        label: '期末余额（元）'
       },
       {
         prop: 'ce',
         width: '',
-        label: '差额（元）',
-      },
+        label: '差额（元）'
+      }
     ]
   },
   methods: {
-    //过滤
-    accountUsage(val){
+    // 过滤
+    accountUsage(val) {
       return ACCOUNTUSAGE[val]
     },
     // 收起
@@ -375,7 +375,7 @@ export default {
             }
 
             if (i == 'qcyeks') {
-              if (item.qcye>=this.searchData[i]) {
+              if (item.qcye >= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -384,7 +384,7 @@ export default {
             }
 
             if (i == 'qcyejs') {
-              if (item.qcye<=this.searchData[i]) {
+              if (item.qcye <= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -393,7 +393,7 @@ export default {
             }
 
             if (i == 'qmyeks') {
-              if (item.qmye>=this.searchData[i]) {
+              if (item.qmye >= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -402,14 +402,13 @@ export default {
             }
 
             if (i == 'qmyejs') {
-              if (item.qmye<=this.searchData[i]) {
+              if (item.qmye <= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
                 return
               }
             }
-           
           } else {
             continue
           }
@@ -420,8 +419,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style>

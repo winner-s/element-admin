@@ -49,7 +49,7 @@ import {
   LLZHTSLIST,
   LLZHTS,
   DEPOSITTERMLIST,
-  DEPOSITTERM,
+  DEPOSITTERM
 } from '@u/wordbook'
 
 import Search from '@c/common/search'
@@ -70,7 +70,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: false,
 
@@ -78,7 +78,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -88,7 +88,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
 
       list: [
@@ -105,8 +105,8 @@ export default {
           zt: '保存',
           ckqx: 1,
           llzhts: 1,
-          dqxcfs: 1,
-        },
+          dqxcfs: 1
+        }
       ],
       // 表格
       tableData: [],
@@ -114,7 +114,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {},
-      selectChange: [],
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -131,25 +131,25 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
-      
+
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -157,40 +157,40 @@ export default {
         type: 'input',
         label: '存款开立流水号:',
         prop: 'ckkllsh',
-        placeholder: '请填写存款开立流水号',
+        placeholder: '请填写存款开立流水号'
       },
       {
         type: 'select',
         label: '存款期限:',
         prop: 'ckqx',
         placeholder: '请选择存款期限',
-        selectList: this.depositTiermList,
+        selectList: this.depositTiermList
       },
       {
         type: 'select',
         label: '存款单位编号:',
         prop: 'ckdwbh',
-        placeholder: '请选择存款单位编号',
+        placeholder: '请选择存款单位编号'
       },
       {
         type: 'input',
         label: '存款单位名称:',
         prop: 'ckdwmc',
-        placeholder: '请填写存款单位名称',
+        placeholder: '请填写存款单位名称'
       },
       {
         type: 'time',
         label: '存款开立日期 从:',
         prop: 'ckklrqks',
         placeholder: '请选择存款开立日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'time',
         label: '到:',
         prop: 'ckklrqjs',
         placeholder: '请选择存款开立日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
@@ -198,7 +198,7 @@ export default {
         prop: 'ckllzhts',
         placeholder: '请选择存款利率转换天数',
         show: this.showAll,
-        selectList: this.llzhtsList,
+        selectList: this.llzhtsList
       },
       {
         type: 'select',
@@ -206,8 +206,8 @@ export default {
         prop: 'dqxcfs',
         placeholder: '请填写到期续存方式',
         show: this.showAll,
-        selectList: this.dqxcfsList,
-      },
+        selectList: this.dqxcfsList
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -217,74 +217,74 @@ export default {
       {
         prop: 'ckkllsh',
         width: '150',
-        type:'a',
-        label: '存款开立流水号',
+        type: 'a',
+        label: '存款开立流水号'
       },
       {
         prop: 'ckzt',
         width: '150',
-        label: '存款状态',
+        label: '存款状态'
       },
       {
         prop: 'ckdwmc',
         width: '',
-        label: '存款单位名称',
+        label: '存款单位名称'
       },
       {
         prop: 'ckje',
         width: '',
-        label: '存款金额',
+        label: '存款金额'
       },
       {
         prop: 'ckklrq',
         width: '',
-        label: '存款开立日期',
+        label: '存款开立日期'
       },
       {
         prop: 'nbzh',
         width: '',
-        label: '内部账号 ',
+        label: '内部账号 '
       },
       {
         prop: 'zt',
         width: '',
-        label: '状态',
+        label: '状态'
       },
       {
         prop: 'ckqx',
         width: '',
         label: '存款期限',
         type: 'wordbook',
-        wordbookList: this.depositTerm,
+        wordbookList: this.depositTerm
       },
       {
         prop: 'llzhts',
         width: '',
         label: '利率转换天数',
         type: 'wordbook',
-        wordbookList: this.llzhts,
+        wordbookList: this.llzhts
       },
       {
         prop: 'dqxcfs',
         width: '',
         label: '到期续存方式',
         type: 'wordbook',
-        wordbookList: this.dqxcfs,
+        wordbookList: this.dqxcfs
       },
-      { label: '操作', type: 'btn', width: '' },
+      { label: '操作', type: 'btn', width: '' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -293,9 +293,9 @@ export default {
   },
   // 方法集合
   methods: {
-    //提交
+    // 提交
     handleCommit() {
-      let  bool  = false
+      let bool = false
       this.selectChange.forEach((item, index) => {
         if (item.zt == '审批通过') {
           this.$confirm(
@@ -304,7 +304,7 @@ export default {
             {
               confirmButtonText: '确定',
               showCancelButton: false,
-              type: 'warning',
+              type: 'warning'
             }
           )
 
@@ -313,23 +313,21 @@ export default {
 
         this.list.forEach((res, index) => {
           if (res.ckkllsh == item.ckkllsh) {
-            res.zt = "审批通过"
+            res.zt = '审批通过'
           }
         })
         bool = true
-
-
       })
-      if(bool ==true){
+      if (bool == true) {
         this.$confirm(
-            '提交成功',
-            '提示',
-            {
-              confirmButtonText: '确定',
-              showCancelButton: false,
-              type: 'warning',
-            }
-          )
+          '提交成功',
+          '提示',
+          {
+            confirmButtonText: '确定',
+            showCancelButton: false,
+            type: 'warning'
+          }
+        )
       }
     },
     handleSelectionChange(res) {
@@ -353,7 +351,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach((item) => {
         if (res[item]) {
           fore[item] = res[item]
@@ -416,7 +414,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -444,7 +442,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -472,19 +470,17 @@ export default {
                 bool = false
               }
             }
-            
+
             if (i == 'ckklrqks') {
-              
-              if (Date.parse(item.ckklrq)>=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.ckklrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            
 
             if (i == 'ckklrqjs') {
-              if (Date.parse(item.ckklrq)<=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.ckklrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -506,8 +502,6 @@ export default {
                 bool = false
               }
             }
-
-
           } else {
             continue
           }
@@ -518,8 +512,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

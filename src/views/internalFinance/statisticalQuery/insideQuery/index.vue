@@ -34,7 +34,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST,HTZTLIST, HTZT,CURRENCYLIST,CURRENCY} from '@u/wordbook'
+import { UNITNOLIST, HTZTLIST, HTZT, CURRENCYLIST, CURRENCY } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -44,8 +44,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      currencyList:CURRENCYLIST,
-      htztList:HTZTLIST,
+      currencyList: CURRENCYLIST,
+      htztList: HTZTLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -76,7 +76,7 @@ export default {
           ksrq: '2020-11-01',
           jsrq: '2021-11-02',
           dkje: '10000000',
-          htzt:1,
+          htzt: 1,
           jedx: '10000000',
           llzhts: 1,
           jxfs: '固定利率',
@@ -84,9 +84,9 @@ export default {
           fxfs: 1,
           hbff: 1,
           bzhu: '',
-          yfkje:'15646',
-          yhbj:'132',
-          yhlx:'534',
+          yfkje: '15646',
+          yhbj: '132',
+          yhlx: '534',
           childerList: []
         }
       ],
@@ -136,7 +136,7 @@ export default {
         type: 'select',
         label: '合同状态:',
         prop: 'htzt',
-        selectList:this.htztList,
+        selectList: this.htztList,
         placeholder: '请选择合同状态'
       },
 
@@ -198,7 +198,7 @@ export default {
         label: '币种:',
         prop: 'bz',
         placeholder: '请选择币种人',
-        selectList:this.currencyList
+        selectList: this.currencyList
       }
     ]
     //  table表格
@@ -230,8 +230,8 @@ export default {
       {
         prop: 'bz',
         width: '',
-        type:'wordbook',
-        wordbookList:this.currency,
+        type: 'wordbook',
+        wordbookList: this.currency,
         label: '币种'
       },
       {
@@ -268,8 +268,8 @@ export default {
         prop: 'htzt',
         width: '',
         label: '合同状态',
-        type:'wordbook',
-        wordbookList:this.htzt
+        type: 'wordbook',
+        wordbookList: this.htzt
       }
     ]
     // 按钮
@@ -281,11 +281,11 @@ export default {
   },
   // 方法集合
   methods: {
-    //过滤
-    htzt(val){
+    // 过滤
+    htzt(val) {
       return HTZT[val]
     },
-    currency(val){
+    currency(val) {
       return CURRENCY[val]
     },
     // 收起
@@ -308,7 +308,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -339,7 +339,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -384,7 +384,6 @@ export default {
               }
             }
 
-
             if (i == 'dkjejs') {
               if (item.dkje <= this.searchData[i]) {
                 bool = true
@@ -393,9 +392,8 @@ export default {
               }
             }
 
-
             if (i == 'htksrqc') {
-              if (Date.parse(item.ksrq) >=  Date.parse(this.searchData[i])  ) {
+              if (Date.parse(item.ksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -403,7 +401,7 @@ export default {
             }
 
             if (i == 'htksrqd') {
-              if (Date.parse(item.ksrq) >=  Date.parse(this.searchData[i])  ) {
+              if (Date.parse(item.ksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -411,16 +409,15 @@ export default {
             }
 
             if (i == 'htjsrqc') {
-              if (Date.parse(item.jsrq) >=  Date.parse(this.searchData[i])  ) {
+              if (Date.parse(item.jsrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-
             if (i == 'htksrqd') {
-              if (Date.parse(item.jsrq) >=  Date.parse(this.searchData[i])  ) {
+              if (Date.parse(item.jsrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -434,8 +431,6 @@ export default {
                 bool = false
               }
             }
-
-
           } else {
             continue
           }

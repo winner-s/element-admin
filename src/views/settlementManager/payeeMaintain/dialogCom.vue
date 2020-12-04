@@ -42,7 +42,7 @@
               v-model="form.skfmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -59,7 +59,7 @@
               v-model="form.skfyhzh"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -74,7 +74,7 @@
               v-model="form.skfzhmc"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -98,8 +98,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -120,8 +119,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -137,7 +135,7 @@
               v-model="form.khhszs"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -152,7 +150,7 @@
               v-model="form.khhszshi"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -169,7 +167,7 @@
               v-model="form.khhmc"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -184,7 +182,7 @@
               v-model="form.khhlhh"
               style="width: 200px"
               size="mini"
-               
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -222,7 +220,7 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { placeholderTips } from '@u/validate'
-import { BACKLIST,ZHLXLIST } from '@u/wordbook'
+import { BACKLIST, ZHLXLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
@@ -230,47 +228,47 @@ export default {
   data() {
     // 这里存放数据
     return {
-      backList:BACKLIST,
-      zhlxList:ZHLXLIST,
+      backList: BACKLIST,
+      zhlxList: ZHLXLIST,
       placeholderTips: placeholderTips,
       form: {
-        bh:'',
-        skfmc:'',
-        skfyhzh:'',
-        skfzhmc:'',
-        yhmc:'',
-        zhlx:'',
-        khhszs:'',
-        khhszshi:'',
-        khhmc:'',
-        khhlhh:'',
-        bz:''
+        bh: '',
+        skfmc: '',
+        skfyhzh: '',
+        skfzhmc: '',
+        yhmc: '',
+        zhlx: '',
+        khhszs: '',
+        khhszshi: '',
+        khhmc: '',
+        khhlhh: '',
+        bz: ''
       },
-      rules:{
+      rules: {
         bh: [
-          { required: true, message: '请填写编号', trigger: 'blur' },
+          { required: true, message: '请填写编号', trigger: 'blur' }
         ],
         skfmc: [
-          { required: true, message: '请填写收款方名称', trigger: 'blur' },
+          { required: true, message: '请填写收款方名称', trigger: 'blur' }
         ],
         skfyhzh: [
-          { required: true, message: '请填写收款方银行账号', trigger: 'blur' },
+          { required: true, message: '请填写收款方银行账号', trigger: 'blur' }
         ],
         skfzhmc: [
-          { required: true, message: '请填写收款方账户名称', trigger: 'blur' },
+          { required: true, message: '请填写收款方账户名称', trigger: 'blur' }
         ],
         yhmc: [
-          { required: true, message: '请填写银行名称', trigger: 'blur' },
+          { required: true, message: '请填写银行名称', trigger: 'blur' }
         ],
         zhlx: [
-          { required: true, message: '请填写账户类型', trigger: 'blur' },
+          { required: true, message: '请填写账户类型', trigger: 'blur' }
         ],
         khhszs: [
-          { required: true, message: '请填写开户行所在省', trigger: 'blur' },
+          { required: true, message: '请填写开户行所在省', trigger: 'blur' }
         ],
         khhszshi: [
-          { required: true, message: '请填写开户行所在市', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写开户行所在市', trigger: 'blur' }
+        ]
       }
     }
   },
@@ -278,9 +276,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -290,43 +288,39 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
-        
+          this.form[item] = ''
+        })
+
         this.form.bh = 'KH20091410151601'
-        
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.status=1
+            this.form.status = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

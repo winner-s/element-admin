@@ -50,8 +50,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -66,15 +65,13 @@
               size="mini"
               style="width: 200px"
               @change="selectChange"
-              
             >
               <el-option
                 v-for="(item,index) in bankPhoneList"
                 :key="index"
                 :label="item.accountPhone"
                 :value="item.accountPhone"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -133,22 +130,19 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="变更日期：" prop="bgrq">
             <el-date-picker
-              style="width: 200px"
               v-model="form.bgrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择变更日期"
               size="mini"
-              
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -191,8 +185,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -269,8 +262,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -287,8 +279,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -357,9 +348,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -372,7 +364,7 @@ import {
   BACKLIST,
   CURRENCYLIST,
   ACCOUNTUSAGELIST,
-  DIRECTLIST,
+  DIRECTLIST
 } from '@u/wordbook'
 import { placeholderTips } from '@u/validate'
 export default {
@@ -382,130 +374,130 @@ export default {
   data() {
     // 这里存放数据
     return {
-      bankPhoneList:[
+      bankPhoneList: [
         {
-         
-          accountPhone:1111111111,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:1111111111,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          lhh:'5200103901',
-          zhyt:1,
-          sfzl:1
-        },{
-         
-          accountPhone:2222222222,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:2222222222,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          llh:'5200103901',
-          zhyt:1,
-          sfzl:1
-        },{
-          
-          accountPhone:3333333333,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:3333333333,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          llh:'5200103901',
-          zhyt:1,
-          sfzl:1
-        },{
-          accountPhone:444444444,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:444444444,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          llh:'5200103901',
-          zhyt:1,
-          sfzl:1
-        },{
-          accountPhone:5555555555,
-          accountName:"测试1",
-          bankName:"中国银行",
-          currency:1,
-          yhzh:5555555555,
-          zhmc:"测试1",
-          yhmc:1,
-          khhszss:'aaa',
-          bgsqr:'admin',
-          khhmc:'北京分行',
-          llh:'5200103901',
-          zhyt:1,
-          sfzl:1
+
+          accountPhone: 1111111111,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 1111111111,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 1,
+          sfzl: 1
+        }, {
+
+          accountPhone: 2222222222,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 2222222222,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          llh: '5200103901',
+          zhyt: 1,
+          sfzl: 1
+        }, {
+
+          accountPhone: 3333333333,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 3333333333,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          llh: '5200103901',
+          zhyt: 1,
+          sfzl: 1
+        }, {
+          accountPhone: 444444444,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 444444444,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          llh: '5200103901',
+          zhyt: 1,
+          sfzl: 1
+        }, {
+          accountPhone: 5555555555,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 5555555555,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: 'aaa',
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          llh: '5200103901',
+          zhyt: 1,
+          sfzl: 1
         }
       ],
       rules: {
         documentNumber: [
-          { required: true, message: '请填写单据编号', trigger: 'blur' },
+          { required: true, message: '请填写单据编号', trigger: 'blur' }
         ],
         accountPhone: [
-          { required: true, message: '请选择银行账号', trigger: 'blur' },
+          { required: true, message: '请选择银行账号', trigger: 'blur' }
         ],
         accountName: [
-          { required: true, message: '请填写账户名称', trigger: 'blur' },
+          { required: true, message: '请填写账户名称', trigger: 'blur' }
         ],
-         bankName: [
-          { required: true, message: '请填写银行名称', trigger: 'blur' },
+        bankName: [
+          { required: true, message: '请填写银行名称', trigger: 'blur' }
         ],
-         currency: [
-          { required: true, message: '请填写币种', trigger: 'blur' },
+        currency: [
+          { required: true, message: '请填写币种', trigger: 'blur' }
         ],
-         bghUnitName: [
-          { required: true, message: '请填写单位名称', trigger: 'blur' },
+        bghUnitName: [
+          { required: true, message: '请填写单位名称', trigger: 'blur' }
         ],
-         bgrq: [
-          { required: true, message: '请选择变更日期', trigger: 'blur' },
+        bgrq: [
+          { required: true, message: '请选择变更日期', trigger: 'blur' }
         ],
         yhzh: [
-          { required: true, message: '请填写银行账号', trigger: 'blur' },
+          { required: true, message: '请填写银行账号', trigger: 'blur' }
         ],
         zhmc: [
-          { required: true, message: '请填写账户名称', trigger: 'blur' },
+          { required: true, message: '请填写账户名称', trigger: 'blur' }
         ],
         yhmc: [
-          { required: true, message: '请选择银行名称', trigger: 'blur' },
+          { required: true, message: '请选择银行名称', trigger: 'blur' }
         ],
         khhszss: [
-          { required: true, message: '请选择开户行所在省市', trigger: 'blur' },
+          { required: true, message: '请选择开户行所在省市', trigger: 'blur' }
         ],
         bgsqr: [
-          { required: true, message: '请填写变更申请人', trigger: 'blur' },
+          { required: true, message: '请填写变更申请人', trigger: 'blur' }
         ],
         khhmc: [
-          { required: true, message: '请填写开户行名称', trigger: 'blur' },
+          { required: true, message: '请填写开户行名称', trigger: 'blur' }
         ],
         lhh: [
-          { required: true, message: '请填写联行号', trigger: 'blur' },
+          { required: true, message: '请填写联行号', trigger: 'blur' }
         ],
         zhyt: [
-          { required: true, message: '请选择账户用途', trigger: 'blur' },
+          { required: true, message: '请选择账户用途', trigger: 'blur' }
         ],
         sfzl: [
-          { required: true, message: '请选择是否直联', trigger: 'blur' },
+          { required: true, message: '请选择是否直联', trigger: 'blur' }
         ]
       },
       unitNoList: UNITNOLIST,
@@ -515,24 +507,24 @@ export default {
       directList: DIRECTLIST,
       placeholderTips: placeholderTips,
       form: {
-        documentNumber:'BG20110216484292',
-        bghUnitName:1324,
-        unitName:1324,
-        bgrq:new Date(),
-        accountPhone:'',
-        accountName:"",
-        bankName:"",
-        currency:'',
-        yhzh:'',
-        zhmc:"",
-        yhmc:'',
-        khhszss:'',
-        bgsqr:'admin',
-        khhmc:'',
-        lhh:'',
-        zhyt:1,
-        sfzl:1
-      },
+        documentNumber: 'BG20110216484292',
+        bghUnitName: 1324,
+        unitName: 1324,
+        bgrq: new Date(),
+        accountPhone: '',
+        accountName: '',
+        bankName: '',
+        currency: '',
+        yhzh: '',
+        zhmc: '',
+        yhmc: '',
+        khhszss: '',
+        bgsqr: 'admin',
+        khhmc: '',
+        lhh: '',
+        zhyt: 1,
+        sfzl: 1
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -543,7 +535,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -551,49 +543,45 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    selectChange(res){
-      let ind = 0;
-      this.bankPhoneList.forEach((item,index)=>{
-        if(item.documentNumber ===res){
-            ind = index
+    selectChange(res) {
+      let ind = 0
+      this.bankPhoneList.forEach((item, index) => {
+        if (item.documentNumber === res) {
+          ind = index
         }
-        
       })
-      let fore = this.bankPhoneList[ind];
+      const fore = this.bankPhoneList[ind]
 
       Object.keys(this.form).forEach(item => {
-        if(fore[item]){
+        if (fore[item]) {
           this.form[item] = fore[item]
         }
-         
-        });
-      
+      })
     },
     initDialog() {
       this.form = {
-        documentNumber:'BG20110216484292',
-        bghUnitName:1324,
-        unitName:1324,
-        bgrq:new Date(),
-        accountPhone:'',
-        accountName:"",
-        bankName:"",
-        currency:'',
-        yhzh:'',
-        zhmc:"",
-        yhmc:'',
-        khhszss:'',
-        bgsqr:'admin',
-        khhmc:'',
-        lhh:'',
-        zhyt:1,
-        sfzl:1
+        documentNumber: 'BG20110216484292',
+        bghUnitName: 1324,
+        unitName: 1324,
+        bgrq: new Date(),
+        accountPhone: '',
+        accountName: '',
+        bankName: '',
+        currency: '',
+        yhzh: '',
+        zhmc: '',
+        yhmc: '',
+        khhszss: '',
+        bgsqr: 'admin',
+        khhmc: '',
+        lhh: '',
+        zhyt: 1,
+        sfzl: 1
       }
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
+          this.form[item] = this.dialogObj.form[item]
+        })
       }
     },
     sub() {
@@ -607,15 +595,15 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',this.form)
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', this.form)
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',this.form)
-      this.dialogObj.show=false
+      this.$emit('addSub', this.form)
+      this.dialogObj.show = false
     }
-  },
+  }
 }
 </script>
 <style scoped lang="scss">

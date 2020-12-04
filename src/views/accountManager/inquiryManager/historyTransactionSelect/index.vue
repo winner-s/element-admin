@@ -64,34 +64,33 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          jylsh:'216755346547476',
-          bfyhzh:'32323232323',
-          bfzhmc:'aaa',
-          bfdwmc:'bbbb',
-          bfyhmc:1,
-          bfkhh:'株洲分行',
-          dfyhzh:'34343434343',
-          dfzhmc:'cccc',
-          dfkhh:'北京分行',
-          jdfx:1,
-          jyrq:'2020-09-01',
-          jyje:'1000',
-          ye:'1000',
-          bz:1,
-          zhyt:1,
-          sfzl:1,
-          zy:'',
-          beizhu:''
+          jylsh: '216755346547476',
+          bfyhzh: '32323232323',
+          bfzhmc: 'aaa',
+          bfdwmc: 'bbbb',
+          bfyhmc: 1,
+          bfkhh: '株洲分行',
+          dfyhzh: '34343434343',
+          dfzhmc: 'cccc',
+          dfkhh: '北京分行',
+          jdfx: 1,
+          jyrq: '2020-09-01',
+          jyje: '1000',
+          ye: '1000',
+          bz: 1,
+          zhyt: 1,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
 
         }
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -353,7 +352,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -375,7 +374,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -395,7 +394,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

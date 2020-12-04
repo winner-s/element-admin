@@ -148,7 +148,6 @@ export const ACCOUNTSTATUSLIST = [
   }
 ]
 
-
 // 匹配条件
 export const PPTJ = {
   '1': '摘要',
@@ -602,14 +601,6 @@ export const HTZTLIST = [
   }
 ]
 
-
-
-
-
-
-
-
-
 // 单据状态
 export const DJZT = {
   '1': '已保存',
@@ -636,8 +627,6 @@ export const DJZTLIST = [
     value: '已退回'
   }
 ]
-
-
 
 // 付息方式
 export const FXFS = {
@@ -693,7 +682,6 @@ export const HBFSLIST = [
   }
 ]
 
-
 // 还款类型
 export const HKLX = {
   '1': '还息',
@@ -711,7 +699,6 @@ export const HKLXLIST = [
   }
 ]
 
-
 // 计息方式
 export const JXFS = {
   '1': '固定利率',
@@ -728,8 +715,6 @@ export const JXFSLIST = [
     value: '固定利率'
   }
 ]
-
-
 
 // 付款类型
 export const FKLX = {
@@ -802,15 +787,6 @@ export const FKLXLIST = [
     value: '请款申请'
   }
 ]
-
-
-
-
-
-
-
-
-
 
 // 贷款期限
 export const DKQX = {

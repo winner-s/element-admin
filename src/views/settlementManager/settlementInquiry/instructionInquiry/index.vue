@@ -25,11 +25,10 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleViewOther="handleViewOther"
-         
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  />
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 
@@ -41,7 +40,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table ,dialogCom},
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -63,44 +62,44 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          
-          djbh: "57110317798255631",
-          djrq: "2020/11/4",
-          ywdw:'业务单位',
-          sjly:'财资云',
-          fkfyhzh:'236785',
-          skfyhzh:'87954597',
-          fkfzhmc:'张三',
-          skfzhmc:'李四',
-          fkfkhh:'株洲分行',
-          skfkhh:'株洲分行',
-          je:'10000',
-          skfszs:'湖南省株洲市',
-          dx:'10000',
-          lhh:'879108463',
-          ywlx:'资金归集',
-          bz:'000000',
-          zfclzt:'失败',
-          fkyh:'中国银行',
-          hksd:'普通',
-          sfth:'是',
-          cjsj:'2020-10-29 14:00:36',
-          fssj:'2020-10-29 14:00:36',
-          cssj:'',
-          csczyh:'',
-          zy:'手动归集',
-          csyy:'',
-          yhbs1:'',
-          yhbs2:'',
-          yhbs3:'',
-          yhbs4:'',
-          jysj:"",
-          ztbs:'',
-          ztms:'',
-          fkxx:'创建"BOC_2019112101"的对应服务室出错',
-          zljsyh:'中国银行',
+
+          djbh: '57110317798255631',
+          djrq: '2020/11/4',
+          ywdw: '业务单位',
+          sjly: '财资云',
+          fkfyhzh: '236785',
+          skfyhzh: '87954597',
+          fkfzhmc: '张三',
+          skfzhmc: '李四',
+          fkfkhh: '株洲分行',
+          skfkhh: '株洲分行',
+          je: '10000',
+          skfszs: '湖南省株洲市',
+          dx: '10000',
+          lhh: '879108463',
+          ywlx: '资金归集',
+          bz: '000000',
+          zfclzt: '失败',
+          fkyh: '中国银行',
+          hksd: '普通',
+          sfth: '是',
+          cjsj: '2020-10-29 14:00:36',
+          fssj: '2020-10-29 14:00:36',
+          cssj: '',
+          csczyh: '',
+          zy: '手动归集',
+          csyy: '',
+          yhbs1: '',
+          yhbs2: '',
+          yhbs3: '',
+          yhbs4: '',
+          jysj: '',
+          ztbs: '',
+          ztms: '',
+          fkxx: '创建"BOC_2019112101"的对应服务室出错',
+          zljsyh: '中国银行'
 
         }
       ],
@@ -252,7 +251,7 @@ export default {
       {
         prop: 'djbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '单据编号',
         fixed: 'left'
       },
@@ -277,7 +276,7 @@ export default {
         width: '',
         label: '付方户名'
       },
-      
+
       {
         prop: 'je',
         width: '',
@@ -358,7 +357,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -381,8 +380,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
-    
+
     handleViewOther(row) {
       console.log(row.djbh)
       this.dialogObj.id = row.djbh
@@ -396,7 +394,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

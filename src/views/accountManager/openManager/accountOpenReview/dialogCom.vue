@@ -41,14 +41,13 @@
         <el-col :span="12">
           <el-form-item label="开户申请日期：" prop="openTime" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.openTime"
+              style="width: 200px"
               type="date"
               placeholder="请选择开户日期"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -67,8 +66,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -92,7 +90,7 @@
               v-model="form.accountPhone"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -103,7 +101,7 @@
               v-model="form.accountName"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -124,8 +122,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -135,7 +132,7 @@
               v-model="form.bankOpenName"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -149,7 +146,7 @@
               v-model="form.khhss"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -167,8 +164,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -181,7 +177,7 @@
               v-model="form.lhh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -199,8 +195,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -219,8 +214,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -230,13 +224,13 @@
               v-model="form.kmh"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <div class="title"><i class="el-icon-user" /> 附加信息</div>
 
       <el-row>
@@ -290,9 +284,10 @@
               :file-list="fileList"
               :on-success="handleSuccess"
             >
-              <el-button size="small" type="primary"
-                >上传附件({{ fileList.length }})条</el-button
-              >
+              <el-button
+                size="small"
+                type="primary"
+              >上传附件({{ fileList.length }})条</el-button>
             </el-upload>
           </el-form-item>
         </el-col>
@@ -301,8 +296,8 @@
 
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">返 回</el-button>
-      <el-button type="primary" @click="sub" v-if='dialogObj.fh'>通 过</el-button>
-      <el-button type="primary" @click="stop" v-if='dialogObj.fh'>拒 绝</el-button>
+      <el-button v-if="dialogObj.fh" type="primary" @click="sub">通 过</el-button>
+      <el-button v-if="dialogObj.fh" type="primary" @click="stop">拒 绝</el-button>
     </div>
   </el-dialog>
 </template>
@@ -316,7 +311,7 @@ import {
   BACKLIST,
   CURRENCYLIST,
   ACCOUNTUSAGELIST,
-  DIRECTLIST,
+  DIRECTLIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -327,123 +322,120 @@ export default {
     return {
       rules: {
         documentNumber: [
-          { required: true, message: '请填写单据编号', trigger: 'blur' },
+          { required: true, message: '请填写单据编号', trigger: 'blur' }
         ],
         openTime: [
-          { required: true, message: '请选择开户申请日期', trigger: 'blur' },
+          { required: true, message: '请选择开户申请日期', trigger: 'blur' }
         ],
         unitName: [
-          { required: true, message: '请选择单位名称', trigger: 'blur' },
+          { required: true, message: '请选择单位名称', trigger: 'blur' }
         ],
-         openApplicant: [
-          { required: true, message: '请填写开户申请人', trigger: 'blur' },
+        openApplicant: [
+          { required: true, message: '请填写开户申请人', trigger: 'blur' }
         ],
-         bankName: [
-          { required: true, message: '请选择银行名称', trigger: 'blur' },
+        bankName: [
+          { required: true, message: '请选择银行名称', trigger: 'blur' }
         ],
-         khhss: [
-          { required: true, message: '请选择开户行省市', trigger: 'blur' },
+        khhss: [
+          { required: true, message: '请选择开户行省市', trigger: 'blur' }
         ],
-         currency: [
-          { required: true, message: '请选择币种', trigger: 'blur' },
+        currency: [
+          { required: true, message: '请选择币种', trigger: 'blur' }
         ],
         sfzl: [
-          { required: true, message: '请选择是否直联', trigger: 'blur' },
+          { required: true, message: '请选择是否直联', trigger: 'blur' }
         ],
         zhyt: [
-          { required: true, message: '请选择账户用途', trigger: 'blur' },
+          { required: true, message: '请选择账户用途', trigger: 'blur' }
         ]
       },
       fileList: [
         {
           name: 'food.jpeg',
           url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
         },
         {
           name: 'food2.jpeg',
           url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+        }
       ],
       placeholderTips: placeholderTips,
       form: {
         documentNumber: '',
         openTime: '',
         openApplicant: '',
-        accountPhone:'',
-        accountName:'',
-        
+        accountPhone: '',
+        accountName: '',
+
         unitName: '',
         bankName: '',
         currency: '',
         zhyt: '',
         sfzl: '',
-        khhss:''
+        khhss: ''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
-      directList: DIRECTLIST,
+      directList: DIRECTLIST
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    
+
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
         this.form.khrq = '2020-10-10'
         this.form.documentNumber = 'KH20091410151601'
         this.form.openTime = new Date()
         this.form.sqr = 'admin'
       }
     },
-    stop(){
+    stop() {
       this.$confirm('确定拒绝?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         this.dialogObj.show = false
-        this.$emit('stop',this.form)
+        this.$emit('stop', this.form)
       })
     },
     sub() {
       this.$confirm('确定通过复核?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         this.dialogObj.show = false
-        this.$emit('sub',this.form)
+        this.$emit('sub', this.form)
       })
     },
-    
 
     handleRemove(file, fileList) {
       console.log(file, fileList)
@@ -462,8 +454,8 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -471,7 +463,7 @@ export default {
   .el-form-item {
     margin-bottom: 0px !important;
   }
-  
+
 }
 
 .title {

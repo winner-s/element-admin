@@ -273,27 +273,26 @@
       </el-row>
 
       <div class="title"><i class="el-icon-user" /> 担保合同列表</div>
-      
+
     </el-form>
 
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-     
+
     </div>
     <Table
-        :table-data="form.childerList"
-        :table-list-data="tableListData"
-        :table-btn="tableBtn"
-        :current-data="currentData"
-        @onPageChange="onPageChange"
-        @onSizeChange="onSizeChange"
-        @handleEdit="handleEdit"
-        @handleStatus="handleStatus"
-        @handleViewOther="handleViewOther"
-        @handleDelete="handleDelete"
-      />
+      :table-data="form.childerList"
+      :table-list-data="tableListData"
+      :table-btn="tableBtn"
+      :current-data="currentData"
+      @onPageChange="onPageChange"
+      @onSizeChange="onSizeChange"
+      @handleEdit="handleEdit"
+      @handleStatus="handleStatus"
+      @handleViewOther="handleViewOther"
+      @handleDelete="handleDelete"
+    />
 
-    
   </el-dialog>
 </template>
 
@@ -317,27 +316,25 @@ export default {
       },
       placeholderTips: placeholderTips,
       form: {
-        sqdh:'',
-        htmc:'',
-        dklx:'',
-        zqr:'',
-        zwr:'',
-        bz:'',
-        dkqx:'',
-        ksrq:'',
-        jsrq:'',
-        dkje:'',
-        jedx:'',
-        llzhts:'',
-        jxfs:'',
-        htqdll:'',
-        fxfs:'',
-        hbff:'',
-        bzhu:'',
-        childerList:[]
-      },
-     
-      
+        sqdh: '',
+        htmc: '',
+        dklx: '',
+        zqr: '',
+        zwr: '',
+        bz: '',
+        dkqx: '',
+        ksrq: '',
+        jsrq: '',
+        dkje: '',
+        jedx: '',
+        llzhts: '',
+        jxfs: '',
+        htqdll: '',
+        fxfs: '',
+        hbff: '',
+        bzhu: '',
+        childerList: []
+      }
 
     }
   },
@@ -345,9 +342,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -396,19 +393,17 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
       }
-    },
+    }
   }
 }
 </script>

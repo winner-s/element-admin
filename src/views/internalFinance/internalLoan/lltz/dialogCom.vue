@@ -36,8 +36,7 @@
                 :key="item.id"
                 :label="item.htlsh"
                 :value="item.htlsh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -69,8 +68,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -113,8 +111,7 @@
               :disabled="true"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -127,8 +124,7 @@
               :disabled="true"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -183,8 +179,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -205,8 +200,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -242,8 +236,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -261,8 +254,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -279,7 +271,7 @@
               size="mini"
               maxlength="50"
               show-word-limit
-              :disabled='true'
+              :disabled="true"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -317,9 +309,8 @@
               style="width: 200px"
               size="mini"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
-            
+            />
+
           </el-form-item>
         </el-col>
       </el-row>
@@ -364,9 +355,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -380,7 +372,7 @@ import {
   JXFSLIST,
   FXFSLIST,
   HBFSLIST,
-  CURRENCYLIST,
+  CURRENCYLIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -396,91 +388,91 @@ export default {
       currencyList: CURRENCYLIST,
       placeholderTips: placeholderTips,
       form: {
-         htlsh:'',
-         htmc:'',
-         jkbz:'',
-         zqr:'',
-         zwr:'',
-         ksrq:'',
-         jsrq:'',
-         jkje:'',
-         jedx:'',
-         jkqx:'',
-         llzhts:'',
-         jxfs:'',
-         htqdll:'',
-         fxfs:'',
-         hbfs:'',
-         bz:'',
-         htqdlltz:'',
-         lltzsxr:'',
-         tzsm:''
+        htlsh: '',
+        htmc: '',
+        jkbz: '',
+        zqr: '',
+        zwr: '',
+        ksrq: '',
+        jsrq: '',
+        jkje: '',
+        jedx: '',
+        jkqx: '',
+        llzhts: '',
+        jxfs: '',
+        htqdll: '',
+        fxfs: '',
+        hbfs: '',
+        bz: '',
+        htqdlltz: '',
+        lltzsxr: '',
+        tzsm: ''
       },
-      rules:{
-        htlsh:[
-          { required: true, message: '请填写合同流水号', trigger: 'blur' },
+      rules: {
+        htlsh: [
+          { required: true, message: '请填写合同流水号', trigger: 'blur' }
         ],
-        htmc:[
-          { required: true, message: '请填写合同名称', trigger: 'blur' },
+        htmc: [
+          { required: true, message: '请填写合同名称', trigger: 'blur' }
         ],
-        jkbz:[
-          { required: true, message: '请填写借款币种', trigger: 'blur' },
+        jkbz: [
+          { required: true, message: '请填写借款币种', trigger: 'blur' }
         ],
-        zqr:[
-          { required: true, message: '请填写债权人', trigger: 'blur' },
+        zqr: [
+          { required: true, message: '请填写债权人', trigger: 'blur' }
         ],
-        zwr:[
-          { required: true, message: '请填写债务人', trigger: 'blur' },
+        zwr: [
+          { required: true, message: '请填写债务人', trigger: 'blur' }
         ],
-        ksrq:[
-          { required: true, message: '请填写开始日期', trigger: 'blur' },
+        ksrq: [
+          { required: true, message: '请填写开始日期', trigger: 'blur' }
         ],
-        jsrq:[
-          { required: true, message: '请填写结束日期', trigger: 'blur' },
+        jsrq: [
+          { required: true, message: '请填写结束日期', trigger: 'blur' }
         ],
-        jkje:[
-          { required: true, message: '请填写借款金额', trigger: 'blur' },
+        jkje: [
+          { required: true, message: '请填写借款金额', trigger: 'blur' }
         ],
-        jkqx:[
-          { required: true, message: '请填写借款期限', trigger: 'blur' },
+        jkqx: [
+          { required: true, message: '请填写借款期限', trigger: 'blur' }
         ],
-        llzhts:[
-          { required: true, message: '请填写利率转换天数', trigger: 'blur' },
+        llzhts: [
+          { required: true, message: '请填写利率转换天数', trigger: 'blur' }
         ],
-        jxfs:[
-          { required: true, message: '请填写计息方式', trigger: 'blur' },
+        jxfs: [
+          { required: true, message: '请填写计息方式', trigger: 'blur' }
         ],
-        fxfs:[
-          { required: true, message: '请填写付息方式', trigger: 'blur' },
+        fxfs: [
+          { required: true, message: '请填写付息方式', trigger: 'blur' }
         ],
-        hbfs:[
-          { required: true, message: '请填写还本方式', trigger: 'blur' },
+        hbfs: [
+          { required: true, message: '请填写还本方式', trigger: 'blur' }
         ],
-        htqdlltz:[
-          { required: true, message: '请填写合同签订利率', trigger: 'blur' },
+        htqdlltz: [
+          { required: true, message: '请填写合同签订利率', trigger: 'blur' }
         ],
-        lltzsxr:[
-          { required: true, message: '请填写利率调整生效日', trigger: 'blur' },
-        ],
+        lltzsxr: [
+          { required: true, message: '请填写利率调整生效日', trigger: 'blur' }
+        ]
       },
-      htlshList:[
+      htlshList: [
         {
-          htlsh:'DK202006281705404',
-          htmc:'抵押担保',
-          jkbz:1,
-          zqr:'顶级单位',
-          zwr:'二级单位1',
-          ksrq:'2020-06-01',
-          jsrq:'2020-06-27',
-          jkje:'5000000',
-          jedx:'5000000',
-          jkqx:'一年',
-          llzhts:1,
-          jxfs:1,
-          htqdll:'5.0',
-          fxfs:1,
-          hbfs:1,
-          bz:''
+          htlsh: 'DK202006281705404',
+          htmc: '抵押担保',
+          jkbz: 1,
+          zqr: '顶级单位',
+          zwr: '二级单位1',
+          ksrq: '2020-06-01',
+          jsrq: '2020-06-27',
+          jkje: '5000000',
+          jedx: '5000000',
+          jkqx: '一年',
+          llzhts: 1,
+          jxfs: 1,
+          htqdll: '5.0',
+          fxfs: 1,
+          hbfs: 1,
+          bz: ''
         }
       ]
     }
@@ -489,9 +481,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -501,50 +493,47 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    htlshChange(val){
-      this.htlshList.forEach((item,index)=>{
-        if(item.htlsh == val){
+    htlshChange(val) {
+      this.htlshList.forEach((item, index) => {
+        if (item.htlsh == val) {
           Object.keys(item).forEach(res => {
-          this.form[res] = item[res];
-        });
+            this.form[res] = item[res]
+          })
         }
       })
     },
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.djzt=1
+            this.form.djzt = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
-  },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

@@ -43,7 +43,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -65,47 +65,45 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          ckdqr:'2021-03-01',
-          ksrq:new Date(),
-          ckkllsh:'FO20201201145843375',
-          ckll:'11.000',
-          ckqx:'3个月定期',
-          klrq:'2020-12-01',
-          ckje:'1,211.00',
-          syje:'1,211.00',
-          ckye:'1,211.00',
-          ckdwbhL:'12312323',
-          ckdwmc:'顶级单位',
-          nbzh:'0011001',
-          nbzhmc:'一级中心内部账户',
-          dqxcfs:'到期本息转活期',
-          ckklrq:'2020-12-01',
-          qrrq:'2020-12-01',
-          bz:'111',
-          childerList:[
+          ckdqr: '2021-03-01',
+          ksrq: new Date(),
+          ckkllsh: 'FO20201201145843375',
+          ckll: '11.000',
+          ckqx: '3个月定期',
+          klrq: '2020-12-01',
+          ckje: '1,211.00',
+          syje: '1,211.00',
+          ckye: '1,211.00',
+          ckdwbhL: '12312323',
+          ckdwmc: '顶级单位',
+          nbzh: '0011001',
+          nbzhmc: '一级中心内部账户',
+          dqxcfs: '到期本息转活期',
+          ckklrq: '2020-12-01',
+          qrrq: '2020-12-01',
+          bz: '111',
+          childerList: [
             {
-              lxly:'提前支取利息',
-              rq:'2020-12-01',
-              lx:'1.11'
+              lxly: '提前支取利息',
+              rq: '2020-12-01',
+              lx: '1.11'
             },
             {
-              lxly:'定期存款利息',
-              rq:'2020-12-04',
-              lx:'1.11'
+              lxly: '定期存款利息',
+              rq: '2020-12-04',
+              lx: '1.11'
             }
           ]
-          
-          
-        },
-        
+
+        }
+
       ],
-      
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -133,8 +131,6 @@ export default {
         label: '查询'
       },
 
-     
-      
       {
         prop: 'reset',
         type: '',
@@ -247,8 +243,8 @@ export default {
       {
         name: '利息匡算',
         btnType: 'primary',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -277,7 +273,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -295,7 +291,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.ckkllsh
       this.dialogObj.read = false
@@ -315,7 +311,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

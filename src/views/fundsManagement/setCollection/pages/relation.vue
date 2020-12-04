@@ -19,7 +19,7 @@
           :table-data="tableData"
           :table-list-data="tableListData"
           :current-data="currentData"
-          :tableBtn="tableBtn"
+          :table-btn="tableBtn"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
@@ -41,7 +41,7 @@ export default {
   components: {
     Search,
     Table,
-    dialogCom,
+    dialogCom
   },
   data() {
     return {
@@ -51,11 +51,11 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       searchItem: [],
       searchData: {
-        nickname: '',
+        nickname: ''
       },
       searchBto: [],
       showAll: 1,
@@ -75,7 +75,7 @@ export default {
               zhmc: '测试1',
               khhmc: '中国农业银行汉中分行',
               zhzt: '正常',
-              zhyt: 1,
+              zhyt: 1
             },
             {
               dwmc: '二级单位',
@@ -83,24 +83,24 @@ export default {
               zhmc: '测试1',
               khhmc: '中国农业银行汉中分行',
               zhzt: '正常',
-              zhyt: 2,
-            },
-          ],
+              zhyt: 2
+            }
+          ]
         },
         {
           clbh: 'ZJGJ20072011081832',
           clmc: '051',
           clms: 1,
           sjyhzh: '202010101148',
-          sjzhmc: '测试单位',
-        },
+          sjzhmc: '测试单位'
+        }
       ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -111,26 +111,26 @@ export default {
         type: 'input',
         label: '策略编号:',
         prop: 'clbh',
-        placeholder: '请填写策略编号',
+        placeholder: '请填写策略编号'
       },
       {
         type: 'input',
         label: '策略名称:',
         prop: 'clmc',
-        placeholder: '请填写策略名称',
-      },
+        placeholder: '请填写策略名称'
+      }
     ]
     this.searchBto = [
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
-      },
+        label: '新增'
+      }
     ]
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
@@ -138,52 +138,51 @@ export default {
       {
         prop: 'clbh',
         width: '',
-        label: '策略编号',
+        label: '策略编号'
       },
       {
         prop: 'clmc',
         width: '',
-        label: '策略名称',
+        label: '策略名称'
       },
       {
         prop: 'clms',
         width: '',
         label: '策略模式',
         type: 'wordbook',
-        wordbookList: this.strategyModel,
+        wordbookList: this.strategyModel
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.clbh == res.clbh){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.clbh == res.clbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -194,7 +193,7 @@ export default {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
     },
-    //过滤
+    // 过滤
     strategyModel(val) {
       return STRATEGYMODEL[val]
     },
@@ -202,7 +201,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -303,7 +302,7 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>

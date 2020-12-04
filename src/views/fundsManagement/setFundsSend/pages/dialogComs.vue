@@ -79,7 +79,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -91,8 +91,7 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -112,15 +111,14 @@
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
-              is-range
               v-model="value1"
+              is-range
               range-separator="至"
               start-placeholder="开始时间"
               end-placeholder="结束时间"
               placeholder="选择时间范围"
               size="mini"
-            >
-            </el-time-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -129,17 +127,16 @@
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
-              :indeterminate="isIndeterminate"
               v-model="checkAll"
+              :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
-              >全选</el-checkbox
-            >
-            <div style="margin: 15px 0"></div>
+            >全选</el-checkbox>
+            <div style="margin: 15px 0" />
             <el-checkbox-group
               v-model="checkedCities"
               @change="handleCheckedCitiesChange"
             >
-              <el-checkbox v-for="city in cities" :label="city" :key="city">{{
+              <el-checkbox v-for="city in cities" :key="city" :label="city">{{
                 city
               }}</el-checkbox>
             </el-checkbox-group>
@@ -151,17 +148,16 @@
         <el-col>
           <el-form-item label="选择时间段">
             <el-checkbox
-              :indeterminate="isIndeterminate"
               v-model="checkAll"
+              :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
-              >全选</el-checkbox
-            >
-            <div style="margin: 15px 0"></div>
+            >全选</el-checkbox>
+            <div style="margin: 15px 0" />
             <el-checkbox-group
               v-model="checkedCities"
               @change="handleCheckedCitiesChange"
             >
-              <el-checkbox v-for="city in citiess" :label="city" :key="city">{{
+              <el-checkbox v-for="city in citiess" :key="city" :label="city">{{
                 city
               }}</el-checkbox>
             </el-checkbox-group>
@@ -180,16 +176,16 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
     </el-form>
 
     <div class="dialog-footer">
       <el-button type="primary" @click="handleInsert">保存</el-button>
-      
+
       <el-button type="primary" @click="handleDelete">删除</el-button>
-      <el-button type="primary" @click="handleStatus" v-if="form.clzt=='停止'">激活</el-button>
-      <el-button type="primary" @click="handleStatus" v-else>停止</el-button>
+      <el-button v-if="form.clzt=='停止'" type="primary" @click="handleStatus">激活</el-button>
+      <el-button v-else type="primary" @click="handleStatus">停止</el-button>
       <el-button @click="dialogObj.show = false">取 消</el-button>
     </div>
   </el-dialog>
@@ -215,7 +211,7 @@ export default {
         '星期三',
         '星期四',
         '星期五',
-        '星期六',
+        '星期六'
       ],
       citiess: [
         '01',
@@ -248,7 +244,7 @@ export default {
         '28',
         '29',
         '30',
-        '31',
+        '31'
       ],
       checkedCities: [],
 
@@ -261,22 +257,22 @@ export default {
         jjfszl: '',
         zqsz: '',
         zxsj: '',
-        jjrsfxb: '',
+        jjrsfxb: ''
       },
       options: [
         {
           label: '日',
-          value: 1,
+          value: 1
         },
         {
           label: '周',
-          value: 2,
+          value: 2
         },
         {
           label: '月',
-          value: 3,
-        },
-      ],
+          value: 3
+        }
+      ]
     }
   },
   // 监听属性 类似于data概念
@@ -287,7 +283,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -295,50 +291,49 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    handleInsert(){
-        this.$emit("handleDelete",this.form)
+    handleInsert() {
+      this.$emit('handleDelete', this.form)
     },
-    handleDelete(){
+    handleDelete() {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
-       this.$emit("handleDelete",this.form)
+        this.$emit('handleDelete', this.form)
       })
-      
     },
     handleStatus() {
       if (this.form.clzt == '激活') {
         this.$confirm('确定停止?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           this.form.clzt = '停止'
-          this.$emit("handleStatus",this.form)
+          this.$emit('handleStatus', this.form)
         })
       } else {
-         this.$confirm('确定激活?', '提示', {
+        this.$confirm('确定激活?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           this.form.clzt = '激活'
-           this.$emit("handleStatus",this.form)
+          this.$emit('handleStatus', this.form)
         })
       }
     },
     initDialog() {
       if (this.dialogObj.id) {
-       this.form = this.dialogObj.form
+        this.form = this.dialogObj.form
       } else {
         Object.keys(this.form).forEach((item) => {
           this.form[item] = ''
         })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

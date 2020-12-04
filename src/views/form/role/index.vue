@@ -33,17 +33,17 @@ export default {
   name: 'Role',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
       USERSTATUS: {
         1: '未复核',
-        2: '已复核',
+        2: '已复核'
       },
       ROLE: {
         1: '测试1',
-        2: '测试2',
+        2: '测试2'
       },
       searchItem: [],
       searchData: {
@@ -59,15 +59,15 @@ export default {
           userName: '李志华',
           role: 1,
           company: '二级单位1',
-          userSatus: 1,
-        },
+          userSatus: 1
+        }
       ],
       tableBtn: [],
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -77,8 +77,8 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
-      },
+        label: '查询'
+      }
     ]
 
     this.searchItem = [
@@ -89,40 +89,40 @@ export default {
         selectList: [
           {
             value: '全部',
-            id: 0,
+            id: 0
           },
           {
             value: '0813',
-            id: 1,
+            id: 1
           },
           {
             value: '1213',
-            id: 2,
+            id: 2
           },
           {
             value: '002',
-            id: 3,
-          },
+            id: 3
+          }
         ],
-        placeholder: '请选择单位编号',
+        placeholder: '请选择单位编号'
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'company',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'input',
         label: '真实姓名:',
         prop: 'userName',
-        placeholder: '请填写真实姓名',
+        placeholder: '请填写真实姓名'
       },
       {
         type: 'input',
         label: '登录用户名:',
         prop: 'accountName',
-        placeholder: '请填写用户名',
+        placeholder: '请填写用户名'
       },
       {
         type: 'select',
@@ -131,14 +131,14 @@ export default {
         selectList: [
           {
             value: '未复核',
-            id: 1,
+            id: 1
           },
           {
             value: '已复核',
-            id: 2,
-          },
+            id: 2
+          }
         ],
-        placeholder: '请选择用户状态',
+        placeholder: '请选择用户状态'
       },
       {
         type: 'select',
@@ -147,62 +147,62 @@ export default {
         selectList: [
           {
             value: '测试1',
-            id: 1,
+            id: 1
           },
           {
             value: '测试2',
-            id: 2,
+            id: 2
           },
           {
             value: '测试3',
-            id: 3,
+            id: 3
           },
           {
             value: '测试4',
-            id: 4,
+            id: 4
           },
           {
             value: '测试5',
-            id: 5,
-          },
+            id: 5
+          }
         ],
-        placeholder: '请选择用户状态',
-      },
+        placeholder: '请选择用户状态'
+      }
     ]
     this.tableListData = [
       {
         prop: 'accountName',
         width: '',
-        label: '登陆用户名',
+        label: '登陆用户名'
       },
       {
         prop: 'userName',
         width: '',
-        label: '真实姓名',
+        label: '真实姓名'
       },
       {
         prop: 'role',
         width: '',
         type: 'wordbook',
         wordbookList: this.role,
-        label: '角色',
+        label: '角色'
       },
       {
         prop: 'company',
         width: '',
-        label: '单位名称',
+        label: '单位名称'
       },
       {
         prop: 'userSatus',
         width: '',
         label: '用户状态',
         type: 'wordbook',
-        wordbookList: this.userType,
-      },
+        wordbookList: this.userType
+      }
     ]
   },
   methods: {
-    //过滤
+    // 过滤
     userType(val) {
       return this.USERSTATUS[val]
     },
@@ -261,7 +261,6 @@ export default {
     handleStatus(val) {},
     handleDelete(val) {},
     getList() {
-      
       console.log(this.searchData)
       const list = []
       const this_ = this
@@ -269,9 +268,7 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            
             if (i == 'companyNum') {
               if (item.companyNum.toString().includes(this.searchData[i])) {
                 bool = true
@@ -296,7 +293,6 @@ export default {
               }
             }
 
-            
             if (i == 'accountName') {
               if (item.accountName.includes(this.searchData[i])) {
                 bool = true
@@ -305,7 +301,6 @@ export default {
               }
             }
 
-            
             if (i == 'userSatus') {
               if (item.userSatus.toString().includes(this.searchData[i])) {
                 bool = true
@@ -330,7 +325,7 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>

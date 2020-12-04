@@ -126,9 +126,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="dialogObj.show = false"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="dialogObj.show = false"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -139,19 +140,19 @@
 import { placeholderTips } from '@u/validate'
 import Table from '@c/common/table'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
     // 这里存放数据
     return {
-     
-      tableListData:[],
-      tableBtn:[],
-      currentData:{
+
+      tableListData: [],
+      tableBtn: [],
+      currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
 
       placeholderTips: placeholderTips,
@@ -163,8 +164,8 @@ export default {
         sjdwmc: '',
         sjyhzh: '',
         sjzhmc: '',
-        childerList:[]
-      },
+        childerList: []
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -175,60 +176,58 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-      //  table表格
+    //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
 
       {
         prop: 'dwmc',
         width: '150',
         label: '单据名称',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'yhzh',
         width: '150',
         label: '银行账号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'zhmc',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'khhmc',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'zhzt',
         width: '',
-        label: '账户状态',
+        label: '账户状态'
       },
       {
         prop: 'zhyt',
         width: '',
-        label: '账户用途',
+        label: '账户用途'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
 
     // 按钮
     this.tableBtn = [
-      
+
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
-
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -239,11 +238,10 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
-        
         this.form.childerList.splice(this.form.childerList.indexOf(v), 1)
-        
+
         this.currentData.total = this.form.childerList.length
       })
     },
@@ -257,8 +255,8 @@ export default {
           this.form[item] = ''
         })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

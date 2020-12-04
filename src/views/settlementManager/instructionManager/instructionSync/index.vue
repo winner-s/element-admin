@@ -64,7 +64,7 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
           bto: false,
           documentNumber: 'KH20082615093831',
@@ -95,16 +95,16 @@ export default {
           status: '复核拒绝',
           connection: '直联'
         }
-        
+
       ],
       // 表格
       tableDataTwo: [
-        
+
       ],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -366,7 +366,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

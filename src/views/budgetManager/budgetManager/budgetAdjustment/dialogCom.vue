@@ -106,7 +106,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -122,41 +122,37 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
     </el-form>
 
     <div class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="dialogObj.show = false"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="dialogObj.show = false"
+      >确 定</el-button>
     </div>
 
     <Table
+      v-if="dialogObj.id === ''"
       :table-data="tableData"
       :table-list-data="tableListData"
       :table-btn="tableBtn"
       :current-data="currentData"
       @onPageChange="onPageChange"
       @onSizeChange="onSizeChange"
-      v-if="dialogObj.id === ''"
     />
 
-    <el-table :data="tableDataTwo" border align='center' size="mini" style="width: 100%" v-if="dialogObj.id !== ''">
-      <el-table-column prop="ysxm" label="预算项目" >
-      </el-table-column>
+    <el-table v-if="dialogObj.id !== ''" :data="tableDataTwo" border align="center" size="mini" style="width: 100%">
+      <el-table-column prop="ysxm" label="预算项目" />
       <el-table-column label="年">
-        <el-table-column prop="tzqje" label="调整前金额" >
-        </el-table-column>
-        <el-table-column prop="tzhje" label="调整后金额" >
-        </el-table-column>
+        <el-table-column prop="tzqje" label="调整前金额" />
+        <el-table-column prop="tzhje" label="调整后金额" />
       </el-table-column>
       <el-table-column label="汇总">
-        <el-table-column prop="hztzqje" label="调整前金额" >
-        </el-table-column>
-        <el-table-column prop="hztzhje" label="调整后金额" >
-        </el-table-column>
+        <el-table-column prop="hztzqje" label="调整前金额" />
+        <el-table-column prop="hztzhje" label="调整后金额" />
       </el-table-column>
     </el-table>
   </el-dialog>
@@ -178,7 +174,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       placeholderTips: placeholderTips,
       form: {
@@ -190,15 +186,15 @@ export default {
         ysjsrq: '',
         yszt: '',
         ysbzdw: '',
-        jedw: '',
+        jedw: ''
       },
-      tableDataTwo:[
+      tableDataTwo: [
         {
-          ysxm:'项目指出',
-          tzqje:'120.00',
-          tzhje:'120.00',
-          hztzqje:"120.00",
-          hztzhje:'120.00'
+          ysxm: '项目指出',
+          tzqje: '120.00',
+          tzhje: '120.00',
+          hztzqje: '120.00',
+          hztzhje: '120.00'
         }
       ],
       // 表格
@@ -211,7 +207,7 @@ export default {
           ksrq: '2020-01-01',
           jsrq: '2020-01-31',
           bzr: 'admin',
-          bbzt: '生效',
+          bbzt: '生效'
         },
         {
           bbh: 'BZ0001202011251001754',
@@ -221,7 +217,7 @@ export default {
           ksrq: '2020-01-01',
           jsrq: '2020-01-31',
           bzr: 'admin',
-          bbzt: '生效',
+          bbzt: '生效'
         },
         {
           bbh: 'BZ0001202011242045154',
@@ -231,7 +227,7 @@ export default {
           ksrq: '2020-01-01',
           jsrq: '2020-01-31',
           bzr: 'admin',
-          bbzt: '生效',
+          bbzt: '生效'
         },
         {
           bbh: 'BZ0001202011190934123',
@@ -241,7 +237,7 @@ export default {
           ksrq: '2020-01-01',
           jsrq: '2020-01-31',
           bzr: 'admin',
-          bbzt: '生效',
+          bbzt: '生效'
         },
         {
           bbh: 'BZ0001202011190932913',
@@ -251,10 +247,10 @@ export default {
           ksrq: '2020-01-01',
           jsrq: '2020-01-31',
           bzr: 'admin',
-          bbzt: '生效',
-        },
+          bbzt: '生效'
+        }
       ],
-      tableBtn: [],
+      tableBtn: []
     }
   },
   // 监听属性 类似于data概念
@@ -265,7 +261,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -277,48 +273,48 @@ export default {
         prop: 'bbh',
         width: '',
         type: 'a',
-        label: '版本号',
+        label: '版本号'
       },
 
       {
         prop: 'ystx',
         width: '',
-        label: '预算体系',
+        label: '预算体系'
       },
 
       {
         prop: 'ysnd',
         width: '',
-        label: '预算年度',
+        label: '预算年度'
       },
       {
         prop: 'ksrq',
         width: '',
-        label: '开始日期',
+        label: '开始日期'
       },
       {
         prop: 'jsrq',
         width: '',
-        label: '结束日期',
+        label: '结束日期'
       },
       {
         prop: 'bzr',
         width: '',
-        label: '编制人',
+        label: '编制人'
       },
       {
         prop: 'bbzt',
         width: '',
-        label: '版本状态',
-      },
+        label: '版本状态'
+      }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '调整',
         btnType: 'primary',
-        handleFn: 'handleEdit',
-      },
+        handleFn: 'handleEdit'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -341,8 +337,8 @@ export default {
         this.form.bbh = bbh
         this.form.ysbzdw = '二级单位1'
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

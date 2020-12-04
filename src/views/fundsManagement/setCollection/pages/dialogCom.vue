@@ -39,7 +39,7 @@
               v-model="form.clmc"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -60,8 +60,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -77,7 +76,7 @@
               v-model="form.sjdwbh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -110,8 +109,7 @@
                 :key="item.id"
                 :label="item.sjyhzh"
                 :value="item.sjyhzh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -130,13 +128,17 @@
     </el-form>
 
     <div class="dialog-footer">
-      
-      <el-button type="primary" @click="xybClick" v-if="xyb == false"
-        >下一步</el-button
-      >
-      <el-button type="primary" v-if="xyb == true" @click="insert"
-        >新增账户</el-button
-      >
+
+      <el-button
+        v-if="xyb == false"
+        type="primary"
+        @click="xybClick"
+      >下一步</el-button>
+      <el-button
+        v-if="xyb == true"
+        type="primary"
+        @click="insert"
+      >新增账户</el-button>
       <el-button type="primary" @click="sub">保存</el-button>
       <el-button @click="dialogObj.show = false">取消</el-button>
     </div>
@@ -164,7 +166,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogComNei'
 import { STRATEGYMODEL, STRATEGYMODELLIST } from '@u/wordbook'
 export default {
-  components: { Table,dialogCom },
+  components: { Table, dialogCom },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
@@ -175,13 +177,13 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       sjyhzhList: [
         {
           sjyhzh: '202010101148',
-          sjyhmc: '测试单位',
-        },
+          sjyhmc: '测试单位'
+        }
       ],
       strategyModelList: STRATEGYMODELLIST,
       placeholderTips: placeholderTips,
@@ -193,15 +195,15 @@ export default {
         sjdwmc: '',
         sjyhzh: '',
         sjzhmc: '',
-        childerList:[]
+        childerList: []
       },
       rules: {
         clbh: [{ required: true, message: '请填写单据编号', trigger: 'blur' }],
         clmc: [{ required: true, message: '请填写策略名称', trigger: 'blur' }],
         clms: [{ required: true, message: '请填写策略模式', trigger: 'blur' }],
         sjyhzh: [
-          { required: true, message: '请填写上级银行账号', trigger: 'blur' },
-        ],
+          { required: true, message: '请填写上级银行账号', trigger: 'blur' }
+        ]
       },
       xyb: false,
       tableData: [],
@@ -211,17 +213,17 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
-      },
+        total: 10
+      }
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-     "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -234,42 +236,42 @@ export default {
         prop: 'dwmc',
         width: '150',
         label: '单位名称',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'yhzh',
         width: '150',
         label: '银行账号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'zhmc',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'khhmc',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'zhzt',
         width: '',
-        label: '账户状态',
+        label: '账户状态'
       },
       {
         prop: 'zhyt',
         width: '',
-        label: '账户用途',
+        label: '账户用途'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     this.tableBtn = [
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -278,7 +280,6 @@ export default {
   methods: {
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -288,31 +289,29 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',this.form)
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', this.form)
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
         this.xyb = false
-        this.form.clbh ="ZJGJ20111715482531"
+        this.form.clbh = 'ZJGJ20111715482531'
       }
     },
-    handleCommit(res){
-        this.form.childerList = res
+    handleCommit(res) {
+      this.form.childerList = res
     },
     insert() {
       console.log('----------------------')
@@ -321,19 +320,19 @@ export default {
       this.dialogObjNei.show = true
       this.dialogObjNei.title = '选择银行账号列表'
     },
-    //过滤
+    // 过滤
     strategyModel(val) {
       return STRATEGYMODEL[val]
     },
     sjyhzhChange(val) {
-      let this_ = this
+      const this_ = this
       this.sjyhzhList.forEach((item, index) => {
         if (item.sjyhzh == val) {
           this_.form.sjzhmc = item.sjyhmc
         }
       })
     },
-    //单击下一步
+    // 单击下一步
     xybClick() {
       this.$refs['form'].validate((valid) => {
         if (valid) {
@@ -355,8 +354,8 @@ export default {
       this.currentData.size = val
       this.currentData.currentPage = 1
       this.getList()
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

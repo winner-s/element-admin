@@ -30,7 +30,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -72,23 +72,23 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          txbh:'2020001',
-          zqbh:'2020027',
-          txmc:'2020',
-          zqmc:'test',
-          skzq:'年',
-          zqlx:'月',
-          zqzt:'启用',
-          zqkz:1,
-          kzfk:1
+          txbh: '2020001',
+          zqbh: '2020027',
+          txmc: '2020',
+          zqmc: 'test',
+          skzq: '年',
+          zqlx: '月',
+          zqzt: '启用',
+          zqkz: 1,
+          kzfk: 1
         }
       ],
-      
+
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -145,7 +145,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'txmc',
         width: '150',
@@ -172,25 +172,25 @@ export default {
         width: '',
         label: '周期状态'
       },
-      { label: '操作', type: 'btn', width: '',fixed:'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '查 看',
         btnType: 'primary',
-        handleFn: 'handleSelect',
+        handleFn: 'handleSelect'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -199,22 +199,21 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-          fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -250,7 +249,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -278,7 +277,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -286,7 +285,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.txbh
       this.dialogObj.read = false
@@ -294,20 +293,19 @@ export default {
       this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
-    handleSelect(row){
+    handleSelect(row) {
       this.dialogObj.id = row.txbh
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

@@ -4,8 +4,8 @@
     <el-card>
       <div slot="header">
         <span>开户申请</span>
-        <el-button style="float: right;" icon="el-icon-star-on" size="mini" v-if=" star" @click="qxsc()">已收藏</el-button>
-        <el-button style="float: right;" icon="el-icon-star-off" size="mini" v-else  @click.native="sc()">收藏</el-button>
+        <el-button v-if=" star" style="float: right;" icon="el-icon-star-on" size="mini" @click="qxsc()">已收藏</el-button>
+        <el-button v-else style="float: right;" icon="el-icon-star-off" size="mini" @click.native="sc()">收藏</el-button>
       </div>
       <div>
         <Search
@@ -17,7 +17,7 @@
           @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
-          @handleCommit='handleCommit'
+          @handleCommit="handleCommit"
         />
 
         <Table
@@ -34,13 +34,13 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { DJZT,DJZTLIST, CURRENCY,CURRENCYLIST,  UNITNO, UNITNOLIST,BACK,BACKLIST, DIRECT,DIRECTLIST,ACCOUNTUSAGE,ACCOUNTUSAGELIST} from '@u/wordbook'
+import { DJZT, DJZTLIST, CURRENCY, CURRENCYLIST, UNITNO, UNITNOLIST, BACK, BACKLIST, DIRECT, DIRECTLIST, ACCOUNTUSAGE, ACCOUNTUSAGELIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -51,101 +51,101 @@ export default {
   data() {
     // 这里存放数据
     return {
-      star:false,
-      djztList:DJZTLIST,
-      currencyList:CURRENCYLIST,
-      accountUsageList:ACCOUNTUSAGELIST,
-      directList:DIRECTLIST,
-      backList:BACKLIST,
+      star: false,
+      djztList: DJZTLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
+      backList: BACKLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
-      tableListData:[],
+      tableListData: [],
       // 弹出框
       dialogObj: {
         id: '',
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
-         
+
           documentNumber: 'KH201124150454455',
-          openTime:'2020-11-02',
-          khrq:'2020-11-01',
-          openApplicant:'admin',
+          openTime: '2020-11-02',
+          khrq: '2020-11-01',
+          openApplicant: 'admin',
           accountPhone: '999888000',
-          accountName:"aaa",
+          accountName: 'aaa',
           unitName: 1324,
-          openApplicant:'admin',
+          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
-          zhyt:2,
-          sfzl:1,
-          currency:1,
+          zhyt: 2,
+          sfzl: 1,
+          currency: 1,
           status: 1,
-          khhss:"1111"
+          khhss: '1111'
         },
         {
-         
+
           documentNumber: 'KH20112315560278',
-          openTime:'2020-11-02',
-          khrq:'2020-11-01',
-          openApplicant:'admin',
+          openTime: '2020-11-02',
+          khrq: '2020-11-01',
+          openApplicant: 'admin',
           accountPhone: '999888000',
-          accountName:"aaa",
+          accountName: 'aaa',
           unitName: 1324,
-          openApplicant:'admin',
+          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
-          zhyt:2,
-          sfzl:1,
-          currency:1,
+          zhyt: 2,
+          sfzl: 1,
+          currency: 1,
           status: 1,
-          khhss:"1111"
+          khhss: '1111'
         },
         {
-         
+
           documentNumber: 'KH20112309552410',
-          openTime:'2020-11-02',
-          khrq:'2020-11-01',
-          openApplicant:'admin',
+          openTime: '2020-11-02',
+          khrq: '2020-11-01',
+          openApplicant: 'admin',
           accountPhone: '999888000',
-          accountName:"aaa",
+          accountName: 'aaa',
           unitName: 1324,
-          openApplicant:'admin',
+          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
-          zhyt:2,
-          sfzl:1,
-          currency:1,
+          zhyt: 2,
+          sfzl: 1,
+          currency: 1,
           status: 1,
-          khhss:"1111"
+          khhss: '1111'
         },
         {
-         
+
           documentNumber: 'KH20112415042159',
-          openTime:'2020-11-02',
-          khrq:'2020-11-01',
-          openApplicant:'admin',
+          openTime: '2020-11-02',
+          khrq: '2020-11-01',
+          openApplicant: 'admin',
           accountPhone: '999888000',
-          accountName:"aaa",
+          accountName: 'aaa',
           unitName: 1324,
-          openApplicant:'admin',
+          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
-          zhyt:2,
-          sfzl:1,
-          currency:1,
+          zhyt: 2,
+          sfzl: 1,
+          currency: 1,
           status: 1,
-          khhss:"1111"
+          khhss: '1111'
         }
       ],
 
@@ -157,7 +157,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {},
-      selectChange:[]
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -174,23 +174,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -198,70 +198,70 @@ export default {
         type: 'input',
         label: '单据编号:',
         prop: 'documentNumber',
-        placeholder: '请填写单据编号',
+        placeholder: '请填写单据编号'
       },
       {
         type: 'input',
         label: '开户申请人:',
         prop: 'openApplicant',
-        placeholder: '请填写开户申请人',
+        placeholder: '请填写开户申请人'
       },
       {
         type: 'select',
         label: '单位编号:',
         prop: 'unitNo',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'unitName',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        selectList:this.backList,
+        selectList: this.backList,
         placeholder: '请填写银行名称',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '开户行名称:',
         prop: 'bankOpenName',
         placeholder: '请填写开户行名称',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '开户申请日期 从:',
         prop: 'accountOpenTimeStart',
         placeholder: '请填写开户申请日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '开户申请日期 到:',
         prop: 'accountOpenTimeEnd',
         placeholder: '请填写开户申请日期',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
         label: '单据状态:',
         prop: 'start',
         placeholder: '请填写单据状态',
-        selectList:this.djztList,
-        show: this.showAll,
+        selectList: this.djztList,
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -273,95 +273,95 @@ export default {
         width: '150',
         type: 'a',
         label: '单据编号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountPhone',
         width: '150',
         label: '账户号码',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'accountName',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'bankName',
         width: '',
         label: '银行名称',
-        type:'wordbook',
-        wordbookList:this.back
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'status',
         width: '',
         label: '单据状态',
-        type:'wordbook',
-        wordbookList:this.djzt
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'sfzl',
         width: '',
         label: '是否直联',
-        type:'wordbook',
-        wordbookList:this.direct
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'currency',
         width: '',
         label: '币种',
-        type:'wordbook',
-        wordbookList:this.currency
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'unitName',
         width: '',
         label: '单位名称',
-        type:'wordbook',
-        wordbookList:this.unitno
+        type: 'wordbook',
+        wordbookList: this.unitno
       },
       {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
-        type:'wordbook',
-        wordbookList:this.accountUsage
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'openTime',
         width: '',
-        label: '开户申请日期',
+        label: '开户申请日期'
       },
       {
         prop: 'khrq',
         width: '',
-        label: '开户日期',
+        label: '开户日期'
       },
       {
         prop: 'openApplicant',
         width: '',
-        label: '申请人',
+        label: '申请人'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -370,67 +370,65 @@ export default {
   },
   // 方法集合
   methods: {
-    qxsc(){
+    qxsc() {
       this.star = false
     },
-    sc(){
-      this.star=true
+    sc() {
+      this.star = true
     },
-    handleCommit(){
-      if(this.selectChange.length != 0){
-        this.selectChange.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.documentNumber==item.documentNumber){
-              res.status =2
+    handleCommit() {
+      if (this.selectChange.length != 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.documentNumber == item.documentNumber) {
+              res.status = 2
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectChange = res
     },
-    //过滤
-    djzt(val){
+    // 过滤
+    djzt(val) {
       return DJZT[val]
     },
-    unitno(val){
+    unitno(val) {
       return UNITNO[val]
     },
-    currency(val){
+    currency(val) {
       return CURRENCY[val]
     },
-    accountUsage(val){
+    accountUsage(val) {
       return ACCOUNTUSAGE[val]
     },
-    direct(val){
+    direct(val) {
       return DIRECT[val]
     },
-    back(val){
+    back(val) {
       return BACK[val]
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -494,7 +492,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -504,7 +502,6 @@ export default {
     },
 
     handleEdit(row) {
-      
       this.dialogObj.id = row.documentNumber
       this.dialogObj.read = false
       this.dialogObj.show = true
@@ -512,7 +509,6 @@ export default {
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
-     
       this.dialogObj.id = row.documentNumber
       this.dialogObj.read = true
       this.dialogObj.show = true
@@ -570,7 +566,7 @@ export default {
             }
 
             if (i == 'accountOpenTimeStart') {
-              if (Date.parse(item.openTime)>=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.openTime) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -578,7 +574,7 @@ export default {
             }
 
             if (i == 'accountOpenTimeEnd') {
-              if (Date.parse(item.openTime)<=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.openTime) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -602,8 +598,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

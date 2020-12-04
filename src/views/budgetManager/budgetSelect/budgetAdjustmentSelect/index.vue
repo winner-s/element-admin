@@ -12,7 +12,7 @@
           :search-bto="searchBto"
           :show-all="showAll"
           @getDataList="getDataList"
-          
+
           @dropDown="dropDown"
           @dropUp="dropUp"
         />
@@ -24,9 +24,7 @@
           :current-data="currentData"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
-          @handleSelect= "handleSelect"
-         
-          
+          @handleSelect="handleSelect"
         />
       </div>
     </el-card>
@@ -42,7 +40,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table,dialogCom },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -64,22 +62,22 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          ysnd:'2017',
-          bbh:'BZ002202011021952780',
-          ystx:'2020',
-          zqmc:'testlzh',
-          ysdw:'二级单位1',
-          ksrq:'2020-12-01',
-          jsrq:'2020-12-31',
-          bzr:'admin',
-          bbzt:'保存'
+          ysnd: '2017',
+          bbh: 'BZ002202011021952780',
+          ystx: '2020',
+          zqmc: 'testlzh',
+          ysdw: '二级单位1',
+          ksrq: '2020-12-01',
+          jsrq: '2020-12-31',
+          bzr: 'admin',
+          bbzt: '保存'
         }
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -178,7 +176,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'bbh',
         width: '150',
@@ -220,15 +218,15 @@ export default {
         width: '',
         label: '版本状态'
       },
-      { label: '操作', type: 'btn', width: '' ,fixed:'right'}
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '查 看',
         btnType: 'primary',
-        handleFn: 'handleSelect',
-      },
+        handleFn: 'handleSelect'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -237,12 +235,12 @@ export default {
   },
   // 方法集合
   methods: {
-    handleSelect(row){
+    handleSelect(row) {
       this.dialogObj.id = row.bbh
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'
-      this.dialogObj.form  =  JSON.parse(JSON.stringify(row))
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     // 收起
     dropUp() {
@@ -262,8 +260,7 @@ export default {
         }
       })
     },
-    
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -286,13 +283,12 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -343,9 +339,8 @@ export default {
               }
             }
 
-
             if (i == 'ysksrq') {
-              if (Date.parse( item.ysksrq)>=Date.parse( this.searchData[i])) {
+              if (Date.parse(item.ysksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -353,7 +348,7 @@ export default {
             }
 
             if (i == 'ysjsrq') {
-              if (Date.parse( item.ysjsrq)<=Date.parse( this.searchData[i])) {
+              if (Date.parse(item.ysjsrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

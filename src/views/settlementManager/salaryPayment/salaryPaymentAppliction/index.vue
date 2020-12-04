@@ -31,7 +31,7 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -43,7 +43,7 @@ import Table from '@c/common/table'
 import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table ,dialogCom},
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
@@ -65,25 +65,25 @@ export default {
         show: false,
         form: {}
       },
-      
-      list:[
-        {
-          djbh:'17872475789624',
-          djrq:'2020-11-01',
-          djzt:'已导入',
-          fkyt:1,
-          fkdw:'测试单位',
-          fkfyhs:'湖南省',
-          fkfyhshi:'株洲市',
-          fkfkhhmc:'株洲分行',
-          dscs:'000',
 
-          fkfyhzh:'1348549815',
-          fkfzhmc:'张三',
-          fkfyhmc:'工商银行',
-          je:'1000',
-          lrr:'admin',
-          ywdw:'二级单位'
+      list: [
+        {
+          djbh: '17872475789624',
+          djrq: '2020-11-01',
+          djzt: '已导入',
+          fkyt: 1,
+          fkdw: '测试单位',
+          fkfyhs: '湖南省',
+          fkfyhshi: '株洲市',
+          fkfkhhmc: '株洲分行',
+          dscs: '000',
+
+          fkfyhzh: '1348549815',
+          fkfzhmc: '张三',
+          fkfyhmc: '工商银行',
+          je: '1000',
+          lrr: 'admin',
+          ywdw: '二级单位'
         }
       ],
       // 表格
@@ -113,7 +113,7 @@ export default {
         type: 'primary',
         label: '查询'
       },
-      
+
       {
         prop: 'commit',
         type: 'primary',
@@ -204,7 +204,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      
+
       {
         prop: 'djbh',
         width: '150',
@@ -254,13 +254,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -269,21 +269,16 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-     
-      this.tableData.forEach((item,index)=>{
-        if(item.djbh == res.djbh){
-          
-
+    updateSub(res) {
+      this.tableData.forEach((item, index) => {
+        if (item.djbh == res.djbh) {
           Object.keys(item).forEach(val => {
-            if(res[val]){
-                item[val] = res[val];
+            if (res[val]) {
+              item[val] = res[val]
             }
-          
-        });
+          })
         }
       })
-      
     },
     // 收起
     dropUp() {
@@ -305,7 +300,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -341,7 +336,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = false
@@ -361,7 +356,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

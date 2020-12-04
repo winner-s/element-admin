@@ -34,7 +34,7 @@ import { placeholderTips } from '@u/validate'
 import { CURRENCYLIST, SCORLLLIST } from '@u/wordbook'
 import Table from '@c/common/table'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
@@ -43,18 +43,18 @@ export default {
       currencyList: CURRENCYLIST,
       scorllList: SCORLLLIST,
       placeholderTips: placeholderTips,
-      tableListData:[],
+      tableListData: [],
       tableData: [],
       tableBtn: [],
       form: {
-        childerList:[]
+        childerList: []
       },
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
-      },
+        total: 10
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -65,36 +65,35 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-     
 
       {
         prop: 'jxr',
         width: '',
         label: '计息日',
-        fixed: '',
+        fixed: ''
       },
       {
         prop: 'ye',
         width: '',
         label: '余额',
-        fixed: '',
+        fixed: ''
       },
       {
         prop: 'll',
         width: '',
-        label: '利率(%)',
+        label: '利率(%)'
       },
       {
         prop: 'lx',
         width: '',
-        label: '利息(元)',
+        label: '利息(元)'
       }
     ]
   },
@@ -102,7 +101,7 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    
+
     initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach((item) => {
@@ -129,9 +128,9 @@ export default {
       this.currentData.size = val
       this.currentData.currentPage = 1
       this.getList()
-    },
-    
-  },
+    }
+
+  }
 }
 </script>
 <style scoped lang="scss">

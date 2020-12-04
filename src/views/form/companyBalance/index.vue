@@ -33,16 +33,16 @@ export default {
   name: 'CompanyBalance',
   components: {
     Search,
-    Table,
+    Table
   },
   data() {
     return {
-      //单位名称 用于table
+      // 单位名称 用于table
       DWMCLIST: {
-        '1': '一级单位1',
+        '1': '一级单位1'
       },
-      ZHHMLIST:{
-        '1': '2011106',
+      ZHHMLIST: {
+        '1': '2011106'
       },
       searchItem: [
         {
@@ -52,10 +52,10 @@ export default {
           selectList: [
             {
               value: '二级单位1',
-              id: 1,
-            },
+              id: 1
+            }
           ],
-          placeholder: '请填写单位名称',
+          placeholder: '请填写单位名称'
         },
         {
           type: 'select',
@@ -64,82 +64,82 @@ export default {
           selectList: [
             {
               value: '是',
-              id: 1,
+              id: 1
             },
             {
               value: '否',
-              id: 0,
-            },
+              id: 0
+            }
           ],
-          placeholder: '请选择',
+          placeholder: '请选择'
         },
         {
           type: 'select',
           label: '账户号码:',
           selectList: [
-            
+
             {
               value: '20111006',
-              id: 1,
+              id: 1
             }
           ],
           prop: 'zhhm',
-          placeholder: '请填写账户号码',
+          placeholder: '请填写账户号码'
         },
-       
+
         {
           type: 'daterange',
           label: '查询日期:',
-          disabled:true,
+          disabled: true,
           timeList: ['ksrq', 'jsrq'],
           timeFormat: 'yyyy-MM-dd',
           prop: 'cxrq',
-          placeholder: '请选择日期',
+          placeholder: '请选择日期'
         },
         {
           type: 'select',
           label: '币种:',
           prop: 'bz',
           selectList: [
-           
+
             {
               value: '人民币',
-              id: 1,
+              id: 1
             },
             {
               value: '美元',
-              id: 2,
+              id: 2
             },
             {
               value: '越南盾',
-              id: 3,
+              id: 3
             },
             {
               value: '欧元',
-              id: 4,
+              id: 4
             },
             {
               value: '泰国铢',
-              id: 5,
+              id: 5
             },
             {
               value: '加元',
-              id: 6,
-            },
+              id: 6
+            }
           ],
-          placeholder: '请选择币种',
-        },
+          placeholder: '请选择币种'
+        }
       ],
       searchData: {
-        ksrq:'2020-11-01',
-        jsrq:'2020-11-15'
+        ksrq: '2020-11-01',
+        jsrq: '2020-11-15'
       },
       searchBto: [
         {
           prop: 'select',
           type: 'primary',
-          label: '查询',
-        },
+          label: '查询'
+        }
       ],
       tableData: [],
       tableListData: [],
@@ -152,15 +152,15 @@ export default {
           khh: '北京分行',
           yhzh: '20111006',
           je: 12,
-          bz:1
-        },
+          bz: 1
+        }
       ],
       showAll: 1,
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 0,
-      },
+        total: 0
+      }
     }
   },
   created() {
@@ -173,38 +173,38 @@ export default {
       {
         prop: 'sjdw',
         width: '',
-        label: '上级单位',
+        label: '上级单位'
       },
       {
         prop: 'zhssdw',
         width: '',
-        label: '账户所属单位',
+        label: '账户所属单位'
       },
       {
         prop: 'zhmc',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'khh',
         width: '',
-        label: '开户行',
+        label: '开户行'
       },
       {
         prop: 'yhzh',
         width: '',
-        label: '银行账号',
+        label: '银行账号'
       },
       {
         prop: 'je',
         width: '',
-        label: '金额',
-      },
+        label: '金额'
+      }
     ]
   },
   methods: {
-    //过滤
-    dwmcList(val){
+    // 过滤
+    dwmcList(val) {
       return this.DWMCLIST[val]
     },
     onPageChange(val) {
@@ -299,8 +299,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style>

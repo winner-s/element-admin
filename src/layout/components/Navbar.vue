@@ -17,12 +17,12 @@
           size="mini"
           class="select"
         >
-          <el-option label="三级单位1(121dz)岗" value="1"> </el-option>
+          <el-option label="三级单位1(121dz)岗" value="1" />
         </el-select>
-        <status id="header-status" class="right-menu-item"></status>
+        <status id="header-status" class="right-menu-item" />
         <search id="header-search" class="right-menu-item" />
 
-        <message id="header-message" class="right-menu-item"></message>
+        <message id="header-message" class="right-menu-item" />
         <!-- <error-log class="errLog-container right-menu-item hover-effect" /> -->
 
         <!-- <screenfull id="screenfull" class="right-menu-item hover-effect" />
@@ -37,7 +37,7 @@
         trigger="click"
       >
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -82,15 +82,15 @@ export default {
     SizeSelect,
     Search,
     Message,
-    Status,
+    Status
   },
-  data(){
+  data() {
     return {
-      select:'1'
+      select: '1'
     }
   },
   computed: {
-    ...mapGetters(['sidebar', 'avatar', 'device']),
+    ...mapGetters(['sidebar', 'avatar', 'device'])
   },
   methods: {
     toggleSideBar() {
@@ -99,8 +99,8 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    },
-  },
+    }
+  }
 }
 </script>
 

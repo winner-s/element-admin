@@ -57,7 +57,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -67,7 +67,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
 
       list: [
@@ -79,14 +79,14 @@ export default {
           childerList: [
             {
               qjlx: '以上',
-              ye:'0.00',
-              jzll:'存款利率',
-              fdlx:'固定',
-              fdbl:'2.00000',
-              zxll:'2.55'
-            },
-          ],
-        },
+              ye: '0.00',
+              jzll: '存款利率',
+              fdlx: '固定',
+              fdbl: '2.00000',
+              zxll: '2.55'
+            }
+          ]
+        }
       ],
       // 表格
       tableData: [],
@@ -95,8 +95,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -113,19 +113,19 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
 
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -133,15 +133,15 @@ export default {
         type: 'input',
         label: '利率计划名称:',
         prop: 'lljhmc',
-        placeholder: '请填写利率计划名称',
+        placeholder: '请填写利率计划名称'
       },
       {
         type: 'select',
         label: '利率类型:',
         prop: 'lllx',
         placeholder: '请选择利率类型',
-        selectList: this.rateTypeList,
-      },
+        selectList: this.rateTypeList
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -150,40 +150,40 @@ export default {
       {
         prop: 'lljhmc',
         width: '',
-        label: '利率计划名称',
+        label: '利率计划名称'
       },
       {
         prop: 'lllx',
         width: '',
         label: '利率类型',
-         type:'wordbook',
-        wordbookList:this.rateType
+        type: 'wordbook',
+        wordbookList: this.rateType
       },
       {
         prop: 'lljhlx',
         width: '',
-        label: '利率计划类型',
-       
+        label: '利率计划类型'
+
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '明细计划',
         btnType: 'primary',
-        handleFn: 'handlePlan',
+        handleFn: 'handlePlan'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -199,9 +199,8 @@ export default {
           ind = index
         }
       })
-      
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(fore).forEach((item) => {
         if (res[item]) {
           fore[item] = res[item]
@@ -217,7 +216,7 @@ export default {
       this.tableData = this.list.slice(0, this.currentData.size)
       this.currentData.total = this.list.length
     },
-    //过滤
+    // 过滤
     rateType(val) {
       return RATETYPE[val]
     },
@@ -246,7 +245,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -269,7 +268,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -305,8 +304,8 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
-     tableDataTwo.forEach((item, index) => {
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] != '' && this.searchData[i] != undefined) {
@@ -351,8 +350,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

@@ -36,8 +36,7 @@
                 :key="item.id"
                 :label="item.htlsh"
                 :value="item.htlsh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -253,14 +252,13 @@
         <el-col :span="12">
           <el-form-item label="展期结束日期：" prop="zqjsrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.zqjsrq"
+              style="width: 200px"
               type="date"
               value-format="yyyy-MM-dd"
               placeholder="请选择开户日期"
               size="mini"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -305,9 +303,10 @@
 
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogObj.show = false">取 消</el-button>
-      <el-button type="primary" @click="sub"
-        >确 定</el-button
-      >
+      <el-button
+        type="primary"
+        @click="sub"
+      >确 定</el-button>
     </span>
   </el-dialog>
 </template>
@@ -328,21 +327,21 @@ export default {
         {
           htlsh: 'DK2000046448',
           htmc: '抵押担保',
-          jkbz:'人民币',
-          zqr:'顶级单位',
-          zwr:'二级单位1',
-          ksrq:'2020-06-01',
-          jsrq:'2020-06-27',
-          jkje:'1000',
-          jedx:'1000',
-          jkqx:'一年',
-          llzhts:'360天',
-          jxfs:'固定利率',
-          htqdll:'5.0',
-          fxfs:'按季付息',
-          hbfs:'按计划还',
-          bz:''
-        },
+          jkbz: '人民币',
+          zqr: '顶级单位',
+          zwr: '二级单位1',
+          ksrq: '2020-06-01',
+          jsrq: '2020-06-27',
+          jkje: '1000',
+          jedx: '1000',
+          jkqx: '一年',
+          llzhts: '360天',
+          jxfs: '固定利率',
+          htqdll: '5.0',
+          fxfs: '按季付息',
+          hbfs: '按计划还',
+          bz: ''
+        }
       ],
       placeholderTips: placeholderTips,
       form: {
@@ -363,29 +362,29 @@ export default {
         bz: '',
         zqdjbh: '',
         zqjsrq: '',
-        zqsm: '',
+        zqsm: ''
       },
       rules: {
         htlsh: [
-          { required: true, message: '请填写合同流水号', trigger: 'blur' },
+          { required: true, message: '请填写合同流水号', trigger: 'blur' }
         ],
         zqdjbh: [
-          { required: true, message: '请填写展期单据编号', trigger: 'blur' },
+          { required: true, message: '请填写展期单据编号', trigger: 'blur' }
         ],
         zqjsrq: [
-          { required: true, message: '请填写展期结束日期', trigger: 'blur' },
-        ],
-      },
-      
+          { required: true, message: '请填写展期结束日期', trigger: 'blur' }
+        ]
+      }
+
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -395,52 +394,49 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    htlshChange(res){
-      this.htlshList.forEach((item,index)=>{
-        if(item.htlsh == res){
+    htlshChange(res) {
+      this.htlshList.forEach((item, index) => {
+        if (item.htlsh == res) {
           Object.keys(item).forEach(val => {
-          this.form[val] = item[val];
-        });
+            this.form[val] = item[val]
+          })
         }
       })
     },
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-        
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         Object.keys(this.form).forEach(item => {
-          this.form[item] =''
-        });
+          this.form[item] = ''
+        })
 
-        this.form.zqdjbh="DK2020112414285910"
+        this.form.zqdjbh = 'DK2020112414285910'
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
-            this.form.djzt =1
+            this.form.djzt = 1
             this.addSub()
           }
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
-  },
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

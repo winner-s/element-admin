@@ -4,6 +4,7 @@
 <template>
   <div>
     <el-table
+      v-if="tree==false"
       :data="tableData"
       :span-method="objectSpanMethod"
       border
@@ -14,7 +15,6 @@
       :show-summary="showSummary"
       @selection-change="handleSelectionChange"
       @row-click="tableClick"
-      v-if="tree==false"
     >
       <template v-for="(item, index) in tableListData">
 
@@ -237,10 +237,11 @@
       :data="tableData"
       :span-method="objectSpanMethod"
       border
+      v-if="tree==true"
       row-key="id"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
-      default-expand-all
 
+      default-expand-all
       align="left"
       style="width: 100%"
       size="mini"
@@ -248,7 +249,6 @@
       :show-summary="showSummary"
       @selection-change="handleSelectionChange"
       @row-click="tableClick"
-      v-if="tree==true"
     >
       <template v-for="(item, index) in tableListData">
 
@@ -312,7 +312,7 @@
         >
           <template slot-scope="scope">
             <div>
-              <el-input v-model="scope.row[item.prop] " size="mini" :disabled='item.disabled'  />
+              <el-input v-model="scope.row[item.prop] " size="mini" :disabled="item.disabled" />
             </div>
           </template>
         </el-table-column>
@@ -485,9 +485,9 @@
 <script>
 export default {
   props: {
-    tree:{
-      type:Boolean,
-      default:false
+    tree: {
+      type: Boolean,
+      default: false
     },
     objectSpanMethod: {
       type: Function
@@ -520,14 +520,14 @@ export default {
   mounted() {},
   created() {},
   methods: {
-   
-    //当某一行被点击时
-    tableClick(res){
-        this.$emit('tableClick',res)
+
+    // 当某一行被点击时
+    tableClick(res) {
+      this.$emit('tableClick', res)
     },
     handleSelectionChange(res) {
       console.log(res)
-      this.$emit("handleSelectionChange",res)
+      this.$emit('handleSelectionChange', res)
     },
     // 索引事件
     indexMethod(val) {

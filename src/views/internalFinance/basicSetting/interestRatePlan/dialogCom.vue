@@ -31,7 +31,7 @@
               v-model="form.lljhmc"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -53,8 +53,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -71,7 +70,7 @@
               v-model="form.lljhlx"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -82,9 +81,9 @@
     </el-form>
 
     <div class="dialog-footer">
-       <el-button type="primary"  v-if="dialogObj.plan">新增</el-button>
-      <el-button type="primary" @click="sub" v-else>保存</el-button>
-     
+      <el-button v-if="dialogObj.plan" type="primary">新增</el-button>
+      <el-button v-else type="primary" @click="sub">保存</el-button>
+
       <el-button @click="dialogObj.show = false">取 消</el-button>
     </div>
 
@@ -110,7 +109,7 @@ import { placeholderTips } from '@u/validate'
 import { RATETYPELIST } from '@u/wordbook'
 import Table from '@c/common/table'
 export default {
-  components: {Table},
+  components: { Table },
   // import引入的组件需要注入到对象中才能使用
   props: ['dialogObj'],
   data() {
@@ -118,21 +117,21 @@ export default {
     return {
       rateTypeList: RATETYPELIST,
       placeholderTips: placeholderTips,
-       // 分页
+      // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 表格
-      tableListData:[],
-     
+      tableListData: [],
+
       tableBtn: [],
       form: {
-        lljhmc:'',
-        lllx:'',
-        lljhlx:'',
-        childerList:[]
+        lljhmc: '',
+        lllx: '',
+        lljhlx: '',
+        childerList: []
       }
     }
   },
@@ -144,48 +143,47 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.tableListData =[
+    this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
 
       {
         prop: 'qjlx',
         width: '',
-        label: '区间类型',
-       
+        label: '区间类型'
+
       },
       {
         prop: 'ye',
         width: '',
-        label: '余额',
-        
+        label: '余额'
+
       },
       {
         prop: 'jzll',
         width: '',
-        label: '基准利率',
+        label: '基准利率'
       },
       {
         prop: 'fdlx',
         width: '',
-        label: '浮动类型',
+        label: '浮动类型'
       },
       {
         prop: 'fdbl',
         width: '',
-        label: '浮动比例',
+        label: '浮动比例'
       },
 
       {
         prop: 'zxll',
         width: '',
-        label: '执行利率(%)',
+        label: '执行利率(%)'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
 
     // 按钮
@@ -193,13 +191,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -211,7 +209,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         // console.log()
         // this.list.splice(this.list.indexOf(v), 1)
@@ -248,7 +246,7 @@ export default {
     addSub() {
       this.$emit('addSub', this.form)
       this.dialogObj.show = false
-    },
+    }
   }
 }
 </script>

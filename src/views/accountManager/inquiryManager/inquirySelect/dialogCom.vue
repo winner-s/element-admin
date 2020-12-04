@@ -37,28 +37,25 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          
-        </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
         <el-col :span="12">
           <el-form-item label="开户日期：" prop="khrq" class="formItem">
             <el-date-picker
-              style="width: 200px"
               v-model="form.khrq"
+              style="width: 200px"
               type="date"
               placeholder="请选择开户日期"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="币种：" prop="currency">
-             <el-select
+            <el-select
               v-model="form.currency"
               placeholder="请选择"
               size="mini"
@@ -69,8 +66,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -83,7 +79,7 @@
               v-model="form.accountPhone"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -94,7 +90,7 @@
               v-model="form.accountName"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -115,8 +111,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -126,7 +121,7 @@
               v-model="form.kmh"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -140,18 +135,18 @@
               v-model="form.khhszs"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="开户行所在市：" prop="khhszshi">
-             <el-input
+            <el-input
               v-model="form.khhszshi"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -165,7 +160,7 @@
               v-model="form.bankOpenName"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -176,7 +171,7 @@
               v-model="form.lhh"
               style="width: 200px"
               size="mini"
-             
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -196,8 +191,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -214,13 +208,12 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <div class="title"><i class="el-icon-user" /> 附加信息</div>
 
       <el-row>
@@ -262,7 +255,6 @@
         </el-col>
       </el-row>
 
-     
     </el-form>
 
     <div class="dialog-footer">
@@ -281,7 +273,7 @@ import {
   BACKLIST,
   CURRENCYLIST,
   ACCOUNTUSAGELIST,
-  DIRECTLIST,
+  DIRECTLIST
 } from '@u/wordbook'
 export default {
   components: {},
@@ -290,74 +282,72 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+
       fileList: [
         {
           name: 'food.jpeg',
           url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
         },
         {
           name: 'food2.jpeg',
           url:
-            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+        }
       ],
       placeholderTips: placeholderTips,
       form: {
-          unitName:'',
-          khrq:'',
-          accountPhone:'',
-          accountName:'',
-          currency:1,
-          bankName:1,
-          bankOpenName:'',
-          lhh:'',
-          accountStatus:1,
-          connection:1,
-          zhyt:1,
-          kmh:'',
-          kmh:'',
-          khhszs:"",
-          khhszshi:""
+        unitName: '',
+        khrq: '',
+        accountPhone: '',
+        accountName: '',
+        currency: 1,
+        bankName: 1,
+        bankOpenName: '',
+        lhh: '',
+        accountStatus: 1,
+        connection: 1,
+        zhyt: 1,
+        kmh: '',
+        kmh: '',
+        khhszs: '',
+        khhszshi: ''
       },
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
       accountUsageList: ACCOUNTUSAGELIST,
-      directList: DIRECTLIST,
+      directList: DIRECTLIST
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    
+
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
+          this.form[item] = this.dialogObj.form[item]
+        })
         // this.form = this.dialogObj.form
-      } 
+      }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -367,13 +357,13 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',this.form)
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', this.form)
+      this.dialogObj.show = false
     },
     addSub() {
-      this.$emit('addSub',this.form)
-      this.dialogObj.show=false
+      this.$emit('addSub', this.form)
+      this.dialogObj.show = false
     },
 
     handleRemove(file, fileList) {
@@ -393,8 +383,8 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -402,7 +392,7 @@ export default {
   .el-form-item {
     margin-bottom: 0px !important;
   }
-  
+
 }
 
 .title {

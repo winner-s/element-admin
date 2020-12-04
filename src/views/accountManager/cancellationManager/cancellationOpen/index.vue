@@ -28,17 +28,31 @@
           @handleEdit="handleEdit"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
-          @handleSelectionChange='handleSelectionChange'
+          @handleSelectionChange="handleSelectionChange"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub"  @updateSub="updateSub"/>
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @addSub="addSub"
+      @updateSub="updateSub"
+    />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST, CURRENCY,CURRENCYLIST,DJZT,DJZTLIST,BACK,BACKLIST,ACCOUNTUSAGE,DIRECT} from '@u/wordbook'
+import {
+  UNITNOLIST,
+  CURRENCY,
+  CURRENCYLIST,
+  DJZT,
+  DJZTLIST,
+  BACK,
+  BACKLIST,
+  ACCOUNTUSAGE,
+  DIRECT
+} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -48,16 +62,16 @@ export default {
   data() {
     // 这里存放数据
     return {
-      currencyList:CURRENCYLIST,
-      djztList:DJZTLIST,
-      backList:BACKLIST,
+      currencyList: CURRENCYLIST,
+      djztList: DJZTLIST,
+      backList: BACKLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -67,7 +81,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [],
 
@@ -78,9 +92,9 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
+        documentNumber: ''
       },
-      selectChange:''
+      selectChange: ''
     }
   },
   // 监听属性 类似于data概念
@@ -97,23 +111,23 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'commit',
         type: 'primary',
-        label: '提交',
+        label: '提交'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -122,48 +136,48 @@ export default {
         label: '单据编号:',
         prop: 'djbh',
         placeholder: '请填写单据编号',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'dwmc',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
         prop: 'yhmc',
-        selectList:this.backList,
-        placeholder: '请填写银行名称',
+        selectList: this.backList,
+        placeholder: '请填写银行名称'
       },
       {
         type: 'input',
         label: '银行账号:',
         prop: 'yhzh',
-        placeholder: '请填写银行账号',
+        placeholder: '请填写银行账号'
       },
       {
         type: 'select',
         label: '单据状态:',
         prop: 'djzt',
-        selectList:this.djztList,
+        selectList: this.djztList,
         placeholder: '请选择单据状态',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'bz',
-        selectList:this.currencyList,
-        show: this.showAll,
+        selectList: this.currencyList,
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -174,92 +188,92 @@ export default {
         prop: 'djbh',
         width: '150',
         label: '单据编号',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'yhzh',
         width: '150',
         label: '账户号码',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'zhmc',
         width: '',
-        label: '账户名称',
+        label: '账户名称'
       },
       {
         prop: 'yhmc',
         width: '',
-        type:'wordbook',
-        wordbookList:this.back,
-        label: '银行名称',
+        type: 'wordbook',
+        wordbookList: this.back,
+        label: '银行名称'
       },
       {
         prop: 'khhmc',
         width: '',
-        label: '开户行名称',
+        label: '开户行名称'
       },
       {
         prop: 'djzt',
         width: '',
         label: '单据状态',
-        type:'wordbook',
-        wordbookList:this.djzt,
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'sfzl',
         width: '',
         label: '是否直联',
-        type:'wordbook',
-        wordbookList:this.direct,
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'bz',
         width: '',
         label: '币种',
-        type:'wordbook',
-        wordbookList:this.currency,
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'dwmc',
         width: '',
-        label: '单位名称',
+        label: '单位名称'
       },
       {
         prop: 'zhyt',
         width: '',
         label: '账户用途',
-        type:'wordbook',
-        wordbookList:this.accountUsage,
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'khsqrq',
         width: '',
-        label: '开户申请日期',
+        label: '开户申请日期'
       },
       {
         prop: 'khrq',
         width: '',
-        label: '开户日期',
+        label: '开户日期'
       },
       {
         prop: 'xhsqr',
         width: '',
-        label: '申请人',
-      },
+        label: '申请人'
+      }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -268,42 +282,40 @@ export default {
   },
   // 方法集合
   methods: {
-    handleCommit(){
-      if(this.selectChange.length != 0){
-        this.selectChange.forEach((item,index)=>{
-          this.list.forEach((res,index)=>{
-            if(res.djbh==item.djbh){
-              res.djzt =2
+    handleCommit() {
+      if (this.selectChange.length !== 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.djbh === item.djbh) {
+              res.djzt = 2
             }
           })
-          
         })
-      }else{
+      } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
           type: 'warning'
-        });
+        })
       }
     },
-    handleSelectionChange(res){
+    handleSelectionChange(res) {
       this.selectChange = res
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -315,19 +327,19 @@ export default {
       this.currentData.total = this.list.length
     },
     // 过滤
-    direct(val){
+    direct(val) {
       return DIRECT[val]
     },
-    accountUsage(val){
+    accountUsage(val) {
       return ACCOUNTUSAGE[val]
     },
-    currency(val){
+    currency(val) {
       return CURRENCY[val]
     },
-    back(val){
+    back(val) {
       return BACK[val]
     },
-    djzt(val){
+    djzt(val) {
       return DJZT[val]
     },
     // 收起
@@ -355,7 +367,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -378,7 +390,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -386,7 +398,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = false
@@ -406,12 +418,12 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'djbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'djbh') {
               if (item.djbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -419,7 +431,7 @@ export default {
               }
             }
 
-            if (i == 'dwmc') {
+            if (i === 'dwmc') {
               if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -427,7 +439,7 @@ export default {
               }
             }
 
-            if (i == 'yhmc') {
+            if (i === 'yhmc') {
               if (item.yhmc.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -435,7 +447,7 @@ export default {
               }
             }
 
-            if (i == 'yhzh') {
+            if (i === 'yhzh') {
               if (item.yhzh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -443,7 +455,7 @@ export default {
               }
             }
 
-            if (i == 'djzt') {
+            if (i === 'djzt') {
               if (item.djzt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -451,7 +463,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -462,14 +474,14 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

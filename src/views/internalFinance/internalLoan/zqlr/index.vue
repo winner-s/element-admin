@@ -33,13 +33,13 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub='addSub' @updateSub='updateSub'  />
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { DJZT,DJZTLIST } from '@u/wordbook'
+import { DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -49,7 +49,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      djztList:DJZTLIST,
+      djztList: DJZTLIST,
       // 弹出框
       dialogObj: {
         id: '',
@@ -59,7 +59,7 @@ export default {
         form: {}
       },
       showAll: false,
-      
+
       // 分页
       currentData: {
         currentPage: 1,
@@ -76,12 +76,11 @@ export default {
         show: false,
         form: {}
       },
-      list:[],
-      
+      list: [],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -90,7 +89,7 @@ export default {
         nickname: '',
         documentNumber: ''
       },
-      selectChange:[]
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -157,7 +156,7 @@ export default {
         type: 'select',
         label: '单据状态:',
         prop: 'djzt',
-        selectList:this.djztList,
+        selectList: this.djztList,
         placeholder: '请选择单据状态',
         show: this.showAll
       }
@@ -171,7 +170,7 @@ export default {
       {
         prop: 'zqdjbh',
         width: '150',
-        type:'a',
+        type: 'a',
         label: '展期单据编号'
       },
       {
@@ -205,8 +204,8 @@ export default {
         prop: 'djzt',
         width: '',
         label: '单据状态',
-        type:'wordbook',
-        wordbookList:this.djzt
+        type: 'wordbook',
+        wordbookList: this.djzt
       }
     ]
     // 按钮
@@ -214,13 +213,13 @@ export default {
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
-      },
+        handleFn: 'handleDelete'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -241,7 +240,7 @@ export default {
       } else {
         this.$message({
           message: '请选择数据再进行提交操作！',
-          type: 'warning',
+          type: 'warning'
         })
       }
     },
@@ -249,25 +248,24 @@ export default {
       this.selectChange = val
     },
     // 过滤
-    djzt(val){
+    djzt(val) {
       return DJZT[val]
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -304,7 +302,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -327,7 +325,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -335,7 +333,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.zqdjbh
       this.dialogObj.read = false
@@ -348,14 +346,14 @@ export default {
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'
-      this.dialogObj.form =  JSON.parse(JSON.stringify(row))
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let  tableDataTwo = JSON.parse(JSON.stringify(this.list))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -369,7 +367,7 @@ export default {
             }
 
             if (i == 'djzt') {
-              if (item.djzt==this.searchData[i]) {
+              if (item.djzt == this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -385,15 +383,15 @@ export default {
             }
 
             if (i == 'zqjsrqc') {
-              if (Date.parse(item.zqjsrq)>=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.zqjsrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-             if (i == 'zqjsrqd') {
-              if (Date.parse(item.zqjsrq)<=Date.parse(this.searchData[i])) {
+            if (i == 'zqjsrqd') {
+              if (Date.parse(item.zqjsrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false

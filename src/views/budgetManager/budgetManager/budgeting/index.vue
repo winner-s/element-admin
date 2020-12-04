@@ -25,12 +25,12 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleSelect='handleSelect'
+          @handleSelect="handleSelect"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj"  @addSub="addSub" @updateSub="updateSub"/>
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      
+
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -65,22 +65,22 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          ysnd:'2017',
-          bbh:'7842913',
-          ystx:'2020',
-          zqmc:'test周期名称',
-          ksrq:'2020-11-01',
-          jsrq:'2020-11-31',
-          bzr:'admin',
-          bbzt:'保存'
+          ysnd: '2017',
+          bbh: '7842913',
+          ystx: '2020',
+          zqmc: 'test周期名称',
+          ksrq: '2020-11-01',
+          jsrq: '2020-11-31',
+          bzr: 'admin',
+          bbzt: '保存'
         }
       ],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -161,7 +161,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      
+
       {
         prop: 'bbh',
         width: '150',
@@ -198,29 +198,29 @@ export default {
         width: '',
         label: '版本状态'
       },
-      { label: '操作', type: 'btn', width: '200',fixed:'right' },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '修 改',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
       {
         name: '查看',
         btnType: 'primary',
-        handleFn: 'handleSelect',
+        handleFn: 'handleSelect'
       },
-       {
-         name: '提 交',
+      {
+        name: '提 交',
         btnType: 'primary',
-        handleFn: 'handleConfirm',
+        handleFn: 'handleConfirm'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
+        handleFn: 'handleDelete'
       }
     ]
   },
@@ -230,19 +230,19 @@ export default {
   },
   // 方法集合
   methods: {
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.bbh == res.bbh){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.bbh == res.bbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-          fore[item] = res[item];
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -278,7 +278,7 @@ export default {
       this.dialogObj.show = true
       this.dialogObj.title = '新增'
     },
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -314,7 +314,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.bbh
       this.dialogObj.read = false
@@ -322,8 +322,8 @@ export default {
       this.dialogObj.title = '编辑'
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
-    handleSelect(row){
-       this.dialogObj.id = row.bbh
+    handleSelect(row) {
+      this.dialogObj.id = row.bbh
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'

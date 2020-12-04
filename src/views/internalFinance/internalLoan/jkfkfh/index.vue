@@ -25,19 +25,19 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          
+
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub='addSub' @updateSub="updateSub" />
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { DJZTLIST,DJZT,JXFS,JXFSLIST } from '@u/wordbook'
+import { DJZTLIST, DJZT, JXFS, JXFSLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -47,8 +47,8 @@ export default {
   data() {
     // 这里存放数据
     return {
-      jxfsList:JXFSLIST,
-      fkdztList:DJZTLIST,
+      jxfsList: JXFSLIST,
+      fkdztList: DJZTLIST,
       // 弹出框
       dialogObj: {
         id: '',
@@ -58,7 +58,7 @@ export default {
         form: {}
       },
       showAll: false,
-      
+
       // 分页
       currentData: {
         currentPage: 1,
@@ -75,26 +75,26 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          fkdbh:'FK20201112354414',
-          jkht:'123',
-          fkje:'1',
-          dxje:'1',
-          fkr:'2020-11-11',
-          dqr:'2020-11-11',
-          scfxr:'2020-11-11',
-          schbrq:'2020-11-11',
-          jxfs:1,
-          jknbzh:'123',
-          htksr:'2020-11-11',
-          htdqr:'2020-11-11',
-          fkdzt:1
+          fkdbh: 'FK20201112354414',
+          jkht: '123',
+          fkje: '1',
+          dxje: '1',
+          fkr: '2020-11-11',
+          dqr: '2020-11-11',
+          scfxr: '2020-11-11',
+          schbrq: '2020-11-11',
+          jxfs: 1,
+          jknbzh: '123',
+          htksr: '2020-11-11',
+          htdqr: '2020-11-11',
+          fkdzt: 1
         }
       ],
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -185,7 +185,7 @@ export default {
         type: 'select',
         label: '计息方式:',
         prop: 'jxfs',
-        selectList:this.jxfsList,
+        selectList: this.jxfsList,
         placeholder: '请选择计息方式',
         show: this.showAll
       },
@@ -194,18 +194,18 @@ export default {
         label: '放款单状态:',
         prop: 'fkdzt',
         placeholder: '请选择首次付息',
-        selectList:this.fkdztList,
+        selectList: this.fkdztList,
         show: this.showAll
       }
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      
+
       {
         prop: 'fkdbh',
         width: '',
-        type:'a',
+        type: 'a',
         label: '放款单编号'
       },
       {
@@ -239,8 +239,8 @@ export default {
         prop: 'jxfs',
         width: '',
         label: '计息方式',
-        type:'wordbook',
-        wordbookList:this.jxfs
+        type: 'wordbook',
+        wordbookList: this.jxfs
       },
       {
         prop: 'cxdjfs',
@@ -256,14 +256,14 @@ export default {
         prop: 'fkdzt',
         width: '',
         label: '放款单状态',
-        type:'wordbook',
-        wordbookList:this.fkdzt
+        type: 'wordbook',
+        wordbookList: this.fkdzt
       }
 
     ]
     // 按钮
     this.tableBtn = [
-      
+
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -272,29 +272,28 @@ export default {
   },
   // 方法集合
   methods: {
-    //过滤
-    jxfs(val){
+    // 过滤
+    jxfs(val) {
       return JXFS[val]
     },
-    fkdzt(val){
+    fkdzt(val) {
       return DJZT[val]
     },
-    updateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.documentNumber == res.documentNumber){
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber == res.documentNumber) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(fore).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -353,7 +352,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -361,7 +360,7 @@ export default {
         this.currentData.total = this.list.length
       })
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.fkdbh
       this.dialogObj.read = false
@@ -395,7 +394,7 @@ export default {
             }
 
             if (i == 'jxfs') {
-              if (item.jxfs==this.searchData[i]) {
+              if (item.jxfs == this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -403,7 +402,7 @@ export default {
             }
 
             if (i == 'fkdzt') {
-              if (item.fkdzt==this.searchData[i]) {
+              if (item.fkdzt == this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -411,7 +410,7 @@ export default {
             }
 
             if (i == 'jec') {
-              if (item.fkje>=this.searchData[i]) {
+              if (item.fkje >= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -419,7 +418,7 @@ export default {
             }
 
             if (i == 'jed') {
-              if (item.fkje<=this.searchData[i]) {
+              if (item.fkje <= this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -427,7 +426,7 @@ export default {
             }
 
             if (i == 'fkrqc') {
-              if (Date.parse(item.fkr) >=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.fkr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -435,7 +434,7 @@ export default {
             }
 
             if (i == 'fkrqd') {
-              if (Date.parse(item.fkr) <=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.fkr) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -443,7 +442,7 @@ export default {
             }
 
             if (i == 'scfxrc') {
-              if (Date.parse(item.scfxr) >=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
@@ -451,14 +450,12 @@ export default {
             }
 
             if (i == 'scfxrd') {
-              if (Date.parse(item.scfxr) >=Date.parse(this.searchData[i])) {
+              if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-
-
           } else {
             continue
           }

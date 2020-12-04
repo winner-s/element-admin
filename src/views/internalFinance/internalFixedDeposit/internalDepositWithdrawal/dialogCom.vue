@@ -38,8 +38,7 @@
                 :key="item.ckkllsh"
                 :label="item.ckkllsh"
                 :value="item.ckkllsh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -73,8 +72,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -192,8 +190,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -214,8 +211,7 @@
                 :key="item.id"
                 :label="item.value"
                 :value="item.id"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -280,10 +276,8 @@
               type="date"
               placeholder="选择日期"
               :picker-options="placeholderTips.content"
-            >
-            </el-date-picker>
+            />
 
-            
           </el-form-item>
         </el-col>
         <el-col :span="12" />

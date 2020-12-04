@@ -47,8 +47,7 @@
                 :key="item.id"
                 :label="item.jkht"
                 :value="item.jkht"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -88,9 +87,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-              
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -102,9 +99,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-              
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -119,9 +114,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-             
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -133,9 +126,7 @@
               placeholder="选择日期"
               style="width: 200px"
               size="mini"
-              
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -176,10 +167,8 @@
               size="mini"
               value-format="yyyy-MM-dd"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
 
-            
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -192,8 +181,7 @@
               style="width: 200px"
               size="mini"
               :disabled="true"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -224,8 +212,8 @@ export default {
           jxfs: 1,
           jknbzh: '123',
           htksr: '2020-11-11',
-          htdqr: '2020-11-29',
-        },
+          htdqr: '2020-11-29'
+        }
       ],
       placeholderTips: placeholderTips,
       form: {
@@ -239,10 +227,10 @@ export default {
         schbrq: '',
         jxfs: '',
         htksr: '',
-        jknbzh:'',
+        jknbzh: '',
         htdqr: '',
         cxdjfs: '',
-        lltzzq: '',
+        lltzzq: ''
       },
       rules: {
         dkht: [{ required: true, message: '请填写贷款合同', trigger: 'blur' }],
@@ -250,16 +238,16 @@ export default {
         fkr: [{ required: true, message: '请填写放款日', trigger: 'blur' }],
         dqr: [{ required: true, message: '请填写到期日', trigger: 'blur' }],
         scfxr: [
-          { required: true, message: '请填写首次付息日', trigger: 'blur' },
+          { required: true, message: '请填写首次付息日', trigger: 'blur' }
         ],
         schbrq: [
-          { required: true, message: '请填写首次还本日期', trigger: 'blur' },
+          { required: true, message: '请填写首次还本日期', trigger: 'blur' }
         ],
         jxfs: [{ required: true, message: '请填写计息方式', trigger: 'blur' }],
         htdqr: [
-          { required: true, message: '请填写合同到期日', trigger: 'blur' },
-        ],
-      },
+          { required: true, message: '请填写合同到期日', trigger: 'blur' }
+        ]
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -270,7 +258,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -278,12 +266,12 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    jkhtChange(val){
-      this.jkhtList.forEach((item,index)=>{
-        if(item.jkht==val){
+    jkhtChange(val) {
+      this.jkhtList.forEach((item, index) => {
+        if (item.jkht == val) {
           Object.keys(item).forEach((res) => {
-          this.form[res] = item[res]
-        })
+            this.form[res] = item[res]
+          })
         }
       })
     },
@@ -319,8 +307,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

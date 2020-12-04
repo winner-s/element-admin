@@ -37,8 +37,7 @@
                 :key="item.id"
                 :label="item.jkhtbh"
                 :value="item.jkhtbh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -57,8 +56,7 @@
                 :key="item.id"
                 :label="item.fkdbh"
                 :value="item.fkdbh"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -101,7 +99,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12"> </el-col>
+        <el-col :span="12" />
       </el-row>
 
       <el-row>
@@ -160,12 +158,11 @@
               v-model="form.ksrq"
               type="date"
               size="mini"
-              :disabled='true'
+              :disabled="true"
               style="width: 200px"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -175,11 +172,10 @@
               type="date"
               placeholder="选择日期"
               size="mini"
-              :disabled='true'
+              :disabled="true"
               style="width: 200px"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -312,25 +308,23 @@
               type="date"
               placeholder="选择日期"
               size="mini"
-              :disabled='true'
+              :disabled="true"
               style="width: 200px"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="到期日：" prop="dqr" class="formItem">
             <el-date-picker
               v-model="form.dqr"
-              :disabled='true'
+              :disabled="true"
               type="date"
               placeholder="选择日期"
               size="mini"
               style="width: 200px"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -355,7 +349,7 @@
               v-model="form.yqll"
               style="width: 200px"
               size="mini"
-              
+
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -396,8 +390,7 @@
               style="width: 200px"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -409,8 +402,7 @@
               style="width: 200px"
               placeholder="选择日期"
               value-format="yyyy-MM-dd"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -489,16 +481,16 @@ export default {
           htqdll: '5.0',
           fxfs: '按季付息',
           hbfs: '按计划还',
-          bz: '',
-        },
+          bz: ''
+        }
       ],
       fkdbhList: [
         {
           fkdbh: 'FK2020111609464617',
           fkje: '10000',
           fkr: '2020-06-01',
-          dqr: '2020-11-01',
-        },
+          dqr: '2020-11-01'
+        }
       ],
       form: {
         jkhtbh: '',
@@ -529,27 +521,27 @@ export default {
         yqjedx: '',
         yqksrq: '',
         yqjsrq: '',
-        yqsm: '',
+        yqsm: ''
       },
       rules: {
         jkhtbh: [
-          { required: true, message: '请填写借款合同编号', trigger: 'blur' },
+          { required: true, message: '请填写借款合同编号', trigger: 'blur' }
         ],
         fkdbh: [
-          { required: true, message: '请填写放款单编号', trigger: 'blur' },
+          { required: true, message: '请填写放款单编号', trigger: 'blur' }
         ],
         yqdjbh: [
-          { required: true, message: '请填写逾期单据编号', trigger: 'blur' },
+          { required: true, message: '请填写逾期单据编号', trigger: 'blur' }
         ],
         yqll: [{ required: true, message: '请填写逾期利率', trigger: 'blur' }],
         yqje: [{ required: true, message: '请填写逾期金额', trigger: 'blur' }],
         yqksrq: [
-          { required: true, message: '请填写逾期开始日期', trigger: 'blur' },
+          { required: true, message: '请填写逾期开始日期', trigger: 'blur' }
         ],
         yqjsrq: [
-          { required: true, message: '请填写逾期结束日期', trigger: 'blur' },
-        ],
-      },
+          { required: true, message: '请填写逾期结束日期', trigger: 'blur' }
+        ]
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -560,7 +552,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -617,8 +609,8 @@ export default {
     addSub() {
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

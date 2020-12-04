@@ -68,8 +68,7 @@
                 :key="item.txmc"
                 :label="item.txmc"
                 :value="item.txmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -86,8 +85,7 @@
                 :key="item.zqmc"
                 :label="item.zqmc"
                 :value="item.zqmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -118,46 +116,46 @@ export default {
     return {
       placeholderTips: placeholderTips,
       form: {
-        tjlxbh:'',
-        tjlxmc:'',
-        txmc:'',
-        zqmc:''
+        tjlxbh: '',
+        tjlxmc: '',
+        txmc: '',
+        zqmc: ''
       },
-      zqmcList:[
+      zqmcList: [
         {
-          zqbh:'2020027',
-          zqmc:'名称1',
-          zqlx:'月',
+          zqbh: '2020027',
+          zqmc: '名称1',
+          zqlx: '月'
         },
         {
-          zqbh:'2020063',
-          zqmc:'名称2',
-          zqlx:'月',
+          zqbh: '2020063',
+          zqmc: '名称2',
+          zqlx: '月'
         }
       ],
-      txmcList:[
+      txmcList: [
         {
-          txbh:'2020098',
-          txmc:'20201体系'
+          txbh: '2020098',
+          txmc: '20201体系'
         },
         {
-          txbh:'2020001',
-          txmc:'20202体系'
+          txbh: '2020001',
+          txmc: '20202体系'
         }
       ],
-      rules:{
-        tjlxbh:[
-           { required: true, message: '请输入调剂类型编号', trigger: 'blur' },
+      rules: {
+        tjlxbh: [
+          { required: true, message: '请输入调剂类型编号', trigger: 'blur' }
         ],
-        tjlxmc:[
-           { required: true, message: '请输入调剂类型名称', trigger: 'blur' },
+        tjlxmc: [
+          { required: true, message: '请输入调剂类型名称', trigger: 'blur' }
         ],
-        txmc:[
-           { required: true, message: '请选择体系名称', trigger: 'blur' },
+        txmc: [
+          { required: true, message: '请选择体系名称', trigger: 'blur' }
         ],
-        zqmc:[
-           { required: true, message: '请选择周期名称', trigger: 'blur' },
-        ],
+        zqmc: [
+          { required: true, message: '请选择周期名称', trigger: 'blur' }
+        ]
       }
     }
   },
@@ -165,9 +163,9 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {
-    "dialogObj.show"(val) {
+    'dialogObj.show'(val) {
       if (val) {
-        this.initDialog();
+        this.initDialog()
       }
     }
   },
@@ -177,24 +175,22 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-    initDialog(){
-      
+    initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
-          this.form[item] = this.dialogObj.form[item];
-        });
-      } else{
+          this.form[item] = this.dialogObj.form[item]
+        })
+      } else {
         let tjlxbh = ''
-        for(let i=0;i<16;i++){
-          tjlxbh+= Math.round(Math.random() * 10)
+        for (let i = 0; i < 16; i++) {
+          tjlxbh += Math.round(Math.random() * 10)
         }
-        Object.keys(this.form).forEach(item => {this.form[item] = ''});
-        this.form.tjlxbh= tjlxbh
+        Object.keys(this.form).forEach(item => { this.form[item] = '' })
+        this.form.tjlxbh = tjlxbh
       }
     },
     sub() {
       this.$refs['form'].validate((valid) => {
-        
         if (valid) {
           if (this.dialogObj.id) {
             this.updateSub()
@@ -204,16 +200,16 @@ export default {
         }
       })
     },
-    updateSub(){
-      this.$emit('updateSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
+    updateSub() {
+      this.$emit('updateSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
     },
     addSub() {
       console.log(this.form)
-     
-      this.$emit('addSub',JSON.parse(JSON.stringify(this.form)))
-      this.dialogObj.show=false
-    },
+
+      this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
+      this.dialogObj.show = false
+    }
   }
 }
 </script>

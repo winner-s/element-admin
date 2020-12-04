@@ -64,32 +64,32 @@ export default {
         show: false,
         form: {}
       },
-      list:[
+      list: [
         {
-          dfhm:'aaa',
-          jylsh:'10469183609',
-          bfyhzh:'111111',
-          bfzhmc:"测试户1",
-          bfdwmc:'单位1',
-          bfyhmc:1,
-          bfkhhmc:'西单支行',
-         
-          dfkhhmc:'西单支行',
-          jdfx:1,
-          jyrq:'2020-11-09',
-          jyje:'500',
-          ye:"1000",
-          bz:1,
-          zhyt:1,
-          sfzl:1,
-          zy:'',
-          beizhu:''
+          dfhm: 'aaa',
+          jylsh: '10469183609',
+          bfyhzh: '111111',
+          bfzhmc: '测试户1',
+          bfdwmc: '单位1',
+          bfyhmc: 1,
+          bfkhhmc: '西单支行',
+
+          dfkhhmc: '西单支行',
+          jdfx: 1,
+          jyrq: '2020-11-09',
+          jyje: '500',
+          ye: '1000',
+          bz: 1,
+          zhyt: 1,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
         }
       ],
 
       // 表格
       tableData: [
-        
+
       ],
       tableBtn: [],
       // 顶部搜索
@@ -315,7 +315,7 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {},
-    
+
     // 获取search信息
     getDataList(val) {
       this.currentData.size = 10
@@ -325,7 +325,7 @@ export default {
     },
     // 分页
     onPageChange(val) {
-       var end = val * this.currentData.size
+      var end = val * this.currentData.size
       var start = (val - 1) * this.currentData.size
 
       this.tableData = this.list.slice(start, end)
@@ -337,7 +337,7 @@ export default {
       this.currentData.currentPage = 1
       this.getList()
     },
-    
+
     handleEdit(row) {
       this.dialogObj.id = row.id
       this.dialogObj.read = false
@@ -357,7 +357,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {

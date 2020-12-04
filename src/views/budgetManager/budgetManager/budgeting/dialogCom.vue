@@ -44,8 +44,7 @@
                 :key="item.ysnd"
                 :label="item.ysnd"
                 :value="item.ysnd"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -65,8 +64,7 @@
                 :key="item.txmc"
                 :label="item.txmc"
                 :value="item.txmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -83,8 +81,7 @@
                 :key="item.zqmc"
                 :label="item.zqmc"
                 :value="item.zqmc"
-              >
-              </el-option>
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -100,8 +97,7 @@
               style="width: 200px"
               size="mini"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -113,8 +109,7 @@
               style="width: 200px"
               size="mini"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -177,71 +172,71 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       placeholderTips: placeholderTips,
       yszqList: [
         {
           zqbh: '2020027',
           zqmc: 'test',
-          zqlx: '年',
+          zqlx: '年'
         },
         {
           zqbh: '2020029',
           zqmc: 'ABCDEFG',
-          zqlx: '月',
-        },
+          zqlx: '月'
+        }
       ],
       ystsList: [
         {
           txbh: '2020001',
-          txmc: '2020',
+          txmc: '2020'
         },
         {
           txbh: '2020006',
-          txmc: '测试1',
+          txmc: '测试1'
         },
         {
           txbh: '2020008',
-          txmc: '测试2',
+          txmc: '测试2'
         },
         {
           txbh: '2020014',
-          txmc: '测试3',
-        },
+          txmc: '测试3'
+        }
       ],
       ysndList: [
         {
-          ysnd: '2017',
+          ysnd: '2017'
         },
         {
-          ysnd: '2018',
+          ysnd: '2018'
         },
         {
-          ysnd: '2019',
+          ysnd: '2019'
         },
         {
-          ysnd: '2020',
+          ysnd: '2020'
         },
         {
-          ysnd: '2021',
+          ysnd: '2021'
         },
         {
-          ysnd: '2022',
+          ysnd: '2022'
         },
         {
-          ysnd: '2023',
+          ysnd: '2023'
         },
         {
-          ysnd: '2024',
-        },
+          ysnd: '2024'
+        }
       ],
       tableData: [
         {
           id: 1,
           ysxm: '期初余额',
           test: '0.00',
-          hz: '0.00',
+          hz: '0.00'
         },
         {
           id: 2,
@@ -253,10 +248,10 @@ export default {
               id: 21,
               ysxm: '销售商品、提供劳务收到的现金',
               test: '0.00',
-              hz: '0.00',
-            },
-          ],
-        },
+              hz: '0.00'
+            }
+          ]
+        }
       ],
       rules: {
         bbh: [{ required: true, message: '请输入版本号', trigger: 'blur' }],
@@ -264,11 +259,11 @@ export default {
         ystx: [{ required: true, message: '请选择预算体系', trigger: 'blur' }],
         yszq: [{ required: true, message: '请选择预算周期', trigger: 'blur' }],
         ysksrq: [
-          { required: true, message: '请选择预算开始日期', trigger: 'blur' },
+          { required: true, message: '请选择预算开始日期', trigger: 'blur' }
         ],
         ysjsrq: [
-          { required: true, message: '请选择预算结束日期', trigger: 'blur' },
-        ],
+          { required: true, message: '请选择预算结束日期', trigger: 'blur' }
+        ]
       },
       form: {
         bbh: '',
@@ -279,8 +274,8 @@ export default {
         jsrq: '',
         ysbzdw: '二级单位',
         ysms: '',
-        bbzt: '保存',
-      },
+        bbzt: '保存'
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -291,7 +286,7 @@ export default {
       if (val) {
         this.initDialog()
       }
-    },
+    }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -300,21 +295,21 @@ export default {
       {
         prop: 'ysxm',
         width: '',
-        label: '预算项目',
+        label: '预算项目'
       },
       {
         prop: 'test',
         width: '',
         label: 'lzh测试',
-        type: 'input',
+        type: 'input'
       },
       {
         prop: 'hz',
         width: '',
         label: '汇总',
         type: 'input',
-        disabled:true
-      },
+        disabled: true
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -376,8 +371,8 @@ export default {
       this.form.bzr = 'admin'
       this.$emit('addSub', JSON.parse(JSON.stringify(this.form)))
       this.dialogObj.show = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">

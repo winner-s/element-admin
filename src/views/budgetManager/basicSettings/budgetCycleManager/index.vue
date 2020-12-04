@@ -60,7 +60,7 @@ export default {
         title: 'aaa',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       showAll: 1,
       unitNoList: UNITNOLIST,
@@ -68,7 +68,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -78,7 +78,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       // 弹出框
       dialogObjS: {
@@ -86,13 +86,13 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
       list: [
         {
-          ystxbh:1,
-          sfgd:1,
-          xsls:'1',
+          ystxbh: 1,
+          sfgd: 1,
+          xsls: '1',
           zqbh: 45807196348,
           zqmc: '汤臣一品十套房',
           sstx: '体系1',
@@ -104,14 +104,14 @@ export default {
               qjbh: '1',
               ksrq: '',
               jsrq: '',
-              ggdllmmc: '',
-            },
-          ],
+              ggdllmmc: ''
+            }
+          ]
         },
         {
-          ystxbh:1,
-          sfgd:1,
-          xsls:'1',
+          ystxbh: 1,
+          sfgd: 1,
+          xsls: '1',
           zqbh: 45807196388,
           zqmc: '周期测试名称',
           sstx: '体系1',
@@ -123,10 +123,10 @@ export default {
               qjbh: '1',
               ksrq: '',
               jsrq: '',
-              ggdllmmc: '',
-            },
-          ],
-        },
+              ggdllmmc: ''
+            }
+          ]
+        }
       ],
 
       // 表格
@@ -136,8 +136,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -154,18 +154,18 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'insert',
         type: 'primary',
-        label: '新增',
+        label: '新增'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -174,14 +174,14 @@ export default {
         label: '体系名称:',
         prop: 'unitNo',
         placeholder: '请填写体系名称',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'select',
         label: '周期类型:',
         prop: 'unitName',
-        placeholder: '请选择周期类型',
-      },
+        placeholder: '请选择周期类型'
+      }
     ]
     //  table表格
     this.tableListData = [
@@ -190,37 +190,37 @@ export default {
       {
         prop: 'zqbh',
         width: '150',
-        label: '周期编号',
+        label: '周期编号'
       },
 
       {
         prop: 'zqmc',
         width: '',
-        label: '周期名称',
+        label: '周期名称'
       },
       {
         prop: 'sstx',
         width: '',
-        label: '所属体系',
+        label: '所属体系'
       },
       {
         prop: 'zqlx',
         width: '',
-        label: '周期类型',
+        label: '周期类型'
       },
       {
         prop: 'zqzt',
         width: '',
-        label: '周期状态',
+        label: '周期状态'
       },
-      { label: '操作', type: 'btn', width: '' },
+      { label: '操作', type: 'btn', width: '' }
     ]
     // 按钮
     this.tableBtn = [
       {
         name: '编 辑',
         btnType: 'primary',
-        handleFn: 'handleEdit',
+        handleFn: 'handleEdit'
       },
 
       {
@@ -229,17 +229,17 @@ export default {
         type: 'isShow',
         isShowStatus: 'zqzt',
         isShowValue: '停用',
-        handleFn: 'handleStatus',
+        handleFn: 'handleStatus'
       },
       {
         name: '编辑周期区间',
         btnType: 'primary',
-        handleFn: 'handleEditSection',
+        handleFn: 'handleEditSection'
       },
       {
         name: '删 除',
         btnType: 'danger',
-        handleFn: 'handleDelete',
+        handleFn: 'handleDelete'
       },
       {
         name: '停 用',
@@ -247,8 +247,8 @@ export default {
         type: 'isShow',
         isShowStatus: 'zqzt',
         isShowValue: '启用',
-        handleFn: 'handleStatus',
-      },
+        handleFn: 'handleStatus'
+      }
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -257,22 +257,21 @@ export default {
   },
   // 方法集合
   methods: {
-    SectionupdateSub(res){
-      let ind = 0;
-      this.tableData.forEach((item,index)=>{
-        if(item.zqbh == res.zqbh){
+    SectionupdateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.zqbh == res.zqbh) {
           ind = index
         }
       })
       console.log(ind)
-      
-      let fore = this.tableData[ind]
-       Object.keys(res).forEach(item => {
-         if(res[item]){
-           fore[item] = res[item];
-         }
-          
-        });
+
+      const fore = this.tableData[ind]
+      Object.keys(res).forEach(item => {
+        if (res[item]) {
+          fore[item] = res[item]
+        }
+      })
 
       this.tableData[ind] = fore
       this.list[ind] = fore
@@ -293,7 +292,7 @@ export default {
       })
       console.log(ind)
 
-      let fore = this.tableData[ind]
+      const fore = this.tableData[ind]
       Object.keys(res).forEach((item) => {
         fore[item] = res[item]
       })
@@ -360,7 +359,7 @@ export default {
       this.$confirm('确定删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning',
+        type: 'warning'
       }).then(() => {
         console.log()
         this.list.splice(this.list.indexOf(v), 1)
@@ -374,7 +373,7 @@ export default {
         this.$confirm('确定停用?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           v.zqzt = '停用'
         })
@@ -382,7 +381,7 @@ export default {
         this.$confirm('确定启用?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }).then(() => {
           v.zqzt = '启用'
         })
@@ -407,7 +406,7 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      let tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
@@ -453,8 +452,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>
