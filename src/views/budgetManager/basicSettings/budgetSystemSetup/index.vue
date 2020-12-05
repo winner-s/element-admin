@@ -32,8 +32,12 @@
         />
       </div>
     </el-card>
-    <dialog-com-s :dialog-obj="dialogObjS" />
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
+    <dialog-com-s :dialog-obj="dialogObjS" @fh="fh" />
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @addSub="addSub"
+      @updateSub="updateSub"
+    />
   </div>
 </template>
 
@@ -80,13 +84,18 @@ export default {
         {
           txbh: 20082615093831,
           txmc: '福布斯排行榜',
-          txzt: '启用'
+          txzt: '启用',
+          children: [
+            {
+              txbh: 20082615093831,
+              txmc: '福布斯排行榜',
+              children: []
+            }
+          ]
         }
       ],
       // 表格
-      tableData: [
-
-      ],
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
@@ -206,7 +215,6 @@ export default {
         isShowValue: '启用',
         handleFn: 'handleStatus'
       }
-
     ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -215,8 +223,28 @@ export default {
   },
   // 方法集合
   methods: {
-    bjysxm(row) {
+    fh(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.txbh === res.txbh) {
+          ind = index
+        }
+      })
 
+      const fore = this.tableData[ind]
+
+      fore.children = res.children
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+      console.log(this.list[0])
+    },
+    bjysxm(row) {
+      this.dialogObjS.id = row.txbh
+      this.dialogObjS.read = false
+      this.dialogObjS.show = true
+      this.dialogObjS.title = '编辑'
+      this.dialogObjS.form = JSON.parse(JSON.stringify(row))
     },
     fzystx(v) {
       const zhi = JSON.parse(JSON.stringify(v))
@@ -228,7 +256,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -243,6 +271,12 @@ export default {
       this.list[ind] = fore
     },
     addSub(res) {
+      res.children = [{}]
+      const aaa = res.children[0]
+      Object.keys(res).forEach(item => {
+        aaa[item] = res[item]
+      })
+
       this.list.push(res)
 
       this.tableData = this.list.slice(0, this.currentData.size)
@@ -311,7 +345,7 @@ export default {
     },
     handleStatus(v) {
       console.log(v)
-      if (v.txzt == '启用') {
+      if (v.txzt === '启用') {
         this.$confirm('确定停用?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -345,8 +379,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -354,7 +388,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -362,7 +396,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -370,7 +404,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -381,7 +415,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

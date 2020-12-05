@@ -234,10 +234,10 @@
     </el-table>
 
     <el-table
+      v-if="tree==true"
       :data="tableData"
       :span-method="objectSpanMethod"
       border
-      v-if="tree==true"
       row-key="id"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
 

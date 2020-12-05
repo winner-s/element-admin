@@ -31,6 +31,16 @@
         />
       </div>
     </el-card>
+    <dialog-com-s
+      :dialog-obj="dialogObjS"
+
+      @updateSub="updateSubS"
+    />
+    <dialog-com
+      :dialog-obj="dialogObj"
+
+      @updateSub="updateSub"
+    />
   </div>
 </template>
 
@@ -39,13 +49,22 @@
 import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import dialogCom from './dialogCom'
+import dialogComS from './dialogComS'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table, dialogCom, dialogComS },
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObjS: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -71,7 +90,40 @@ export default {
           zqmc: 'name',
           sstx: '体系1',
           zqlx: '月',
-          zqzt: '启用'
+          zqzt: '启用',
+          list: [
+            {
+              id: 1,
+              label: '一级 1',
+              children: [{
+                id: 4,
+                label: '二级 1-1',
+                txmx: 1,
+                mxmb: 1
+
+              }]
+            }
+          ]
+        },
+        {
+          zqbh: 'ZQ2020043',
+          zqmc: 'name',
+          sstx: '体系1',
+          zqlx: '月',
+          zqzt: '启用',
+          list: [
+            {
+              id: 1,
+              label: '一级 1',
+              children: [{
+                id: 4,
+                label: '二级 1-1',
+                txmx: 1,
+                mxmb: 1
+
+              }]
+            }
+          ]
         }
       ],
       // 表格
@@ -103,11 +155,7 @@ export default {
         type: 'primary',
         label: '查询'
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增'
-      },
+
       {
         prop: 'reset',
         type: '',
@@ -136,7 +184,7 @@ export default {
 
       {
         prop: 'zqbh',
-        width: '150',
+        width: '',
         label: '周期编号'
       },
 
@@ -160,7 +208,7 @@ export default {
         width: '',
         label: '周期状态'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '' }
     ]
     // 按钮
     this.tableBtn = [
@@ -171,7 +219,7 @@ export default {
       },
       {
         name: '项目明细设置',
-        btnType: 'danger',
+        btnType: 'primary',
         handleFn: 'handleDelete'
       }
     ]
@@ -182,6 +230,38 @@ export default {
   },
   // 方法集合
   methods: {
+    updateSubS(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.zqbh === res.zqbh) {
+          ind = index
+        }
+      })
+
+      const fore = this.tableData[ind]
+      Object.keys(res).forEach(item => {
+        fore[item] = res[item]
+      })
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    updateSub(res) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.zqbh === res.zqbh) {
+          ind = index
+        }
+      })
+
+      const fore = this.tableData[ind]
+      Object.keys(res).forEach(item => {
+        fore[item] = res[item]
+      })
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -222,11 +302,18 @@ export default {
     },
 
     handleEdit(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.zqbh
       this.dialogObj.read = false
       this.dialogObj.show = true
       this.dialogObj.title = '编辑'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
+    },
+    handleDelete(row) {
+      this.dialogObjS.id = row.zqbh
+      this.dialogObjS.read = false
+      this.dialogObjS.show = true
+      this.dialogObjS.title = '编辑'
+      this.dialogObjS.form = JSON.parse(JSON.stringify(row))
     },
     handleViewOther(row) {
       this.dialogObj.id = row.id
@@ -243,8 +330,8 @@ export default {
       this.tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -252,7 +339,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -260,7 +347,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -268,7 +355,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -279,7 +366,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
