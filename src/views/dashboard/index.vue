@@ -45,7 +45,7 @@
     <div class="kf" @click="kf = true" />
     <!-- @click="toUser" -->
     <div v-show="kf" class="dh">
-      <div class="close" @click.stop="kf = false" />
+      <div class="close" @click="kf = false" />
     </div>
     <el-row :gutter="20">
       <el-col :span="12" :class="{ cygn: tip == 2 }">

@@ -61,7 +61,9 @@
             <span v-for="(item, index) in codeList" :key="index" :style="getStyle(item)">{{ item.code }}</span>
           </div>
         </el-form-item>
+
         <el-button :loading="loading" type="primary" @click.native.prevent="handleLogin">登录</el-button>
+
       </el-form>
     </div>
     <footer>
@@ -209,7 +211,9 @@ export default {
         this.$refs.password.focus()
       })
     },
+
     handleLogin() {
+      console.log('点击了登录')
       console.log(this.codeList)
       this.$refs.loginForm.validate(valid => {
         if (valid) {

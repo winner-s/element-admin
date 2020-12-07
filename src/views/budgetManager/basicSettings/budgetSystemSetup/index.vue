@@ -271,12 +271,12 @@ export default {
       this.list[ind] = fore
     },
     addSub(res) {
-      res.children = [{}]
-      const aaa = res.children[0]
-      Object.keys(res).forEach(item => {
-        aaa[item] = res[item]
-      })
-
+      res.children = [{
+        txbh: res.txbh,
+        txmc: res.txmc,
+        children: []
+      }]
+      console.log(res)
       this.list.push(res)
 
       this.tableData = this.list.slice(0, this.currentData.size)
