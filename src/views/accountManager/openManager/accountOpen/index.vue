@@ -84,14 +84,13 @@ export default {
           accountPhone: '999888000',
           accountName: 'aaa',
           unitName: 1324,
-          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
           zhyt: 2,
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
 
@@ -102,14 +101,13 @@ export default {
           accountPhone: '999888000',
           accountName: 'aaa',
           unitName: 1324,
-          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
           zhyt: 2,
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
 
@@ -120,14 +118,13 @@ export default {
           accountPhone: '999888000',
           accountName: 'aaa',
           unitName: 1324,
-          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
           zhyt: 2,
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
 
@@ -138,14 +135,13 @@ export default {
           accountPhone: '999888000',
           accountName: 'aaa',
           unitName: 1324,
-          openApplicant: 'admin',
           bankName: 1,
           bankOpenName: '11111',
           zhyt: 2,
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         }
       ],
 
@@ -377,10 +373,10 @@ export default {
       this.star = true
     },
     handleCommit() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.documentNumber == item.documentNumber) {
+            if (res.documentNumber === item.documentNumber) {
               res.status = 2
             }
           })
@@ -417,7 +413,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -524,8 +520,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -533,7 +529,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -541,7 +537,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -549,7 +545,7 @@ export default {
               }
             }
 
-            if (i == 'bankName') {
+            if (i === 'bankName') {
               if (item.bankName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -557,7 +553,7 @@ export default {
               }
             }
 
-            if (i == 'bankOpenName') {
+            if (i === 'bankOpenName') {
               if (item.bankOpenName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -565,7 +561,7 @@ export default {
               }
             }
 
-            if (i == 'accountOpenTimeStart') {
+            if (i === 'accountOpenTimeStart') {
               if (Date.parse(item.openTime) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -573,7 +569,7 @@ export default {
               }
             }
 
-            if (i == 'accountOpenTimeEnd') {
+            if (i === 'accountOpenTimeEnd') {
               if (Date.parse(item.openTime) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -581,7 +577,7 @@ export default {
               }
             }
 
-            if (i == 'start') {
+            if (i === 'start') {
               if (item.start.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -592,7 +588,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

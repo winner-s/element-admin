@@ -30,13 +30,11 @@ export default {
   props: ['dialogObj'],
   data() {
     return {
-      RoleSelectList: [],
 
       form: {
         zqbh: '',
         list: []
       },
-      sysRoleShowList: [],
       rules: {},
       dataArr: {},
       treeData: [

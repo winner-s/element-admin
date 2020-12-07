@@ -31,7 +31,8 @@
         />
       </div>
     </el-card>
-    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" />
+    <dialog-com-s :dialog-obj="dialogObjS" @updateSub="updateSub" />
   </div>
 </template>
 
@@ -41,14 +42,15 @@ import { UNITNOLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
+import dialogComS from './dialogComS'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table, dialogCom },
+  components: { Search, Table, dialogCom, dialogComS },
   data() {
     // 这里存放数据
     return {
       // 弹出框
-      dialogObj: {
+      dialogObjS: {
         id: '',
         title: 'aaa',
         read: false,
@@ -79,7 +81,21 @@ export default {
           tjlxbh: '201105101710',
           tjlxmc: 'text',
           txmc: '777',
-          zqmc: '年'
+          zqmc: '年',
+
+          list: [
+            {
+              id: 1,
+              label: '一级 1',
+              children: [{
+                id: 4,
+                label: '二级 1-1',
+                txmx: 1,
+                mxmb: 1
+
+              }]
+            }
+          ]
         }
       ],
       // 表格
@@ -194,7 +210,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.tjlxbh == res.tjlxbh) {
+        if (item.tjlxbh === res.tjlxbh) {
           ind = index
         }
       })
@@ -283,11 +299,11 @@ export default {
       this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
     handleEdit(row) {
-      this.dialogObj.id = row.tjlxbh
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑'
-      this.dialogObj.form = JSON.parse(JSON.stringify(row))
+      this.dialogObjS.id = row.tjlxbh
+      this.dialogObjS.read = false
+      this.dialogObjS.show = true
+      this.dialogObjS.title = '编辑'
+      this.dialogObjS.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
@@ -298,8 +314,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -307,7 +323,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -315,7 +331,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -323,7 +339,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -334,7 +350,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -101,7 +101,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
           documentNumber: 'KH20112315560278',
@@ -118,7 +118,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
           documentNumber: 'KH20112309552410',
@@ -135,7 +135,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         },
         {
           documentNumber: 'KH20112415042159',
@@ -152,7 +152,7 @@ export default {
           sfzl: 1,
           currency: 1,
           status: 1,
-          khhss: '1111'
+          khhss: ['北京市', '市辖区', '西城区']
         }
       ],
 
@@ -360,7 +360,7 @@ export default {
     },
     sub(res) {
       this.list.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           this.tableData.splice(index, 1)
           this.$confirm('操作成功', '提示', {
             confirmButtonText: '确定',
@@ -374,7 +374,7 @@ export default {
     },
     stop(res) {
       this.list.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           this.tableData.splice(index, 1)
           this.$confirm('操作成功', '提示', {
             confirmButtonText: '确定',
@@ -492,8 +492,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'unitNo') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'unitNo') {
               if (item.unitName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -501,7 +501,7 @@ export default {
               }
             }
 
-            if (i == 'bankName') {
+            if (i === 'bankName') {
               if (item.bankName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -509,7 +509,7 @@ export default {
               }
             }
 
-            if (i == 'bankOpenName') {
+            if (i === 'bankOpenName') {
               if (item.bankOpenName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -517,14 +517,14 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.accountPhone.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'zhmc') {
+            if (i === 'zhmc') {
               if (item.accountName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -532,7 +532,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.currency.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -543,7 +543,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -142,12 +142,12 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="开户行省市：" prop="khhss">
-            <el-input
+            <el-cascader
               v-model="form.khhss"
-              style="width: 200px"
+              :options="options"
+              :separator="' '"
               size="mini"
-
-              :placeholder="placeholderTips.content"
+              style="width: 200px"
             />
           </el-form-item>
         </el-col>
@@ -305,6 +305,7 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
+import options from '@u/country-data'
 import { placeholderTips } from '@u/validate'
 import {
   UNITNOLIST,
@@ -320,6 +321,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      options: options,
       rules: {
         documentNumber: [
           { required: true, message: '请填写单据编号', trigger: 'blur' }

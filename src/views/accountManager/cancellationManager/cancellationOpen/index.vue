@@ -187,6 +187,7 @@ export default {
       {
         prop: 'djbh',
         width: '150',
+        type: 'a',
         label: '单据编号',
         fixed: 'left'
       },
@@ -321,6 +322,7 @@ export default {
       this.list[ind] = fore
     },
     addSub(res) {
+      console.log(res)
       this.list.push(res)
 
       this.tableData = this.list.slice(0, this.currentData.size)

@@ -252,9 +252,9 @@ export const SCORLLLIST = [
 export const CYCLETYPE = {
   '1': '年',
   '2': '季',
-  '2': '月',
-  '2': '周',
-  '2': '日'
+  '3': '月',
+  '4': '周',
+  '5': '日'
 }
 
 export const CYCLETYPELIIST = [

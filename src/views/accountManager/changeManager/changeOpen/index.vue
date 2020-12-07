@@ -40,7 +40,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST, DIRECT, DIRECTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -50,6 +50,8 @@ export default {
   data() {
     // 这里存放数据
     return {
+      djztList: DJZTLIST,
+      directList: DIRECTLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -80,7 +82,7 @@ export default {
           yhzh: 1111111111,
           zhmc: '测试1',
           yhmc: 1,
-          khhszss: 'aaa',
+          khhszss: ['北京市', '市辖区', '西城区'],
           bgsqr: 'admin',
           khhmc: '北京分行',
           lhh: '5200103901',
@@ -88,7 +90,8 @@ export default {
           sfzl: 1,
           bgrq: '2020-11-03',
           unitName: 1324,
-          bghUnitName: 1324
+          bghUnitName: 1324,
+          documentStatus: 1
         }
       ],
       // 表格
@@ -166,7 +169,8 @@ export default {
         label: '单据状态:',
         prop: 'documentStatus',
         placeholder: '请选择单据状态',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.djztList
       },
       {
         type: 'select',
@@ -213,9 +217,11 @@ export default {
         label: '开户行名称'
       },
       {
-        prop: 'status',
+        prop: 'documentStatus',
         width: '',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'connection',
@@ -254,6 +260,13 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
     updateSub(res, item) {
       let ind = 0
       this.tableData.forEach((item, index) => {

@@ -25,27 +25,32 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
-          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
+    <dialog-com
+      :dialog-obj="dialogObj"
+      @updateSub="updateSub"
+      @addSub="addSub"
+    />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST, DIRECT, DIRECTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import dialogCom from './dialogCom'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
+      djztList: DJZTLIST,
+      directList: DIRECTLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -64,213 +69,32 @@ export default {
         show: false,
         form: {}
       },
-      // 表格
-      tableDataTwo: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        }
-      ],
 
-      // 表格
-      tableData: [
+      list: [
         {
           bto: false,
           documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '',
-          accountName: '',
-          bankName: '',
-          openBankName: '',
-          status: '',
-          connection: ''
+          accountPhone: 1111111111,
+          accountName: '测试1',
+          bankName: '中国银行',
+          currency: 1,
+          yhzh: 1111111111,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 1,
+          sfzl: 1,
+          bgrq: '2020-11-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
         }
       ],
+      // 表格
+      tableData: [],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
@@ -287,6 +111,8 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    this.tableData = this.list.slice(0, this.currentData.size)
+    this.currentData.total = this.list.length
     // 顶部按钮
     this.searchBto = [
       {
@@ -294,16 +120,7 @@ export default {
         type: 'primary',
         label: '查询'
       },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '新增'
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '提交'
-      },
+
       {
         prop: 'reset',
         type: '',
@@ -342,7 +159,8 @@ export default {
         label: '单据状态:',
         prop: 'documentStatus',
         placeholder: '请选择单据状态',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.djztList
       },
       {
         type: 'select',
@@ -360,15 +178,15 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { width: '50', label: '', type: 'selection' },
-      { label: '操作', type: 'btn', width: '' },
+
       {
         prop: 'documentNumber',
         width: '150',
-        label: '单据编号'
+        label: '单据编号',
+        type: 'a'
       },
       {
-        prop: 'bankPhone',
+        prop: 'accountPhone',
         width: '150',
         label: '银行号码'
       },
@@ -383,19 +201,23 @@ export default {
         label: '银行名称'
       },
       {
-        prop: 'bankOpenName',
+        prop: 'khhmc',
         width: '',
         label: '开户行名称'
       },
       {
-        prop: 'status',
+        prop: 'documentStatus',
         width: '',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'connection',
         width: '',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'currency',
@@ -406,10 +228,17 @@ export default {
         prop: 'unitName',
         width: '',
         label: '单位名称'
-      }
+      },
+      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      {
+        name: '复核',
+        btnType: 'primary',
+        handleFn: 'handleEdit'
+      }
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -417,6 +246,36 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
+    updateSub(res, item) {
+      let ind = 0
+      this.tableData.forEach((item, index) => {
+        if (item.documentNumber === res.documentNumber) {
+          ind = index
+        }
+      })
+      console.log(ind)
+
+      const fore = this.tableData[ind]
+      Object.keys(fore).forEach(item => {
+        fore[item] = res[item]
+      })
+
+      this.tableData[ind] = fore
+      this.list[ind] = fore
+    },
+    addSub(res) {
+      this.list.push(res)
+
+      this.tableData = this.list.slice(0, this.currentData.size)
+      this.currentData.total = this.list.length
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -436,7 +295,12 @@ export default {
       })
     },
     // 单击新增按钮
-    handleInsert() {},
+    handleInsert() {
+      this.dialogObj.id = ''
+      this.dialogObj.read = false
+      this.dialogObj.show = true
+      this.dialogObj.title = '新增'
+    },
     add() {
       this.dialogObj.id = ''
       this.dialogObj.read = false
@@ -452,52 +316,37 @@ export default {
     },
     // 分页
     onPageChange(val) {
+      console.log(val)
+      var end = val * this.currentData.size
+      var start = (val - 1) * this.currentData.size
+
+      this.tableData = this.list.slice(start, end)
+
       this.currentData.currentPage = val
-      this.getList()
     },
     onSizeChange(val) {
       this.currentData.size = val
       this.currentData.currentPage = 1
       this.getList()
     },
-    // 删除产品
-    handleDelete(v) {
-      this.$confirm('此操作将删除该账号?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        // // eslint-disable-next-line no-unused-vars
-        // let json = {
-        //   id: v.id
-        // };
-        // deleteAdmin(json).then(res => {
-        //   console.log(res);
-        //   this.getList();
-        // });
-      })
-    },
 
     handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑账号'
-      this.dialogObj.form = row
+      row.documentStatus = 2
     },
     handleViewOther(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.documentNumber
       this.dialogObj.read = true
       this.dialogObj.show = true
-      this.dialogObj.title = '查看账号'
-      this.dialogObj.form = row
+      this.dialogObj.title = '查看'
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      this.tableDataTwo.forEach((item, index) => {
+      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
