@@ -47,14 +47,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -160,27 +153,27 @@ export default {
       },
       {
         prop: 'skfyhzh',
-        width: '',
+        width: '150',
         label: '收款方银行账号'
       },
       {
         prop: 'skfzhmc',
-        width: '',
+        width: '150',
         label: '收款方账户名称'
       },
       {
         prop: 'yhmc',
-        width: '',
+        width: '150',
         label: '银行名称'
       },
       {
         prop: 'zhlx',
-        width: '',
+        width: '150',
         label: '账户类型'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '备注'
       }
     ]
@@ -207,7 +200,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -314,8 +307,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -323,7 +316,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -331,7 +324,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -339,7 +332,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -350,7 +343,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

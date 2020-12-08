@@ -177,54 +177,54 @@ export default {
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'khrq',
-        width: '',
+        width: '150',
         label: '开户日期'
       },
       {
         prop: 'xhrq',
-        width: '',
+        width: '150',
         label: '销户日期'
       },
       {
         prop: 'zhlx',
-        width: '',
+        width: '150',
         label: '账户类型'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'jxksr',
-        width: '',
+        width: '150',
         label: '计息开始日'
       },
       {
         prop: 'sqdzt',
-        width: '',
+        width: '150',
         label: '申请单状态',
         type: 'wordbook',
         wordbookList: this.formStatus
       },
       {
         prop: 'xhsm',
-        width: '',
+        width: '150',
         label: '销户说明'
       },
       {
         prop: 'bzhu',
-        width: '',
+        width: '150',
         label: '备注'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -253,10 +253,10 @@ export default {
   // 方法集合
   methods: {
     handleCommit() {
-      if (this.selectChangeList.length != 0) {
+      if (this.selectChangeList.length !== 0) {
         this.selectChangeList.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.zhbh == item.zhbh) {
+            if (res.zhbh === item.zhbh) {
               res.sqdzt = 2
             }
           })
@@ -281,7 +281,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -386,8 +386,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -395,7 +395,7 @@ export default {
               }
             }
 
-            if (i == 'sqdzt') {
+            if (i === 'sqdzt') {
               if (item.sqdzt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -403,7 +403,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -414,7 +414,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

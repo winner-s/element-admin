@@ -233,54 +233,54 @@ export default {
     this.tableListData = [
       {
         prop: 'sjdwmc',
-        width: '',
+        width: '150',
         label: '上级单位名称'
       },
       {
         prop: 'xmgsmc',
-        width: '',
+        width: '150',
         label: '项目公司名称'
       },
       {
         prop: 'khhmc',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'zhhm',
-        width: '',
+        width: '150',
         label: '帐户号码'
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'qcye',
-        width: '',
+        width: '150',
         label: '期初余额（元）'
       },
       {
         prop: 'lr',
-        width: '',
+        width: '150',
         label: '流入（元）'
       },
       {
         prop: 'lc',
-        width: '',
+        width: '150',
         label: '流出（元）'
       },
       {
         prop: 'qmye',
-        width: '',
+        width: '150',
         label: '期末余额（元）'
       },
       {
         prop: 'ce',
-        width: '',
+        width: '150',
         label: '差额（元）'
       }
     ]

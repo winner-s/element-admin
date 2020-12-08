@@ -206,67 +206,67 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'sqdh',
-        width: '200',
+        width: '150',
         type: 'a',
         label: '申请单号'
       },
       {
         prop: 'zqr',
-        width: '',
+        width: '150',
         label: '债权人'
       },
 
       {
         prop: 'zwr',
-        width: '',
+        width: '150',
         label: '债务人 '
       },
 
       {
         prop: 'dkje',
-        width: '',
+        width: '150',
         label: '金额'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         type: 'wordbook',
         wordbookList: this.currency,
         label: '币种'
       },
       {
         prop: 'htqdll',
-        width: '',
+        width: '150',
         label: '合同签订利率% '
       },
       {
         prop: 'yfkje',
-        width: '',
+        width: '150',
         label: '已放款金额'
       },
       {
         prop: 'yhbj',
-        width: '',
+        width: '150',
         label: '已还本金'
       },
       {
         prop: 'yhlx',
-        width: '',
+        width: '150',
         label: '已还利息'
       },
       {
         prop: 'ksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'jsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'htzt',
-        width: '',
+        width: '150',
         label: '合同状态',
         type: 'wordbook',
         wordbookList: this.htzt
@@ -343,8 +343,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'sqdh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'sqdh') {
               if (item.sqdh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -352,7 +352,7 @@ export default {
               }
             }
 
-            if (i == 'htzt') {
+            if (i === 'htzt') {
               if (item.htzt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -360,7 +360,7 @@ export default {
               }
             }
 
-            if (i == 'zqr') {
+            if (i === 'zqr') {
               if (item.zqr.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -368,7 +368,7 @@ export default {
               }
             }
 
-            if (i == 'zwr') {
+            if (i === 'zwr') {
               if (item.zwr.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -376,7 +376,7 @@ export default {
               }
             }
 
-            if (i == 'dkjeks') {
+            if (i === 'dkjeks') {
               if (item.dkje >= this.searchData[i]) {
                 bool = true
               } else {
@@ -384,7 +384,7 @@ export default {
               }
             }
 
-            if (i == 'dkjejs') {
+            if (i === 'dkjejs') {
               if (item.dkje <= this.searchData[i]) {
                 bool = true
               } else {
@@ -392,7 +392,7 @@ export default {
               }
             }
 
-            if (i == 'htksrqc') {
+            if (i === 'htksrqc') {
               if (Date.parse(item.ksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -400,7 +400,7 @@ export default {
               }
             }
 
-            if (i == 'htksrqd') {
+            if (i === 'htksrqd') {
               if (Date.parse(item.ksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -408,7 +408,7 @@ export default {
               }
             }
 
-            if (i == 'htjsrqc') {
+            if (i === 'htjsrqc') {
               if (Date.parse(item.jsrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -416,7 +416,7 @@ export default {
               }
             }
 
-            if (i == 'htksrqd') {
+            if (i === 'htksrqd') {
               if (Date.parse(item.jsrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -424,7 +424,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -435,7 +435,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

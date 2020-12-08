@@ -184,43 +184,43 @@ export default {
 
       {
         prop: 'ckdwmc',
-        width: '',
+        width: '150',
         label: '存款单位名称'
       },
 
       {
         prop: 'nbzh',
-        width: '',
+        width: '150',
         label: '内部账号 '
       },
       {
         prop: 'ckqx',
-        width: '',
+        width: '150',
         label: '存款期限'
       },
       {
         prop: 'ckje',
-        width: '',
+        width: '150',
         label: '存款金额'
       },
       {
         prop: 'zqje',
-        width: '',
+        width: '150',
         label: '支取金额'
       },
       {
         prop: 'klrq',
-        width: '',
+        width: '150',
         label: '开立日期'
       },
       {
         prop: 'zqrq',
-        width: '',
+        width: '150',
         label: '支取日期'
       },
       {
         prop: 'spzt',
-        width: '',
+        width: '150',
         label: '审批状态'
       }
     ]
@@ -235,10 +235,10 @@ export default {
   methods: {
     // 单击新增按钮
     handleCommit() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.ckzqlsh == item.ckzqlsh) {
+            if (res.ckzqlsh === item.ckzqlsh) {
               res.spzt = '已确认'
             }
           })
@@ -273,10 +273,10 @@ export default {
     },
     // 单击新增按钮
     handleInsert() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.ckzqlsh == item.ckzqlsh) {
+            if (res.ckzqlsh === item.ckzqlsh) {
               res.spzt = '已退回'
             }
           })

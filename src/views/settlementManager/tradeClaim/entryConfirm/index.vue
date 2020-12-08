@@ -215,58 +215,58 @@ export default {
       },
       {
         prop: 'khh',
-        width: '',
+        width: '150',
         label: '开户行'
       },
       {
         prop: 'dfzhhm',
-        width: '',
+        width: '150',
         label: '对方账户号码'
       },
       {
         prop: 'dfzhmc',
-        width: '',
+        width: '150',
         label: '对方账户名称'
       },
       {
         prop: 'dfzhkhh',
-        width: '',
+        width: '150',
         label: '对方账户开户行'
       },
       {
         prop: 'jyrq',
-        width: '',
+        width: '150',
         label: '交易日期'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'sfzl',
-        width: '',
+        width: '150',
         label: '是否直联',
         type: 'wordbook',
         wordbookList: this.direct
       },
       {
         prop: 'jdfx',
-        width: '',
+        width: '150',
         label: '借贷方向',
         type: 'wordbook',
         wordbookList: this.lending
       },
       {
         prop: 'zy',
-        width: '',
+        width: '150',
         label: '摘要'
       }
     ]

@@ -156,15 +156,15 @@ export default {
       },
       {
         prop: 'zxsxr',
-        width: '',
+        width: '150',
         label: '最新生效日'
       },
       {
         prop: 'lv',
-        width: '',
+        width: '150',
         label: '利率(%)'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -195,7 +195,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -303,8 +303,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'lllx') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'lllx') {
               if (item.lllx.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -312,7 +312,7 @@ export default {
               }
             }
 
-            if (i == 'llmc') {
+            if (i === 'llmc') {
               if (item.llmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -323,7 +323,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

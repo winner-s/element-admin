@@ -168,22 +168,22 @@ const companyInfo = {
   tableListData: [
     {
       prop: 'hierarchy',
-      width: '',
+      width: '150',
       label: '单位层级'
     },
     {
       prop: 'companyNum',
-      width: '',
+      width: '150',
       label: '单位编号'
     },
     {
       prop: 'company',
-      width: '',
+      width: '150',
       label: '单位名称'
     },
     {
       prop: 'companyTyle',
-      width: '',
+      width: '150',
       label: '单位类型'
     }
   ]
@@ -626,27 +626,27 @@ const role = {
   tableListData: [
     {
       prop: 'accountName',
-      width: '',
+      width: '150',
       label: '登陆用户名'
     },
     {
       prop: 'userName',
-      width: '',
+      width: '150',
       label: '真实姓名'
     },
     {
       prop: 'role',
-      width: '',
+      width: '150',
       label: '角色'
     },
     {
       prop: 'company',
-      width: '',
+      width: '150',
       label: '单位名称'
     },
     {
       prop: 'userSatus',
-      width: '',
+      width: '150',
       label: '用户状态'
     }
   ]
@@ -1054,67 +1054,67 @@ const summary = {
   tableListData: [
     {
       prop: 'superiorCompany',
-      width: '',
+      width: '150',
       label: '上级单位'
     },
     {
       prop: 'organizationName',
-      width: '',
+      width: '150',
       label: '组织名称'
     },
     {
       prop: 'accountNum',
-      width: '',
+      width: '150',
       label: '银行帐号'
     },
     {
       prop: 'reciprocalCompany',
-      width: '',
+      width: '150',
       label: '对方单位'
     },
     {
       prop: 'reciprocalAccount',
-      width: '',
+      width: '150',
       label: '对方帐号'
     },
     {
       prop: 'coinType',
-      width: '',
+      width: '150',
       label: '币种'
     },
     {
       prop: 'receiptCoin',
-      width: '',
+      width: '150',
       label: '收入原币'
     },
     {
       prop: 'paymentCoin',
-      width: '',
+      width: '150',
       label: '支出原币'
     },
     {
       prop: 'coinDifference',
-      width: '',
+      width: '150',
       label: '原币差额'
     },
     {
       prop: 'dis',
-      width: '',
+      width: '150',
       label: '摘要'
     },
     {
       prop: 'receiptOrPayment',
-      width: '',
+      width: '150',
       label: '收付方向'
     },
     {
       prop: 'money',
-      width: '',
+      width: '150',
       label: '交易金额'
     },
     {
       prop: 'bankName',
-      width: '',
+      width: '150',
       label: '银行名称'
     }
   ]
@@ -1438,52 +1438,52 @@ const flow = {
   tableListData: [
     {
       prop: 'superiorCompany',
-      width: '',
+      width: '150',
       label: '上级单位名称'
     },
     {
       prop: 'companyName',
-      width: '',
+      width: '150',
       label: '项目公司名称'
     },
     {
       prop: 'bankName',
-      width: '',
+      width: '150',
       label: '开户行名称'
     },
     {
       prop: 'accountNum',
-      width: '',
+      width: '150',
       label: '帐户号码'
     },
     {
       prop: 'useType',
-      width: '',
+      width: '150',
       label: '账户用途'
     },
     {
       prop: 'startBalance',
-      width: '',
+      width: '150',
       label: '初期余额（元）'
     },
     {
       prop: 'receipt',
-      width: '',
+      width: '150',
       label: '流入（元）'
     },
     {
       prop: 'payment',
-      width: '',
+      width: '150',
       label: '流出（元）'
     },
     {
       prop: 'endBalance',
-      width: '',
+      width: '150',
       label: '期末余额（元）'
     },
     {
       prop: 'difference',
-      width: '',
+      width: '150',
       label: '差额（元）'
     }
   ]
@@ -1657,22 +1657,22 @@ const analyse = {
   tableListData: [
     {
       prop: 'bankName',
-      width: '',
+      width: '150',
       label: '银行名称'
     },
     {
       prop: 'accountNum',
-      width: '',
+      width: '150',
       label: '账户数量'
     },
     {
       prop: 'balance',
-      width: '',
+      width: '150',
       label: '当前余额'
     },
     {
       prop: 'percentage',
-      width: '',
+      width: '150',
       label: '时点余额占比'
     }
   ]

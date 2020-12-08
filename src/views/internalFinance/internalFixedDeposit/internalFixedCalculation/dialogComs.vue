@@ -107,17 +107,17 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'lxly',
-        width: '',
+        width: '150',
         label: '利息来源'
       },
       {
         prop: 'rq',
-        width: '',
+        width: '150',
         label: '日期'
       },
       {
         prop: 'lx',
-        width: '',
+        width: '150',
         label: '利息'
       }
     ]

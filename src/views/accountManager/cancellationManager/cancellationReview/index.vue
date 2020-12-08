@@ -191,7 +191,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'djbh',
         width: '150',
@@ -207,67 +207,67 @@ export default {
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'yhmc',
-        width: '',
+        width: '150',
         type: 'wordbook',
         wordbookList: this.back,
         label: '银行名称'
       },
       {
         prop: 'khhmc',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt
       },
       {
         prop: 'sfzl',
-        width: '',
+        width: '150',
         label: '是否直联',
         type: 'wordbook',
         wordbookList: this.direct
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'dwmc',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'khsqrq',
-        width: '',
+        width: '150',
         label: '开户申请日期'
       },
       {
         prop: 'khrq',
-        width: '',
+        width: '150',
         label: '开户日期'
       },
       {
         prop: 'xhsqr',
-        width: '',
+        width: '150',
         label: '申请人'
       }
     ]

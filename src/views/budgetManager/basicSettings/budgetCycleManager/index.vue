@@ -54,14 +54,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -195,22 +188,22 @@ export default {
 
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'sstx',
-        width: '',
+        width: '150',
         label: '所属体系'
       },
       {
         prop: 'zqlx',
-        width: '',
+        width: '150',
         label: '周期类型'
       },
       {
         prop: 'zqzt',
-        width: '',
+        width: '150',
         label: '周期状态'
       },
       { label: '操作', type: 'btn', width: '' }
@@ -260,7 +253,7 @@ export default {
     SectionupdateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.zqbh == res.zqbh) {
+        if (item.zqbh === res.zqbh) {
           ind = index
         }
       })

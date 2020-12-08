@@ -23,7 +23,7 @@ export default {
       default: '280px'
     },
     lineChartData: {
-      type: Object,
+      type: Array,
       required: true
     }
   },
@@ -40,7 +40,7 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     this.$nextTick().then(() => {
       this.initEcharts()
     })

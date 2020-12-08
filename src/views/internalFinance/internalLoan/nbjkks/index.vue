@@ -160,48 +160,48 @@ export default {
 
       {
         prop: 'kslx',
-        width: '',
+        width: '150',
         label: '匡算利息 '
       },
 
       {
         prop: 'zwr',
-        width: '',
+        width: '150',
         label: '债务人'
       },
       {
         prop: 'htmc',
-        width: '',
+        width: '150',
         label: '合同名称'
       },
       {
         prop: 'dkbz',
-        width: '',
+        width: '150',
         label: '贷款币种'
       },
       {
         prop: 'fkje',
-        width: '',
+        width: '150',
         label: '放款金额'
       },
       {
         prop: 'fkwhje',
-        width: '',
+        width: '150',
         label: '放款未还金额'
       },
       {
         prop: 'jxts',
-        width: '',
+        width: '150',
         label: '计息天数'
       },
       {
         prop: 'ksksr',
-        width: '',
+        width: '150',
         label: '匡算开始日'
       },
       {
         prop: 'ksjsr',
-        width: '',
+        width: '150',
         label: '匡算结束日'
       }
 

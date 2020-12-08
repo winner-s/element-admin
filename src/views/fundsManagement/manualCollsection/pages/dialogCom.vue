@@ -198,23 +198,23 @@ export default {
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'yhlx',
-        width: '',
+        width: '150',
         label: '银行类型'
       },
       {
         prop: 'zhye',
-        width: '',
+        width: '150',
         label: '账户余额(元)'
       },
       {
         type: 'input',
         prop: 'gjje',
-        width: '',
+        width: '150',
         label: '归集金额(元)'
       }
     ]

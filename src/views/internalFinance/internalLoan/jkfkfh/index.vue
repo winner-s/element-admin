@@ -49,14 +49,7 @@ export default {
     return {
       jxfsList: JXFSLIST,
       fkdztList: DJZTLIST,
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       showAll: false,
 
       // 分页
@@ -204,57 +197,57 @@ export default {
 
       {
         prop: 'fkdbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '放款单编号'
       },
       {
         prop: 'htbh',
-        width: '',
+        width: '150',
         label: '合同编号'
       },
 
       {
         prop: 'fkje',
-        width: '',
+        width: '150',
         label: '放款金额 '
       },
 
       {
         prop: 'fkr',
-        width: '',
+        width: '150',
         label: '放款日'
       },
       {
         prop: 'dqr',
-        width: '',
+        width: '150',
         label: '到期日'
       },
       {
         prop: 'scfxr',
-        width: '',
+        width: '150',
         label: '首次付息日 '
       },
       {
         prop: 'jxfs',
-        width: '',
+        width: '150',
         label: '计息方式',
         type: 'wordbook',
         wordbookList: this.jxfs
       },
       {
         prop: 'cxdjfs',
-        width: '',
+        width: '150',
         label: '重新定价方式'
       },
       {
         prop: 'schbrq',
-        width: '',
+        width: '150',
         label: '首次还本日'
       },
       {
         prop: 'fkdzt',
-        width: '',
+        width: '150',
         label: '放款单状态',
         type: 'wordbook',
         wordbookList: this.fkdzt
@@ -282,7 +275,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -384,8 +377,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'htbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'htbh') {
               if (item.htbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -393,23 +386,23 @@ export default {
               }
             }
 
-            if (i == 'jxfs') {
-              if (item.jxfs == this.searchData[i]) {
+            if (i === 'jxfs') {
+              if (item.jxfs === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'fkdzt') {
-              if (item.fkdzt == this.searchData[i]) {
+            if (i === 'fkdzt') {
+              if (item.fkdzt === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'jec') {
+            if (i === 'jec') {
               if (item.fkje >= this.searchData[i]) {
                 bool = true
               } else {
@@ -417,7 +410,7 @@ export default {
               }
             }
 
-            if (i == 'jed') {
+            if (i === 'jed') {
               if (item.fkje <= this.searchData[i]) {
                 bool = true
               } else {
@@ -425,7 +418,7 @@ export default {
               }
             }
 
-            if (i == 'fkrqc') {
+            if (i === 'fkrqc') {
               if (Date.parse(item.fkr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -433,7 +426,7 @@ export default {
               }
             }
 
-            if (i == 'fkrqd') {
+            if (i === 'fkrqd') {
               if (Date.parse(item.fkr) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -441,7 +434,7 @@ export default {
               }
             }
 
-            if (i == 'scfxrc') {
+            if (i === 'scfxrc') {
               if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -449,7 +442,7 @@ export default {
               }
             }
 
-            if (i == 'scfxrd') {
+            if (i === 'scfxrd') {
               if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -460,7 +453,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -229,7 +229,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'djbh',
         width: '150',
@@ -245,52 +245,52 @@ export default {
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态'
       },
       {
         prop: 'fkfyhzh',
-        width: '',
+        width: '150',
         label: '付方账号'
       },
       {
         prop: 'fkfzhmc',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
       {
         prop: 'fkfyhmc',
-        width: '',
+        width: '150',
         label: '付款方银行'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'skfyhzh',
-        width: '',
+        width: '150',
         label: '收方账号'
       },
       {
         prop: 'skfzgmc',
-        width: '',
+        width: '150',
         label: '收方户名'
       },
       {
         prop: 'llr',
-        width: '',
+        width: '150',
         label: '录入人'
       },
       {
         prop: 'sjly',
-        width: '',
+        width: '150',
         label: '数据来源'
       },
       {
         prop: 'wbdh',
-        width: '',
+        width: '150',
         label: '外部单号'
       }
     ]

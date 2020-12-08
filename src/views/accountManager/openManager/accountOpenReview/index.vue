@@ -270,69 +270,69 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '银行名称',
         type: 'wordbook',
         wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt
       },
       {
         prop: 'sfzl',
-        width: '',
+        width: '150',
         label: '是否直联',
         type: 'wordbook',
         wordbookList: this.direct
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '单位名称',
         type: 'wordbook',
         wordbookList: this.unitno
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'openTime',
-        width: '',
+        width: '150',
         label: '开户申请日期'
       },
       {
         prop: 'khrq',
-        width: '',
+        width: '150',
         label: '开户日期'
       },
       {
         prop: 'sqr',
-        width: '',
+        width: '150',
         label: '申请人'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }

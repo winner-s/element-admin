@@ -164,22 +164,22 @@ export default {
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'khhmc',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'zhzt',
-        width: '',
+        width: '150',
         label: '账户状态'
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage

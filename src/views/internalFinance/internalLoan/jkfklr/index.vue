@@ -188,59 +188,59 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'fkdbh',
-        width: '',
+        width: '150',
         label: '放款单编号'
       },
       {
         prop: 'htbh',
-        width: '',
+        width: '150',
         label: '合同编号'
       },
 
       {
         prop: 'fkje',
-        width: '',
+        width: '150',
         label: '放款金额 '
       },
 
       {
         prop: 'fkr',
-        width: '',
+        width: '150',
         label: '放款日'
       },
       {
         prop: 'dqr',
-        width: '',
+        width: '150',
         label: '到期日'
       },
       {
         prop: 'scfxr',
-        width: '',
+        width: '150',
         label: '首次付息日 '
       },
       {
         prop: 'jxfs',
-        width: '',
+        width: '150',
         label: '计息方式',
         type: 'wordbook',
         wordbookList: this.jxfs
       },
       {
         prop: 'cxdjfs',
-        width: '',
+        width: '150',
         label: '重新定价方式'
       },
       {
         prop: 'schbrq',
-        width: '',
+        width: '150',
         label: '首次还本日'
       },
       {
         prop: 'fkdzt',
-        width: '',
+        width: '150',
         label: '放款单状态',
         type: 'wordbook',
         wordbookList: this.fkdzt

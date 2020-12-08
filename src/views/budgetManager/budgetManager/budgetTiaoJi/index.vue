@@ -228,32 +228,32 @@ export default {
 
       {
         prop: 'ystx',
-        width: '',
+        width: '150',
         label: '预算体系'
       },
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'ysksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'ysjsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'bzr',
-        width: '',
+        width: '150',
         label: '编制人'
       },
       {
         prop: 'bbzt',
-        width: '',
+        width: '150',
         label: '版本状态'
       }
     ]

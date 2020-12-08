@@ -52,7 +52,7 @@ export default {
       currentData: {
         currentPage: 1,
         size: 10,
-        total: 10,
+        total: 10
       },
       // 顶部按钮
       searchBto: [],
@@ -62,7 +62,7 @@ export default {
         title: '',
         read: false,
         show: false,
-        form: {},
+        form: {}
       },
 
       list: [
@@ -78,8 +78,8 @@ export default {
           sfzl: 1,
           zhyt: 1,
           kmh: '21314',
-          ye: 1000,
-        },
+          ye: 1000
+        }
       ],
       // 表格
       tableData: [],
@@ -88,8 +88,8 @@ export default {
       searchItem: [],
       searchData: {
         nickname: '',
-        documentNumber: '',
-      },
+        documentNumber: ''
+      }
     }
   },
   // 监听属性 类似于data概念
@@ -106,13 +106,13 @@ export default {
       {
         prop: 'select',
         type: 'primary',
-        label: '查询',
+        label: '查询'
       },
       {
         prop: 'reset',
         type: '',
-        label: '重置',
-      },
+        label: '重置'
+      }
     ]
     // 搜索
     this.searchItem = [
@@ -121,32 +121,32 @@ export default {
         label: '单位编号:',
         prop: 'unitNo',
         placeholder: '请填写单位编号',
-        selectList: this.unitNoList,
+        selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
         prop: 'unitName',
-        placeholder: '请填写单位名称',
+        placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称',
+        placeholder: '请填写银行名称'
       },
       {
         type: 'select',
         label: '是否直联:',
         prop: 'currency',
-        placeholder: '请选择选择是否直联',
+        placeholder: '请选择选择是否直联'
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
         placeholder: '请选择币种',
-        show: this.showAll,
+        show: this.showAll
       },
 
       {
@@ -154,28 +154,28 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '账户名称:',
         prop: 'accountName',
         placeholder: '请填写账户名称',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '日期范围:',
         prop: 'accountName',
         placeholder: '请填写日期范围',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'input',
         label: '到:',
         prop: 'accountName',
         placeholder: '请填写日期范围',
-        show: this.showAll,
+        show: this.showAll
       },
 
       {
@@ -183,81 +183,81 @@ export default {
         label: '账户用途:',
         prop: 'connection',
         placeholder: '请填写账户用途',
-        show: this.showAll,
+        show: this.showAll
       },
       {
         type: 'checkbox',
         label: '包含下级业务单位:',
         prop: 'contain',
-        show: this.showAll,
-      },
+        show: this.showAll
+      }
     ]
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '单位名称',
-        fixed: 'left',
+        fixed: 'left'
       },
       {
         prop: 'yhzh',
-        width: '',
+        width: '150',
         label: '银行账号',
-        fixed: 'left',
+        fixed: 'left'
       },
 
       {
         prop: 'zhmc',
-        width: '',
-        label: '账户名称',
+        width: '150',
+        label: '账户名称'
       },
       {
         prop: 'currency',
-        width: '',
-        label: '币种',
+        width: '150',
+        label: '币种'
       },
       {
         prop: 'bankName',
-        width: '',
-        label: '银行名称',
+        width: '150',
+        label: '银行名称'
       },
       {
         prop: 'bankOpenName',
-        width: '',
-        label: '开户行名称',
+        width: '150',
+        label: '开户行名称'
       },
       {
         prop: 'lhh',
-        width: '',
-        label: '联行号',
+        width: '150',
+        label: '联行号'
       },
       {
         prop: 'zhzt',
-        width: '',
-        label: '账户状态',
+        width: '150',
+        label: '账户状态'
       },
       {
         prop: 'sfzl',
-        width: '',
-        label: '是否直联',
+        width: '150',
+        label: '是否直联'
       },
       {
         prop: 'zhyt',
-        width: '',
-        label: '账户用途',
+        width: '150',
+        label: '账户用途'
       },
       {
         prop: 'kmh',
-        width: '',
-        label: '科目号',
+        width: '150',
+        label: '科目号'
       },
       {
         prop: 'ye',
-        width: '',
-        label: '余额(元)',
-      },
+        width: '150',
+        label: '余额(元)'
+      }
     ]
     // 按钮
     this.tableBtn = []
@@ -376,8 +376,8 @@ export default {
       })
       console.log(list)
       this_.tableData = list
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped></style>

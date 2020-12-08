@@ -47,14 +47,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -217,37 +210,37 @@ export default {
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态'
       },
       {
         prop: 'fkfyhzh',
-        width: '',
+        width: '150',
         label: '付方账号'
       },
       {
         prop: 'fkfzhmc',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
       {
         prop: 'fkfyhmc',
-        width: '',
+        width: '150',
         label: '付款方银行'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'skfyhzh',
-        width: '',
+        width: '150',
         label: '收方账号'
       },
       {
         prop: 'skfzhmc',
-        width: '',
+        width: '150',
         label: '收方户名'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }
@@ -275,7 +268,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.djbh == res.djbh) {
+        if (item.djbh === res.djbh) {
           ind = index
         }
       })
@@ -380,8 +373,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -389,7 +382,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -397,7 +390,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -405,7 +398,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -416,7 +409,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

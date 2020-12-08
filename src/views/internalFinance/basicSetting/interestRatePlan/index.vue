@@ -149,23 +149,23 @@ export default {
 
       {
         prop: 'lljhmc',
-        width: '',
+        width: '150',
         label: '利率计划名称'
       },
       {
         prop: 'lllx',
-        width: '',
+        width: '150',
         label: '利率类型',
         type: 'wordbook',
         wordbookList: this.rateType
       },
       {
         prop: 'lljhlx',
-        width: '',
+        width: '150',
         label: '利率计划类型'
 
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

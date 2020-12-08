@@ -25,7 +25,6 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
@@ -201,7 +200,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'djbh',
         width: '150',
@@ -216,32 +215,32 @@ export default {
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态'
       },
       {
         prop: 'fkfyhzh',
-        width: '',
+        width: '150',
         label: '付款方账号'
       },
       {
         prop: 'fkfzhmc',
-        width: '',
+        width: '150',
         label: '付款方账户名称'
       },
       {
         prop: 'fkfdw',
-        width: '',
+        width: '150',
         label: '付款单位'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'skfyhzh',
-        width: '',
+        width: '150',
         label: '收方账号'
       }
     ]
@@ -324,39 +323,7 @@ export default {
         // });
       })
     },
-    handleStatus(v) {
-      if (v.status == 0) {
-        this.$confirm('此操作将停用该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //   // eslint-disable-next-line no-unused-vars
-          //   let json = {
-          //     id: v.id
-          //   };
-          //   updateAdminStatus(json).then(res => {
-          //     console.log(res);
-          //     this.getList();
-          //   });
-        })
-      } else {
-        this.$confirm('此操作将恢复该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          // eslint-disable-next-line no-unused-vars
-          const json = {
-            id: v.id
-          }
-          updateAdminStatus(json).then((res) => {
-            console.log(res)
-            this.getList()
-          })
-        })
-      }
-    },
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = true
@@ -380,8 +347,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -389,7 +356,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -397,7 +364,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -405,7 +372,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -416,7 +383,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

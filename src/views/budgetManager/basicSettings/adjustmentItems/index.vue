@@ -166,20 +166,20 @@ export default {
 
       {
         prop: 'tjlxmc',
-        width: '',
+        width: '150',
         label: '调剂类型名称'
       },
       {
         prop: 'txmc',
-        width: '',
+        width: '150',
         label: '体系名称'
       },
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

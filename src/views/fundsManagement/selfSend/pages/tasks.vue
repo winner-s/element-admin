@@ -85,17 +85,17 @@ export default {
       },
       {
         prop: 'zxms',
-        width: '',
+        width: '150',
         label: '执行模式'
       },
       {
         prop: 'rwzt',
-        width: '',
+        width: '150',
         label: '任务状态'
       },
       {
         prop: 'yxzt',
-        width: '',
+        width: '150',
         label: '运行状态'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }
@@ -156,7 +156,7 @@ export default {
     },
 
     handleStatus(val) {
-      if (val.rwzt == '停止') {
+      if (val.rwzt === '停止') {
         this.$confirm('确定激活?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

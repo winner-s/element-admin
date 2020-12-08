@@ -218,7 +218,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { label: '操作', type: 'btn', width: '' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'bbh',
         width: '150',
@@ -228,32 +228,32 @@ export default {
 
       {
         prop: 'ystx',
-        width: '',
+        width: '150',
         label: '预算体系'
       },
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'ysksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'ysjsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'bzr',
-        width: '',
+        width: '150',
         label: '编制人'
       },
       {
         prop: 'bbzt',
-        width: '',
+        width: '150',
         label: '版本状态'
       }
     ]
@@ -373,8 +373,8 @@ export default {
       this.tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -382,7 +382,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -390,7 +390,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -398,7 +398,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -409,7 +409,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

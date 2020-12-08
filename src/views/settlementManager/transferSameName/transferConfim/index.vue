@@ -153,7 +153,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'djbh',
         width: '150',
@@ -168,32 +168,32 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '单据状态'
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '付款方账号'
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '付款方账户名称'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '付款单位'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '收方账号'
       }
     ]

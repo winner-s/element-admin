@@ -9,7 +9,12 @@ import resize from '@/mixins/resize'
 require('echarts/theme/macarons') // echarts theme
 export default {
   mixins: [resize],
-  props: ['tableData'],
+  props: {
+    tableData: {
+      type: Array,
+      required: true
+    }
+  },
 
   data() {
     return {

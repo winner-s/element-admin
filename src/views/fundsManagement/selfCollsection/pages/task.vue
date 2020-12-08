@@ -119,35 +119,35 @@ export default {
 
       {
         prop: 'number',
-        width: '',
+        width: '150',
         label: '策略编号'
       },
       {
         prop: 'name',
-        width: '',
+        width: '150',
         label: '策略名称'
       },
       {
         prop: 'pattern',
-        width: '',
+        width: '150',
         label: '执行模式'
       },
       {
         prop: 'time',
-        width: '',
+        width: '150',
         label: '激活/停止策略时间'
       },
       {
         prop: 'taskStatus',
-        width: '',
+        width: '150',
         label: '任务状态'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '运行状态'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

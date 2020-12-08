@@ -171,25 +171,25 @@ export default {
     this.tableListData = [
       {
         prop: 'hierarchy',
-        width: '',
+        width: '150',
         label: '单位层级',
         type: 'wordbook',
         wordbookList: this.unitLevel
       },
       {
         prop: 'companyNum',
-        width: '',
+        width: '150',
         label: '单位编号'
 
       },
       {
         prop: 'company',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       {
         prop: 'companyTyle',
-        width: '',
+        width: '150',
         label: '单位类型',
         type: 'wordbook',
         wordbookList: this.unitType

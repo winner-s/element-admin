@@ -102,71 +102,73 @@ export default {
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     this.tableListData = [
-      { width: '50', label: '', type: 'index' },
+      { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         type: 'a',
         prop: 'djbh',
-        width: '',
+        fixed: 'left',
+        width: '150',
         label: '单据编号'
       },
       {
         prop: 'djrq',
-        width: '',
+        width: '150',
+        fixed: 'left',
         label: '单据日期'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额'
       },
       {
         prop: 'gsmc',
-        width: '',
+        width: '150',
         label: '付款申请单位'
       },
       {
         prop: 'zlzt',
-        width: '',
+        width: '150',
         label: '指令状态'
       },
       {
         prop: 'clbh',
-        width: '',
+        width: '150',
         label: '策略编号'
       },
       {
         prop: 'clmc',
-        width: '',
+        width: '150',
         label: '策略名称'
       },
       {
         prop: 'yhzh',
-        width: '',
+        width: '150',
         label: '付款银行帐号'
       },
       {
         prop: 'yhmc',
-        width: '',
+        width: '150',
         label: '付款账户名称'
       },
       {
         prop: 'skyhzh',
-        width: '',
+        width: '150',
         label: '收款银行帐号'
       },
       {
         prop: 'skzhmc',
-        width: '',
+        width: '150',
         label: '收款账户名称'
       },
       {
         prop: 'skyhmc',
-        width: '',
+        width: '150',
         label: '指令接受银行'
       },
       {
         prop: 'hksd',
-        width: '',
+        width: '150',
         label: '汇款速度'
       }
     ]

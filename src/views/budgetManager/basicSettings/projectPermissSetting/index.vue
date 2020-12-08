@@ -184,28 +184,28 @@ export default {
 
       {
         prop: 'zqbh',
-        width: '',
+        width: '150',
         label: '周期编号'
       },
 
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'sstx',
-        width: '',
+        width: '150',
         label: '所属体系'
       },
       {
         prop: 'zqlx',
-        width: '',
+        width: '150',
         label: '周期类型'
       },
       {
         prop: 'zqzt',
-        width: '',
+        width: '150',
         label: '周期状态'
       },
       { label: '操作', type: 'btn', width: '' }

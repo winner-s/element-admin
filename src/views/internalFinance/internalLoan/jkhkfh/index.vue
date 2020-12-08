@@ -183,50 +183,50 @@ export default {
 
       {
         prop: 'hkdbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '还款单编号'
       },
       {
         prop: 'zwrmc',
-        width: '',
+        width: '150',
         label: '债务人名称'
       },
 
       {
         prop: 'fkdbh',
-        width: '',
+        width: '150',
         label: '放款单编号 '
       },
 
       {
         prop: 'jkhtbh',
-        width: '',
+        width: '150',
         label: '合同号'
       },
       {
         prop: 'hkrq',
-        width: '',
+        width: '150',
         label: '还款日期'
       },
       {
         prop: 'hbje',
-        width: '',
+        width: '150',
         label: '还本金额 '
       },
       {
         prop: 'fxje',
-        width: '',
+        width: '150',
         label: '付息金额'
       },
       {
         prop: 'clzt',
-        width: '',
+        width: '150',
         label: '处理状态',
         type: 'wordbook',
         wordbookList: this.djzt
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

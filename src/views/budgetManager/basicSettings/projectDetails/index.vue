@@ -133,7 +133,7 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'mbbh',
         width: '150',
@@ -143,12 +143,12 @@ export default {
 
       {
         prop: 'mbmc',
-        width: '',
+        width: '150',
         label: '模板名称'
       },
       {
         prop: 'mbzt',
-        width: '',
+        width: '150',
         label: '模板状态'
       }
     ]
@@ -193,7 +193,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.mbbh == res.mbbh) {
+        if (item.mbbh === res.mbbh) {
           ind = index
         }
       })
@@ -272,7 +272,7 @@ export default {
       })
     },
     handleStatus(v) {
-      if (v.mbzt == '启用') {
+      if (v.mbzt === '启用') {
         this.$confirm('此操作将停用该账号?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -313,8 +313,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'mbmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'mbmc') {
               if (item.mbmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -325,7 +325,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

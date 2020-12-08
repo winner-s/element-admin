@@ -24,7 +24,7 @@
           >
             <el-input
               v-model="searchData[item.prop]"
-              :style="{ width: width }"
+              style="width: 250px"
               :placeholder="item.placeholder"
             />
           </el-form-item>
@@ -73,7 +73,7 @@
           >
             <el-select
               v-model="searchData[item.prop]"
-              :style="{ width: width }"
+              style="width: 250px"
               :placeholder="item.placeholder"
               clearable
               filterable
@@ -237,11 +237,6 @@ export default {
     },
     showAll: {
       type: Boolean,
-      required: true
-    },
-    width: {
-      type: String,
-      default: '250px',
       required: true
     }
   },

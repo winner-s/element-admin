@@ -169,19 +169,19 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'jybh',
-        width: '200',
+        width: '150',
         type: 'a',
         label: '交易编号'
       },
       {
         prop: 'jyrq',
-        width: '',
+        width: '150',
         label: '交易日期'
       },
 
       {
         prop: 'fklx',
-        width: '',
+        width: '150',
         label: '付款类型 ',
         type: 'wordbook',
         wordbookList: this.fklx
@@ -189,42 +189,42 @@ export default {
 
       {
         prop: 'zc',
-        width: '',
+        width: '150',
         label: '支出'
       },
       {
         prop: 'sr',
-        width: '',
+        width: '150',
         label: '收入'
       },
       {
         prop: 'bfdwmc',
-        width: '',
+        width: '150',
         label: '本方单位名称 '
       },
       {
         prop: 'bfzh',
-        width: '',
+        width: '150',
         label: '本方账户'
       },
       {
         prop: 'dfdwmc',
-        width: '',
+        width: '150',
         label: '对方单位名称'
       },
       {
         prop: 'dfzh',
-        width: '',
+        width: '150',
         label: '对方账户'
       },
       {
         prop: 'jyzt',
-        width: '',
+        width: '150',
         label: '交易状态'
       },
       {
         prop: 'zy',
-        width: '',
+        width: '150',
         label: '摘要'
       }
     ]
@@ -303,8 +303,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -312,7 +312,7 @@ export default {
               }
             }
 
-            if (i == 'fklx') {
+            if (i === 'fklx') {
               if (item.fklx.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -320,7 +320,7 @@ export default {
               }
             }
 
-            if (i == 'jybh') {
+            if (i === 'jybh') {
               if (item.jybh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -328,7 +328,7 @@ export default {
               }
             }
 
-            if (i == 'zhbh') {
+            if (i === 'zhbh') {
               if (item.zhbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -336,7 +336,7 @@ export default {
               }
             }
 
-            if (i == 'jyrqy') {
+            if (i === 'jyrqy') {
               if (Date.parse(item.jyrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -344,7 +344,7 @@ export default {
               }
             }
 
-            if (i == 'jyrqd') {
+            if (i === 'jyrqd') {
               if (Date.parse(item.jyrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -355,7 +355,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -175,43 +175,43 @@ export default {
 
       {
         prop: 'dkdw',
-        width: '',
+        width: '150',
         label: '贷款单位 '
       },
 
       {
         prop: 'fkje',
-        width: '',
+        width: '150',
         label: '放款金额'
       },
       {
         prop: 'fkr',
-        width: '',
+        width: '150',
         label: '放款日'
       },
       {
         prop: 'dqr',
-        width: '',
+        width: '150',
         label: '到期日 '
       },
       {
         prop: 'jhhbje',
-        width: '',
+        width: '150',
         label: '计划还本金额'
       },
       {
         prop: 'jhhxje',
-        width: '',
+        width: '150',
         label: '计划还息金额'
       },
       {
         prop: 'sjhbje',
-        width: '',
+        width: '150',
         label: '实际还本金额'
       },
       {
         prop: 'sjhxje',
-        width: '',
+        width: '150',
         label: '实际还息金额'
       }
     ]

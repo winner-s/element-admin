@@ -185,40 +185,40 @@ export default {
 
       {
         prop: 'ystx',
-        width: '',
+        width: '150',
         label: '预算体系'
       },
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'ysdw',
-        width: '',
+        width: '150',
         label: '预算单位'
       },
       {
         prop: 'ksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'jsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'bzr',
-        width: '',
+        width: '150',
         label: '编制人'
       },
       {
         prop: 'bbzt',
-        width: '',
+        width: '150',
         label: '版本状态'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

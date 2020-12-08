@@ -196,53 +196,53 @@ export default {
 
       {
         prop: 'zqr',
-        width: '',
+        width: '150',
         label: '债权人'
       },
 
       {
         prop: 'jkje',
-        width: '',
+        width: '150',
         label: '贷款金额'
       },
       {
         prop: 'jxfs',
-        width: '',
+        width: '150',
         label: '计息方式'
       },
       {
         prop: 'fdbl',
-        width: '',
+        width: '150',
         label: '浮动比例(%) '
       },
       {
         prop: 'htqdll',
-        width: '',
+        width: '150',
         label: '合同签订利率(%)'
       },
       {
         prop: 'tzhfdbl',
-        width: '',
+        width: '150',
         label: '调整后浮动比例(%)'
       },
       {
         prop: 'htqdlltz',
-        width: '',
+        width: '150',
         label: '调整后利率'
       },
       {
         prop: 'lltzsxr',
-        width: '',
+        width: '150',
         label: '利率生效日'
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

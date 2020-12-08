@@ -64,14 +64,7 @@ export default {
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
       accountStatusList: ACCOUNTSTATUSLIST,
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       showAll: false,
       // 分页
       currentData: {
@@ -103,7 +96,6 @@ export default {
           connection: 1,
           zhyt: 1,
           kmh: '23114',
-          kmh: '1235',
           khhszs: '湖南省',
           khhszshi: '株洲市'
         }
@@ -227,7 +219,7 @@ export default {
 
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '单位名称',
         fixed: 'left'
       },
@@ -240,43 +232,43 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '银行名称',
         type: 'wordbook',
         wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: ' lhh',
-        width: '',
+        width: '150',
         label: '联行号'
       },
       {
         prop: 'accountStatus',
-        width: '',
+        width: '150',
         label: '账户状态',
         type: 'wordbook',
         wordbookList: this.accountStatus
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '是否直联',
         type: 'wordbook',
         wordbookList: this.direct
@@ -284,7 +276,7 @@ export default {
 
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
@@ -378,8 +370,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -387,7 +379,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -395,7 +387,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -403,7 +395,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -414,7 +406,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

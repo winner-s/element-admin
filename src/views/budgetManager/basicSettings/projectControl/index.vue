@@ -64,14 +64,7 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       list: [
         {
           txbh: '2020001',
@@ -154,25 +147,25 @@ export default {
 
       {
         prop: 'zqmc',
-        width: '',
+        width: '150',
         label: '周期名称'
       },
       {
         prop: 'skzq',
-        width: '',
+        width: '150',
         label: '受控周期'
       },
       {
         prop: 'zqlx',
-        width: '',
+        width: '150',
         label: '周期类型'
       },
       {
         prop: 'zqzt',
-        width: '',
+        width: '150',
         label: '周期状态'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -202,7 +195,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -309,8 +302,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -318,7 +311,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -326,7 +319,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -334,7 +327,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -345,7 +338,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

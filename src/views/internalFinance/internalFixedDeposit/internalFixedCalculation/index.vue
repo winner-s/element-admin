@@ -204,37 +204,37 @@ export default {
 
       {
         prop: 'ckdwmc',
-        width: '',
+        width: '150',
         label: '存款单位名称'
       },
       {
         prop: 'ckje',
-        width: '',
+        width: '150',
         label: '存款金额'
       },
       {
         prop: 'ckklrq',
-        width: '',
+        width: '150',
         label: '存款开立日期'
       },
       {
         prop: 'syje',
-        width: '',
+        width: '150',
         label: '剩余金额 '
       },
       {
         prop: 'ckqx',
-        width: '',
+        width: '150',
         label: '存款期限'
       },
       {
         prop: 'dqxcfs',
-        width: '',
+        width: '150',
         label: '到期续存方式'
       },
       {
         prop: 'nbzh',
-        width: '',
+        width: '150',
         label: '内部账号'
       }
     ]
@@ -315,8 +315,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -324,7 +324,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -332,7 +332,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -340,7 +340,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -351,7 +351,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

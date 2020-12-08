@@ -263,68 +263,68 @@ export default {
       },
       {
         prop: 'zlzt',
-        width: '',
+        width: '150',
         label: '指令状态'
       },
       {
         prop: 'fkfyhzh',
-        width: '',
+        width: '150',
         label: '付款方银行账号'
       },
       {
         prop: 'fkfzhmc',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
 
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'skfyhzh',
-        width: '',
+        width: '150',
         label: '收款方银行账号'
       },
       {
         prop: 'skfzhmc',
-        width: '',
+        width: '150',
         label: '收款方账户名称'
       },
       {
         prop: 'ywlx',
-        width: '',
+        width: '150',
         label: '业务类型'
       },
       {
         prop: 'hksd',
-        width: '',
+        width: '150',
         label: '汇款速度'
       },
       {
         prop: 'sjly',
-        width: '',
+        width: '150',
         label: '数据来源'
       },
       {
         prop: 'zljsyh',
-        width: '',
+        width: '150',
         label: '指令接受银行'
       },
       {
         prop: 'zlcjsj',
-        width: '',
+        width: '150',
         label: '指令创建时间'
       },
       {
         prop: 'zlfssj',
-        width: '',
+        width: '150',
         label: '指令发送时间'
       },
       {
         prop: 'yhdfkxx',
-        width: '',
+        width: '150',
         label: '银行的反馈信息'
       }
     ]

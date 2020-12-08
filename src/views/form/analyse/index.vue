@@ -144,24 +144,24 @@ export default {
     this.tableListData = [
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '银行名称',
         type: 'wordbook',
         wordbookList: this.bankName
       },
       {
         prop: 'accountNum',
-        width: '',
+        width: '150',
         label: '账户数量'
       },
       {
         prop: 'balance',
-        width: '',
+        width: '150',
         label: '当前余额'
       },
       {
         prop: 'percentage',
-        width: '',
+        width: '150',
         label: '时点余额占比'
       }
     ]

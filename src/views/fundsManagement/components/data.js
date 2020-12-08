@@ -110,17 +110,17 @@ const relation = {
     { label: '操作', type: 'btn', width: '' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'pattern',
-      width: '',
+      width: '150',
       label: '策略模式'
     }
   ]
@@ -202,22 +202,22 @@ const condition = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '策略状态'
     },
     {
       prop: 'time',
-      width: '',
+      width: '150',
       label: '激活/停止策略时间'
     }
   ]
@@ -326,32 +326,32 @@ const collsectionTask = {
     { label: '操作', type: 'btn', width: '' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'pattern',
-      width: '',
+      width: '150',
       label: '执行模式'
     },
     {
       prop: 'time',
-      width: '',
+      width: '150',
       label: '激活/停止策略时间'
     },
     {
       prop: 'taskStatus',
-      width: '',
+      width: '150',
       label: '任务状态'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '运行状态'
     }
   ]
@@ -439,12 +439,12 @@ const foundsCollsection = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     }
   ],
@@ -500,23 +500,23 @@ const foundsCollsection = {
     },
     {
       prop: 'accountName',
-      width: '',
+      width: '150',
       label: '账户名称'
     },
     {
       prop: 'bank',
-      width: '',
+      width: '150',
       label: '银行类型'
     },
     {
       prop: 'balance',
-      width: '',
+      width: '150',
       label: '账户余额'
     },
     {
       type: 'input',
       prop: 'money',
-      width: '',
+      width: '150',
       label: '归集金额'
     }
   ]
@@ -769,67 +769,67 @@ const selectCollsectionInfo = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'receiptsNumber',
-      width: '',
+      width: '150',
       label: '单据编号'
     },
     {
       prop: 'receiptsTime',
-      width: '',
+      width: '150',
       label: '单据日期'
     },
     {
       prop: 'money',
-      width: '',
+      width: '150',
       label: '金额'
     },
     {
       prop: 'company',
-      width: '',
+      width: '150',
       label: '付款申请单位'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '指令状态'
     },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'paymentAccountNum',
-      width: '',
+      width: '150',
       label: '付款银行帐号'
     },
     {
       prop: 'paymentAccountName',
-      width: '',
+      width: '150',
       label: '付款账户名称'
     },
     {
       prop: 'receiptAccountNum',
-      width: '',
+      width: '150',
       label: '收款银行帐号'
     },
     {
       prop: 'receiptAccountName',
-      width: '',
+      width: '150',
       label: '收款账户名称帐号'
     },
     {
       prop: 'acceptBank',
-      width: '',
+      width: '150',
       label: '指令接受银行'
     },
     {
       prop: 'speed',
-      width: '',
+      width: '150',
       label: '汇款速度'
     }
   ]
@@ -947,17 +947,17 @@ const accountRelation = {
     { label: '操作', type: 'btn', width: '' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'pattern',
-      width: '',
+      width: '150',
       label: '策略模式'
     }
   ]
@@ -1040,22 +1040,22 @@ const setSendCondition = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '策略状态'
     },
     {
       prop: 'time',
-      width: '',
+      width: '150',
       label: '激活/停止策略时间'
     }
   ]
@@ -1164,27 +1164,27 @@ const selfSendTask = {
     { label: '操作', type: 'btn', width: '' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'pattern',
-      width: '',
+      width: '150',
       label: '执行模式'
     },
     {
       prop: 'taskStatus',
-      width: '',
+      width: '150',
       label: '任务状态'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '运行状态'
     }
   ]
@@ -1272,12 +1272,12 @@ const fundsSend = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     }
   ]
@@ -1530,67 +1530,67 @@ const selectSendInfo = {
     { width: '50', label: '', type: 'index' },
     {
       prop: 'receiptsNumber',
-      width: '',
+      width: '150',
       label: '单据编号'
     },
     {
       prop: 'receiptsTime',
-      width: '',
+      width: '150',
       label: '单据日期'
     },
     {
       prop: 'money',
-      width: '',
+      width: '150',
       label: '金额'
     },
     {
       prop: 'company',
-      width: '',
+      width: '150',
       label: '付款申请单位'
     },
     {
       prop: 'status',
-      width: '',
+      width: '150',
       label: '指令状态'
     },
     {
       prop: 'number',
-      width: '',
+      width: '150',
       label: '策略编号'
     },
     {
       prop: 'name',
-      width: '',
+      width: '150',
       label: '策略名称'
     },
     {
       prop: 'paymentAccountNum',
-      width: '',
+      width: '150',
       label: '付款银行帐号'
     },
     {
       prop: 'paymentAccountName',
-      width: '',
+      width: '150',
       label: '付款账户名称'
     },
     {
       prop: 'receiptAccountNum',
-      width: '',
+      width: '150',
       label: '收款银行帐号'
     },
     {
       prop: 'receiptAccountName',
-      width: '',
+      width: '150',
       label: '收款账户名称帐号'
     },
     {
       prop: 'acceptBank',
-      width: '',
+      width: '150',
       label: '指令接受银行'
     },
     {
       prop: 'speed',
-      width: '',
+      width: '150',
       label: '汇款速度'
     }
   ]

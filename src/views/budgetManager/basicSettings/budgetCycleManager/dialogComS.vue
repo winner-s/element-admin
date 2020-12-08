@@ -217,25 +217,25 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'qjbh',
-        width: '',
+        width: '150',
         type: 'input',
         label: '区间编号'
       },
       {
         prop: 'ksrq',
-        width: '',
+        width: '150',
         type: 'input',
         label: '开始日期'
       },
       {
         prop: 'jsrq',
-        width: '',
+        width: '150',
         type: 'input',
         label: '结束日期'
       },
       {
         prop: 'gdllmmc',
-        width: '',
+        width: '150',
         type: 'input',
         label: '滚动列列名名称'
       }

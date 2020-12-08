@@ -230,7 +230,7 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'jylsh',
-        width: '',
+        width: '150',
         label: '交易流水号',
         fixed: 'left'
       },
@@ -243,83 +243,83 @@ export default {
       },
       {
         prop: 'bfzhmc',
-        width: '',
+        width: '150',
         label: '本方账户名称'
       },
       {
         prop: 'bfdwmc',
-        width: '',
+        width: '150',
         label: '本方单位名称'
       },
 
       {
         prop: 'bfyhmc',
-        width: '',
+        width: '150',
         label: '本方银行名称'
       },
       {
         prop: 'bfkhh',
-        width: '',
+        width: '150',
         label: '本方开户行'
       },
       {
         prop: 'dfyhzh',
-        width: '',
+        width: '150',
         label: '对方银行账号'
       },
       {
         prop: 'dfzhmc',
-        width: '',
+        width: '150',
         label: '对方账号名称'
       },
       {
         prop: 'dfkhh',
-        width: '',
+        width: '150',
         label: '对方开户行'
       },
       {
         prop: 'jdfx',
-        width: '',
+        width: '150',
         label: '借贷方向'
       },
       {
         prop: 'jyrq',
-        width: '',
+        width: '150',
         label: '交易日期'
       },
       {
         prop: 'jyje',
-        width: '',
+        width: '150',
         label: '交易金额'
       },
       {
         prop: 'ye',
-        width: '',
+        width: '150',
         label: '余额'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '币种'
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途'
       },
       {
         prop: 'sfzl',
-        width: '',
+        width: '150',
         label: '是否直联'
       },
       {
         prop: 'zy',
-        width: '',
+        width: '150',
         label: '摘要'
       },
       {
         prop: 'beizhu',
-        width: '',
+        width: '150',
         label: '备注'
       }
     ]
@@ -398,8 +398,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -407,7 +407,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -415,7 +415,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -423,7 +423,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -434,7 +434,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

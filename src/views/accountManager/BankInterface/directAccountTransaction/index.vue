@@ -179,39 +179,39 @@ export default {
 
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'jsye',
-        width: '',
+        width: '150',
         label: '即时余额(元)'
       },
       {
         prop: 'kyye',
-        width: '',
+        width: '150',
         label: '可用余额(元)'
       },
       {
         prop: 'yhfhxx',
-        width: '',
+        width: '150',
         label: '银行返回信息'
       },
       {
         prop: 'dwmc',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       {
         prop: 'zhyt',
-        width: '',
+        width: '150',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'khyh',
-        width: '',
+        width: '150',
         label: '开户银行'
       }
     ]

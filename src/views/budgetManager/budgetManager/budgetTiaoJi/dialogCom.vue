@@ -228,35 +228,35 @@ export default {
       { width: '50', label: '', type: 'selection' },
       {
         prop: 'yszt',
-        width: '',
+        width: '150',
         label: '预算主体',
         type: 'input'
       },
 
       {
         prop: 'ysxm',
-        width: '',
+        width: '150',
         label: '预算项目',
         type: 'input'
       },
 
       {
         prop: 'tjlx',
-        width: '',
+        width: '150',
         label: '调剂类型',
         type: 'input',
         disabled: true
       },
       {
         prop: 'tjqje',
-        width: '',
+        width: '150',
         label: '调剂前金额',
         type: 'input',
         disabled: true
       },
       {
         prop: 'tjhje',
-        width: '',
+        width: '150',
         label: '调剂后金额',
         type: 'input'
       }

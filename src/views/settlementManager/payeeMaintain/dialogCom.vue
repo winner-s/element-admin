@@ -127,27 +127,27 @@
       <el-row>
         <el-col :span="12">
           <el-form-item
-            label="开户行所在省："
-            prop="khhszs"
+            label="开户行所在省市："
+            prop="khhszss"
             class="formItem"
           >
-            <el-input
-              v-model="form.khhszs"
-              style="width: 200px"
+            <el-cascader
+              v-model="form.khhszss"
+              :options="options"
+              :separator="' '"
               size="mini"
-
-              :placeholder="placeholderTips.content"
+              style="width: 200px"
             />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item
-            label="开户行所在市："
-            prop="khhszshi"
+            label="开户行联行号："
+            prop="khhlhh"
             class="formItem"
           >
             <el-input
-              v-model="form.khhszshi"
+              v-model="form.khhlhh"
               style="width: 200px"
               size="mini"
 
@@ -172,21 +172,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item
-            label="开户行联行号："
-            prop="khhlhh"
-            class="formItem"
-          >
-            <el-input
-              v-model="form.khhlhh"
-              style="width: 200px"
-              size="mini"
-
-              :placeholder="placeholderTips.content"
-            />
-          </el-form-item>
-        </el-col>
+        <el-col :span="12" />
       </el-row>
       <el-row>
         <el-col>
@@ -219,6 +205,7 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
+import options from '@u/country-data'
 import { placeholderTips } from '@u/validate'
 import { BACKLIST, ZHLXLIST } from '@u/wordbook'
 export default {
@@ -228,6 +215,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      options: options,
       backList: BACKLIST,
       zhlxList: ZHLXLIST,
       placeholderTips: placeholderTips,
@@ -238,8 +226,7 @@ export default {
         skfzhmc: '',
         yhmc: '',
         zhlx: '',
-        khhszs: '',
-        khhszshi: '',
+        khhszss: '',
         khhmc: '',
         khhlhh: '',
         bz: ''
@@ -263,12 +250,10 @@ export default {
         zhlx: [
           { required: true, message: '请填写账户类型', trigger: 'blur' }
         ],
-        khhszs: [
+        khhszss: [
           { required: true, message: '请填写开户行所在省', trigger: 'blur' }
-        ],
-        khhszshi: [
-          { required: true, message: '请填写开户行所在市', trigger: 'blur' }
         ]
+
       }
     }
   },

@@ -172,29 +172,29 @@ export default {
     this.tableListData = [
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '登陆用户名'
       },
       {
         prop: 'userName',
-        width: '',
+        width: '150',
         label: '真实姓名'
       },
       {
         prop: 'role',
-        width: '',
+        width: '150',
         type: 'wordbook',
         wordbookList: this.role,
         label: '角色'
       },
       {
         prop: 'company',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       {
         prop: 'userSatus',
-        width: '',
+        width: '150',
         label: '用户状态',
         type: 'wordbook',
         wordbookList: this.userType

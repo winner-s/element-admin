@@ -294,18 +294,18 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'ysxm',
-        width: '',
+        width: '150',
         label: '预算项目'
       },
       {
         prop: 'test',
-        width: '',
+        width: '150',
         label: 'lzh测试',
         type: 'input'
       },
       {
         prop: 'hz',
-        width: '',
+        width: '150',
         label: '汇总',
         type: 'input',
         disabled: true

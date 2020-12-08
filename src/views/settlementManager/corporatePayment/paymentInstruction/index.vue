@@ -212,42 +212,42 @@ export default {
       },
       {
         prop: 'zlzt',
-        width: '',
+        width: '150',
         label: '指令状态'
       },
       {
         prop: 'ffzh',
-        width: '',
+        width: '150',
         label: '付方账号'
       },
       {
         prop: 'ffhm',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
       {
         prop: 'fkfyh',
-        width: '',
+        width: '150',
         label: '付款方银行'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'sfzh',
-        width: '',
+        width: '150',
         label: '收方账号'
       },
       {
         prop: 'sfhm',
-        width: '',
+        width: '150',
         label: '收方户名'
       },
       {
         prop: 'yhfhxx',
-        width: '',
+        width: '150',
         label: '银行返回信息'
       }
     ]

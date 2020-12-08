@@ -75,24 +75,24 @@ export default {
 
       {
         prop: 'jxr',
-        width: '',
+        width: '150',
         label: '计息日',
         fixed: ''
       },
       {
         prop: 'ye',
-        width: '',
+        width: '150',
         label: '余额',
         fixed: ''
       },
       {
         prop: 'll',
-        width: '',
+        width: '150',
         label: '利率(%)'
       },
       {
         prop: 'lx',
-        width: '',
+        width: '150',
         label: '利息(元)'
       }
     ]

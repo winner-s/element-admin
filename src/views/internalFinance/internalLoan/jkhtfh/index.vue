@@ -199,64 +199,64 @@ export default {
 
       {
         prop: 'htbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '合同编号'
       },
       {
         prop: 'htmc',
-        width: '',
+        width: '150',
         label: '合同名称'
       },
 
       {
         prop: 'zqr',
-        width: '',
+        width: '150',
         label: '债权人 '
       },
 
       {
         prop: 'zwr',
-        width: '',
+        width: '150',
         label: '债务人'
       },
       {
         prop: 'dkbz',
-        width: '',
+        width: '150',
         label: '贷款币种',
         type: 'wordbook',
         wordbookList: this.currency
       },
       {
         prop: 'jkje',
-        width: '',
+        width: '150',
         label: '借款金额 '
       },
       {
         prop: 'htqdll',
-        width: '',
+        width: '150',
         label: '合同签订利率'
       },
       {
         prop: 'ksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'jsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'htzt',
-        width: '',
+        width: '150',
         label: '合同状态',
         type: 'wordbook',
         wordbookList: this.htzt
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt

@@ -69,14 +69,7 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
+
       list: [
         {
           ckkllsh: '132',
@@ -201,28 +194,28 @@ export default {
 
       {
         prop: 'ckdwmc',
-        width: '',
+        width: '150',
         label: '存款单位名称'
       },
 
       {
         prop: 'nbzh',
-        width: '',
+        width: '150',
         label: '内部账号 '
       },
       {
         prop: 'ckqx',
-        width: '',
+        width: '150',
         label: '存款期限'
       },
       {
         prop: 'ckje',
-        width: '',
+        width: '150',
         label: '存款金额'
       },
       {
         prop: 'zqje',
-        width: '',
+        width: '150',
         label: '支取金额'
       },
       { label: '操作', type: 'btn', width: '' }
@@ -250,7 +243,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -352,8 +345,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'ckzqlsh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'ckzqlsh') {
               if (item.ckzqlsh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -361,7 +354,7 @@ export default {
               }
             }
 
-            if (i == 'ckkllsh') {
+            if (i === 'ckkllsh') {
               if (item.ckkllsh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -369,7 +362,7 @@ export default {
               }
             }
 
-            if (i == 'ckdwbh') {
+            if (i === 'ckdwbh') {
               if (item.ckdwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -377,7 +370,7 @@ export default {
               }
             }
 
-            if (i == 'ckzqrqks') {
+            if (i === 'ckzqrqks') {
               if (Date.parse(item.ckzqrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -385,7 +378,7 @@ export default {
               }
             }
 
-            if (i == 'ckzqrqjs') {
+            if (i === 'ckzqrqjs') {
               if (Date.parse(item.ckzqrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -396,7 +389,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

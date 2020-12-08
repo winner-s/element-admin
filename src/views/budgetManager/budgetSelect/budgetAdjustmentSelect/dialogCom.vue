@@ -297,19 +297,19 @@ export default {
 
       {
         prop: 'ysxm',
-        width: '',
+        width: '150',
         label: '预算项目',
         fixed: 'left'
       },
       {
         prop: '1',
-        width: '',
+        width: '150',
         label: '1',
         fixed: 'left'
       },
       {
         prop: 'hz',
-        width: '',
+        width: '150',
         label: '汇总',
         fixed: 'left'
       }

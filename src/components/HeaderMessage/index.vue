@@ -62,6 +62,7 @@ export default {
 </script>
 <style   lang='scss'>
 .message{
+  cursor: pointer;
   vertical-align: middle;
   font-size: 18px;
 }

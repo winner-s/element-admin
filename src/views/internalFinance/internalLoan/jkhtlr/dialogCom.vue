@@ -494,23 +494,23 @@ export default {
 
       {
         prop: 'dbzt',
-        width: '',
+        width: '150',
         label: '担保主体'
       },
 
       {
         prop: 'dbfs',
-        width: '',
+        width: '150',
         label: '担保方式'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '备注 '
       }
     ]

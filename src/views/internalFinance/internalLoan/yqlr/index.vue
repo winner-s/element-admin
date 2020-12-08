@@ -178,7 +178,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'htlsh',
         width: '150',
@@ -193,33 +193,33 @@ export default {
 
       {
         prop: 'fkdbh',
-        width: '',
+        width: '150',
         label: '还款信息 '
       },
 
       {
         prop: 'zqr',
-        width: '',
+        width: '150',
         label: '债权人'
       },
       {
         prop: 'zwr',
-        width: '',
+        width: '150',
         label: '债务人'
       },
       {
         prop: 'fkje',
-        width: '',
+        width: '150',
         label: '放款金额 '
       },
       {
         prop: 'yqje',
-        width: '',
+        width: '150',
         label: '逾期金额'
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt

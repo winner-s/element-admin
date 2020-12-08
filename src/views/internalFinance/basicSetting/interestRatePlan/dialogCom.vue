@@ -152,35 +152,35 @@ export default {
 
       {
         prop: 'qjlx',
-        width: '',
+        width: '150',
         label: '区间类型'
 
       },
       {
         prop: 'ye',
-        width: '',
+        width: '150',
         label: '余额'
 
       },
       {
         prop: 'jzll',
-        width: '',
+        width: '150',
         label: '基准利率'
       },
       {
         prop: 'fdlx',
-        width: '',
+        width: '150',
         label: '浮动类型'
       },
       {
         prop: 'fdbl',
-        width: '',
+        width: '150',
         label: '浮动比例'
       },
 
       {
         prop: 'zxll',
-        width: '',
+        width: '150',
         label: '执行利率(%)'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }

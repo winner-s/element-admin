@@ -5,7 +5,7 @@
 <script>
 import echarts from 'echarts'
 import resize from '@/mixins/resize'
-import { List } from 'echarts/lib/export'
+
 require('echarts/theme/macarons') // echarts theme
 export default {
   mixins: [resize],
@@ -18,8 +18,9 @@ export default {
       type: String,
       default: '300px'
     },
+    // eslint-disable-next-line vue/require-default-prop
     tableData: {
-      type: List
+      type: Array
     }
   },
   data() {
@@ -33,7 +34,7 @@ export default {
       this._setOtion()
     }
   },
-  mounted() {
+  created() {
     this.$nextTick().then(() => {
       this.initEcharts()
     })
@@ -59,10 +60,8 @@ export default {
             radius: '70%',
             center: ['50%', '50%'],
             data: this.tableData,
-            animationDuration: 2600,
-            formatter: function(name) {
-              return `${name} ￥${list[i].value}`
-            }
+            animationDuration: 2600
+
           }
         ]
       })

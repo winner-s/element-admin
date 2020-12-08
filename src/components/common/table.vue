@@ -23,6 +23,7 @@
           :key="index"
           align="center"
           type="selection"
+          sortable
           :width="item.width"
           :index="indexMethod"
           :fixed="item.fixed"
@@ -32,6 +33,7 @@
           :key="index"
           align="center"
           type="index"
+          sortable
           :width="item.width"
           :index="indexMethod"
           :fixed="item.fixed"
@@ -41,6 +43,7 @@
           :key="index"
           :prop="item.prop"
           align="center"
+          sortable
           :label="item.label"
           :width="item.width"
           :show-overflow-tooltip="'' || item.tooltiop"
@@ -52,6 +55,7 @@
           :prop="item.prop"
           align="center"
           :label="item.label"
+          sortable
           :width="item.width"
           :fixed="item.fixed"
         >
@@ -72,6 +76,7 @@
           :key="index"
           :prop="item.prop"
           align="center"
+          sortable
           :label="item.label"
           :width="item.width"
           :fixed="item.fixed"
@@ -85,6 +90,7 @@
         <el-table-column
           v-if="item.type === '_bank'"
           :key="index"
+          sortable
           :prop="item.prop"
           align="center"
           :label="item.label"
@@ -108,6 +114,7 @@
           :key="index"
           :prop="item.prop"
           align="center"
+          sortable
           :label="item.label"
           :width="item.width"
           :fixed="item.fixed"
@@ -128,6 +135,7 @@
           :prop="item.prop"
           align="center"
           :label="item.label"
+          sortable
           :width="item.width"
           :fixed="item.fixed"
         >
@@ -141,6 +149,7 @@
           v-if="item.type === 'img'"
           :key="index"
           :prop="item.prop"
+          sortable
           align="center"
           :label="item.label"
           :width="item.width"
@@ -163,6 +172,7 @@
           :key="index"
           :prop="item.prop"
           align="center"
+          sortable
           :label="item.label"
           :width="item.width"
           :fixed="item.fixed"
@@ -184,6 +194,7 @@
             v-if="item.type === 'btn'"
             :key="index"
             :prop="item.prop"
+            sortable
             :label="item.label"
             :fixed="'' || item.fixed"
             :width="item.width"
@@ -197,7 +208,6 @@
               >
                 <el-button
                   v-if="item.type === undefined"
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -208,7 +218,6 @@
                     item.type === 'isShow' &&
                       scope.row[item.isShowStatus] === item.isShowValue
                   "
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -220,7 +229,6 @@
                       item.isShowValue.indexOf(scope.row[item.isShowStatus]) ===
                       -1
                   "
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -431,7 +439,6 @@
               >
                 <el-button
                   v-if="item.type === undefined"
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -442,7 +449,6 @@
                     item.type === 'isShow' &&
                       scope.row[item.isShowStatus] === item.isShowValue
                   "
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -454,7 +460,6 @@
                       item.isShowValue.indexOf(scope.row[item.isShowStatus]) ===
                       -1
                   "
-                  v-has="item.has"
                   :type="item.btnType"
                   size="mini"
                   plain
@@ -490,7 +495,8 @@ export default {
       default: false
     },
     objectSpanMethod: {
-      type: Function
+      type: Function,
+      required: true
     },
     // indexMethod: {
     //   type: Function
@@ -500,10 +506,12 @@ export default {
       required: true
     },
     tableListData: {
-      type: Array
+      type: Array,
+      required: true
     },
     tableBtn: {
-      type: Array
+      type: Array,
+      required: true
     },
     showSummary: {
       type: Boolean,

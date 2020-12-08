@@ -64,14 +64,6 @@ export default {
       dqxcfsList: DQXCFSLIST,
       llzhtsList: LLZHTSLIST,
       depositTiermList: DEPOSITTERMLIST,
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: 'aaa',
-        read: false,
-        show: false,
-        form: {}
-      },
       showAll: false,
 
       // 分页
@@ -227,46 +219,46 @@ export default {
       },
       {
         prop: 'ckdwmc',
-        width: '',
+        width: '150',
         label: '存款单位名称'
       },
       {
         prop: 'ckje',
-        width: '',
+        width: '150',
         label: '存款金额'
       },
       {
         prop: 'ckklrq',
-        width: '',
+        width: '150',
         label: '存款开立日期'
       },
       {
         prop: 'nbzh',
-        width: '',
+        width: '150',
         label: '内部账号 '
       },
       {
         prop: 'zt',
-        width: '',
+        width: '150',
         label: '状态'
       },
       {
         prop: 'ckqx',
-        width: '',
+        width: '150',
         label: '存款期限',
         type: 'wordbook',
         wordbookList: this.depositTerm
       },
       {
         prop: 'llzhts',
-        width: '',
+        width: '150',
         label: '利率转换天数',
         type: 'wordbook',
         wordbookList: this.llzhts
       },
       {
         prop: 'dqxcfs',
-        width: '',
+        width: '150',
         label: '到期续存方式',
         type: 'wordbook',
         wordbookList: this.dqxcfs
@@ -297,7 +289,7 @@ export default {
     handleCommit() {
       let bool = false
       this.selectChange.forEach((item, index) => {
-        if (item.zt == '审批通过') {
+        if (item.zt === '审批通过') {
           this.$confirm(
             '选中的记录中有不是"已保存"、"审批未通过"、"已退回"状态的，不能提交！',
             '提示',
@@ -312,13 +304,13 @@ export default {
         }
 
         this.list.forEach((res, index) => {
-          if (res.ckkllsh == item.ckkllsh) {
+          if (res.ckkllsh === item.ckkllsh) {
             res.zt = '审批通过'
           }
         })
         bool = true
       })
-      if (bool == true) {
+      if (bool === true) {
         this.$confirm(
           '提交成功',
           '提示',
@@ -345,7 +337,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -446,8 +438,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'ckkllsh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'ckkllsh') {
               if (item.ckkllsh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -455,7 +447,7 @@ export default {
               }
             }
 
-            if (i == 'ckqx') {
+            if (i === 'ckqx') {
               if (item.ckqx.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -463,7 +455,7 @@ export default {
               }
             }
 
-            if (i == 'ckdwbh') {
+            if (i === 'ckdwbh') {
               if (item.ckdwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -471,7 +463,7 @@ export default {
               }
             }
 
-            if (i == 'ckklrqks') {
+            if (i === 'ckklrqks') {
               if (Date.parse(item.ckklrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -479,7 +471,7 @@ export default {
               }
             }
 
-            if (i == 'ckklrqjs') {
+            if (i === 'ckklrqjs') {
               if (Date.parse(item.ckklrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -487,7 +479,7 @@ export default {
               }
             }
 
-            if (i == 'ckllzhts') {
+            if (i === 'ckllzhts') {
               if (item.ckllzhts.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -495,7 +487,7 @@ export default {
               }
             }
 
-            if (i == 'dqxcfs') {
+            if (i === 'dqxcfs') {
               if (item.dqxcfs.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -506,7 +498,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

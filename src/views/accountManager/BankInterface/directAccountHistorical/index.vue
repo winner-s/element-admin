@@ -197,27 +197,27 @@ export default {
       },
       {
         prop: 'dfyhzh',
-        width: '',
+        width: '150',
         label: '对方银行账号'
       },
       {
         prop: 'dfzhmc',
-        width: '',
+        width: '150',
         label: '对方账户名称'
       },
       {
         prop: 'jyfx',
-        width: '',
+        width: '150',
         label: '交易方向'
       },
       {
         prop: 'jyje',
-        width: '',
+        width: '150',
         label: '交易金额(元)'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '备注'
       }
     ]

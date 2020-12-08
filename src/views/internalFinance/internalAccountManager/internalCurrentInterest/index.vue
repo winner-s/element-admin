@@ -200,57 +200,57 @@ export default {
       { width: '50', label: '', type: 'selection', fixed: 'left' },
       {
         prop: 'dwmc',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       {
         prop: 'zhbh',
-        width: '',
+        width: '150',
         label: '账户编号'
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'ksksr',
-        width: '',
+        width: '150',
         label: '匡算开始日'
       },
       {
         prop: 'ksjsr',
-        width: '',
+        width: '150',
         label: '匡算结束日'
       },
       {
         prop: 'jxts',
-        width: '',
+        width: '150',
         label: '计息天数'
       },
       {
         prop: 'jxye',
-        width: '',
+        width: '150',
         label: '计息余额(元)'
       },
       {
         prop: 'ksrye',
-        width: '',
+        width: '150',
         label: '开始日余额(元)'
       },
       {
         prop: 'jsrye',
-        width: '',
+        width: '150',
         label: '结束日余额(元)'
       },
       {
         prop: 'lljhmc',
-        width: '',
+        width: '150',
         label: '利率计划名称'
       },
       {
         prop: 'lx',
-        width: '',
+        width: '150',
         type: 'a',
         label: '利息(元)'
       }
@@ -272,8 +272,8 @@ export default {
     handleInsert() {
       this.selectChange.forEach((item, index) => {
         this.list.forEach((res, index) => {
-          if (res.zhbh == item.zhbh) {
-            if (res.jx == false) {
+          if (res.zhbh === item.zhbh) {
+            if (res.jx === false) {
               this.$confirm('编号：' + res.zhbh + '没有结息记录，无法取消结息', '提示', {
                 confirmButtonText: '确定',
                 showCancelButton: false,
@@ -295,8 +295,8 @@ export default {
     handleCommit() {
       this.selectChange.forEach((item, index) => {
         this.list.forEach((res, index) => {
-          if (res.zhbh == item.zhbh) {
-            if (res.jx == true) {
+          if (res.zhbh === item.zhbh) {
+            if (res.jx === true) {
               this.$confirm('编号：' + res.zhbh + '在该期限内已结息', '提示', {
                 confirmButtonText: '确定',
                 showCancelButton: false,
@@ -369,8 +369,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -378,7 +378,7 @@ export default {
               }
             }
 
-            if (i == 'zhbh') {
+            if (i === 'zhbh') {
               if (item.zhbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -386,7 +386,7 @@ export default {
               }
             }
 
-            if (i == 'ksjsrq') {
+            if (i === 'ksjsrq') {
               if (item.ksjsrq.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -397,7 +397,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

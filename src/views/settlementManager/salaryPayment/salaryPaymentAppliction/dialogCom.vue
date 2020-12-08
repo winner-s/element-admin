@@ -343,57 +343,57 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '收款方账户名称'
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '开户行类型'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '开户行(省)'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '开户行(市)'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '币种'
       },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '支付类型'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '摘要'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '联行号'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '备注'
       }
     ]

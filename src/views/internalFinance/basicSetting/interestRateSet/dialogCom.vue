@@ -121,19 +121,19 @@ export default {
 
       {
         prop: 'zxsxr',
-        width: '',
+        width: '150',
         label: '最新生效日',
         fixed: 'left'
       },
       {
         prop: 'lv',
-        width: '',
+        width: '150',
         label: '利率(%)',
         fixed: 'left'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '备注'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }

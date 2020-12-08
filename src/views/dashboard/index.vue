@@ -348,12 +348,12 @@
               </div>
               <div class="dialog_div_war">
                 <div
-                  v-for="(ele, index) in item.childerList"
+                  v-for="(ele, ind) in item.childerList"
                   v-show="item.show == true"
-                  :key="index"
+                  :key="ind"
                   class="dialog_div"
                 >
-                  <a class="push" @click="push(ele, index)" />
+                  <a class="push" @click="push(ele, ind)" />
                   <img :src="ele.img" alt="">
                   <p>{{ ele.name }}</p>
                 </div>
@@ -722,24 +722,7 @@ export default {
       zctjb: 1,
       fztjb: 1,
       slb: 1,
-      tableData: [
-        {
-          value: 50000,
-          name: '北京银行'
-        },
-        {
-          value: 40000,
-          name: '中国银行'
-        },
-        {
-          value: 80000,
-          name: '建设银行'
-        },
-        {
-          value: 10000,
-          name: '工商银行'
-        }
-      ],
+
       yetjbTableData: [
         {
           value: 50000,
@@ -921,6 +904,7 @@ export default {
       }
     },
     yetjb(newVal, oldVal) {
+      this.yetjbTableData = []
       console.log(newVal, oldVal)
       if (newVal === 2) {
         this.yetjbTableData = [
@@ -982,6 +966,7 @@ export default {
       }
     },
     zctjb(newVal, oldVal) {
+      this.zctjbTableData = []
       console.log(newVal, oldVal)
       if (newVal === 2) {
         this.zctjbTableData = [
@@ -1043,98 +1028,159 @@ export default {
       }
     },
     fztjb(newVal, oldVal) {
+      this.fztjbTableData = {
+        bj: [],
+        sh: [],
+        sz: []
+      }
+      const this_ = this
       console.log(newVal, oldVal)
       if (newVal === 2) {
-        this.fztjbTableData = {
-          bj: [2500, 1000, 5000],
-          sh: [2000, 4000, 4000],
-          sz: [1800, 3200, 3000]
-        }
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.fztjbTableData.bj = [2500, 1000, 5000]
+          } else if (ind === 1) {
+            this_.fztjbTableData.sh = [2000, 4000, 4000]
+          } else if (ind === 2) {
+            this_.fztjbTableData.sz = [1800, 3200, 3000]
+          } else {
+            clearInterval(this.time)
+          }
+          ind++
+        }, 1000)
       } else if (newVal === 3) {
-        this.fztjbTableData = {
-          bj: [5000, 1000, 5000],
-          sh: [400, 200, 4000],
-          sz: [1800, 3200, 3000]
-        }
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.fztjbTableData.bj = [5000, 1000, 5000]
+          } else if (ind === 1) {
+            this_.fztjbTableData.sh = [400, 200, 4000]
+          } else if (ind === 2) {
+            this_.fztjbTableData.sz = [1800, 3200, 3000]
+          } else {
+            clearInterval(this.time)
+          }
+          ind++
+        }, 1000)
       } else {
-        this.fztjbTableData = {
-          bj: [2000, 2800, 3500],
-          sh: [2500, 2000, 4500],
-          sz: [2900, 1500, 3900]
-        }
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.fztjbTableData.bj = [2000, 2800, 3500]
+          } else if (ind === 1) {
+            this_.fztjbTableData.sh = [2500, 2000, 4500]
+          } else if (ind === 2) {
+            this_.fztjbTableData.sz = [2900, 1500, 3900]
+          } else {
+            clearInterval(this.time)
+          }
+          ind++
+        }, 1000)
       }
     },
     slb(newVal, oldVal) {
-      console.log(newVal, oldVal)
+      const this_ = this
+      this.slbTableData = []
       if (newVal === 2) {
-        this.slbTableData = [
-          {
-            value: 100,
-            name: '中国银行'
-          },
-          {
-            value: 150,
-            name: '建设银行'
-          },
-          {
-            value: 200,
-            name: '交通银行'
-          },
-          {
-            value: 250,
-            name: '招商银行'
-          },
-          {
-            value: 400,
-            name: '工商银行'
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.slbTableData.push({
+              value: 100,
+              name: '中国银行'
+            })
+          } else if (ind === 1) {
+            this_.slbTableData.push({
+              value: 150,
+              name: '建设银行'
+            })
+          } else if (ind === 2) {
+            this_.slbTableData.push({
+              value: 200,
+              name: '交通银行'
+            })
+          } else if (ind === 3) {
+            this_.slbTableData.push({
+              value: 250,
+              name: '招商银行'
+            })
+          } else if (ind === 4) {
+            this_.slbTableData.push({
+              value: 400,
+              name: '工商银行'
+            })
+          } else {
+            clearInterval(this.time)
           }
-        ]
+          ind++
+        }, 1000)
       } else if (newVal === 3) {
-        this.slbTableData = [
-          {
-            value: 5,
-            name: '中国银行'
-          },
-          {
-            value: 50,
-            name: '建设银行'
-          },
-          {
-            value: 122,
-            name: '交通银行'
-          },
-          {
-            value: 200,
-            name: '招商银行'
-          },
-          {
-            value: 500,
-            name: '工商银行'
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.slbTableData.push({
+              value: 5,
+              name: '中国银行'
+            })
+          } else if (ind === 1) {
+            this_.slbTableData.push({
+              value: 50,
+              name: '建设银行'
+            })
+          } else if (ind === 2) {
+            this_.slbTableData.push({
+              value: 122,
+              name: '交通银行'
+            })
+          } else if (ind === 3) {
+            this_.slbTableData.push({
+              value: 200,
+              name: '招商银行'
+            })
+          } else if (ind === 4) {
+            this_.slbTableData.push({
+              value: 500,
+              name: '工商银行'
+            })
+          } else {
+            clearInterval(this.time)
           }
-        ]
+          ind++
+        }, 1000)
       } else {
-        this.slbTableData = [
-          {
-            value: 10,
-            name: 'zgyh'
-          },
-          {
-            value: 220,
-            name: 'jsyh'
-          },
-          {
-            value: 330,
-            name: 'jtyh'
-          },
-          {
-            value: 334,
-            name: 'zsyh'
-          },
-          {
-            value: 390,
-            name: 'gsyh'
+        let ind = 0
+        this.time = setInterval(() => {
+          if (ind === 0) {
+            this_.slbTableData.push({
+              value: 10,
+              name: '中国银行'
+            })
+          } else if (ind === 1) {
+            this_.slbTableData.push({
+              value: 220,
+              name: '建设银行'
+            })
+          } else if (ind === 2) {
+            this_.slbTableData.push({
+              value: 330,
+              name: '交通银行'
+            })
+          } else if (ind === 3) {
+            this_.slbTableData.push({
+              value: 334,
+              name: '招商银行'
+            })
+          } else if (ind === 4) {
+            this_.slbTableData.push({
+              value: 390,
+              name: '工商银行'
+            })
+          } else {
+            clearInterval(this.time)
           }
-        ]
+          ind++
+        }, 1000)
       }
     }
   },

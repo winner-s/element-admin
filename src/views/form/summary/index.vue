@@ -265,67 +265,67 @@ export default {
     this.tableListData = [
       {
         prop: 'sjdw',
-        width: '',
+        width: '150',
         label: '上级单位'
       },
       {
         prop: 'zzmc',
-        width: '',
+        width: '150',
         label: '组织名称'
       },
       {
         prop: 'yhzh',
-        width: '',
+        width: '150',
         label: '银行帐号'
       },
       {
         prop: 'dfdw',
-        width: '',
+        width: '150',
         label: '对方单位'
       },
       {
         prop: 'dfzh',
-        width: '',
+        width: '150',
         label: '对方帐号'
       },
       {
         prop: 'bz',
-        width: '',
+        width: '150',
         label: '币种'
       },
       {
         prop: 'sryb',
-        width: '',
+        width: '150',
         label: '收入原币'
       },
       {
         prop: 'zcyb',
-        width: '',
+        width: '150',
         label: '支出原币'
       },
       {
         prop: 'ybce',
-        width: '',
+        width: '150',
         label: '原币差额'
       },
       {
         prop: 'zy',
-        width: '',
+        width: '150',
         label: '摘要'
       },
       {
         prop: 'sffx',
-        width: '',
+        width: '150',
         label: '收付方向'
       },
       {
         prop: 'jyje',
-        width: '',
+        width: '150',
         label: '交易金额'
       },
       {
         prop: 'yhmc',
-        width: '',
+        width: '150',
         label: '银行名称'
       }
     ]

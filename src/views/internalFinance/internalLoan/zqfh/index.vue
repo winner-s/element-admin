@@ -190,7 +190,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
       {
         prop: 'zqdjbh',
         width: '150',
@@ -205,28 +205,28 @@ export default {
 
       {
         prop: 'htmc',
-        width: '',
+        width: '150',
         label: '合同名称'
       },
 
       {
         prop: 'zqr',
-        width: '',
+        width: '150',
         label: '债权人'
       },
       {
         prop: 'zwr',
-        width: '',
+        width: '150',
         label: '债务人'
       },
       {
         prop: 'zqjsrq',
-        width: '',
+        width: '150',
         label: '展期结束日期'
       },
       {
         prop: 'djzt',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt

@@ -203,39 +203,39 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '银行名称'
       },
       {
         prop: 'khhmc',
-        width: '',
+        width: '150',
         label: '开户行名称'
       },
       {
         prop: 'documentStatus',
-        width: '',
+        width: '150',
         label: '单据状态',
         type: 'wordbook',
         wordbookList: this.djzt
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '是否直联'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '币种'
       },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '单位名称'
       },
       { label: '操作', type: 'btn', width: '200', fixed: 'right' }

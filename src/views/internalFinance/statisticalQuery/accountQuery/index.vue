@@ -149,40 +149,40 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'zhbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '账户编号'
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
 
       {
         prop: 'dwmc',
-        width: '',
+        width: '150',
         label: '单位名称 '
       },
 
       {
         prop: 'zhlx',
-        width: '',
+        width: '150',
         label: '账户类型'
       },
       {
         prop: 'zhzt',
-        width: '',
+        width: '150',
         label: '账户状态'
       },
       {
         prop: 'yerq',
-        width: '',
+        width: '150',
         label: '余额日期 '
       },
       {
         prop: 'zhje',
-        width: '',
+        width: '150',
         label: '账户金额'
       }
     ]
@@ -257,8 +257,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -266,14 +266,14 @@ export default {
               }
             }
 
-            if (i == 'yerqks') {
+            if (i === 'yerqks') {
               if (Date.parse(item.yerq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'yerqjs') {
+            if (i === 'yerqjs') {
               if (Date.parse(item.ckzqrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -284,7 +284,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

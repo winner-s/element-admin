@@ -166,15 +166,15 @@ export default {
 
       {
         prop: 'txmc',
-        width: '',
+        width: '150',
         label: '预算体系名称'
       },
       {
         prop: 'txzt',
-        width: '',
+        width: '150',
         label: '预算体系状态'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '' }
     ]
     // 按钮
     this.tableBtn = [

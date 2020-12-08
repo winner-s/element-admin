@@ -206,37 +206,37 @@ export default {
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '指令状态'
       },
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '付方账号'
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '付款方银行'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '金额(元)'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '收方账号'
       },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '收方户名'
       }
     ]

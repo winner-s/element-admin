@@ -386,32 +386,32 @@ export default {
 
       {
         prop: 'bankName',
-        width: '',
+        width: '150',
         label: '付方账号'
       },
       {
         prop: 'bankOpenName',
-        width: '',
+        width: '150',
         label: '付方户名'
       },
       {
         prop: 'status',
-        width: '',
+        width: '150',
         label: '付款方银行'
       },
       {
         prop: 'connection',
-        width: '',
+        width: '150',
         label: '待支付金额(元)'
       },
       {
         prop: 'currency',
-        width: '',
+        width: '150',
         label: '总金额(元)'
       },
       {
         prop: 'unitName',
-        width: '',
+        width: '150',
         label: '录入人'
       }
     ]

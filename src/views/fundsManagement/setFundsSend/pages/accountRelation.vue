@@ -96,21 +96,21 @@ export default {
 
       {
         prop: 'clbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '策略编号'
       },
       {
         prop: 'clmc',
-        width: '',
+        width: '150',
         label: '策略名称'
       },
       {
         prop: 'clms',
-        width: '',
+        width: '150',
         label: '策略模式'
       },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
     ]
     this.tableBtn = [
       {

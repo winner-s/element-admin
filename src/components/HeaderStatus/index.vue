@@ -62,6 +62,7 @@ export default {
 }
 
 .text{
+  cursor: pointer;
   margin-right: 10px;
   position: relative;
 

@@ -126,20 +126,20 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
 
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'jyrlxtbh',
-        width: '',
+        width: '150',
         label: '交易认领系统编号'
       },
       {
         prop: 'jyrlxtmc',
-        width: '',
+        width: '150',
         label: '交易认领系统名称'
       },
       {
         prop: 'accountName',
-        width: '',
+        width: '150',
         label: '备注'
       }
     ]

@@ -268,43 +268,43 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { label: '操作', type: 'btn', width: '', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'bbh',
-        width: '',
+        width: '150',
         type: 'a',
         label: '版本号'
       },
 
       {
         prop: 'ystx',
-        width: '',
+        width: '150',
         label: '预算体系'
       },
 
       {
         prop: 'ysnd',
-        width: '',
+        width: '150',
         label: '预算年度'
       },
       {
         prop: 'ksrq',
-        width: '',
+        width: '150',
         label: '开始日期'
       },
       {
         prop: 'jsrq',
-        width: '',
+        width: '150',
         label: '结束日期'
       },
       {
         prop: 'bzr',
-        width: '',
+        width: '150',
         label: '编制人'
       },
       {
         prop: 'bbzt',
-        width: '',
+        width: '150',
         label: '版本状态'
       }
     ]

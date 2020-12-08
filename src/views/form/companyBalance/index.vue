@@ -172,32 +172,32 @@ export default {
     this.tableListData = [
       {
         prop: 'sjdw',
-        width: '',
+        width: '150',
         label: '上级单位'
       },
       {
         prop: 'zhssdw',
-        width: '',
+        width: '150',
         label: '账户所属单位'
       },
       {
         prop: 'zhmc',
-        width: '',
+        width: '150',
         label: '账户名称'
       },
       {
         prop: 'khh',
-        width: '',
+        width: '150',
         label: '开户行'
       },
       {
         prop: 'yhzh',
-        width: '',
+        width: '150',
         label: '银行账号'
       },
       {
         prop: 'je',
-        width: '',
+        width: '150',
         label: '金额'
       }
     ]
