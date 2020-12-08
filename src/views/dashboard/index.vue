@@ -1,45 +1,50 @@
 <!--  -->
 <template>
   <div class="">
-    <div v-show="tip >= 2 && tips" ref="border" class="border" />
-    <img
-      v-show="tip >= 2 && tips"
-      ref="shang"
-      class="tip_img"
-      src="../../assets/img/shang.png"
-      alt=""
-    >
-    <img
-      v-show="tip >= 2 && tips"
-      ref="xia"
-      class="tip_img"
-      src="../../assets/img/xia.png"
-      alt=""
-    >
-    <div v-if="tips" class="popContainer">
-      <div v-if="tip === 1" class="tip1">
-        <img src="../../assets/img/tip1.png" alt="" @click="tip1Click">
-      </div>
-      <div v-if="tip === 2" class="tip2">
-        <!-- <img src="../../assets/img/shang.png" alt="">
+    <right-panel>
+      <settings @checkChange="checkChange" />
+    </right-panel>
+    <div v-if="tips">
+      <div v-show="tip >= 2 && tips" ref="border" class="border" />
+      <img
+        v-show="tip >= 2 && tips"
+        ref="shang"
+        class="tip_img"
+        src="../../assets/img/shang.png"
+        alt=""
+      >
+      <img
+        v-show="tip >= 2 && tips"
+        ref="xia"
+        class="tip_img"
+        src="../../assets/img/xia.png"
+        alt=""
+      >
+      <div v-if="tips" class="popContainer">
+        <div v-if="tip === 1" class="tip1">
+          <img src="../../assets/img/tip1.png" alt="" @click="tip1Click">
+        </div>
+        <div v-if="tip === 2" class="tip2">
+          <!-- <img src="../../assets/img/shang.png" alt="">
         <img src="../../assets/img/xia.png" alt=""> -->
-        <img src="../../assets/img/cygn.png" alt="" @click="tip2Click">
-      </div>
+          <img src="../../assets/img/cygn.png" alt="" @click="tip2Click">
+        </div>
 
-      <div v-if="tip === 3" class="tip3">
-        <!-- <img src="../../assets/img/shang.png" alt=""> -->
-        <img src="../../assets/img/db.png" alt="" @click="tip3Click">
-      </div>
+        <div v-if="tip === 3" class="tip3">
+          <!-- <img src="../../assets/img/shang.png" alt=""> -->
+          <img src="../../assets/img/db.png" alt="" @click="tip3Click">
+        </div>
 
-      <div v-if="tip === 4" class="tip4">
-        <!-- <img src="../../assets/img/shang.png" alt=""> -->
+        <div v-if="tip === 4" class="tip4">
+          <!-- <img src="../../assets/img/shang.png" alt=""> -->
 
-        <img
-          ref="tip4"
-          src="../../assets/img/tb.png"
-          alt=""
-          @click="tip4Click"
-        >
+          <img
+            ref="tip4"
+            src="../../assets/img/tb.png"
+            alt=""
+            @click="tip4Click"
+          >
+        </div>
       </div>
     </div>
     <div class="kf" @click="kf = true" />
@@ -272,7 +277,7 @@
         >
           <div slot="header" class="clearfix">
             <span>负债统计表</span>
-            <el-select
+            <!-- <el-select
               v-model="fztjb"
               placeholder="请选择"
               style="float: right"
@@ -284,7 +289,7 @@
                 :label="item.label"
                 :value="item.value"
               />
-            </el-select>
+            </el-select> -->
           </div>
           <div>
             <Line-charts class="pieCharts" :line-chart-data="fztjbTableData" />
@@ -374,21 +379,22 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
+import Settings from './components/index'
+import RightPanel from '@/components/RightPanel'
 import PieCharts from './components/PieCharts'
 import BarCharts from './components/BarCharts'
 import LineCharts from './components/LineCharts'
 import piaCharts from './components/piaCharts'
 import vuedraggable from 'vuedraggable'
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { PieCharts, BarCharts, LineCharts, piaCharts, vuedraggable },
+  components: { PieCharts, BarCharts, LineCharts, piaCharts, vuedraggable, RightPanel, Settings },
   data() {
     // 这里存放数据
     return {
       common: '',
       tip: 1,
-      tips: true,
       checkList: ['结算笔数', '结算金额', '资金流入', '资金流出'],
       // 指标墙
       zbqList: [
@@ -766,23 +772,23 @@ export default {
       },
       slbTableData: [
         {
-          value: 10,
+          value: 1,
           name: 'zgyh'
         },
         {
-          value: 220,
+          value: 2,
           name: 'gsyh'
         },
         {
-          value: 330,
+          value: 3,
           name: 'jtyh'
         },
         {
-          value: 334,
+          value: 4,
           name: 'zsyh'
         },
         {
-          value: 390,
+          value: 5,
           name: 'jsyh'
         }
       ],
@@ -837,7 +843,11 @@ export default {
     }
   },
   // 监听属性 类似于data概念
-  computed: {},
+  computed: {
+    ...mapState({
+      tips: (state) => state.settings.tips
+    })
+  },
   // 监控data中的数据变化
   watch: {
     tip: {
@@ -904,6 +914,8 @@ export default {
       }
     },
     yetjb(newVal, oldVal) {
+      this.slb = newVal
+      this.zctjb = newVal
       this.yetjbTableData = []
       console.log(newVal, oldVal)
       if (newVal === 2) {
@@ -966,6 +978,8 @@ export default {
       }
     },
     zctjb(newVal, oldVal) {
+      this.slb = newVal
+      this.yetjb = newVal
       this.zctjbTableData = []
       console.log(newVal, oldVal)
       if (newVal === 2) {
@@ -1027,89 +1041,98 @@ export default {
         ]
       }
     },
-    fztjb(newVal, oldVal) {
-      this.fztjbTableData = {
-        bj: [],
-        sh: [],
-        sz: []
-      }
-      const this_ = this
-      console.log(newVal, oldVal)
-      if (newVal === 2) {
-        let ind = 0
-        const timeFztjb = setInterval(() => {
-          if (ind === 0) {
-            this_.fztjbTableData.bj = [2500, 1000, 5000]
-          } else if (ind === 1) {
-            this_.fztjbTableData.sh = [2000, 4000, 4000]
-          } else if (ind === 2) {
-            this_.fztjbTableData.sz = [1800, 3200, 3000]
-          } else {
-            clearInterval(timeFztjb)
-          }
-          ind++
-        }, 1000)
-      } else if (newVal === 3) {
-        let ind = 0
-        const timeFztjb = setInterval(() => {
-          if (ind === 0) {
-            this_.fztjbTableData.bj = [5000, 1000, 5000]
-          } else if (ind === 1) {
-            this_.fztjbTableData.sh = [400, 200, 4000]
-          } else if (ind === 2) {
-            this_.fztjbTableData.sz = [1800, 3200, 3000]
-          } else {
-            clearInterval(timeFztjb)
-          }
-          ind++
-        }, 1000)
-      } else {
-        let ind = 0
-        const timeFztjb = setInterval(() => {
-          if (ind === 0) {
-            this_.fztjbTableData.bj = [2000, 2800, 3500]
-          } else if (ind === 1) {
-            this_.fztjbTableData.sh = [2500, 2000, 4500]
-          } else if (ind === 2) {
-            this_.fztjbTableData.sz = [2900, 1500, 3900]
-          } else {
-            clearInterval(timeFztjb)
-          }
-          ind++
-        }, 1000)
-      }
-    },
+    // fztjb(newVal, oldVal) {
+    //   this.zctjb = newVal
+    //   this.fztjbTableData = {
+    //     bj: [],
+    //     sh: [],
+    //     sz: []
+    //   }
+    //   const this_ = this
+    //   console.log(newVal, oldVal)
+    //   if (newVal === 2) {
+    //     let ind = 0
+    //     const timeFztjb = setInterval(() => {
+    //       if (ind === 0) {
+    //         this_.fztjbTableData.bj = [2500, 1000, 5000]
+    //       } else if (ind === 1) {
+    //         this_.fztjbTableData.sh = [2000, 4000, 4000]
+    //       } else if (ind === 2) {
+    //         this_.fztjbTableData.sz = [1800, 3200, 3000]
+    //       } else {
+    //         clearInterval(timeFztjb)
+    //       }
+    //       ind++
+    //     }, 1000)
+    //   } else if (newVal === 3) {
+    //     let ind = 0
+    //     const timeFztjb = setInterval(() => {
+    //       if (ind === 0) {
+    //         this_.fztjbTableData.bj = [5000, 1000, 5000]
+    //       } else if (ind === 1) {
+    //         this_.fztjbTableData.sh = [400, 200, 4000]
+    //       } else if (ind === 2) {
+    //         this_.fztjbTableData.sz = [1800, 3200, 3000]
+    //       } else {
+    //         clearInterval(timeFztjb)
+    //       }
+    //       ind++
+    //     }, 1000)
+    //   } else {
+    //     let ind = 0
+    //     const timeFztjb = setInterval(() => {
+    //       if (ind === 0) {
+    //         this_.fztjbTableData.bj = [2000, 2800, 3500]
+    //       } else if (ind === 1) {
+    //         this_.fztjbTableData.sh = [2500, 2000, 4500]
+    //       } else if (ind === 2) {
+    //         this_.fztjbTableData.sz = [2900, 1500, 3900]
+    //       } else {
+    //         clearInterval(timeFztjb)
+    //       }
+    //       ind++
+    //     }, 1000)
+    //   }
+    // },
     slb(newVal, oldVal) {
+      this.yetjb = newVal
+      this.zctjb = newVal
       const this_ = this
-      this.slbTableData = []
+      this.slbTableData = [
+        {
+          value: 0,
+          name: 'zgyh'
+        },
+        {
+          value: 0,
+          name: 'gsyh'
+        },
+        {
+          value: 0,
+          name: 'jtyh'
+        },
+        {
+          value: 0,
+          name: 'zsyh'
+        },
+        {
+          value: 0,
+          name: 'jsyh'
+        }
+      ]
       if (newVal === 2) {
         let ind = 0
         const timeSlb = setInterval(() => {
           if (ind === 0) {
-            this_.slbTableData.push({
-              value: 100,
-              name: 'zgyh'
-            })
+            this_.slbTableData[0].value = 2
           } else if (ind === 1) {
-            this_.slbTableData.push({
-              value: 150,
-              name: 'gsyh'
-            })
+            this_.slbTableData[1].value = 3
           } else if (ind === 2) {
-            this_.slbTableData.push({
-              value: 200,
-              name: 'jtyh'
-            })
+            this_.slbTableData[2].value = 4
           } else if (ind === 3) {
-            this_.slbTableData.push({
-              value: 250,
-              name: 'zsyh'
-            })
+            this_.slbTableData[3].value = 5
           } else if (ind === 4) {
-            this_.slbTableData.push({
-              value: 400,
-              name: 'jsyh'
-            })
+            this_.slbTableData[4].value = 8
           } else {
             clearInterval(timeSlb)
           }
@@ -1120,30 +1143,15 @@ export default {
         let ind = 0
         const timeSlb = setInterval(() => {
           if (ind === 0) {
-            this_.slbTableData.push({
-              value: 5,
-              name: 'zgyh'
-            })
+            this_.slbTableData[ind].value = 4
           } else if (ind === 1) {
-            this_.slbTableData.push({
-              value: 50,
-              name: 'gsyh'
-            })
+            this_.slbTableData[ind].value = 5
           } else if (ind === 2) {
-            this_.slbTableData.push({
-              value: 122,
-              name: 'jtyh'
-            })
+            this_.slbTableData[ind].value = 7
           } else if (ind === 3) {
-            this_.slbTableData.push({
-              value: 200,
-              name: 'zsyh'
-            })
+            this_.slbTableData[ind].value = 1
           } else if (ind === 4) {
-            this_.slbTableData.push({
-              value: 500,
-              name: 'jsyh'
-            })
+            this_.slbTableData[ind].value = 9
           } else {
             clearInterval(timeSlb)
           }
@@ -1153,30 +1161,15 @@ export default {
         let ind = 0
         const timeSlb = setInterval(() => {
           if (ind === 0) {
-            this_.slbTableData.push({
-              value: 10,
-              name: 'zgyh'
-            })
+            this_.slbTableData[ind].value = 1
           } else if (ind === 1) {
-            this_.slbTableData.push({
-              value: 220,
-              name: 'gsyh'
-            })
+            this_.slbTableData[ind].value = 2
           } else if (ind === 2) {
-            this_.slbTableData.push({
-              value: 330,
-              name: 'jtyh'
-            })
+            this_.slbTableData[ind].value = 3
           } else if (ind === 3) {
-            this_.slbTableData.push({
-              value: 334,
-              name: 'zsyh'
-            })
+            this_.slbTableData[ind].value = 4
           } else if (ind === 4) {
-            this_.slbTableData.push({
-              value: 390,
-              name: 'jsyh'
-            })
+            this_.slbTableData[ind].value = 5
           } else {
             clearInterval(timeSlb)
           }
@@ -1187,9 +1180,11 @@ export default {
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    const _scrollTop = document.scrollingElement.scrollTop
-    document.body.style.position = 'fixed'
-    document.body.style.top = -_scrollTop + 'px'
+    if (this.tips === true) {
+      const _scrollTop = document.scrollingElement.scrollTop
+      document.body.style.position = 'fixed'
+      document.body.style.top = -_scrollTop + 'px'
+    }
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -1204,6 +1199,10 @@ export default {
       window.scrollTo(0, 0)
       this.tip = 0
       this.tips = false
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'tips',
+        value: false
+      })
     },
     tip3Click() {
       const charts1 = this.$refs.chart1.$el

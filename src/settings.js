@@ -1,5 +1,11 @@
 module.exports = {
-  title: 'Vue Element Admin',
+  title: '企业财资管理系统',
+
+  /**
+   * @type {boolean} true | false
+   * @description Whether show the settings right-panel
+   */
+  tips: true,
 
   /**
    * @type {boolean} true | false

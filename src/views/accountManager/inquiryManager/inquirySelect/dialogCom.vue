@@ -24,7 +24,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item
-            label="单据名称："
+            label="单位名称："
             prop="unitName"
             class="formItem"
           >
@@ -75,13 +75,19 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="账户号码：" prop="accountPhone">
-            <el-input
+            <el-select
               v-model="form.accountPhone"
-              style="width: 200px"
+              placeholder="请选择"
               size="mini"
-
-              :placeholder="placeholderTips.content"
-            />
+              style="width: 200px"
+            >
+              <el-option
+                v-for="item in zhhmList"
+                :key="item.id"
+                :label="item.value"
+                :value="item.id"
+              />
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -99,9 +105,9 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item label="银行名称：" prop="backName">
+          <el-form-item label="银行名称：" prop="bankName">
             <el-select
-              v-model="form.backName"
+              v-model="form.bankName"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -198,7 +204,7 @@
         <el-col :span="12">
           <el-form-item label="是否直联：" prop="connection">
             <el-select
-              v-model="form.wordbook"
+              v-model="form.connection"
               placeholder="请选择"
               size="mini"
               style="width: 200px"
@@ -271,6 +277,8 @@ import { placeholderTips } from '@u/validate'
 import {
   UNITNOLIST,
   BACKLIST,
+
+  ZHHMLIST,
   CURRENCYLIST,
   ACCOUNTUSAGELIST,
   DIRECTLIST
@@ -282,7 +290,7 @@ export default {
   data() {
     // 这里存放数据
     return {
-
+      zhhmList: ZHHMLIST,
       fileList: [
         {
           name: 'food.jpeg',
@@ -308,7 +316,6 @@ export default {
         accountStatus: 1,
         connection: 1,
         zhyt: 1,
-        kmh: '',
         kmh: '',
         khhszs: '',
         khhszshi: ''

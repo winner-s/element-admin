@@ -44,7 +44,8 @@ import {
   ACCOUNTUSAGELIST,
   DIRECTLIST,
   ACCOUNTSTATUSLIST,
-
+  ZHHM,
+  ZHHMLIST,
   UNITNO,
   BACK,
   CURRENCY,
@@ -58,6 +59,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      zhhmList: ZHHMLIST,
       unitNoList: UNITNOLIST,
       backList: BACKLIST,
       currencyList: CURRENCYLIST,
@@ -84,16 +86,51 @@ export default {
       },
       list: [
         {
-          unitName: '二级单位',
+          unitNo: 1324,
+          unitName: '单位1',
           khrq: '2020-09-01',
-          accountPhone: '1967301259',
-          accountName: '我最帅',
+          accountPhone: 1,
+          accountName: '账户名称1',
           currency: 1,
           bankName: 1,
           bankOpenName: '株洲分行',
           lhh: '58491308',
           accountStatus: 1,
           connection: 1,
+          zhyt: 1,
+          kmh: '23114',
+          khhszs: '湖南省',
+          khhszshi: '株洲市'
+        },
+        {
+          unitNo: 546,
+          unitName: '单位2',
+          khrq: '2020-09-01',
+          accountPhone: 2,
+          accountName: '账户名称2',
+          currency: 2,
+          bankName: 2,
+          bankOpenName: '株洲分行',
+          lhh: '58491308',
+          accountStatus: 1,
+          connection: 1,
+          zhyt: 1,
+          kmh: '23114',
+          khhszs: '湖南省',
+          khhszshi: '株洲市'
+        },
+        {
+          unitNo: 13265,
+          unitName: '单位2',
+          khrq: '2020-09-01',
+          accountPhone: 3,
+          accountName: '账户名称2',
+          currency: 3,
+          bankName: 3,
+          bankOpenName: '株洲分行',
+          lhh: '58491308',
+          accountStatus: 1,
+          connection: 2,
           zhyt: 1,
           kmh: '23114',
           khhszs: '湖南省',
@@ -110,8 +147,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
+
       }
     }
   },
@@ -156,7 +192,8 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'select',
@@ -170,7 +207,8 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.zhhmList
       },
       {
         type: 'input',
@@ -184,7 +222,7 @@ export default {
       {
         type: 'select',
         label: '账户用途:',
-        prop: 'connection',
+        prop: 'zhyt',
         placeholder: '请填写账户用途',
         selectList: this.accountUsageList,
         show: this.showAll
@@ -221,14 +259,17 @@ export default {
         prop: 'unitName',
         width: '150',
         label: '单位名称',
+        type: 'a',
         fixed: 'left'
       },
       {
         prop: 'accountPhone',
         width: '150',
-        type: 'a',
+        type: 'wordbook',
+        wordbookList: this.zhhm,
         label: '账户号码',
         fixed: 'left'
+
       },
       {
         prop: 'accountName',
@@ -291,7 +332,9 @@ export default {
   },
   // 方法集合
   methods: {
-
+    zhhm(val) {
+      return ZHHM[val]
+    },
     unitNo(val) {
       return UNITNO[val]
     },
@@ -366,37 +409,79 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
-            if (i === 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
-            if (i === 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
             if (i === 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+              if (item.unitNo === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
+            if (i === 'accountPhone') {
+              if (item.accountPhone === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'accountName') {
+              if (item.accountName.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
             if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'bankName') {
+              if (item.bankName === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'connection') {
+              if (item.connection === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'zhyt') {
+              if (item.zhyt === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'currency') {
+              if (item.currency === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'currency') {
+              if (item.currency === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'accountStatus') {
+              if (item.accountStatus === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false

@@ -6,7 +6,7 @@
     <el-table
       v-if="tree==false"
       :data="tableData"
-      :span-method="objectSpanMethod"
+
       border
       align="center"
       style="width: 100%"
@@ -244,7 +244,7 @@
     <el-table
       v-if="tree==true"
       :data="tableData"
-      :span-method="objectSpanMethod"
+
       border
       row-key="id"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
@@ -494,10 +494,7 @@ export default {
       type: Boolean,
       default: false
     },
-    objectSpanMethod: {
-      type: Function,
-      required: true
-    },
+
     // indexMethod: {
     //   type: Function
     // },

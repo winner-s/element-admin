@@ -818,7 +818,7 @@ export const constantRoutes = [
           {
             path: 'selectInfo',
             meta: { title: '归集信息查询' },
-            name: 'selectInfo',
+            name: 'selectInfos',
             component: () =>
               import(
                 '@/views/fundsManagement/selectCollection/pages/selectInfo'

@@ -213,6 +213,10 @@ export default {
     },
 
     handleLogin() {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'tips',
+        value: true
+      })
       console.log('点击了登录')
       console.log(this.codeList)
       this.$refs.loginForm.validate(valid => {
@@ -222,6 +226,7 @@ export default {
             .then(() => {
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
               this.loading = false
+              console.log('该方法已通过')
             })
             .catch(() => {
               this.loading = false

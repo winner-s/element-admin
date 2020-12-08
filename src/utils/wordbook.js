@@ -4,6 +4,28 @@
  * 对象 用于 表格内容过滤
  */
 
+// 账户号码
+export const ZHHM = {
+  '1': '1967301259',
+  '2': '1967301260',
+  '3': '1967301261'
+}
+
+export const ZHHMLIST = [
+  {
+    id: 1,
+    value: '1967301259'
+  },
+  {
+    id: 2,
+    value: '1967301260'
+  },
+  {
+    id: 3,
+    value: '1967301261'
+  }
+]
+
 // 单位编号
 export const UNITNO = {
   '1324': '单位1',
@@ -30,7 +52,12 @@ export const UNITNOLIST = [
 export const BACK = {
   '1': '北京银行',
   '2': '工商银行',
-  '3': '中国银行'
+  '3': '中国银行',
+  '4': '招商银行',
+  '5': '交通银行',
+  '6': '农业银行',
+  '7': '上海银行',
+  '8': '浦发银行'
 }
 
 export const BACKLIST = [
@@ -45,6 +72,26 @@ export const BACKLIST = [
   {
     id: 3,
     value: '中国银行'
+  },
+  {
+    id: 4,
+    value: '招商银行'
+  },
+  {
+    id: 5,
+    value: '交通银行'
+  },
+  {
+    id: 6,
+    value: '农业银行'
+  },
+  {
+    id: 7,
+    value: '上海银行'
+  },
+  {
+    id: 8,
+    value: '浦发银行'
   }
 ]
 

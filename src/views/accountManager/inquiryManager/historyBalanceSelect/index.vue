@@ -25,29 +25,49 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
-          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
+    <dialog-com :dialog-obj="dialogObj" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import dialogCom from './dialogCom'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-
+import {
+  UNITNOLIST,
+  BACKLIST,
+  CURRENCYLIST,
+  ACCOUNTUSAGELIST,
+  DIRECTLIST,
+  ACCOUNTSTATUSLIST,
+  ZHHM,
+  ZHHMLIST,
+  UNITNO,
+  BACK,
+  CURRENCY,
+  ACCOUNTUSAGE,
+  DIRECT,
+  ACCOUNTSTATUS
+} from '@u/wordbook'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { Search, Table },
+  components: { Search, Table, dialogCom },
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      zhhmList: ZHHMLIST,
       unitNoList: UNITNOLIST,
+      backList: BACKLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
+      accountStatusList: ACCOUNTSTATUSLIST,
+      showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
@@ -67,18 +87,84 @@ export default {
 
       list: [
         {
+          unitNo: 1324,
           unitName: '单位1',
-          yhzh: '2130598423496',
+          accountPhone: 1,
           zhmc: 'aaa',
           currency: 1,
-          bankName: 1,
+          bankName: 6,
+          khrq: '2020-11-28',
           bankOpenName: '株洲分行',
           lhh: '123957349',
           zhzt: 1,
           sfzl: 1,
           zhyt: 1,
           kmh: '21314',
-          ye: 1000
+          ye: 2000
+        },
+        {
+          unitNo: 546,
+          unitName: '单位2',
+          accountPhone: 1,
+          zhmc: 'aaa',
+          currency: 1,
+          bankName: 1,
+          khrq: '2020-12-08',
+          bankOpenName: '株洲分行',
+          lhh: '123957349',
+          zhzt: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '21314',
+          ye: 3000
+        },
+        {
+          unitNo: 546,
+          unitName: '单位2',
+          accountPhone: 1,
+          zhmc: 'aaa',
+          currency: 1,
+          bankName: 2,
+          khrq: '2020-02-08',
+          bankOpenName: '株洲分行',
+          lhh: '123957349',
+          zhzt: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '21314',
+          ye: 4000
+        },
+        {
+          unitNo: 13265,
+          unitName: '单位3',
+          accountPhone: 2,
+          zhmc: 'aaa',
+          currency: 2,
+          bankName: 3,
+          khrq: '2020-03-02',
+          bankOpenName: '株洲分行',
+          lhh: '123957349',
+          zhzt: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '21314',
+          ye: 5000
+        },
+        {
+          unitNo: 1324,
+          unitName: '单位1',
+          accountPhone: 3,
+          zhmc: 'aaa',
+          currency: 1,
+          bankName: 5,
+          khrq: '2020-11-11',
+          bankOpenName: '株洲分行',
+          lhh: '123957349',
+          zhzt: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '21314',
+          ye: 6000
         }
       ],
       // 表格
@@ -87,8 +173,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
+
       }
     }
   },
@@ -126,6 +211,7 @@ export default {
       {
         type: 'input',
         label: '单位名称:',
+
         prop: 'unitName',
         placeholder: '请填写单位名称'
       },
@@ -133,12 +219,14 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'select',
         label: '是否直联:',
         prop: 'currency',
+        selectList: this.directList,
         placeholder: '请选择选择是否直联'
       },
       {
@@ -146,6 +234,7 @@ export default {
         label: '币种:',
         prop: 'currency',
         placeholder: '请选择币种',
+        selectList: this.currencyList,
         show: this.showAll
       },
 
@@ -154,7 +243,8 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.zhhmList
       },
       {
         type: 'input',
@@ -164,16 +254,16 @@ export default {
         show: this.showAll
       },
       {
-        type: 'input',
+        type: 'khrq',
         label: '日期范围:',
-        prop: 'accountName',
+        prop: 'rqfwc',
         placeholder: '请填写日期范围',
         show: this.showAll
       },
       {
-        type: 'input',
+        type: 'khrq',
         label: '到:',
-        prop: 'accountName',
+        prop: 'rqfwd',
         placeholder: '请填写日期范围',
         show: this.showAll
       },
@@ -181,8 +271,9 @@ export default {
       {
         type: 'select',
         label: '账户用途:',
-        prop: 'connection',
+        prop: 'zhyt',
         placeholder: '请填写账户用途',
+        selectList: this.accountUsageList,
         show: this.showAll
       },
       {
@@ -199,12 +290,15 @@ export default {
         prop: 'unitName',
         width: '150',
         label: '单位名称',
+        type: 'a',
         fixed: 'left'
       },
       {
-        prop: 'yhzh',
+        prop: 'accountPhone',
         width: '150',
-        label: '银行账号',
+        type: 'wordbook',
+        wordbookList: this.zhhm,
+        label: '账户号码',
         fixed: 'left'
       },
 
@@ -216,12 +310,16 @@ export default {
       {
         prop: 'currency',
         width: '150',
-        label: '币种'
+        label: '币种',
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'bankName',
         width: '150',
-        label: '银行名称'
+        label: '银行名称',
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
@@ -236,17 +334,23 @@ export default {
       {
         prop: 'zhzt',
         width: '150',
-        label: '账户状态'
+        label: '账户状态',
+        type: 'wordbook',
+        wordbookList: this.accountStatus
       },
       {
         prop: 'sfzl',
         width: '150',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'zhyt',
         width: '150',
-        label: '账户用途'
+        label: '账户用途',
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'kmh',
@@ -268,6 +372,28 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    zhhm(val) {
+      return ZHHM[val]
+    },
+    unitNo(val) {
+      return UNITNO[val]
+    },
+    back(val) {
+      return BACK[val]
+    },
+    currency(val) {
+      return CURRENCY[val]
+    },
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
+    accountStatus(val) {
+      return ACCOUNTSTATUS[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -319,40 +445,24 @@ export default {
       this.dialogObj.form = row
     },
     handleViewOther(row) {
-      this.dialogObj.id = row.id
+      this.dialogObj.id = row.accountPhone
       this.dialogObj.read = true
       this.dialogObj.show = true
       this.dialogObj.title = '查看'
-      this.dialogObj.form = row
+      this.dialogObj.form = JSON.parse(JSON.stringify(row))
     },
 
     getList() {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
-            if (i === 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
-            if (i === 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
             if (i === 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+              if (item.unitNo === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -361,6 +471,68 @@ export default {
 
             if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'accountName') {
+              if (item.zhmc.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'rqfwc') {
+              if (Date.parse(item.khrq) >= Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'rqfwd') {
+              if (Date.parse(item.khrq) <= Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'bankName') {
+              if (item.bankName === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'zhyt') {
+              if (item.zhyt === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'sfzl') {
+              if (item.sfzl === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+            if (i === 'currency') {
+              if (item.currency === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+              }
+            }
+
+            if (i === 'accountPhone') {
+              if (item.accountPhone === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
