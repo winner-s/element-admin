@@ -771,7 +771,7 @@ export default {
         },
         {
           value: 220,
-          name: 'jsyh'
+          name: 'gsyh'
         },
         {
           value: 330,
@@ -783,7 +783,7 @@ export default {
         },
         {
           value: 390,
-          name: 'gsyh'
+          name: 'jsyh'
         }
       ],
 
@@ -1037,7 +1037,7 @@ export default {
       console.log(newVal, oldVal)
       if (newVal === 2) {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeFztjb = setInterval(() => {
           if (ind === 0) {
             this_.fztjbTableData.bj = [2500, 1000, 5000]
           } else if (ind === 1) {
@@ -1045,13 +1045,13 @@ export default {
           } else if (ind === 2) {
             this_.fztjbTableData.sz = [1800, 3200, 3000]
           } else {
-            clearInterval(this.time)
+            clearInterval(timeFztjb)
           }
           ind++
         }, 1000)
       } else if (newVal === 3) {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeFztjb = setInterval(() => {
           if (ind === 0) {
             this_.fztjbTableData.bj = [5000, 1000, 5000]
           } else if (ind === 1) {
@@ -1059,13 +1059,13 @@ export default {
           } else if (ind === 2) {
             this_.fztjbTableData.sz = [1800, 3200, 3000]
           } else {
-            clearInterval(this.time)
+            clearInterval(timeFztjb)
           }
           ind++
         }, 1000)
       } else {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeFztjb = setInterval(() => {
           if (ind === 0) {
             this_.fztjbTableData.bj = [2000, 2800, 3500]
           } else if (ind === 1) {
@@ -1073,7 +1073,7 @@ export default {
           } else if (ind === 2) {
             this_.fztjbTableData.sz = [2900, 1500, 3900]
           } else {
-            clearInterval(this.time)
+            clearInterval(timeFztjb)
           }
           ind++
         }, 1000)
@@ -1084,100 +1084,101 @@ export default {
       this.slbTableData = []
       if (newVal === 2) {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeSlb = setInterval(() => {
           if (ind === 0) {
             this_.slbTableData.push({
               value: 100,
-              name: '中国银行'
+              name: 'zgyh'
             })
           } else if (ind === 1) {
             this_.slbTableData.push({
               value: 150,
-              name: '建设银行'
+              name: 'gsyh'
             })
           } else if (ind === 2) {
             this_.slbTableData.push({
               value: 200,
-              name: '交通银行'
+              name: 'jtyh'
             })
           } else if (ind === 3) {
             this_.slbTableData.push({
               value: 250,
-              name: '招商银行'
+              name: 'zsyh'
             })
           } else if (ind === 4) {
             this_.slbTableData.push({
               value: 400,
-              name: '工商银行'
+              name: 'jsyh'
             })
           } else {
-            clearInterval(this.time)
+            clearInterval(timeSlb)
           }
           ind++
+          console.log('jiesh')
         }, 1000)
       } else if (newVal === 3) {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeSlb = setInterval(() => {
           if (ind === 0) {
             this_.slbTableData.push({
               value: 5,
-              name: '中国银行'
+              name: 'zgyh'
             })
           } else if (ind === 1) {
             this_.slbTableData.push({
               value: 50,
-              name: '建设银行'
+              name: 'gsyh'
             })
           } else if (ind === 2) {
             this_.slbTableData.push({
               value: 122,
-              name: '交通银行'
+              name: 'jtyh'
             })
           } else if (ind === 3) {
             this_.slbTableData.push({
               value: 200,
-              name: '招商银行'
+              name: 'zsyh'
             })
           } else if (ind === 4) {
             this_.slbTableData.push({
               value: 500,
-              name: '工商银行'
+              name: 'jsyh'
             })
           } else {
-            clearInterval(this.time)
+            clearInterval(timeSlb)
           }
           ind++
         }, 1000)
       } else {
         let ind = 0
-        this.time = setInterval(() => {
+        const timeSlb = setInterval(() => {
           if (ind === 0) {
             this_.slbTableData.push({
               value: 10,
-              name: '中国银行'
+              name: 'zgyh'
             })
           } else if (ind === 1) {
             this_.slbTableData.push({
               value: 220,
-              name: '建设银行'
+              name: 'gsyh'
             })
           } else if (ind === 2) {
             this_.slbTableData.push({
               value: 330,
-              name: '交通银行'
+              name: 'jtyh'
             })
           } else if (ind === 3) {
             this_.slbTableData.push({
               value: 334,
-              name: '招商银行'
+              name: 'zsyh'
             })
           } else if (ind === 4) {
             this_.slbTableData.push({
               value: 390,
-              name: '工商银行'
+              name: 'jsyh'
             })
           } else {
-            clearInterval(this.time)
+            clearInterval(timeSlb)
           }
           ind++
         }, 1000)

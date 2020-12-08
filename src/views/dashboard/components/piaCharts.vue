@@ -53,6 +53,10 @@ export default {
       }
     },
     _setOption(inprice = [], outprice = []) {
+      var list = []
+      this.lineChartData.forEach((item, index) => {
+        list.push(item.name)
+      })
       this.mycharts.setOption({
         tooltip: {
           trigger: 'axis',
@@ -72,15 +76,14 @@ export default {
         },
         xAxis: [
           {
-            type: 'value',
-            boundaryGap: [0, 0.01],
+
             show: false
           }
         ],
         yAxis: [
           {
             type: 'category',
-            data: ['zgyh', 'jtyh', 'zsyh', 'gsyh', 'jsyh'],
+            data: list,
             axisLabel: {
               formatter: function(value) {
                 if (value === 'zgyh') {

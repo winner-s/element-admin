@@ -61,7 +61,6 @@ export default {
             center: ['50%', '50%'],
             data: this.tableData,
             animationDuration: 2600
-
           }
         ]
       })
