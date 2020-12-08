@@ -1,5 +1,5 @@
 module.exports = {
-  title: '企业财资管理系统',
+  title: '建行企业财资管理系统',
 
   /**
    * @type {boolean} true | false
