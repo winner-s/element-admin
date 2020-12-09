@@ -460,7 +460,14 @@ import {
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -556,8 +563,7 @@ export default {
         je: '',
         dxje: '',
         dscs: '',
-        zy: '',
-        bz: ''
+        zy: ''
       }
     }
   },
@@ -601,7 +607,7 @@ export default {
     skfChange(res) {
       console.log(res)
       this.skfyhzhList.forEach((item, index) => {
-        if (item.skfyhzh == res) {
+        if (item.skfyhzh === res) {
           const zhi = this.skfyhzhList[index]
           Object.keys(item).forEach(val => {
             this.form[val] = zhi[val]
@@ -613,7 +619,7 @@ export default {
     fkfChange(res) {
       console.log(res)
       this.fkfyhzhList.forEach((item, index) => {
-        if (item.fkfyhzh == res) {
+        if (item.fkfyhzh === res) {
           const zhi = this.fkfyhzhList[index]
           Object.keys(item).forEach(val => {
             this.form[val] = zhi[val]

@@ -26,7 +26,7 @@
               v-model="form.clbh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -37,7 +37,7 @@
               v-model="form.clmc"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -61,7 +61,7 @@
               v-model="form.clzt"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -107,7 +107,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 1">
+      <el-row v-if="form.zqsz === 1">
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
@@ -123,7 +123,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 2">
+      <el-row v-if="form.zqsz === 2">
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
@@ -144,7 +144,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 3">
+      <el-row v-if="form.zqsz === 3">
         <el-col>
           <el-form-item label="选择时间段">
             <el-checkbox
@@ -199,7 +199,14 @@ import { placeholderTips } from '@u/validate'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -304,7 +311,7 @@ export default {
       })
     },
     handleStatus() {
-      if (this.form.clzt == '激活') {
+      if (this.form.clzt === '激活') {
         this.$confirm('确定停止?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

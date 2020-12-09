@@ -56,7 +56,7 @@
       <div class="close" @click="kf = false" />
     </div>
     <el-row :gutter="20">
-      <el-col :span="12" :class="{ cygn: tip == 2 }">
+      <el-col :span="12" :class="{ cygn: tip === 2 }">
         <el-card ref="always" :body-style="{ padding: '0px' }">
           <div slot="header" class="clearfix">
             <span>常用功能</span>
@@ -139,14 +139,14 @@
                 同期对比
                 <span
                   :class="{
-                    green: item.tqdb == 'green',
-                    red: item.tqdb == 'red',
+                    green: item.tqdb === 'green',
+                    red: item.tqdb === 'red',
                   }"
                   style="vertical-align: middle"
                 >
                   {{ item.tqdbNum }}
                   <img
-                    v-if="item.tqdb == 'red'"
+                    v-if="item.tqdb === 'red'"
                     src="../../assets/img/down.png"
                     alt=""
                     style="
@@ -158,7 +158,7 @@
                     "
                   >
                   <img
-                    v-if="item.tqdb == 'green'"
+                    v-if="item.tqdb === 'green'"
                     src="../../assets/img/up.png"
                     alt=""
                     style="
@@ -212,7 +212,7 @@
       ref="chart1"
       :gutter="20"
       style="margin-top: 23px"
-      :class="{ cygn: tip == 5 }"
+      :class="{ cygn: tip === 5 }"
     >
       <el-col :span="12">
         <el-card
@@ -270,7 +270,7 @@
       ref="chart2"
       :gutter="20"
       style="margin-top: 23px"
-      :class="{ cygn: tip == 5 }"
+      :class="{ cygn: tip === 5 }"
     >
       <el-col :span="12">
         <el-card
@@ -347,17 +347,17 @@
             <div v-for="(item, index) in qbscList" :key="index" class="qbsc">
               <div class="top">
                 <div class="top_name">{{ item.name }}</div>
-                <div v-show="item.show == true" @click="item.show = false">
+                <div v-show="item.show === true" @click="item.show = false">
                   收起<i class="el-icon-arrow-up el-icon--right" />
                 </div>
-                <div v-show="item.show == false" @click="item.show = true">
+                <div v-show="item.show === false" @click="item.show = true">
                   展开<i class="el-icon-arrow-down el-icon--right" />
                 </div>
               </div>
               <div class="dialog_div_war">
                 <div
                   v-for="(ele, ind) in item.childerList"
-                  v-show="item.show == true"
+                  v-show="item.show === true"
                   :key="ind"
                   class="dialog_div"
                 >

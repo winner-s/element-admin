@@ -33,9 +33,9 @@
 <script>
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import data from '../../components/data'
+// import data from '../../components/data'
 import dialogCom from './dialogCom'
-import { STRATEGYMODEL, STRATEGYMODELLIST } from '@u/wordbook'
+import { STRATEGYMODEL } from '@u/wordbook'
 export default {
   name: 'Relation',
   components: {
@@ -171,7 +171,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.clbh == res.clbh) {
+        if (item.clbh === res.clbh) {
           ind = index
         }
       })
@@ -274,8 +274,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'clbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'clbh') {
               if (item.clbh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -284,7 +284,7 @@ export default {
               }
             }
 
-            if (i == 'clmc') {
+            if (i === 'clmc') {
               if (item.clmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -296,7 +296,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

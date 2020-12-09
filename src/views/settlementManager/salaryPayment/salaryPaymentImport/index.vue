@@ -80,7 +80,7 @@ export default {
       this.dataList = results
     },
     add() {
-      if (this.dataList.length == 0) {
+      if (this.dataList.length === 0) {
         this.$confirm('请选择导入文件', '提示', {
           confirmButtonText: '确定',
           type: 'warning',

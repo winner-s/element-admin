@@ -44,7 +44,14 @@ import Table from '@c/common/table'
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: { Search, Table },
-  props: ['dialogObjNei'],
+  props: {
+    dialogObjNei: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -250,8 +257,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwmc') {
               if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -259,7 +266,7 @@ export default {
               }
             }
 
-            if (i == 'yhzh') {
+            if (i === 'yhzh') {
               if (item.yhzh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -267,7 +274,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -275,7 +282,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -286,7 +293,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -171,7 +171,7 @@ export default {
   },
   methods: {
     handleStatus(v) {
-      if (v.taskStatus == '停止') {
+      if (v.taskStatus === '停止') {
         this.$confirm('确定停止?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -179,7 +179,7 @@ export default {
         }).then(() => {
           v.taskStatus = '激活'
         })
-      } else if (v.taskStatus == '激活') {
+      } else if (v.taskStatus === '激活') {
         this.$confirm('确定停止激活', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

@@ -63,14 +63,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
         {
           bz: 1,
@@ -299,7 +291,7 @@ export default {
       return DJZT[val]
     },
     handleCommit() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
             if (res.djbh === item.djbh) {
@@ -429,7 +421,7 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
             if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true

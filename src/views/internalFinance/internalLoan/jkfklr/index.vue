@@ -68,14 +68,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
 
       ],
@@ -277,7 +269,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -379,8 +371,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'htbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'htbh') {
               if (item.htbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -388,23 +380,23 @@ export default {
               }
             }
 
-            if (i == 'jxfs') {
-              if (item.jxfs == this.searchData[i]) {
+            if (i === 'jxfs') {
+              if (item.jxfs === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'fkdzt') {
-              if (item.fkdzt == this.searchData[i]) {
+            if (i === 'fkdzt') {
+              if (item.fkdzt === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
               }
             }
 
-            if (i == 'jec') {
+            if (i === 'jec') {
               if (item.fkje >= this.searchData[i]) {
                 bool = true
               } else {
@@ -412,7 +404,7 @@ export default {
               }
             }
 
-            if (i == 'jed') {
+            if (i === 'jed') {
               if (item.fkje <= this.searchData[i]) {
                 bool = true
               } else {
@@ -420,7 +412,7 @@ export default {
               }
             }
 
-            if (i == 'fkrqc') {
+            if (i === 'fkrqc') {
               if (Date.parse(item.fkr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -428,7 +420,7 @@ export default {
               }
             }
 
-            if (i == 'fkrqd') {
+            if (i === 'fkrqd') {
               if (Date.parse(item.fkr) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -436,7 +428,7 @@ export default {
               }
             }
 
-            if (i == 'scfxrc') {
+            if (i === 'scfxrc') {
               if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -444,7 +436,7 @@ export default {
               }
             }
 
-            if (i == 'scfxrd') {
+            if (i === 'scfxrd') {
               if (Date.parse(item.scfxr) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -455,7 +447,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

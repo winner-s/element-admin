@@ -28,7 +28,7 @@
 <script>
 import { ACCOUNTUSAGE, ACCOUNTUSAGELIST } from '@u/wordbook'
 import Search from '@c/common/search'
-import data from '../components/data'
+// import data from '../components/data'
 import Table from '@c/common/table'
 export default {
   name: 'Flow',
@@ -337,8 +337,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwmc') {
               if (item.sjdwmc.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -347,7 +347,7 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.zhhm.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -356,7 +356,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -365,7 +365,7 @@ export default {
               }
             }
 
-            if (i == 'zhyt') {
+            if (i === 'zhyt') {
               if (item.zhyt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -374,7 +374,7 @@ export default {
               }
             }
 
-            if (i == 'qcyeks') {
+            if (i === 'qcyeks') {
               if (item.qcye >= this.searchData[i]) {
                 bool = true
               } else {
@@ -383,7 +383,7 @@ export default {
               }
             }
 
-            if (i == 'qcyejs') {
+            if (i === 'qcyejs') {
               if (item.qcye <= this.searchData[i]) {
                 bool = true
               } else {
@@ -392,7 +392,7 @@ export default {
               }
             }
 
-            if (i == 'qmyeks') {
+            if (i === 'qmyeks') {
               if (item.qmye >= this.searchData[i]) {
                 bool = true
               } else {
@@ -401,7 +401,7 @@ export default {
               }
             }
 
-            if (i == 'qmyejs') {
+            if (i === 'qmyejs') {
               if (item.qmye <= this.searchData[i]) {
                 bool = true
               } else {
@@ -413,7 +413,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

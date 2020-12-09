@@ -66,14 +66,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
 
       ],
@@ -234,10 +226,10 @@ export default {
   // 方法集合
   methods: {
     handleCommit() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.hkdh == item.hkdh) {
+            if (res.hkdh === item.hkdh) {
               res.clzt = 2
             }
           })
@@ -255,7 +247,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.hkdbh == res.hkdbh) {
+        if (item.hkdbh === res.hkdbh) {
           ind = index
         }
       })
@@ -361,8 +353,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'hkdh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'hkdh') {
               if (item.hkdh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -370,7 +362,7 @@ export default {
               }
             }
 
-            if (i == 'zwr') {
+            if (i === 'zwr') {
               if (item.zwr.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -378,7 +370,7 @@ export default {
               }
             }
 
-            if (i == 'hkrqc') {
+            if (i === 'hkrqc') {
               if (Date.parse(item.hkrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -386,7 +378,7 @@ export default {
               }
             }
 
-            if (i == 'hkrqd') {
+            if (i === 'hkrqd') {
               if (Date.parse(item.hkrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -394,7 +386,7 @@ export default {
               }
             }
 
-            if (i == 'clzt') {
+            if (i === 'clzt') {
               if (item.clzt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -405,7 +397,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

@@ -28,7 +28,7 @@
               v-model="form.jkhtbh"
               placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               style="width: 200px"
               @change="jkhtbhChange"
             >
@@ -47,7 +47,7 @@
               v-model="form.fkdbh"
               placeholder="请选择"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               style="width: 200px"
               @change="fkdbhChange"
             >
@@ -460,7 +460,14 @@ import { placeholderTips } from '@u/validate'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -511,7 +518,6 @@ export default {
         fxfs: '',
         hbfs: '',
         bz: '',
-        fkdbh: '',
         fkje: '',
         fkr: '',
         dqr: '',
@@ -562,7 +568,7 @@ export default {
   methods: {
     jkhtbhChange(res) {
       this.jkhtbhList.forEach((item, index) => {
-        if (item.jkhtbh == res) {
+        if (item.jkhtbh === res) {
           Object.keys(item).forEach((val) => {
             this.form[val] = item[val]
           })
@@ -571,7 +577,7 @@ export default {
     },
     fkdbhChange(res) {
       this.fkdbhList.forEach((item, index) => {
-        if (item.fkdbh == res) {
+        if (item.fkdbh === res) {
           Object.keys(item).forEach((val) => {
             this.form[val] = item[val]
           })

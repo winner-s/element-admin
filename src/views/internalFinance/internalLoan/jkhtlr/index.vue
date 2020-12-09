@@ -78,14 +78,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
         {
           childerList: [
@@ -285,7 +277,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -397,8 +389,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'htbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'htbh') {
               if (item.htbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -406,7 +398,7 @@ export default {
               }
             }
 
-            if (i == 'djzt') {
+            if (i === 'djzt') {
               if (item.djzt.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -414,7 +406,7 @@ export default {
               }
             }
 
-            if (i == 'zrq') {
+            if (i === 'zrq') {
               if (item.zrq.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -422,7 +414,7 @@ export default {
               }
             }
 
-            if (i == 'zwr') {
+            if (i === 'zwr') {
               if (item.zwr.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -430,7 +422,7 @@ export default {
               }
             }
 
-            if (i == 'jkjey') {
+            if (i === 'jkjey') {
               if (item.dkje >= this.searchData[i]) {
                 bool = true
               } else {
@@ -438,7 +430,7 @@ export default {
               }
             }
 
-            if (i == 'jkjed') {
+            if (i === 'jkjed') {
               if (item.dkje <= this.searchData[i]) {
                 bool = true
               } else {
@@ -449,7 +441,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

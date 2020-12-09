@@ -202,7 +202,14 @@ import { placeholderTips } from '@u/validate'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -268,7 +275,7 @@ export default {
   methods: {
     jkhtChange(val) {
       this.jkhtList.forEach((item, index) => {
-        if (item.jkht == val) {
+        if (item.jkht === val) {
           Object.keys(item).forEach((res) => {
             this.form[res] = item[res]
           })

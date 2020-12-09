@@ -233,7 +233,7 @@
 
       <el-row>
         <el-col :span="12">
-          <el-form-item v-show="form.hklx==2" label="应还本金：" prop="yhbj">
+          <el-form-item v-show="form.hklx===2" label="应还本金：" prop="yhbj">
             <el-select
               v-model="form.yhbj"
               placeholder="请选择"
@@ -249,7 +249,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item v-show="form.hklx==1" label="应还利息：" prop="yhlx">
+          <el-form-item v-show="form.hklx===1" label="应还利息：" prop="yhlx">
             <el-select
               v-model="form.yhlx"
               placeholder="请选择"
@@ -268,7 +268,7 @@
         </el-col>
         <el-col :span="12">
 
-          <el-form-item v-show="form.hklx==2" label="还本金额：" prop="hbje">
+          <el-form-item v-show="form.hklx===2" label="还本金额：" prop="hbje">
             <el-input
               v-model="form.hbje"
               style="width: 200px"
@@ -277,7 +277,7 @@
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
-          <el-form-item v-show="form.hklx==1" label="付息金额：" prop="fxje">
+          <el-form-item v-show="form.hklx===1" label="付息金额：" prop="fxje">
             <el-input
               v-model="form.fxje"
               style="width: 200px"
@@ -330,7 +330,14 @@ import { FXFSLIST, HBFSLIST, RATETYPELIST, HKLXLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -443,7 +450,7 @@ export default {
   methods: {
     yhlxChange(val) {
       this.yhlxList.forEach((item, index) => {
-        if (item.yhlx == val) {
+        if (item.yhlx === val) {
           Object.keys(item).forEach((res) => {
             this.form[res] = item[res]
           })
@@ -452,7 +459,7 @@ export default {
     },
     fkdbhChange(val) {
       this.fkdbhList.forEach((item, index) => {
-        if (item.fkdbh == val) {
+        if (item.fkdbh === val) {
           Object.keys(item).forEach((res) => {
             this.form[res] = item[res]
           })

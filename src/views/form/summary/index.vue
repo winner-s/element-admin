@@ -27,7 +27,7 @@
 </template>
 <script>
 import Search from '@c/common/search'
-import data from '../components/data'
+// import data from '../components/data'
 import Table from '@c/common/table'
 export default {
   name: 'Summary',
@@ -378,8 +378,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwbh') {
               if (item.dwbh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -387,7 +387,7 @@ export default {
                 return
               }
             }
-            if (i == 'yhbh') {
+            if (i === 'yhbh') {
               if (item.yhzh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -396,7 +396,7 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.dfzh.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -405,7 +405,7 @@ export default {
               }
             }
 
-            if (i == 'jeks') {
+            if (i === 'jeks') {
               if (item.jyje >= this.searchData[i]) {
                 bool = true
               } else {
@@ -414,7 +414,7 @@ export default {
               }
             }
 
-            if (i == 'jejs') {
+            if (i === 'jejs') {
               if (item.jyje <= this.searchData[i]) {
                 bool = true
               } else {
@@ -423,7 +423,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -431,7 +431,7 @@ export default {
                 return
               }
             }
-            if (i == 'sffx') {
+            if (i === 'sffx') {
               if (item.sffx.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -443,7 +443,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

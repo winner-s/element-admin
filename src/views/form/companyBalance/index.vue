@@ -27,7 +27,7 @@
 </template>
 <script>
 import Search from '@c/common/search'
-import data from '../components/data'
+// import data from '../components/data'
 import Table from '@c/common/table'
 export default {
   name: 'CompanyBalance',
@@ -265,8 +265,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'dwmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'dwmc') {
               if (item.zhssdw.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -274,7 +274,7 @@ export default {
               }
             }
 
-            if (i == 'zhhm') {
+            if (i === 'zhhm') {
               if (item.yhzh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -282,7 +282,7 @@ export default {
               }
             }
 
-            if (i == 'bz') {
+            if (i === 'bz') {
               if (item.bz.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -293,7 +293,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

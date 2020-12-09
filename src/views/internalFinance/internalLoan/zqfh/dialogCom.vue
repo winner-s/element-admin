@@ -318,7 +318,14 @@ import { placeholderTips } from '@u/validate'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -395,7 +402,7 @@ export default {
   methods: {
     htlshChange(res) {
       this.htlshList.forEach((item, index) => {
-        if (item.htlsh == res) {
+        if (item.htlsh === res) {
           Object.keys(item).forEach(val => {
             this.form[val] = item[val]
           })

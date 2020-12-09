@@ -66,14 +66,6 @@ export default {
       // 顶部按钮
       searchBto: [],
       // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
-      // 弹出框
       dialogObjS: {
         id: '',
         title: '',

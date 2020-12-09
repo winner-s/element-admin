@@ -130,12 +130,12 @@
     <div class="dialog-footer">
 
       <el-button
-        v-if="xyb == false"
+        v-if="xyb === false"
         type="primary"
         @click="xybClick"
       >下一步</el-button>
       <el-button
-        v-if="xyb == true"
+        v-if="xyb === true"
         type="primary"
         @click="insert"
       >新增账户</el-button>
@@ -168,7 +168,14 @@ import { STRATEGYMODEL, STRATEGYMODELLIST } from '@u/wordbook'
 export default {
   components: { Table, dialogCom },
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -327,7 +334,7 @@ export default {
     sjyhzhChange(val) {
       const this_ = this
       this.sjyhzhList.forEach((item, index) => {
-        if (item.sjyhzh == val) {
+        if (item.sjyhzh === val) {
           this_.form.sjzhmc = item.sjyhmc
         }
       })

@@ -43,9 +43,7 @@
               size="mini"
               :disabled="true"
               :placeholder="placeholderTips.content"
-            >
-              
-            </el-input>
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -163,7 +161,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-            <el-form-item label="金额(元)：" prop="je" class="formItem">
+          <el-form-item label="金额(元)：" prop="je" class="formItem">
             <el-input
               v-model="form.je"
               style="width: 200px"
@@ -176,7 +174,7 @@
       </el-row>
 
       <el-row>
-        <el-col >
+        <el-col>
           <el-form-item label="摘要：" prop="zy" class="formItem">
             <el-input
               v-model="form.zy"
@@ -191,9 +189,9 @@
             />
           </el-form-item>
         </el-col>
-        
+
       </el-row>
-      
+
     </el-form>
 
     <span slot="footer" class="dialog-footer">
@@ -211,28 +209,35 @@ import { placeholderTips } from '@u/validate'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
-      
+
       placeholderTips: placeholderTips,
-      
+
       form: {
-        jybh:'',
-        jyrq:'',
-        bfdwbh:'',
-        dfdwbh:'',
-        bfdwmc:'',
-        dfdwmc:'',
-        bfzh:'',
-        je:'',
-        dx:'',
-        dfzh:'',
-        szfx:'',
-        qxr:'',
-        zy:'',
-        
+        jybh: '',
+        jyrq: '',
+        bfdwbh: '',
+        dfdwbh: '',
+        bfdwmc: '',
+        dfdwmc: '',
+        bfzh: '',
+        je: '',
+        dx: '',
+        dfzh: '',
+        szfx: '',
+        qxr: '',
+        zy: ''
+
       }
     }
   },
@@ -252,7 +257,7 @@ export default {
   mounted() {},
   // 方法集合
   methods: {
-   
+
     initDialog() {
       if (this.dialogObj.id) {
         Object.keys(this.form).forEach(item => {
@@ -264,8 +269,8 @@ export default {
         })
         this.form.ckzqlsh = '74564879'
       }
-    },
-    
+    }
+
   }
 }
 </script>
