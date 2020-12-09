@@ -25,9 +25,7 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
-          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
@@ -82,21 +80,122 @@ export default {
       searchBto: [],
       list: [
         {
+          dwbh: 1324,
           dfhm: 'aaa',
           jylsh: '10469183609',
-          bfyhzh: '111111',
-          bfzhmc: '测试户1',
+          bfyhzh: 2,
+          bfzhmc: 'nameW',
           bfdwmc: '单位1',
           bfyhmc: 1,
+          bfkhhmc: '北京支行',
+
+          dfkhhmc: '北京支行',
+          jdfx: 1,
+          jyrq: '2020-09-09',
+          jyje: '1000',
+          ye: '1000',
+          bz: 1,
+          zhyt: 1,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183610',
+          bfyhzh: 1,
+          bfzhmc: 'nameA',
+          bfdwmc: '单位1',
+          bfyhmc: 2,
+          bfkhhmc: '西单支行',
+
+          dfkhhmc: '西单支行',
+          jdfx: 2,
+          jyrq: '2020-01-28',
+          jyje: '5000',
+          ye: '500',
+          bz: 2,
+          zhyt: 2,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183611',
+          bfyhzh: 2,
+          bfzhmc: 'nameS',
+          bfdwmc: '单位1',
+          bfyhmc: 3,
+          bfkhhmc: '长沙支行',
+
+          dfkhhmc: '长沙支行',
+          jdfx: 1,
+          jyrq: '2020-8-22',
+          jyje: '500',
+          ye: '600',
+          bz: 3,
+          zhyt: 3,
+          sfzl: 2,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183612',
+          bfyhzh: 3,
+          bfzhmc: 'nameD',
+          bfdwmc: '单位1',
+          bfyhmc: 4,
           bfkhhmc: '西单支行',
 
           dfkhhmc: '西单支行',
           jdfx: 1,
-          jyrq: '2020-11-09',
-          jyje: '500',
+          jyrq: '2020-5-20',
+          jyje: '900',
           ye: '1000',
+          bz: 2,
+          zhyt: 4,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183613',
+          bfyhzh: 2,
+          bfzhmc: 'nameF',
+          bfdwmc: '单位1',
+          bfyhmc: 5,
+          bfkhhmc: '上海支行',
+
+          dfkhhmc: '上海支行',
+          jdfx: 1,
+          jyrq: '2020-03-08',
+          jyje: '3000',
+          ye: '200',
           bz: 1,
           zhyt: 1,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183609',
+          bfyhzh: 3,
+          bfzhmc: '测试户1',
+          bfdwmc: '单位1',
+          bfyhmc: 6,
+          bfkhhmc: '杭州支行',
+
+          dfkhhmc: '杭州支行',
+          jdfx: 2,
+          jyrq: '2020-12-09',
+          jyje: '500',
+          ye: '1000',
+          bz: 3,
+          zhyt: 2,
           sfzl: 1,
           zy: '',
           beizhu: ''
@@ -111,8 +210,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
+
       }
     }
   },
@@ -143,27 +241,27 @@ export default {
       {
         type: 'select',
         label: '单位编号:',
-        prop: 'unitNo',
+        prop: 'dwbh',
         placeholder: '请填写单位编号',
         selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
-        prop: 'unitName',
+        prop: 'dwmc',
         placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
-        prop: 'bankName',
+        prop: 'yhmc',
         placeholder: '请填写银行名称',
         selectList: this.backList
       },
       {
         type: 'select',
         label: '币种:',
-        prop: 'currency',
+        prop: 'bz',
         placeholder: '请选择币种',
         selectList: this.currencyList
       },
@@ -171,7 +269,7 @@ export default {
       {
         type: 'select',
         label: '账户号码:',
-        prop: 'accountPhone',
+        prop: 'zhhm',
         placeholder: '请填写账户号码',
         show: this.showAll,
         selectList: this.zhhmList
@@ -179,7 +277,7 @@ export default {
       {
         type: 'input',
         label: '账户名称:',
-        prop: 'accountName',
+        prop: 'zhmc',
         placeholder: '请填写账户名称',
         show: this.showAll
 
@@ -188,7 +286,7 @@ export default {
       {
         type: 'select',
         label: '借贷方向:',
-        prop: 'lendingDirection',
+        prop: 'jdfx',
         placeholder: '请选择借贷方向',
         show: this.showAll,
         selectList: this.lendingList
@@ -228,7 +326,9 @@ export default {
         prop: 'bfyhzh',
         width: '150',
         label: '本方银行账号',
-        fixed: 'left'
+        fixed: 'left',
+        type: 'wordbook',
+        wordbookList: this.zhhm
       },
       {
         prop: 'bfzhmc',
@@ -243,7 +343,9 @@ export default {
       {
         prop: 'bfyhmc',
         width: '150',
-        label: '本方银行名称'
+        label: '本方银行名称',
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
         prop: 'bfkhhmc',
@@ -285,17 +387,23 @@ export default {
       {
         prop: 'bz',
         width: '150',
-        label: '币种'
+        label: '币种',
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'zhyt',
         width: '150',
-        label: '账户用途'
+        label: '账户用途',
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'sfzl',
         width: '150',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'zy',
@@ -403,44 +511,89 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
-            if (i === 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i === 'dwbh') {
+              if (item.dwbh === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
-            if (i === 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i === 'dwmc') {
+              if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
-            if (i === 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i === 'yhmc') {
+              if (item.bfyhmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
-            if (i === 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i === 'bz') {
+              if (item.bz === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
-          } else {
-            continue
+            if (i === 'zhhm') {
+              if (item.bfyhzh === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'zhmc') {
+              if (item.bfzhmc.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+            if (i === 'jdfx') {
+              if (item.jdfx === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'AmountRangeStat') {
+              if (parseInt(item.jyje) >= parseInt(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'AmountRangeEnd') {
+              if (parseInt(item.jyje) <= parseInt(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
           }
         }
         if (bool === true) {

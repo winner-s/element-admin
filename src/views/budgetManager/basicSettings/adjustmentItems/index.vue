@@ -152,26 +152,26 @@ export default {
 
       {
         prop: 'tjlxbh',
-        width: '150',
+        width: '',
         label: '调剂类型编号'
       },
 
       {
         prop: 'tjlxmc',
-        width: '150',
+        width: '',
         label: '调剂类型名称'
       },
       {
         prop: 'txmc',
-        width: '150',
+        width: '',
         label: '体系名称'
       },
       {
         prop: 'zqmc',
-        width: '150',
+        width: '',
         label: '周期名称'
       },
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -312,6 +312,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -320,6 +321,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -328,6 +330,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -336,6 +339,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

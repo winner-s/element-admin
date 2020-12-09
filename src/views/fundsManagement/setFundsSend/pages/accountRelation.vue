@@ -57,7 +57,7 @@ export default {
         nickname: ''
       },
       searchBto: data.accountRelation.searchBto,
-      showAll: false,
+      showAll: 1,
       tableData: [],
       tableListData: [],
       list: [
@@ -96,18 +96,18 @@ export default {
 
       {
         prop: 'clbh',
-        width: '150',
+        width: '',
         type: 'a',
         label: '策略编号'
       },
       {
         prop: 'clmc',
-        width: '150',
+        width: '',
         label: '策略名称'
       },
       {
         prop: 'clms',
-        width: '150',
+        width: '',
         label: '策略模式'
       },
       { label: '操作', type: 'btn', width: '150', fixed: 'right' }

@@ -45,6 +45,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -141,40 +149,40 @@ export default {
       { width: '50', label: '', type: 'index', fixed: 'left' },
       {
         prop: 'zhbh',
-        width: '150',
+        width: '',
         type: 'a',
         label: '账户编号'
       },
       {
         prop: 'zhmc',
-        width: '150',
+        width: '',
         label: '账户名称'
       },
 
       {
         prop: 'dwmc',
-        width: '150',
+        width: '',
         label: '单位名称 '
       },
 
       {
         prop: 'zhlx',
-        width: '150',
+        width: '',
         label: '账户类型'
       },
       {
         prop: 'zhzt',
-        width: '150',
+        width: '',
         label: '账户状态'
       },
       {
         prop: 'yerq',
-        width: '150',
+        width: '',
         label: '余额日期 '
       },
       {
         prop: 'zhje',
-        width: '150',
+        width: '',
         label: '账户金额'
       }
     ]
@@ -255,6 +263,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -263,6 +272,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'yerqjs') {
@@ -270,6 +280,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

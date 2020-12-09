@@ -47,7 +47,14 @@ export default {
   data() {
     // 这里存放数据
     return {
-
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -125,22 +132,22 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index' },
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'mbbh',
-        width: '150',
+        width: '',
         type: 'a',
         label: '模板编号'
       },
 
       {
         prop: 'mbmc',
-        width: '150',
+        width: '',
         label: '模板名称'
       },
       {
         prop: 'mbzt',
-        width: '150',
+        width: '',
         label: '模板状态'
       }
     ]
@@ -311,6 +318,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

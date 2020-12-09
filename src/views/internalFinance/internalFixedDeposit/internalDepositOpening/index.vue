@@ -61,6 +61,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       dqxcfsList: DQXCFSLIST,
       llzhtsList: LLZHTSLIST,
       depositTiermList: DEPOSITTERMLIST,
@@ -279,7 +287,7 @@ export default {
   methods: {
     // 提交
     handleCommit() {
-      let bool = false
+      let Bool = false
       this.selectChange.forEach((item, index) => {
         if (item.zt === '审批通过') {
           this.$confirm(
@@ -300,9 +308,9 @@ export default {
             res.zt = '审批通过'
           }
         })
-        bool = true
+        Bool = true
       })
-      if (bool === true) {
+      if (Bool === true) {
         this.$confirm(
           '提交成功',
           '提示',
@@ -436,6 +444,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -444,6 +453,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -452,6 +462,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -460,6 +471,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -468,6 +480,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -476,6 +489,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -484,6 +498,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

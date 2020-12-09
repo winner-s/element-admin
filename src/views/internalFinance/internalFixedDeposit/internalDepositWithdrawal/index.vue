@@ -351,6 +351,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -359,6 +360,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -367,6 +369,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -375,6 +378,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -383,6 +387,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

@@ -172,32 +172,32 @@ export default {
     this.tableListData = [
       {
         prop: 'sjdw',
-        width: '150',
+        width: '',
         label: '上级单位'
       },
       {
         prop: 'zhssdw',
-        width: '150',
+        width: '',
         label: '账户所属单位'
       },
       {
         prop: 'zhmc',
-        width: '150',
+        width: '',
         label: '账户名称'
       },
       {
         prop: 'khh',
-        width: '150',
+        width: '',
         label: '开户行'
       },
       {
         prop: 'yhzh',
-        width: '150',
+        width: '',
         label: '银行账号'
       },
       {
         prop: 'je',
-        width: '150',
+        width: '',
         label: '金额'
       }
     ]
@@ -271,6 +271,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -279,6 +280,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -287,6 +289,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

@@ -54,7 +54,14 @@ export default {
   data() {
     // 这里存放数据
     return {
-
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -174,28 +181,28 @@ export default {
 
       {
         prop: 'zqbh',
-        width: '150',
+        width: '',
         label: '周期编号'
       },
 
       {
         prop: 'zqmc',
-        width: '150',
+        width: '',
         label: '周期名称'
       },
       {
         prop: 'sstx',
-        width: '150',
+        width: '',
         label: '所属体系'
       },
       {
         prop: 'zqlx',
-        width: '150',
+        width: '',
         label: '周期类型'
       },
       {
         prop: 'zqzt',
-        width: '150',
+        width: '',
         label: '周期状态'
       },
       { label: '操作', type: 'btn', width: '' }
@@ -401,6 +408,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -409,6 +417,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -417,6 +426,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -425,6 +435,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

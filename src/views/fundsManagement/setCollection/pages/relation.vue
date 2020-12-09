@@ -88,6 +88,31 @@ export default {
           ]
         },
         {
+          clbh: 'ZJGJ20072011081831',
+          clmc: '053',
+          clms: 1,
+          sjyhzh: '202010101149',
+          sjzhmc: '测试单位3',
+          childerList: [
+            {
+              dwmc: '二级单位',
+              yhzh: '111111111111',
+              zhmc: '测试1',
+              khhmc: '中国农业银行汉中分行',
+              zhzt: '正常',
+              zhyt: 1
+            },
+            {
+              dwmc: '二级单位',
+              yhzh: '22222222222',
+              zhmc: '测试1',
+              khhmc: '中国农业银行汉中分行',
+              zhzt: '正常',
+              zhyt: 2
+            }
+          ]
+        },
+        {
           clbh: 'ZJGJ20072011081832',
           clmc: '051',
           clms: 1,
@@ -137,22 +162,22 @@ export default {
 
       {
         prop: 'clbh',
-        width: '150',
+        width: '',
         label: '策略编号'
       },
       {
         prop: 'clmc',
-        width: '150',
+        width: '',
         label: '策略名称'
       },
       {
         prop: 'clms',
-        width: '150',
+        width: '',
         label: '策略模式',
         type: 'wordbook',
         wordbookList: this.strategyModel
       },
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     this.tableBtn = [
       {

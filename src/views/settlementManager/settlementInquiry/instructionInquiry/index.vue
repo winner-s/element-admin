@@ -44,6 +44,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -396,6 +404,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -404,6 +413,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -412,6 +422,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -420,6 +431,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

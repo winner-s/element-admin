@@ -171,37 +171,7 @@
                   >
                 </span>
               </p>
-              <div>
-                <el-popover placement="bottom-end" width="180" trigger="click">
-                  <el-card class="">
-                    <div slot="header" class="clearfix">
-                      <span>展示列表设置</span>
-                    </div>
-                    <div>
-                      <el-checkbox-group
-                        v-model="checkList"
-                        class="box"
-                        @change="checkChange"
-                      >
-                        <el-checkbox label="结算笔数">结算笔数</el-checkbox>
-                        <el-checkbox label="结算金额">结算金额</el-checkbox>
-                        <el-checkbox label="资金流入">资金流入</el-checkbox>
-                        <el-checkbox label="资金流出">资金流出</el-checkbox>
-                        <el-checkbox label="资金归集">资金归集</el-checkbox>
-                        <el-checkbox label="资金下拨">资金下拨</el-checkbox>
-                        <el-checkbox
-                          label="预算执行情况"
-                        >预算执行情况</el-checkbox>
-                      </el-checkbox-group>
-                    </div>
-                  </el-card>
-                  <img
-                    slot="reference"
-                    src="../../assets/img/info.png"
-                    style="width: 14px; height: 14px"
-                  >
-                </el-popover>
-              </div>
+
             </div>
           </el-card>
         </el-col>

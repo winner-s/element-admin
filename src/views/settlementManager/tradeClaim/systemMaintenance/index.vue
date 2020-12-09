@@ -47,6 +47,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -118,20 +126,20 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
 
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'jyrlxtbh',
-        width: '150',
+        width: '',
         label: '交易认领系统编号'
       },
       {
         prop: 'jyrlxtmc',
-        width: '150',
+        width: '',
         label: '交易认领系统名称'
       },
       {
         prop: 'accountName',
-        width: '150',
+        width: '',
         label: '备注'
       }
     ]
@@ -271,6 +279,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -279,6 +288,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

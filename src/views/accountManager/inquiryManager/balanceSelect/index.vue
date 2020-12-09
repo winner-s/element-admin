@@ -448,6 +448,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -456,6 +457,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'accountName') {
@@ -463,6 +465,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'unitName') {
@@ -470,6 +473,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -478,6 +482,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -486,6 +491,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'currency') {
@@ -493,6 +499,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

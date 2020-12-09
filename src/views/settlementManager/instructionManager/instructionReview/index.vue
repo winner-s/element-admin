@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>指令同步</span>
+        <span>指令复核</span>
       </div>
       <div>
         <Search
@@ -57,36 +57,7 @@ export default {
       // 顶部按钮
       searchBto: [],
       list: [
-        {
-          bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: '999888000',
-          accountName: '阿里巴巴88',
-          bankName: '中国人民银行营业处',
-          openBankName: '',
-          status: '通过',
-          connection: '直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20071016590269',
-          accountPhone: '20111006',
-          accountName: '测试非直连支付确认',
-          bankName: '中国工商银行',
-          openBankName: '北京分行',
-          status: '已确认',
-          connection: '非直联'
-        },
-        {
-          bto: false,
-          documentNumber: 'KH20081316150311',
-          accountPhone: '12311',
-          accountName: '123131',
-          bankName: '中国人民银行营业处',
-          openBankName: '1231',
-          status: '复核拒绝',
-          connection: '直联'
-        }
+
       ],
 
       // 表格
@@ -359,6 +330,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -367,6 +339,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -375,6 +348,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -383,6 +357,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {
