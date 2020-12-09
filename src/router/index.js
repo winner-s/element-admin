@@ -48,7 +48,16 @@ export const constantRoutes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
+  {
+    path: '/systemInfo',
+    component: () => import('@/views/SystemInfo/index'),
+    hidden: true
+  },
+  {
+    path: '/systemDetail',
+    component: () => import('@/views/SystemInfo/detail.vue'),
+    hidden: true
+  },
   {
     path: '/404',
     component: () => import('@/views/404'),

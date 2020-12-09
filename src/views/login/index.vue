@@ -4,6 +4,7 @@
       <div>
         <div class="left" />
         <div class="right">脱机版用户注册</div>
+        <div class="go_system" @click="goSystem" />
       </div>
     </header>
     <div class="content">
@@ -170,6 +171,10 @@ export default {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
+
+    goSystem() {
+      this.$router.push('/systemInfo')
+    },
     refreshCode() {
       this.createdCode()
     },
@@ -360,9 +365,10 @@ $light_gray:#eee;
       height: 72px;
       line-height: 72px;
       max-width: 1200px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      // display: flex;
+      // align-items: center;
+      // justify-content: space-between;
+      overflow: hidden;
       margin: auto;
     }
     .left{
@@ -371,14 +377,27 @@ $light_gray:#eee;
       background: url('../../assets/images/LOGO.png') no-repeat center center;
       background-size: cover;
       margin-left: 30px;
+      margin-top: 18.5px;
+      float: left;
+    }
+    .go_system {
+      width: 50px;
+      height: 50px;
+      float: right;
+      margin-right: 30px;
+      background: url('~@a/system/system.png') no-repeat;
+      background-size: 100% 100%;
+      cursor: pointer;
+      margin-top: 11px;
     }
     .right{
       font-size: 14px;
       font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
       color: #666666;
-      line-height: 20px;
+      line-height: 72px;
       margin-right: 30px;
+      float: right;
     }
   }
   >footer{

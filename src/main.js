@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import enLang from 'element-ui/lib/locale/lang/en' // lang i18n
+// import enLang from 'element-ui/lib/locale/lang/en' // lang i18n
 
 import '@/styles/index.scss' // global css
 
@@ -15,6 +15,8 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+import animated from 'animate.css'
+Vue.use(animated)
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

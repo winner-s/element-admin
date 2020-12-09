@@ -19,7 +19,7 @@
 <script>
 import dialogCom from './dialogComs'
 import Table from '@c/common/table'
-import data from '../../components/data'
+// import data from '../../components/data'
 export default {
   name: 'FoundsCollsection',
   components: {

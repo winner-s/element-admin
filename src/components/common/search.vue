@@ -220,7 +220,7 @@
   </el-form>
 </template>
 <script>
-import { number } from 'echarts/lib/export'
+// import { number } from 'echarts/lib/export'
 export default {
   props: {
     searchData: {
@@ -253,7 +253,7 @@ export default {
       // 第一个日期限制第二个日期
       pickerOptions0: {
         disabledDate: (time) => {
-          if (this.value2 != '' && this.value2 != null) {
+          if (this.value2 !== '' && this.value2 != null) {
             return (
               time.getTime() > Date.now() ||
               time.getTime() > new Date(this.value2)
@@ -312,9 +312,9 @@ export default {
     },
     // 获取第一个第二个时间
     changeValue(val, i) {
-      if (i == 1) {
+      if (i === 1) {
         this.value1 = val
-      } else if (i == 2) {
+      } else if (i === 2) {
         this.value2 = val
       }
     }
