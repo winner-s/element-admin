@@ -57,14 +57,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [],
 
       // 表格
@@ -166,7 +158,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -273,8 +265,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'jyrlxtbh') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'jyrlxtbh') {
               if (item.jyrlxtbh.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -282,7 +274,7 @@ export default {
               }
             }
 
-            if (i == 'jyrlxtmc') {
+            if (i === 'jyrlxtmc') {
               if (item.jyrlxtmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -293,7 +285,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

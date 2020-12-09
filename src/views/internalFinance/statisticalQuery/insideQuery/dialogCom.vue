@@ -88,7 +88,7 @@
               v-model="form.zwr"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -102,7 +102,7 @@
               v-model="form.bz"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -113,7 +113,7 @@
               v-model="form.dkqx"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -127,7 +127,7 @@
               v-model="form.ksrq"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -138,7 +138,7 @@
               v-model="form.jsrq"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -152,7 +152,7 @@
               v-model="form.dkje"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -163,7 +163,7 @@
               v-model="form.jedx"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -176,7 +176,7 @@
               v-model="form.llzhts"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -190,7 +190,7 @@
               v-model="form.jxfs"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -201,7 +201,7 @@
               v-model="form.htqdll"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -214,7 +214,7 @@
               v-model="form.fxfs"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -225,7 +225,7 @@
               v-model="form.hbff"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -304,7 +304,14 @@ import Table from '@c/common/table'
 export default {
   components: { Table },
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {

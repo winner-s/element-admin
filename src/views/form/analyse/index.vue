@@ -29,7 +29,7 @@
 <script>
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import data from '../components/data'
+// import data from '../components/data'
 export default {
   name: 'Analyse',
   components: {
@@ -230,8 +230,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'bankName') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'bankName') {
               if (item.bankName.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -240,7 +240,7 @@ export default {
               }
             }
 
-            if (i == 'coinType') {
+            if (i === 'coinType') {
               console.log(this.searchData[i])
               if (item.coinType.toString().includes(this.searchData[i])) {
                 bool = true
@@ -253,7 +253,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

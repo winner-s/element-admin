@@ -66,14 +66,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
 
       ],
@@ -247,10 +239,10 @@ export default {
   // 方法集合
   methods: {
     handleCommit() {
-      if (this.selectChange.length != 0) {
+      if (this.selectChange.length !== 0) {
         this.selectChange.forEach((item, index) => {
           this.list.forEach((res, index) => {
-            if (res.htlsh == item.htlsh) {
+            if (res.htlsh === item.htlsh) {
               res.djzt = 2
             }
           })
@@ -272,7 +264,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -375,8 +367,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'htmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'htmc') {
               if (item.htmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -384,7 +376,7 @@ export default {
               }
             }
 
-            if (i == 'zqr') {
+            if (i === 'zqr') {
               if (item.zqr.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -392,7 +384,7 @@ export default {
               }
             }
 
-            if (i == 'yqksrqc') {
+            if (i === 'yqksrqc') {
               if (Date.parse(item.yqksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -400,7 +392,7 @@ export default {
               }
             }
 
-            if (i == 'yqksrqd') {
+            if (i === 'yqksrqd') {
               if (Date.parse(item.yqksrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -408,8 +400,8 @@ export default {
               }
             }
 
-            if (i == 'djzt') {
-              if (item.djzt == this.searchData[i]) {
+            if (i === 'djzt') {
+              if (item.djzt === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
@@ -419,7 +411,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

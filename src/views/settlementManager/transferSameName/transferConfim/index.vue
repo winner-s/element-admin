@@ -56,14 +56,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [],
 
       // 表格
@@ -267,7 +259,7 @@ export default {
       })
     },
     handleStatus(v) {
-      if (v.status == 0) {
+      if (v.status === 0) {
         this.$confirm('此操作将停用该账号?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -292,10 +284,6 @@ export default {
           const json = {
             id: v.id
           }
-          updateAdminStatus(json).then((res) => {
-            console.log(res)
-            this.getList()
-          })
         })
       }
     },
@@ -322,8 +310,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'documentNumber') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'documentNumber') {
               if (item.documentNumber.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -331,7 +319,7 @@ export default {
               }
             }
 
-            if (i == 'openApplicant') {
+            if (i === 'openApplicant') {
               if (item.openApplicant.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -339,7 +327,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -347,7 +335,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -358,7 +346,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

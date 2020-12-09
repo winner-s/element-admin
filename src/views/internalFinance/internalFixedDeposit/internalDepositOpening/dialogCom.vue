@@ -31,7 +31,7 @@
               v-model="form.ckkllsh"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -62,7 +62,7 @@
               v-model="form.ckll"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             >
               <template slot="append">%</template>
@@ -75,7 +75,7 @@
               v-model="form.ckje"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -247,7 +247,14 @@ import { DQXCFSLIST, LLZHTSLIST, DEPOSITTERMLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {

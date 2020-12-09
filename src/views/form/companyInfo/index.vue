@@ -28,7 +28,7 @@
 <script>
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import data from '../components/data'
+// import data from '../components/data'
 import { UNITLEVEL, UNITLEVELLIST, UNITTYPE, UNITTYPELIST } from '@u/wordbook'
 export default {
   name: 'CompanyInfo',
@@ -264,8 +264,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'hierarchy') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'hierarchy') {
               if (item.hierarchy.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -274,7 +274,7 @@ export default {
               }
             }
 
-            if (i == 'company') {
+            if (i === 'company') {
               if (item.company.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -283,7 +283,7 @@ export default {
               }
             }
 
-            if (i == 'companyTyle') {
+            if (i === 'companyTyle') {
               if (item.companyTyle.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -294,7 +294,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

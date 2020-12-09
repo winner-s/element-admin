@@ -61,14 +61,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
 
       list: [
         {
@@ -195,7 +187,7 @@ export default {
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })
@@ -308,8 +300,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'lljhmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'lljhmc') {
               if (item.lljhmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -317,7 +309,7 @@ export default {
               }
             }
 
-            if (i == 'lllx') {
+            if (i === 'lllx') {
               if (item.lllx.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -325,7 +317,7 @@ export default {
               }
             }
 
-            if (i == 'unitNo') {
+            if (i === 'unitNo') {
               if (item.unitNo.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -333,7 +325,7 @@ export default {
               }
             }
 
-            if (i == 'unitName') {
+            if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -344,7 +336,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

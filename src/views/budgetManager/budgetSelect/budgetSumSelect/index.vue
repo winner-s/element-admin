@@ -54,14 +54,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      // 弹出框
-      dialogObj: {
-        id: '',
-        title: '',
-        read: false,
-        show: false,
-        form: {}
-      },
       list: [
         {
           ysnd: '2017',
@@ -292,8 +284,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'txmc') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'txmc') {
               if (item.ystx.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -301,7 +293,7 @@ export default {
               }
             }
 
-            if (i == 'zqmc') {
+            if (i === 'zqmc') {
               if (item.zqmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -309,7 +301,7 @@ export default {
               }
             }
 
-            if (i == 'ysnd') {
+            if (i === 'ysnd') {
               if (item.ysnd.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -317,21 +309,21 @@ export default {
               }
             }
 
-            if (i == 'zt') {
+            if (i === 'zt') {
               if (item.bbzt.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'ysdwbh') {
+            if (i === 'ysdwbh') {
               if (item.ysdwbh.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'ysdwmc') {
+            if (i === 'ysdwmc') {
               if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -339,7 +331,7 @@ export default {
               }
             }
 
-            if (i == 'ysksrq') {
+            if (i === 'ysksrq') {
               if (Date.parse(item.ysksrq) >= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -347,7 +339,7 @@ export default {
               }
             }
 
-            if (i == 'ysjsrq') {
+            if (i === 'ysjsrq') {
               if (Date.parse(item.ysjsrq) <= Date.parse(this.searchData[i])) {
                 bool = true
               } else {
@@ -358,7 +350,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })

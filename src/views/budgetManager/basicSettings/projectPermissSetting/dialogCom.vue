@@ -27,7 +27,14 @@
 
 export default {
   name: 'DialogCom',
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     return {
 

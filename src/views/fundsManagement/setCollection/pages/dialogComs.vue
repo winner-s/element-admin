@@ -71,7 +71,7 @@
               v-model="form.gjbl"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -130,7 +130,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 1">
+      <el-row v-if="form.zqsz === 1">
         <el-col :span="12">
           <el-form-item label="选择时间段">
             <el-time-picker
@@ -146,7 +146,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 2">
+      <el-row v-if="form.zqsz === 2">
         <el-col>
           <el-form-item label="选择时间">
             <el-checkbox
@@ -167,7 +167,7 @@
         </el-col>
       </el-row>
 
-      <el-row v-if="form.zqsz == 3">
+      <el-row v-if="form.zqsz === 3">
         <el-col>
           <el-form-item label="选择时间段">
             <el-checkbox
@@ -209,7 +209,7 @@
               <li>归集金额单位设置可参考如下公式:归集金额=归集金额+(归集金额%归集金额单位) (注:%为取余) 归集金额与归集单位的余数为零，才能全部归集 </li>
               <li>执行时间录入格式为：[小时：分钟] 例如09:00、23:59</li>
               <li>调拨额度设置中可以录入的数据为： 1、2、3、4、5、6、7、8、9、0、+、-、*、/、%、(、) </li>
-              <li>调拨启动条件中可以录入的数据为： 1、2、3、4、5、6、7、8、9、0、+、-、*、/、>、<、>=、<=、(、)、or、and</li>
+              <li>{{ txt }}</li>
             </ul>
           </el-form-item>
         </el-col>
@@ -237,10 +237,18 @@ import { COLLECTIONLIST, SCORLLLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
+      txt: '调拨启动条件中可以录入的数据为： 1、2、3、4、5、6、7、8、9、0、+、-、*、<=、/、>、<、(、)、or、>=、and',
       scorllList: SCORLLLIST,
       collectionList: COLLECTIONLIST,
       checkAll: false,

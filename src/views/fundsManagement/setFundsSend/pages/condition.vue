@@ -19,7 +19,7 @@
 <script>
 import dialogCom from './dialogComs'
 import Table from '@c/common/table'
-import data from '../../components/data'
+// import data from '../../components/data'
 export default {
   name: 'FoundsCollsection',
   components: {
@@ -91,7 +91,7 @@ export default {
     handleStatus(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber == res.documentNumber) {
+        if (item.documentNumber === res.documentNumber) {
           ind = index
         }
       })

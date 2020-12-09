@@ -81,7 +81,7 @@
               v-model="form.zhmc"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -95,7 +95,7 @@
               v-model="form.zhlx"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -106,7 +106,7 @@
               v-model="form.khrq"
               style="width: 200px"
               size="mini"
-              :disabled="dialogObj.id != ''"
+              :disabled="dialogObj.id !== ''"
               :placeholder="placeholderTips.content"
             />
           </el-form-item>
@@ -208,7 +208,14 @@ import { CURRENCYLIST, SCORLLLIST } from '@u/wordbook'
 export default {
   components: {},
   // import引入的组件需要注入到对象中才能使用
-  props: ['dialogObj'],
+  props: {
+    dialogObj: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data() {
     // 这里存放数据
     return {
@@ -300,7 +307,7 @@ export default {
   methods: {
     zhbhChange(res) {
       this.zhbhList.forEach((item, index) => {
-        if (item.zhbh == res) {
+        if (item.zhbh === res) {
           this.form.dwmc = item.dwmc
           this.form.zhbh = item.zhbh
           this.form.dwbh = item.dwbh

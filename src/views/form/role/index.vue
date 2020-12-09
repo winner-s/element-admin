@@ -28,7 +28,7 @@
 <script>
 import Search from '@c/common/search'
 import Table from '@c/common/table'
-import data from '../components/data'
+// import data from '../components/data'
 export default {
   name: 'Role',
   components: {
@@ -268,8 +268,8 @@ export default {
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
-          if (this.searchData[i] != '' && this.searchData[i] != undefined) {
-            if (i == 'companyNum') {
+          if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
+            if (i === 'companyNum') {
               if (item.companyNum.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -277,7 +277,7 @@ export default {
               }
             }
 
-            if (i == 'userName') {
+            if (i === 'userName') {
               if (item.userName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -285,7 +285,7 @@ export default {
               }
             }
 
-            if (i == 'company') {
+            if (i === 'company') {
               if (item.company.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -293,7 +293,7 @@ export default {
               }
             }
 
-            if (i == 'accountName') {
+            if (i === 'accountName') {
               if (item.accountName.includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -301,14 +301,14 @@ export default {
               }
             }
 
-            if (i == 'userSatus') {
+            if (i === 'userSatus') {
               if (item.userSatus.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
               }
             }
-            if (i == 'role') {
+            if (i === 'role') {
               if (item.role.toString().includes(this.searchData[i])) {
                 bool = true
               } else {
@@ -319,7 +319,7 @@ export default {
             continue
           }
         }
-        if (bool == true) {
+        if (bool === true) {
           list.push(item)
         }
       })
