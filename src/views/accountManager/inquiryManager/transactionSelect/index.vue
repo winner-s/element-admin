@@ -36,7 +36,24 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import {
+  UNITNOLIST,
+  BACKLIST,
+  CURRENCYLIST,
+  ACCOUNTUSAGELIST,
+  DIRECTLIST,
+  ACCOUNTSTATUSLIST,
+  ZHHM,
+  ZHHMLIST,
+  UNITNO,
+  BACK,
+  CURRENCY,
+  ACCOUNTUSAGE,
+  DIRECT,
+  ACCOUNTSTATUS,
+  LENDING,
+  LENDINGLIST
+} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -46,8 +63,15 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      lendingList: LENDINGLIST,
+      zhhmList: ZHHMLIST,
       unitNoList: UNITNOLIST,
+      backList: BACKLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
+      accountStatusList: ACCOUNTSTATUSLIST,
+      showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
@@ -141,13 +165,15 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
-        placeholder: '请选择币种'
+        placeholder: '请选择币种',
+        selectList: this.currencyList
       },
 
       {
@@ -155,7 +181,8 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.zhhmList
       },
       {
         type: 'input',
@@ -171,7 +198,8 @@ export default {
         label: '借贷方向:',
         prop: 'lendingDirection',
         placeholder: '请选择借贷方向',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.lendingList
       },
       {
         type: 'input',
@@ -243,7 +271,9 @@ export default {
       {
         prop: 'jdfx',
         width: '150',
-        label: '借贷方向'
+        label: '借贷方向',
+        type: 'wordbook',
+        wordbookList: this.lending
       },
       {
         prop: 'jyrq',
@@ -295,6 +325,30 @@ export default {
   },
   // 方法集合
   methods: {
+    lending(val) {
+      return LENDING[val]
+    },
+    zhhm(val) {
+      return ZHHM[val]
+    },
+    unitNo(val) {
+      return UNITNO[val]
+    },
+    back(val) {
+      return BACK[val]
+    },
+    currency(val) {
+      return CURRENCY[val]
+    },
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
+    accountStatus(val) {
+      return ACCOUNTSTATUS[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
