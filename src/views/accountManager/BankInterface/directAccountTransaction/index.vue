@@ -165,45 +165,45 @@ export default {
 
       {
         prop: 'zhhm',
-        width: '150',
+        width: '',
         label: '账户号码'
       },
 
       {
         prop: 'zhmc',
-        width: '150',
+        width: '',
         label: '账户名称'
       },
       {
         prop: 'jsye',
-        width: '150',
+        width: '',
         label: '即时余额(元)'
       },
       {
         prop: 'kyye',
-        width: '150',
+        width: '',
         label: '可用余额(元)'
       },
       {
         prop: 'yhfhxx',
-        width: '150',
+        width: '',
         label: '银行返回信息'
       },
       {
         prop: 'dwmc',
-        width: '150',
+        width: '',
         label: '单位名称'
       },
       {
         prop: 'zhyt',
-        width: '150',
+        width: '',
         label: '账户用途',
         type: 'wordbook',
         wordbookList: this.accountUsage
       },
       {
         prop: 'khyh',
-        width: '150',
+        width: '',
         label: '开户银行'
       }
     ]
@@ -278,6 +278,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -286,6 +287,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -294,6 +296,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

@@ -44,7 +44,7 @@ export default {
         nickname: ''
       },
       searchBto: data.selfSendTask.searchBto,
-      showAll: false,
+      showAll: 1,
       tableData: [],
       tableListData: [],
       list: [
@@ -72,33 +72,33 @@ export default {
 
       {
         prop: 'clbh',
-        width: '150',
+        width: '',
         type: 'a',
         label: '策略编号',
         fixed: 'left'
       },
       {
         prop: 'clmc',
-        width: '150',
+        width: '',
         label: '策略名称',
         fixed: 'left'
       },
       {
         prop: 'zxms',
-        width: '150',
+        width: '',
         label: '执行模式'
       },
       {
         prop: 'rwzt',
-        width: '150',
+        width: '',
         label: '任务状态'
       },
       {
         prop: 'yxzt',
-        width: '150',
+        width: '',
         label: '运行状态'
       },
-      { label: '操作', type: 'btn', width: '200', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [

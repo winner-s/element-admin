@@ -20,7 +20,11 @@
 <script>
 import dialogCom from './dialogCom'
 import Table from '@c/common/table'
+<<<<<<< HEAD
 // import data from '../../components/data'
+=======
+
+>>>>>>> lfh
 export default {
   name: 'FoundsCollsection',
   components: {

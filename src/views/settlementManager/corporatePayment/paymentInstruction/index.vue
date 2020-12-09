@@ -192,7 +192,6 @@ export default {
       {
         prop: 'djbh',
         width: '150',
-        type: 'a',
         label: '单据编号',
         fixed: 'left'
       },
@@ -323,6 +322,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -331,6 +331,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -339,6 +340,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -347,6 +349,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>历史交易查询</span>
+        <span>当日交易查询</span>
       </div>
       <div>
         <Search
@@ -25,9 +25,7 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
-          @handleDelete="handleDelete"
         />
       </div>
     </el-card>
@@ -36,7 +34,24 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import {
+  UNITNOLIST,
+  BACKLIST,
+  CURRENCYLIST,
+  ACCOUNTUSAGELIST,
+  DIRECTLIST,
+  ACCOUNTSTATUSLIST,
+  ZHHM,
+  ZHHMLIST,
+  UNITNO,
+  BACK,
+  CURRENCY,
+  ACCOUNTUSAGE,
+  DIRECT,
+  ACCOUNTSTATUS,
+  LENDING,
+  LENDINGLIST
+} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -46,8 +61,15 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      lendingList: LENDINGLIST,
+      zhhmList: ZHHMLIST,
       unitNoList: UNITNOLIST,
+      backList: BACKLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
+      accountStatusList: ACCOUNTSTATUSLIST,
+      showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
@@ -58,17 +80,18 @@ export default {
       searchBto: [],
       list: [
         {
-          jylsh: '216755346547476',
-          bfyhzh: '32323232323',
-          bfzhmc: 'aaa',
-          bfdwmc: 'bbbb',
+          dwbh: 1324,
+          dfhm: 'aaa',
+          jylsh: '10469183609',
+          bfyhzh: 1,
+          bfzhmc: 'nameW',
+          bfdwmc: '单位1',
           bfyhmc: 1,
-          bfkhh: '株洲分行',
-          dfyhzh: '34343434343',
-          dfzhmc: 'cccc',
-          dfkhh: '北京分行',
+          bfkhhmc: '北京支行',
+
+          dfkhhmc: '北京支行',
           jdfx: 1,
-          jyrq: '2020-09-01',
+          jyrq: '2020-09-09',
           jyje: '1000',
           ye: '1000',
           bz: 1,
@@ -76,7 +99,106 @@ export default {
           sfzl: 1,
           zy: '',
           beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183610',
+          bfyhzh: 2,
+          bfzhmc: 'nameA',
+          bfdwmc: '单位1',
+          bfyhmc: 2,
+          bfkhhmc: '西单支行',
 
+          dfkhhmc: '西单支行',
+          jdfx: 2,
+          jyrq: '2020-01-28',
+          jyje: '5000',
+          ye: '500',
+          bz: 2,
+          zhyt: 2,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183611',
+          bfyhzh: 3,
+          bfzhmc: 'nameS',
+          bfdwmc: '单位1',
+          bfyhmc: 3,
+          bfkhhmc: '长沙支行',
+
+          dfkhhmc: '长沙支行',
+          jdfx: 1,
+          jyrq: '2020-8-22',
+          jyje: '500',
+          ye: '600',
+          bz: 3,
+          zhyt: 3,
+          sfzl: 2,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183612',
+          bfyhzh: 1,
+          bfzhmc: 'nameD',
+          bfdwmc: '单位1',
+          bfyhmc: 4,
+          bfkhhmc: '西单支行',
+
+          dfkhhmc: '西单支行',
+          jdfx: 1,
+          jyrq: '2020-5-20',
+          jyje: '900',
+          ye: '1000',
+          bz: 2,
+          zhyt: 4,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183613',
+          bfyhzh: 2,
+          bfzhmc: 'nameF',
+          bfdwmc: '单位1',
+          bfyhmc: 5,
+          bfkhhmc: '上海支行',
+
+          dfkhhmc: '上海支行',
+          jdfx: 1,
+          jyrq: '2020-03-08',
+          jyje: '3000',
+          ye: '200',
+          bz: 1,
+          zhyt: 1,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
+        },
+        {
+          dfhm: 'aaa',
+          jylsh: '10469183609',
+          bfyhzh: 2,
+          bfzhmc: '测试户1',
+          bfdwmc: '单位1',
+          bfyhmc: 6,
+          bfkhhmc: '杭州支行',
+
+          dfkhhmc: '杭州支行',
+          jdfx: 2,
+          jyrq: '2020-12-09',
+          jyje: '500',
+          ye: '1000',
+          bz: 3,
+          zhyt: 2,
+          sfzl: 1,
+          zy: '',
+          beizhu: ''
         }
       ],
 
@@ -88,8 +210,7 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
+
       }
     }
   },
@@ -120,63 +241,67 @@ export default {
       {
         type: 'select',
         label: '单位编号:',
-        prop: 'unitNo',
+        prop: 'dwbh',
         placeholder: '请填写单位编号',
         selectList: this.unitNoList
       },
       {
         type: 'input',
         label: '单位名称:',
-        prop: 'unitName',
+        prop: 'dwmc',
         placeholder: '请填写单位名称'
       },
       {
         type: 'select',
         label: '银行名称:',
-        prop: 'bankName',
-        placeholder: '请填写银行名称'
+        prop: 'yhmc',
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'select',
         label: '是否直联:',
-        prop: 'currency',
+        prop: 'sfzl',
+        selectList: this.directList,
         placeholder: '请选择选择是否直联'
       },
       {
         type: 'select',
         label: '银行账号:',
-        prop: 'currency',
+        prop: 'yhzh',
         placeholder: '请选择银行账号',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.zhhmList
       },
       {
         type: 'select',
         label: '币种:',
-        prop: 'currency',
+        prop: 'bz',
         placeholder: '请选择币种',
+        selectList: this.currencyList,
         show: this.showAll
       },
 
       {
         type: 'input',
         label: '账户名称:',
-        prop: 'accountName',
+        prop: 'zhmc',
         placeholder: '请填写账户名称',
         show: this.showAll
 
       },
       {
-        type: 'input',
+        type: 'time',
         label: '日期范围:',
-        prop: 'accountName',
+        prop: 'rqfwc',
         placeholder: '请填写日期范围',
         show: this.showAll
 
       },
       {
-        type: 'input',
+        type: 'time',
         label: '到:',
-        prop: 'accountName',
+        prop: 'rqfwd',
         placeholder: '请填写日期范围',
         show: this.showAll
 
@@ -185,29 +310,30 @@ export default {
       {
         type: 'select',
         label: '账户状态:',
-        prop: 'connection',
+        prop: 'zhzt',
         placeholder: '请填写账户状态',
         show: this.showAll
       },
       {
         type: 'input',
         label: '金额范围:',
-        prop: 'connection',
+        prop: 'AmountRangeStat',
         placeholder: '请填写金额范围',
         show: this.showAll
       },
       {
         type: 'select',
         label: '到:',
-        prop: 'connection',
+        prop: 'AmountRangeEnd',
         placeholder: '请填写金额范围',
         show: this.showAll
       },
       {
         type: 'select',
         label: '借贷方向:',
-        prop: 'connection',
+        prop: 'jdfx',
         placeholder: '请选择借贷方向',
+        selectList: this.lendingList,
         show: this.showAll
       },
       {
@@ -220,18 +346,20 @@ export default {
     //  table表格
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
+
       {
         prop: 'jylsh',
         width: '150',
         label: '交易流水号',
         fixed: 'left'
       },
-
       {
         prop: 'bfyhzh',
         width: '150',
         label: '本方银行账号',
-        fixed: 'left'
+        fixed: 'left',
+        type: 'wordbook',
+        wordbookList: this.zhhm
       },
       {
         prop: 'bfzhmc',
@@ -243,36 +371,34 @@ export default {
         width: '150',
         label: '本方单位名称'
       },
-
       {
         prop: 'bfyhmc',
         width: '150',
-        label: '本方银行名称'
+        label: '本方银行名称',
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
-        prop: 'bfkhh',
+        prop: 'bfkhhmc',
         width: '150',
         label: '本方开户行'
       },
       {
-        prop: 'dfyhzh',
+        prop: 'dfhm',
         width: '150',
-        label: '对方银行账号'
+        label: '对方账户号码'
       },
       {
-        prop: 'dfzhmc',
+        prop: 'dfkhhmc',
         width: '150',
-        label: '对方账号名称'
-      },
-      {
-        prop: 'dfkhh',
-        width: '150',
-        label: '对方开户行'
+        label: '对方开户行名称'
       },
       {
         prop: 'jdfx',
         width: '150',
-        label: '借贷方向'
+        label: '借贷方向',
+        type: 'wordbook',
+        wordbookList: this.lending
       },
       {
         prop: 'jyrq',
@@ -292,17 +418,23 @@ export default {
       {
         prop: 'bz',
         width: '150',
-        label: '币种'
+        label: '币种',
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'zhyt',
         width: '150',
-        label: '账户用途'
+        label: '账户用途',
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'sfzl',
         width: '150',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'zy',
@@ -324,6 +456,30 @@ export default {
   },
   // 方法集合
   methods: {
+    lending(val) {
+      return LENDING[val]
+    },
+    zhhm(val) {
+      return ZHHM[val]
+    },
+    unitNo(val) {
+      return UNITNO[val]
+    },
+    back(val) {
+      return BACK[val]
+    },
+    currency(val) {
+      return CURRENCY[val]
+    },
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
+    accountStatus(val) {
+      return ACCOUNTSTATUS[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -386,44 +542,114 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
-            if (i === 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
+            if (i === 'dwbh') {
+              if (item.dwbh === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
-            if (i === 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
+            if (i === 'dwmc') {
+              if (item.dwmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
-            if (i === 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+            if (i === 'yhmc') {
+              if (item.bfyhmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
+              }
+            }
+            if (i === 'sfzl') {
+              if (item.sfzl === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+            if (i === 'bz') {
+              if (item.bz === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+            if (i === 'zhhm') {
+              if (item.bfyhzh === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
               }
             }
 
-            if (i === 'unitName') {
-              if (item.unitName.includes(this.searchData[i])) {
+            if (i === 'zhmc') {
+              if (item.bfzhmc.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
-          } else {
-            continue
+            if (i === 'jdfx') {
+              if (item.jdfx === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'AmountRangeStat') {
+              if (parseInt(item.jyje) >= parseInt(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'AmountRangeEnd') {
+              if (parseInt(item.jyje) <= parseInt(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'rqfwc') {
+              if (Date.parse(item.jyrq) >= Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'rqfwd') {
+              if (Date.parse(item.jyrq) <= Date.parse(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
           }
         }
         if (bool === true) {

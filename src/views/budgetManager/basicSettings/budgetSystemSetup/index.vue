@@ -55,6 +55,14 @@ export default {
     // 这里存放数据
     return {
       // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
+      // 弹出框
       dialogObjS: {
         id: '',
         title: 'aaa',
@@ -152,18 +160,18 @@ export default {
 
       {
         prop: 'txbh',
-        width: '150',
+        width: '',
         label: '预算体系编号'
       },
 
       {
         prop: 'txmc',
-        width: '150',
+        width: '',
         label: '预算体系名称'
       },
       {
         prop: 'txzt',
-        width: '150',
+        width: '',
         label: '预算体系状态'
       },
       { label: '操作', type: 'btn', width: '' }
@@ -377,6 +385,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -385,6 +394,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -393,6 +403,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -401,6 +412,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

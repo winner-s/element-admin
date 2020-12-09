@@ -15,6 +15,7 @@
           @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
+          @handleCommit="handleCommit"
         />
 
         <Table
@@ -25,7 +26,7 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-
+          @handleSelectionChange="handleSelectionChange"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
@@ -37,7 +38,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -47,6 +48,15 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
+      djztList: DJZTLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -60,6 +70,11 @@ export default {
 
       list: [
         {
+          skfzgmc: '123',
+          llr: 'admin',
+          sjly: '财资云',
+          wbdh: '12345789',
+          djzt: 1,
           bz: '',
           djbh: '57110317798255631',
           djrq: '2020/11/4',
@@ -81,7 +96,6 @@ export default {
           skfyhss: '不知道',
           skfyhzh: '4654654',
           skfzhmc: '小三',
-          wbdh: '',
           ywdw: '业务单位',
           zffs: 1,
           zy: '000'
@@ -94,9 +108,9 @@ export default {
       // 顶部搜索
       searchItem: [],
       searchData: {
-        nickname: '',
-        documentNumber: ''
-      }
+
+      },
+      selectChange: ''
     }
   },
   // 监听属性 类似于data概念
@@ -143,7 +157,8 @@ export default {
         type: 'select',
         label: '单据状态:',
         prop: 'openApplicant',
-        placeholder: '请选择单据状态'
+        placeholder: '请选择单据状态',
+        selectList: this.djztList
       },
       {
         type: 'input',
@@ -203,12 +218,12 @@ export default {
       {
         type: 'select',
         label: '数据来源:',
-        prop: 'contain',
+        prop: 'sjly',
         show: this.showAll
       }, {
         type: 'input',
         label: '外部单号:',
-        prop: 'contain',
+        prop: 'wbdh',
         show: this.showAll
       }, {
         type: 'checkbox',
@@ -221,7 +236,7 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '150', fixed: 'left' },
+      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
       {
         prop: 'djbh',
         width: '150',
@@ -238,7 +253,9 @@ export default {
       {
         prop: 'djzt',
         width: '150',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'fkfyhzh',
@@ -287,7 +304,13 @@ export default {
       }
     ]
     // 按钮
-    this.tableBtn = []
+    this.tableBtn = [
+      {
+        name: '复 核',
+        btnType: 'primary',
+        handleFn: 'handleEdit'
+      }
+    ]
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -295,6 +318,29 @@ export default {
   },
   // 方法集合
   methods: {
+    handleCommit() {
+      if (this.selectChange.length !== 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.djbh === item.djbh) {
+              res.djzt = 4
+            }
+          })
+        })
+      } else {
+        this.$message({
+          message: '请选择数据再进行提交操作！',
+          type: 'warning'
+        })
+      }
+    },
+    handleSelectionChange(res) {
+      this.selectChange = res
+    },
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -314,7 +360,22 @@ export default {
       })
     },
     // 单击新增按钮
-    handleInsert() {},
+    handleInsert(row) {
+      if (this.selectChange.length !== 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.djbh === item.djbh) {
+              res.djzt = 3
+            }
+          })
+        })
+      } else {
+        this.$message({
+          message: '请选择数据再进行提交操作！',
+          type: 'warning'
+        })
+      }
+    },
 
     // 获取search信息
     getDataList(val) {
@@ -341,11 +402,14 @@ export default {
     },
 
     handleEdit(row) {
-      this.dialogObj.id = row.id
-      this.dialogObj.read = false
-      this.dialogObj.show = true
-      this.dialogObj.title = '编辑'
-      this.dialogObj.form = row
+      row.djzt = 2
+      this.$confirm('操作成功?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'success'
+      }).then(() => {
+
+      })
     },
     handleViewOther(row) {
       this.dialogObj.id = row.djbh
@@ -369,6 +433,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -377,6 +442,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -385,6 +451,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -393,6 +460,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

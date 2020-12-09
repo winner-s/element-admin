@@ -633,6 +633,7 @@ export default {
           if (this.dialogObj.id) {
             this.updateSub()
           } else {
+            this.djzt = 1
             this.addSub()
           }
         }

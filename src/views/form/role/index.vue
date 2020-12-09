@@ -172,29 +172,29 @@ export default {
     this.tableListData = [
       {
         prop: 'accountName',
-        width: '150',
+        width: '',
         label: '登陆用户名'
       },
       {
         prop: 'userName',
-        width: '150',
+        width: '',
         label: '真实姓名'
       },
       {
         prop: 'role',
-        width: '150',
+        width: '',
         type: 'wordbook',
         wordbookList: this.role,
         label: '角色'
       },
       {
         prop: 'company',
-        width: '150',
+        width: '',
         label: '单位名称'
       },
       {
         prop: 'userSatus',
-        width: '150',
+        width: '',
         label: '用户状态',
         type: 'wordbook',
         wordbookList: this.userType
@@ -274,6 +274,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -282,6 +283,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -290,6 +292,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -298,6 +301,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -306,6 +310,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'role') {
@@ -313,6 +318,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

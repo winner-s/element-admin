@@ -50,6 +50,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       rlxtList: RLXTLIST,
       gzztList: GZZTLIST,
       showAll: 1,
@@ -141,28 +149,28 @@ export default {
     this.tableListData = [
       { width: '50', label: '', type: 'index', fixed: 'left' },
       { width: '50', label: '', type: 'selection', fixed: 'left' },
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' },
+      { label: '操作', type: 'btn', width: '', fixed: 'right' },
       {
         prop: 'gzbh',
-        width: '150',
+        width: '',
         type: 'a',
         label: '规则编号'
       },
       {
         prop: 'gzmc',
-        width: '150',
+        width: '',
         label: '规则名称'
       },
       {
         prop: 'rlxt',
-        width: '150',
+        width: '',
         type: 'wordbook',
         wordbookList: this.rlxt,
         label: '认领系统'
       },
       {
         prop: 'gzzt',
-        width: '150',
+        width: '',
         label: '规则状态',
         type: 'wordbook',
         wordbookList: this.gzzt
@@ -339,6 +347,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -347,6 +356,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -355,6 +365,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

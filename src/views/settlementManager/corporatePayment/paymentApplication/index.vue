@@ -15,6 +15,7 @@
           @handleInsert="handleInsert"
           @dropDown="dropDown"
           @dropUp="dropUp"
+          @handleCommit="handleCommit"
         />
 
         <Table
@@ -27,20 +28,17 @@
           @handleEdit="handleEdit"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
+          @handleSelectionChange="handleSelectionChange"
         />
       </div>
     </el-card>
-    <dialog-com
-      :dialog-obj="dialogObj"
-      @addSub="addSub"
-      @updateSub="updateSub"
-    />
+    <dialog-com :dialog-obj="dialogObj" @addSub="addSub" @updateSub="updateSub" />
   </div>
 </template>
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -50,6 +48,8 @@ export default {
   data() {
     // 这里存放数据
     return {
+
+      djztList: DJZTLIST,
 
       showAll: false,
       unitNoList: UNITNOLIST,
@@ -61,17 +61,56 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-      list: [],
-
+      list: [
+        {
+          djzt: 1,
+          bz: 1,
+          djbh: '78044207786628105',
+          djrq: '2020/12/9',
+          dscs: '',
+          dxje: '',
+          fkdw: '二级单位1',
+          fkfkhhmc: '北京分行',
+          fkfyhmc: '中国工商银行',
+          fkfyhs: '北京',
+          fkfyhshi: '北京市',
+          fkfyhzh: '20111006',
+          fkfzhmc: '测试非直联支付确认',
+          fkyt: 1,
+          je: '1000',
+          lhh: '548982894',
+          qwzfrq: '2020-12-16T16:00:00.000Z',
+          skfkhhmc: '株洲分行',
+          skfyhmc: 1,
+          skfyhss: '不知道',
+          skfyhzh: '4654654',
+          skfzhmc: '小三',
+          wbdh: '',
+          ywdw: '业务单位',
+          zffs: 1,
+          zy: '111'
+        }
+      ],
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       // 表格
-      tableData: [],
+      tableData: [
+
+      ],
       tableBtn: [],
       // 顶部搜索
       searchItem: [],
       searchData: {
         nickname: '',
         documentNumber: ''
-      }
+      },
+      selectChange: []
     }
   },
   // 监听属性 类似于data概念
@@ -118,7 +157,8 @@ export default {
         type: 'select',
         label: '单据状态:',
         prop: 'openApplicant',
-        placeholder: '请选择单据状态'
+        placeholder: '请选择单据状态',
+        selectList: this.djztList
       },
       {
         type: 'input',
@@ -202,7 +242,9 @@ export default {
       {
         prop: 'djzt',
         width: '150',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'fkfyhzh',
@@ -256,6 +298,29 @@ export default {
   },
   // 方法集合
   methods: {
+    handleCommit() {
+      if (this.selectChange.length !== 0) {
+        this.selectChange.forEach((item, index) => {
+          this.list.forEach((res, index) => {
+            if (res.djbh === item.djbh) {
+              res.djzt = 2
+            }
+          })
+        })
+      } else {
+        this.$message({
+          message: '请选择数据再进行提交操作！',
+          type: 'warning'
+        })
+      }
+    },
+    handleSelectionChange(res) {
+      this.selectChange = res
+    },
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
     updateSub(res) {
       let ind = 0
       this.tableData.forEach((item, index) => {
@@ -370,6 +435,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -378,6 +444,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -386,6 +453,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -394,6 +462,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

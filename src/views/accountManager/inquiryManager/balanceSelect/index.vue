@@ -80,88 +80,94 @@ export default {
 
       list: [
         {
-          unitName: '资金云根节点',
+          unitNo: 13265,
+          unitName: '单位3',
           accountPhone: 2,
-          accountName: '王流程分表',
+          accountName: 'nameW',
           currency: 3,
           bankName: 6,
           bankOpenName: '北京银行',
-          lhh: '324180234869',
+          lhh: '823676235',
           zhzz: 1,
           sfzl: 1,
-          zhyt: 1,
-          kmh: '1235',
+          zhyt: 4,
+          kmh: '9468462',
           ye: 1000
         },
         {
-          unitName: '资金云根节点',
-          accountPhone: 1,
-          accountName: '王流程分表',
+          unitNo: 1324,
+          unitName: '单位1',
+          accountPhone: 3,
+          accountName: 'nameE',
           currency: 1,
-          bankName: 1,
-          bankOpenName: '北京银行',
-          lhh: '324180234869',
-          zhzz: 1,
-          sfzl: 1,
-          zhyt: 1,
-          kmh: '1235',
-          ye: 1000
+          bankName: 7,
+          bankOpenName: '长沙分行',
+          lhh: '4561237894',
+          zhzz: 2,
+          sfzl: 2,
+          zhyt: 3,
+          kmh: '13484',
+          ye: 2000
         },
         {
-          unitName: '资金云根节点',
-          accountPhone: 1,
-          accountName: '王流程分表',
-          currency: 1,
-          bankName: 1,
-          bankOpenName: '北京银行',
-          lhh: '324180234869',
+          unitNo: 546,
+          unitName: '单位2',
+          accountPhone: 2,
+          accountName: 'nameT',
+          currency: 2,
+          bankName: 4,
+          bankOpenName: '广州总行',
+          lhh: '9876568879',
           zhzz: 1,
           sfzl: 1,
           zhyt: 1,
-          kmh: '1235',
-          ye: 1000
+          kmh: '6948751',
+          ye: 3000
         },
         {
-          unitName: '资金云根节点',
+          unitNo: 13265,
+          unitName: '单位3',
           accountPhone: 1,
-          accountName: '王流程分表',
+          accountName: 'nameY',
           currency: 1,
           bankName: 1,
-          bankOpenName: '北京银行',
+          bankOpenName: '杭州分行',
           lhh: '324180234869',
-          zhzz: 1,
-          sfzl: 1,
-          zhyt: 1,
-          kmh: '1235',
-          ye: 1000
+          zhzz: 2,
+          sfzl: 2,
+          zhyt: 2,
+          kmh: '69036964',
+          ye: 2000
         },
         {
-          unitName: '资金云根节点',
-          accountPhone: 1,
-          accountName: '王流程分表',
-          currency: 1,
-          bankName: 1,
-          bankOpenName: '北京银行',
-          lhh: '324180234869',
+          unitNo: 546,
+          unitName: '单位2',
+          accountPhone: 3,
+          accountName: 'nameU',
+          currency: 2,
+          bankName: 3,
+          bankOpenName: '深圳总行',
+          lhh: '9881546',
           zhzz: 1,
           sfzl: 1,
           zhyt: 1,
-          kmh: '1235',
-          ye: 1000
+          kmh: '94566554',
+          ye: 6000
         },
         {
-          unitName: '资金云根节点',
+          unitNo: 1324,
+          unitName: '单位1',
           accountPhone: 1,
-          accountName: '王流程分表',
+          accountName: 'nameQ',
           currency: 1,
-          bankName: 1,
+          bankName: 2,
           bankOpenName: '北京银行',
-          lhh: '324180234869',
+          lhh: '988512555',
           zhzz: 1,
           sfzl: 1,
-          zhyt: 1,
-          kmh: '1235',
-          ye: 1000
+          zhyt: 3,
+          kmh: '36958412',
+          ye: 8000
         }
       ],
       // 表格
@@ -317,12 +323,16 @@ export default {
       {
         prop: 'sfzl',
         width: '150',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'zhyt',
         width: '150',
-        label: '账户用途'
+        label: '账户用途',
+        type: 'wordbook',
+        wordbookList: this.accountUsage
       },
       {
         prop: 'kmh',
@@ -428,40 +438,68 @@ export default {
       console.log(this.searchData)
       const list = []
       const this_ = this
-      const tableDataTwo = JSON.parse(JSON.stringify(this.tableData))
+      const tableDataTwo = JSON.parse(JSON.stringify(this.list))
       tableDataTwo.forEach((item, index) => {
         let bool = true
         for (var i in this.searchData) {
           if (this.searchData[i] !== '' && this.searchData[i] !== undefined) {
-            if (i === 'documentNumber') {
-              if (item.documentNumber.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
-            if (i === 'openApplicant') {
-              if (item.openApplicant.includes(this.searchData[i])) {
-                bool = true
-              } else {
-                bool = false
-              }
-            }
-
             if (i === 'unitNo') {
-              if (item.unitNo.includes(this.searchData[i])) {
+              if (item.unitNo === this.searchData[i]) {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
+            if (i === 'accountPhone') {
+              if (item.accountPhone === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+            if (i === 'accountName') {
+              if (item.accountName.includes(this.searchData[i])) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
             if (i === 'unitName') {
               if (item.unitName.includes(this.searchData[i])) {
                 bool = true
               } else {
                 bool = false
+                return
+              }
+            }
+
+            if (i === 'bankName') {
+              if (item.bankName === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+
+            if (i === 'zhyt') {
+              if (item.zhyt === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
+              }
+            }
+            if (i === 'currency') {
+              if (item.currency === this.searchData[i]) {
+                bool = true
+              } else {
+                bool = false
+                return
               }
             }
           } else {

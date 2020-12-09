@@ -177,24 +177,24 @@ export default {
 
       {
         prop: 'yhjybs',
-        width: '150',
+        width: '',
         label: '银行交易标识',
         fixed: 'left'
       },
       {
         prop: 'jysj',
-        width: '150',
+        width: '',
         label: '交易时间',
         fixed: 'left'
       },
       {
         prop: 'dfyhzh',
-        width: '150',
+        width: '',
         label: '对方银行账号'
       },
       {
         prop: 'dfzhmc',
-        width: '150',
+        width: '',
         label: '对方账户名称'
       },
       {
@@ -204,12 +204,12 @@ export default {
       },
       {
         prop: 'jyje',
-        width: '150',
+        width: '',
         label: '交易金额(元)'
       },
       {
         prop: 'bz',
-        width: '150',
+        width: '',
         label: '备注'
       }
     ]
@@ -280,6 +280,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -288,6 +289,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -296,6 +298,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -304,6 +307,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'rqfwd') {
@@ -311,6 +315,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

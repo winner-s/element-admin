@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对公付款指令发送</span>
+        <span>对私付款指令发送</span>
       </div>
       <div>
         <Search
@@ -322,6 +322,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -330,6 +331,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -338,6 +340,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -346,6 +349,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

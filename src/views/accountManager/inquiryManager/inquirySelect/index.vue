@@ -66,7 +66,14 @@ export default {
       accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
       accountStatusList: ACCOUNTSTATUSLIST,
-
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: false,
       // 分页
       currentData: {
@@ -463,6 +470,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -471,6 +479,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'accountName') {
@@ -478,6 +487,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'unitName') {
@@ -485,6 +495,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -493,6 +504,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -501,6 +513,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'zhyt') {
@@ -508,6 +521,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'currency') {
@@ -515,6 +529,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'currency') {
@@ -522,6 +537,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
             if (i === 'accountStatus') {
@@ -529,6 +545,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

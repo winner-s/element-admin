@@ -35,7 +35,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -45,6 +45,15 @@ export default {
   data() {
     // 这里存放数据
     return {
+      djztList: DJZTLIST,
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -57,6 +66,7 @@ export default {
       searchBto: [],
       list: [
         {
+          djzt: 1,
           bz: '',
           djbh: '57110317798255631',
           djrq: '2020/11/4',
@@ -78,7 +88,9 @@ export default {
           skfyhss: '不知道',
           skfyhzh: '4654654',
           skfzhmc: '小三',
-          wbdh: '',
+          lrr: 'admin',
+          sjly: '财资云',
+          wbdh: '154687039158',
           ywdw: '业务单位',
           zffs: 1,
           zy: '000'
@@ -153,7 +165,8 @@ export default {
         label: '单据状态:',
         prop: 'openApplicant',
         placeholder: '请选择单据状态',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.djztList
       },
       {
         type: 'select',
@@ -208,6 +221,7 @@ export default {
         type: 'input',
         label: '外部单号:',
         prop: 'contain',
+        placeholder: '请填写外部单号',
         show: this.showAll
       },
       {
@@ -236,7 +250,9 @@ export default {
       {
         prop: 'djzt',
         width: '150',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'fkfyhzh',
@@ -293,6 +309,10 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -358,6 +378,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -366,6 +387,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -374,6 +396,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -382,6 +405,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

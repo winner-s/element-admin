@@ -52,6 +52,18 @@ export default {
           zxsj: '00:00',
           zqsz: 1,
           sfgj: 1
+        },
+        {
+          clbh: 'ZJGJ20071409140669',
+          clmc: '大策略',
+          clzt: '停止',
+          clsj: '2020-09-06 15:59:36',
+          gjfs: 1,
+          gjbl: '1.0000',
+          jjfszl: 1,
+          zxsj: '00:00',
+          zqsz: 1,
+          sfgj: 1
         }
       ],
       tableBtn: [],

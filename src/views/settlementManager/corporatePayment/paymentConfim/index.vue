@@ -25,7 +25,6 @@
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
-          @handleStatus="handleStatus"
           @handleViewOther="handleViewOther"
           @handleDelete="handleDelete"
         />
@@ -37,7 +36,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, DJZT, DJZTLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -47,6 +46,15 @@ export default {
   data() {
     // 这里存放数据
     return {
+      djztList: DJZTLIST,
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -59,6 +67,7 @@ export default {
       searchBto: [],
       list: [
         {
+          djzt: 1,
           bz: '',
           djbh: '57110317798255631',
           djrq: '2020/11/4',
@@ -124,16 +133,6 @@ export default {
         prop: 'select',
         type: 'primary',
         label: '查询'
-      },
-      {
-        prop: 'insert',
-        type: 'primary',
-        label: '复核'
-      },
-      {
-        prop: 'commit',
-        type: 'primary',
-        label: '拒绝'
       },
       {
         prop: 'reset',
@@ -209,7 +208,9 @@ export default {
       {
         prop: 'djzt',
         width: '150',
-        label: '单据状态'
+        label: '单据状态',
+        type: 'wordbook',
+        wordbookList: this.djzt
       },
       {
         prop: 'fkfyhzh',
@@ -252,6 +253,10 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    djzt(val) {
+      return DJZT[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false
@@ -316,35 +321,7 @@ export default {
         // });
       })
     },
-    handleStatus(v) {
-      if (v.status === 0) {
-        this.$confirm('此操作将停用该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //   // eslint-disable-next-line no-unused-vars
-          //   let json = {
-          //     id: v.id
-          //   };
-          //   updateAdminStatus(json).then(res => {
-          //     console.log(res);
-          //     this.getList();
-          //   });
-        })
-      } else {
-        this.$confirm('此操作将恢复该账号?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          // eslint-disable-next-line no-unused-vars
-          const json = {
-            id: v.id
-          }
-        })
-      }
-    },
+
     handleEdit(row) {
       this.dialogObj.id = row.djbh
       this.dialogObj.read = true
@@ -374,6 +351,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -382,6 +360,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -390,6 +369,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -398,6 +378,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

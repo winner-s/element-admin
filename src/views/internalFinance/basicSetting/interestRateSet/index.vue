@@ -47,6 +47,14 @@ export default {
   data() {
     // 这里存放数据
     return {
+      // 弹出框
+      dialogObj: {
+        id: '',
+        title: '',
+        read: false,
+        show: false,
+        form: {}
+      },
       rateTypeList: RATETYPELIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
@@ -136,27 +144,27 @@ export default {
 
       {
         prop: 'llmc',
-        width: '150',
+        width: '',
         label: '利率名称'
       },
       {
         prop: 'lllx',
-        width: '150',
+        width: '',
         label: '利率类型',
         type: 'wordbook',
         wordbookList: this.rateType
       },
       {
         prop: 'zxsxr',
-        width: '150',
+        width: '',
         label: '最新生效日'
       },
       {
         prop: 'lv',
-        width: '150',
+        width: '',
         label: '利率(%)'
       },
-      { label: '操作', type: 'btn', width: '150', fixed: 'right' }
+      { label: '操作', type: 'btn', width: '', fixed: 'right' }
     ]
     // 按钮
     this.tableBtn = [
@@ -301,6 +309,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
 
@@ -309,6 +318,7 @@ export default {
                 bool = true
               } else {
                 bool = false
+                return
               }
             }
           } else {

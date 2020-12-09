@@ -44,7 +44,7 @@ export default {
         nickname: ''
       },
       searchBto: data.collsectionTask.searchBto,
-      showAll: false,
+      showAll: 1,
       tableData: [],
       tableListData: [],
       list: [
@@ -119,32 +119,32 @@ export default {
 
       {
         prop: 'number',
-        width: '150',
+        width: '',
         label: '策略编号'
       },
       {
         prop: 'name',
-        width: '150',
+        width: '',
         label: '策略名称'
       },
       {
         prop: 'pattern',
-        width: '150',
+        width: '',
         label: '执行模式'
       },
       {
         prop: 'time',
-        width: '150',
+        width: '',
         label: '激活/停止策略时间'
       },
       {
         prop: 'taskStatus',
-        width: '150',
+        width: '',
         label: '任务状态'
       },
       {
         prop: 'status',
-        width: '150',
+        width: '',
         label: '运行状态'
       },
       { label: '操作', type: 'btn', width: '150', fixed: 'right' }
