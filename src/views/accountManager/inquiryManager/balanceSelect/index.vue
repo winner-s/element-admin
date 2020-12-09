@@ -36,7 +36,22 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import {
+  UNITNOLIST,
+  BACKLIST,
+  CURRENCYLIST,
+  ACCOUNTUSAGELIST,
+  DIRECTLIST,
+  ACCOUNTSTATUSLIST,
+  ZHHM,
+  ZHHMLIST,
+  UNITNO,
+  BACK,
+  CURRENCY,
+  ACCOUNTUSAGE,
+  DIRECT,
+  ACCOUNTSTATUS
+} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -46,8 +61,14 @@ export default {
   data() {
     // 这里存放数据
     return {
-      showAll: false,
+      zhhmList: ZHHMLIST,
       unitNoList: UNITNOLIST,
+      backList: BACKLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
+      directList: DIRECTLIST,
+      accountStatusList: ACCOUNTSTATUSLIST,
+      showAll: false,
       // 分页
       currentData: {
         currentPage: 1,
@@ -68,7 +89,77 @@ export default {
       list: [
         {
           unitName: '资金云根节点',
-          accountPhone: '410501608080001061',
+          accountPhone: 2,
+          accountName: '王流程分表',
+          currency: 3,
+          bankName: 6,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000
+        },
+        {
+          unitName: '资金云根节点',
+          accountPhone: 1,
+          accountName: '王流程分表',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000
+        },
+        {
+          unitName: '资金云根节点',
+          accountPhone: 1,
+          accountName: '王流程分表',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000
+        },
+        {
+          unitName: '资金云根节点',
+          accountPhone: 1,
+          accountName: '王流程分表',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000
+        },
+        {
+          unitName: '资金云根节点',
+          accountPhone: 1,
+          accountName: '王流程分表',
+          currency: 1,
+          bankName: 1,
+          bankOpenName: '北京银行',
+          lhh: '324180234869',
+          zhzz: 1,
+          sfzl: 1,
+          zhyt: 1,
+          kmh: '1235',
+          ye: 1000
+        },
+        {
+          unitName: '资金云根节点',
+          accountPhone: 1,
           accountName: '王流程分表',
           currency: 1,
           bankName: 1,
@@ -133,12 +224,14 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'select',
         label: '币种:',
         prop: 'currency',
+        selectList: this.currencyList,
         placeholder: '请选择币种'
       },
 
@@ -147,6 +240,7 @@ export default {
         label: '账户号码:',
         prop: 'accountPhone',
         placeholder: '请填写账户号码',
+        selectList: this.zhhmList,
         show: this.showAll
       },
       {
@@ -162,6 +256,7 @@ export default {
         label: '账户用途:',
         prop: 'connection',
         placeholder: '请填写账户用途',
+        selectList: this.accountUsageList,
         show: this.showAll
       },
       {
@@ -179,13 +274,16 @@ export default {
         prop: 'unitName',
         width: '150',
         label: '单位名称',
+        type: 'a',
         fixed: 'left'
       },
       {
         prop: 'accountPhone',
         width: '150',
+        type: 'wordbook',
+        wordbookList: this.zhhm,
         label: '银行账号',
-        type: 'a',
+
         fixed: 'left'
       },
       {
@@ -196,12 +294,16 @@ export default {
       {
         prop: 'currency',
         width: '150',
-        label: '币种'
+        label: '币种',
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'bankName',
         width: '150',
-        label: '银行名称'
+        label: '银行名称',
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
         prop: 'bankOpenName',
@@ -216,7 +318,9 @@ export default {
       {
         prop: 'zhzz',
         width: '150',
-        label: '账户状态'
+        label: '账户状态',
+        type: 'wordbook',
+        wordbookList: this.accountStatus
       },
       {
         prop: 'sfzl',
@@ -248,6 +352,28 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    zhhm(val) {
+      return ZHHM[val]
+    },
+    unitNo(val) {
+      return UNITNO[val]
+    },
+    back(val) {
+      return BACK[val]
+    },
+    currency(val) {
+      return CURRENCY[val]
+    },
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
+    },
+    direct(val) {
+      return DIRECT[val]
+    },
+    accountStatus(val) {
+      return ACCOUNTSTATUS[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false

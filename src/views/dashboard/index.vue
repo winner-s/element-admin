@@ -34,15 +34,18 @@
           <!-- <img src="../../assets/img/shang.png" alt=""> -->
           <img src="../../assets/img/db.png" alt="" @click="tip3Click">
         </div>
-
         <div v-if="tip === 4" class="tip4">
+          <!-- <img src="../../assets/img/shang.png" alt=""> -->
+          <img src="../../assets/img/tipkf.png" alt="" @click="tip4Click">
+        </div>
+        <div v-if="tip === 5" class="tip5">
           <!-- <img src="../../assets/img/shang.png" alt=""> -->
 
           <img
-            ref="tip4"
+            ref="tip5"
             src="../../assets/img/tb.png"
             alt=""
-            @click="tip4Click"
+            @click="tip5Click"
           >
         </div>
       </div>
@@ -209,7 +212,7 @@
       ref="chart1"
       :gutter="20"
       style="margin-top: 23px"
-      :class="{ cygn: tip == 4 }"
+      :class="{ cygn: tip == 5 }"
     >
       <el-col :span="12">
         <el-card
@@ -267,7 +270,7 @@
       ref="chart2"
       :gutter="20"
       style="margin-top: 23px"
-      :class="{ cygn: tip == 4 }"
+      :class="{ cygn: tip == 5 }"
     >
       <el-col :span="12">
         <el-card
@@ -892,7 +895,7 @@ export default {
             xia.style.width = '0px'
             xia.style.height = '0px'
           })
-        } else if (val === 4) {
+        } else if (val === 5) {
           const charts1 = this.$refs.chart1.$el
           const charts2 = this.$refs.chart2.$el
           const width = charts1.offsetWidth
@@ -1193,7 +1196,7 @@ export default {
   },
   // 方法集合
   methods: {
-    tip4Click() {
+    tip5Click() {
       document.body.style.position = ''
       document.body.style.top = ''
       window.scrollTo(0, 0)
@@ -1203,6 +1206,9 @@ export default {
         key: 'tips',
         value: false
       })
+    },
+    tip4Click() {
+      this.tip = 5
     },
     tip3Click() {
       const charts1 = this.$refs.chart1.$el
@@ -1336,11 +1342,20 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
-  .tip4 {
+  .tip5 {
     img {
       position: absolute;
       left: 45%;
       top: 80px;
+      width: 505px;
+      height: 209px;
+    }
+  }
+  .tip4{
+     img {
+      position: absolute;
+      right: 0;
+      bottom: 100px;
       width: 505px;
       height: 209px;
     }
@@ -1456,7 +1471,7 @@ export default {
   background-size: 100% 100%;
   position: fixed;
   right: 0;
-  bottom: 200px;
+  bottom: 230px;
   z-index: 99;
   width: 105px;
   height: 50px;
