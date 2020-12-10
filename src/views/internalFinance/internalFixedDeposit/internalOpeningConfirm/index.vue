@@ -80,6 +80,23 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        bto: false,
+        ckkllsh: 'KH200824' + Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckzt: '未结清',
+        ckdwmc: '三级单位1',
+        ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckklrq: '2018-3-' + Math.round(Math.random() * (30 - 1) + 1),
+        nbzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        nbzhmc: '三级单位1内部账号',
+        nbzhye: '1000',
+        zt: '保存',
+        ckqx: 344,
+        llzhts: 30,
+        dqxcfs: '自动延续'
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮
