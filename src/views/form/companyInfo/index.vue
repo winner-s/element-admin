@@ -53,77 +53,77 @@ export default {
           hierarchy: 1,
           companyNum: '052',
           company: '二级单位234',
-          companyTyle: '私营企业'
+          companyTyle: 1
         },
         {
           id: 2,
           hierarchy: 2,
           companyNum: '512',
           company: '二级单位234',
-          companyTyle: '中外合营企业'
+          companyTyle: 2
         },
         {
           id: 3,
           hierarchy: 3,
           companyNum: '432',
           company: '上海xxxx公司',
-          companyTyle: '外商投资企业'
+          companyTyle: 3
         },
         {
           id: 4,
           hierarchy: 4,
           companyNum: '430',
           company: '浙江xxxx公司',
-          companyTyle: '随便一个'
+          companyTyle: 4
         },
         {
           id: 5,
           hierarchy: 5,
           companyNum: '224',
           company: '庐山xxxx公司',
-          companyTyle: '航天'
+          companyTyle: 5
         },
         {
           id: 6,
-          hierarchy: '6',
+          hierarchy: 6,
           companyNum: '503',
           company: '九江xxxx公司',
-          companyTyle: '01717'
+          companyTyle: 4
         },
         {
           id: 7,
-          hierarchy: '七级',
+          hierarchy: 5,
           companyNum: '486',
           company: '棋联xxxx公司',
-          companyTyle: '0806'
+          companyTyle: 2
         },
         {
           id: 8,
-          hierarchy: '八级',
+          hierarchy: 2,
           companyNum: '992',
           company: '北海xx公司',
-          companyTyle: '单位类别'
+          companyTyle: 1
         },
         {
           id: 9,
-          hierarchy: '九级',
+          hierarchy: 2,
           companyNum: '452',
           company: '电子xxxx公司',
-          companyTyle: '国有企业'
+          companyTyle: 3
         },
         {
           id: 10,
-          hierarchy: '十级',
+          hierarchy: 3,
           companyNum: '232',
           company: '上海xxxx公司',
-          companyTyle: '外商投资企业'
+          companyTyle: 3
         },
         {
           id: 11,
-          hierarchy: '十一级',
+          hierarchy: 1,
           companyNum: '412',
           company: '上海xxxx公司',
-          companyTyle: '外商投资企业'
+          companyTyle: 5
         }
       ],
       tableBtn: [],

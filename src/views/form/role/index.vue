@@ -55,11 +55,67 @@ export default {
       list: [
         {
           dwbh: '123',
+          accountName: 'xn',
+          userName: '谢娜',
+          role: 2,
+          company: '二级单位1',
+          userSatus: 1
+        },
+        {
+          dwbh: '123',
+          accountName: 'hj',
+          userName: '何炅',
+          role: 1,
+          company: '二级单位1',
+          userSatus: 1
+        },
+        {
+          dwbh: '123',
+          accountName: 'pyy',
+          userName: '彭于晏',
+          role: 2,
+          company: '二级单位1',
+          userSatus: 2
+        },
+        {
+          dwbh: '123',
+          accountName: 'wyz',
+          userName: '吴彦祖',
+          role: 1,
+          company: '二级单位1',
+          userSatus: 1
+        },
+        {
+          dwbh: '123',
+          accountName: 'sxb',
+          userName: '宋小宝',
+          role: 2,
+          company: '二级单位0',
+          userSatus: 2
+        },
+        {
+          dwbh: '123',
+          accountName: 'zs',
+          userName: '刘德华',
+          role: 2,
+          company: '二级单位1',
+          userSatus: 1
+        },
+        {
+          dwbh: '123',
+          accountName: 'abc',
+          userName: '郭德纲',
+          role: 2,
+          company: '二级单位3',
+          userSatus: 1
+        },
+        {
+          dwbh: '123',
           accountName: 'lizhihua',
           userName: '李志华',
           role: 1,
           company: '二级单位1',
-          userSatus: 1
+          userSatus: 2
         }
       ],
       tableBtn: [],
