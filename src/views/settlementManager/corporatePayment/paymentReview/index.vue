@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私付款复核</span>
+        <span>对公付款复核</span>
       </div>
       <div>
         <Search

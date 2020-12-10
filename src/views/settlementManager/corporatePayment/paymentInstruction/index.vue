@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私付款指令发送</span>
+        <span>对公付款指令发送</span>
       </div>
       <div>
         <Search

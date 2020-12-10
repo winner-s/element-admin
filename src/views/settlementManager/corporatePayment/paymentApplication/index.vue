@@ -3,7 +3,7 @@
   <div>
     <el-card>
       <div slot="header">
-        <span>对私申请列表查询</span>
+        <span>对公申请列表查询</span>
       </div>
       <div>
         <Search
