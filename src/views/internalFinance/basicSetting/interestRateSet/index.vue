@@ -81,6 +81,21 @@ export default {
               bz: '测试备注'
             }
           ]
+        },
+        {
+          id: 2,
+          bto: false,
+          llmc: 'onefff',
+          lllx: 1,
+          zxsxr: '2020-11-18',
+          lv: '3.0',
+          childerList: [
+            {
+              zxsxr: '2020-11-20',
+              lv: '4.0',
+              bz: '测试备注'
+            }
+          ]
         }
       ],
 
@@ -101,6 +116,23 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        id: i,
+        bto: false,
+        llmc: String(Math.round(Math.random() * (10000 - 1000) + 1000)),
+        lllx: 2,
+        zxsxr: '2020-11-19',
+        lv: i + '.0',
+        childerList: [
+          {
+            zxsxr: '2020-11-20',
+            lv: '4.0',
+            bz: '测试备注'
+          }
+        ]
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮
@@ -193,9 +225,10 @@ export default {
   // 方法集合
   methods: {
     updateSub(res) {
+      console.log(res)
       let ind = 0
       this.tableData.forEach((item, index) => {
-        if (item.documentNumber === res.documentNumber) {
+        if (item.id === res.documentNumber) {
           ind = index
         }
       })
@@ -280,6 +313,7 @@ export default {
     },
 
     handleEdit(row) {
+      console.log(row.id)
       this.dialogObj.id = row.id
       this.dialogObj.read = false
       this.dialogObj.show = true

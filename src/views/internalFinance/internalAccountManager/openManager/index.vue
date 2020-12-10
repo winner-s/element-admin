@@ -77,8 +77,20 @@ export default {
           khrq: '2020-10-10',
           zhlx: '活期户',
           bz: 1,
-          jxksr: '',
+          jxksr: '2020-10-11',
           sqdzt: 1,
+          bzhu: '二级单位1内部账户'
+        },
+        {
+
+          zhbh: '0813332',
+          dwmc: '0ffff1',
+          zhmc: '金克丝',
+          khrq: '2003-9-10',
+          zhlx: '活期户',
+          bz: 1,
+          jxksr: '2003-9-11',
+          sqdzt: 2,
           bzhu: '二级单位1内部账户'
         }
       ],
@@ -104,6 +116,19 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        zhbh: String(Math.round(Math.random() * (9999988 - 1000000) + 1000000)),
+        dwmc: String(Math.round(Math.random() * (9999988 - 1000000) + 1000000)),
+        zhmc: '凯特琳' + i,
+        khrq: '2020-3-' + Math.round(Math.random() * (30 - 20) + 20),
+        zhlx: '死期户',
+        bz: i <= 5 ? i - 2 : 1,
+        jxksr: '2020-4-' + Math.round(Math.random() * (30 - 20) + 20),
+        sqdzt: Math.round(Math.random() * (4 - 3) + 3),
+        bzhu: '二级单位2内部账户'
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

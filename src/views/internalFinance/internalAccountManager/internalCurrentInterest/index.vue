@@ -106,6 +106,28 @@ export default {
               lx: '166,666.57'
             }
           ]
+        },
+        {
+          jx: true,
+          dwmc: '一级单位',
+          zhbh: '0021887',
+          zhmc: '一单位内部账号',
+          ksksr: '2018-9-1',
+          ksjsr: '2020-2-19',
+          jxts: '34',
+          jxye: '78,549,804.8',
+          ksrye: '234,999,332.89',
+          jsrye: '2.00',
+          lljhmc: '活期利率计划',
+          lx: '2,000',
+          childerList: [
+            {
+              jxr: '2019-12-24',
+              ye: '999,999,428.89',
+              ll: '6.00',
+              lx: '166,666.57'
+            }
+          ]
         }
       ],
 
@@ -128,6 +150,30 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        jx: true,
+        dwmc: '三级单位',
+        zhbh: String(Math.round(Math.random() * (9999988 - 1000000) + 1000000)),
+        zhmc: '三单位内部账号',
+        ksksr: '2018-3-' + Math.round(Math.random() * (30 - 20) + 20),
+        ksjsr: '2019-4-' + Math.round(Math.random() * (30 - 20) + 20),
+        jxts: '33' + Math.round(Math.random() * (9 - 1) + 1),
+        jxye: Math.round(Math.random() * (54 - 1) + 1) + ',549,804.8',
+        ksrye: Math.round(Math.random() * (433 - 1) + 1) + ',999,332.89',
+        jsrye: '0.00',
+        lljhmc: '活期利率计划',
+        lx: Math.round(Math.random() * (9 - 1) + 1) + '2,000',
+        childerList: [
+          {
+            jxr: '2019-12-24',
+            ye: '999,999,428.89',
+            ll: '6.00',
+            lx: '166,666.57'
+          }
+        ]
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

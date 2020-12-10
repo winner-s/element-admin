@@ -87,8 +87,7 @@ export default {
           llzhts: 1,
           bz: '',
           ckzqlsh: '99988877',
-          zqje: '',
-          zqrq: '',
+          zqje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
           bzer: ''
         }
       ],
@@ -111,6 +110,28 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        ckkllsh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckll: '4.00',
+        ckqx: Math.round(Math.random() * (10 - 1) + 1),
+        klrq: '2020-10-10',
+        ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckye: Math.round(Math.random() * (99988 - 10000) + 10000),
+        ckdwbh: '123',
+        ckdwmc: '单位名称',
+        nbzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        nbzhye: '200',
+        nbzhmc: '不知道',
+        dqxcfs: 1,
+        llzhts: 1,
+        bz: '',
+        ckzqlsh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zqje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zqrq: '',
+        bzer: ''
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

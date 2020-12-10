@@ -86,6 +86,22 @@ export default {
               zxll: '2.55'
             }
           ]
+        },
+        {
+          id: 2,
+          lljhmc: '存款利率计划',
+          lllx: 3,
+          lljhlx: '生活等等',
+          childerList: [
+            {
+              qjlx: '以上',
+              ye: '0.00',
+              jzll: '存款利率',
+              fdlx: '固定',
+              fdbl: '2.00000',
+              zxll: '2.55'
+            }
+          ]
         }
       ],
       // 表格
@@ -106,6 +122,24 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        id: i,
+        lljhmc: Math.round(Math.random() * (10000 - 1000) + 1000) + '计划',
+        lllx: 2,
+        lljhlx: String(Math.round(Math.random() * (10000 - 1000) + 1000)) + '类型',
+        childerList: [
+          {
+            qjlx: '以上',
+            ye: '0.00',
+            jzll: '存款利率',
+            fdlx: '固定',
+            fdbl: '2.00000',
+            zxll: '2.55'
+          }
+        ]
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮
