@@ -69,7 +69,6 @@ export default {
       },
       // 顶部按钮
       searchBto: [],
-
       list: [
         {
           ckkllsh: '132',

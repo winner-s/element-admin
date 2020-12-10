@@ -73,9 +73,9 @@ export default {
           ckll: '11.000',
           ckqx: '3个月定期',
           klrq: '2020-12-01',
-          ckje: '1,211.00',
-          syje: '1,211.00',
-          ckye: '1,211.00',
+          ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+          syje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+          ckye: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
           ckdwbhL: '12312323',
           ckdwmc: '顶级单位',
           nbzh: '0011001',
@@ -96,7 +96,6 @@ export default {
               lx: '1.11'
             }
           ]
-
         }
 
       ],
@@ -120,6 +119,39 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        ckdqr: '2021-03-01',
+        ksrq: new Date(),
+        ckkllsh: 'FO2020120114' + Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckll: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckqx: Math.round(Math.random() * (12 - 1) + 1000000) + '个月定期',
+        klrq: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        syje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckye: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckdwbhL: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckdwmc: '顶级单位',
+        nbzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        nbzhmc: '一级中心内部账户',
+        dqxcfs: '到期本息转活期',
+        ckklrq: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        qrrq: '2020-12-' + Math.round(Math.random() * (30 - 10) + 10),
+        bz: Math.round(Math.random() * (304 - 101) + 101),
+        childerList: [
+          {
+            lxly: '提前支取利息',
+            rq: '2020-12-01',
+            lx: '1.11'
+          },
+          {
+            lxly: '定期存款利息',
+            rq: '2020-12-04',
+            lx: '1.11'
+          }
+        ]
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

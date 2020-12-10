@@ -69,19 +69,19 @@ export default {
           jybh: 'JY546546',
           jyrq: '2020-11-20',
           bfdwbh: '002',
-          dfdwbh: '',
+          dfdwbh: '3335667',
           bfdwmc: '二级单位',
-          dfdwmc: '',
-          bfzh: '000',
-          je: '43333',
-          zc: '',
-          sr: '123',
-          dx: '43333',
+          dfdwmc: '上海市xx公司',
+          bfzh: '0022340',
+          je: '上海市xx公司',
+          zc: '3345644',
+          sr: '123233',
+          dx: '433333',
           szfx: '贷',
           qxr: '2020-11-20',
           zy: '没有',
           fklx: 1,
-          dfzh: '13456',
+          dfzh: '1333456',
           jyzt: '支付成功'
         }
       ],
@@ -104,6 +104,27 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        jybh: 'JY' + Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        jyrq: '2020-10-' + Math.round(Math.random() * (30 - 10) + 10),
+        bfdwbh: Math.round(Math.random() * (9988 - 1000) + 1000),
+        dfdwbh: '上海市xx公司',
+        bfdwmc: '二级单位',
+        dfdwmc: '上海市xx公司',
+        bfzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        je: '上海市xx公司',
+        zc: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        sr: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        dx: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        szfx: '贷',
+        qxr: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        zy: '没有',
+        fklx: 1,
+        dfzh: Math.round(Math.random() * (999998 - 100000) + 100000),
+        jyzt: '支付成功'
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

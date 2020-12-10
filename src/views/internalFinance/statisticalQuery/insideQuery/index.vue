@@ -80,7 +80,7 @@ export default {
           jedx: '10000000',
           llzhts: 1,
           jxfs: '固定利率',
-          htqdll: '2.200',
+          htqdll: '2.2',
           fxfs: 1,
           hbff: 1,
           bzhu: '',
@@ -109,6 +109,32 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        sqdh: 'Dk5465' + Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        htmc: '顶级二级',
+        dklx: 12,
+        zqr: '三级单位',
+        zwr: '一级单位1',
+        bz: Math.round(Math.random() * (3 - 1) + 1),
+        dkqx: '一年',
+        ksrq: '2020-10-' + Math.round(Math.random() * (30 - 10) + 10),
+        jsrq: '2021-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        dkje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        htzt: 1,
+        jedx: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        llzhts: 1,
+        jxfs: '固定利率',
+        htqdll: Math.round(Math.random() * (9 - 1) + 1) + '.' + Math.round(Math.random() * (9 - 1) + 1),
+        fxfs: 1,
+        hbff: 1,
+        bzhu: '',
+        yfkje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        yhbj: Math.round(Math.random() * (99998 - 10000) + 10000),
+        yhlx: Math.round(Math.random() * (9988 - 1000) + 1000),
+        childerList: []
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

@@ -77,7 +77,7 @@ export default {
           khrq: '2020-10-10',
           zhlx: '活期户',
           bz: 1,
-          jxksr: '2020-11-1',
+          jxksr: '2020-11-10',
           sqdzt: 1,
           bzhu: '二级单位1内部账户',
           xhrq: '2020-10-10'
@@ -87,10 +87,10 @@ export default {
           zhbh: '08130444',
           dwmc: 'ddfff',
           zhmc: '123',
-          khrq: '2020-9-10',
+          khrq: '2020-09-10',
           zhlx: '活期户',
           bz: 2,
-          jxksr: '2020-9-120',
+          jxksr: '2020-09-12',
           sqdzt: 1,
           bzhu: '二级单位1内部账户',
           xhrq: '2020-10-10'
@@ -123,13 +123,13 @@ export default {
         zhbh: String(Math.round(Math.random() * (9999988 - 1000000) + 1000000)),
         dwmc: String(Math.round(Math.random() * (9999988 - 1000000) + 1000000)),
         zhmc: '莱斯特' + i,
-        khrq: '2020-3-' + Math.round(Math.random() * (30 - 20) + 20),
+        khrq: '2020-03-' + Math.round(Math.random() * (30 - 20) + 20),
         zhlx: '死期户',
         bz: i <= 5 ? i - 2 : 1,
-        jxksr: '2020-4-' + Math.round(Math.random() * (30 - 20) + 20),
+        jxksr: '2020-04-' + Math.round(Math.random() * (30 - 20) + 20),
         sqdzt: Math.round(Math.random() * (4 - 3) + 3),
         bzhu: '二级单位2内部账户',
-        xhrq: '2020-12-' + Math.round(Math.random() * (10 - 1) + 1)
+        xhrq: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10)
       })
     }
     this.tableData = this.list.slice(0, this.currentData.size)

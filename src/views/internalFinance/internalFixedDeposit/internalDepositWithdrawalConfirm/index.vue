@@ -90,6 +90,20 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        ckzqlsh: 'CK11122' + Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckkllsh: Math.round(Math.random() * (9999985558 - 1000000000) + 1000000000),
+        ckdwmc: '二级单位',
+        nbzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        ckqx: '2021-09-' + Math.round(Math.random() * (30 - 10) + 10),
+        ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zqje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        klrq: '2012-02-' + Math.round(Math.random() * (30 - 10) + 10),
+        zqrq: '2020-12-' + Math.round(Math.random() * (30 - 10) + 10),
+        spzt: '已审批'
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

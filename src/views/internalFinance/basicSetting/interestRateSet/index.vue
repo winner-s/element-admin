@@ -123,7 +123,7 @@ export default {
         llmc: String(Math.round(Math.random() * (10000 - 1000) + 1000)),
         lllx: 2,
         zxsxr: '2020-11-19',
-        lv: i + '.0',
+        lv: Math.round(Math.random() * (9 - 1) + 1) + '.' + Math.round(Math.random() * (9 - 1) + 1),
         childerList: [
           {
             zxsxr: '2020-11-20',

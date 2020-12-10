@@ -102,6 +102,26 @@ export default {
 
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
+    for (var i = 3; i < 15; i++) {
+      this.list.push({
+        dwbh: Math.round(Math.random() * (999 - 100) + 100),
+        dwmc: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zhbh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zhmc: '二级单位1内部账号',
+        zhlx: '死期户',
+        khrq: '2019-12-' + Math.round(Math.random() * (30 - 10) + 10),
+        bz: '人民币',
+        jx: '是',
+        jxksr: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        lljh: '死期利率计划',
+        csye: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        zhye: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
+        bzhu: '没有',
+        yerq: '2020-11-' + Math.round(Math.random() * (30 - 10) + 10),
+        zhzt: '正常',
+        zhje: Math.round(Math.random() * (9999988 - 1000000) + 1000000)
+      })
+    }
     this.tableData = this.list.slice(0, this.currentData.size)
     this.currentData.total = this.list.length
     // 顶部按钮

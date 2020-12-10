@@ -87,7 +87,7 @@ export default {
         ckzt: '未结清',
         ckdwmc: '三级单位1',
         ckje: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
-        ckklrq: '2018-3-' + Math.round(Math.random() * (30 - 1) + 1),
+        ckklrq: '2018-03-' + Math.round(Math.random() * (30 - 10) + 10),
         nbzh: Math.round(Math.random() * (9999988 - 1000000) + 1000000),
         nbzhmc: '三级单位1内部账号',
         nbzhye: '1000',
