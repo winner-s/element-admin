@@ -47,7 +47,7 @@
             </span> -->
         </el-form-item>
         <!-- </el-tooltip> -->
-        <!-- <el-form-item prop="code">
+        <el-form-item prop="code">
           <span class="svg-container code" />
           <el-input
             ref="code"
@@ -61,7 +61,7 @@
           <div class="ValidCode disabled-select" @click="refreshCode">
             <span v-for="(item, index) in codeList" :key="index" :style="getStyle(item)">{{ item.code }}</span>
           </div>
-        </el-form-item> -->
+        </el-form-item>
 
         <el-button :loading="loading" type="primary" @click.native.prevent="handleLogin">登录</el-button>
 
@@ -108,31 +108,31 @@ export default {
         callback()
       }
     }
-    // const validateCode = (rule, value, callback) => {
-    //   console.log(this.codeList)
-    //   var str = []
-    //   this.codeList.map(item => {
-    //     str.push(item.code)
-    //   })
-    //   str = str.join('')
-    //   if (!value) {
-    //     callback(new Error('请输入验证码'))
-    //   } else if (value.toLowerCase() !== str.toLowerCase()) {
-    //     callback(new Error('验证码错误'))
-    //   } else {
-    //     callback()
-    //   }
-    // }
+    const validateCode = (rule, value, callback) => {
+      console.log(this.codeList)
+      var str = []
+      this.codeList.map(item => {
+        str.push(item.code)
+      })
+      str = str.join('')
+      if (!value) {
+        callback(new Error('请输入验证码'))
+      } else {
+        callback()
+      }
+      //  else if (value.toLowerCase() !== str.toLowerCase()) {
+      //   callback(new Error('验证码错误'))
+    }
     return {
       loginForm: {
         username: '',
-        password: ''
-        // code: ''
+        password: '',
+        code: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
-        // code: [{ required: true, trigger: 'blur', validator: validateCode }]
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        code: [{ required: true, trigger: 'blur', validator: validateCode }]
       },
       passwordType: 'password',
       capsTooltip: false,
