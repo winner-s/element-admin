@@ -405,7 +405,7 @@ export default {
           .step_label {
             width: 226px;
             line-height: 76px;
-            padding: 0 30px;
+            // padding: 0 30px;
             font-size: 22px;
             margin-left: 55px;
             margin-top: 10px;
@@ -614,7 +614,7 @@ export default {
           .step_label {
             width: 226px;
             line-height: 76px;
-            padding: 0 30px;
+            // padding: 0 30px;
             font-size: 22px;
             margin-left: 55px;
             margin-top: 10px;
