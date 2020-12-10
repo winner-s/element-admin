@@ -40,7 +40,20 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST, DJZT, DJZTLIST, DIRECT, DIRECTLIST } from '@u/wordbook'
+import {
+  DJZT,
+  DJZTLIST,
+  CURRENCY,
+  CURRENCYLIST,
+  UNITNO,
+  UNITNOLIST,
+  BACK,
+  BACKLIST,
+  DIRECT,
+  DIRECTLIST,
+  ACCOUNTUSAGE,
+  ACCOUNTUSAGELIST
+} from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 import dialogCom from './dialogCom'
@@ -59,7 +72,10 @@ export default {
         form: {}
       },
       djztList: DJZTLIST,
+      currencyList: CURRENCYLIST,
+      accountUsageList: ACCOUNTUSAGELIST,
       directList: DIRECTLIST,
+      backList: BACKLIST,
       showAll: false,
       unitNoList: UNITNOLIST,
       // 分页
@@ -74,12 +90,96 @@ export default {
       list: [
         {
           bto: false,
-          documentNumber: 'KH20082615093831',
-          accountPhone: 1111111111,
-          accountName: '测试1',
-          bankName: '中国银行',
+          documentNumber: 'KH20082615097123',
+          accountPhone: 152648976,
+          accountName: '测试15',
+          bankName: 7,
+          currency: 3,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 3,
+          sfzl: 1,
+          bgrq: '2020-01-24',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097852',
+          accountPhone: 751953624,
+          accountName: '测试2',
+          bankName: 3,
+          currency: 2,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 2,
+          sfzl: 1,
+          bgrq: '2020-08-12',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097156',
+          accountPhone: 742962513,
+          accountName: '测试81',
+          bankName: 8,
           currency: 1,
-          yhzh: 1111111111,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 4,
+          sfzl: 1,
+          bgrq: '2020-11-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097759',
+          accountPhone: 842963854,
+          accountName: '测试31',
+          bankName: 2,
+          currency: 1,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 3,
+          sfzl: 1,
+          bgrq: '2020-06-21',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097951',
+          accountPhone: 456325874,
+          accountName: '测试15',
+          bankName: 4,
+          currency: 3,
+          yhzh: 456123789,
           zhmc: '测试1',
           yhmc: 1,
           khhszss: ['北京市', '市辖区', '西城区'],
@@ -88,6 +188,111 @@ export default {
           lhh: '5200103901',
           zhyt: 1,
           sfzl: 1,
+          bgrq: '2020-02-28',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097594',
+          accountPhone: 963542587,
+          accountName: '测试2',
+          bankName: 1,
+          currency: 1,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 1,
+          sfzl: 1,
+          bgrq: '2020-09-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097569',
+          accountPhone: 351759456,
+          accountName: '测试1',
+          bankName: 5,
+          currency: 3,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 2,
+          sfzl: 2,
+          bgrq: '2020-05-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097555',
+          accountPhone: 741852963,
+          accountName: '测试1',
+          bankName: 6,
+          currency: 2,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 2,
+          sfzl: 1,
+          bgrq: '2020-11-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097583',
+          accountPhone: 456123852,
+          accountName: '测试1',
+          bankName: 7,
+          currency: 1,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 2,
+          sfzl: 1,
+          bgrq: '2020-11-03',
+          unitName: 1324,
+          bghUnitName: 1324,
+          documentStatus: 1
+        },
+        {
+          bto: false,
+          documentNumber: 'KH20082615097584',
+          accountPhone: 789456123,
+          accountName: '测试1',
+          bankName: 8,
+          currency: 2,
+          yhzh: 456123789,
+          zhmc: '测试1',
+          yhmc: 1,
+          khhszss: ['北京市', '市辖区', '西城区'],
+          bgsqr: 'admin',
+          khhmc: '北京分行',
+          lhh: '5200103901',
+          zhyt: 4,
+          sfzl: 2,
           bgrq: '2020-11-03',
           unitName: 1324,
           bghUnitName: 1324,
@@ -156,7 +361,8 @@ export default {
         type: 'select',
         label: '银行名称:',
         prop: 'bankName',
-        placeholder: '请填写银行名称'
+        placeholder: '请填写银行名称',
+        selectList: this.backList
       },
       {
         type: 'input',
@@ -176,7 +382,8 @@ export default {
         type: 'select',
         label: '币种:',
         prop: 'currency',
-        show: this.showAll
+        show: this.showAll,
+        selectList: this.currencyList
       },
       {
         type: 'checkbox',
@@ -209,7 +416,9 @@ export default {
       {
         prop: 'bankName',
         width: '150',
-        label: '银行名称'
+        label: '银行名称',
+        type: 'wordbook',
+        wordbookList: this.back
       },
       {
         prop: 'khhmc',
@@ -224,14 +433,18 @@ export default {
         wordbookList: this.djzt
       },
       {
-        prop: 'connection',
+        prop: 'sfzl',
         width: '150',
-        label: '是否直联'
+        label: '是否直联',
+        type: 'wordbook',
+        wordbookList: this.direct
       },
       {
         prop: 'currency',
         width: '150',
-        label: '币种'
+        label: '币种',
+        type: 'wordbook',
+        wordbookList: this.currency
       },
       {
         prop: 'unitName',
@@ -264,8 +477,20 @@ export default {
     djzt(val) {
       return DJZT[val]
     },
+    unitno(val) {
+      return UNITNO[val]
+    },
+    currency(val) {
+      return CURRENCY[val]
+    },
+    accountUsage(val) {
+      return ACCOUNTUSAGE[val]
+    },
     direct(val) {
       return DIRECT[val]
+    },
+    back(val) {
+      return BACK[val]
     },
     updateSub(res, item) {
       let ind = 0
