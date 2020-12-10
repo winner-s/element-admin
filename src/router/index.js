@@ -59,6 +59,11 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/systemDetailSecond',
+    component: () => import('@/views/SystemInfo/detailSecond.vue'),
+    hidden: true
+  },
+  {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true

@@ -3,15 +3,15 @@
     <div class="back" @click="goback">返回</div>
     <div class="mian_box">
       <logo class="logo" />
-      <div class="detail_main">
+      <div class="detail_main" @click="goSecond">
         <div class="label_box">
           <img v-show="config.showLabel01" class="animate__animated" :class="{animate__bounceInRight: config.showLabel01}" src="~@a/system/label_img_01.png">
           <img v-show="config.showLabel02" class="animate__animated" :class="{animate__bounceInRight: config.showLabel02}" src="~@a/system/label_img_02.png">
           <img v-show="config.showLabel03" class="animate__animated" :class="{animate__bounceInRight: config.showLabel03}" src="~@a/system/label_img_03.png">
         </div>
-        <div class="mian_img">
+        <!-- <div class="mian_img">
           <img v-show="config.showMain" class=" animate__animated" :class="{animate__lightSpeedInRight: config.showMain}" src="~@a/system/main_img.png">
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -28,8 +28,7 @@ export default {
       config: {
         showLabel01: false,
         showLabel02: false,
-        showLabel03: false,
-        showMain: false
+        showLabel03: false
       }
     }
   },
@@ -37,8 +36,11 @@ export default {
     this.animate()
   },
   methods: {
+    goSecond() {
+      this.$router.push('/systemDetailSecond')
+    },
     goback() {
-      this.$router.back(-1)
+      this.$router.replace('/login?redirect=dashboard')
     },
     animate() {
       this.config.showLabel01 = true
@@ -46,9 +48,6 @@ export default {
         this.config.showLabel02 = true
         setTimeout(() => {
           this.config.showLabel03 = true
-          setTimeout(() => {
-            this.config.showMain = true
-          }, 1000)
         }, 1000)
       }, 1000)
     }
@@ -80,18 +79,19 @@ export default {
     width: 1200px;
     margin: 0 auto;
     transform:scale3d(.75,.75,1);
-    margin-top: -124px;
+    margin-top: 0px;
     .logo {
     }
     .detail_main {
-      margin-top: -90px;
+      margin-top: -60px;
       .label_box {
         width: 1200px;
-        height: 213px;
+        height: 444px;
         overflow: hidden;
+        cursor: pointer;
         img {
           width: 377px;
-          height: 213px;
+          height: 444px;
           float: left;
           margin-right: 34px;
           &:last-child {

@@ -221,6 +221,7 @@ export default {
         width: 512px;
         height: 383px;
         padding: 10px;
+        cursor: pointer;
         background-image: url('~@a/system/icon_lefttop.png'), url('~@a/system/icon_righttop.png'),url('~@a/system/icon_rightbottom.png'),url('~@a/system/icon_leftbottom.png');
         background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
         background-size: 36px 36px, 36px 36px, 36px 36px, 36px 36px;
@@ -314,7 +315,8 @@ export default {
             .tip_box {
               width: 100%;
               text-align: center;
-              color: #16DEEF;
+              color: #fff;
+              font-weight: 600;
               position: absolute;
               left: 0;
               top: 123px;
@@ -385,7 +387,8 @@ export default {
             .tip_box {
               width: 100%;
               text-align: center;
-              color: #16DEEF;
+              color: #fff;
+              font-weight: 600;
               position: absolute;
               left: 0;
               top: 100px;
@@ -414,6 +417,8 @@ export default {
       }
       // 第三步
       .step_03 {
+
+        cursor: pointer;
         position: absolute;
         left: 825px;
         bottom: 116px;
@@ -591,7 +596,8 @@ export default {
             .tip_box {
               width: 100%;
               text-align: center;
-              color: #16DEEF;
+              color: #fff;
+              font-weight: 600;
               position: absolute;
               left: 0;
               top: 124px;

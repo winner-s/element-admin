@@ -18,7 +18,7 @@ export default {
   padding-bottom: 135px;
   overflow: hidden;
   .system_title {
-    font-size: 60px;
+    font-size: 70px;
     line-height: 90px;
     color: #fff;
     font-weight: 600;
@@ -30,6 +30,7 @@ export default {
     padding: 0 100px 0 20px;
     color: #fff;
     line-height: 54px;
+    font-weight: 600;
     float: left;
     background: linear-gradient(270deg, rgba(22, 224, 241, 0) 0%, rgba(11, 161, 238, 0.75) 50%, #0062EB 100%);
   }
