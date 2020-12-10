@@ -64,7 +64,7 @@ export default {
           ffzh: '4259315714566',
           ffhm: '张三',
           fkfyh: '中国银行',
-          je: '4560',
+          je: '100',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -76,7 +76,7 @@ export default {
           ffzh: '4259315714566',
           ffhm: '张三',
           fkfyh: '中国银行',
-          je: '7854',
+          je: '110',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -88,7 +88,7 @@ export default {
           ffzh: '4259315714132',
           ffhm: '张三',
           fkfyh: '上海银行',
-          je: '2000',
+          je: '200',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -100,7 +100,7 @@ export default {
           ffzh: '4259315714030',
           ffhm: '张三',
           fkfyh: '浦发银行',
-          je: '46587',
+          je: '300',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -112,7 +112,7 @@ export default {
           ffzh: '4259315714566',
           ffhm: '张三',
           fkfyh: '中国银行',
-          je: '5555',
+          je: '400',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -124,7 +124,7 @@ export default {
           ffzh: '4259315714566',
           ffhm: '张三',
           fkfyh: '建设银行',
-          je: '4658',
+          je: '500',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -136,7 +136,7 @@ export default {
           ffzh: '4259315714566',
           ffhm: '张三',
           fkfyh: '工商银行',
-          je: '2500',
+          je: '600',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -148,7 +148,7 @@ export default {
           ffzh: '4259315717466',
           ffhm: '张三',
           fkfyh: '农业银行',
-          je: '900',
+          je: '700',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -160,7 +160,7 @@ export default {
           ffzh: '4259315714165',
           ffhm: 'ANC',
           fkfyh: '招商银行',
-          je: '100',
+          je: '800',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -172,7 +172,7 @@ export default {
           ffzh: '4259315714789',
           ffhm: '王五',
           fkfyh: '建设银行',
-          je: '2000',
+          je: '900',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'
@@ -182,9 +182,9 @@ export default {
           zlcjsj: '2020-05-01',
           zlzt: '已发送',
           ffzh: '4259315717896',
-          ffhm: '小三',
+          ffhm: '张三',
           fkfyh: '中国银行',
-          je: '1000',
+          je: '100',
           sfzh: '94247891275',
           sfhm: '李四',
           yhfhxx: 'nice'

@@ -32,7 +32,7 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-import { UNITNOLIST } from '@u/wordbook'
+import { UNITNOLIST, LENDING, LENDINGLIST } from '@u/wordbook'
 import Search from '@c/common/search'
 import Table from '@c/common/table'
 
@@ -42,6 +42,7 @@ export default {
   data() {
     // 这里存放数据
     return {
+      lendingList: LENDINGLIST,
       showAll: 1,
       unitNoList: UNITNOLIST,
       // 分页
@@ -58,11 +59,11 @@ export default {
           dwmc: '单位1',
           zhhm: '123456',
           yhjybs: 'T-165489',
-          jysj: '2020-11-11',
+          jysj: '2020-03-05',
           dfyhzh: '777888',
           dfzhmc: '张三',
           jyfx: 1,
-          jyje: '100.00',
+          jyje: '2300',
           bz: '11'
         },
         {
@@ -70,11 +71,11 @@ export default {
           dwmc: '单位1',
           zhhm: '123456',
           yhjybs: 'T-165846',
-          jysj: '2020-11-11',
+          jysj: '2020-07-17',
           dfyhzh: '777888',
           dfzhmc: '张三',
           jyfx: 1,
-          jyje: '100.00',
+          jyje: '2100',
           bz: '11'
         },
         {
@@ -86,7 +87,7 @@ export default {
           dfyhzh: '777888',
           dfzhmc: '张三',
           jyfx: 1,
-          jyje: '100.00',
+          jyje: '1100',
           bz: '11'
         },
         {
@@ -94,11 +95,83 @@ export default {
           dwmc: '单位1',
           zhhm: '123456',
           yhjybs: 'T-16548',
-          jysj: '2020-11-11',
+          jysj: '2020-03-01',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 2,
+          jyje: '4500',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-01-02',
           dfyhzh: '777888',
           dfzhmc: '张三',
           jyfx: 1,
-          jyje: '100.00',
+          jyje: '5200',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-09-30',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 2,
+          jyje: '8400',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-03-28',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '3000',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-04-12',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 2,
+          jyje: '2500',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-05-25',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 1,
+          jyje: '2000',
+          bz: '11'
+        },
+        {
+          dwbh: '13265',
+          dwmc: '单位1',
+          zhhm: '123456',
+          yhjybs: 'T-16548',
+          jysj: '2020-05-11',
+          dfyhzh: '777888',
+          dfzhmc: '张三',
+          jyfx: 2,
+          jyje: '1000',
           bz: '11'
         }
       ],
@@ -200,7 +273,9 @@ export default {
       {
         prop: 'jyfx',
         width: '150',
-        label: '交易方向'
+        label: '交易方向',
+        type: 'wordbook',
+        wordbookList: this.lending
       },
       {
         prop: 'jyje',
@@ -222,6 +297,10 @@ export default {
   },
   // 方法集合
   methods: {
+    // 过滤
+    lending(val) {
+      return LENDING[val]
+    },
     // 收起
     dropUp() {
       this.showAll = false

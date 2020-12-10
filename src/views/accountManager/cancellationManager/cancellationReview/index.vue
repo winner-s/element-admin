@@ -83,6 +83,8 @@ export default {
       searchBto: [],
       list: [
         {
+          khsqrq: '2020-12-10',
+          khrq: '2020-02-10',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151121',
@@ -103,6 +105,8 @@ export default {
           zhyt: 1
         },
         {
+          khsqrq: '2020-05-10',
+          khrq: '2020-03-10',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151021',
@@ -123,6 +127,8 @@ export default {
           zhyt: 2
         },
         {
+          khsqrq: '2020-08-10',
+          khrq: '2020-06-10',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151320',
@@ -143,6 +149,8 @@ export default {
           zhyt: 4
         },
         {
+          khsqrq: '2020-11-10',
+          khrq: '2020-06-10',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151064',
@@ -163,6 +171,8 @@ export default {
           zhyt: 3
         },
         {
+          khsqrq: '2020-09-10',
+          khrq: '2020-06-10',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151991',
@@ -183,6 +193,8 @@ export default {
           zhyt: 3
         },
         {
+          khsqrq: '2020-12-10',
+          khrq: '2020-08-16',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151758',
@@ -203,6 +215,8 @@ export default {
           zhyt: 2
         },
         {
+          khsqrq: '2020-12-05',
+          khrq: '2020-09-12',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151611',
@@ -223,6 +237,8 @@ export default {
           zhyt: 2
         },
         {
+          khsqrq: '2020-12-10',
+          khrq: '2020-03-15',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151601',
@@ -243,6 +259,8 @@ export default {
           zhyt: 2
         },
         {
+          khsqrq: '2020-12-10',
+          khrq: '2020-05-13',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151681',
@@ -263,6 +281,8 @@ export default {
           zhyt: 3
         },
         {
+          khsqrq: '2020-12-10',
+          khrq: '2020-03-25',
           bz: 1,
           bzhu: '123',
           djbh: 'KH20091410151123',

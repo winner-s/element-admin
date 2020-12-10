@@ -95,7 +95,7 @@ export default {
           skfyhmc: 1,
           skfyhss: '不知道',
           skfyhzh: '4654654',
-          skfzhmc: '小三',
+          skfzhmc: '张三',
           ywdw: '业务单位',
           zffs: 1,
           zy: '000'
