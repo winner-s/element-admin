@@ -39,9 +39,14 @@ export default {
   data() {
     return {
       BANKNAME: {
-        '1': '中国建设银行',
-        '2': '中国工商银行',
-        '3': '中国银行'
+        '1': '北京银行',
+        '2': '工商银行',
+        '3': '中国银行',
+        '4': '招商银行',
+        '5': '交通银行',
+        '6': '农业银行',
+        '7': '上海银行',
+        '8': '浦发银行'
       },
       searchItem: [],
       searchData: {
@@ -53,11 +58,59 @@ export default {
       list: [
         {
           id: 1,
-          bankName: 1,
-          accountNum: '1',
+          bankName: 8,
+          accountNum: '6',
           balance: 0,
-          percentage: '0',
+          percentage: '3',
           coinType: 1
+        },
+        {
+          id: 1,
+          bankName: 7,
+          accountNum: '5',
+          balance: 0,
+          percentage: '8',
+          coinType: 2
+        },
+        {
+          id: 1,
+          bankName: 4,
+          accountNum: '5',
+          balance: 0,
+          percentage: '4',
+          coinType: 2
+        },
+        {
+          id: 1,
+          bankName: 6,
+          accountNum: '2',
+          balance: 15,
+          percentage: '3',
+          coinType: 1
+        },
+        {
+          id: 1,
+          bankName: 5,
+          accountNum: '1',
+          balance: 16,
+          percentage: '15',
+          coinType: 1
+        },
+        {
+          id: 1,
+          bankName: 4,
+          accountNum: '10',
+          balance: 15,
+          percentage: '20',
+          coinType: 2
+        },
+        {
+          id: 1,
+          bankName: 3,
+          accountNum: '5',
+          balance: 6,
+          percentage: '8',
+          coinType: 2
         },
         {
           id: 1,

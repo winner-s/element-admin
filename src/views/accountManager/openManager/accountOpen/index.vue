@@ -164,7 +164,7 @@ export default {
 
           documentNumber: '6',
           openTime: '2020-10-12',
-          khrq: '2020-5-01',
+          khrq: '2020-05-01',
           openApplicant: 'admin',
           accountPhone: '999888000',
           accountName: 'aaa',

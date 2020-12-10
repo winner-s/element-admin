@@ -87,7 +87,7 @@ export default {
           skfyhmc: 1,
           skfyhss: '不知道',
           skfyhzh: '4654654',
-          skfzhmc: '小三',
+          skfzhmc: '张三',
           lrr: 'admin',
           sjly: '财资云',
           wbdh: '154687039158',
