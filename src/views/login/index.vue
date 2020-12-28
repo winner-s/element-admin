@@ -117,11 +117,11 @@ export default {
       str = str.join('')
       if (!value) {
         callback(new Error('请输入验证码'))
-      } else if (value.toLowerCase() !== str.toLowerCase()) {
-        callback(new Error('验证码错误'))
       } else {
         callback()
       }
+      //  else if (value.toLowerCase() !== str.toLowerCase()) {
+      //   callback(new Error('验证码错误'))
     }
     return {
       loginForm: {
